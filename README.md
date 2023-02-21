@@ -1,13 +1,14 @@
 # SpringWise 
 
 ## Basic Idea 
-We are creating this app to showcase our skills and learn new skills along the way.
 
-The app will consist of a main database table/ hibernate entity/ java object, the "Spring Project".
+- We are creating this app to showcase our skills and learn new skills along the way.
 
-The Spring Project will have an id, a name, a description, a set of contributors, etc.There will be a main page where you can see all of the projects and click each one to be sent to its view.
+- The app will consist of a main database table/ hibernate entity/ java object, the "Spring Project".
 
-Each project will be contained in this parent project. 
+- The Spring Project will have an id, a name, a description, a set of contributors, etc.There will be a main page where you can see all of the projects and click each one to be sent to its view.
+
+- Each project will be contained in this parent project. 
 
 ## What **you** will be doing
 You will be responsible for:
@@ -20,6 +21,6 @@ You will be responsible for:
 
 ## When we will be working on this
 
-We will doing live coding in the check-ins when there are no other pressing topics.
+- We will doing live coding in the check-ins when there are no other pressing topics.
 
-You can work on your own branches and issues whenever you would like/ have time.
+- You can work on your own branches and issues whenever you would like/ have time.
