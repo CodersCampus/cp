@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Dog Home</title>
+</head>
+<body>
+	<form method="post" action="save-dog">
+		Name: <input type="text" th:field="${dog.name}"/>
+		Breed: <input type="text" th:field="${dog.breed}"/>
+		Age: <input type="text" th:field="${dog.age}"/>
+		<input type="submit" value="Submit"/>
+	</form>
+</body>
+</html>
