@@ -1,4 +1,4 @@
-package com.coderscampus.dryRunH2.domain;
+package com.coderscampus.springwise.domain;
 
 import jakarta.persistence.*;
 
