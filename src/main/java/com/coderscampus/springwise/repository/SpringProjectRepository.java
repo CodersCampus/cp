@@ -1,4 +1,4 @@
-package com.coderscampus.dryRunH2.repository;
+package com.coderscampus.springwise.repository;
 
 import com.coderscampus.dryRunH2.domain.SpringProject;
 import org.springframework.data.jpa.repository.JpaRepository;
