@@ -1,4 +1,5 @@
 .idea/
+.idea/misc.xml
 target/
 .classpath
 .project
