@@ -1,1 +1,35 @@
-<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head>	<title>Spring Projects</title></head><body>	<h1>Spring Projects</h1>	<table>		<thead>		<tr>			<th>ID</th>			<th>Title</th>			<th>Description</th>			<th>Image Path</th>			<th>Contributors</th>			<th>URL</th>		</tr>		</thead>		<tbody>		<tr th:each="project : ${projects}">			<td th:text="${project.id}"></td>			<td th:text="${project.title}"></td>			<td th:text="${project.description}"></td>			<td th:text="${project.imagePath}"></td>			<td>				<ul>					<li th:each="contributor : ${project.contributors}" th:text="${contributor}"></li>				</ul>			</td>			<td><a th:href="${project.url}" th:text="${project.url}"></a></td>		</tr>		</tbody>	</table></body></html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Spring Projects</title>
+</head>
+<body>
+	<h1>Spring Projects</h1>
+	<table>
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Image Path</th>
+			<th>Contributors</th>
+			<th>URL</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="project : ${projects}">
+			<td th:text="${project.id}"></td>
+			<td th:text="${project.title}"></td>
+			<td th:text="${project.description}"></td>
+			<td th:text="${project.imagePath}"></td>
+			<td>
+				<ul>
+					<li th:each="contributor : ${project.contributors}" th:text="${contributor}"></li>
+				</ul>
+			</td>
+			<td><a th:href="${project.url}" th:text="${project.url}"></a></td>
+		</tr>
+		</tbody>
+	</table>
+</body>
+</html>
