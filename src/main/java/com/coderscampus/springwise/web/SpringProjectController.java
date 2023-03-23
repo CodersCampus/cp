@@ -1,4 +1,4 @@
-package com.coderscampus.springwise.controller;
+package com.coderscampus.springwise.web;
 
 import com.coderscampus.springwise.domain.SpringProject;
 import com.coderscampus.springwise.repository.SpringProjectRepository;
