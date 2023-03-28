@@ -19,6 +19,11 @@ public class DogController {
 	@Autowired
 	private DogService dogService;
 	
+	@GetMapping("/")
+	public String getHomePage() {
+		return "dogs";
+	}
+	
 	@GetMapping("/create")
 	public String getHome (ModelMap model) {
 		
