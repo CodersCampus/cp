@@ -23,4 +23,8 @@ public class DogService {
 		return dogRepo.findAll();
 	}
 
+	public Dog findById(Long id) {
+		return dogRepo.findById(id).get();
+	}
+
 }
