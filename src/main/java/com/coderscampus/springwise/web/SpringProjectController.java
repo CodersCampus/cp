@@ -1,13 +1,14 @@
 package com.coderscampus.springwise.web;
 
-import com.coderscampus.springwise.domain.SpringProject;
-import com.coderscampus.springwise.repository.SpringProjectRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
+import com.coderscampus.springwise.domain.SpringProject;
+import com.coderscampus.springwise.repository.SpringProjectRepository;
 
 @Controller
 public class SpringProjectController {
@@ -16,6 +17,11 @@ public class SpringProjectController {
     private SpringProjectRepository springProjectRepository;
 
     // testing
+    @GetMapping("/")
+    public String getIndex() {
+    	return "index";
+    }
+    
     @GetMapping("/springprojects")
     public String getSpringProjects(Model model) {
         List<SpringProject> projects = springProjectRepository.findAll();
