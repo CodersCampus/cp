@@ -21,6 +21,6 @@ You will be responsible for:
 
 ## When we will be working on this
 
-- We will doing live coding in the check-ins when there are no other pressing topics.
+- We will be doing live coding in the check-ins when there are no other pressing topics.
 
 - You can work on your own branches and issues whenever you would like/ have time.

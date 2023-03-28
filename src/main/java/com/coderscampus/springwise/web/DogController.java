@@ -32,10 +32,10 @@ public class DogController {
 	@PostMapping("/save-dog")
 	public String saveDog(Dog dog) {
 		dogService.saveDog(dog);
-		return "redirect:/dogs";
+		return "redirect:/dog/all-dogs";
 	}
 	
-	@GetMapping("/dogs")
+	@GetMapping("/all-dogs")
 	public String getDogPage (ModelMap model) {
 		List<Dog> dogs = dogService.findAll();
 		
