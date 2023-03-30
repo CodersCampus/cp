@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+<title>All cars</title>
+
+<link rel = "stylesheet" type = "text/css" href="style.css">
+</head>
+<body>
+<h1>Here are all the cars!</h1>
+<table class="table-striped">
+                <thead>
+                <tr>
+                    <th>Model Name</th>
+                    <th>Motor Size</th>
+                    <th>Wheel Size</th>
+                    <th>Transmission</th>
+                    <th>Color</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    <tr th:each="cars : ${list}">
+                    
+                   <td> <a th:href="@{/car/car/{carId}(carId=${cars.value.id})}" >[[${cars.value.modelName}]] </a> </td>
+                   <td th:text="${cars.value.motorSize}" > </td>
+                   <td th:text="${cars.value.wheelSize}"></td>
+                   <td th:text="${cars.value.transmission}"></td>
+                   <td th:text="${cars.value.color}"></td>
+                   <td th:text="${cars.value.year}"></td>
+                   <td th:text="${cars.value.price}"></td>
+                    </tr>   
+
+                </tbody>
+</table>
+	<a href="/car/" >Home</a>
+</body>
+</html>
