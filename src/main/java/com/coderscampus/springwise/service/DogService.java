@@ -14,7 +14,7 @@ public class DogService {
 	@Autowired
 	private DogRepository dogRepo;
 	
-	public Dog saveDog(Dog dog) {
+	public Dog save(Dog dog) {
 		return dogRepo.save(dog);
 	}
 
@@ -25,6 +25,10 @@ public class DogService {
 
 	public Dog findById(Long id) {
 		return dogRepo.findById(id).get();
+	}
+
+	public void delete(Dog dog) {
+		dogRepo.delete(dog);
 	}
 
 }

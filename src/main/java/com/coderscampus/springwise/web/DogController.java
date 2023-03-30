@@ -21,40 +21,46 @@ public class DogController {
 	private DogService dogService;
 	
 	@GetMapping("/")
-	public String getHomePage() {
-		return "dogs";
+	public String home() {
+		return "dog/read";
 	}
 	
 	@GetMapping("/create")
-	public String getHome (ModelMap model) {
-		
+	public String getCreate (ModelMap model) {
 		Dog dog = new Dog();
-		
 		model.put("dog", dog);
-		
-		return "createdog";
+		return "dog/create";
 	}
 
-	@PostMapping("/save-dog")
-	public String saveDog(Dog dog) {
-		dogService.saveDog(dog);
-		return "redirect:/dog/all-dogs";
+	@PostMapping("/create")
+	public String create(Dog dog) {
+		dogService.save(dog);
+		return "redirect:/dog/read";
 	}
 	
-	@GetMapping("/all-dogs")
-	public String getDogPage (ModelMap model) {
+	@GetMapping("/read")
+	public String read(ModelMap model) {
 		List<Dog> dogs = dogService.findAll();
-		
 		model.put("dogs", dogs);
-		return "dogs";
+		return "dog/read";
 	}
 	
-	@GetMapping("/{id}")
-	public String fetchDog(ModelMap model, @PathVariable Long id) {
+	@GetMapping("/update/{id}")
+	public String fetch(ModelMap model, @PathVariable Long id) {
 		Dog dog = dogService.findById(id);
 		model.put("dog", dog);
-		System.out.println(id);
-		System.out.println(dog.getBreed());
-		return "dog";
+		return "dog/update";
+	}
+	
+	@PostMapping("/update/{id}")
+	public String update(Dog dog) {
+		dogService.save(dog);
+		return "redirect:/dog/read";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(Dog dog) {
+		dogService.delete(dog);
+		return "redirect:/dog/read";
 	}
 }

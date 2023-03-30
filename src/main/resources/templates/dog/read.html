@@ -7,7 +7,7 @@
 <body>
 	<div th:each="dog: ${dogs}">
 		<div>
-			Name: <a th:href="@{/dog/{dogId}(dogId=${dog.id})}" ><span th:text="${dog.name}"></span> </a> <br>
+			Name: <a th:href="@{/dog/update/{dogId}(dogId=${dog.id})}" ><span th:text="${dog.name}"></span> </a> <br>
 			Breed: <span th:text="${dog.breed}"></span><br>
 			Age: <span th:text="${dog.age}"></span><br>
 		</div>
