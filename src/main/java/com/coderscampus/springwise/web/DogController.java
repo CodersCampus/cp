@@ -52,7 +52,7 @@ public class DogController {
 		return "dog/update";
 	}
 	
-	@PostMapping("/update/{id}")
+	@PostMapping("/update")
 	public String update(Dog dog) {
 		dogService.save(dog);
 		return "redirect:/dog/read";

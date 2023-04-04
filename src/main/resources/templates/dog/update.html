@@ -6,14 +6,17 @@
 </head>
 <body>
 	<form method="post" action="/dog/update">
-		<input type="hidden" th:field="${dog.id}" /> Name: <input type="text"
-			th:field="${dog.name}" /> Breed: <input type="text"
-			th:field="${dog.breed}" /> Age: <input type="text"
-			th:field="${dog.age}" /> <input type="submit" value="Update" />
+		<input type="hidden" th:field="${dog.id}" />
+		Name: 
+		<input type="text" th:field="${dog.name}" />
+		Breed: 
+		<input type="text" th:field="${dog.breed}" />
+		Age: 
+		<input type="text" th:field="${dog.age}" />
+		<input type="submit" value="Update" />
 	</form>
 	<form method="post" action="/dog/delete">
-		<input type="hidden" th:field="${dog.id}" /> 
-		<input type="submit" value="Delete" />
+		<input type="hidden" th:field="${dog.id}" /> <input type="submit" value="Delete" />
 	</form>
 
 </body>
