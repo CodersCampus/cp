@@ -21,7 +21,9 @@ public class DogController {
 	private DogService dogService;
 	
 	@GetMapping("/")
-	public String home() {
+	public String home(ModelMap model) {
+		List<Dog> dogs = dogService.findAll();
+		model.put("dogs", dogs);
 		return "dog/read";
 	}
 	
@@ -37,13 +39,13 @@ public class DogController {
 		dogService.save(dog);
 		return "redirect:/dog/read";
 	}
-	
-	@GetMapping("/read")
-	public String read(ModelMap model) {
-		List<Dog> dogs = dogService.findAll();
-		model.put("dogs", dogs);
-		return "dog/read";
-	}
+// This is same mapping as Dog Home page-->left here just in case.(may need deleted)
+//	@GetMapping("/read")
+//	public String read(ModelMap model) {
+//		List<Dog> dogs = dogService.findAll();
+//		model.put("dogs", dogs);
+//		return "dog/read";
+//	}
 	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {
