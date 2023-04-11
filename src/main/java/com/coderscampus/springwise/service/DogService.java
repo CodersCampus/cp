@@ -14,13 +14,21 @@ public class DogService {
 	@Autowired
 	private DogRepository dogRepo;
 	
-	public Dog saveDog(Dog dog) {
+	public Dog save(Dog dog) {
 		return dogRepo.save(dog);
 	}
 
 	public List<Dog> findAll() {
 
 		return dogRepo.findAll();
+	}
+
+	public Dog findById(Long id) {
+		return dogRepo.findById(id).get();
+	}
+
+	public void delete(Dog dog) {
+		dogRepo.delete(dog);
 	}
 
 }
