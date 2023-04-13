@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Car</title>
+	</head>
+	
+	<body>
+		<div>
+		<h2>Updating Car</h2>
+		<form action="" method="post">
+			<div> ModelName <input type="text" th:field="${car.modelName}"/></div>
+			<div> <input type="hidden" th:field=${car.id}> </div>
+			<div> MotorSize <input type="text" th:field="${car.motorSize}"/> </div>
+	        <div> WheelSize <input type="text" th:field="${car.wheelSize}"/></div>
+	       	<div> TransmissionType <input type="text" th:field="${car.transmission}" /></div> 
+	       	<div> Color <input type="text" th:field="${car.color}"/></div> 
+	       	<div> Year <input type="text" th:field=${car.year}/></div> 
+	       	<div> Price <input type="text" th:field="${car.price}"/></div>
+	       	<button>Submit</button>
+		</form>
+		<form th:action="@{/car/delete/{carId}(carId=${car.id})}" method="post">
+			<input type="hidden" th:field=${car.modelName}>
+			<input type="hidden" th:field=${car.id}>
+			<input type="hidden" th:field=${car.motorSize}>
+			<input type="hidden" th:field=${car.wheelSize}>
+			<input type="hidden" th:field=${car.transmission}>
+			<input type="hidden" th:field=${car.color}>
+			<input type="hidden" th:field=${car.year}>
+			<input type="hidden" th:field=${car.price}>
+			<input type="submit" value="Delete" >
+		</form>
+		</div>
+	</body>
+	
+</html>
