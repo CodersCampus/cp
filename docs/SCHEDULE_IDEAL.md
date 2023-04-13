@@ -41,10 +41,10 @@ Where are announcements made?
 
 ## Tier system for how we run spring wise sessions
 
-- Assignment 13-FP (Brain Blast)</br>
+- Assignment 13-FP (Tier 1)</br>
  <sub><sup>Advanced students leading live coding in the spectrum of CRUD</sub></sub></br>
 <sub><sup> Lower level student does code review</sub></sup></br>
-- Assignment 9-11 (Mid Level)</br>
+- Assignment 9-11 (Tier 2)</br>
 <sub><sup> Live Coding with coaching through simple processes including things, but not limited to simple controllers and html pages </sub></sup></br>
-- Assignment 6-8 (Base level)</br>
+- Assignment 6-8 (Tier 3)</br>
 <sub><sup> Simple reps of team work process code reviews involving adding simple files to project and then pushing back up. </sub></sup></br>
