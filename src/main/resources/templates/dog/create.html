@@ -5,11 +5,11 @@
 <title>Dog Home</title>
 </head>
 <body>
-	<form method="post" action="/dog/save-dog">
+	<form method="post" action="/dog/create">
 		Name: <input type="text" th:field="${dog.name}"/>
 		Breed: <input type="text" th:field="${dog.breed}"/>
 		Age: <input type="text" th:field="${dog.age}"/>
-		<input type="submit" value="Submit"/>
+		<input type="submit" value="Create"/>
 	</form>
 	
 </body>

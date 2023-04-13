@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,31 +21,48 @@ public class DogController {
 	private DogService dogService;
 	
 	@GetMapping("/")
-	public String getHomePage() {
-		return "dogs";
+	public String home(ModelMap model) {
+		List<Dog> dogs = dogService.findAll();
+		model.put("dogs", dogs);
+		return "dog/read";
 	}
 	
 	@GetMapping("/create")
-	public String getHome (ModelMap model) {
-		
+	public String getCreate (ModelMap model) {
 		Dog dog = new Dog();
-		
 		model.put("dog", dog);
-		
-		return "createdog";
+		return "dog/create";
 	}
 
-	@PostMapping("/save-dog")
-	public String saveDog(Dog dog) {
-		dogService.saveDog(dog);
-		return "redirect:/dog/all-dogs";
+	@PostMapping("/create")
+	public String create(Dog dog) {
+		dogService.save(dog);
+		return "redirect:/dog/read";
+	}
+// This is same mapping as Dog Home page-->left here just in case.(may need deleted)
+//	@GetMapping("/read")
+//	public String read(ModelMap model) {
+//		List<Dog> dogs = dogService.findAll();
+//		model.put("dogs", dogs);
+//		return "dog/read";
+//	}
+	
+	@GetMapping("/update/{id}")
+	public String fetch(ModelMap model, @PathVariable Long id) {
+		Dog dog = dogService.findById(id);
+		model.put("dog", dog);
+		return "dog/update";
 	}
 	
-	@GetMapping("/all-dogs")
-	public String getDogPage (ModelMap model) {
-		List<Dog> dogs = dogService.findAll();
-		
-		model.put("dogs", dogs);
-		return "dogs";
+	@PostMapping("/update")
+	public String update(Dog dog) {
+		dogService.save(dog);
+		return "redirect:/dog/read";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(Dog dog) {
+		dogService.delete(dog);
+		return "redirect:/dog/read";
 	}
 }

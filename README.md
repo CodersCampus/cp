@@ -24,3 +24,5 @@ You will be responsible for:
 - We will be doing live coding in the check-ins when there are no other pressing topics.
 
 - You can work on your own branches and issues whenever you would like/ have time.
+
+- adding something here
