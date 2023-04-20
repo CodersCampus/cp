@@ -37,7 +37,7 @@ public class DogController {
 	@PostMapping("/create")
 	public String create(Dog dog) {
 		dogService.save(dog);
-		return "redirect:/dog/read";
+		return "redirect:/dog/";
 	}
 // This is same mapping as Dog Home page-->left here just in case.(may need deleted)
 //	@GetMapping("/read")
