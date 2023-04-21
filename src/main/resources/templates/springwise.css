@@ -1,0 +1,33 @@
+/* dark-mode.css */
+
+:root {
+  /* Dark mode background colors */
+  --bs-dark-bg: #222;
+  --bs-dark-bg-light: #333;
+  --bs-dark-bg-dark: #111;
+
+  /* Dark mode text colors */
+  --bs-dark-text: #f8f9fa;
+  --bs-dark-text-muted: #adb5bd;
+
+  /* Dark mode link colors */
+  --bs-dark-link: #007bff;
+  --bs-dark-link-hover: #0056b3;
+}
+/* dark-mode.css */
+
+[data-theme='dark'] {
+  /* Background and text colors */
+  --bs-bg: var(--bs-dark-bg);
+  --bs-bg-light: var(--bs-dark-bg-light);
+  --bs-bg-dark: var(--bs-dark-bg-dark);
+  --bs-text: var(--bs-dark-text);
+  --bs-text-muted: var(--bs-dark-text-muted);
+
+  /* Link colors */
+  --bs-link: var(--bs-dark-link);
+  --bs-link-hover: var(--bs-dark-link-hover);
+}
+body{
+	background-color: red;
+}
