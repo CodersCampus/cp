@@ -57,12 +57,12 @@ public class DogController {
 	@PostMapping("/update")
 	public String update(Dog dog) {
 		dogService.save(dog);
-		return "redirect:/dog/read";
+		return "redirect:/dog/";
 	}
 	
 	@PostMapping("/delete")
 	public String delete(Dog dog) {
 		dogService.delete(dog);
-		return "redirect:/dog/read";
+		return "redirect:/dog/";
 	}
 }
