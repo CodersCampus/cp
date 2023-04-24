@@ -32,7 +32,7 @@
 	background-color: white;
 	cursor: pointer;
 }
-#slider-image-1:target ~ .image-container{
+#slider-image-4:target ~ .image-container{
 	left: 0px;
 }
 #slider-image-2:target ~ .image-container{
