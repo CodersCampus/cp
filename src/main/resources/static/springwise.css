@@ -28,6 +28,6 @@
   --bs-link: var(--bs-dark-link);
   --bs-link-hover: var(--bs-dark-link-hover);
 }
-body{
-	background-color: red;
+:host{
+	background-color: blue;
 }

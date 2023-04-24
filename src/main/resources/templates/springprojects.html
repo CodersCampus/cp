@@ -1,26 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<script>
-	function toggleDarkMode() {
-		const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light'
-				: 'dark';
-		document.documentElement.setAttribute('data-theme', theme);
-		localStorage.setItem('theme', theme);
-	}
 
-	// Load the user's preferred theme from localStorage
-	const savedTheme = localStorage.getItem('theme');
-	if (savedTheme) {
-		document.documentElement.setAttribute('data-theme', savedTheme);
-	}
-	toggleDarkMode()
-</script>
-<link rel="stylesheet" href="springwise.css">
 <title>Spring Projects</title>
 </head>
 <body>
-<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
 	<a href="/">Home</a>
 	<h1>Spring Projects</h1>
 	<table>
