@@ -5,3 +5,8 @@ VALUES
 ('Max', 'German Shepherd', '4'),
 ('Lucy', 'Beagle', '1'),
 ('Rocky', 'Boxer', '5');
+
+INSERT INTO Truck (motor_size,model_name)
+VALUES
+('5.0', 'honda civic'),
+('10.0', 'Tesla');
