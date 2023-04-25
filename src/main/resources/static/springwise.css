@@ -40,7 +40,10 @@
 }
 #slider-image-3:target ~ .image-container{
 	left: -1600px;
+<<<<<<< Updated upstream
 }
 h1{
 	text-align: center;
+=======
+>>>>>>> Stashed changes
 }
