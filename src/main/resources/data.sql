@@ -10,3 +10,10 @@ INSERT INTO Truck (motor_size,model_name)
 VALUES
 ('5.0', 'honda civic'),
 ('10.0', 'Tesla');
+
+INSERT INTO Airplane (make,model,color)
+VALUES
+('Boeing', '747','blue'),
+('Nasa', 'Space Shuttle', 'white'),
+('Airbus', 'A320','Green'),
+('Airbus', 'A380', 'Red');
