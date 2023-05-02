@@ -36,12 +36,12 @@
 <div>
 	<form method="post" action="/airplane/update" class="mb-3">
 		<input class="form-control" type="hidden" th:field="${airplane.id}" />
-		<label class="form-label">Name: </label> 
-		<input class="form-control" type="text" th:field="${airplane.name}" />
-		<label class="form-label">Breed: </label> 
-		<input class="form-control" type="text" th:field="${airplane.breed}" />
-		<label class="form-label">Age: </label> 
-		<input class="form-control" type="text" th:field="${airplane.age}" />
+		<label class="form-label">Make: </label> 
+		<input class="form-control" type="text" th:field="${airplane.make}" />
+		<label class="form-label">Model: </label> 
+		<input class="form-control" type="text" th:field="${airplane.model}" />
+		<label class="form-label">Color: </label> 
+		<input class="form-control" type="text" th:field="${airplane.color}" />
 		<input class="form-control btn btn-primary mt-3" type="submit" value="Update" />
 	</form>
 	<form method="post" action="/airplane/delete" class="mb-3">
