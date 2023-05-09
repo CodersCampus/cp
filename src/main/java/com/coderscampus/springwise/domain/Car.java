@@ -1,5 +1,7 @@
 package com.coderscampus.springwise.domain;
 
+import org.junit.jupiter.api.Test;
+
 import java.math.BigDecimal;
 import java.util.Currency;
 
@@ -86,5 +88,5 @@ public class Car {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	
+
 }
