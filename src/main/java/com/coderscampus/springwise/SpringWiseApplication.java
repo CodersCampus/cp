@@ -8,4 +8,5 @@ public class SpringWiseApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringWiseApplication.class, args);
 	}
+	
 }
