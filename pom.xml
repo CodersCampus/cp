@@ -15,7 +15,7 @@
 	<description>A group project built by Coder Campus Students</description>
 	<properties>
 		<java.version>17</java.version>
-	</properties>
+	</properties> 
 	<dependencies>
 	
 		<dependency>
