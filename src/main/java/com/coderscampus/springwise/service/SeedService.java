@@ -5,12 +5,17 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.coderscampus.springwise.domain.Airplane;
 import com.coderscampus.springwise.domain.Car;
+import com.coderscampus.springwise.repository.AirplaneRepository;
 
 @Service
 public class SeedService {
+	@Autowired
+	private AirplaneRepository  airRepo;
 	
 	Map<Long, Car> cars = new LinkedHashMap<>();
 	
@@ -48,6 +53,16 @@ public class SeedService {
 		}
 		return cars;
 		
+		
+		
+	}
+
+	public void populateData() {
+		Airplane airplane = new Airplane();
+		airplane.setModel("747");
+		airplane.setMake("Boeing");
+		airplane.setColor("Fusia");
+		airRepo.save(airplane);
 		
 		
 	}
