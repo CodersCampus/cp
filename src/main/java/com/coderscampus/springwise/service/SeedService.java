@@ -10,13 +10,16 @@ import org.springframework.stereotype.Service;
 
 import com.coderscampus.springwise.domain.Airplane;
 import com.coderscampus.springwise.domain.Car;
+import com.coderscampus.springwise.domain.Frog;
 import com.coderscampus.springwise.repository.AirplaneRepository;
+import com.coderscampus.springwise.repository.FrogRepository;
 
 @Service
 public class SeedService {
 	@Autowired
 	private AirplaneRepository  airRepo;
-	
+	@Autowired
+	private FrogRepository frogRepo;
 	Map<Long, Car> cars = new LinkedHashMap<>();
 	
 	public Map<Long, Car> carCreation()  {
@@ -58,12 +61,32 @@ public class SeedService {
 	}
 
 	public void populateData() {
+		
+		Random random = new Random();
 		Airplane airplane = new Airplane();
 		airplane.setModel("747");
 		airplane.setMake("Boeing");
 		airplane.setColor("Fusia");
 		airRepo.save(airplane);
 		
+		
+		String[] frogName = {"kermit", "frogger", "mr. toad", "tree frog"};
+		String[] frogSpecies = {"blue", "green", "pink", "purple"};
+		String[] frogAge = {"young", "old", "young", "old"};
+		
+	
+		
+		for (int i = 0; i < 10; i++) {
+			
+			Frog frog = new Frog();
+			
+			frog.setName(frogName[random.nextInt(frogName.length - 1)]);
+			frog.setAge(frogAge[random.nextInt(frogAge.length - 1)]);
+			frog.setSpecies(frogSpecies[random.nextInt(frogSpecies.length - 1)]);
+			
+			frogRepo.save(frog);
+			
+		}
 		
 	}
 	
