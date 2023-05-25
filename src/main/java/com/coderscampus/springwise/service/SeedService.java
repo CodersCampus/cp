@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.coderscampus.springwise.domain.Airplane;
 import com.coderscampus.springwise.domain.Car;
+import com.coderscampus.springwise.domain.Dog;
 import com.coderscampus.springwise.domain.Frog;
 import com.coderscampus.springwise.repository.AirplaneRepository;
+import com.coderscampus.springwise.repository.DogRepository;
 import com.coderscampus.springwise.repository.FrogRepository;
 
 @Service
@@ -21,6 +23,8 @@ public class SeedService {
 	@Autowired
 	private FrogRepository frogRepo;
 	Map<Long, Car> cars = new LinkedHashMap<>();
+	@Autowired
+	private DogRepository dogRepo;
 	
 	public Map<Long, Car> carCreation()  {
 		
@@ -88,6 +92,23 @@ public class SeedService {
 			
 		}
 		
+		String[] dogName = {"Coco", "Woof", "Shrimp", "Nuts", "Rover", "Wilber"};
+		String[] dogBreed = {"Shepperd", "Chihuahua", "Pomeranian", "Poodle"};
+		String[] dogAge = {"young", "old", "young", "old"};
+		
+	
+		
+		for (int i = 0; i < 10; i++) {
+			
+			Dog dog = new Dog();
+			
+			dog.setName(dogName[random.nextInt(dogName.length - 1)]);
+			dog.setAge(dogAge[random.nextInt(dogAge.length - 1)]);
+			dog.setBreed(dogBreed[random.nextInt(dogBreed.length - 1)]);
+			
+			dogRepo.save(dog);
+			
+		}
 	}
 	
 	 
