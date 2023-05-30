@@ -11,13 +11,14 @@ import org.springframework.stereotype.Service;
 public class DataFileService {
 	public String[] getData(String filePath) {
 		List<String> lines;
+		String[] linesArray=null;
 		
 
 		try {
 
 			lines = Files.readAllLines(Paths.get(filePath));
 
-			String[] linesArray = lines.toArray(new String[0]);
+			linesArray = lines.toArray(new String[0]);
 
 			for (String line : linesArray) {
 				System.out.println(line);
@@ -25,6 +26,6 @@ public class DataFileService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return linesArray;
 	}
 }
