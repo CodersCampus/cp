@@ -25,6 +25,8 @@ public class SeedService {
 	Map<Long, Car> cars = new LinkedHashMap<>();
 	@Autowired
 	private DogRepository dogRepo;
+	@Autowired
+	private DataFileService dataFileService;
 	
 	public Map<Long, Car> carCreation()  {
 		
@@ -109,6 +111,7 @@ public class SeedService {
 			dogRepo.save(dog);
 			
 		}
+		dataFileService.getData("src/main/resources/data/trucks.txt");
 	}
 	
 	 
