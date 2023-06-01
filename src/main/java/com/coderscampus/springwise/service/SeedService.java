@@ -2,6 +2,7 @@ package com.coderscampus.springwise.service;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -70,9 +71,9 @@ public class SeedService {
 		airplane.setColor("Fusia");
 		airRepo.save(airplane);
 
-		String[] frogName = { "kermit", "frogger", "mr. toad", "tree frog" };
-		String[] frogSpecies = { "blue", "green", "pink", "purple" };
-		String[] frogAge = { "young", "old", "young", "old" };
+		String[] frogName = {"kermit", "frogger", "mr. toad", "tree frog"};
+		String[] frogSpecies = {"blue", "green", "pink", "purple"};
+		String[] frogAge = {"young", "old", "young", "old"};
 
 		for (int i = 0; i < 10; i++) {
 
@@ -86,9 +87,9 @@ public class SeedService {
 
 		}
 
-		String[] dogName = { "Coco", "Woof", "Shrimp", "Nuts", "Rover", "Wilber" };
-		String[] dogBreed = { "Shepperd", "Chihuahua", "Pomeranian", "Poodle" };
-		String[] dogAge = { "young", "old", "young", "old" };
+		String[] dogName = {"Coco", "Woof", "Shrimp", "Nuts", "Rover", "Wilber"};
+		String[] dogBreed = {"Shepperd", "Chihuahua", "Pomeranian", "Poodle"};
+		String[] dogAge = {"young", "old", "young", "old"};
 
 		for (int i = 0; i < 10; i++) {
 
@@ -101,22 +102,24 @@ public class SeedService {
 			dogRepo.save(dog);
 
 		}
-		String[] trucksData = dataFileService.getData("src/main/resources/data/trucks.txt");
-		Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
-		String[] colors = { "Yellow", "Red", "Blue", "Orange", "Purple", "White", "Black", "Grey" };
+		List<Truck> trucks = truckRepo.findAll();
+		if (trucks.size() < 10) {
+			String[] trucksData = dataFileService.getData("src/main/resources/data/trucks.txt");
+			Integer[] motorSizes = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+			String[] colors = {"Yellow", "Red", "Blue", "Orange", "Purple", "White", "Black", "Grey"};
 
-		for (int i = 0; i < 10; i++) {
-			
-
-			Truck truck = new Truck();
-			String modelName = trucksData[random.nextInt(trucksData.length-1)];
-			truck.setModelName(modelName.substring(0,modelName.indexOf(" - ")));
-			truck.setColor(colors[random.nextInt(colors.length - 1)]);
-			truck.setMotorSize(""+motorSizes[random.nextInt(motorSizes.length - 1)]);
-			
-			truckRepo.save(truck);
+			for (int i = 0; i < 10; i++) {
 
 
+				Truck truck = new Truck();
+				String modelName = trucksData[random.nextInt(trucksData.length - 1)];
+				truck.setModelName(modelName.substring(0, modelName.indexOf(" - ")));
+				truck.setColor(colors[random.nextInt(colors.length - 1)]);
+				truck.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
+
+				truckRepo.save(truck);
+				
+			}
 		}
 	}
 
