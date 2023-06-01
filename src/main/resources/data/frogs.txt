@@ -1,0 +1,84 @@
+American bullfrog | Rana catesbeiana
+African clawed frog | Xenopus laevis
+Australian green tree frog | Litoria caerulea
+Cane toad | Rhinella marina
+European common frog | Rana temporaria
+Gray treefrog | Hyla versicolor
+Green frog | Lithobates clamitans
+Leopard frog | Rana pipiens
+Mexican tree frog | Smilisca baudinii
+Northern cricket frog | Acris crepitans
+Pacific tree frog | Pseudacris regilla
+Spring peeper | Pseudacris crucifer
+Wood frog | Rana sylvatica
+African dwarf frog | Hymenochirus curtipes
+African giant frog | Conraua goliath
+American green tree frog | Hyla cinerea
+American toad | Bufo americanus
+Argentine horned frog | Ceratophrys ornata
+Asian common frog | Lithobates vittatus
+Asian tree frog | Polypedates leucomystax
+Australian bell frog | Litoria aurea
+Australian tree frog | Litoria caerulea
+Barking frog | Eleutherodactylus coqui
+Barred tiger frog | Pseudacris regilla
+Bokermannohyla alvarengai | Bokermannohyla alvarengai
+Brazilian gold frog | Phyllomedusa bicolor
+Brazilian tree frog | Phyllomedusa sauvagei
+Broad-snouted tree frog | Mantella laevigata
+Cape rain frog | Breviceps gibbosus
+Colombian robber frog | Eleutherodactylus wendlandi
+Common frog | Rana temporaria
+Common tree frog | Hyla arborea
+Cookie frog | Eleutherodactylus planirostris
+Cuban tree frog | Osteopilus septentrionalis
+Dart-poison frog | Dendrobates leucomelas
+Dart-poison frog | Phyllobates terribilis
+Dwarf tree frog | Litoria infrafrenata
+East African tree frog | Hyperolius viridiflavus
+European tree frog | Hyla arborea
+Fire-bellied toad | Bombina bombina
+Gray tree frog | Hyla versicolor
+Green tree frog | Litoria caerulea
+Green tree frog | Litoria splendida
+Green tree frog | Litoria tyleri
+Hawaiian tree frog | Pseudacris regilla
+Horned frog | Ceratophrys cornuta
+Indochinese torrent frog | Amolops marmoratus
+Japanese tree frog | Hyla japonica
+Litoria caerulea | Litoria caerulea
+Litoria chloris | Litoria chloris
+Litoria infrafrenata | Litoria infrafrenata
+Litoria lesueuri | Litoria lesueuri
+Litoria splendida | Litoria splendida
+Litoria tyleri | Litoria tyleri
+Marmorated tree frog | Hylarana maculata
+Mexican tree frog | Smilisca baudinii
+Narrow-mouthed toad | Microhyla fissipes
+Northern cricket frog | Acris crepitans
+Pacific tree frog | Pseudacris regilla
+Painted frog | Discoglossus pictus
+Peacock frog | Mantella aurantiaca
+Philippine tree frog | Rhacophorus reinwardtii
+Poison dart frog | Dendrobates leucomelas
+Poison dart frog | Phyllobates terribilis
+Puerto Rican coqui | Eleutherodactylus coqui
+Rain frog | Breviceps gibbosus
+Red-eyed tree frog | Agalychnis callidryas
+Ridley's frog | Eleutherodactylus ricordii
+Rough-skinned tree frog | Litoria luctuosa
+Rubber frog | Eleutherodactylus coqui
+Saddleback toad | Bufo marinus
+Screaming frog | Litoria nasuta
+Spadefoot toad | Scaphiopus couchii
+Spring peeper | Pseudacris crucifer
+Stout-legged frog | Eleutherodactylus coqui
+Tree frog | Hyla arborea
+Tree frog | Litoria caerulea
+Tree frog | Litoria splendida
+Tree frog | Litoria tyleri
+Vietnamese mossy frog | Theloderma corticale
+Wall frog | Eleutherodactylus coqui
+Western narrow-mouthed toad | Microhyla fissipes
+White-lipped frog | Leptodactylus albilabris
+Wood frog | Rana sylvatica

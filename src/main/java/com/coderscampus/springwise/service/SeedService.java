@@ -32,14 +32,11 @@ public class SeedService {
 	private DataFileService dataFileService;
 	@Autowired
 	private TruckRepository truckRepo;
-	
-	private Random random = new Random();
 
-	
+	private Random random = new Random();
 
 	public void populateData() {
 
-		
 		seedDataAirplanes();
 
 		seedDataFrogs();
@@ -57,9 +54,9 @@ public class SeedService {
 	}
 
 	private void seedDataFrogs() {
-		String[] frogName = {"kermit", "frogger", "mr. toad", "tree frog"};
-		String[] frogSpecies = {"blue", "green", "pink", "purple"};
-		String[] frogAge = {"young", "old", "young", "old"};
+		String[] frogName = { "kermit", "frogger", "mr. toad", "tree frog" };
+		String[] frogSpecies = { "blue", "green", "pink", "purple" };
+		String[] frogAge = { "young", "old", "young", "old" };
 
 		for (int i = 0; i < 10; i++) {
 
@@ -75,33 +72,35 @@ public class SeedService {
 	}
 
 	private void seedDataDogs() {
-		String[] dogName = {"Coco", "Woof", "Shrimp", "Nuts", "Rover", "Wilber"};
-		String[] dogBreed = {"Shepperd", "Chihuahua", "Pomeranian", "Poodle"};
-		String[] dogAge = {"young", "old", "young", "old"};
+		List<Dog> dogs = dogRepo.findAll();
+		if (dogs.size() < 10) {
+			String[] dogBreed = dataFileService.getData("src/main/resources/data/dogs.txt");
+			String[] dogName = dataFileService.getData("src/main/resources/data/dognames.txt");
+			String[] dogAge = { "young", "old", "young", "old" };
 
-		for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 10; i++) {
 
-			Dog dog = new Dog();
+				Dog dog = new Dog();
 
-			dog.setName(dogName[random.nextInt(dogName.length - 1)]);
-			dog.setAge(dogAge[random.nextInt(dogAge.length - 1)]);
-			dog.setBreed(dogBreed[random.nextInt(dogBreed.length - 1)]);
+				dog.setName(dogName[random.nextInt(dogName.length - 1)]);
+				dog.setAge(dogAge[random.nextInt(dogAge.length - 1)]);
+				dog.setBreed(dogBreed[random.nextInt(dogBreed.length - 1)]);
 
-			dogRepo.save(dog);
+				dogRepo.save(dog);
 
+			}
 		}
 	}
 
 	private void seedDataTrucks() {
-		
+
 		List<Truck> trucks = truckRepo.findAll();
 		if (trucks.size() < 10) {
 			String[] trucksData = dataFileService.getData("src/main/resources/data/trucks.txt");
-			Integer[] motorSizes = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
-			String[] colors = {"Yellow", "Red", "Blue", "Orange", "Purple", "White", "Black", "Grey"};
+			Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+			String[] colors = { "Yellow", "Red", "Blue", "Orange", "Purple", "White", "Black", "Grey" };
 
 			for (int i = 0; i < 10; i++) {
-
 
 				Truck truck = new Truck();
 				String modelName = trucksData[random.nextInt(trucksData.length - 1)];
@@ -110,7 +109,7 @@ public class SeedService {
 				truck.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
 
 				truckRepo.save(truck);
-				
+
 			}
 		}
 	}
