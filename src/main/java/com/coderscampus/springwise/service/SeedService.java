@@ -1,6 +1,5 @@
 package com.coderscampus.springwise.service;
 
-import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,9 +33,14 @@ public class SeedService {
 	private TruckRepository truckRepo;
 
 	private Random random = new Random();
+	
+	private String[] names = null;
+
 
 	public void populateData() {
-
+		
+		names = dataFileService.getData("src/main/resources/data/names.txt");
+		
 		seedDataAirplanes();
 
 		seedDataFrogs();
@@ -54,20 +58,22 @@ public class SeedService {
 	}
 
 	private void seedDataFrogs() {
-		String[] frogName = { "kermit", "frogger", "mr. toad", "tree frog" };
-		String[] frogSpecies = { "blue", "green", "pink", "purple" };
-		String[] frogAge = { "young", "old", "young", "old" };
+		List<Frog> frogs = frogRepo.findAll();
+		if (frogs.size() < 10) {
+			String[] frogName = names;
+			String[] frogSpecies = dataFileService.getData("src/main/resources/data/frogs.txt");
+			String[] frogAge = { "young", "old", "young", "old" };
 
-		for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 10; i++) {
 
-			Frog frog = new Frog();
+				Frog frog = new Frog();
 
-			frog.setName(frogName[random.nextInt(frogName.length - 1)]);
-			frog.setAge(frogAge[random.nextInt(frogAge.length - 1)]);
-			frog.setSpecies(frogSpecies[random.nextInt(frogSpecies.length - 1)]);
+				frog.setName(frogName[random.nextInt(frogName.length - 1)]);
+				frog.setAge(frogAge[random.nextInt(frogAge.length - 1)]);
+				frog.setSpecies(frogSpecies[random.nextInt(frogSpecies.length - 1)]);
 
-			frogRepo.save(frog);
-
+				frogRepo.save(frog);
+			}
 		}
 	}
 
@@ -75,7 +81,7 @@ public class SeedService {
 		List<Dog> dogs = dogRepo.findAll();
 		if (dogs.size() < 10) {
 			String[] dogBreed = dataFileService.getData("src/main/resources/data/dogs.txt");
-			String[] dogName = dataFileService.getData("src/main/resources/data/dognames.txt");
+			String[] dogName = names;
 			String[] dogAge = { "young", "old", "young", "old" };
 
 			for (int i = 0; i < 10; i++) {
