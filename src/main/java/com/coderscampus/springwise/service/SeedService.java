@@ -33,14 +33,14 @@ public class SeedService {
 	private TruckRepository truckRepo;
 
 	private Random random = new Random();
-	
-	private String[] names = null;
 
+	private String[] names = null;
+	private String[] colors = { "Yellow", "Red", "Blue", "Orange", "Purple", "White", "Black", "Grey" };
 
 	public void populateData() {
-		
+
 		names = dataFileService.getData("src/main/resources/data/names.txt");
-		
+
 		seedDataAirplanes();
 
 		seedDataFrogs();
@@ -50,17 +50,23 @@ public class SeedService {
 	}
 
 	private void seedDataAirplanes() {
-		Airplane airplane = new Airplane();
-		airplane.setModel("747");
-		airplane.setMake("Boeing");
-		airplane.setColor("Fusia");
-		airRepo.save(airplane);
+		List<Airplane> airplanes = airRepo.findAll();
+		if (airplanes.size() < 100) {
+			String[] makesModels = dataFileService.getData("src/main/resources/data/airplanes.txt");
+			
+
+			Airplane airplane = new Airplane();
+			String line = makesModels[random.nextInt(makesModels.length - 1)];
+			airplane.setModel(line.substring(line.indexOf("|")+2,line.length()-1));
+			airplane.setMake(line.substring(0, line.indexOf("|")).trim());
+			airplane.setColor(colors[random.nextInt(colors.length - 1)]);
+			airRepo.save(airplane);
+		}
 	}
 
 	private void seedDataFrogs() {
 		List<Frog> frogs = frogRepo.findAll();
 		if (frogs.size() < 10) {
-			String[] frogName = names;
 			String[] frogSpecies = dataFileService.getData("src/main/resources/data/frogs.txt");
 			String[] frogAge = { "young", "old", "young", "old" };
 
@@ -68,7 +74,7 @@ public class SeedService {
 
 				Frog frog = new Frog();
 
-				frog.setName(frogName[random.nextInt(frogName.length - 1)]);
+				frog.setName(names[random.nextInt(names.length - 1)]);
 				frog.setAge(frogAge[random.nextInt(frogAge.length - 1)]);
 				frog.setSpecies(frogSpecies[random.nextInt(frogSpecies.length - 1)]);
 
@@ -104,7 +110,6 @@ public class SeedService {
 		if (trucks.size() < 10) {
 			String[] trucksData = dataFileService.getData("src/main/resources/data/trucks.txt");
 			Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
-			String[] colors = { "Yellow", "Red", "Blue", "Orange", "Purple", "White", "Black", "Grey" };
 
 			for (int i = 0; i < 10; i++) {
 
