@@ -1,0 +1,114 @@
+Affenpinscher|Affenpinscher
+Afghan Hound|Afghan Hound
+Airedale Terrier|Airedale Terrier
+Akbash|Akbash
+Akita|Akita
+Alaskan Malamute|Alaskan Malamute
+American Bulldog|American Bulldog
+American Eskimo Dog|American Eskimo Dog
+American Foxhound|American Foxhound
+American Pit Bull Terrier|American Pit Bull Terrier
+American Staffordshire Terrier|American Staffordshire Terrier
+Australian Cattle Dog|Australian Cattle Dog
+Australian Shepherd|Australian Shepherd
+Australian Terrier|Australian Terrier
+Azawakh|Azawakh
+Basset Hound|Basset Hound
+Beagle|Beagle
+Beauceron|Beauceron
+Belgian Malinois|Belgian Malinois
+Belgian Sheepdog|Belgian Sheepdog
+Belgian Tervuren|Belgian Tervuren
+Bernese Mountain Dog|Bernese Mountain Dog
+Bichon Frise|Bichon Frise
+Black Russian Terrier|Black Russian Terrier
+Bloodhound|Bloodhound
+Boerboel|Boerboel
+Boston Terrier|Boston Terrier
+Border Collie|Border Collie
+Border Terrier|Border Terrier
+Borzoi|Borzoi
+Boxer|Boxer
+Boykin Spaniel|Boykin Spaniel
+Briard|Briard
+Brittany|Brittany
+Bullmastiff|Bullmastiff
+Cairn Terrier|Cairn Terrier
+Cane Corso|Cane Corso
+Cardigan Welsh Corgi|Cardigan Welsh Corgi
+Carolina Dog|Carolina Dog
+Catahoula Leopard Dog|Catahoula Leopard Dog
+Cavalier King Charles Spaniel|Cavalier King Charles Spaniel
+Chesapeake Bay Retriever|Chesapeake Bay Retriever
+Chihuahua|Chihuahua
+Chinese Crested Dog|Chinese Crested Dog
+Chow Chow|Chow Chow
+Clumber Spaniel|Clumber Spaniel
+Cocker Spaniel|Cocker Spaniel
+Coonhound|Coonhound
+Corgi|Corgi
+Dachshund|Dachshund
+Dalmatian|Dalmatian
+Dandie Dinmont Terrier|Dandie Dinmont Terrier
+Doberman Pinscher|Doberman Pinscher
+Dogue de Bordeaux|Dogue de Bordeaux
+Dutch Shepherd|Dutch Shepherd
+English Bulldog|English Bulldog
+English Cocker Spaniel|English Cocker Spaniel
+English Setter|English Setter
+English Springer Spaniel|English Springer Spaniel
+Entlebucher Mountain Dog|Entlebucher Mountain Dog
+Eskimo Dog|Eskimo Dog
+Flat-Coated Retriever|Flat-Coated Retriever
+French Bulldog|French Bulldog
+German Pinscher|German Pinscher
+German Shepherd Dog|German Shepherd Dog
+German Shorthaired Pointer|German Shorthaired Pointer
+Giant Schnauzer|Giant Schnauzer
+Glen of Imaal Terrier|Glen of Imaal Terrier
+Golden Retriever|Golden Retriever
+Gordon Setter|Gordon Setter
+Great Dane|Great Dane
+Great Pyrenees|Great Pyrenees
+Greyhound|Greyhound
+Havanese|Havanese
+Husky|Husky
+Ibizan Hound|Ibizan Hound
+Icelandic Sheepdog|Icelandic Sheepdog
+Irish Setter|Irish Setter
+Irish Wolfhound|Irish Wolfhound
+Italian Greyhound|Italian Greyhound
+Jack Russell Terrier|Jack Russell Terrier
+Kangal|Kangal
+Karelian Bear Dog|Karelian Bear Dog
+Keeshond|Keeshond
+Kerry Blue Terrier|Kerry Blue Terrier
+Komondor|Komondor
+Kuvasz|Kuvasz
+Labrador Retriever|Labrador Retriever
+Lakeland Terrier|Lakeland Terrier
+Leonberger|Leonberger
+Lhasa Apso|Lhasa Apso
+Malinois|Malinois
+Maltese|Maltese
+Manchester Terrier|Manchester Terrier
+Mastiff|Mastiff
+Miniature Pinscher|Miniature Pinscher
+Mixed Breed|Mixed Breed
+Molosser|Molosser
+Neapolitan Mastiff|Neapolitan Mastiff
+Newfoundland|Newfoundland
+Norfolk Terrier|Norfolk Terrier
+Norwegian Elkhound|Norwegian Elkhound
+Norwegian Lundehund|Norwegian Lundehund
+Old English Sheepdog|Old English Sheepdog
+Otterhound|Otterhound
+Papillon|Papillon
+Parson Russell Terrier|Parson Russell Terrier
+Pekingese|Pekingese
+Pembroke Welsh Corgi|Pembroke Welsh Corgi
+Pharaoh Hound|Pharaoh Hound
+Pit Bull Terrier|Pit Bull Terrier
+Pointer|Pointer
+Polish Lowland Sheepdog|Polish Lowland Sheepdog
+Portuguese Water Dog|Portuguese Water
