@@ -57,7 +57,7 @@ public class SeedService {
 
 	private void seedDataAirplanes() {
 		List<Airplane> airplanes = airRepo.findAll();
-		if (airplanes.size() < 100) {
+		if (airplanes.size() < 10) {
 			String[] makesModels = dataFileService.getData("src/main/resources/data/airplanes.txt");
 
 			for (int i = 0; i < 10; i++) {
@@ -74,7 +74,7 @@ public class SeedService {
 	
 	private void seedDataMovies() {
 		List<Movie> movies = movieRepo.findAll();
-		if (movies.size() < 100) {
+		if (movies.size() < 10) {
 			String[] makesMovies = dataFileService.getData("src/main/resources/data/movies.txt");
 
 			for (int i = 0; i < 10; i++) {
@@ -83,6 +83,7 @@ public class SeedService {
 				String line = makesMovies[random.nextInt(makesMovies.length - 1)];
 				movie.setName(line.substring(0, line.indexOf("|")).trim());
 				String[] movieRatings = { "1", "2", "3", "4", "5" };
+				movie.setGenre("unknown");
 				movie.setRating(movieRatings[random.nextInt(movieRatings.length - 1)]);
 				movieRepo.save(movie);
 			}
@@ -93,7 +94,7 @@ public class SeedService {
 		List<Frog> frogs = frogRepo.findAll();
 		if (frogs.size() < 10) {
 			String[] frogSpecies = dataFileService.getData("src/main/resources/data/frogs.txt");
-			String[] frogAge = { "young", "old", "young", "old" };
+			String[] frogAge = { "young", "old" };
 
 			for (int i = 0; i < 10; i++) {
 
