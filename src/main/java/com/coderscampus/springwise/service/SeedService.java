@@ -12,10 +12,12 @@ import com.coderscampus.springwise.domain.Airplane;
 import com.coderscampus.springwise.domain.Car;
 import com.coderscampus.springwise.domain.Dog;
 import com.coderscampus.springwise.domain.Frog;
+import com.coderscampus.springwise.domain.Movie;
 import com.coderscampus.springwise.domain.Truck;
 import com.coderscampus.springwise.repository.AirplaneRepository;
 import com.coderscampus.springwise.repository.DogRepository;
 import com.coderscampus.springwise.repository.FrogRepository;
+import com.coderscampus.springwise.repository.MovieRepository;
 import com.coderscampus.springwise.repository.TruckRepository;
 
 @Service
@@ -31,6 +33,9 @@ public class SeedService {
 	private DataFileService dataFileService;
 	@Autowired
 	private TruckRepository truckRepo;
+	
+	@Autowired
+	private MovieRepository movieRepo;
 
 	private Random random = new Random();
 
@@ -47,20 +52,40 @@ public class SeedService {
 
 		seedDataDogs();
 		seedDataTrucks();
+		seedDataMovies();
 	}
 
 	private void seedDataAirplanes() {
 		List<Airplane> airplanes = airRepo.findAll();
 		if (airplanes.size() < 100) {
 			String[] makesModels = dataFileService.getData("src/main/resources/data/airplanes.txt");
-			
 
-			Airplane airplane = new Airplane();
-			String line = makesModels[random.nextInt(makesModels.length - 1)];
-			airplane.setModel(line.substring(line.indexOf("|")+2,line.length()-1));
-			airplane.setMake(line.substring(0, line.indexOf("|")).trim());
-			airplane.setColor(colors[random.nextInt(colors.length - 1)]);
-			airRepo.save(airplane);
+			for (int i = 0; i < 10; i++) {
+
+				Airplane airplane = new Airplane();
+				String line = makesModels[random.nextInt(makesModels.length - 1)];
+				airplane.setModel(line.substring(line.indexOf("|") + 2, line.length() - 1));
+				airplane.setMake(line.substring(0, line.indexOf("|")).trim());
+				airplane.setColor(colors[random.nextInt(colors.length - 1)]);
+				airRepo.save(airplane);
+			}
+		}
+	}
+	
+	private void seedDataMovies() {
+		List<Movie> movies = movieRepo.findAll();
+		if (movies.size() < 100) {
+			String[] makesMovies = dataFileService.getData("src/main/resources/data/movies.txt");
+
+			for (int i = 0; i < 10; i++) {
+
+				Movie movie = new Movie();
+				String line = makesMovies[random.nextInt(makesMovies.length - 1)];
+				movie.setName(line.substring(0, line.indexOf("|")).trim());
+				String[] movieRatings = { "1", "2", "3", "4", "5" };
+				movie.setRating(movieRatings[random.nextInt(movieRatings.length - 1)]);
+				movieRepo.save(movie);
+			}
 		}
 	}
 
