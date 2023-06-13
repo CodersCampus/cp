@@ -5,6 +5,7 @@ import com.coderscampus.springwise.repository.UserHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -14,6 +15,9 @@ public class UserHistoryService {
 	private UserHistoryRepository userHistoryRepo;
 
 	public UserHistory save(UserHistory userHistory) {
+		if(userHistory.getDate()== null) {
+			userHistory.setDate(LocalDateTime.now());
+		}
 		return userHistoryRepo.save(userHistory);
 	}
 
