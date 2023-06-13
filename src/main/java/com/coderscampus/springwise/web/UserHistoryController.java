@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/userHistory")
+@RequestMapping("/user-history")
 public class UserHistoryController {
 	
 	@Autowired
@@ -23,20 +23,20 @@ public class UserHistoryController {
 	public String home(ModelMap model) {
 		List<UserHistory> userHistorys = userHistoryService.findAll();
 		model.put("userHistorys", userHistorys);
-		return "userHistory/read";
+		return "user-history/read";
 	}
 	
 	@GetMapping("/create")
 	public String getCreate (ModelMap model) {
 		UserHistory userHistory = new UserHistory();
 		model.put("userHistory", userHistory);
-		return "userHistory/create";
+		return "user-history/create";
 	}
 
 	@PostMapping("/create")
 	public String create(UserHistory userHistory) {
 		userHistoryService.save(userHistory);
-		return "redirect:/userHistory/";
+		return "redirect:/user-history/";
 	}
 
 	
