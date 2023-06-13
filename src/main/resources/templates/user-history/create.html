@@ -38,16 +38,16 @@
 		<form method="post" action="/user-history/create">
 			<h1>All UserHistorys</h1>
 			<div class="mb-3">
+				<label class="form-label">#: </label><input class="form-control"
+					type="text" th:field="${userHistory.id}" />
+			</div>
+			<div class="mb-3">
 				<label class="form-label">Name: </label><input class="form-control"
 					type="text" th:field="${userHistory.name}" />
 			</div>
 			<div class="mb-3">
-				<label class="form-label">Model: </label><input class="form-control"
-					type="text" th:field="${userHistory.model}" />
-			</div>
-			<div class="mb-3">
-				<label class="form-label">Color: </label><input class="form-control"
-					type="text" th:field="${userHistory.color}" />
+				<label class="form-label">Issue #: </label><input class="form-control"
+					type="text" th:field="${userHistory.issue}" />
 			</div>
 			<div class="mb-3">
 				<input class="form-control btn btn-primary" type="submit" value="Create"  />

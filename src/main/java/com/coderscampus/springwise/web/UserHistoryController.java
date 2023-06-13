@@ -44,18 +44,18 @@ public class UserHistoryController {
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		UserHistory userHistory = userHistoryService.findById(id);
 		model.put("userHistory", userHistory);
-		return "userHistory/update";
+		return "user-history/update";
 	}
 	
 	@PostMapping("/update")
 	public String update(UserHistory userHistory) {
 		userHistoryService.save(userHistory);
-		return "redirect:/userHistory/";
+		return "redirect:/user-history/";
 	}
 	
 	@PostMapping("/delete")
 	public String delete(UserHistory userHistory) {
 		userHistoryService.delete(userHistory);
-		return "redirect:/userHistory/";
+		return "redirect:/user-history/";
 	}
 }
