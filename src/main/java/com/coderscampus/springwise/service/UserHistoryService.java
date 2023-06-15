@@ -15,8 +15,10 @@ public class UserHistoryService {
 	private UserHistoryRepository userHistoryRepo;
 
 	public UserHistory save(UserHistory userHistory) {
+		System.out.println(userHistory);
 		if(userHistory.getDate()== null) {
 			userHistory.setDate(LocalDateTime.now());
+			System.out.println("XXX"+userHistory);
 		}
 		return userHistoryRepo.save(userHistory);
 	}
