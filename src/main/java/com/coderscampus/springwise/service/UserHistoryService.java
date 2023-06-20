@@ -1,12 +1,15 @@
 package com.coderscampus.springwise.service;
 
-import com.coderscampus.springwise.domain.UserHistory;
-import com.coderscampus.springwise.repository.UserHistoryRepository;
+import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import com.coderscampus.springwise.domain.UserHistory;
+import com.coderscampus.springwise.repository.UserHistoryRepository;
 
 @Service
 public class UserHistoryService {
@@ -25,7 +28,10 @@ public class UserHistoryService {
 
 	public List<UserHistory> findAll() {
 
-		return userHistoryRepo.findAll();
+		// sort all User history by date using streams descending order
+		
+		return userHistoryRepo.findAll().stream().sorted(Comparator.comparing(UserHistory::getDate).reversed()).collect(Collectors.toList());
+	
 	}
 
 	public UserHistory findById(Long id) {
