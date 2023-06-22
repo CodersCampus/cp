@@ -17,13 +17,15 @@ public class Movie {
     private String name;
     private String genre;
     private String rating;
-    private String yearOf;
+    private int yearOf;
 
-    public String getYearOf() {
+
+
+	public int getYearOf() {
 		return yearOf;
 	}
 
-	public void setYearOf(String yearOf) {
+	public void setYearOf(int yearOf) {
 		this.yearOf = yearOf;
 	}
 
@@ -61,13 +63,15 @@ public class Movie {
 
   
 
-    @Override
+   
+
+	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", name=" + name + ", genre=" + genre + ", rating=" + rating + ", yearOf=" + yearOf
 				+ "]";
 	}
 
-	public Movie(String name, String genre, String rating, String yearOf) {
+	public Movie(String name, String genre, String rating, int yearOf) {
         super();
         this.name = name;
         this.genre = genre;
@@ -80,7 +84,7 @@ public class Movie {
         // TODO Auto-generated constructor stub
     }
 
-    public Movie(String name, String genre, String yearOf) {
+    public Movie(String name, String genre, int yearOf) {
         super();
         this.name = name;
         this.genre = genre;
