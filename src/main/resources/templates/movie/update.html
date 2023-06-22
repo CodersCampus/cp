@@ -43,6 +43,8 @@
 		<input class="form-control" type="text" th:field="${movie.genre}" />
 		<label class="form-label">Rating </label>
 		<input class="form-control" type="text" th:field="${movie.rating}" />
+		<label class="form-label">Year </label>
+		<input class="form-control" type="text" th:field="${movie.yearOf}" />
 		<input class="form-control btn btn-primary mt-3" type="submit" value="Update" />
 	</form>
 	<form method="post" action="/movie/delete" class="mb-3">
