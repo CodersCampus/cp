@@ -144,7 +144,7 @@ public class SeedService {
 				String modelName = trucksData[random.nextInt(trucksData.length - 1)];
 				String[] makeAndModel = modelName.split("-");
 				truck.setModelName(makeAndModel[0]);
-				truck.setManufacturer(modelName.substring(makeAndModel[1]));
+				truck.setManufacturer(makeAndModel[1]);
 				truck.setColor(colors[random.nextInt(colors.length - 1)]);
 				truck.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
 
