@@ -143,6 +143,7 @@ public class SeedService {
 				Truck truck = new Truck();
 				String modelName = trucksData[random.nextInt(trucksData.length - 1)];
 				truck.setModelName(modelName.substring(0, modelName.indexOf(" - ")));
+				truck.setManufacturer(modelName.substring(0, modelName.indexOf(" - ")));
 				truck.setColor(colors[random.nextInt(colors.length - 1)]);
 				truck.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
 

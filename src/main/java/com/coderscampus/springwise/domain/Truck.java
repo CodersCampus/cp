@@ -22,8 +22,10 @@ public class Truck {
 
 	@Override
 	public String toString() {
-		return "Truck [id=" + id + ", motorSize=" + motorSize + ", modelName=" + modelName + ", color=" + color + "]";
+		return "Truck [id=" + id + ", motorSize=" + motorSize + ", modelName=" + modelName + ", manufacturer=" + manufacturer +", color=" + color + "]";
 	}
+
+
 	public Long getId() {
 		return id;
 	}
