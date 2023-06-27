@@ -13,13 +13,19 @@ public class Truck {
 	private String motorSize;
 	private String modelName;
 	private String color;
+
+
+
+	private String manufacturer;
 	
 
 
 	@Override
 	public String toString() {
-		return "Truck [id=" + id + ", motorSize=" + motorSize + ", modelName=" + modelName + ", color=" + color + "]";
+		return "Truck [id=" + id + ", motorSize=" + motorSize + ", modelName=" + modelName + ", manufacturer=" + manufacturer +", color=" + color + "]";
 	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -46,5 +52,8 @@ public class Truck {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	public String getManufacturer() {return manufacturer;}
+
+	public void setManufacturer(String manufacturer) {this.manufacturer = manufacturer;}
 	
 }

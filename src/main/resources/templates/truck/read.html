@@ -41,6 +41,7 @@
 				<tr>
 					<th scope="col">Motor Size:</th>
 					<th scope="col">Model Name:</th>
+					<th scope="col">Manufacturer:</th>
 					<th scope="col">Color:</th>		
 					<th scope="col">View:</th>			
 				</tr>
@@ -51,6 +52,7 @@
 					<td><span
 							th:text="${truck.motorSize}"></span></td>
 					<td><span th:text="${truck.modelName}"></span></td>
+					<td><span th:text="${truck.manufacturer}"></span></td>
 					<td><span th:text="${truck.color}"></span></td>
 					
 					<td><a th:href="@{/truck/update/{truckId}(truckId=${truck.id})}">
