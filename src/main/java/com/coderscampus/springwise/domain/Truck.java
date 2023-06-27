@@ -13,6 +13,10 @@ public class Truck {
 	private String motorSize;
 	private String modelName;
 	private String color;
+
+
+
+	private String manufacturer;
 	
 
 
@@ -46,5 +50,8 @@ public class Truck {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	public String getManufacturer() {return manufacturer;}
+
+	public void setManufacturer(String manufacturer) {this.manufacturer = manufacturer;}
 	
 }
