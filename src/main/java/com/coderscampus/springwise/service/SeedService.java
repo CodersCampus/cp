@@ -78,9 +78,10 @@ public class SeedService {
 			String[] makesMovies = dataFileService.getData("src/main/resources/data/movies.txt");
 
 			for (int i = 0; i < 10; i++) {
-
 				Movie movie = new Movie();
 				String line = makesMovies[random.nextInt(makesMovies.length - 1)];
+				int yearOf = Integer.parseInt(line.substring(line.indexOf("|")+1, line.length()));
+				movie.setYearOf(yearOf);
 				movie.setName(line.substring(0, line.indexOf("|")).trim());
 				String[] movieRatings = { "1", "2", "3", "4", "5" };
 				movie.setGenre("unknown");
