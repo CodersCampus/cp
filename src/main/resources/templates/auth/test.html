@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Auth Minimum</title>
+  <script type="module" src="../auth.js"></script>
+  <link rel="stylesheet" type="text/css" href="../auth.css">
+</head>
+
+<body>
+  <div class="viewport-div">
+    <div id="not-logged-in">
+      <h2>Welcome, please log in</h2> 
+      <button id="btnLogin" type="button">Log in</button>
+    </div>
+    <div id="logged-in">
+      <span id="whoami"></span> 
+      <button id="btnLogout" type="button">Log out</button>
+      <p id="load">
+        This attempts to be the absolute minimum required to test firebase auth code using google login.
+      </p>
+    </div>
+
+  </div>
+</body>
+
+</html>

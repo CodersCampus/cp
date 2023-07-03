@@ -17,6 +17,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const btnLogin = document.querySelector('#btnLogin');
 const btnLogout = document.querySelector('#btnLogout');
+const notLoggedIn = document.querySelector('#not-logged-in');
+const loggedIn = document.querySelector('#logged-in');
 const whoami = document.querySelector('#whoami');
 var currentUser = null;
 const monitorAuthState = async () => {
@@ -25,6 +27,8 @@ const monitorAuthState = async () => {
       currentUser = user;
       console.log(user.displayName);
       identifyMe();
+      notLoggedIn.style.display = "none"; // Hide login button
+      loggedIn.style.display = "block"; // Show logout button
       // THE REAL WORK WOULD HAPPEN HERE
       // showApp()
       // showLoginState(user)
@@ -34,6 +38,8 @@ const monitorAuthState = async () => {
     else {
       const nobody = "Nobody Logged In";
       currentUser = { displayName: nobody };
+      notLoggedIn.style.display = "block"; // Show login button
+      loggedIn.style.display = "none"; // Hide logout button
       // showLoginForm()
       console.log("Nobody Logged In");
     }
@@ -49,6 +55,8 @@ const signMeOut = async () => {
   signOut(auth).then(() => {
     currentUser = { displayName: "Nobody Logged In" };
     identifyMe();
+    notLoggedIn.style.display = "block"; // Show login button
+    loggedIn.style.display = "none"; // Hide logout button
   }).catch((error) => {
     alert(error);
   });;
