@@ -7,3 +7,4 @@ target/
 SpringWise.iml
 bin/
 .vscode/
+.DS_Store
