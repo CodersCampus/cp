@@ -12,7 +12,8 @@ import com.coderscampus.springwise.repository.TruckRepository;
 public class TruckService {
 	@Autowired
 	private TruckRepository truckRepo;
-	
+
+
 	public Truck save(Truck truck) {
 		return truckRepo.save(truck);
 	}
@@ -25,5 +26,9 @@ public class TruckService {
 	public void delete(Truck truck) {
 		truckRepo.delete(truck);
 	}
+
+
+
+
 
 }
