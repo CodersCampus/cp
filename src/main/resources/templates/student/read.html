@@ -10,9 +10,24 @@
 	rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
+	<script type="module" src="../auth.js"></script>
 	<link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
+	<div class="viewport-div">
+		<div id="not-logged-in">
+		  <h2>Welcome, please log in</h2> 
+		  <button id="btnLogin" type="button">Log in</button>
+		</div>
+		<div id="logged-in">
+		  <span id="whoami"></span> 
+		  <button id="btnLogout" type="button">Log out</button>
+		  <p id="load">
+			This attempts to be the absolute minimum required to test firebase auth code using google login.
+		  </p>
+		</div>
+	
+	  </div>
 	<div class="container-md mx-auto">
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container-fluid">
