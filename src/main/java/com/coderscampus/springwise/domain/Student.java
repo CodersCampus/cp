@@ -16,9 +16,16 @@ public class Student {
 	private Integer assignmentNum;
 	private String githubHandle;
 	private String ide;
+	private String uid;
 	
 	
 	
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
 	public long getId() {
 		return id;
 	}
