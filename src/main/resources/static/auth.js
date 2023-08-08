@@ -20,6 +20,7 @@ const btnLogout = document.querySelector('#btnLogout');
 const notLoggedIn = document.querySelector('#not-logged-in');
 const loggedIn = document.querySelector('#logged-in');
 const whoami = document.querySelector('#whoami');
+const myId = document.querySelector('#my-id');
 var currentUser = null;
 const monitorAuthState = async () => {
   onAuthStateChanged(auth, user => {
@@ -65,6 +66,7 @@ const signMeOut = async () => {
 const identifyMe = () => {
   if (currentUser) {
     whoami.innerHTML = currentUser.displayName;
+    myId.innerHTML = currentUser.uid;
   } else {
     whoami.innerHTML = "Nobody Logged In";
   }
