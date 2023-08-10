@@ -24,6 +24,7 @@ const myId = document.querySelector('#my-id');
 var currentUser = null;
 const monitorAuthState = async () => {
   onAuthStateChanged(auth, user => {
+    console.log(auth, user)
     if (user) {
       currentUser = user;
       console.log(user.displayName);
