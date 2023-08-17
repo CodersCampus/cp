@@ -30,13 +30,16 @@ public class StudentController {
 	@GetMapping("/create")
 	public String getCreate (ModelMap model) {
 		Student student = new Student();
+	
 		model.put("student", student);
 		return "student/create";
 	}
 
 	@PostMapping("/create")
 	public String create(Student student) {
+		System.out.println("Students:" + student);
 		studentService.save(student);
+	
 		return "redirect:/student/";
 	}
 // This is same mapping as Student Home page-->left here just in case.(may need deleted)

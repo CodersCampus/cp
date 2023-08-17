@@ -8,6 +8,11 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
 
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", githubHandle="
+				+ githubHandle + ", ide=" + ide + ", uid=" + uid + "]";
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
