@@ -54,7 +54,8 @@
 		<label class="form-label">IDE: </label> 
 		<input class="form-control" type="text" th:field="${student.ide}" />
 		<input class="form-control btn btn-primary mt-3" type="submit" value="Update" />
-		<input type="text" id="my-id"/>
+		<input type="text" id="new-id"/>
+
 	</form>
 	<form method="post" action="/student/delete" class="mb-3">
 		<input type="hidden" th:field="${student.id}" /> <input class="form-control btn btn-danger" type="submit" value="Delete" />
