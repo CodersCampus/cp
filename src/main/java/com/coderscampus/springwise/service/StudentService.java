@@ -16,6 +16,10 @@ public class StudentService {
 	
 	public Student save(Student student) {
 		/* We need to check for ID; if ID is present then it's an update otherwise it's a create. */ 
+		System.out.println("this is in the save method:" + student.getId());
+		// to do:
+		// check if it is a duplicate record
+		// check if authorized to update
 		return studentRepo.save(student);
 	}
 
