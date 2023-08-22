@@ -54,12 +54,14 @@ public class StudentController {
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Student student = studentService.findById(id);
 		model.put("student", student);
+		System.out.println("student:" + student);
 		return "student/update";
 	}
 	
 	@PostMapping("/update")
 	public String update(Student student) {
 		studentService.save(student);
+		
 		return "redirect:/student/";
 	}
 	
