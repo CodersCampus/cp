@@ -1,6 +1,7 @@
 package com.coderscampus.springwise.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +15,21 @@ public class StudentService {
 	@Autowired
 	private StudentRepository studentRepo;
 	
+
 	public Student save(Student student) {
-		/* We need to check for ID; if ID is present then it's an update otherwise it's a create. */ 
-		System.out.println("this is in the save method:" + student.getId());
-		// to do:
-		// check if it is a duplicate record
-		// check if authorized to update
-		return studentRepo.save(student);
+		List<Student> students = studentRepo.findByUid(student.getUid());
+		if (students.size() > 0 && student.getId() == 0) {
+
+			return null;
+		}
+		Optional<Student> updateStudent = studentRepo.findById(student.getId());
+		if (updateStudent.isPresent() && updateStudent.get().getUid().equals(student.getUid())) {
+
+			return studentRepo.save(student);
+		} else {
+			return null;
+		}
+
 	}
 
 	public List<Student> findAll() {
