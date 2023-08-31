@@ -17,23 +17,44 @@ public class StudentService {
 	
 
 	public Student save(Student student) {
-		List<Student> students = studentRepo.findByUid(student.getUid());
-		if (students.size() > 0 || student.getId() != 0) {
-			Optional<Student> updateStudent = studentRepo.findById(student.getId());
-			if (updateStudent.isPresent() && updateStudent.get().getUid().equals(student.getUid())) {
-// create new logic for new incoming students, work on update existing students
-				return studentRepo.save(student);
-	
-		}
-		if (student.getId() == 0) {
-			return studentRepo.save(student);
+		if (isValidNewStudent(student) || isValidStudentUpdate(student)) {
+			return studentRepo.save(student); 
 		}
 		
 		
-		} else {
-			return null;
-		}
+		
+		
+//		List<Student> students = studentRepo.findByUid(student.getUid());
+//		if (students.size() > 0 || student.getId() != 0) {
+//			Optional<Student> updateStudent = studentRepo.findById(student.getId());
+//			if (updateStudent.isPresent() && updateStudent.get().getUid().equals(student.getUid())) {
+//// create new logic for new incoming students, work on update existing students
+//				return studentRepo.save(student);
+//	
+//		}
+//		if (student.getId() == 0) {
+//			return studentRepo.save(student);
+//		}
+//		
+//		
+//		} else {
+//			return null;
+//		}
 		return null;
+	}
+
+	boolean isValidStudentUpdate(Student student) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	boolean isValidNewStudent(Student student) {
+		// First test is id == 0 means to create:
+		List<Student> students = studentRepo.findByUid(student.getUid());
+		if (students.size() > 0) {
+			return false;
+		}
+		return student.getId() == 0; 
 	}
 
 	public List<Student> findAll() {

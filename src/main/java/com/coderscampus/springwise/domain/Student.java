@@ -8,6 +8,19 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
 
+	public Student() {
+		
+	}
+	
+	public Student(long id, String name, Integer assignmentNum, String githubHandle, String ide, String uid) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.assignmentNum = assignmentNum;
+		this.githubHandle = githubHandle;
+		this.ide = ide;
+		this.uid = uid;
+	}
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", githubHandle="
