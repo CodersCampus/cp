@@ -22,6 +22,7 @@ const loggedIn = document.querySelector("#logged-in");
 const whoami = document.querySelector("#whoami");
 const myId = document.querySelector("#my-id");
 const newId = document.querySelector("#new-id");
+const firebaseUidField = document.querySelector('#firebaseUid');
 
 var currentUser = null;
 const monitorAuthState = async () => {
@@ -69,6 +70,8 @@ const signMeOut = async () => {
 
 const identifyMe = () => {
   if (currentUser) {
+    // Check if element is not null before setting value
+    if (firebaseUidField) firebaseUidField.value = currentUser.uid;
     whoami.innerHTML = currentUser.displayName;
     myId.innerHTML = currentUser.uid;
     newId.value = currentUser.uid;
