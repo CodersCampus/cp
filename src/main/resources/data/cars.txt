@@ -1,0 +1,86 @@
+Ford F-150 - Ford
+Chevrolet Silverado 1500 - Chevrolet
+Ram 1500 - Ram
+GMC Sierra 1500 - GMC
+Toyota Tacoma - Toyota
+Nissan Frontier - Nissan
+Honda Ridgeline - Honda
+Jeep Gladiator - Jeep
+Chevrolet Colorado - Chevrolet
+Ford Ranger - Ford
+Toyota Tundra - Toyota
+GMC Canyon - GMC
+Nissan Titan - Nissan
+Ram 2500 - Ram
+Ford F-250 Super Duty - Ford
+Chevrolet Silverado 2500HD - Chevrolet
+Ford F-350 Super Duty - Ford
+Ram 3500 - Ram
+GMC Sierra 2500HD - GMC
+Chevrolet Silverado 3500HD - Chevrolet
+Toyota 4Runner - Toyota
+Chevrolet Tahoe - Chevrolet
+Ford Expedition - Ford
+Nissan Armada - Nissan
+GMC Yukon - GMC
+Jeep Grand Cherokee - Jeep
+Toyota Sequoia - Toyota
+Ford Explorer - Ford
+Chevrolet Suburban - Chevrolet
+Ram 1500 Classic - Ram
+Nissan Pathfinder - Nissan
+Toyota Highlander - Toyota
+Jeep Wrangler Unlimited - Jeep
+Ford Edge - Ford
+GMC Acadia - GMC
+Chevrolet Traverse - Chevrolet
+Honda Pilot - Honda
+Toyota Land Cruiser - Toyota
+Ford Escape - Ford
+Nissan Rogue - Nissan
+Jeep Cherokee - Jeep
+Honda CR-V - Honda
+Chevrolet Equinox - Chevrolet
+Toyota RAV4 - Toyota
+GMC Terrain - GMC
+Ford Bronco Sport - Ford
+Ram 1500 Classic Warlock - Ram
+Nissan Murano - Nissan
+Jeep Renegade - Jeep
+Honda HR-V - Honda
+Chevrolet Blazer - Chevrolet
+Toyota C-HR - Toyota
+Ford Mustang Mach-E - Ford
+GMC Yukon XL - GMC
+Ram 1500 Classic Express - Ram
+Nissan Kicks - Nissan
+Jeep Compass - Jeep
+Honda Passport - Honda
+Chevrolet Bolt EV - Chevrolet
+Toyota Prius - Toyota
+Ford Transit Connect - Ford
+GMC Savana - GMC
+Ram ProMaster City - Ram
+Nissan NV200 - Nissan
+Honda Odyssey - Honda
+Chevrolet Express - Chevrolet
+Ford Expedition MAX - Ford
+Toyota Sienna - Toyota
+GMC Sierra 1500 Limited - GMC
+Ram 2500 Power Wagon - Ram
+Nissan Titan XD - Nissan
+Jeep Grand Cherokee L - Jeep
+Honda Civic - Honda
+Chevrolet Malibu - Chevrolet
+Toyota Camry - Toyota
+Ford Fusion - Ford
+GMC Sierra 3500HD - GMC
+Ram 3500 Limited - Ram
+Nissan Maxima - Nissan
+Jeep Grand Wagoneer - Jeep
+Honda Accord - Honda
+Chevrolet Impala - Chevrolet
+Toyota Avalon - Toyota
+Ford Mustang - Ford
+GMC Sierra 2500HD Denali - GMC
+Ram 1500 Limited - Ram

@@ -23,8 +23,12 @@ class StudentServiceTest {
 
 	@Test
 	void testIsValidStudentUpdate() {
-
-		fail("Not yet implemented");
+		String uid = UUID.randomUUID().toString();
+		Student existingStudent = new Student(0, "bobby", 17, "myHandle", "1", uid);
+		existingStudent = studentRepo.save(existingStudent);
+		Student student = new Student(existingStudent.getId(), "bobby", 12, "myHandle", "1", uid);
+		assertTrue(studentService.isValidStudentUpdate(student));
+		studentRepo.delete(existingStudent);
 	}
 
 	@Test

@@ -1,6 +1,7 @@
 package com.coderscampus.springwise.service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,10 @@ public class StudentService {
 	}
 
 	boolean isValidStudentUpdate(Student student) {
-		// TODO Auto-generated method stub
+		Optional<Student> existingStudent = studentRepo.findById(student.getId());
+		if (existingStudent.isPresent() && existingStudent.get().getUid().equals(student.getUid())){
+			return true;
+		}
 		return false;
 	}
 
