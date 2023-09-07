@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.coderscampus.springwise.domain.Student;
 import com.coderscampus.springwise.service.StudentService;
@@ -30,13 +31,16 @@ public class StudentController {
 	@GetMapping("/create")
 	public String getCreate (ModelMap model) {
 		Student student = new Student();
+	
 		model.put("student", student);
 		return "student/create";
 	}
 
 	@PostMapping("/create")
 	public String create(Student student) {
+		System.out.println("Students:" + student);
 		studentService.save(student);
+	
 		return "redirect:/student/";
 	}
 // This is same mapping as Student Home page-->left here just in case.(may need deleted)
@@ -51,11 +55,17 @@ public class StudentController {
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Student student = studentService.findById(id);
 		model.put("student", student);
+		System.out.println("studentupdate:" + student);
 		return "student/update";
 	}
 	
 	@PostMapping("/update")
-	public String update(Student student) {
+	public String update(Student student, @RequestParam("firebaseUid") String firebaseUid) {
+//		System.out.println("post id student:" + student);
+//		System.out.println("updating student:" + firebaseUid);
+		
+		// Send updating student's Uid to save method:
+		student.setUid(firebaseUid);
 		studentService.save(student);
 		return "redirect:/student/";
 	}

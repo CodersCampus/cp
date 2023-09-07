@@ -8,6 +8,24 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
 
+	public Student() {
+		
+	}
+	
+	public Student(long id, String name, Integer assignmentNum, String githubHandle, String ide, String uid) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.assignmentNum = assignmentNum;
+		this.githubHandle = githubHandle;
+		this.ide = ide;
+		this.uid = uid;
+	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", githubHandle="
+				+ githubHandle + ", ide=" + ide + ", uid=" + uid + "]";
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -16,9 +34,16 @@ public class Student {
 	private Integer assignmentNum;
 	private String githubHandle;
 	private String ide;
+	private String uid;
 	
 	
 	
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
 	public long getId() {
 		return id;
 	}
