@@ -46,7 +46,7 @@ public class StudentService {
 
 	boolean isValidStudentUpdate(Student student) {
 		Optional<Student> existingStudent = studentRepo.findById(student.getId());
-		if (existingStudent.isPresent() && existingStudent.get().getUid().equals(student.getUid())){
+		if (existingStudent.isPresent() && existingStudent.get().getUid() != null && existingStudent.get().getUid().equals(student.getUid())) {
 			return true;
 		}
 		return false;
