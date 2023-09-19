@@ -15,6 +15,7 @@ import com.coderscampus.springwise.domain.Frog;
 import com.coderscampus.springwise.domain.Movie;
 import com.coderscampus.springwise.domain.Truck;
 import com.coderscampus.springwise.repository.AirplaneRepository;
+import com.coderscampus.springwise.repository.CarRepository;
 import com.coderscampus.springwise.repository.DogRepository;
 import com.coderscampus.springwise.repository.FrogRepository;
 import com.coderscampus.springwise.repository.MovieRepository;
@@ -33,7 +34,9 @@ public class SeedService {
 	private DataFileService dataFileService;
 	@Autowired
 	private TruckRepository truckRepo;
-	
+	@Autowired
+	private CarRepository carRepo;
+
 	@Autowired
 	private MovieRepository movieRepo;
 
@@ -53,6 +56,8 @@ public class SeedService {
 		seedDataDogs();
 		seedDataTrucks();
 		seedDataMovies();
+
+		seedDataCars();
 	}
 
 	private void seedDataAirplanes() {
@@ -71,7 +76,7 @@ public class SeedService {
 			}
 		}
 	}
-	
+
 	private void seedDataMovies() {
 		List<Movie> movies = movieRepo.findAll();
 		if (movies.size() < 10) {
@@ -80,7 +85,7 @@ public class SeedService {
 			for (int i = 0; i < 10; i++) {
 				Movie movie = new Movie();
 				String line = makesMovies[random.nextInt(makesMovies.length - 1)];
-				int yearOf = Integer.parseInt(line.substring(line.indexOf("|")+1, line.length()));
+				int yearOf = Integer.parseInt(line.substring(line.indexOf("|") + 1, line.length()));
 				movie.setYearOf(yearOf);
 				movie.setName(line.substring(0, line.indexOf("|")).trim());
 				String[] movieRatings = { "1", "2", "3", "4", "5" };
@@ -151,6 +156,30 @@ public class SeedService {
 				truckRepo.save(truck);
 
 			}
+
+		}
+	}
+
+	private void seedDataCars() {
+
+		List<Car> cars = carRepo.findAll();
+		if (cars.size() < 10) {
+			String[] carsData = dataFileService.getData("src/main/resources/data/cars.txt");
+			Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+
+			for (int i = 0; i < 10; i++) {
+
+				Car car = new Car();
+				String modelName = carsData[random.nextInt(carsData.length - 1)];
+				String[] makeAndModel = modelName.split("-");
+				car.setModelName(makeAndModel[0]);
+				car.setColor(colors[random.nextInt(colors.length - 1)]);
+				car.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
+
+				carRepo.save(car);
+
+			}
+
 		}
 	}
 
