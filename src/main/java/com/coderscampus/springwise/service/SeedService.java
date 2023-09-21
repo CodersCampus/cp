@@ -160,13 +160,18 @@ public class SeedService {
 		}
 	}
 
+	String randomTransmission() {
+		String[] transmission = { "Automatic", "Manual", "Automatic", "Manual" };
+		return transmission[random.nextInt(transmission.length - 1)];
+	}
+
 	private void seedDataCars() {
 
 		List<Car> cars = carRepo.findAll();
-		if (cars.size() < 10) {
+		if (cars.size() < 30) {
 			String[] carsData = dataFileService.getData("src/main/resources/data/cars.txt");
 			Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
-			Integer[] wheelSizes = {14, 15, 16, 17, 18, 19, 20, 21};
+			Integer[] wheelSizes = { 14, 15, 16, 17, 18, 19, 20, 21 };
 
 			for (int i = 0; i < 10; i++) {
 
@@ -174,9 +179,10 @@ public class SeedService {
 				String modelName = carsData[random.nextInt(carsData.length - 1)];
 				String[] makeAndModel = modelName.split("-");
 				car.setModelName(makeAndModel[0]);
-				car.setWheelSize(wheelSizes[ random.nextInt(wheelSizes.length -1)]);
+				car.setWheelSize(wheelSizes[random.nextInt(wheelSizes.length - 1)]);
 				car.setColor(colors[random.nextInt(colors.length - 1)]);
 				car.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
+				car.setTransmission(randomTransmission());
 
 				carRepo.save(car);
 
