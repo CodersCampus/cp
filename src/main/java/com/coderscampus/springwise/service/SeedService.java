@@ -152,6 +152,7 @@ public class SeedService {
 				truck.setManufacturer(makeAndModel[1]);
 				truck.setColor(colors[random.nextInt(colors.length - 1)]);
 				truck.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
+				
 
 				truckRepo.save(truck);
 
@@ -163,6 +164,10 @@ public class SeedService {
 	String randomTransmission() {
 		String[] transmission = { "Automatic", "Manual", "Automatic", "Manual" };
 		return transmission[random.nextInt(transmission.length - 1)];
+	}
+	Integer randomPrice() {
+		Integer[] price = { 70000, 90000, 97000, 13000, 14000, 15000, 16000, 17000, 18000, 1900, 2000 };
+		return price[random.nextInt(price.length - 1)];
 	}
 
 	private void seedDataCars() {
@@ -183,6 +188,8 @@ public class SeedService {
 				car.setColor(colors[random.nextInt(colors.length - 1)]);
 				car.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
 				car.setTransmission(randomTransmission());
+				car.setPrice(randomPrice());
+				
 
 				carRepo.save(car);
 

@@ -1,5 +1,7 @@
 package com.coderscampus.springwise.service;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,25 @@ class SeedServiceTest {
 
 		assert (transmissions.contains("Automatic"));
 		assert (transmissions.contains("Manual"));
+	}
+	@Test
+	void testRandomPrice() {
+		
+		// list of random transmissions testing for random transmissions
+		SeedService seedService = new SeedService();
+
+		List<Integer> price = new ArrayList<Integer>();
+
+		for (int i = 0; i < 2000; i++) {
+			price.add(seedService.randomPrice());
+
+			System.out.println(price.get(i));
+		}
+
+		assert (price.contains(70000));
+		assert (price.contains(90000));
+		
+		
 	}
 
 }
