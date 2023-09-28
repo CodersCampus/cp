@@ -1,9 +1,6 @@
 package com.coderscampus.springwise.service;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -170,14 +167,17 @@ public class SeedService {
 		return price[random.nextInt(price.length - 1)];
 	}
 	Integer randomYear() {
-		Integer[] year = {1960, 1970, 1980, 1990, 2000, 1985, 1999, 3000, 2023};
-		return year[random.nextInt(year.length - 1)];
+		ArrayList<Integer> year = new ArrayList<>();
+		for (int i = 0; i < 70; i++){
+			year.add(1960+i);
+		}
+		return year.get((int)Math.floor(Math.random() * (year.size()-1)));
 	}
 
 	private void seedDataCars() {
 
 		List<Car> cars = carRepo.findAll();
-		if (cars.size() < 10) {
+		if (cars.size() < 100) {
 			String[] carsData = dataFileService.getData("src/main/resources/data/cars.txt");
 			Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 			Integer[] wheelSizes = { 14, 15, 16, 17, 18, 19, 20, 21 };
