@@ -169,11 +169,15 @@ public class SeedService {
 		Integer[] price = { 70000, 90000, 97000, 13000, 14000, 15000, 16000, 17000, 18000, 1900, 2000 };
 		return price[random.nextInt(price.length - 1)];
 	}
+	Integer randomYear() {
+		Integer[] year = {1960, 1970, 1980, 1990, 2000, 1985, 1999, 3000, 2023};
+		return year[random.nextInt(year.length - 1)];
+	}
 
 	private void seedDataCars() {
 
 		List<Car> cars = carRepo.findAll();
-		if (cars.size() < 30) {
+		if (cars.size() < 10) {
 			String[] carsData = dataFileService.getData("src/main/resources/data/cars.txt");
 			Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 			Integer[] wheelSizes = { 14, 15, 16, 17, 18, 19, 20, 21 };
@@ -188,9 +192,8 @@ public class SeedService {
 				car.setColor(colors[random.nextInt(colors.length - 1)]);
 				car.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
 				car.setTransmission(randomTransmission());
+				car.setYearOf(randomYear());
 				car.setPrice(randomPrice());
-				
-
 				carRepo.save(car);
 
 			}

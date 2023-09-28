@@ -45,5 +45,21 @@ class SeedServiceTest {
 		
 		
 	}
+	@Test
+	void testRandomYear() {
 
+		// list of random transmissions testing for random transmissions
+		SeedService seedService = new SeedService();
+
+		List<Integer> year = new ArrayList<Integer>();
+
+		for (int i = 0; i < 2000; i++) {
+			year.add(seedService.randomYear());
+			System.out.println(year.get(i));
+		}
+
+		assert (year.contains(3000));
+		assert (year.contains(1985));
+
+	}
 }
