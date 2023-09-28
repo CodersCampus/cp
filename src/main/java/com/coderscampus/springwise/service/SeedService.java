@@ -167,11 +167,8 @@ public class SeedService {
 		return price[random.nextInt(price.length - 1)];
 	}
 	Integer randomYear() {
-		ArrayList<Integer> year = new ArrayList<>();
-		for (int i = 0; i < 70; i++){
-			year.add(1960+i);
-		}
-		return year.get((int)Math.floor(Math.random() * (year.size()-1)));
+		Integer year = 1960;
+		return (year + (int)(Math.random() * (60)));
 	}
 
 	private void seedDataCars() {
