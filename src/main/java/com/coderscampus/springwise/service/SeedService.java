@@ -168,13 +168,13 @@ public class SeedService {
 	}
 	Integer randomYear() {
 		Integer year = 1960;
-		return (year + (int)(Math.random() * (60)));
+		return (year + (int)(Math.random() * (70)));
 	}
 
 	private void seedDataCars() {
 
 		List<Car> cars = carRepo.findAll();
-		if (cars.size() < 100) {
+		if (cars.size() < 10) {
 			String[] carsData = dataFileService.getData("src/main/resources/data/cars.txt");
 			Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 			Integer[] wheelSizes = { 14, 15, 16, 17, 18, 19, 20, 21 };
