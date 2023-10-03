@@ -24,5 +24,22 @@ class SeedServiceTest {
 		assert (transmissions.contains("Automatic"));
 		assert (transmissions.contains("Manual"));
 	}
+	
+	@Test
+	void testRandomMotorSize() {
+		SeedService seedService = new SeedService();
+
+		List<Integer> motorSizes = new ArrayList<>();
+		
+		for (int i = 0; i < 20; i++) {
+			motorSizes.add(seedService.randomMotorSize());
+
+			System.out.println(motorSizes.get(i));
+		}
+
+		assert (motorSizes.contains(10));
+		assert (motorSizes.contains(11));
+	}
+	
 
 }

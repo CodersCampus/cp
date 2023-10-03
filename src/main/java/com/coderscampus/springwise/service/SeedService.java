@@ -135,14 +135,20 @@ public class SeedService {
 			}
 		}
 	}
+	
+	Integer randomMotorSize() {
+		Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+		return motorSizes[random.nextInt(motorSizes.length - 1)];
+	}
+	
+	
 
 	private void seedDataTrucks() {
 
 		List<Truck> trucks = truckRepo.findAll();
 		if (trucks.size() < 10) {
 			String[] trucksData = dataFileService.getData("src/main/resources/data/trucks.txt");
-			Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
-
+	
 			for (int i = 0; i < 10; i++) {
 
 				Truck truck = new Truck();
@@ -151,10 +157,9 @@ public class SeedService {
 				truck.setModelName(makeAndModel[0]);
 				truck.setManufacturer(makeAndModel[1]);
 				truck.setColor(colors[random.nextInt(colors.length - 1)]);
-				truck.setMotorSize("" + motorSizes[random.nextInt(motorSizes.length - 1)]);
+				truck.setMotorSize(randomMotorSize());
 
 				truckRepo.save(truck);
-
 			}
 
 		}
