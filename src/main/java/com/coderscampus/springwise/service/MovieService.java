@@ -1,11 +1,12 @@
 package com.coderscampus.springwise.service;
 
-import com.coderscampus.springwise.domain.Movie;
-import com.coderscampus.springwise.repository.MovieRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.coderscampus.springwise.domain.Movie;
+import com.coderscampus.springwise.repository.MovieRepository;
 
 @Service
 public class MovieService {

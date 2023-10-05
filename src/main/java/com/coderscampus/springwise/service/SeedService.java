@@ -36,10 +36,12 @@ public class SeedService {
 	private TruckRepository truckRepo;
 	@Autowired
 	private CarRepository carRepo;
-
 	@Autowired
 	private MovieRepository movieRepo;
-
+	@Autowired
+	private Seed seed;
+	
+	
 	private Random random = new Random();
 
 	private String[] names = null;
@@ -156,8 +158,8 @@ public class SeedService {
 				String[] makeAndModel = modelName.split("-");
 				truck.setModelName(makeAndModel[0]);
 				truck.setManufacturer(makeAndModel[1]);
-				truck.setColor(colors[random.nextInt(colors.length - 1)]);
-				truck.setMotorSize(randomMotorSize());
+				truck.setColor(seed.getRandomElement(colors).toString());
+//				truck.setMotorSize();
 
 				truckRepo.save(truck);
 			}

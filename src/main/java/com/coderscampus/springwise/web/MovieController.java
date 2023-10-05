@@ -1,7 +1,7 @@
 package com.coderscampus.springwise.web;
 
-import com.coderscampus.springwise.domain.Movie;
-import com.coderscampus.springwise.service.MovieService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import com.coderscampus.springwise.domain.Movie;
+import com.coderscampus.springwise.service.MovieService;
 
 @Controller
 @RequestMapping("/movie")
