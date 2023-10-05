@@ -2,8 +2,11 @@ package com.coderscampus.springwise.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
+
+import com.coderscampus.springwise.domain.TransmissionType;
 
 class SeedServiceTest {
 
@@ -13,16 +16,21 @@ class SeedServiceTest {
 		// list of random transmissions testing for random transmissions
 		SeedService seedService = new SeedService();
 
-		List<String> transmissions = new ArrayList<String>();
+		TransmissionType[] transmissions = TransmissionType.values();
+		
+		List<TransmissionType> seedTransmissions = new ArrayList<>();
 
 		for (int i = 0; i < 20; i++) {
-			transmissions.add(seedService.randomTransmission());
+			Random random = new Random();
+			int randomIndex = random.nextInt(transmissions.length);
+			TransmissionType transmission = transmissions[randomIndex];
+			seedTransmissions.add(transmission);
 
-			System.out.println(transmissions.get(i));
+			System.out.println(transmission);
 		}
 
-		assert (transmissions.contains("Automatic"));
-		assert (transmissions.contains("Manual"));
+		assert (seedTransmissions.contains(TransmissionType.AUTOMATIC));
+		assert (seedTransmissions.contains(TransmissionType.MANUAL));
 	}
 	
 	@Test

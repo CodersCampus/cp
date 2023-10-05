@@ -10,13 +10,12 @@ public class Truck {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Integer motorSize;
+	private String motorSize;
 	private String modelName;
 	private String color;
-
-
-
 	private String manufacturer;
+	
+	
 	
 
 
@@ -32,10 +31,10 @@ public class Truck {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Integer getMotorSize() {
+	public String getMotorSize() {
 		return motorSize;
 	}
-	public void setMotorSize(Integer motorSize) {
+	public void setMotorSize(String motorSize) {
 		this.motorSize = motorSize;
 	}
 	public String getModelName() {
