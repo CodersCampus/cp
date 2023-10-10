@@ -60,12 +60,12 @@ public class StudentController {
 	}
 	
 	@PostMapping("/update")
-	public String update(Student student, @RequestParam("firebaseUid") String firebaseUid) {
+	public String update(Student student) {
 //		System.out.println("post id student:" + student);
 //		System.out.println("updating student:" + firebaseUid);
 		
 		// Send updating student's Uid to save method:
-		student.setUid(firebaseUid);
+		// student.setUid(firebaseUid);
 		studentService.save(student);
 		return "redirect:/student/";
 	}
