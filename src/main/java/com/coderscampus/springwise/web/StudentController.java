@@ -65,7 +65,7 @@ public class StudentController {
 //		System.out.println("updating student:" + firebaseUid);
 		
 		// Send updating student's Uid to save method:
-		// student.setUid(firebaseUid);
+		
 		studentService.save(student);
 		return "redirect:/student/";
 	}
@@ -73,6 +73,8 @@ public class StudentController {
 	@PostMapping("/delete")
 	public String delete(Student student) {
 		studentService.delete(student);
+		System.out.println(student);
 		return "redirect:/student/";
+		
 	}
 }
