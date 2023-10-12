@@ -16,31 +16,14 @@ public class StudentService {
 	@Autowired
 	private StudentRepository studentRepo;
 	
-
+	// before: if (isValidNewStudent(student) || isValidStudentUpdate(student)) -> save student)
 	public Student save(Student student) {
-		if (isValidNewStudent(student) || isValidStudentUpdate(student)) {
+		if (isValidNewStudent(student)) {
 			return studentRepo.save(student); 
 		}
-		
-		
-		
-		
-//		List<Student> students = studentRepo.findByUid(student.getUid());
-//		if (students.size() > 0 || student.getId() != 0) {
-//			Optional<Student> updateStudent = studentRepo.findById(student.getId());
-//			if (updateStudent.isPresent() && updateStudent.get().getUid().equals(student.getUid())) {
-//// create new logic for new incoming students, work on update existing students
-//				return studentRepo.save(student);
-//	
-//		}
-//		if (student.getId() == 0) {
-//			return studentRepo.save(student);
-//		}
-//		
-//		
-//		} else {
-//			return null;
-//		}
+		if(isValidStudentUpdate(student) ) {
+			return studentRepo.save(student);
+		}
 		return null;
 	}
 
