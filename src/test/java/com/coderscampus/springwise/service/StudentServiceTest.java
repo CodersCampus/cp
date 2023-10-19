@@ -59,5 +59,19 @@ class StudentServiceTest {
 		
 	}
 
+	@Test
+	void testDeleteIfAllowed() {
+		String uid = UUID.randomUUID().toString();
+		Student student = new Student(0, "bobby", 12, "myHandle", "1", uid);
+		Student existingStudent = new Student(0, "bobby", 17, "myHandle", "1", uid);
+		studentRepo.save(existingStudent);
+		assertTrue(studentService.delete(student));
+	}
+
+	@Test
+	void testDeleteIfNotAllowed() {
+
+	}
+
 
 }

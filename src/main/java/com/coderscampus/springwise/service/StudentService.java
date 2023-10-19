@@ -19,9 +19,11 @@ public class StudentService {
 	// before: if (isValidNewStudent(student) || isValidStudentUpdate(student)) -> save student)
 	public Student save(Student student) {
 		if (isValidNewStudent(student)) {
+			System.out.println("This is isValidNewStudent" + student);
 			return studentRepo.save(student); 
 		}
 		if(isValidStudentUpdate(student) ) {
+			System.out.println("This is isValidStudentUpdate" + student);
 			return studentRepo.save(student);
 		}
 		return null;
@@ -29,7 +31,9 @@ public class StudentService {
 
 	boolean isValidStudentUpdate(Student student) {
 		Optional<Student> existingStudent = studentRepo.findById(student.getId());
+
 		if (existingStudent.isPresent() && existingStudent.get().getUid() != null && existingStudent.get().getUid().equals(student.getUid())) {
+			System.out.println("This is existingStudent" + student);
 			return true;
 		}
 		return false;
@@ -39,6 +43,7 @@ public class StudentService {
 		// First test is id == 0 means to create:
 		List<Student> students = studentRepo.findByUid(student.getUid());
 		if (students.size() > 0) {
+			System.out.println("These are the students " + students);
 			return false;
 		}
 		return student.getId() == 0; 
