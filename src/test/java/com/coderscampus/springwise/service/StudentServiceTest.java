@@ -66,11 +66,12 @@ class StudentServiceTest {
 		Student existingStudent = new Student(0, "bobby", 17, "myHandle", "1", uid);
 		studentRepo.save(existingStudent);
 		assertTrue(studentService.delete(student));
+		// Need to finish test method
 	}
 
 	@Test
 	void testDeleteIfNotAllowed() {
-
+		// Need to finish test method
 	}
 
 
