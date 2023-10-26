@@ -23,11 +23,18 @@ class StudentServiceTest {
 
 	@Test
 	void testIsValidStudentUpdate() {
+		// Test pass condition:
 		String uid = UUID.randomUUID().toString();
 		Student existingStudent = new Student(0, "bobby", 17, "myHandle", "1", uid);
 		existingStudent = studentRepo.save(existingStudent);
 		Student student = new Student(existingStudent.getId(), "bobby", 12, "myHandle", "1", uid);
-		assertTrue(studentService.isValidStudentUpdate(student));
+		assertTrue(studentService.isValidStudentUpdateOrDelete(student));
+		
+		// Test failed condition:
+		String uid2 = UUID.randomUUID().toString();
+		Student studentTwo = new Student(existingStudent.getId(), "kate", 12, "yourHandle", "2", uid2);
+		assertFalse(studentService.isValidNewStudent(studentTwo));
+		
 		studentRepo.delete(existingStudent);
 	}
 
@@ -50,6 +57,31 @@ class StudentServiceTest {
 		studentRepo.delete(existingStudent);
 		studentRepo.delete(student);
 		
+	}
+
+	@Test
+	void testDeleteIfAllowed() {
+		int id = (int) Math.round(Math.random() * 10000);
+		String uid = UUID.randomUUID().toString();
+		Student student = new Student(id, "bobby", 12, "myHandle", "1", uid);
+		Student existingStudent = new Student(id, "bobby", 17, "myHandle", "1", uid);
+		studentRepo.save(existingStudent);
+		assertTrue(studentService.delete(student));
+		
+		
+	}
+
+	@Test
+	void testDeleteIfNotAllowed() {
+		// Need to finish test method
+		int id = (int) Math.round(Math.random() * 10000);
+		String uid = UUID.randomUUID().toString();
+		String uid2 = UUID.randomUUID().toString();
+		Student student = new Student(id, "bobby", 12, "myHandle", "1", uid);
+		Student existingStudent = new Student(id, "bobby", 17, "myHandle", "1", uid2);
+		studentRepo.save(student);
+		
+		assertFalse(studentService.delete(existingStudent));
 	}
 
 

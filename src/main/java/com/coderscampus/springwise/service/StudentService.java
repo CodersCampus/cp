@@ -1,8 +1,9 @@
 package com.coderscampus.springwise.service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
+import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,41 +13,30 @@ import com.coderscampus.springwise.repository.StudentRepository;
 
 @Service
 public class StudentService {
-	
+
 	@Autowired
 	private StudentRepository studentRepo;
-	
 
+	// before: if (isValidNewStudent(student) || isValidStudentUpdate(student)) ->
+	// save student)
 	public Student save(Student student) {
-		if (isValidNewStudent(student) || isValidStudentUpdate(student)) {
-			return studentRepo.save(student); 
+		if (isValidNewStudent(student)) {
+			System.out.println("This is isValidNewStudent" + student);
+			return studentRepo.save(student);
 		}
-		
-		
-		
-		
-//		List<Student> students = studentRepo.findByUid(student.getUid());
-//		if (students.size() > 0 || student.getId() != 0) {
-//			Optional<Student> updateStudent = studentRepo.findById(student.getId());
-//			if (updateStudent.isPresent() && updateStudent.get().getUid().equals(student.getUid())) {
-//// create new logic for new incoming students, work on update existing students
-//				return studentRepo.save(student);
-//	
-//		}
-//		if (student.getId() == 0) {
-//			return studentRepo.save(student);
-//		}
-//		
-//		
-//		} else {
-//			return null;
-//		}
+		if (isValidStudentUpdateOrDelete(student)) {
+			System.out.println("This is isValidStudentUpdate" + student);
+			return studentRepo.save(student);
+		}
 		return null;
 	}
 
-	boolean isValidStudentUpdate(Student student) {
+	boolean isValidStudentUpdateOrDelete(Student student) {
 		Optional<Student> existingStudent = studentRepo.findById(student.getId());
-		if (existingStudent.isPresent() && existingStudent.get().getUid() != null && existingStudent.get().getUid().equals(student.getUid())) {
+//		Here is where we work
+		if (existingStudent.isPresent() && existingStudent.get().getUid() != null
+				&& existingStudent.get().getUid().equals(student.getUid())) {
+			System.out.println("This is existingStudent" + student);
 			return true;
 		}
 		return false;
@@ -56,9 +46,10 @@ public class StudentService {
 		// First test is id == 0 means to create:
 		List<Student> students = studentRepo.findByUid(student.getUid());
 		if (students.size() > 0) {
+			System.out.println("These are the students " + students);
 			return false;
 		}
-		return student.getId() == 0; 
+		return student.getId() == 0;
 	}
 
 	public List<Student> findAll() {
@@ -70,8 +61,28 @@ public class StudentService {
 		return studentRepo.findById(id).get();
 	}
 
-	public void delete(Student student) {
-		studentRepo.delete(student);
+	public boolean delete(Student student) {
+
+		try {
+			if (isValidStudentUpdateOrDelete(student)) {
+
+				studentRepo.delete(student);
+
+				Optional<Student> user = studentRepo.findById(student.getId());
+				boolean foundUser = user.isPresent();
+				if (foundUser) {
+					throw new RuntimeErrorException(null, "User was not deleted");
+				}
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.err.println(e);
+			return false;
+		}
+
+		return true;
 	}
 
 }
