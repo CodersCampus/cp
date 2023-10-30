@@ -1,0 +1,90 @@
+Dill (karen)	196? (I already forgot). Did PR and approve, deleted branch	2023-10-26T22:46:23.172545	
+Dave Naugler	issue188 - resolved merge conflict	2023-10-26T19:11:00.418029	
+Srikanth	issue190 - Merged pull request #205 from CodersCampus/issue190	2023-10-26T18:33	
+Dave Naugler	issue188 - completed issue 188 and moving the delete issue to issue#197 as technical deb	2023-10-26T17:55	
+Dave Naugler	issue214 - updated both index.html pages to include footer and renamed template index.html H1 title	2023-10-26T17:26	
+Joseph Kirkish	code reviewed issue 196	2023-10-26T00:52:43.571081	
+Miriam Law	Issue #196 - Removed links from Practice Controller and removed CRUD content and cleaned up Practice index.html	2023-10-26T00:38:54.809095	
+Ogulcan	issue188	2023-10-19T18:30:41.342653	
+Dave Naugler	188 - Added 2 test methods to StudentServiceTest.java (needs further completion). Updated StudentService.java	2023-10-19T01:10	
+Dave Naugler	188 - Updated StudentServiceTest.java	2023-10-19T00:59:49.526151	
+erman kurtay	196 got started.	2023-10-17T18:32:59.617812	
+Dave Naugler	188 - Updated the read.html and update.html || Issue 188 not closed yet. || Pete will follow up.	2023-10-17T18:18:02.187240	
+Joseph Kirkish	188 worked on debugging UUID	2023-10-17T01:03	
+Srikanth	issue 188: refactored update student save() method. Still need to add unit tests for refactored changes	2023-10-12T18:27:12.828181	
+Alex Mamolo	Issue 188 & created issue 197 - Update working, delete workingish	2023-10-12T00:58:00.111592	
+Karen Dillehay	188, inserted UID into student create and read (fb auth and js)	2023-10-10T18:08:23.899116	
+Kenny Cheng	Issue193: Started the refactoring of the seed into its own service and created a JUnit for it	2023-10-05T18:32:41.544440	
+Hayden	191 more refactoring - this time, using enums	2023-10-05T14:54:12.486597	
+Dave Naugler	191: Refactored randomMotorSize() and created testRandomMotorSize()	2023-10-03T01:01:53.745355	
+Eric	issue187 Code Review	2023-09-28T18:29:25.026208	
+Srikanth	187: add coding category domain, service, controller, and template files	2023-09-28T18:25:36.303185	
+JP	168- Added random year to cars	2023-09-28T17:34:36.236917	
+Joseph Kirkish	pathing for css	2023-09-28T00:42:24.511551	
+karen dillehay	168 updated price on cars	2023-09-26T18:31:02.112799	
+Eric	issue168 updated seedService for cars.transmission	2023-09-21T01:02:38.982455	
+Kenny Cheng	Issue 168: Updating the seed service to randomly assign wheel size to cars	2023-09-19T18:26:33.478408	
+srikanth	188 add web component to student create and remove login and logout buttons	2023-09-19T18:08:09.100837	
+Miriam Law	Issue 168	2023-09-19T00:50:52.732487	
+Philip	Merged 183	2023-09-12T18:32:31.459046	
+JP	183 - added fbauth to the read html page for cars	2023-09-12T18:32:18.785142	
+Alex Mamolo	181 - Created login requirement for create cars	2023-09-12T00:54:44.484010	
+Karen Dillehay	175 ok'd kenny's pr	2023-09-07T18:22:53.566339	
+Kenny Cheng	Issue 175: Updated updated template and added new conditional to service	2023-09-07T18:16:58.828410	
+Kenny Cheng	Issue172: Confirmed with Postman and finished the pull request.	2023-09-07T17:52:15.816663	
+Hayden Huffman	163 Approved Sri's pull request	2023-09-07T00:52:08.478689	
+Srikanth	163 - pushed code for update	2023-09-07T00:51:57.606940	
+Hayden Huffman	163	2023-09-07T00:51:43.092832	
+JP	163 added Spring Test to testIsValidStudentUpdate	2023-09-05T01:00	
+srikanth	163 added tests for testIsValidNewStudent and testValidNewStudentIfExists	2023-08-31T18:27:07.352264	
+paige	163	2023-08-31T17:46:18.609150	
+paige	163	2023-08-29T18:31:11.178666	
+Joseph Kirkish	163	2023-08-29T01:00:08.084323	
+Rebecca	issue163 added validation check using UID to student	2023-08-24T18:43:50.432214	
+karen dillehay	issue 163, hid uid in create and update, we need to look at studentService, i created notes on what we need to check for, so no one updates someone else's stuff	2023-08-22T18:32:10.086026	
+Ezequiel fernandez	163 UID hidden, update and create	2023-08-22T00:59:37.173561	
+Needham	Issue163 added UID to model in create	2023-08-17T18:30:26.910730	
+Srikanth	163, added myid input field value to update html page	2023-08-17T01:05:54.634993	
+Dave Naugler	163 - Updated StudentUpdate.html line 57 for hidden ID	2023-08-15T18:39:10.886885	
+Eric Owens	issue163 updated create.html page auth issue now working.	2023-08-15T00:56:46.448242	
+Kenny Cheng	Issue163: create page now able to auth. Attention to add my-id to the update page!	2023-08-10T18:26:02.204412	
+JP	163- Logged an issue on git (javascript breaks Chromium on Ubuntu)	2023-08-10T17:58:48.765437	
+Joseph Kirkish	163	2023-08-10T01:02:17.623560	
+Phil	163 changed student entity and added comment to service	2023-08-08T18:40:13.932793	
+karen dillehay	update student readme and auth. js to include myId	2023-08-08T01:02:10.257219	
+karen dillehay	created issue 164: add a section for helpful links for students	2023-08-08T00:34:23.839829	
+Jd K	Issue #163 - Edited the user Id	2023-08-03T18:33	
+Alex Mamolo	163 - updated read file, wrapped contents in secured area	2023-08-03T01:00:39.092684	
+Kenny Cheng	Issue163: copied the existing auth test page into the find mentor page. Check Github for next steps to take	2023-08-01T18:30:17.919395	
+Eric Owens	issue89 - Created plan of action for next feature (picker - to filter/choose students based on assignment completed)	2023-08-01T01:03	
+Pete	Code reviewed issue 161	2023-07-27T00:54:19.191516	
+Ezequiel fernandez	issue161 added link to home page for find mentor	2023-07-27T00:48:51.979316	
+Ezequiel	89 created pull request from Kenny's work	2023-07-27T00:23:04.439995	
+Kenny Cheng	Issue89 - pairing app: created initial table structure, service, controller and template	2023-07-25T18:34:21.832066	
+JP	89 - MVP = Single Table with 1) Name, 2) Where you are in course, 3) Topics on which you want to teach	2023-07-25T00:55:40.869497	
+Eric	Issue89 - Discussed what the possible layout of the mentor page would look like.	2023-07-25T00:55:25.814227	
+Phil	Database design on 89	2023-07-20T19:54:26.857407	
+JP	Issue88 - Tested code and closed branch	2023-07-18T18:28:59.284597	
+JD	88, finished it up in pull request	2023-07-18T17:56	
+Alex Mamalo	did something not sure what or when	2023-07-18T17:51:32.098225	
+Asma	Issue88: Worked on read and update view of cars	2023-07-18T00:51	
+Rebecca	Continue with issue 88 to update views	2023-07-06T18:14:03.533759	
+Joseph Kirkish	88 experimenting with the cars. Updated domain, service, repository and controller with cars.	2023-07-06T00:18	
+Tony Edmonds	issue147 finished	2023-07-04T18:25:25.168198	
+Karen Dillehay	code review issue 145	2023-07-04T00:54:59.010782	
+Miriam Law	Issue 145 Doin it	2023-07-04T00:50:13.663720	
+Eric O	Issue 147 import spring security	2023-07-04T00:44	
+Kenny Cheng	updated files on issue150 to correct directory path	2023-07-04T00:42:24.824742	
+Rebecca	Create issue for ../..css on update page	2023-07-04T00:24:38.301430	
+karen dillehay	reviewed pull req for issue 128, looks good, completed, closed issue	2023-07-04T00:23:58.552701	
+Pete	Pr for 128 because finished coding	2023-07-04T00:13:44.720927	
+Rebecca Needham	Close Issue 141	2023-07-04T00:12:13.908040	
+Ezequiel	issue 141 code review	2023-06-29T01:26:58.496764	
+Rebecca	issue 141 create and read views	2023-06-29T01:26:36.404099	
+JP	136 issue closed	2023-06-27T18:27:37.787276	
+Kenny Cheng	issue132 code review	2023-06-27T17:59:13.430399	
+Tony Edmonds	issue132 finished	2023-06-27T17:49:51.020606	
+jp	issue 132 part way - someone else needs to check it and maybe finish it up?	2023-06-27T14:17:16.577724	
+joseph kirkish	131 code review	2023-06-27T14:14:59.775662	
+karen	131	2023-06-27T14:14:36.782809	
+Phil	Issue 137 code review including migrating SpringWise to VSCode for IDE to solve Eclipse maven problems	2023-06-21T21:56:25.755497
