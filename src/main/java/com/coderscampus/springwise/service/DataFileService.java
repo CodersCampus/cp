@@ -20,9 +20,7 @@ public class DataFileService {
 
 			linesArray = lines.toArray(new String[0]);
 
-			for (String line : linesArray) {
-				System.out.println(line);
-			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

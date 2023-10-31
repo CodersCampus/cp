@@ -18,17 +18,17 @@ public class UserHistoryService {
 	private UserHistoryRepository userHistoryRepo;
 
 	public UserHistory save(UserHistory userHistory) {
-		System.out.println(userHistory);
+		
 		if(userHistory.getDate()== null) {
 			userHistory.setDate(LocalDateTime.now());
-			System.out.println("XXX"+userHistory);
+			
 		}
 		return userHistoryRepo.save(userHistory);
 	}
 
 	public List<UserHistory> findAll() {
 
-		// sort all User history by date using streams descending order
+		
 		
 		return userHistoryRepo.findAll().stream().sorted(Comparator.comparing(UserHistory::getDate).reversed()).collect(Collectors.toList());
 	

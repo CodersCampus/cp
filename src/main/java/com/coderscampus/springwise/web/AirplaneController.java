@@ -39,13 +39,7 @@ public class AirplaneController {
 		airplaneService.save(airplane);
 		return "redirect:/airplane/";
 	}
-// This is same mapping as Airplane Home page-->left here just in case.(may need deleted)
-//	@GetMapping("/read")
-//	public String read(ModelMap model) {
-//		List<Airplane> airplanes = airplaneService.findAll();
-//		model.put("airplanes", airplanes);
-//		return "airplane/read";
-//	}
+
 	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {

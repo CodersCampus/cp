@@ -18,7 +18,7 @@ class SeedServiceTest {
 		for (int i = 0; i < 20; i++) {
 			transmissions.add(seedService.randomTransmission());
 
-			System.out.println(transmissions.get(i));
+			
 		}
 
 		assert (transmissions.contains("Automatic"));
