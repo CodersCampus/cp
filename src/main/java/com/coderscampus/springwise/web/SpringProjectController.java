@@ -19,7 +19,7 @@ public class SpringProjectController {
     @Autowired
     private SeedService seedService;
 
-    // testing
+    
     @GetMapping("/")
     public String getIndex() {
     	seedService.populateData();

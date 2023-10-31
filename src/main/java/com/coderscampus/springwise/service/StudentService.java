@@ -32,7 +32,7 @@ public class StudentService {
 
 	boolean isValidStudentUpdateOrDelete(Student student) {
 		Optional<Student> existingStudent = studentRepo.findById(student.getId());
-//		Here is where we work
+
 		if (existingStudent.isPresent() && existingStudent.get().getUid() != null
 				&& existingStudent.get().getUid().equals(student.getUid())) {
 			
@@ -42,7 +42,6 @@ public class StudentService {
 	}
 
 	boolean isValidNewStudent(Student student) {
-		// First test is id == 0 means to create:
 		List<Student> students = studentRepo.findByUid(student.getUid());
 		if (students.size() > 0) {
 			
@@ -76,7 +75,6 @@ public class StudentService {
 				return false;
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.err.println(e);
 			return false;
 		}

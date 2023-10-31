@@ -37,13 +37,7 @@ public class CarController {
 		carService.save(car);
 		return "redirect:/car/";
 	}
-// This is same mapping as Car Home page-->left here just in case.(may need deleted)
-//	@GetMapping("/read")
-//	public String read(ModelMap model) {
-//		List<Car> cars = carService.findAll();
-//		model.put("cars", cars);
-//		return "car/read";
-//	}
+
 	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {

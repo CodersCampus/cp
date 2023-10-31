@@ -39,13 +39,7 @@ public class FrogController {
 		frogService.save(frog);
 		return "redirect:/frog/";
 	}
-// This is same mapping as Frog Home page-->left here just in case.(may need deleted)
-//	@GetMapping("/read")
-//	public String read(ModelMap model) {
-//		List<Frog> frogs = frogService.findAll();
-//		model.put("frogs", frogs);
-//		return "frog/read";
-//	}
+
 	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {

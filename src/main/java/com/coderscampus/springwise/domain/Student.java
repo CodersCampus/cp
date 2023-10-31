@@ -29,7 +29,6 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	// to be replaced by reference to User table
 	private String name;
 	private Integer assignmentNum;
 	private String githubHandle;

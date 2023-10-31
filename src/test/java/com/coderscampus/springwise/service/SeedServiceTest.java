@@ -10,7 +10,7 @@ class SeedServiceTest {
 	@Test
 	void testRandomTransmission() {
 
-		// list of random transmissions testing for random transmissions
+		
 		SeedService seedService = new SeedService();
 
 		List<String> transmissions = new ArrayList<String>();
