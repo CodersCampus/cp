@@ -7,8 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-//Motor size varchar ID Primary Key.null.int Model name varchar Wheel size int 
-//Transmission type varchar Color varchar Year int Price decimal
 
 @Entity
 public class Car {

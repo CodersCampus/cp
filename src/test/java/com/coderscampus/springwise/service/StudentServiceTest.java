@@ -23,14 +23,14 @@ class StudentServiceTest {
 
 	@Test
 	void testIsValidStudentUpdate() {
-		// Test pass condition:
+		
 		String uid = UUID.randomUUID().toString();
 		Student existingStudent = new Student(0, "bobby", 17, "myHandle", "1", uid);
 		existingStudent = studentRepo.save(existingStudent);
 		Student student = new Student(existingStudent.getId(), "bobby", 12, "myHandle", "1", uid);
 		assertTrue(studentService.isValidStudentUpdateOrDelete(student));
 		
-		// Test failed condition:
+
 		String uid2 = UUID.randomUUID().toString();
 		Student studentTwo = new Student(existingStudent.getId(), "kate", 12, "yourHandle", "2", uid2);
 		assertFalse(studentService.isValidNewStudent(studentTwo));
@@ -73,7 +73,7 @@ class StudentServiceTest {
 
 	@Test
 	void testDeleteIfNotAllowed() {
-		// Need to finish test method
+		
 		int id = (int) Math.round(Math.random() * 10000);
 		String uid = UUID.randomUUID().toString();
 		String uid2 = UUID.randomUUID().toString();

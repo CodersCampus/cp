@@ -17,15 +17,14 @@ public class StudentService {
 	@Autowired
 	private StudentRepository studentRepo;
 
-	// before: if (isValidNewStudent(student) || isValidStudentUpdate(student)) ->
-	// save student)
+	
 	public Student save(Student student) {
 		if (isValidNewStudent(student)) {
-			System.out.println("This is isValidNewStudent" + student);
+			
 			return studentRepo.save(student);
 		}
 		if (isValidStudentUpdateOrDelete(student)) {
-			System.out.println("This is isValidStudentUpdate" + student);
+			
 			return studentRepo.save(student);
 		}
 		return null;
@@ -33,20 +32,19 @@ public class StudentService {
 
 	boolean isValidStudentUpdateOrDelete(Student student) {
 		Optional<Student> existingStudent = studentRepo.findById(student.getId());
-//		Here is where we work
+
 		if (existingStudent.isPresent() && existingStudent.get().getUid() != null
 				&& existingStudent.get().getUid().equals(student.getUid())) {
-			System.out.println("This is existingStudent" + student);
+			
 			return true;
 		}
 		return false;
 	}
 
 	boolean isValidNewStudent(Student student) {
-		// First test is id == 0 means to create:
 		List<Student> students = studentRepo.findByUid(student.getUid());
 		if (students.size() > 0) {
-			System.out.println("These are the students " + students);
+			
 			return false;
 		}
 		return student.getId() == 0;
@@ -77,7 +75,6 @@ public class StudentService {
 				return false;
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.err.println(e);
 			return false;
 		}

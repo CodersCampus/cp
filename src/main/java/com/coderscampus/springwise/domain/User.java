@@ -11,7 +11,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
-	// to be referenced by the Student table
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -31,7 +30,7 @@ public class User {
 	}
 
 	public String getUsername() {
-		// email in our case
+
 		return email;
 	}
 

@@ -37,13 +37,7 @@ public class TruckController {
 		truckService.save(truck);
 		return "redirect:/truck/";
 	}
-// This is same mapping as Truck Home page-->left here just in case.(may need deleted)
-//	@GetMapping("/read")
-//	public String read(ModelMap model) {
-//		List<Truck> trucks = truckService.findAll();
-//		model.put("trucks", trucks);
-//		return "truck/read";
-//	}
+
 	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {

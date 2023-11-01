@@ -38,13 +38,7 @@ public class MovieController {
 		movieService.save(movie);
 		return "redirect:/movie/";
 	}
-// This is same mapping as Movie Home page-->left here just in case.(may need deleted)
-//	@GetMapping("/read")
-//	public String read(ModelMap model) {
-//		List<Movie> movies = movieService.findAll();
-//		model.put("movies", movies);
-//		return "movie/read";
-//	}
+
 	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {

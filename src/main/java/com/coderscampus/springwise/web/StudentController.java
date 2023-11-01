@@ -38,33 +38,26 @@ public class StudentController {
 
 	@PostMapping("/create")
 	public String create(Student student) {
-		System.out.println("Students:" + student);
+		
 		studentService.save(student);
 	
 		return "redirect:/student/";
 	}
-// This is same mapping as Student Home page-->left here just in case.(may need deleted)
-//	@GetMapping("/read")
-//	public String read(ModelMap model) {
-//		List<Student> students = studentService.findAll();
-//		model.put("students", students);
-//		return "student/read";
-//	}
+
 	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Student student = studentService.findById(id);
 		model.put("student", student);
-		System.out.println("studentupdate:" + student);
+		
 		return "student/update";
 	}
 	
 	@PostMapping("/update")
 	public String update(Student student) {
-		System.out.println("post id student:" + student);
-//		System.out.println("updating student:" + firebaseUid);
 		
-		// Send updating student's Uid to save method:
+		
+		
 		
 		studentService.save(student);
 		return "redirect:/student/";
@@ -73,7 +66,7 @@ public class StudentController {
 	@PostMapping("/delete")
 	public String delete(Student student) {
 		studentService.delete(student);
-		System.out.println(student);
+	
 		return "redirect:/student/";
 		
 	}

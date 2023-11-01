@@ -37,13 +37,7 @@ public class CodingCategoryController {
 		codingCategoryService.save(codingCategory);
 		return "redirect:/coding-category/";
 	}
-// This is same mapping as CodingCategory Home page-->left here just in case.(may need deleted)
-//	@GetMapping("/read")
-//	public String read(ModelMap model) {
-//		List<CodingCategory> codingCategorys = codingCategoryService.findAll();
-//		model.put("codingCategorys", codingCategorys);
-//		return "coding-category/read";
-//	}
+
 	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {
