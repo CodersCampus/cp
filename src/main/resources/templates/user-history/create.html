@@ -52,9 +52,16 @@
 	</div>
 	</fbauth-element>
 	<script>
+		const fbauth = document.querySelector('fbauth-element');
+		fbauth.addEventListener('load', function() {
+			console.log("hello");
+			// Execute your desired code here
+		});
 	const assignUid = (e) => {
+
 		const fbauth = document.querySelector('fbauth-element');
 		const uid = fbauth.getAttribute('uid');
+
 		//const displayName = fbauth.getAttribute('displayName');
 		const newUid = document.querySelector("#new-uid");
 //		const displayNameDom = document.querySelector("#displayName");
