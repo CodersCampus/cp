@@ -70,4 +70,9 @@ public class StudentController {
 		return "redirect:/student/";
 		
 	}
+
+	@GetMapping("/profile")
+	public String getProfile(Student student) {
+		return "student/profile";
+	}
 }
