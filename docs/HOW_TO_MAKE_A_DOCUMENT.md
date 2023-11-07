@@ -13,6 +13,7 @@ This is going to show you the basics on how to successfully make a markdown docu
 
 - [Wiki Markdown](https://www.markdownguide.org/getting-started/#:~:text=Create%20a%20Markdown%20file%20using,file%20to%20an%20HTML%20document)
 - [Markdown Guide](https://en.wikipedia.org/wiki/Markdown)
+- [GitHub: Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#quoting-text)
 - [Another page](RULES.md)
 
 ## Headings
