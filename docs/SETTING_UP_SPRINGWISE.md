@@ -5,7 +5,7 @@ To set up SpringWise on your computer, follow these guidelines:
 - Use GitHub Desktop and your preferred IDE, or
 - Use Terminal/Git BASH with your IDE.
 
-Choose the method you're most comfortable with to get SpringWise operational.
+_Choose the method you're most comfortable with to get SpringWise operational._
 
 ## Step 1: Get the SpringWise dev branch
 
@@ -24,11 +24,19 @@ Choose the method you're most comfortable with to get SpringWise operational.
 
 ### Terminal/Git BASH Instructions
 
-- cd into SpringWise project folder
-  1. Type `git status`
-  2. Type `git fetch`
-  3. Type `git pull`
+- cd into **SpringWise** project folder and type the following git commands into your Terminal/Git BASH
+```
+git status
+```
+```
+git fetch
+```
+```
+git pull
+```
 - Open IDE of choice
+
+
 
 <img style="border-radius: 10px" width="700" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Terminal.jpg">
 
