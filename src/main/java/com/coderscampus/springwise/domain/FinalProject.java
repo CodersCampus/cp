@@ -11,8 +11,6 @@ public class FinalProject {
     private long id;
     private String name;
     private String description;
-
-
     private Student student;
 
     @Id
@@ -40,6 +38,7 @@ public class FinalProject {
     public void setDescription(String description) {
         this.description = description;
     }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     public Student getStudent() {

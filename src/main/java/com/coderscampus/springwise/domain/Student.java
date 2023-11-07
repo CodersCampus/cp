@@ -29,7 +29,8 @@ public class Student {
     private String uid;
     private String gitHub;
     private String linkedIn;
-    private List<FinalProject> finalProject = new ArrayList<>(); // class required
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FinalProject> finalProject = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -95,7 +96,6 @@ public class Student {
         this.linkedIn = linkedIn;
     }
 
-    @OneToMany(mappedBy = "student_id", cascade = CascadeType.ALL, orphanRemoval = true);
     public List<FinalProject> getFinalProject() {
         return finalProject;
     }
