@@ -25,13 +25,13 @@ _Choose the method you're most comfortable with to get SpringWise operational._
 ### Terminal/Git BASH Instructions
 
 - cd into **SpringWise** project folder and type the following git commands into your Terminal/Git BASH
-```
+```shell
 git status
 ```
-```
+```shell
 git fetch
 ```
-```
+```shell
 git pull
 ```
 - Open IDE of choice
