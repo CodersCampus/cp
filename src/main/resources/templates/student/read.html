@@ -51,6 +51,10 @@
 							<td><span th:text="${student.assignmentNum}"></span></td>
 							<td><span th:text="${student.githubHandle}"></span></td>
 							<td><span th:text="${student.ide}"></span></td>
+							<td><span th:text="${student.linkedIn}"></span></td>
+							<td><span th:each="finalProject : ${student.finalProject} &lt;br>" ></span></td>
+							
+							<td><span th:text="${student.ide}"></span></td>
 							<td><a th:href="@{/student/update/{studentId}(studentId=${student.id})}">
 									<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 											fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">

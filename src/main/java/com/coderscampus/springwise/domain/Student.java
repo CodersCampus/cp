@@ -27,7 +27,6 @@ public class Student {
     private String githubHandle;
     private String ide;
     private String uid;
-    private String gitHub;
     private String linkedIn;
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FinalProject> finalProject = new ArrayList<>();
@@ -80,13 +79,6 @@ public class Student {
         this.uid = uid;
     }
 
-    public String getGitHub() {
-        return gitHub;
-    }
-
-    public void setGitHub(String gitHub) {
-        this.gitHub = gitHub;
-    }
 
     public String getLinkedIn() {
         return linkedIn;
