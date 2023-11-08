@@ -5,33 +5,54 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Student {
 
-    public Student() {
-
-    }
+  
 
 
     @Override
     public String toString() {
-        return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", githubHandle="
-                + githubHandle + ", ide=" + ide + ", uid=" + uid + "]";
+        return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", gitHub="
+                + gitHub + ", ide=" + ide + ", uid=" + uid + "]";
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private Integer assignmentNum;
-    private String githubHandle;
+    private String gitHub;
     private String ide;
     private String uid;
+    private String youtubeChannel;
     private String linkedIn;
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    
     private List<FinalProject> finalProject = new ArrayList<>();
+    
+    private List<Resume> resumes = new ArrayList<>();
 
-    public long getId() {
+    public String getGitHub() {
+		return gitHub;
+	}
+
+
+	public void setGitHub(String gitHub) {
+		this.gitHub = gitHub;
+	}
+
+//	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+	public List<Resume> getResumes() {
+		return resumes;
+	}
+
+
+	public void setResumes(List<Resume> resumes) {
+		this.resumes = resumes;
+	}
+
+
+	public long getId() {
         return id;
     }
 
@@ -55,13 +76,6 @@ public class Student {
         this.assignmentNum = assignmentNum;
     }
 
-    public String getGithubHandle() {
-        return githubHandle;
-    }
-
-    public void setGithubHandle(String githubHandle) {
-        this.githubHandle = githubHandle;
-    }
 
     public String getIde() {
         return ide;
@@ -79,6 +93,14 @@ public class Student {
         this.uid = uid;
     }
 
+    public String getYoutubeChannel() {
+		return youtubeChannel;
+	}
+
+
+	public void setYoutubeChannel(String youtubeChannel) {
+		this.youtubeChannel = youtubeChannel;
+	}
 
     public String getLinkedIn() {
         return linkedIn;
@@ -87,7 +109,7 @@ public class Student {
     public void setLinkedIn(String linkedIn) {
         this.linkedIn = linkedIn;
     }
-
+//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<FinalProject> getFinalProject() {
         return finalProject;
     }

@@ -7,14 +7,14 @@ import java.util.List;
 
 @Entity
 public class FinalProject {
-
-    private long id;
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String description;
     private Student student;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
     public long getId() {
         return id;
     }
@@ -39,8 +39,8 @@ public class FinalProject {
         this.description = description;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "student_id")
     public Student getStudent() {
         return student;
     }
