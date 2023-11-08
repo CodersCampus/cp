@@ -29,7 +29,7 @@ _Choose the method you're most comfortable with to get SpringWise operational._
 git status
 ```
 ```shell
-git fetch
+git fetch origin
 ```
 ```shell
 git pull
