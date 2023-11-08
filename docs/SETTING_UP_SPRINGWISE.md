@@ -38,7 +38,7 @@ git pull
 
 
 
-<img style="border-radius: 10px" width="700" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Terminal.jpg">
+<img style="border-radius: 10px" width="700" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Terminal.webp">
 
 
 ## Step 2: Open SpringWise app and run it locally
