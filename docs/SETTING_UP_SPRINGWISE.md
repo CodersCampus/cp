@@ -20,7 +20,7 @@ _Choose the method you're most comfortable with to get SpringWise operational._
 5. If you see Pull, after pressing Fetch origin, then click **Pull**.
 6. Open IDE of choice
 
-<img style="border-radius: 10px" width="900" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/GitHub_Desktop_img.webp">
+<img style="border-radius: 10px" width="900" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/GitHub_Desktop.jpg">
 
 ### Terminal/Git BASH Instructions
 
@@ -29,7 +29,7 @@ _Choose the method you're most comfortable with to get SpringWise operational._
 git status
 ```
 ```
-git fetch origin
+git fetch
 ```
 ```
 git pull
@@ -38,7 +38,7 @@ git pull
 
 
 
-<img style="border-radius: 10px" width="700" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Terminal_img.webp">
+<img style="border-radius: 10px" width="700" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Terminal.jpg">
 
 
 ## Step 2: Open SpringWise app and run it locally
@@ -52,7 +52,7 @@ git pull
 3. `[SpringWise dev]` should appear to the right of your SpringWise project
 4. Navigate to [localhost:8080](http://localhost:8080/) in your browser of choice, we suggest Google Chrome, and ensure it's running successfully
 
-<img style="border-radius: 10px" width="350" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Eclipse_img.webp">
+<img style="border-radius: 10px" width="350" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Eclipse.jpg">
 
 ### IntelliJ IDEA Instructions
 
@@ -60,7 +60,7 @@ git pull
 2. Ensure that you see the **dev** branch selected
 3. Navigate to [localhost:8080](http://localhost:8080/) in your browser of choice, we suggest Google Chrome, and ensure it's running successfully
 
-<img style="border-radius: 10px" width="400" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/IntelliJ_img.webp">
+<img style="border-radius: 10px" width="400" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/IntelliJ.jpg">
 
 
 ## Issues
