@@ -1,5 +1,5 @@
 package com.coderscampus.springwise.domain;
-
+import jakarta.persistence.OneToOne;
 
 
 import java.util.ArrayList;
@@ -15,40 +15,27 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Student {
 
-  
-
-
-    @Override
-    public String toString() {
-        return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", gitHub="
-                + gitHub + ", ide=" + ide + ", uid=" + uid + "]";
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer assignmentNum;
-    private String gitHub;
+    
+    @OneToOne(mappedBy="student", cascade = CascadeType.ALL)
+    private GitHub gitHub;
     private String ide;
     private String uid;
-    private String youtubeChannel;
-    private String linkedIn;
+    
+    @OneToOne(mappedBy="student", cascade = CascadeType.ALL)
+    private YouTubeChannel youtubeChannel;
+    
+    @OneToOne(mappedBy="student", cascade = CascadeType.ALL)
+    private LinkedIn linkedIn;
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FinalProject> finalProject = new ArrayList<>();
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Resume> resumes = new ArrayList<>();
 
-    public String getGitHub() {
-		return gitHub;
-	}
-
-
-	public void setGitHub(String gitHub) {
-		this.gitHub = gitHub;
-	}
-
-	
 	public List<Resume> getResumes() {
 		return resumes;
 	}
@@ -100,28 +87,53 @@ public class Student {
         this.uid = uid;
     }
 
-    public String getYoutubeChannel() {
+
+    public YouTubeChannel getYoutubeChannel() {
 		return youtubeChannel;
 	}
 
 
-	public void setYoutubeChannel(String youtubeChannel) {
+	public void setYoutubeChannel(YouTubeChannel youtubeChannel) {
 		this.youtubeChannel = youtubeChannel;
 	}
 
-    public String getLinkedIn() {
-        return linkedIn;
-    }
 
-    public void setLinkedIn(String linkedIn) {
-        this.linkedIn = linkedIn;
-    }
-    
-    public List<FinalProject> getFinalProject() {
+	public GitHub getGitHub() {
+		return gitHub;
+	}
+
+
+	public void setGitHub(GitHub gitHub) {
+		this.gitHub = gitHub;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+    public LinkedIn getLinkedIn() {
+		return linkedIn;
+	}
+
+
+	public void setLinkedIn(LinkedIn linkedIn) {
+		this.linkedIn = linkedIn;
+	}
+
+
+	public List<FinalProject> getFinalProject() {
         return finalProject;
     }
 
     public void setFinalProject(List<FinalProject> finalProject) {
         this.finalProject = finalProject;
     }
+    @Override
+    public String toString() {
+        return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", gitHub="
+                + gitHub + ", ide=" + ide + ", uid=" + uid + "]";
+    }
+
 }
