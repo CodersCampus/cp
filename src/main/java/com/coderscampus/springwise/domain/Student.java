@@ -1,11 +1,18 @@
 package com.coderscampus.springwise.domain;
 
-import jakarta.persistence.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+@Entity
 public class Student {
 
   
@@ -17,8 +24,8 @@ public class Student {
                 + gitHub + ", ide=" + ide + ", uid=" + uid + "]";
     }
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer assignmentNum;
@@ -27,9 +34,9 @@ public class Student {
     private String uid;
     private String youtubeChannel;
     private String linkedIn;
-    
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FinalProject> finalProject = new ArrayList<>();
-    
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Resume> resumes = new ArrayList<>();
 
     public String getGitHub() {
@@ -41,7 +48,7 @@ public class Student {
 		this.gitHub = gitHub;
 	}
 
-//	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+	
 	public List<Resume> getResumes() {
 		return resumes;
 	}
@@ -109,7 +116,7 @@ public class Student {
     public void setLinkedIn(String linkedIn) {
         this.linkedIn = linkedIn;
     }
-//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    
     public List<FinalProject> getFinalProject() {
         return finalProject;
     }

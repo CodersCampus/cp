@@ -15,6 +15,8 @@ public class Resume {
 	private Long id;
 	private String title;
 	private String field;
+	@ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "student_id")
 	private Student student;
 	public Long getId() {
 		return id;
@@ -23,8 +25,7 @@ public class Resume {
 	public void setId(Long id) {
 		this.id = id;
 	}
-//	@ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "student")
+
 	public Student getStudent() {
 		return student;
 	}
