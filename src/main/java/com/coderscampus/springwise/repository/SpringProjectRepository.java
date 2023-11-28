@@ -1,8 +1,9 @@
 package com.coderscampus.springwise.repository;
 
-import com.coderscampus.springwise.domain.SpringProject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.coderscampus.springwise.domain.SpringProject;
 
 @Repository
 public interface SpringProjectRepository extends JpaRepository<SpringProject,Long> {
