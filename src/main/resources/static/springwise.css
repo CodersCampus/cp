@@ -20,17 +20,19 @@
 	margin: 0px;
 	padding: 0px;
 }
-.button-container{
-	top: -20px;
+.button-container {
 	position: relative;
+	top: -23px;
 }
-.slider-button{
-	display: inline-block;
-	height: 10px;
-	width: 10px;
-	border-radius: 5px;
-	background-color: white;
+.slider-button {
+	background-color: #a6a6a6;
+	border-radius: 50%;
 	cursor: pointer;
+	display: inline-block;
+	height: 12px;
+	margin: 0 2px;
+	width: 12px;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.45);
 }
 #slider-image-1:target ~ .image-container{
 	left: 0px;

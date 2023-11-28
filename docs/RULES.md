@@ -7,4 +7,11 @@
 - all branches named issue714 where '714' is id of issue.
 - Objects follow standard POJO domain pattern
 - Services follow standard stateless service pattern
-- configuraton package as legitimate state
+- configuration package as legitimate state
+
+- In the future maybe squash commits
+- Unit Testing coverage
+- Remove Sys-out's, console.log's, and comments
+- Changesets 
+- have issues been closed that are completed
+- Document what we are doing
