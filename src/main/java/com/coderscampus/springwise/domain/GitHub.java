@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class GitHub {
-public GitHub() {
+	public GitHub() {
 		
 	}
 	
