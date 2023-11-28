@@ -1,5 +1,6 @@
 package com.coderscampus.springwise.domain;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +13,7 @@ public class Student {
 		
 	}
 	
-	public Student(long id, String name, Integer assignmentNum, String githubHandle, String ide, String uid) {
+	public Student(long id, String name, Integer assignmentNum, GitHub githubHandle, String ide, String uid) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,9 +32,11 @@ public class Student {
 	private long id;
 	private String name;
 	private Integer assignmentNum;
-	private String githubHandle;
+	
+	private GitHub githubHandle;
 	private String ide;
 	private String uid;
+	
 	
 	
 	
@@ -61,10 +64,10 @@ public class Student {
 	public void setAssignmentNum(Integer assignmentNum) {
 		this.assignmentNum = assignmentNum;
 	}
-	public String getGithubHandle() {
+	public GitHub getGithubHandle() {
 		return githubHandle;
 	}
-	public void setGithubHandle(String githubHandle) {
+	public void setGithubHandle(GitHub githubHandle) {
 		this.githubHandle = githubHandle;
 	}
 	public String getIde() {
