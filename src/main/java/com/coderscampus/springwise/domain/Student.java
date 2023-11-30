@@ -1,14 +1,6 @@
 package com.coderscampus.springwise.domain;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Student {
@@ -17,20 +9,6 @@ public class Student {
 		
 	}
 	
-	public Student(long id, String name, Integer assignmentNum, GitHub githubHandle, String ide, String uid) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.assignmentNum = assignmentNum;
-		this.githubHandle = githubHandle;
-		this.ide = ide;
-		this.uid = uid;
-	}
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", githubHandle="
-				+ githubHandle + ", ide=" + ide + ", uid=" + uid + "]";
-	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -38,11 +16,11 @@ public class Student {
 	private Integer assignmentNum;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private GitHub githubHandle;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private LinkedIn linkedIn;
 	private String ide;
 	private String uid;
-	
-	
-	
+
 	
 	public String getUid() {
 		return uid;
@@ -56,6 +34,10 @@ public class Student {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+
+
+
 	public String getName() {
 		return name;
 	}
@@ -80,9 +62,24 @@ public class Student {
 	public void setIde(String ide) {
 		this.ide = ide;
 	}
-	
-	
-	
-	
-	
+	public LinkedIn getLinkedIn() {
+		return linkedIn;
+	}
+
+	public void setLinkedIn(LinkedIn linkedIn) {
+		this.linkedIn = linkedIn;
+	}
+
+	@Override
+	public String toString() {
+		return "Student{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", assignmentNum=" + assignmentNum +
+				", githubHandle=" + githubHandle +
+				", linkedIn=" + linkedIn +
+				", ide='" + ide + '\'' +
+				", uid='" + uid + '\'' +
+				'}';
+	}
 }

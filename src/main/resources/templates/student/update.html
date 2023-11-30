@@ -39,7 +39,9 @@
             <label class="form-label">Assignment Number: </label>
             <input class="form-control" type="text" th:field="${student.assignmentNum}"/>
             <label class="form-label">Github Handle: </label>
-            <input class="form-control" type="text" th:field="${student.githubHandle}"/>
+            <input class="form-control" type="text" th:field="${student.githubHandle.handle}"/>
+            <label class="form-label">LinkedIn: </label>
+            <input class="form-control" type="text" th:field="${student.linkedIn.url}"/>
             <label class="form-label">IDE: </label>
             <input class="form-control" type="text" th:field="${student.ide}"/>
             <input  onfocus="assignUid()" class="form-control btn btn-primary mt-3" type="submit" value="Update" />

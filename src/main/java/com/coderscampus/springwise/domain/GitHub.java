@@ -11,7 +11,6 @@ public class GitHub {
 		
 	}
 	
-	
 	private String handle;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
