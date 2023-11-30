@@ -38,7 +38,7 @@ public class StudentController {
 
 	@PostMapping("/create")
 	public String create(Student student) {
-		
+		System.out.println(student);
 		studentService.save(student);
 	
 		return "redirect:/student/";
