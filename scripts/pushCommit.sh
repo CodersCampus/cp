@@ -14,13 +14,13 @@ is_dev_branch() {
 
 # Check the length of 'comment' and echo accordingly
 if [ ${#comment} -gt 2 ]; then
-    echo "Pushing commit with comment: $comment"
-    git add .
-    git commit -m "$comment"
     if is_dev_branch; then
-        echo "The 'dev' branch is currently checked out. Aborting git push."
+        echo "The 'dev' branch is currently checked out. Aborting operation, please do not commit and push up to the dev branch!"
         exit 1
     else
+        echo "Pushing commit with comment: $comment"
+        git add .
+        git commit -m "$comment"
         echo "The current branch is not 'dev'. Proceeding with git push."
         git push
     fi
