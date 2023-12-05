@@ -28,3 +28,8 @@
 [Descript](https://www.descript.com/) - Descript is the simple, powerful, and fun way to edit.
 
 ---
+## LinkedIn
+
+[How to Write a Killer LinkedIn Recommendation in Under 2 Min](https://www.linkedin.com/pulse/how-write-killer-linkedin-recommendation-under-2-min-ryan-delon/) - This article will save you a lot of time and grief on professionally writing out a recommendation for your Coders Campus peers.
+
+---
