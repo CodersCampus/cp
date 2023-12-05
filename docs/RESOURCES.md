@@ -44,7 +44,7 @@
 
 ## Current Thymeleaf example in SpringWise
 
-Footer.html
+footer.html
 ```html
 <footer class="mt-5">
   <div class="container text-center">
