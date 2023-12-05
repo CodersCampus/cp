@@ -30,6 +30,6 @@
 ---
 ## LinkedIn
 
-[How to Write a Killer LinkedIn Recommendation in Under 2 Min](https://www.linkedin.com/pulse/how-write-killer-linkedin-recommendation-under-2-min-ryan-delon/) - This article will save you a lot of time and grief on professionally writing out a recommendation for your Coders Campus peers.
+[How to Write a Killer LinkedIn Recommendation in Under 2 Min](https://www.linkedin.com/pulse/how-write-killer-linkedin-recommendation-under-2-min-ryan-delon/) - This article will help you save time and make the process of writing a professional recommendation for your Coders Campus peers much smoother.
 
 ---
