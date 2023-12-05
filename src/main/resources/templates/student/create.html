@@ -61,6 +61,14 @@
 						<label class="form-label">YouTube: </label><input class="form-control" type="text"
 							th:field="${student.youtube.profile}" />
 					</div>
+					<div class="mb-3">
+						<label class="form-label">Final Project: </label><input class="form-control" type="text"
+																		  th:field="${student.finalProject.title}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Resume: </label><input class="form-control" type="text"
+																		  th:field="${student.resume.resumeFile}" />
+					</div>
 					<div>
 						<input type="hidden" id="new-uid" th:field="${student.uid}" />
 					</div>

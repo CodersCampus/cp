@@ -5,10 +5,6 @@ import jakarta.persistence.*;
 @Entity
 public class Student {
 
-	public Student() {
-		
-	}
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -22,8 +18,25 @@ public class Student {
 	private String uid;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private YouTube youtube;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private FinalProject finalProject;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Resume resume;
 
-	
+	public Student() {}
+	public Student(long id, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, String uid, YouTube youtube, FinalProject finalProject, Resume resume) {
+		this.id = id;
+		this.name = name;
+		this.assignmentNum = assignmentNum;
+		this.githubHandle = githubHandle;
+		this.linkedIn = linkedIn;
+		this.ide = ide;
+		this.uid = uid;
+		this.youtube = youtube;
+		this.finalProject = finalProject;
+		this.resume = resume;
+	}
+
 	public YouTube getYoutube() {
 		return youtube;
 	}
@@ -42,10 +55,6 @@ public class Student {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
-
-
 	public String getName() {
 		return name;
 	}
@@ -73,10 +82,13 @@ public class Student {
 	public LinkedIn getLinkedIn() {
 		return linkedIn;
 	}
-
 	public void setLinkedIn(LinkedIn linkedIn) {
 		this.linkedIn = linkedIn;
 	}
+	public FinalProject getFinalProject() { return finalProject; }
+	public void setFinalProject(FinalProject finalProject) { this.finalProject = finalProject; }
+	public Resume getResume() { return resume; }
+	public void setResume(Resume resume) { this.resume = resume; }
 
 	@Override
 	public String toString() {

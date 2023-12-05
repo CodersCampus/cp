@@ -46,6 +46,10 @@
             <input class="form-control" type="text" th:field="${student.ide}"/>
             <label class="form-label">YouTube: </label>
             <input class="form-control" type="text" th:field="${student.youtube.profile}"/>
+            <label class="form-label">Final Project: </label>
+            <input class="form-control" type="text" th:field="${student.finalProject.title}"/>
+            <label class="form-label">Resume: </label>
+            <input class="form-control" type="text" th:field="${student.resume.resumeFile}"/>
             <input  onfocus="assignUid()" class="form-control btn btn-primary mt-3" type="submit" value="Update" />
 
         </form>
