@@ -20,8 +20,16 @@ public class Student {
 	private LinkedIn linkedIn;
 	private String ide;
 	private String uid;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private YouTube youtube;
 
 	
+	public YouTube getYoutube() {
+		return youtube;
+	}
+	public void setYoutube(YouTube youtube) {
+		this.youtube = youtube;
+	}
 	public String getUid() {
 		return uid;
 	}
@@ -80,6 +88,7 @@ public class Student {
 				", linkedIn=" + linkedIn +
 				", ide='" + ide + '\'' +
 				", uid='" + uid + '\'' +
+				", youtube" + youtube + '\'' +
 				'}';
 	}
 }
