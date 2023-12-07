@@ -41,6 +41,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>provided</scope>
         </dependency>
+
+<!-- DAVE NAUGLER added this dependency to allow server-auto-reload-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- Dave Naugler added this dependency to allow server-auto-reload-->
     </dependencies>
     <build>
         <plugins>
