@@ -31,16 +31,16 @@ public class StudentController {
 	@GetMapping("/create")
 	public String getCreate (ModelMap model) {
 		Student student = new Student();
-	
+
 		model.put("student", student);
 		return "student/create";
 	}
 
 	@PostMapping("/create")
 	public String create(Student student) {
-		
+		System.out.println(student);
 		studentService.save(student);
-	
+
 		return "redirect:/student/";
 	}
 
@@ -55,10 +55,8 @@ public class StudentController {
 	
 	@PostMapping("/update")
 	public String update(Student student) {
-		
-		
-		
-		
+		System.out.println(student.toString());
+
 		studentService.save(student);
 		return "redirect:/student/";
 	}

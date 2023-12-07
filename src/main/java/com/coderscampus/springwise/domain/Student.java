@@ -1,42 +1,48 @@
 package com.coderscampus.springwise.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Student {
 
-	public Student() {
-		
-	}
-	
-	public Student(long id, String name, Integer assignmentNum, String githubHandle, String ide, String uid) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.assignmentNum = assignmentNum;
-		this.githubHandle = githubHandle;
-		this.ide = ide;
-		this.uid = uid;
-	}
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", githubHandle="
-				+ githubHandle + ", ide=" + ide + ", uid=" + uid + "]";
-	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	private Integer assignmentNum;
-	private String githubHandle;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private GitHub githubHandle;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private LinkedIn linkedIn;
 	private String ide;
 	private String uid;
-	
-	
-	
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private YouTube youtube;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private FinalProject finalProject;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Resume resume;
+
+	public Student() {}
+	public Student(long id, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, String uid, YouTube youtube, FinalProject finalProject, Resume resume) {
+		this.id = id;
+		this.name = name;
+		this.assignmentNum = assignmentNum;
+		this.githubHandle = githubHandle;
+		this.linkedIn = linkedIn;
+		this.ide = ide;
+		this.uid = uid;
+		this.youtube = youtube;
+		this.finalProject = finalProject;
+		this.resume = resume;
+	}
+
+	public YouTube getYoutube() {
+		return youtube;
+	}
+	public void setYoutube(YouTube youtube) {
+		this.youtube = youtube;
+	}
 	public String getUid() {
 		return uid;
 	}
@@ -61,10 +67,10 @@ public class Student {
 	public void setAssignmentNum(Integer assignmentNum) {
 		this.assignmentNum = assignmentNum;
 	}
-	public String getGithubHandle() {
+	public GitHub getGithubHandle() {
 		return githubHandle;
 	}
-	public void setGithubHandle(String githubHandle) {
+	public void setGithubHandle(GitHub githubHandle) {
 		this.githubHandle = githubHandle;
 	}
 	public String getIde() {
@@ -73,9 +79,28 @@ public class Student {
 	public void setIde(String ide) {
 		this.ide = ide;
 	}
-	
-	
-	
-	
-	
+	public LinkedIn getLinkedIn() {
+		return linkedIn;
+	}
+	public void setLinkedIn(LinkedIn linkedIn) {
+		this.linkedIn = linkedIn;
+	}
+	public FinalProject getFinalProject() { return finalProject; }
+	public void setFinalProject(FinalProject finalProject) { this.finalProject = finalProject; }
+	public Resume getResume() { return resume; }
+	public void setResume(Resume resume) { this.resume = resume; }
+
+	@Override
+	public String toString() {
+		return "Student{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", assignmentNum=" + assignmentNum +
+				", githubHandle=" + githubHandle +
+				", linkedIn=" + linkedIn +
+				", ide='" + ide + '\'' +
+				", uid='" + uid + '\'' +
+				", youtube" + youtube + '\'' +
+				'}';
+	}
 }
