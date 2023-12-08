@@ -73,6 +73,10 @@
                     <label class="form-label">Networking: </label><input class="form-control" type="text"
                                                                          th:field="${student.networking.meetups}"/>
                 </div>
+					<div class="mb-3">
+						<label class="form-label">Website: </label><input class="form-control" type="text"
+																		  th:field="${student.website.url}" />
+					</div>
                 <div>
                     <input type="hidden" id="new-uid" th:field="${student.uid}"/>
                 </div>
