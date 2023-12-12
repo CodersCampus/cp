@@ -29,7 +29,7 @@
         </svg>
 
     </button>
-    <a class="navbar-brand" href="/">All Projects</a>
+    <a class="navbar-brand" href="/">Coders Packaging</a>
     <button class="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false"
@@ -54,6 +54,7 @@
 
 <div class="grey-back ga-content5-main">
     <main class="markdown-body">
+        <h1>Update Dog</h1>
         <form method="post" action="/dog/update" class="mb-3">
             <input class="form-control" type="hidden" th:field="${dog.id}"/>
             <label class="form-label">Name: </label>
@@ -73,7 +74,7 @@
 
 <!--<div class="grey-back ga-content5-r"></div>-->
 <div class="ga-foot-main footerback">
-    <div th:replace="~{fragments/footer2 :: footer}"></div>
+    <div th:replace="~{fragments/footerNewUI :: footer}"></div>
 </div>
 <!--<div class="ga-foot-r footer-back"></div>-->
 
