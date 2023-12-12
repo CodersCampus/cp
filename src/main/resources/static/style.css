@@ -1,4 +1,27 @@
-html,body{
-	background-image: linear-gradient(to right top, #03b703, #00b693, #00aae8, #0090fa, #996ccb);
-	 height: 100%;
+:root {
+	--primary-color: yellow;
+	--primary-text-color: red;
+	--text-color: ;
+	--primary-color-lighter: ;
+	--primary-color-darker: ;
+
+	--contrast-color-light: ;
+
+	--contrast-color-dark: ;
+
 }
+
+
+/*ORIGINAL BACKGROUND*/
+/*html,body{*/
+/*	background-image: linear-gradient(to right top, #03b703, #00b693, #00aae8, #0090fa, #996ccb);*/
+/*	 height: 100%;*/
+/*}*/
+
+html, body {
+	background-image: linear-gradient(to bottom right, #c8d9ed, #c8d9ed);
+	height: 100%;
+}
+
+
+

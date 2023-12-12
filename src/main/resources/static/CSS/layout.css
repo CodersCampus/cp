@@ -424,14 +424,21 @@ main > * {
 /** FOOTER ****************************************************************************************/
 #main-footer {
     margin-top: 50px;
-    border-top: 1px solid #eaeaea;
-    background-color: var(--footer-background, rgba(0, 0, 0, 0.1));
-    color: var(--text-color);
+    /*border-top: 1px solid #eaeaea;*/
+    /*background-color: var(--footer-background, rgba(0, 0, 0, 0.1));*/
+    /*color: var(--text-color);*/
+
     padding: 40px 0;
+    /******** WANT TO REMOVE BELOW ********/
     flex-grow: 1;
     display: flex;
     flex-flow: column;
     justify-content: center;
+    /******** WANT TO REMOVE ABOVE ********/
+    grid-template-columns: 1fr;
+    place-items: center center;
+    /******** FOR REFERENCE ********/
+    /*background: red;*/
 }
 
 #footer-menu .content-area {
@@ -527,7 +534,6 @@ body[layout^='layout-home'] .page-title {
     color: var(--primary-color);
     font-size: 32px;
 }
-
 body[layout^='layout-home'] .teasers {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
