@@ -1,0 +1,35 @@
+/*USING*/
+
+#main-header.header-grid-area {
+    background-color: lightgrey;
+}
+
+.sidebar-grid-area {
+    background-color: lightblue;
+}
+
+.ga-foot-main {
+    background-color: lightcoral;
+}
+
+.ga-content5-main {
+    background-color: whitesmoke;
+}
+
+/*NOT USING YET*/
+
+/*.ga-content-main {*/
+/*    background-color: blue;*/
+/*}*/
+/*.ga-content2-main {*/
+/*    background-color: red;*/
+/*}*/
+
+/*.ga-content3-main {*/
+/*    background-color: yellow;*/
+/*}*/
+
+/*.ga-content4-main {*/
+/*    background-color: purple;*/
+/*}*/
+

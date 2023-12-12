@@ -17,7 +17,7 @@
 <div class="container-sm mx-auto">
     <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">All Projects</a>
+            <a class="navbar-brand" href="/">Coders Packaging</a>
             <button class="navbar-toggler" type="button"
                     data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false"
@@ -37,7 +37,7 @@
         </div>
     </nav>
 
-    <h1>Coders Packaging</h1>
+    <h1>Practice</h1>
     <div class="slide-container">
         <span id="slider-image-1"></span> <span id="slider-image-2"></span> <span
             id="slider-image-3"></span>
@@ -53,12 +53,13 @@
                 href="#slider-image-3" class="slider-button"></a>
         </div>
     </div>
-    <footer class="mt-5">
-        <div class="container text-center">
-            <p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-muted credit">Copyright &copy; 2023 Coders
-                Campus</p>
-        </div>
-    </footer>
+    <div class="ga-foot-main footerback">
+        <footer id="main-footer">
+            <div id="footer-menu">
+                <div th:replace="~{fragments/footer :: footer}"></div>
+            </div>
+        </footer>
+    </div>
 </div>
 </body>
 </html>

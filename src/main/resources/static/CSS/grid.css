@@ -18,6 +18,8 @@ body[layout="layout-home"] {
     overflow-x: hidden;
 }
 
+
+
 body[layout='layout-sidebar'],
 body[layout='layout-index'],
 body[layout='layout-blog-details'],
