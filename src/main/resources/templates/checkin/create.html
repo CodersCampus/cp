@@ -40,8 +40,8 @@
 					type="text" th:field="${checkin.date}" />
 			</div>
 			<div class="mb-3">
-				<label class="form-label">Blockers: </label><input class="form-control"
-					type="text" th:field="${checkin.blockers}" />
+				<label class="form-label">Blockers: </label><input 
+					type="checkbox" th:checked="${checkin.blockers}" />
 			</div>
 			<div class="mb-3">
 				<label class="form-label">Assignment: </label><input class="form-control"
