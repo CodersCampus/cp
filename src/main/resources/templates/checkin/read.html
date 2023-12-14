@@ -37,19 +37,21 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">Name:</th>
-					<th scope="col">Species:</th>
-					<th scope="col">Age:</th>
-					<th scope="col">View:</th>
+					<th scope="col">Date:</th>
+					<th scope="col">Blockers:</th>
+					<th scope="col">Assignment:</th>
+					<th scope="col">SpringWise:</th>
+					<th scope="col">Available:</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="checkin: ${checkins}">
 
-					<td><span
-							th:text="${checkin.name}"></span></td>
-					<td><span th:text="${checkin.species}"></span></td>
-					<td><span th:text="${checkin.age}"></span></td>
+					<td><span th:text="${checkin.date}"></span></td>
+					<td><span th:text="${checkin.blockers}"></span></td>
+					<td><span th:text="${checkin.assignment}"></span></td>
+					<td><span th:text="${checkin.springWise}"></span></td>
+					<td><span th:text="${checkin.available}"></span></td>
 					<td><a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
 					<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
   <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>

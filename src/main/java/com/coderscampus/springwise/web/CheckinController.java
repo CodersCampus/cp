@@ -1,16 +1,18 @@
 package com.coderscampus.springwise.web;
 
-import com.coderscampus.springwise.domain.Checkin;
-import com.coderscampus.springwise.service.CheckinService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import com.coderscampus.springwise.domain.Checkin;
+import com.coderscampus.springwise.service.CheckinService;
 
 @Controller
 @RequestMapping("/checkin")
@@ -34,7 +36,8 @@ public class CheckinController {
 	}
 
 	@PostMapping("/create")
-	public String create(Checkin checkin) {
+	public String create(@ModelAttribute Checkin checkin) {
+		System.out.println("in/create");
 		checkinService.save(checkin);
 		return "redirect:/checkin/";
 	}

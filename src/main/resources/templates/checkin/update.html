@@ -35,12 +35,16 @@
 <div>
 	<form method="post" action="/checkin/update" class="mb-3">
 		<input class="form-control" type="hidden" th:field="${checkin.id}" />
-		<label class="form-label">Name: </label> 
-		<input class="form-control" type="text" th:field="${checkin.name}" />
-		<label class="form-label">Species: </label> 
-		<input class="form-control" type="text" th:field="${checkin.species}" />
-		<label class="form-label">Age: </label> 
-		<input class="form-control" type="text" th:field="${checkin.age}" />
+		<label class="form-label">Date: </label> 
+		<input class="form-control" type="text" th:field="${checkin.date}" />
+		<label class="form-label">Blockers: </label> 
+		<input class="form-control" type="text" th:field="${checkin.blockers}" />
+		<label class="form-label">Assignment: </label> 
+		<input class="form-control" type="text" th:field="${checkin.assignment}" />
+		<label class="form-label">SpringWise: </label> 
+		<input class="form-control" type="text" th:field="${checkin.springWise}" />
+		<label class="form-label">Available: </label> 
+		<input class="form-control" type="text" th:field="${checkin.available}" />
 		<input class="form-control btn btn-primary mt-3" type="submit" value="Update" />
 	</form>
 	<form method="post" action="/checkin/delete" class="mb-3">
