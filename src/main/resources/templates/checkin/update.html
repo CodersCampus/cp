@@ -36,13 +36,13 @@
 	<form method="post" action="/checkin/update" class="mb-3"> 
 		<input class="form-control" type="hidden" th:field="${checkin.id}" />
 		<label class="form-label">Date: </label> 
-		<input class="form-control" type="text" th:field="${checkin.date}" />
-		<br>
-		<label class="form-label">Blockers: </label> 
-		<input type="checkbox" th:field="${checkin.blockers}" />
+		<input class="form-control" type="text" th:field="${checkin.date}" disabled />
 		<br>
 		<label class="form-label">Assignment: </label> 
 		<input class="form-control" type="number" th:field="${checkin.assignment}" />
+		<br>
+		<label class="form-label">Blockers: </label>
+		<input type="checkbox" th:field="${checkin.blockers}" />
 		<br>
 		<label class="form-label">SpringWise: </label> 
 		<input type="checkbox" th:field="${checkin.springWise}" />

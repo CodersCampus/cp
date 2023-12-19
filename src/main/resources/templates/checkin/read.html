@@ -38,8 +38,8 @@
 			<thead>
 				<tr>
 					<th scope="col">Date:</th>
-					<th scope="col">Blockers:</th>
 					<th scope="col">Assignment:</th>
+					<th scope="col">Blockers:</th>
 					<th scope="col">SpringWise:</th>
 					<th scope="col">Available:</th>
 				</tr>
@@ -48,8 +48,8 @@
 				<tr th:each="checkin: ${checkins}">
 
 					<td><span th:text="${checkin.date}"></span></td>
-					<td><span th:text="${checkin.blockers}"></span></td>
 					<td><span th:text="${checkin.assignment}"></span></td>
+					<td><span th:text="${checkin.blockers}"></span></td>
 					<td><span th:text="${checkin.springWise}"></span></td>
 					<td><span th:text="${checkin.available}"></span></td>
 					<td><a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
