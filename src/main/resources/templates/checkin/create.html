@@ -36,21 +36,23 @@
 			<h1>All Checkins</h1>
 		
 			<div class="mb-3">
-				<label class="form-label">Date: </label><input class="form-control"
+				<input class="form-control" hidden
 					type="text" th:field="${checkin.date}" />
 			</div>
-			<div class="mb-3">
-				<label class="form-label">Blockers: </label><input 
-					type="checkbox" th:field="${checkin.blockers}" />
-			</div>
+
 			<div class="mb-3">
 				<label class="form-label">Assignment: </label><input class="form-control"
 					type="number" th:field="${checkin.assignment}" />
 			</div>
 			<div class="mb-3">
+				<label class="form-label">Blockers: </label><input
+					type="checkbox" th:field="${checkin.blockers}" />
+			</div>
+			<div class="mb-3">
 				<label class="form-label">SpringWise: </label><input 
 					type="checkbox" th:field="${checkin.springWise}" />
 			</div>
+
 			<div class="mb-3">
 				<label class="form-label">Available: </label><input 
 					type="checkbox" th:field="${checkin.available}" />
