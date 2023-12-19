@@ -41,19 +41,19 @@
 			</div>
 			<div class="mb-3">
 				<label class="form-label">Blockers: </label><input 
-					type="checkbox" th:checked="${checkin.blockers}" />
+					type="checkbox" th:field="${checkin.blockers}" />
 			</div>
 			<div class="mb-3">
 				<label class="form-label">Assignment: </label><input class="form-control"
-					type="text" th:field="${checkin.assignment}" />
+					type="number" th:field="${checkin.assignment}" />
 			</div>
 			<div class="mb-3">
-				<label class="form-label">SpringWise: </label><input class="form-control"
-					type="text" th:field="${checkin.springWise}" />
+				<label class="form-label">SpringWise: </label><input 
+					type="checkbox" th:field="${checkin.springWise}" />
 			</div>
 			<div class="mb-3">
-				<label class="form-label">Available: </label><input class="form-control"
-					type="text" th:field="${checkin.available}" />
+				<label class="form-label">Available: </label><input 
+					type="checkbox" th:field="${checkin.available}" />
 			</div>
 			<div class="mb-3">
 				<input class="form-control btn btn-primary" type="submit" value="Create"  />

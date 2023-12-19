@@ -33,18 +33,23 @@
 			</div>
 		</nav>
 <div>
-	<form method="post" action="/checkin/update" class="mb-3">
+	<form method="post" action="/checkin/update" class="mb-3"> 
 		<input class="form-control" type="hidden" th:field="${checkin.id}" />
 		<label class="form-label">Date: </label> 
 		<input class="form-control" type="text" th:field="${checkin.date}" />
+		<br>
 		<label class="form-label">Blockers: </label> 
-		<input class="form-control" type="text" th:field="${checkin.blockers}" />
+		<input type="checkbox" th:field="${checkin.blockers}" />
+		<br>
 		<label class="form-label">Assignment: </label> 
-		<input class="form-control" type="text" th:field="${checkin.assignment}" />
+		<input class="form-control" type="number" th:field="${checkin.assignment}" />
+		<br>
 		<label class="form-label">SpringWise: </label> 
-		<input class="form-control" type="text" th:field="${checkin.springWise}" />
+		<input type="checkbox" th:field="${checkin.springWise}" />
+		<br>
 		<label class="form-label">Available: </label> 
-		<input class="form-control" type="text" th:field="${checkin.available}" />
+		<input type="checkbox" th:field="${checkin.available}" />
+		<br>
 		<input class="form-control btn btn-primary mt-3" type="submit" value="Update" />
 	</form>
 	<form method="post" action="/checkin/delete" class="mb-3">
