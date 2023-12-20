@@ -23,8 +23,27 @@ public class Student {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Resume resume;
 
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Networking networking;
+
+	public Networking getNetworking() {
+		return networking;
+	}
+
+	public void setNetworking(Networking networking) {
+		this.networking = networking;
+	}
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Website website;
+	
+
 	public Student() {}
-	public Student(long id, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, String uid, YouTube youtube, FinalProject finalProject, Resume resume) {
+
+
+
+	public Student(long id, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide,
+			String uid, YouTube youtube, FinalProject finalProject, Resume resume, Networking networking, Website website) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.assignmentNum = assignmentNum;
@@ -35,8 +54,17 @@ public class Student {
 		this.youtube = youtube;
 		this.finalProject = finalProject;
 		this.resume = resume;
+		this.networking = networking;
+		this.website = website;
 	}
 
+
+	public Website getWebsite() {
+		return website;
+	}
+	public void setWebsite(Website website) {
+		this.website = website;
+	}
 	public YouTube getYoutube() {
 		return youtube;
 	}
@@ -100,7 +128,10 @@ public class Student {
 				", linkedIn=" + linkedIn +
 				", ide='" + ide + '\'' +
 				", uid='" + uid + '\'' +
-				", youtube" + youtube + '\'' +
+				", youtube=" + youtube +
+				", finalProject=" + finalProject +
+				", resume=" + resume +
+				", networking=" + networking +
 				'}';
 	}
 }
