@@ -127,8 +127,6 @@ body[layout^='layout-home'] #main-header a:hover {
 }
 
 #main-header .logo-link span {
-    /*DN Updated from 19px to 30px*/
-    /*DID NOT WORK*/
     font-size: 19px;
     font-weight: bold;
     margin-left: 8px;

@@ -18,18 +18,33 @@
 /*	 height: 100%;*/
 /*}*/
 
+/*FIRST*/
 /*html, body {*/
 /*	background-image: linear-gradient(to bottom right, #c8d9ed, #c8d9ed);*/
 /*	height: 100%;*/
 /*}*/
 
+
+/*SECOND*/
 html, body {
-	background-image: linear-gradient(to bottom right, #EEEFF1, #EEEFF1);
+	background-image: linear-gradient(to bottom right, #D2E2F9, #D2E2F9);
 	height: 100%;
 }
 
+/*THIRD*/
+/*html, body {*/
+/*	background-image: linear-gradient(to bottom right, #DDE8FA, #DDE8FA);*/
+/*	height: 100%;*/
+/*}*/
+
+/*FOURTH*/
+/*html, body {*/
+/*	background-image: linear-gradient(to bottom right, #EEEFF1, #EEEFF1);*/
+/*	height: 100%;*/
+/*}*/
+
 .header-home {
-	font-size: 25px;
+	font-size: 22px;
 	font-family: "DM Sans", "Arial", "Helvetica", "sans-serif";
 }
 
