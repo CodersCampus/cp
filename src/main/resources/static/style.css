@@ -1,6 +1,6 @@
 :root {
-	--primary-color: yellow;
-	--primary-text-color: red;
+	--primary-color: #2654b7;
+	--primary-text-color: #243f93;
 	--text-color: ;
 	--primary-color-lighter: ;
 	--primary-color-darker: ;
@@ -18,10 +18,21 @@
 /*	 height: 100%;*/
 /*}*/
 
+/*html, body {*/
+/*	background-image: linear-gradient(to bottom right, #c8d9ed, #c8d9ed);*/
+/*	height: 100%;*/
+/*}*/
+
 html, body {
-	background-image: linear-gradient(to bottom right, #c8d9ed, #c8d9ed);
+	background-image: linear-gradient(to bottom right, #EEEFF1, #EEEFF1);
 	height: 100%;
 }
+
+.header-home {
+	font-size: 25px;
+	font-family: "DM Sans", "Arial", "Helvetica", "sans-serif";
+}
+
 
 
 
