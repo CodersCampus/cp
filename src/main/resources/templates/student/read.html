@@ -18,27 +18,14 @@
 </head>
 
 <body layout="layout-index">
+<header th:replace="~{fragments/header :: header(${activePage})}"></header>
+
+
 
 <!--<div class="ga-head-l"></div>-->
 <!--<fbauth-element>-->
 
-<header id="main-header" class="header-grid-area">
-    <button id="mobile-menu-trigger" data-action="trigger-mobile-menu">
-        <span class="sr-only">Show Menu</span>
-        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
-            <path fill="currentColor"
-                  d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z">
-            </path>
-        </svg>
-    </button>
-    <a class="header-home" href="/">Coders Packaging</a>
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</header>
+<!--<header th:replace="~{fragments/data/dataHeader :: header}"></header>-->
 
 <div class="sidebar-grid-area">
     <nav class="navbar navbar-expand-lg navbar-light">
