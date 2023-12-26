@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<div th:replace="fragments/data/dataHead :: dataHead(pageTitle='Create Student')"></div>
+<div th:replace="fragments/data/dataHead :: dataHead(pageTitle='Student Update')"></div>
 <body layout="layout-index">
 <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+<!--<div class="ga-head-l"></div>-->
 
 <div class="sidebar-grid-area">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -16,28 +17,11 @@
     </nav>
 </div>
 
-<!--<fbauth-element>-->
-<!--    <nav class="navbar navbar-expand-lg navbar-light">-->
-<!--        <a class="navbar-brand" href="/">Coders Packaging</a>-->
-<!--        <button class="navbar-toggler" type="button"-->
-<!--                data-bs-toggle="collapse" data-bs-target="#navbarNav"-->
-<!--                aria-controls="navbarNav" aria-expanded="false"-->
-<!--                aria-label="Toggle navigation">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
-<!--            <ul class="navbar-nav">-->
-<!--                <li class="nav-item"><a class="nav-link active"-->
-<!--                                        aria-current="page" href="/student/">Student Home</a></li>-->
-<!--                <li class="nav-item"><a class="nav-link" href="/student/create">Create-->
-<!--                    Student</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </nav>-->
 <div class="grey-back ga-content5-main">
     <main class="markdown-body">
         <div>
             <form method="post" action="/student/update" class="mb-3">
+                <h1>Update Student</h1>
                 <input type="hidden" id="new-uid" th:field="${student.uid}"/>
                 <input class="form-control" type="hidden" th:field="${student.id}"/>
                 <label class="form-label">Name: </label>
@@ -78,8 +62,14 @@
 <!--        newUid.value = uid;-->
 <!--    }-->
 <!--</script>-->
+
+<!--<div class="grey-back ga-content5-r"></div>-->
+
 <div class="ga-foot-main footerback">
     <div th:replace="~{fragments/Footer/footerNewUI :: footer}"></div>
 </div>
+
+<!--<div class="ga-foot-r footer-back"></div>-->
 </body>
+
 </html>
