@@ -15,7 +15,7 @@ import com.coderscampus.springwise.domain.LinkedIn;
 import com.coderscampus.springwise.service.LinkedInService;
 
 @Controller
-@RequestMapping("/student/linkedIn")
+@RequestMapping("/student/linkedin")
 public class LinkedInController {
 	
 	@Autowired
@@ -24,26 +24,26 @@ public class LinkedInController {
 	@GetMapping("/")
 	public String home(ModelMap model) {
 		List<LinkedIn> linkedIns = linkedInService.findAll();
-		model.put("linkedIn", linkedIns);
-		return "linkedIn/read";
+		model.put("linkedIns", linkedIns);
+		return "linkedin/read";
 	}
-//	
-//	@GetMapping("/create")
-//	public String getCreate (ModelMap model) {
-//		LinkedIn linkedIn = new LinkedIn();
-//
-//		model.put("linkedIn", linkedIn);
-//		return "linkedIn/create";
-//	}
-//
-//	@PostMapping("/create")
-//	public String create(LinkedIn linkedIn) {
-//		System.out.println(linkedIn);
+
+	@GetMapping("/create")
+	public String getCreate (ModelMap model) {
+		LinkedIn linkedIn = new LinkedIn();
+
+		model.put("linkedIn", linkedIn);
+		return "linkedin/create";
+	}
+
+	@PostMapping("/create")
+	public String create(LinkedIn linkedIn) {
+		System.out.println(linkedIn);
 //		linkedInService.save(linkedIn);
-//
-//		return "redirect:/linkedIn/";
-//	}
-//
+
+		return "redirect:/linkedin/";
+	}
+
 //	
 //	@GetMapping("/update/{id}")
 //	public String fetch(ModelMap model, @PathVariable Long id) {

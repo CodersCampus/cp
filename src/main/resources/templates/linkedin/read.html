@@ -27,7 +27,7 @@
 							<ul class="navbar-nav">
 								<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">LinkedIn
 										Home</a></li>
-								<li class="nav-item"><a class="nav-link" href="/linkedIn/create">Create
+								<li class="nav-item"><a class="nav-link" href="/student/linkedin/create">Create
 										LinkedIn</a></li>
 
 							</ul>
@@ -37,16 +37,13 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">Name:</th>
-							<!--<th scope="col">Assignment Number:</th>
-							<th scope="col">Github Handle:</th>
-							<th scope="col">LinkedIn:</th>
-							<th scope="col">IDE:</th>
-							<th scope="col">YouTube:</th>
-							<th scope="col">Final Project:</th>
-							<th scope="col">Resume:</th>
-							<th scope="col">Networking:</th>
-							<th scope="col">Website:</th>-->
+							<th scope="col">Decorated Header:</th>
+							<th scope="col">Collapsed Bio:</th>
+							<th scope="col">URL:</th>
+							<th scope="col">Featured Posts:</th>
+							<th scope="col">Activity:</th>
+							<th scope="col">Skills:</th>
+							<th scope="col">Photo:</th>
 							<th scope="col">View:</th>
 
 						</tr>
@@ -56,14 +53,14 @@
 
 							<td><span th:text="${}"></span></td>
 							<td><span th:text="${linkedIn.decoratedHeader}"></span></td>
-					<!--		<td><span th:text="${linkedIn.githubHandle.handle}"></span></td>
 							<td><span th:text="${linkedIn.linkedIn.url}"></span></td>
-							<td><span th:text="${linkedIn.ide}"></span></td>
-							<td><span th:text="${linkedIn.youtube.profile}"></span></td>
-							<td><span th:text="${linkedIn.finalProject.title}"></span></td>
-							<td><span th:text="${linkedIn.resume.resumeFile}"></span></td>
-							<td><span th:text="${linkedIn.networking.meetups}"></span></td>
-							<td><span th:text="${linkedIn.website.url}"></span></td> -->
+								<td><span th:text="${linkedIn.collapsedBio}"></span></td>
+                                    <td><span th:text="${linkedIn.url}"></span></td>
+                                    <td><span th:text="${linkedIn.featuredPosts}"></span></td>
+                                    <td><span th:text="${linkedIn.activity}"></span></td>
+                                    <td><span th:text="${linkedIn.skills}"></span></td>
+                                    <td><span th:text="${linkedIn.isProfPhotoUploaded}"></span></td>
+
 							<td><a th:href="@{/linkedIn/update/{linkedInId}(linkedInId=${linkedIn.id})}">
 									<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 											fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
