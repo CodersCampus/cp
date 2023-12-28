@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<div th:replace="fragments/data/dataHead :: dataHead(pageTitle='Checkin Read')"></div>
+<div th:replace="~{fragments/data/dataHead :: dataHead(${pageTitle})}"></div>
 <body layout="layout-index">
 <header th:replace="~{fragments/header :: header(${activePage})}"></header>
 <!--<div class="ga-head-l"></div>-->
@@ -47,14 +47,13 @@
 
                 </tbody>
             </table>
-
         </div>
     </main>
 </div>
 
 <!--<div class="grey-back ga-content5-r"></div>-->
 
-<div class="ga-foot-main footerback" >
+<div class="ga-foot-main footerback">
     <div th:replace="~{fragments/Footer/footerNewUI :: footer}"></div>
 </div>
 

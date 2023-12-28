@@ -24,6 +24,7 @@ public class StudentController {
 		List<Student> students = studentService.findAll();
 		model.put("students", students);
 		//	Dave N. added to remove Student Nav link from displaying on this page
+		model.addAttribute("pageTitle", "Student Read");
 		model.put("isStudent", true);
 		return "student/read";
 	}
@@ -33,6 +34,7 @@ public class StudentController {
 		Student student = new Student();
 		model.put("student", student);
 		//	Dave N. added to remove Student Nav link from displaying on this page
+		model.addAttribute("pageTitle", "Student Create");
 		model.put("isStudent", true);
 		return "student/create";
 	}
@@ -50,6 +52,7 @@ public class StudentController {
 		Student student = studentService.findById(id);
 		model.put("student", student);
 		//	Dave N. added to remove Student Nav link from displaying on this page
+		model.addAttribute("pageTitle", "Student Update");
 		model.put("isStudent", true);
 		return "student/update";
 	}

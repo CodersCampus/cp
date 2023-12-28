@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<div th:replace="fragments/data/dataHead :: dataHead(pageTitle='Student Update')"></div>
+<div th:replace="~{fragments/data/dataHead :: dataHead(${pageTitle})}"></div>
 <body layout="layout-index">
 <header th:replace="~{fragments/header :: header(${activePage})}"></header>
 <!--<div class="ga-head-l"></div>-->

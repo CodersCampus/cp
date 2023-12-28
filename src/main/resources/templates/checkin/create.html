@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<div th:replace="fragments/data/dataHead :: dataHead(pageTitle='Checkin Create')"></div>
+<div th:replace="~{fragments/data/dataHead :: dataHead(${pageTitle})}"></div>
 <body layout="layout-index">
 <header th:replace="~{fragments/header :: header(${activePage})}"></header>
 

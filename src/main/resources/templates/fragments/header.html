@@ -13,7 +13,7 @@
                         th:classappend="${activePage == 'student'} ? 'active'">
                         <a class="nav-link" href="/student/">Find Mentor</a>
                     </li>
-                    <li class="nav-item" th:unless="${isUserQueue}"
+                    <li class="nav-item" th:unless="${isUserHistory}"
                         th:classappend="${activePage == 'user-history'} ? 'active'">
                         <a class="nav-link" href="/user-history/">User Queue</a>
                     </li>

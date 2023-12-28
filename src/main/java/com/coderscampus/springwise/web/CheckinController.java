@@ -21,6 +21,7 @@ public class CheckinController {
 		List<Checkin> checkins = checkinService.findAll();
 		model.put("checkins", checkins);
 		//	Dave N. added to remove Checkin Nav link from displaying on this page
+		model.addAttribute("pageTitle", "Checkin Read");
 		model.put("isCheckin", true);
 		return "checkin/read";
 	}
@@ -30,6 +31,7 @@ public class CheckinController {
 		Checkin checkin = new Checkin();
 		model.put("checkin", checkin);
 		//	Dave N. added to remove Checkin Nav link from displaying on this page
+		model.addAttribute("pageTitle", "Checkin Create");
 		model.put("isCheckin", true);
 		return "checkin/create";
 	}
@@ -47,6 +49,7 @@ public class CheckinController {
 		Checkin checkin = checkinService.findById(id);
 		model.put("checkin", checkin);
 		//	Dave N. added to remove Checkin Nav link from displaying on this page
+		model.addAttribute("pageTitle", "Checkin Update");
 		model.put("isCheckin", true);
 		return "checkin/update";
 	}
