@@ -14,11 +14,12 @@
             rel="stylesheet"
             integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
             crossorigin="anonymous">
+            <script type="module" src="fbauth-element.bundled.js"></script>
 </head>
 <body layout="layout-index">
 
-<!--<div class="ga-head-l"></div>-->
-<!--<fbauth-element>-->
+<div class="ga-head-l"></div>
+<fbauth-element>
 
 <header id="main-header" class="header-grid-area">
     <button id="mobile-menu-trigger" data-action="trigger-mobile-menu">
@@ -95,6 +96,7 @@
     <div th:replace="~{fragments/Footer/footerNewUI :: footer}"></div>
 </div>
 
+</fbauth-element>
 <!--<div class="ga-foot-r footer-back"></div>-->
 </body>
 
