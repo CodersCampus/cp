@@ -31,33 +31,27 @@
         </div>
     </nav>
     <div>
-        <form method="post" action="/student/update" class="mb-3">
-            <input type="hidden" id="new-uid" th:field="${student.uid}"/>
-            <input class="form-control" type="hidden" th:field="${student.id}"/>
-            <label class="form-label">Name: </label>
-            <input class="form-control" type="text" th:field="${student.name}"/>
-            <label class="form-label">Assignment Number: </label>
-            <input class="form-control" type="text" th:field="${student.assignmentNum}"/>
-            <label class="form-label">Github Handle: </label>
-            <input class="form-control" type="text" th:field="${student.githubHandle.handle}"/>
-            <label class="form-label">LinkedIn: </label>
-            <input class="form-control" type="text" th:field="${student.linkedIn.url}"/>
-            <label class="form-label">IDE: </label>
-            <input class="form-control" type="text" th:field="${student.ide}"/>
-            <label class="form-label">YouTube: </label>
-            <input class="form-control" type="text" th:field="${student.youtube.profile}"/>
-            <label class="form-label">Final Project: </label>
-            <input class="form-control" type="text" th:field="${student.finalProject.title}"/>
-            <label class="form-label">Resume: </label>
-            <input class="form-control" type="text" th:field="${student.resume.resumeFile}"/>
-            <label class="form-label">Networking: </label>
-            <input class="form-control" type="text" th:field="${student.networking.meetups}"/>
-            <label class="form-label">Website: </label>
-            <input class="form-control" type="text" th:field="${student.website.url}"/>
+        <form method="post" action="/student/linkedin/update" class="mb-3">
+<!--            <input type="hidden" id="new-uid" th:field="${student.uid}"/>
+            <input class="form-control" type="hidden" th:field="${student.id}"/>-->
+            <label class="form-label">Decorated Header: </label>
+            <input class="form-check-input" type="checkbox" th:field="${linkedIn.decoratedHeader}"/>
+            <label class="form-label">Collapsed Bio: </label>
+            <input class="form-control" type="text" th:field="${linkedIn.collapsedBio}"/>
+            <label class="form-label">URL: </label>
+            <input class="form-control" type="text" th:field="${linkedIn.url}"/>
+            <label class="form-label">Featured Posts: </label>
+            <input class="form-control" type="text" th:field="${linkedIn.featuredPosts}"/>
+            <label class="form-label">Activity: </label>
+            <input class="form-control" type="text" th:field="${linkedIn.activity}"/>
+            <label class="form-label">Skills: </label>
+            <input class="form-control" type="text" th:field="${linkedIn.skills}"/>
+            <label class="form-label">Photo: </label>
+            <input class="form-check-input" type="checkbox" th:field="${linkedIn.isProfPhotoUploaded}"/>
             <input  onfocus="assignUid()" class="form-control btn btn-primary mt-3" type="submit" value="Update" />
 
         </form>
-        <form method="post" action="/student/delete" class="mb-3">
+        <form method="post" action="/student/linkedin/delete" class="mb-3">
             <input type="hidden" id="new-uid" th:field="${student.id}"/>
             <input class="form-control btn btn-danger" type="submit" value="Delete"/>
         </form>

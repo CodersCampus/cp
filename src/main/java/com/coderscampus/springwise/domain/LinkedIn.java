@@ -9,7 +9,7 @@ public class LinkedIn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String decoratedHeader;
+    private Boolean decoratedHeader;
     private String collapsedBio;
     private String url;
     private String featuredPosts;
@@ -19,7 +19,7 @@ public class LinkedIn {
     public LinkedIn() {
 
     }
-	public LinkedIn(Long id, String decoratedHeader, String collapsedBio, String url, String featuredPosts,
+	public LinkedIn(Long id, Boolean decoratedHeader, String collapsedBio, String url, String featuredPosts,
 			String activity, String skills, Boolean isProfPhotoUploaded) {
 		super();
 		this.id = id;
@@ -37,10 +37,10 @@ public class LinkedIn {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDecoratedHeader() {
+	public Boolean getDecoratedHeader() {
 		return decoratedHeader;
 	}
-	public void setDecoratedHeader(String decoratedHeader) {
+	public void setDecoratedHeader(Boolean decoratedHeader) {
 		this.decoratedHeader = decoratedHeader;
 	}
 	public String getCollapsedBio() {

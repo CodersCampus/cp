@@ -39,33 +39,33 @@ public class LinkedInController {
 	@PostMapping("/create")
 	public String create(LinkedIn linkedIn) {
 		System.out.println(linkedIn);
-//		linkedInService.save(linkedIn);
+		linkedInService.save(linkedIn);
 
-		return "redirect:/linkedin/";
+		return "redirect:student/linkedin/";
 	}
 
-//	
-//	@GetMapping("/update/{id}")
-//	public String fetch(ModelMap model, @PathVariable Long id) {
-//		LinkedIn linkedIn = linkedInService.findById(id);
-//		model.put("linkedIn", linkedIn);
-//		
-//		return "linkedIn/update";
-//	}
-//	
-//	@PostMapping("/update")
-//	public String update(LinkedIn linkedIn) {
-//		System.out.println(linkedIn.toString());
-//
-//		linkedInService.save(linkedIn);
-//		return "redirect:/linkedIn/";
-//	}
-//	
-//	@PostMapping("/delete")
-//	public String delete(LinkedIn linkedIn) {
-//		linkedInService.delete(linkedIn);
-//	
-//		return "redirect:/linkedIn/";
-//		
-//	}
+	
+	@GetMapping("/update/{id}")
+	public String fetch(ModelMap model, @PathVariable Long id) {
+		LinkedIn linkedIn = linkedInService.findById(id);
+		model.put("linkedIn", linkedIn);
+		
+		return "linkedin/update";
+	}
+	
+	@PostMapping("/update")
+	public String update(LinkedIn linkedIn) {
+		System.out.println(linkedIn.toString());
+
+		linkedInService.save(linkedIn);
+		return "redirect:student/linkedin/";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(LinkedIn linkedIn) {
+		linkedInService.delete(linkedIn);
+	
+		return "redirect:student/linkedin/";
+		
+	}
 }

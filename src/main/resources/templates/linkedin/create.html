@@ -35,12 +35,12 @@
 						</div>
 					</div>
 				</nav>
-				<form method="post" action="/student/create">
+				<form method="post" action="/student/linkedin/create">
 					<h1>Linkedin Section</h1>
-<!--					<div class="mb-3">-->
-<!--						<label class="form-label">Decorated Header: </label>-->
-<!--						<input class="form-control" type="checkbox" th:field="${linkedIn.decoratedHeader}" />-->
-<!--					</div>-->
+					<div class="mb-3">
+						<label class="form-label">Decorated Header: </label>
+						<input class="form-check-input" type="checkbox" th:field="${linkedIn.decoratedHeader}" />
+					</div>
  					<div class="mb-3">
 						<label class="form-label">Collapsed Bio: </label>
 						<input class="form-control" type="text" th:field="${linkedIn.collapsedBio}" />
@@ -61,11 +61,11 @@
 						<label class="form-label">Skills: </label>
 						<input class="form-control" type="text" th:field="${linkedIn.skills}" />
 					</div>
-<!--					<div class="mb-3">-->
-<!--						<label class="form-label">Photo: </label>-->
-<!--						<input class="form-check-input" type="checkbox"-->
-<!--							th:field="${linkedIn.isProfPhotoUploaded}" />-->
-<!--					</div>-->
+					<div class="mb-3">
+						<label class="form-label">Photo: </label>
+						<input class="form-check-input" type="checkbox"
+							th:field="${linkedIn.isProfPhotoUploaded}" />
+					</div>
 
 					
 				<!-- 	<div>
