@@ -1,0 +1,35 @@
+<header th:fragment="navbar(activePage)" class="header-grid-area">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Coder Packaging Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item" th:unless="${isStudent}"
+                        th:classappend="${activePage == 'student'} ? 'active'">
+                        <a class="nav-link" href="/student/">Find Mentor</a>
+                    </li>
+                    <li class="nav-item" th:unless="${isUserHistory}"
+                        th:classappend="${activePage == 'user-history'} ? 'active'">
+                        <a class="nav-link" href="/user-history/">User Queue</a>
+                    </li>
+                    <li class="nav-item" th:unless="${isCheckin}"
+                        th:classappend="${activePage == 'checkin'} ? 'active'">
+                        <a class="nav-link" href="/checkin/">Check-In</a>
+                    </li>
+                    <li class="nav-item" th:unless="${isPractice}"
+                        th:classappend="${activePage == 'practice'} ? 'active'">
+                        <a class="nav-link" href="/practice">Practice</a>
+                    </li>
+                    <li class="nav-item" th:unless="${isDatabaseConsole}"
+                        th:classappend="${activePage == 'h2-console'} ? 'active'">
+                        <a class="nav-link" href="/h2-console/">Database Console</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
