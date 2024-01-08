@@ -1,8 +1,8 @@
 # New HTML Page Template
 
-> Every Page Uses This Identical HTML (except home page)
+> Every Page Uses This Identical HTML Template (except home page)
 
-## HTML Page Content
+## HTML Page Template
 
 ```HTML
 <!DOCTYPE html>
@@ -53,26 +53,30 @@
 </html>
 ```
 
-## Update Controller
+## Controller Template
 
-Within `CheckinController.java` add the following lines of code to the following paths.
+Within `blank_Controller.java` add the following lines of code, on the line above the return path, for each of the methods below.
+> Make sure to update the _pageTitle_ value for each corresponding Controller. 
 
 `@GetMapping("/")`
-home
+
+**home** method
 ```Java
         model.addAttribute("pageTitle", "Checkin Read");
 		model.put("isCheckin", true);
 ```
 
 `@GetMapping("/create")`
-getCreate
+
+**getCreate** method
 ```Java
         model.addAttribute("pageTitle", "Checkin Create");
 		model.put("isCheckin", true);
 ```
 
 `@GetMapping("/update/{id}")`
-fetch
+
+**fetch** method
 ```Java
         model.addAttribute("pageTitle", "Checkin Update");
 		model.put("isCheckin", true);
