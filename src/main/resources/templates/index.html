@@ -1,40 +1,15 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <title>grid test</title>
-  <link rel="stylesheet" href="/css/grid.css">
-  <link rel="stylesheet" href="/css/layout.css"> <!-- For mobile SVG -->
-  <link rel="stylesheet" href="/css/color.css"> <!-- remove after getting page working -->
-  <script type="module" src="./fbauth-element.bundled.js"></script>
-</head>
-
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body layout="layout-secured">
 <fbauth-element>
   <div layout="layout-home">
-    <header class="header-grid-area">
-      <button id="mobile-menu-trigger" data-action="trigger-mobile-menu">
-        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"
-             class="icon">
-          <path fill="currentColor"
-                d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z">
-          </path>
-        </svg>
-      </button>
-      <span><a href="/">HOME</a></span>&nbsp;&nbsp;<span><a href="/default">DEFAULT</a></span>
-    </header>
+    <header th:replace="~{fragments/header :: header(${activePage})}"></header>
     <div class="ga-content-main">
       <!-- Page content goes here -->
     </div>
-    <div class="ga-foot-main">
-      <footer>
-        <div>
-          Footer content goes here
-        </div>
-      </footer>
-    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
   </div>
 </fbauth-element>
 </body>
-
 </html>
