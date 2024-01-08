@@ -26,11 +26,8 @@
         </div>
         <div class="ga-content-main">
             <main>
-                
 <!--                ADD PAGE SPECIFIC CODE HERE -->
-
             </main>
-
         </div>
         <div th:replace="~{fragments/footer :: footer}"></div>
     </div>
@@ -57,3 +54,29 @@
 ```
 
 ## Update Controller
+
+Within `CheckinController.java` add the following lines of code to the following paths.
+
+`@GetMapping("/")`
+home
+```Java
+        model.addAttribute("pageTitle", "Checkin Read");
+		model.put("isCheckin", true);
+```
+
+`@GetMapping("/create")`
+getCreate
+```Java
+        model.addAttribute("pageTitle", "Checkin Create");
+		model.put("isCheckin", true);
+```
+
+`@GetMapping("/update/{id}")`
+fetch
+```Java
+        model.addAttribute("pageTitle", "Checkin Update");
+		model.put("isCheckin", true);
+```
+
+
+
