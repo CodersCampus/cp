@@ -1,6 +1,8 @@
 # New HTML Page Template
 
-## Every Page Uses This Identical HTML (except home page)
+> Every Page Uses This Identical HTML (except home page)
+
+## HTML Page Content
 
 ```HTML
 <!DOCTYPE html>
@@ -54,4 +56,4 @@
 </html>
 ```
 
-
+## Update Controller
