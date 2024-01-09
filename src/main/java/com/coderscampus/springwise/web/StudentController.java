@@ -23,7 +23,8 @@ public class StudentController {
 	public String home(ModelMap model) {
 		List<Student> students = studentService.findAll();
 		model.put("students", students);
-		//	ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+        model.addAttribute("pageTitle", "Student Read");
+		model.put("isStudent", true);
 		return "student/read";
 	}
 	
@@ -31,7 +32,8 @@ public class StudentController {
 	public String getCreate (ModelMap model) {
 		Student student = new Student();
 		model.put("student", student);
-		//	ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+        model.addAttribute("pageTitle", "Student Create");
+		model.put("isStudent", true);
 		return "student/create";
 	}
 
@@ -47,7 +49,8 @@ public class StudentController {
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Student student = studentService.findById(id);
 		model.put("student", student);
-		//	ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+        model.addAttribute("pageTitle", "Student Update");
+		model.put("isStudent", true);
 		return "student/update";
 	}
 	
@@ -64,4 +67,5 @@ public class StudentController {
 		return "redirect:/student/";
 		
 	}
+
 }
