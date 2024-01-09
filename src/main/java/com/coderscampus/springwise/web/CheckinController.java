@@ -20,7 +20,8 @@ public class CheckinController {
 	public String home(ModelMap model) {
 		List<Checkin> checkins = checkinService.findAll();
 		model.put("checkins", checkins);
-		//	ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+        model.addAttribute("pageTitle", "Checkin Read");
+		model.put("isCheckin", true);
 		return "checkin/read";
 	}
 	
@@ -28,7 +29,8 @@ public class CheckinController {
 	public String getCreate (ModelMap model) {
 		Checkin checkin = new Checkin();
 		model.put("checkin", checkin);
-		//  ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+        model.addAttribute("pageTitle", "Checkin Create");
+		model.put("isCheckin", true);
 		return "checkin/create";
 	}
 
@@ -44,7 +46,8 @@ public class CheckinController {
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Checkin checkin = checkinService.findById(id);
 		model.put("checkin", checkin);
-		//  ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+        model.addAttribute("pageTitle", "Checkin Update");
+		model.put("isCheckin", true);
 		return "checkin/update";
 	}
 	
