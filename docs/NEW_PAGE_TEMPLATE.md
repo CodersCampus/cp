@@ -10,7 +10,6 @@ For Thymeleaf assistance, please refer to our [Thymeleaf Resources](../docs/RESO
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
-
 <body layout="layout-secured">
 <fbauth-element>
     <div layout="layout-sidebar">
@@ -19,14 +18,14 @@ For Thymeleaf assistance, please refer to our [Thymeleaf Resources](../docs/RESO
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-<!--                      UPDATE PAGE SPECIFIC NAV LINK HERE -->
+                        <!-- UPDATE PAGE SPECIFIC NAV LINK HERE -->
                     </ul>
                 </div>
             </nav>
         </div>
         <div class="ga-content-main">
             <main>
-<!--                ADD PAGE SPECIFIC CODE HERE -->
+                <!-- ADD PAGE SPECIFIC CODE HERE -->
             </main>
         </div>
         <div th:replace="~{fragments/footer :: footer}"></div>
@@ -49,7 +48,6 @@ For Thymeleaf assistance, please refer to our [Thymeleaf Resources](../docs/RESO
     });
 </script>
 </body>
-
 </html>
 ```
 
