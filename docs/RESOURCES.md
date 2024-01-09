@@ -34,9 +34,7 @@
 
 ---
 
-# Thymeleaf
-
-"Go To" documentation for Thymeleaf
+# Thymeleaf Documentation Resources
 
 - [Thymeleaf Page Layouts](https://www.thymeleaf.org/doc/articles/layouts.html)
 - [Thymeleaf Fragments](https://www.baeldung.com/spring-thymeleaf-fragments)
