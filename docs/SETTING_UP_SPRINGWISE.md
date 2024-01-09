@@ -54,6 +54,15 @@ git pull
 
 <img style="border-radius: 10px" width="350" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Eclipse.jpg">
 
+### Eclipse Troubleshooting Steps
+**Solution 1**
+1. On the `pom.xml` file, `right click > Run As > Maven Clean`
+2. `Run As > Maven Install`
+
+_If the Installation fails:_
+- **On Windows:** delete the h2 local database C:\Users\%user%\h2dataspringwise.mv
+    - Repeat Solution 1, Steps 1 and 2.
+
 ### IntelliJ IDEA Instructions
 
 1. Navigate or open the SpringWise application, inside of **IntelliJ IDEA**
