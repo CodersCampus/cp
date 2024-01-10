@@ -44,7 +44,6 @@ public class StudentController {
 		return "redirect:/student/";
 	}
 
-	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Student student = studentService.findById(id);
@@ -67,5 +66,4 @@ public class StudentController {
 		return "redirect:/student/";
 		
 	}
-
 }
