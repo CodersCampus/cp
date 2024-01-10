@@ -20,8 +20,9 @@ For Thymeleaf assistance, please refer to our [Thymeleaf Resources](../docs/RESO
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
 <!--                      UPDATE PAGE SPECIFIC NAV LINK HERE -->
-                        <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                                href="/whereverFIX ME/">FIXME</a>
+<!--                        1 <li> for a read.html & create.html page-->
+<!--                        2 <li>'s for an update.html page-->
+                        
                     </ul>
                 </div>
             </nav>

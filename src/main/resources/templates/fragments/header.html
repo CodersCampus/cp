@@ -20,10 +20,6 @@
                         th:classappend="${activePage == 'checkin'} ? 'active'">
                         <a class="nav-link" href="/checkin/">Check-In</a>
                     </li>
-<!--                    <li class="nav-item" th:unless="${isPractice}"-->
-<!--                        th:classappend="${activePage == 'practice'} ? 'active'">-->
-<!--                        <a class="nav-link" href="/practice">Practice</a>-->
-<!--                    </li>-->
                     <li class="nav-item" th:unless="${isDatabaseConsole}"
                         th:classappend="${activePage == 'h2-console'} ? 'active'">
                         <a class="nav-link" href="/h2-console/">Database Console</a>
