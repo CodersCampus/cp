@@ -7,18 +7,19 @@ To set up SpringWise on your computer, follow these guidelines:
 
 _Choose the method you're most comfortable with to get SpringWise operational._
 
-## Step 1: Get the SpringWise dev branch
+## Step 1: Get the SpringWise `dev` branch
 
 ---
 
 ### GitHub Desktop Instructions
 
 1. Open **GitHub Desktop**
-2. Ensure the `Current Repository` is **SpringWise**, if not click the drop down and select the **SpringWise** repository
-3. Ensure `Current Branch` is the **dev** branch
-4. Click **Fetch origin**
-5. If you see Pull, after pressing Fetch origin, then click **Pull**.
+2. Ensure the **Current Repository** is `SpringWise`, if not click the drop down and select `SpringWise` repository
+3. Ensure **Current Branch** is the `dev` branch
+4. Click `Fetch origin`
+5. If you see `Pull`, after pressing `Fetch origin`, then click `Pull`.
 6. Open IDE of choice
+   - If using Eclipse IDE, right click root `SpringWise` folder and click **Refresh** if it's not already on `dev` branch
 
 <img style="border-radius: 10px" width="900" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/GitHub_Desktop.jpg">
 
@@ -29,14 +30,12 @@ _Choose the method you're most comfortable with to get SpringWise operational._
 git status
 ```
 ```
-git fetch
+git fetch 
 ```
 ```
 git pull
 ```
 - Open IDE of choice
-
-
 
 <img style="border-radius: 10px" width="700" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Terminal.jpg">
 
@@ -62,6 +61,9 @@ git pull
 _If the Installation fails:_
 - **On Windows:** delete the h2 local database C:\Users\%user%\h2dataspringwise.mv
     - Repeat Solution 1, Steps 1 and 2.
+
+#### [Open Project into VS Code via `code .` Command](VS_CODE_PATH_INSTRUCTIONS.md)
+
 
 ### IntelliJ IDEA Instructions
 
