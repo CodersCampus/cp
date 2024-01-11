@@ -2,7 +2,7 @@
 
 > Every Page Uses This Identical HTML Template (except home page)
 
-For Thymeleaf assistance, please refer to our [Thymeleaf Resources](../docs/RESOURCES.md#thymeleaf)
+For Thymeleaf assistance, please refer to our [Thymeleaf Resources](RESOURCES.mdaf)
 
 ## HTML Page Template
 
