@@ -23,7 +23,8 @@ public class UserHistoryController {
 	public String home(ModelMap model) {
 		List<UserHistory> userHistorys = userHistoryService.findAll();
 		model.put("userHistorys", userHistorys);
-		//	ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+		model.addAttribute("pageTitle", "User History Read");
+		model.put("isUserHistory", true);
 		return "user-history/read";
 	}
 	
@@ -31,7 +32,8 @@ public class UserHistoryController {
 	public String getCreate (ModelMap model) {
 		UserHistory userHistory = new UserHistory();
 		model.put("userHistory", userHistory);
-		//	ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+		model.addAttribute("pageTitle", "User History Create");
+		model.put("isUserHistory", true);
 		return "user-history/create";
 	}
 
@@ -46,7 +48,8 @@ public class UserHistoryController {
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		UserHistory userHistory = userHistoryService.findById(id);
 		model.put("userHistory", userHistory);
-		//	ADD CONTROLLER CONTENT HERE FROM NEW_PAGE_TEMPLATE.md
+		model.addAttribute("pageTitle", "User History Update");
+		model.put("isUserHistory", true);
 		return "user-history/update";
 	}
 	
