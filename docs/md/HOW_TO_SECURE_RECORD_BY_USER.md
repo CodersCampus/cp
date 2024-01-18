@@ -21,12 +21,14 @@
 ```HTML
 <input type="hidden" id="uid" name="firebaseUid" />
 ```
+> _updated on 1/18/2024_
 
 ### Step2: Controller
 ```JAVA
 @PostMapping("/update")
 public String update(Student student, @RequestParam("uid") String firebaseUid)
 ```
+> _updated on 1/18/2024_
 
 ### Step 3: Service 
 
