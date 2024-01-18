@@ -14,6 +14,7 @@ public class Foobar {
 	private String name;
 	
 	
+	
 	@Override
 	public String toString() {
 		return "Foobar [id=" + id + ", name=" + name + "]";
