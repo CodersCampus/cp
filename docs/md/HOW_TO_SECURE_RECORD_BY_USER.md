@@ -19,7 +19,7 @@
 > Three steps need to happen here
 ### Step 1: Thymeleaf
 ```HTML
-<input type="hidden" id="firebaseUid" name="firebaseUid" />
+<input type="hidden" id="uid" name="firebaseUid" />
 ```
 
 ### Step2: Controller
