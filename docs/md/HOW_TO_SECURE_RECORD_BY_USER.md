@@ -25,7 +25,7 @@
 ### Step2: Controller
 ```JAVA
 @PostMapping("/update")
-public String update(Student student, @RequestParam("firebaseUid") String firebaseUid)
+public String update(Student student, @RequestParam("uid") String firebaseUid)
 ```
 
 ### Step 3: Service 
