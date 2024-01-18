@@ -28,7 +28,7 @@ public class Student {
 	private FinalProject finalProject;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Resume resume;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Foobar foobar;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

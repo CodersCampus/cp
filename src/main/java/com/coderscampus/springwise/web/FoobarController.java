@@ -33,11 +33,10 @@ public class FoobarController {
 		model.put("isFoobar", true);
 		return "foobar/create";
 	}
-
 	@PostMapping("/create")
-	public String create(@ModelAttribute Foobar foobar) {
-		System.out.println("in/create");
-		foobarService.save(foobar);
+	public String create(Foobar foobar, @RequestParam("uid") String uid) {
+		System.out.println("in/create" + foobar + uid);
+		foobarService.save(foobar); 
 		return "redirect:/foobar/";
 	}
 
