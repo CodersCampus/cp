@@ -5,36 +5,36 @@ In this document we are examining the basic assumptions and ideas behind what we
 The purpose of this high level work is to provide a foundation for more low level documentation, such as Figma UX/UI interpretations, and marketing materials.
 
 ## The 5 Tenets:
-1. Give credit, where credit is due
-1. If checklist then organize a completion
-1. If prescription, then checklist
-1. If emergent pattern of results, then prescription
-1. If documentation, then organize for access
+1. [Recognize and Document Experience](#1-recognize-and-document-experience)
+2. [Use Checklists for Task Completion](#2-use-checklists-for-task-completion)
+3. [Transform Directives into Actionable Checklists](#3-transform-directives-into-actionable-checklists)
+4. [Adapt to Emerging Patterns with New Directives](#4-adapt-to-emerging-patterns-with-new-directives)
+5. [Make Documentation Easily Accessible and Updatable](#5-make-documentation-easily-accessible-and-updatable)
 
-## 1. Give credit, where credit is due
+## 1. Recognize and Document Experience
 
 Prospective employers discount the value of a junior coder because they assume zero experience in every critical area. Our LiveCoders have a lot of experience in a lot of areas - but this doesn't help unless we can collect information around this experience, and document it as quite real.
 
-The first job of the coder packaging app is then to make collection of data around all relevant experience something that happens automagically, rather than something that is forced retroactively after the fact.
+The first job of the Coder Packaging app is to make a collection of data around all relevant experience something that happens automagically, rather than something that is forced retroactively after the fact.
 
 
 #### UX/UI
 
-The UI is first organized around the checkin process, and designed to collect as much data as is reasonable about each relevant activity in real time. The assumption is that, at any later time, the aggregation and reporting of such data becomes more natural, if the data is there to be sorted and sifted through in the first place.
+The UI is first organized around the _Checkin_ process, and designed to collect as much data as is reasonable about each relevant activity in real time. The assumption is that, at any later time, the aggregation and reporting of such data becomes more natural, if the data is there to be sorted and sifted through in the first place.
 
-## 2. If checklist then organize a completion:
+## 2. Use Checklists for Task Completion
 
 Do you have an a resume? Check.
 Has it been reviewed by competent eyes? Check.
 Has it been made customizable for specific target markets? Check.
 
-For every aspect of coder packaging - checklists are the heartbeat of getting the job done. Providing this mechanism as simply and easily as possible is one key to this process.
+For every aspect of Coder Packaging - checklists are the heartbeat of getting the job done. Providing this mechanism as simply and easily as possible is one key to this process.
 
 #### Tabular CRUD Data
 
 Schema: `Activity, type, role, timestamp, duration` or something like that.
 
-It is assumed that one checkin might record 2 to 10 different activities for a specific student, depending on what the student did at any given meeting
+It is assumed that one _Checkin_ might record 2 to 10 different activities for a specific student, depending on what the student did at any given meeting
 
 #### Derivative Report Data
 
@@ -47,11 +47,11 @@ Each major category (Resume, Github, LinkedIn etc) would probably need its own U
 There would also be at least one scoring/summarizing UI that maintains an overall view of all such major categories in one place.
 If the app had the additional capability of aggregating votes and/or comments by other bootcampers that would be an extra win.
 
-The checkin data would be designed around a checkin dashboard, and designed mostly for ease of use.
+The _Checkin_ data would be designed around a checkin dashboard, and designed mostly for ease of use.
 
-## 3. If prescription, then checklist:
+## 3. Transform Directives into Actionable Checklists
 
-"Go forth and network!" That sounds like a great general idea, but unless the respective student is exceptionally creative or talented in that area - even just knowing what steps to take would be beyond him or her.
+"Go forth and network!" That sounds like a great general idea, but unless the student is exceptionally creative or talented in that area - even just knowing what steps to take would be beyond him or her.
 
 For every such high level category (Networking, Resume, LinkedIn, Github etc) there must be a corresponding checklist to collect completion data against.
 
@@ -73,7 +73,7 @@ There are two types of report data in these areas.
 2. Few, but perhaps some rReports that are meaningful to the browsing prospective employer.
 
 
-## 4. If emergent pattern of results, then prescription:
+## 4. Adapt to Emerging Patterns with New Directives
 
 There is no single source of canonical information for achieving results. David Roberts, Trevor, all are great places to start. But as the networking example has shown, great results can happen in unexpected ways. 
 
@@ -95,11 +95,11 @@ As above #3 - There are two types of report data in these areas.
 2. Few, but perhaps some rReports that are meaningful to the browsing prospective employer.
 
 
-## 5. If documentation, then organize for access, revisions, search.
+## 5. Make Documentation Easily Accessible and Updatable
 
 The same thing that makes for great documentation often makes it suck as documentation. Easy to access can make documentation hard to revise. Easy to revise can make it less consistent and reliable. Etc.
 
-Given the many competing concerns - too many to note here - it is proposed for initial design that markdown docs on the springwise repository be a first happy medium until a better approach comes along.
+Given the many competing concerns - too many to note here - it is proposed for initial design that markdown docs on the SpringWise repository be a first happy medium until a better approach comes along.
 
 
 #### UX/UI
