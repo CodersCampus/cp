@@ -39,7 +39,7 @@ public class FoobarController {
 		System.out.println("in/create" + foobar + uid);
 		foobar = foobarService.saveByUid(foobar, uid);
 // coming back to this after issue329, we're making a separate issue.
-		System.out.println("FOOBAR" + foobar);
+		System.out.println("FOOBAR: " + foobar);
 		return "redirect:/foobar/";
 	}
 
