@@ -14,9 +14,18 @@ public class Foobar {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+
 	
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
 	@OneToOne
-	@JoinColumn(name = "student_id", nullable = false)
+	@JoinColumn(name = "student_id")
 	private Student student;
 
 	@Override

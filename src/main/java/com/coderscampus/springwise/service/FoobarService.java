@@ -6,23 +6,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.coderscampus.springwise.domain.Foobar;
+import com.coderscampus.springwise.domain.Student;
 import com.coderscampus.springwise.repository.FoobarRepository;
+import com.coderscampus.springwise.repository.StudentRepository;
 
 @Service
 public class FoobarService {
 
 	@Autowired
 	private FoobarRepository foobarRepo;
+	@Autowired
+	private StudentRepository studentRepo;
 
 	public Foobar save(Foobar foobar) {
-		
+
+		return foobarRepo.save(foobar);
+	}
+
+	public Foobar saveByUid(Foobar foobar, String uid) {
+		List<Student> students = studentRepo.findByUid(uid);
+		if(students.size()>1)
+			throw new IllegalStateException("Shouldn't have more than one student per uid");
+		if (!students.isEmpty()) {
+			Student student = students.get(0);
+			foobar.setStudent(student);
+		}
+
 		return foobarRepo.save(foobar);
 	}
 
 	public List<Foobar> findAll() {
 
 		return foobarRepo.findAll();
-	
+
 	}
 
 	public Foobar findById(Long id) {
