@@ -23,7 +23,7 @@
 						<div class="mb-3">
 							<label class="form-label">Name: </label><input class="form-control" type="text" id="display-name"
 								th:field="${foobar.name}" />
-								<input type="hidden" id="uid" />
+								<input name="uid" type="text" id="uid" />
 						</div>
 						<div class="mb-3">
 							<input class="form-control btn btn-primary" type="submit" value="Create" />
@@ -37,6 +37,7 @@
 	<script>
 		const fbauth = document.querySelector('fbauth-element');
 		const uid = document.getElementById('uid');
+		console.log("THIS IS FOR DAVE NOT DAVID " + uid);
 		const displayName = document.getElementById('display-name');
 		fbauth.addEventListener('user-changed', (event) => {
 			const {newValue} = event.detail;
