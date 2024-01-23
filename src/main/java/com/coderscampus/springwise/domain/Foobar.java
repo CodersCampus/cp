@@ -14,8 +14,9 @@ public class Foobar {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String uid;
 
-	
+
 	public Student getStudent() {
 		return student;
 	}
@@ -30,17 +31,15 @@ public class Foobar {
 
 	@Override
 	public String toString() {
-		return "Foobar [id=" + id + ", name=" + name + "]";
-	}
-
-	public Foobar(Long id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
+		return "Foobar{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", uid='" + uid + '\'' +
+				", student=" + student +
+				'}';
 	}
 
 	public Foobar() {
-
 	}
 
 	public Long getId() {
@@ -57,6 +56,14 @@ public class Foobar {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 
 }

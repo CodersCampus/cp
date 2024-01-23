@@ -1,14 +1,13 @@
 package com.coderscampus.springwise.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.coderscampus.springwise.domain.Foobar;
 import com.coderscampus.springwise.domain.Student;
 import com.coderscampus.springwise.repository.FoobarRepository;
 import com.coderscampus.springwise.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class FoobarService {
@@ -30,6 +29,8 @@ public class FoobarService {
 		if (!students.isEmpty()) {
 			Student student = students.get(0);
 			foobar.setStudent(student);
+			foobar.setUid(uid);
+			System.out.println("student: " + student + " uid: " + uid);
 		}
 
 		return foobarRepo.save(foobar);
