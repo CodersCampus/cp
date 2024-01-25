@@ -5,10 +5,7 @@ import com.coderscampus.springwise.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,9 +35,8 @@ public class StudentController {
 	}
 
 	@PostMapping("/create")
-	public String create(Student student) {
-		System.out.println(student);
-		studentService.save(student);
+	public String create(Student student,@RequestParam("uid") String uid) {
+		studentService.saveByUid(student, uid);
 		return "redirect:/student/";
 	}
 
@@ -55,7 +51,6 @@ public class StudentController {
 	
 	@PostMapping("/update")
 	public String update(Student student) {
-		System.out.println(student.toString());
 		studentService.save(student);
 		return "redirect:/student/";
 	}

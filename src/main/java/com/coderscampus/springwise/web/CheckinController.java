@@ -36,7 +36,6 @@ public class CheckinController {
 
 	@PostMapping("/create")
 	public String create(@ModelAttribute Checkin checkin) {
-		System.out.println("in/create");
 		checkinService.save(checkin);
 		return "redirect:/checkin/";
 	}

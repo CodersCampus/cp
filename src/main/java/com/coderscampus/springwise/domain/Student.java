@@ -1,6 +1,12 @@
 package com.coderscampus.springwise.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -22,6 +28,8 @@ public class Student {
 	private FinalProject finalProject;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Resume resume;
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Foobar foobar;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Networking networking;
@@ -123,11 +131,11 @@ public class Student {
 		return "Student{" +
 				"id=" + id +
 				", name='" + name + '\'' +
+				", uid='" + uid + '\'' +
 				", assignmentNum=" + assignmentNum +
 				", githubHandle=" + githubHandle +
 				", linkedIn=" + linkedIn +
 				", ide='" + ide + '\'' +
-				", uid='" + uid + '\'' +
 				", youtube=" + youtube +
 				", finalProject=" + finalProject +
 				", resume=" + resume +
