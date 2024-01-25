@@ -35,9 +35,10 @@ public class StudentController {
 	}
 
 	@PostMapping("/create")
-	public String create(Student student) {
-		System.out.println(student);
-		studentService.save(student);
+	public String create(Student student,@RequestParam("uid") String uid) {
+		System.out.println("HELLO"+ student);
+		//studentService.save(student);
+		studentService.saveByUid(student, uid);
 		return "redirect:/student/";
 	}
 

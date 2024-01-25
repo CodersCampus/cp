@@ -30,6 +30,8 @@ public class StudentService {
 
     public Student saveByUid(Student student, String uid) {
         student.setUid(uid);
+        
+        System.out.println("Student" + student);
         return save(student);
     }
 
