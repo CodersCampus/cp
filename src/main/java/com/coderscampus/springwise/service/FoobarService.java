@@ -30,7 +30,6 @@ public class FoobarService {
 			Student student = students.get(0);
 			foobar.setStudent(student);
 			foobar.setUid(uid);
-			System.out.println("student: " + student + " uid: " + uid);
 		}
 
 		return foobarRepo.save(foobar);

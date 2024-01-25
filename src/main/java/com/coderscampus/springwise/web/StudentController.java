@@ -36,8 +36,6 @@ public class StudentController {
 
 	@PostMapping("/create")
 	public String create(Student student,@RequestParam("uid") String uid) {
-		System.out.println("HELLO"+ student);
-		//studentService.save(student);
 		studentService.saveByUid(student, uid);
 		return "redirect:/student/";
 	}
@@ -50,16 +48,9 @@ public class StudentController {
 		model.put("isStudent", true);
 		return "student/update";
 	}
-
-//	@RequestParam("uid") String uid) {
-//		System.out.println(student);
-//		student = studentService.saveByUid(student, uid);
-//		studentService.save(student);
-//		return "redirect:/student/";
 	
 	@PostMapping("/update")
 	public String update(Student student) {
-		System.out.println(student.toString());
 		studentService.save(student);
 		return "redirect:/student/";
 	}

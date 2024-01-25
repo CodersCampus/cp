@@ -9,3 +9,4 @@ public class SpringWiseApplication {
 		SpringApplication.run(SpringWiseApplication.class, args);
 	}
 }
+
