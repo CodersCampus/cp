@@ -131,11 +131,11 @@ public class Student {
 		return "Student{" +
 				"id=" + id +
 				", name='" + name + '\'' +
+				", uid='" + uid + '\'' +
 				", assignmentNum=" + assignmentNum +
 				", githubHandle=" + githubHandle +
 				", linkedIn=" + linkedIn +
 				", ide='" + ide + '\'' +
-				", uid='" + uid + '\'' +
 				", youtube=" + youtube +
 				", finalProject=" + finalProject +
 				", resume=" + resume +
