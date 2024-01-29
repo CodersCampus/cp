@@ -31,7 +31,9 @@ Enough said.
 
 ## [lift]
 
-We increase our value to the marketplace through the pleasure of measurable results.
+This is a category for anything that makes our job as coders easier, or even possible.
+
+Technically speaking, we increase our value to the marketplace through the pleasure of measurable results. But that's a way of describing the same thing, only by "how" rather than "what".
 
 Everything we do in the curriculumn is about that one thing - acheiving measureable results:
 
