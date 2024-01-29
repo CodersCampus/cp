@@ -85,7 +85,7 @@ Picture is worth a thousand words.
 
 In this case, think database schema of Assignment 12. The time when you want to use this is when the tables are already created and functional, and you want to use a tool like MySQL Workbench to reverse engineer into an ERD and allow you to document that part of the design visually.
 
-![ERD Image](../images/erd.jpg)
+![ERD Image](images/erd.jpg)
 
 [back](#tldr)
 
@@ -104,7 +104,7 @@ Another situation when it would be easier to use a use case diagram would be whe
 
 One last thing: Don't get hung up on tooling, here. There are a huge number of free and/or paid tools available for sketchy stuff like you see below. Perfection is the enemy of good. Just pick one and go with it, export the results to a file and post it in a markdown document such as this one.
 
-![Use Case Image](../images/usecase.jpg)
+![Use Case Image](images/usecase.jpg)
 
 [back](#documentation-on-more-typical-design-requirements)
 
@@ -116,7 +116,7 @@ But there are tons of approaches to wireframe, such as this quick google of `ima
 
 Notice the cruder parts below. Quite often, that's great!
 
-![Use Case Image](../images/wireframe.jpg)
+![Use Case Image](images/wireframe.jpg)
 
 But you can even use more advance tools like Figma, by just ignoring their better capabilities that you don't yet need. 
 
@@ -138,7 +138,7 @@ What does the developer do, then? She/he uses the Figma or other representation 
 
 To learn more about how to use Figma to paint such a picture ...
 
-![Figma basics](../images/figma.jpg)
+![Figma basics](images/figma.jpg)
 
 Note: Figma is shown here but much of the industry would use Adobe Illustrator or other excellent tools. Figma is more useful to us because of it's wide usage and excellent free tier.
 
@@ -148,7 +148,7 @@ Note: Figma is shown here but much of the industry would use Adobe Illustrator o
 
 This is a thing. No, really. You define an issue by the tests that it must pass :)
 
-![TDD or Test Driven Development](../images/tdd.jpg)
+![TDD or Test Driven Development](images/tdd.jpg)
 
 [back](#documentation-on-more-typical-design-requirements)
 

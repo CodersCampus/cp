@@ -21,7 +21,7 @@ _Choose the method you're most comfortable with to get SpringWise operational._
 6. Open IDE of choice
    - If using Eclipse IDE, right click root `SpringWise` folder and click **Refresh** if it's not already on `dev` branch
 
-<img style="border-radius: 10px" width="900" alt="GitHub Desktop screenshot instructions" src="../../src/main/resources/static/images/GitHub_Desktop.jpg">
+<img style="border-radius: 10px" width="900" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/GitHub_Desktop.jpg">
 
 ### Terminal/Git BASH Instructions
 
@@ -37,7 +37,7 @@ git pull
 ```
 - Open IDE of choice
 
-<img style="border-radius: 10px" width="700" alt="GitHub Desktop screenshot instructions" src="../../src/main/resources/static/images/Terminal.jpg">
+<img style="border-radius: 10px" width="700" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Terminal.jpg">
 
 
 ## Step 2: Open SpringWise app and run it locally
@@ -51,7 +51,7 @@ git pull
 3. `[SpringWise dev]` should appear to the right of your SpringWise project
 4. Navigate to [localhost:8080](http://localhost:8080/) in your browser of choice, we suggest Google Chrome, and ensure it's running successfully
 
-<img style="border-radius: 10px" width="350" alt="GitHub Desktop screenshot instructions" src="../../src/main/resources/static/images/Eclipse.jpg">
+<img style="border-radius: 10px" width="350" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/Eclipse.jpg">
 
 ### Eclipse Troubleshooting Steps
 **Solution 1**
@@ -71,7 +71,7 @@ _If the Installation fails:_
 2. Ensure that you see the **dev** branch selected
 3. Navigate to [localhost:8080](http://localhost:8080/) in your browser of choice, we suggest Google Chrome, and ensure it's running successfully
 
-<img style="border-radius: 10px" width="400" alt="GitHub Desktop screenshot instructions" src="../../src/main/resources/static/images/IntelliJ.jpg">
+<img style="border-radius: 10px" width="400" alt="GitHub Desktop screenshot instructions" src="../src/main/resources/static/images/IntelliJ.jpg">
 
 
 ## Issues

@@ -1,4 +1,4 @@
-# How to make a release
+# How to make a Release
 
 - [ ] Have you followed the [rules](RULES.md). Go check the rules before progressing.
 
