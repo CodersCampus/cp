@@ -1,7 +1,7 @@
-# cp and the 4 Ls
+# ca and the 4 Ls
 
 Notes:
-- rename springwise to cp and make it `cradle to grave`
+- rename springwise to ca and make it `enrollment to retirement`
 - take it to both foundations and alumni
 - make it a lifelong value enhancement app as measured by results
 
@@ -50,18 +50,18 @@ We don't just improve our skills, we leave something behind for the next time, o
 - Tools
 - Processes
 
-## Cradle to Grave?
+## Enrollment to Retirement?
 
-Once `cp`, or the `coder packaging` app is live, and we are doing checkins as well as enhancing the value of our alumni, it would seem logical to:
+Once `ca`, or the `coder packaging` app is live, and we are doing checkins as well as enhancing the value of our alumni, it would seem logical to:
 
 1. Extend the checkins all the way forward into the first foundations meeting.
 1. Extend the app's usage all the way through the alumni's career.
 
 By extending the 4Ls through the entire time period, it would seem more logical.
 
-## Renaming springwise to `cp`
+## Renaming springwise to `ca`
 
-Just easier to say. `cp`
+Just easier to say. `ca` where is pronounced "C A"
 
 Also same as `coder packaging` so it's not dual name thing that you constantly have to explain.
 
