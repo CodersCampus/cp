@@ -1,4 +1,4 @@
-# An Ideal Schedule
+# Ideal Schedule
 
 What considerations make for an ideal schedule?
 

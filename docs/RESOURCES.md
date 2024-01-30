@@ -1,4 +1,4 @@
-# RESOURCES
+# Resources
 
 ## Job Search
 [otta](https://otta.com/) - Only relevant roles. At the most exciting startups. Discover your top recommendations now.

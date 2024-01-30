@@ -1,4 +1,4 @@
-# SpringWise Leadership Basics
+# Coders Packaging Leadership Basics
 
 Leadership, in this context, defines which people have volunteered to function as the servants of other students, within the project. 
 
