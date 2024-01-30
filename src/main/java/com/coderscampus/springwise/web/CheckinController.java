@@ -40,7 +40,6 @@ public class CheckinController {
 		return "redirect:/checkin/";
 	}
 
-	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Checkin checkin = checkinService.findById(id);

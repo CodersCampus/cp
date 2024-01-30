@@ -20,33 +20,30 @@
                 <form method="post" action="/checkin/create">
                     <h1>Create Checkin</h1>
                     <div class="mb-3">
-                        <input class="form-control" hidden type="text"
-                               th:field="${checkin.date}"/>
+                        <input class="form-control" hidden type="text" th:field="${checkin.date}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Assignment: </label><input
-                            class="form-control" type="number"
-                            th:field="${checkin.assignment}"/>
+                        <label class="form-label">Assignment:</label>
+                        <input class="form-control" type="number" th:field="${checkin.assignment}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Blockers: </label><input type="checkbox"
-                                                                           th:field="${checkin.blockers}"/>
+                        <label class="form-label">Blockers:</label>
+                        <input type="checkbox" th:field="${checkin.blockers}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Box Ready for Live Coding?: </label><input
-                            type="checkbox" th:field="${checkin.isSetUp}"/>
+                        <label class="form-label">Box Ready for Live Coding?:</label>
+                        <input type="checkbox" th:field="${checkin.isSetUp}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Are You Available/willing to Code?: </label><input
-                            type="checkbox" th:field="${checkin.available}"/>
+                        <label class="form-label">Are You Available/willing to Code?:</label>
+                        <input type="checkbox" th:field="${checkin.available}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Blocker Description: </label><input
-                            type="text" th:field="${checkin.blockerDescription}"/>
+                        <label class="form-label">Blocker Description:</label>
+                        <input type="text" th:field="${checkin.blockerDescription}"/>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control btn btn-primary" type="submit"
-                               value="Create"/>
+                        <input class="form-control btn btn-primary" type="submit" value="Create"/>
                     </div>
                 </form>
             </main>
@@ -72,3 +69,6 @@
 </script>
 </body>
 </html>
+
+
+

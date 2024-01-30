@@ -1,33 +1,33 @@
 package com.coderscampus.springwise.domain;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 public class Checkin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String uid;
     private LocalDateTime date;
-    private Boolean blockers;
     private Integer assignment;
+    private Boolean blockers;
+    private String blockerDescription;
     private Boolean isSetUp;
     private Boolean available;
     private Role role;
     private Instant startTime;
     private Instant endTime;
-    private String uid;
     private Integer issueNumber;
     private CodingType codingType;
-    private String blockerDescription;
-    
-    
-    
+
+
+
     public Boolean getIsSetUp() {
 		return isSetUp;
 	}
@@ -122,7 +122,7 @@ public class Checkin {
 				+ ", endTime=" + endTime + ", uid=" + uid + ", issueNumber=" + issueNumber + ", codingType="
 				+ codingType + ", blockerDescription=" + blockerDescription + "]";
 	}
-   
+
 
 
 }
