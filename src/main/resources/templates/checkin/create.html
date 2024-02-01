@@ -23,12 +23,16 @@
                         <input class="form-control" hidden type="text" th:field="${checkin.date}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Assignment:</label>
+                        <label class="form-label">Next Assignment:</label>
                         <input class="form-control" type="number" th:field="${checkin.assignment}"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Blockers:</label>
                         <input type="checkbox" th:field="${checkin.blockers}"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Blocker Description:</label>
+                        <input type="text" th:field="${checkin.blockerDescription}"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Box Ready for Live Coding?:</label>
@@ -37,10 +41,6 @@
                     <div class="mb-3">
                         <label class="form-label">Are You Available/willing to Code?:</label>
                         <input type="checkbox" th:field="${checkin.available}"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Blocker Description:</label>
-                        <input type="text" th:field="${checkin.blockerDescription}"/>
                     </div>
                     <div class="mb-3">
                         <input class="form-control btn btn-primary" type="submit" value="Create"/>
