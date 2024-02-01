@@ -42,18 +42,19 @@
 14. Eclipse will open and give you the prompt window "Import Projects from File System or Archive"
 15. In the "Import Source" field, that should be left alone, as that's where you choose to store the SpringWise repository earlier.
 16. Click bottom right button `Finish`
-17. SpringWise should populate within the **Project Explorer** side panel of Eclipse IDE
+17. You may see "**Import as Maven project**", if you do, select **Maven**, as this is how you need to import this project.
+18. SpringWise should populate within the **Project Explorer** side panel of Eclipse IDE
 
 ## Run SpringWise
-18. To run SpringWise application you will traverse through the SpringWise folder structure clicking the dropdown arrows as you go.
+19. To run SpringWise application you will traverse through the SpringWise folder structure clicking the dropdown arrows as you go.
 That path is, SpringWise/src/main/java/com.coderscampus/SpringWiseApplication.java. Open SpringWiseApplication.java, and press the green `Run` button to run application 
 or right click on main method and select `Run As` > `Java Application`
-19. You should see the Spring Boot design print into the console with a bunch of other console context.
+20. You should see the Spring Boot design print into the console with a bunch of other console context.
 
 <img style="border-radius: 10px" width="700" alt="Running SpringWise" src="../src/main/resources/static/images/Running_SpringWise.jpg">
 
-20. Now navigate to browser of choice, we use Chrome, and type into the address bar `localhost:8080`, this is the local address the application is being served too.
-21. SpringWise application should be live on your browser.
+21. Now navigate to browser of choice, we use Chrome, and type into the address bar `localhost:8080`, this is the local address the application is being served too.
+22. SpringWise application should be live on your browser.
 
 
 ## [Starting SpringWise Instructional Video](https://youtu.be/N8m2b1AFvDo)
