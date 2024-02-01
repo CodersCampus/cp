@@ -1,3 +1,56 @@
+# SpringWise Instructions
+
+## Table of Contents
+- [Starting SpringWise](#starting-springwise-)
+- [Setting Up SpringWise](#setting-up-springwise)
+
+---
+
+# Starting SpringWise 
+
+## GitHub
+1. Be given access to contribute too https://github.com/CodersCampus/SpringWise, private repository via (Pete)
+2. Click on green `<> Clone` button
+3. Click `Open with GitHub Desktop`
+4. Browser will display pop up window `Open GitHub Desktop.app?`
+5. Click `Open GitHub Desktop.app` button
+
+## GitHub Dektop
+6. GitHub Desktop **Clone a Repository** window opens to the **URL** tab
+7. Keep the **Repository URL or GitHub username and repository** field as is
+8. You can keep the **Local Path** as is or change it by pressing `Choose` button and selecting a different location to store the SpringWise repository
+9. Click blue `Clone` button 
+10. Current Repository should be `SpringWise`, Current Branch should be `dev`, and you'll have the option to `Fetch origin`.
+![GitHub_Desktop_default_2.jpg](..%2F..%2F..%2F..%2FDesktop%2FCompressed%2FGitHub_Desktop_default_2.jpg)
+  
+## Opening SpringWise
+11. Now open SpringWise repository 
+12. If you are given the option in GitHub Desktop to `Open in Eclipse IDE...`, then click that button.
+![Open_with_Eclipse_IDE.jpg](..%2F..%2F..%2F..%2FDesktop%2FCompressed%2FOpen_with_Eclipse_IDE.jpg)
+13. If not, open Eclipse IDE app, click on `File` > `Open Projects from File System...` > `Directory` > locate SpringWise root folder, and click `Open`
+![SpringWise_root_folder (1).jpg](..%2F..%2F..%2F..%2FDesktop%2FCompressed%2FSpringWise_root_folder%20%281%29.jpg)
+
+
+## Eclipse IDE
+14. Eclipse will open and give you the prompt window "Import Projects from File System or Archive"
+15. In the "Import Source" field, that should be left alone, as that's where you choose to store the SpringWise repository earlier.
+16. Click bottom right button `Finish`
+17. SpringWise should populate within the **Project Explorer** side panel of Eclipse IDE
+
+## Run SpringWise
+18. To run SpringWise application you will traverse through the SpringWise folder structure clicking the dropdown arrows as you go.
+That path is, SpringWise/src/main/java/com.coderscampus/SpringWiseApplication.java. Open SpringWiseApplication.java, and press the green `Run` button to run application 
+or right click on main method and select `Run As` > `Java Application`
+19. You should see the Spring Boot design print into the console with a bunch of other console context.
+![Running_SpringWise.jpg](..%2F..%2F..%2F..%2FDesktop%2FCompressed%2FRunning_SpringWise.jpg)
+
+20. Now navigate to browser of choice, we use Chrome, and type into the address bar `localhost:8080`, this is the local address the application is being served too.
+21. SpringWise application should be live on your browser.
+
+_- If you have any questions please follow up the Team at Coder Campus for Assistance_
+
+---
+
 # Setting up SpringWise
 
 To set up SpringWise on your computer, follow these guidelines:
@@ -26,10 +79,10 @@ _Choose the method you're most comfortable with to get SpringWise operational._
 ### Terminal/Git BASH Instructions
 
 - cd into **SpringWise** project folder and type the following git commands into your Terminal/Git BASH
-```
+```git
 git status
 ```
-```
+```git
 git fetch 
 ```
 ```
