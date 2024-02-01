@@ -48,7 +48,6 @@
 That path is, SpringWise/src/main/java/com.coderscampus/SpringWiseApplication.java. Open SpringWiseApplication.java, and press the green `Run` button to run application 
 or right click on main method and select `Run As` > `Java Application`
 19. You should see the Spring Boot design print into the console with a bunch of other console context.
-![Running_SpringWise.jpg](..%2F..%2F..%2F..%2FDesktop%2FCompressed%2FRunning_SpringWise.jpg)
 
 <img style="border-radius: 10px" width="700" alt="Running SpringWise" src="../src/main/resources/static/images/Running_SpringWise.jpg">
 
