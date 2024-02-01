@@ -91,12 +91,15 @@ public class Checkin {
 	public void setBlockerDescription(String blockerDescription) {
 		this.blockerDescription = blockerDescription;
 	}
+
+	// CHANGE EMPTY BACK TO NULL
 	public enum CodingType{
-    	CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION, NULL
+    	CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION, EMPTY
     }
-    
+
+	// CHANGE EMPTY BACK TO NULL
     public enum Role{
-    	CODER, DRIVER, SCRUM_MASTER, PM, OBSERVER, NULL
+    	CODER, DRIVER, SCRUM_MASTER, PO, OBSERVER, EMPTY
     }
     
     public Long getId() {
@@ -130,14 +133,34 @@ public class Checkin {
     public void setAvailable(Boolean available) {
         this.available = available;
     }
+//	@Override
+//	public String toString() {
+//		return "Checkin [id=" + id + ", date=" + date + ", blockers=" + blockers + ", assignment=" + assignment
+//				+ ", isSetUp=" + isSetUp + ", available=" + available + ", role=" + role + ", startTime=" + startTime
+//				+ ", endTime=" + endTime + ", uid=" + uid + ", issueNumber=" + issueNumber + ", codingType="
+//				+ codingType + ", blockerDescription=" + blockerDescription + "]";
+//	}
+
+	// toString above does not have Student
+
+
 	@Override
 	public String toString() {
-		return "Checkin [id=" + id + ", date=" + date + ", blockers=" + blockers + ", assignment=" + assignment
-				+ ", isSetUp=" + isSetUp + ", available=" + available + ", role=" + role + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", uid=" + uid + ", issueNumber=" + issueNumber + ", codingType="
-				+ codingType + ", blockerDescription=" + blockerDescription + "]";
+		return "Checkin{" +
+				"id=" + id +                                            // check
+				", uid='" + uid + '\'' +                                // check
+				", date=" + date +                                      // check
+				", assignment=" + assignment +                          // check
+				", blockers=" + blockers +                             // check
+				", blockerDescription='" + blockerDescription + '\'' + // check
+				", isSetUp=" + isSetUp +                               // check
+				", available=" + available +                            // check
+				", role=" + role +                                      // check
+				", startTime=" + startTime +                           // check
+				", endTime=" + endTime +								// check
+				", issueNumber=" + issueNumber +						// check
+				", codingType=" + codingType +							// check
+				", student=" + student +
+				'}';
 	}
-
-
-
 }

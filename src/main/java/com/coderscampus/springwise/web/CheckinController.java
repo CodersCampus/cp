@@ -37,7 +37,9 @@ public class CheckinController {
 
 	@PostMapping("/create")
 	public String create(Checkin checkin, @RequestParam("uid") String uid) {
+		System.out.println("Inside of CheckinController.java create method");
 		checkin = checkinService.saveByUid(checkin, uid);
+		System.out.println("CheckinController.java - checkin: " + checkin);
 		return "redirect:/checkin/";
 	}
 

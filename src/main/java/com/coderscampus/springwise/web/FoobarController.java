@@ -37,6 +37,7 @@ public class FoobarController {
 	@PostMapping("/create")
 	public String create(Foobar foobar, @RequestParam("uid") String uid) {
 		foobar = foobarService.saveByUid(foobar, uid);
+		System.out.println("FoobarController.java create method - Foobar: " + foobar);
 		return "redirect:/foobar/";
 	}
 

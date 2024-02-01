@@ -10,8 +10,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link"
-                                                href="/checkin/create">Create Checkin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/checkin/create">Create Checkin</a></li>
                     </ul>
                 </div>
             </nav>
@@ -21,22 +20,43 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Date:</th>
-                        <th scope="col">Assignment:</th>
-                        <th scope="col">Blockers:</th>
-                        <th scope="col">SpringWise:</th>
-                        <th scope="col">Available:</th>
+<!--                        <th scope="col">Date:</th>-->
+<!--                        <th scope="col">Assignment:</th>-->
+<!--                        <th scope="col">Blockers:</th>-->
+<!--                        <th scope="col">SpringWise:</th>-->
+<!--                        <th scope="col">Available:</th>-->
+<!--                     TO BE DELETED. HERE FOR TESTING PURPOSES        -->
+
+                        <th scope="col">Next Assignment:</th>
+<!--                        <th scope="col">Blockers:</th>-->
+<!--                        <th scope="col">Blocker Description:</th>-->
+<!--                        <th scope="col">Box Ready for Live Coding?:</th>-->
+<!--                        <th scope="col">Are You Available/willing to Code?:</th>-->
+<!--                        <th scope="col">Role:</th>-->
+<!--                        <th scope="col">Coding Type:</th>-->
+<!--                        <th scope="col">Issue Number:</th>-->
+
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="checkin: ${checkins}">
-                        <td><span th:text="${checkin.date}"></span></td>
+<!--                        <td><span th:text="${checkin.date}"></span></td>-->
+<!--                        <td><span th:text="${checkin.assignment}"></span></td>-->
+<!--                        <td><span th:text="${checkin.blockers}"></span></td>-->
+<!--                        <td><span th:text="${checkin.springWise}"></span></td>-->
+<!--                        <td><span th:text="${checkin.available}"></span></td>-->
+
                         <td><span th:text="${checkin.assignment}"></span></td>
-                        <td><span th:text="${checkin.blockers}"></span></td>
-                        <td><span th:text="${checkin.springWise}"></span></td>
-                        <td><span th:text="${checkin.available}"></span></td>
-                        <td><a
-                                th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
+<!--                        <td><span th:text="${checkin.blockers}"></span></td>-->
+<!--                        <td><span th:text="${checkin.blockerDescription}"></span></td>-->
+<!--                        <td><span th:text="${checkin.isSetUp}"></span></td>-->
+<!--                        <td><span th:text="${checkin.available}"></span></td>-->
+<!--                        <td><span th:text="${checkin.role}"></span></td>-->
+<!--                        <td><span th:text="${checkin.codingType}"></span></td>-->
+<!--                        <td><span th:text="${checkin.issueNumber}"></span></td>-->
+
+
+                        <td><a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
 									<span><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                height="16" fill="currentColor" class="bi bi-view-list"
                                                viewBox="0 0 16 16">
@@ -55,6 +75,7 @@
 <script>
     const fbauth = document.querySelector('fbauth-element');
     const uid = document.getElementById('uid');
+    console.log("Checkin/read.html| UID: " + uid);
     const displayName = document.getElementById('display-name');
     fbauth.addEventListener('user-changed', (event) => {
         const {newValue} = event.detail;
