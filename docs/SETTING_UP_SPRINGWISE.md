@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Starting SpringWise](#starting-springwise-)
+- [Starting SpringWise Instructional Video]()
 - [Setting Up SpringWise](#setting-up-springwise)
 
 ---
@@ -53,6 +54,10 @@ or right click on main method and select `Run As` > `Java Application`
 
 20. Now navigate to browser of choice, we use Chrome, and type into the address bar `localhost:8080`, this is the local address the application is being served too.
 21. SpringWise application should be live on your browser.
+
+
+[//]: # (## [Starting SpringWise Instructional Video]&#40;..%2Fsrc%2Fmain%2Fresources%2Fstatic%2Fvideo%2FStarting_SpringWise.mp4&#41;)
+## [Starting SpringWise Instructional Video](../src/main/resources/static/video/Starting_SpringWise.mp4)
 
 _- If you have any questions please follow up the Team at Coder Campus for Assistance_
 
