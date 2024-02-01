@@ -1,7 +1,9 @@
 package com.coderscampus.springwise.service;
 
 import com.coderscampus.springwise.domain.Checkin;
+import com.coderscampus.springwise.domain.Student;
 import com.coderscampus.springwise.repository.CheckinRepository;
+import com.coderscampus.springwise.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class CheckinService {
 
 	@Autowired
 	private CheckinRepository checkinRepo;
+
+	@Autowired
+private StudentRepository studentRepo;
 
 	public Checkin save(Checkin checkin) {
 		if(checkin.getDate()== null) {
@@ -35,4 +40,15 @@ public class CheckinService {
 		checkinRepo.delete(checkin);
 	}
 
+    public Checkin saveByUid(Checkin checkin, String uid) {
+		List<Student> students = studentRepo.findByUid(uid);
+		if(students.size()>1)
+			throw new IllegalStateException("Shouldn't have more than one student per uid");
+		if (!students.isEmpty()) {
+			Student student = students.get(0);
+			checkin.setStudent(student);
+			checkin.setUid(uid);
+		}
+		return checkinRepo.save(checkin);
+    }
 }

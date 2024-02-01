@@ -43,10 +43,7 @@
 							<label class="form-label">Are You Available/willing to Code?:</label>
 							<input type="checkbox" th:field="${checkin.available}" />
 						</div>
-						<div class="mb-3">
-							<label class="form-label">Role:</label>
-							<input class="form-control" type="text" th:field="${checkin.role}" />
-						</div>
+
 
 
 						<div class="mb-3">
@@ -60,8 +57,13 @@
 
 						<div class="mb-3">
 							<label class="form-label">Coding Type:</label>
-							<input class="form-control" type="text" th:field="${checkin.codingType}" />
+							<select class="form-control" th:field="*{checkin.codingType}">
+								<option th:each="codingType : ${codingType}" th:value="${codingType}"
+										th:text="${#strings.capitalize(codingType.toString())}">
+								</option>
+							</select>
 						</div>
+
 						<div class="mb-3">
 							<label class="form-label">Issue Number:</label>
 							<input class="form-control" type="number" th:field="${checkin.issueNumber}" />
@@ -72,7 +74,7 @@
 						<div class="mb-3">
 							<input class="form-control btn btn-secondary" type="" value="Start Time/End Time" />
 						</div>
-
+						<input name="uid" type="hidden" id="uid" />
 					</form>
 				</main>
 			</div>

@@ -1,6 +1,7 @@
 package com.coderscampus.springwise.web;
 
 import com.coderscampus.springwise.domain.Checkin;
+import com.coderscampus.springwise.domain.Foobar;
 import com.coderscampus.springwise.service.CheckinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,8 +36,8 @@ public class CheckinController {
 	}
 
 	@PostMapping("/create")
-	public String create(@ModelAttribute Checkin checkin) {
-		checkinService.save(checkin);
+	public String create(Checkin checkin, @RequestParam("uid") String uid) {
+		checkin = checkinService.saveByUid(checkin, uid);
 		return "redirect:/checkin/";
 	}
 
@@ -59,5 +60,14 @@ public class CheckinController {
 	public String delete(Checkin checkin) {
 		checkinService.delete(checkin);
 		return "redirect:/checkin/";
+	}
+
+	@ModelAttribute("roleList")
+	public Checkin.Role[] getRoleList() {
+		return Checkin.Role.values();
+	}
+	@ModelAttribute("codingType")
+	public Checkin.CodingType[] getCodingType() {
+		return Checkin.CodingType.values();
 	}
 }
