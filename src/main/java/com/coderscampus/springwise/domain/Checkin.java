@@ -11,6 +11,10 @@ public class Checkin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String uid;
+	// word ONLY HERE AS A TEMPORARY FIX
+	private String word;
+	// REMOVE WHEN WE CAN
+	// AS WELL AS GETTERS & SETTERS & TOSTRING
     private LocalDateTime date;
     private Integer assignment;
     private Boolean blockers;
@@ -22,6 +26,14 @@ public class Checkin {
     private Instant endTime;
     private Integer issueNumber;
     private CodingType codingType;
+
+	public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}
 
 	@OneToOne
 	@JoinColumn(name = "student_id")
@@ -147,19 +159,20 @@ public class Checkin {
 	@Override
 	public String toString() {
 		return "Checkin{" +
-				"id=" + id +                                            // check
-				", uid='" + uid + '\'' +                                // check
-				", date=" + date +                                      // check
-				", assignment=" + assignment +                          // check
-				", blockers=" + blockers +                             // check
-				", blockerDescription='" + blockerDescription + '\'' + // check
-				", isSetUp=" + isSetUp +                               // check
-				", available=" + available +                            // check
-				", role=" + role +                                      // check
-				", startTime=" + startTime +                           // check
-				", endTime=" + endTime +								// check
-				", issueNumber=" + issueNumber +						// check
-				", codingType=" + codingType +							// check
+				"id=" + id +
+				", uid='" + uid + '\'' +
+				", word='" + word + '\'' +
+				", date=" + date +
+				", assignment=" + assignment +
+				", blockers=" + blockers +
+				", blockerDescription='" + blockerDescription + '\'' +
+				", isSetUp=" + isSetUp +
+				", available=" + available +
+				", role=" + role +
+				", startTime=" + startTime +
+				", endTime=" + endTime +
+				", issueNumber=" + issueNumber +
+				", codingType=" + codingType +
 				", student=" + student +
 				'}';
 	}
