@@ -22,17 +22,13 @@ public class CheckinService {
     private StudentRepository studentRepo;
 
     public Checkin save(Checkin checkin) {
-        System.out.println("<<<<<<<   Inside CheckinService.java/save() method   >>>>>>>");
         if (checkin.getDate() == null) {
             checkin.setDate(LocalDateTime.now());
-            System.out.println(" <<<< Inside CheckinService.java/save() method. This is the date: " + checkin.getDate() + " >>>>> ");
         }
-        System.out.println("Inside CheckinService.java/save() method: CHECKIN: " + checkin);
         return checkinRepo.save(checkin);
     }
 
 	public Checkin saveByUid(Checkin checkin, String uid) {
-        System.out.println("<<<<<<<   Inside CheckinService.java/saveByUid() method   >>>>>>>");
 		List<Student> students = studentRepo.findByUid(uid);
 		if (students.size() > 1)
 			throw new IllegalStateException("Shouldn't have more than one student per uid");
@@ -40,9 +36,7 @@ public class CheckinService {
 			Student student = students.get(0);
 			checkin.setStudent(student);
 			checkin.setUid(uid);
-            System.out.println("CheckinService.java| #1 - Checkin UID is: " + uid);
 		}
-        System.out.println("CheckinService.java| #2 - Checkin UID is: " + uid);
 		return checkinRepo.save(checkin);
 	}
 

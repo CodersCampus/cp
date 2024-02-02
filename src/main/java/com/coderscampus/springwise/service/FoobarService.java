@@ -31,9 +31,7 @@ public class FoobarService {
 			Student student = students.get(0);
 			foobar.setStudent(student);
 			foobar.setUid(uid);
-			System.out.println("FoobarService.java| #1 - Foobar UID is: " + uid);
 		}
-		System.out.println("FoobarService.java| #2 - Foobar UID is: " + uid);
 		return foobarRepo.save(foobar);
 	}
 

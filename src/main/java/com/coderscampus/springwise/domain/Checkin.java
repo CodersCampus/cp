@@ -11,10 +11,6 @@ public class Checkin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String uid;
-	// word ONLY HERE AS A TEMPORARY FIX
-	private String word;
-	// REMOVE WHEN WE CAN
-	// AS WELL AS GETTERS & SETTERS & TOSTRING
     private LocalDateTime date;
     private Integer assignment;
     private Boolean blockers;
@@ -24,16 +20,8 @@ public class Checkin {
     private Role role;
     private Instant startTime;
     private Instant endTime;
-    private Integer issueNumber;
     private CodingType codingType;
-
-	public String getWord() {
-		return word;
-	}
-
-	public void setWord(String word) {
-		this.word = word;
-	}
+    private Integer issueNumber;
 
 	@OneToOne
 	@JoinColumn(name = "student_id")
@@ -106,12 +94,12 @@ public class Checkin {
 
 	// CHANGE EMPTY BACK TO NULL
 	public enum CodingType{
-    	CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION, EMPTY
+    	CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION, NULL
     }
 
 	// CHANGE EMPTY BACK TO NULL
     public enum Role{
-    	CODER, DRIVER, SCRUM_MASTER, PO, OBSERVER, EMPTY
+    	CODER, DRIVER, SCRUM_MASTER, PO, OBSERVER, NULL
     }
     
     public Long getId() {
@@ -145,23 +133,12 @@ public class Checkin {
     public void setAvailable(Boolean available) {
         this.available = available;
     }
-//	@Override
-//	public String toString() {
-//		return "Checkin [id=" + id + ", date=" + date + ", blockers=" + blockers + ", assignment=" + assignment
-//				+ ", isSetUp=" + isSetUp + ", available=" + available + ", role=" + role + ", startTime=" + startTime
-//				+ ", endTime=" + endTime + ", uid=" + uid + ", issueNumber=" + issueNumber + ", codingType="
-//				+ codingType + ", blockerDescription=" + blockerDescription + "]";
-//	}
-
-	// toString above does not have Student
-
 
 	@Override
 	public String toString() {
 		return "Checkin{" +
 				"id=" + id +
 				", uid='" + uid + '\'' +
-				", word='" + word + '\'' +
 				", date=" + date +
 				", assignment=" + assignment +
 				", blockers=" + blockers +
