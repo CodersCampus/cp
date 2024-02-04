@@ -92,12 +92,10 @@ public class Checkin {
 		this.blockerDescription = blockerDescription;
 	}
 
-	// CHANGE EMPTY BACK TO NULL
 	public enum CodingType{
     	CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION, NULL
     }
 
-	// CHANGE EMPTY BACK TO NULL
     public enum Role{
     	CODER, DRIVER, SCRUM_MASTER, PO, OBSERVER, NULL
     }
