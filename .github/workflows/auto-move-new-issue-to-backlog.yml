@@ -8,9 +8,17 @@ jobs:
   move-to-backlog:
     runs-on: ubuntu-latest
     steps:
+      # Step to set up Node.js 20
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Your existing steps follow
       - name: Move new issue to Backlog
         uses: alex-page/github-project-automation-plus@v0.8.1
         with:
           project: Your Project Name
           column: Backlog
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
