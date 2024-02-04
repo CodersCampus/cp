@@ -14,11 +14,12 @@ public class FoobarService {
 
 	@Autowired
 	private FoobarRepository foobarRepo;
+
 	@Autowired
 	private StudentRepository studentRepo;
 
 	public Foobar save(Foobar foobar) {
-
+		System.out.println("FoobarService.java save method| Foobar is: " + foobar);
 		return foobarRepo.save(foobar);
 	}
 
@@ -31,14 +32,11 @@ public class FoobarService {
 			foobar.setStudent(student);
 			foobar.setUid(uid);
 		}
-
 		return foobarRepo.save(foobar);
 	}
 
 	public List<Foobar> findAll() {
-
 		return foobarRepo.findAll();
-
 	}
 
 	public Foobar findById(Long id) {

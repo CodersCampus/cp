@@ -42,6 +42,7 @@
 <script>
     const fbauth = document.querySelector('fbauth-element');
     const uid = document.getElementById('uid');
+    console.log("Foobar/read.html| UID: " + uid);
     const displayName = document.getElementById('display-name');
     fbauth.addEventListener('user-changed', (event) => {
         const {newValue} = event.detail;

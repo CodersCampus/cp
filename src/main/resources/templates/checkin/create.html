@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+
 <body layout="layout-secured">
 <fbauth-element>
     <div layout="layout-sidebar">
@@ -9,8 +10,8 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link active"
-                                                aria-current="page" href="/checkin/">Checkin Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/checkin/">Checkin
+                            Home</a></li>
                     </ul>
                 </div>
             </nav>
@@ -19,30 +20,57 @@
             <main>
                 <form method="post" action="/checkin/create">
                     <h1>Create Checkin</h1>
+                    <input name="uid" type="hidden" id="uid"/>
                     <div class="mb-3">
-                        <input class="form-control" hidden type="text"
-                               th:field="${checkin.date}"/>
+                        <input class="form-control" hidden type="text" th:field="${checkin.date}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Assignment: </label><input
-                            class="form-control" type="number"
-                            th:field="${checkin.assignment}"/>
+                        <label class="form-label">Next Assignment:</label>
+                        <input class="form-control" type="number" th:field="${checkin.assignment}"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Blockers:</label>
+                        <input type="checkbox" th:field="${checkin.blockers}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Blockers: </label><input type="checkbox"
-                                                                           th:field="${checkin.blockers}"/>
+                        <label class="form-label">Blocker Description:</label>
+                        <input type="text" th:field="${checkin.blockerDescription}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">SpringWise: </label><input
-                            type="checkbox" th:field="${checkin.springWise}"/>
+                        <label class="form-label">Box Ready for Live Coding?:</label>
+                        <input type="checkbox" th:field="${checkin.isSetUp}"/>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Available: </label><input
-                            type="checkbox" th:field="${checkin.available}"/>
+                        <label class="form-label">Are You Available/willing to Code?:</label>
+                        <input type="checkbox" th:field="${checkin.available}"/>
                     </div>
                     <div class="mb-3">
-                        <input class="form-control btn btn-primary" type="submit"
-                               value="Create"/>
+                        <label class="form-label">Role:</label>
+                        <select class="form-control" th:field="*{checkin.role}">
+                            <option th:each="role : ${roleList}" th:value="${role}"
+                                    th:text="${#strings.capitalize(role.toString())}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Coding Type:</label>
+                        <select class="form-control" th:field="*{checkin.codingType}">
+                            <option th:each="codingType : ${codingType}" th:value="${codingType}"
+                                    th:text="${#strings.capitalize(codingType.toString())}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Issue Number:</label>
+                        <input class="form-control" type="number" th:field="${checkin.issueNumber}"/>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control btn btn-primary" type="submit" value="Create"/>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control btn btn-secondary" type="" value="Start Time/End Time"/>
                     </div>
                 </form>
             </main>
@@ -53,18 +81,22 @@
 <script>
     const fbauth = document.querySelector('fbauth-element');
     const uid = document.getElementById('uid');
+    console.log("UID: " + uid);
     const displayName = document.getElementById('display-name');
     fbauth.addEventListener('user-changed', (event) => {
         const {newValue} = event.detail;
         console.log("SETTING UID TO " + newValue.uid + " AND DISPLAY NAME TO " + newValue.displayName);
         if (newValue) {
-            displayName.value = newValue.displayName;
+            // COMMENTED OUT BECAUSE NOT REQUIRED
+            // displayName.value = newValue.displayName;
             uid.value = newValue.uid;
         } else {
-            displayName.value = '';
+            // COMMENTED OUT BECAUSE NOT REQUIRED
+            // displayName.value = '';
             uid.value = '';
         }
     });
 </script>
 </body>
+
 </html>
