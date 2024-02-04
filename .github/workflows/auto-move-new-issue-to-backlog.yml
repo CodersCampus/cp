@@ -1,0 +1,16 @@
+name: Auto-move issues to Backlog
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  move-to-backlog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Move new issue to Backlog
+        uses: alex-page/github-project-automation-plus@v0.8.1
+        with:
+          project: Your Project Name
+          column: Backlog
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
