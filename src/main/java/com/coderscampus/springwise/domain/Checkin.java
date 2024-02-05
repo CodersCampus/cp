@@ -12,7 +12,7 @@ public class Checkin {
     private Long id;
     private String uid;
     private LocalDateTime date;
-    private Integer assignment;
+    private Integer nextAssignment;
     private Boolean blockers;
     private String blockerDescription;
     private Boolean isSetUp;
@@ -22,14 +22,13 @@ public class Checkin {
     private Instant endTime;
     private CodingType codingType;
     private Integer issueNumber;
-
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
 
-	public Boolean getSetUp() {
-		return isSetUp;
-	}
+//	public Boolean getSetUp() {
+//		return isSetUp;
+//	}
 
 	public Student getStudent() {
 		return student;
@@ -39,9 +38,9 @@ public class Checkin {
 		this.student = student;
 	}
 
-	public void setSetUp(Boolean setUp) {
-		isSetUp = setUp;
-	}
+//	public void setSetUp(Boolean setUp) {
+//		isSetUp = setUp;
+//	}
 
 	public Boolean getIsSetUp() {
 		return isSetUp;
@@ -118,11 +117,11 @@ public class Checkin {
     public void setBlockers(Boolean blockers) {
         this.blockers = blockers;
     }
-    public Integer getAssignment() {
-        return assignment;
+    public Integer getNextAssignment() {
+        return nextAssignment;
     }
-    public void setAssignment(Integer assignment) {
-        this.assignment = assignment;
+    public void setNextAssignment(Integer nextAssignment) {
+        this.nextAssignment = nextAssignment;
     }
   
     public Boolean getAvailable() {
@@ -138,7 +137,7 @@ public class Checkin {
 				"id=" + id +
 				", uid='" + uid + '\'' +
 				", date=" + date +
-				", assignment=" + assignment +
+				", assignment=" + nextAssignment +
 				", blockers=" + blockers +
 				", blockerDescription='" + blockerDescription + '\'' +
 				", isSetUp=" + isSetUp +
