@@ -1,6 +1,5 @@
 # New Object Template
 
-
 This is a basic template based off of the Checkin Module. We are not 100% done with Checkin so this is not quite 100% a Template.
 Use carefully.
 
