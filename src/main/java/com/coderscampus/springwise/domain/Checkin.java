@@ -22,7 +22,6 @@ public class Checkin {
 	private Instant endTime;
 	private CodingType codingType;
 	private Integer issueNumber;
-
 	@OneToOne
 	@JoinColumn(name = "student_id")
 	private Student student;

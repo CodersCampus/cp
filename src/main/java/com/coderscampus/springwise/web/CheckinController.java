@@ -66,6 +66,7 @@ public class CheckinController {
 	public Checkin.Role[] getRoleList() {
 		return Checkin.Role.values();
 	}
+
 	@ModelAttribute("codingType")
 	public Checkin.CodingType[] getCodingType() {
 		return Checkin.CodingType.values();
