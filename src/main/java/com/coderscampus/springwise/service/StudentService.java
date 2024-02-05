@@ -63,6 +63,7 @@ public class StudentService {
     }
 
     public boolean delete(Student student) {
+        System.out.println("Inside StudentService delete method");
 
         try {
             if (isValidStudentUpdateOrDelete(student)) {
