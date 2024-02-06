@@ -14,6 +14,7 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private String uid;
 	private String name;
 	private Integer assignmentNum;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -21,7 +22,6 @@ public class Student {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private LinkedIn linkedIn;
 	private String ide;
-	private String uid;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private YouTube youtube;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -30,9 +30,10 @@ public class Student {
 	private Resume resume;
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Foobar foobar;
-
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Networking networking;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Website website;
 
 	public Networking getNetworking() {
 		return networking;
@@ -41,8 +42,7 @@ public class Student {
 	public void setNetworking(Networking networking) {
 		this.networking = networking;
 	}
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Website website;
+
 	
 
 	public Student() {}
@@ -126,12 +126,13 @@ public class Student {
 	public Resume getResume() { return resume; }
 	public void setResume(Resume resume) { this.resume = resume; }
 
+
 	@Override
 	public String toString() {
 		return "Student{" +
 				"id=" + id +
-				", name='" + name + '\'' +
 				", uid='" + uid + '\'' +
+				", name='" + name + '\'' +
 				", assignmentNum=" + assignmentNum +
 				", githubHandle=" + githubHandle +
 				", linkedIn=" + linkedIn +
@@ -139,7 +140,9 @@ public class Student {
 				", youtube=" + youtube +
 				", finalProject=" + finalProject +
 				", resume=" + resume +
+				", foobar=" + foobar +
 				", networking=" + networking +
+				", website=" + website +
 				'}';
 	}
 }
