@@ -1,6 +1,5 @@
 # SpringWise Instructions
 
-[//]: # (// Comment added back )
 ## Table of Contents
 - [Starting SpringWise](#starting-springwise-)
    - [Starting SpringWise Instructional Video](#starting-springwise-instructional-video)
