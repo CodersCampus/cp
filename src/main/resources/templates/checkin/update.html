@@ -77,9 +77,10 @@
 
                     <input class="form-control btn btn-primary mt-3" type="submit" value="Update"/>
                     <input class="form-control btn btn-secondary" type="" value="Start Time/End Time"/>
-
+					 <input name="uid" type="hidden" id="uid"/>
                 </form>
                 <form method="post" action="/checkin/delete" class="mb-3">
+					
                     <input type="hidden" th:field="${checkin.id}"/>
                     <input class="form-control btn btn-danger" type="submit" value="Delete"/>
                 </form>
