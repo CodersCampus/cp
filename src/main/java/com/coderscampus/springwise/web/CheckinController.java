@@ -51,8 +51,8 @@ public class CheckinController {
 	}
 	
 	@PostMapping("/update")
-	public String update(Checkin checkin) {
-		checkinService.save(checkin);
+	public String update(Checkin checkin, @RequestParam("uid") String uid) {
+		checkinService.saveByUid(checkin, uid);
 		return "redirect:/checkin/";
 	}
 	
