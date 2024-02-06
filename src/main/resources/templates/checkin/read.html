@@ -59,17 +59,21 @@
 <script>
     const fbauth = document.querySelector('fbauth-element');
     const uid = document.getElementById('uid');
-    console.log("Checkin/read.html| UID: " + uid);
+    console.log("UID: " + uid);
     const displayName = document.getElementById('display-name');
+    console.log("Display Name: " + displayName);
     fbauth.addEventListener('user-changed', (event) => {
         const {newValue} = event.detail;
         console.log("SETTING UID TO " + newValue.uid + " AND DISPLAY NAME TO " + newValue.displayName);
         if (newValue) {
-            displayName.value = newValue.displayName;
             uid.value = newValue.uid;
         } else {
-            displayName.value = '';
             uid.value = '';
+        }
+        if (newValue) {
+            displayName.value = newValue.displayName;
+        } else {
+            displayName.value = '';
         }
     });
 </script>
