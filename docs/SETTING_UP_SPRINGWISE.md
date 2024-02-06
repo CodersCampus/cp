@@ -1,5 +1,7 @@
 # SpringWise Instructions
 
+[//]: # (Test comment for issue386)
+
 ## Table of Contents
 - [Starting SpringWise](#starting-springwise-)
    - [Starting SpringWise Instructional Video](#starting-springwise-instructional-video)
