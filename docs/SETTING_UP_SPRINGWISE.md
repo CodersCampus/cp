@@ -1,6 +1,5 @@
 # SpringWise Instructions
 
-[//]: # (Test comment for issue386)
 
 ## Table of Contents
 - [Starting SpringWise](#starting-springwise-)
