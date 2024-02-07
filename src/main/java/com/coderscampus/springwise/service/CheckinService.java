@@ -51,5 +51,4 @@ public class CheckinService {
     public void delete(Checkin checkin) {
         checkinRepo.delete(checkin);
     }
-
 }

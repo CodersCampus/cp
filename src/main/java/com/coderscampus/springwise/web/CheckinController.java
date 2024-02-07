@@ -3,12 +3,16 @@ package com.coderscampus.springwise.web;
 import com.coderscampus.springwise.domain.Checkin;
 import com.coderscampus.springwise.domain.Foobar;
 import com.coderscampus.springwise.service.CheckinService;
+import com.coderscampus.springwise.utility.EnumFormatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/checkin")
@@ -62,13 +66,29 @@ public class CheckinController {
 		return "redirect:/checkin/";
 	}
 
+//	@ModelAttribute("roleList")
+//	public Checkin.Role[] getRoleList() {
+//		return Checkin.Role.values();
+//	}
+
+
 	@ModelAttribute("roleList")
-	public Checkin.Role[] getRoleList() {
-		return Checkin.Role.values();
+	public List<String> getRoleList() {
+		return Arrays.stream(Checkin.Role.values())
+				.map(EnumFormatUtil::formatEnumName) // Static import of the utility method
+				.collect(Collectors.toList());
 	}
 
+//	@ModelAttribute("codingType")
+//	public Checkin.CodingType[] getCodingType() {
+//		return Checkin.CodingType.values();
+//	}
+
 	@ModelAttribute("codingType")
-	public Checkin.CodingType[] getCodingType() {
-		return Checkin.CodingType.values();
+	public List<String> getCodingType() {
+		return Arrays.stream(Checkin.CodingType.values())
+				.map(EnumFormatUtil::formatEnumName) // Static import of the utility method
+				.collect(Collectors.toList());
 	}
+
 }
