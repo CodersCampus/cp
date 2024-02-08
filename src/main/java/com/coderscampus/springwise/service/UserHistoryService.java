@@ -18,20 +18,14 @@ public class UserHistoryService {
 	private UserHistoryRepository userHistoryRepo;
 
 	public UserHistory save(UserHistory userHistory) {
-		
 		if(userHistory.getDate()== null) {
 			userHistory.setDate(LocalDateTime.now());
-			
 		}
 		return userHistoryRepo.save(userHistory);
 	}
 
 	public List<UserHistory> findAll() {
-
-		
-		
 		return userHistoryRepo.findAll().stream().sorted(Comparator.comparing(UserHistory::getDate).reversed()).collect(Collectors.toList());
-	
 	}
 
 	public UserHistory findById(Long id) {
@@ -41,5 +35,4 @@ public class UserHistoryService {
 	public void delete(UserHistory userHistory) {
 		userHistoryRepo.delete(userHistory);
 	}
-
 }
