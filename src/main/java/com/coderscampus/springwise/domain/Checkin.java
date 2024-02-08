@@ -22,7 +22,7 @@ public class Checkin {
 	private Instant endTime;
 	private CodingType codingType;
 	private Integer issueNumber;
-	@OneToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "student_id")
 	private Student student;
 
