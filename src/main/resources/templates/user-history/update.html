@@ -21,14 +21,14 @@
 			<main>
 				<form method="post" action="/user-history/update" class="mb-3">
 					<input class="form-control" type="hidden" th:field="${userHistory.id}"/>
+
 					<label class="form-label">Name:</label>
-
 					<input class="form-control" type="text" th:field="${userHistory.name}"/>
+
 					<label class="form-label">Issue:</label>
-
 					<input class="form-control" type="text" th:field="${userHistory.issue}" />
-					<label class="form-label">Date:</label>
 
+					<label class="form-label">Date:</label>
 					<label class="form-label" th:text="${userHistory.date}"></label>
 					<input class="form-control" type="hidden" th:field="${userHistory.date}"/>
 
