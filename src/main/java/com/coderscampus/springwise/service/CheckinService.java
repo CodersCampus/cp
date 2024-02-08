@@ -37,7 +37,7 @@ public class CheckinService {
 			checkin.setStudent(student);
 			checkin.setUid(uid);
 		}
-		return checkinRepo.save(checkin);
+		return save(checkin);
 	}
 
     public List<Checkin> findAll() {
