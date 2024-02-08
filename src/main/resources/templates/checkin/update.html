@@ -10,10 +10,8 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link active"
-                                                aria-current="page" href="/checkin/">Checkin Home</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                                href="/checkin/create">Create Checkin</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/checkin/">Checkin Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/checkin/create">Create Checkin</a></li>
                     </ul>
                 </div>
             </nav>
@@ -24,7 +22,7 @@
                     <input class="form-control" type="hidden" th:field="${checkin.id}"/> <br>
 
                     <div class="mb-3">
-                        <label class="form-label">Date: </label>
+                        <label class="form-label">Date:</label>
                         <input type="text" th:field="${checkin.date}" disabled/>
                     </div>
 
@@ -44,7 +42,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Box Ready for Live Coding?: </label>
+                        <label class="form-label">Box Ready for Live Coding?:</label>
                         <input type="checkbox" th:field="${checkin.isSetUp}"/>
                     </div>
 
@@ -80,7 +78,6 @@
 					 <input name="uid" type="hidden" id="uid"/>
                 </form>
                 <form method="post" action="/checkin/delete" class="mb-3">
-					
                     <input type="hidden" th:field="${checkin.id}"/>
                     <input class="form-control btn btn-danger" type="submit" value="Delete"/>
                 </form>
