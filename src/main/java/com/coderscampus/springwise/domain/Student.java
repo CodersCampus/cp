@@ -46,7 +46,7 @@ public class Student {
 
 	public Student() {}
 
-	public Student(long id, String uid, String name, Integer assignmentNum) {
+	public Student(long id,  String name, Integer assignmentNum, String uid) {
 		this.id = id;
 		this.uid = uid;
 		this.name = name;
@@ -166,24 +166,24 @@ public class Student {
 	}
 
 
-	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
-				   FinalProject finalProject, Resume resume, Foobar foobar, Networking networking, Website website, List<Checkin> checkin) {
-		super();
-		this.id = id;
-		this.uid = uid;
-		this.name = name;
-		this.assignmentNum = assignmentNum;
-		this.githubHandle = githubHandle;
-		this.linkedIn = linkedIn;
-		this.ide = ide;
-		this.youtube = youtube;
-		this.finalProject = finalProject;
-		this.resume = resume;
-		this.foobar = foobar;
-		this.networking = networking;
-		this.website = website;
-		this.checkin = checkin;
-	}
+//	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
+//				   FinalProject finalProject, Resume resume, Foobar foobar, Networking networking, Website website, List<Checkin> checkin) {
+//		super();
+//		this.id = id;
+//		this.uid = uid;
+//		this.name = name;
+//		this.assignmentNum = assignmentNum;
+//		this.githubHandle = githubHandle;
+//		this.linkedIn = linkedIn;
+//		this.ide = ide;
+//		this.youtube = youtube;
+//		this.finalProject = finalProject;
+//		this.resume = resume;
+//		this.foobar = foobar;
+//		this.networking = networking;
+//		this.website = website;
+//		this.checkin = checkin;
+//	}
 
 	@Override
 	public String toString() {
