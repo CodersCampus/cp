@@ -20,7 +20,6 @@ class SeedServiceTest {
 
 			
 		}
-
 		assert (transmissions.contains("Automatic"));
 		assert (transmissions.contains("Manual")); 
 	}
