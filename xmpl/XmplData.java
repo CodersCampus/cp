@@ -1,4 +1,4 @@
-package com.coderscampus.practice.domain;
+package com.coderscampus.xmpl;
 
 import java.util.ArrayList;
 import java.util.List;

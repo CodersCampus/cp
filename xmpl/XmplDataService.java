@@ -1,9 +1,6 @@
-package com.coderscampus.practice.service;
+package com.coderscampus.xmpl;
 
 import org.springframework.stereotype.Service;
-
-import com.coderscampus.practice.domain.XmplData;
-import com.coderscampus.practice.domain.XmplDatum;
 
 @Service
 public class XmplDataService {

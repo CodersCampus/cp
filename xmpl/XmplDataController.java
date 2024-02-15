@@ -1,4 +1,4 @@
-package com.coderscampus.practice.web;
+package com.coderscampus.xmpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,10 +6,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.coderscampus.practice.domain.XmplData;
-import com.coderscampus.practice.domain.XmplDatum;
-import com.coderscampus.practice.service.XmplDataService;
 
 @RestController
 @RequestMapping("/xmpl")
@@ -19,7 +15,7 @@ public class XmplDataController {
 	@Autowired
 	private XmplDataService xmplDataService;
 
-	@PostMapping("/data")
+	@PostMapping("/xmpl/data")
 	public ResponseEntity<XmplData> getData() {
 		XmplData xmplData =  xmplDataService.getData();
 		return ResponseEntity.ok(xmplData);
