@@ -41,37 +41,38 @@
                         <input type="text" th:field="${checkin.blockerDescription}"/>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Box Ready for Live Coding?:</label>
-                        <input type="checkbox" th:field="${checkin.isSetUp}"/>
+                    <label class="form-label">Live Coding Session?</label>
+                    <input type="checkbox" id="toggleCheckbox" name="toggleCheckbox"><br><br>
+                    <div id="controlsToToggle" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label">Box Ready for Live Coding?:</label>
+                            <input type="checkbox" th:field="${checkin.isSetUp}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Are You Available/willing to Code?:</label>
+                            <input type="checkbox" th:field="${checkin.available}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Role:</label>
+                            <select class="form-control" th:field="*{checkin.role}">
+                                <option th:each="role : ${roleList}" th:value="${role}"
+                                        th:text="${#strings.capitalize(role.toString())}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Coding Type:</label>
+                            <select class="form-control" th:field="*{checkin.codingType}">
+                                <option th:each="codingType : ${codingType}" th:value="${codingType}"
+                                        th:text="${#strings.capitalize(codingType.toString())}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Issue Number:</label>
+                            <input class="form-control" type="number" th:field="${checkin.issueNumber}"/>
+                        </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Are You Available/willing to Code?:</label>
-                        <input type="checkbox" th:field="${checkin.available}"/>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Role:</label>
-                        <select th:field="*{checkin.role}">
-                            <option th:each="role : ${roleList}" th:value="${role}"
-                                    th:text="${#strings.capitalize(role.toString())}">
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Coding Type:</label>
-                        <select th:field="*{checkin.codingType}">
-                            <option th:each="codingType : ${codingType}" th:value="${codingType}"
-                                    th:text="${#strings.capitalize(codingType.toString())}">
-                            </option>
-                        </select>
-                    </div>
-
-                    <label class="form-label">Issue Number:</label>
-                    <input type="number" th:field="${checkin.issueNumber}"/>
-
 
                     <input class="form-control btn btn-primary mt-3" type="submit" value="Update"/>
                     <input class="form-control btn btn-secondary" type="" value="Start Time/End Time"/>
@@ -87,6 +88,15 @@
     </div>
 </fbauth-element>
 <script>
+    document.getElementById("toggleCheckbox").addEventListener("change", function () {
+        var controls = document.getElementById("controlsToToggle");
+        if (this.checked) {
+            controls.style.display = "block";
+        } else {
+            controls.style.display = "none";
+        }
+    });
+
     const fbauth = document.querySelector('fbauth-element');
     const uid = document.getElementById('uid');
     console.log("UID: " + uid);
