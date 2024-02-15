@@ -20,61 +20,54 @@
             <main>
                 <form method="post" action="/checkin/create">
                     <h1>Create Checkin</h1>
-
                     <input name="uid" type="hidden" id="uid"/>
-
                     <div class="mb-3">
                         <label class="form-label">Next Assignment:</label>
                         <input class="form-control" type="number" th:field="${checkin.nextAssignment}"/>
                     </div>
-
                     <div class="mb-3">
                         <label class="form-label">Blockers:</label>
                         <input type="checkbox" th:field="${checkin.blockers}"/>
                     </div>
-
                     <div class="mb-3">
                         <label class="form-label">Blocker Description:</label>
                         <input type="text" th:field="${checkin.blockerDescription}"/>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Box Ready for Live Coding?:</label>
-                        <input type="checkbox" th:field="${checkin.isSetUp}"/>
+                    <label class="form-label">Live Coding Session?</label>
+                    <input type="checkbox" id="toggleCheckbox" name="toggleCheckbox"><br><br>
+                    <div id="controlsToToggle" style="display: none;">
+                        <div class="mb-3">
+                            <label class="form-label">Box Ready for Live Coding?:</label>
+                            <input type="checkbox" th:field="${checkin.isSetUp}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Are You Available/willing to Code?:</label>
+                            <input type="checkbox" th:field="${checkin.available}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Role:</label>
+                            <select class="form-control" th:field="*{checkin.role}">
+                                <option th:each="role : ${roleList}" th:value="${role}"
+                                        th:text="${#strings.capitalize(role.toString())}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Coding Type:</label>
+                            <select class="form-control" th:field="*{checkin.codingType}">
+                                <option th:each="codingType : ${codingType}" th:value="${codingType}"
+                                        th:text="${#strings.capitalize(codingType.toString())}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Issue Number:</label>
+                            <input class="form-control" type="number" th:field="${checkin.issueNumber}"/>
+                        </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Are You Available/willing to Code?:</label>
-                        <input type="checkbox" th:field="${checkin.available}"/>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Role:</label>
-                        <select class="form-control" th:field="*{checkin.role}">
-                            <option th:each="role : ${roleList}" th:value="${role}"
-                                    th:text="${#strings.capitalize(role.toString())}">
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Coding Type:</label>
-                        <select class="form-control" th:field="*{checkin.codingType}">
-                            <option th:each="codingType : ${codingType}" th:value="${codingType}"
-                                    th:text="${#strings.capitalize(codingType.toString())}">
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Issue Number:</label>
-                        <input class="form-control" type="number" th:field="${checkin.issueNumber}"/>
-                    </div>
-
                     <div class="mb-3">
                         <input class="form-control btn btn-primary" type="submit" value="Create"/>
                     </div>
-
                     <div class="mb-3">
                         <input class="form-control btn btn-secondary" type="" value="Start Time/End Time"/>
                     </div>
@@ -85,14 +78,20 @@
     </div>
 </fbauth-element>
 <script>
+    document.getElementById("toggleCheckbox").addEventListener("change", function () {
+        var controls = document.getElementById("controlsToToggle");
+        if (this.checked) {
+            controls.style.display = "block";
+        } else {
+            controls.style.display = "none";
+        }
+    });
+
     const fbauth = document.querySelector('fbauth-element');
     const uid = document.getElementById('uid');
-    console.log("UID: " + uid);
     const displayName = document.getElementById('display-name');
-    console.log("Display Name: " + displayName);
     fbauth.addEventListener('user-changed', (event) => {
         const {newValue} = event.detail;
-        console.log("SETTING UID TO " + newValue.uid + " AND DISPLAY NAME TO " + newValue.displayName);
         if (newValue) {
             uid.value = newValue.uid;
         } else {
@@ -106,4 +105,5 @@
     });
 </script>
 </body>
+
 </html>
