@@ -1,11 +1,12 @@
 # SpringWise Instructions
 
 ## Table of Contents
-1️. [Starting SpringWise](#starting-springwise-)
+1. [Starting SpringWise](#1-starting-springwise-)
 
-   - [Instructional Video: Starting SpringWise](#starting-springwise-instructional-video)
+   - [Instructional Video: Starting SpringWise](#-starting-springwise-instructional-video)
    
-2️.  [Setting Up SpringWise](#setting-up-springwise)
+2. [Setting Up SpringWise](#2-setting-up-springwise)
+
 
 ---
 
