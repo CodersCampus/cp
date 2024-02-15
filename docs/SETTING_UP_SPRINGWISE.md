@@ -1,13 +1,15 @@
 # SpringWise Instructions
 
 ## Table of Contents
-1️⃣ [Starting SpringWise](#starting-springwise-)
-   ✅ [Instructional Video Starting SpringWise](#starting-springwise-instructional-video)
-2️⃣ [Setting Up SpringWise](#setting-up-springwise)
+1️. [Starting SpringWise](#starting-springwise-)
+
+   - [Instructional Video: Starting SpringWise](#starting-springwise-instructional-video)
+   
+2️.  [Setting Up SpringWise](#setting-up-springwise)
 
 ---
 
-## Starting SpringWise 
+## 1. Starting SpringWise 
 
 ### GitHub
 1. Be given access to contribute too https://github.com/CodersCampus/SpringWise, private repository via (Pete)
@@ -57,13 +59,13 @@ or right click on main method and select `Run As` > `Java Application`
 22. SpringWise application should be live on your browser.
 
 
-### [Starting SpringWise Instructional Video](https://youtu.be/N8m2b1AFvDo)
+### 📹 [Starting SpringWise Instructional Video](https://youtu.be/N8m2b1AFvDo)
 
 _- If you have any questions please follow up the Team at Coder Campus for Assistance_
 
 ---
 
-## Setting up SpringWise
+## 2. Setting up SpringWise
 
 To set up SpringWise on your computer, follow these guidelines:
 
