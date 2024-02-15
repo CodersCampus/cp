@@ -1,7 +1,7 @@
 # SpringWise Instructions
 
 ## Table of Contents
-1. [Starting SpringWise](#1-starting-springwise-)
+1. [Starting SpringWise](#1-starting-springwise)
 
    - [Instructional Video: Starting SpringWise](#-starting-springwise-instructional-video)
    
@@ -10,7 +10,7 @@
 
 ---
 
-## 1. Starting SpringWise 
+## 1. Starting SpringWise
 
 ### GitHub
 1. Be given access to contribute too https://github.com/CodersCampus/SpringWise, private repository via (Pete)
