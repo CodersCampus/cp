@@ -3,6 +3,7 @@ package com.coderscampus.practice.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.coderscampus.xmpl.SeedService;
 import org.junit.jupiter.api.Test;
 
 class SeedServiceTest {

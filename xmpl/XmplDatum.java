@@ -1,4 +1,4 @@
-package com.coderscampus.practice.domain;
+package com.coderscampus.xmpl;
 
 public class XmplDatum {
     private String yada;
