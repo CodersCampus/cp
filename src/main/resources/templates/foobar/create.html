@@ -1,56 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+    <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 
-<body layout="layout-secured">
-<fbauth-element>
-    <div layout="layout-sidebar">
-        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-        <div class="sidebar-grid-area">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="/foobar/create">Create
-                            Foobar</a></li>
-                    </ul>
+    <body layout="layout-secured">
+        <fbauth-element>
+            <div layout="layout-sidebar">
+                <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+                <div class="sidebar-grid-area">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link" href="/foobar/create">Create
+                                    Foobar</a></li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-            </nav>
-        </div>
-        <div class="ga-content-main">
-            <main>
-                <form method="post" action="/foobar/create">
-                    <h1>Create Foobar</h1>
-                    <div class="mb-3">
-                        <label class="form-label">Name: </label>
-                        <input class="form-control" type="text" id="display-name" th:field="${foobar.name}"/>
-                        <input name="uid" type="hidden" id="uid"/>
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control btn btn-primary" type="submit" value="Create"/>
-                    </div>
-                </form>
-            </main>
-        </div>
-        <div th:replace="~{fragments/footer :: footer}"></div>
-    </div>
-</fbauth-element>
-<script>
-    const fbauth = document.querySelector('fbauth-element');
-    const uid = document.getElementById('uid');
-    console.log("Foobar/create.html| UID: " + uid);
-    const displayName = document.getElementById('display-name');
-    fbauth.addEventListener('user-changed', (event) => {
-        const {newValue} = event.detail;
-        console.log("SETTING UID TO " + newValue.uid + " AND DISPLAY NAME TO " + newValue.displayName);
-        if (newValue) {
-            displayName.value = newValue.displayName;
-            uid.value = newValue.uid;
-        } else {
-            displayName.value = '';
-            uid.value = '';
-        }
-    });
-</script>
-</body>
+                <div class="ga-content-main">
+                    <main>
+                        <form method="post" action="/foobar/create">
+                            <h1>Create Foobar</h1>
+                            <div class="mb-3">
+                                <label class="form-label">Name: </label>
+                                <input class="form-control" type="text" id="display-name" th:field="${foobar.name}"/>
+                                <input name="uid" type="hidden" id="uid"/>
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control btn btn-primary" type="submit" value="Create"/>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+                <div th:replace="~{fragments/footer :: footer}"></div>
+            </div>
+        </fbauth-element>
+
+        <div th:replace="~{fragments/authscript :: script}"></div>
+    </body>
 
 </html>
