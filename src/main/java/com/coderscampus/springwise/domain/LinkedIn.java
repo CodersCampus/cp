@@ -1,9 +1,7 @@
 package com.coderscampus.springwise.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 @Entity
 public class LinkedIn {
     public LinkedIn() {
@@ -19,7 +17,17 @@ public class LinkedIn {
     private String featuredPosts;
     private String activity;
     private String skills;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
     public LinkedIn(Long id, String decoratedHeader, String collapsedBio, String url, String featuredPosts, String activity, String skills) {
         this.id = id;
         this.decoratedHeader = decoratedHeader;

@@ -1,9 +1,6 @@
 package com.coderscampus.springwise.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class FinalProject {
@@ -44,7 +41,17 @@ public class FinalProject {
     public void setUrl(String url) {
         this.url = url;
     }
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
     @Override
     public String toString() {
         return "FinalProject{" +

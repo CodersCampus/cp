@@ -1,9 +1,6 @@
 package com.coderscampus.springwise.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.File;
 
@@ -36,7 +33,17 @@ public class Resume {
     public void setResumeFile(String resumeFile) {
         this.resumeFile = resumeFile;
     }
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
     @Override
     public String toString() {
         return "Resume{" +

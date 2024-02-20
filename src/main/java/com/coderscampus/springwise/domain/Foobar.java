@@ -29,6 +29,7 @@ public class Foobar {
 	@JoinColumn(name = "student_id")
 	private Student student;
 
+
 	@Override
 	public String toString() {
 		return "Foobar{" +

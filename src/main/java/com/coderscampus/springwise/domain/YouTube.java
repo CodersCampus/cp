@@ -1,9 +1,6 @@
 package com.coderscampus.springwise.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class YouTube {
@@ -27,5 +24,15 @@ public class YouTube {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
+	@OneToOne
+	@JoinColumn(name = "student_id")
+	private Student student;
 
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 }

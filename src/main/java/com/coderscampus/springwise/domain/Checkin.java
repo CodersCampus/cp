@@ -26,6 +26,14 @@ public class Checkin {
 	@JoinColumn(name = "student_id")
 	private Student student;
 
+	public Boolean getSetUp() {
+		return isSetUp;
+	}
+
+	public void setSetUp(Boolean setUp) {
+		isSetUp = setUp;
+	}
+
 	// ID
 	public Long getId() {
 		return id;

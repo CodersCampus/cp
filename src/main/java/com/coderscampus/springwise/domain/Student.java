@@ -3,18 +3,11 @@ package com.coderscampus.springwise.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import org.springframework.boot.actuate.endpoint.web.Link;
 
 @Entity
+@Table(name = "student")
 public class Student {
 
 	@Id
@@ -24,6 +17,7 @@ public class Student {
 	private String name;
 	private Integer assignmentNum;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "github_id", referencedColumnName = "id")
 	private GitHub githubHandle;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private LinkedIn linkedIn;
@@ -34,7 +28,7 @@ public class Student {
 	private FinalProject finalProject;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Resume resume;
-    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Foobar foobar;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Networking networking;
@@ -204,4 +198,5 @@ public class Student {
 				", checkin=" + checkin +
 				'}';
 	}
+
 }
