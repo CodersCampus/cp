@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-    <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 
-    <body layout="layout-secured">
-        <fbauth-element>
-            <div layout="layout-sidebar">
-                <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-                <div class="sidebar-grid-area">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link" href="/student/create">Create
-                                    Student</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+<body layout="layout-secured">
+<fbauth-element>
+    <div layout="layout-sidebar">
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div class="sidebar-grid-area">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/student/create">Create
+                            Student</a></li>
+                    </ul>
                 </div>
-                <div class="ga-content-main">
-                    <main>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name:</th>
-                                    <th scope="col">Assignment Number:</th>
-                                    <th scope="col">Github Handle:</th>
-                                    <th scope="col">LinkedIn:</th>
-                                    <th scope="col">IDE:</th>
-                                    <th scope="col">YouTube:</th>
-                                    <th scope="col">Final Project:</th>
-                                    <th scope="col">Resume:</th>
-                                    <th scope="col">Networking:</th>
-                                    <th scope="col">Website:</th>
-                                    <th scope="col">View:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="student: ${students}">
-                                    <td><span th:text="${student.name}"></span></td>
-                                    <td><span th:text="${student.assignmentNum}"></span></td>
-                                    <td><span th:text="${student.githubHandle.handle}"></span></td>
-                                    <td><span th:text="${student.linkedIn.url}"></span></td>
-                                    <td><span th:text="${student.ide}"></span></td>
-                                    <td><span th:text="${student.youtube.profile}"></span></td>
-                                    <td><span th:text="${student.finalProject.title}"></span></td>
-                                    <td><span th:text="${student.resume.resumeFile}"></span></td>
-                                    <td><span th:text="${student.networking.meetups}"></span></td>
-                                    <td><span th:text="${student.website.url}"></span></td>
-                                    <td><a th:href="@{/student/update/{studentId}(studentId=${student.id})}">
+            </nav>
+        </div>
+        <div class="ga-content-main">
+            <main>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name:</th>
+                        <th scope="col">Assignment Number:</th>
+                        <th scope="col">Github Handle:</th>
+                        <th scope="col">LinkedIn:</th>
+                        <th scope="col">IDE:</th>
+                        <th scope="col">YouTube:</th>
+                        <th scope="col">Final Project:</th>
+                        <th scope="col">Resume:</th>
+                        <th scope="col">Networking:</th>
+                        <th scope="col">Website:</th>
+                        <th scope="col">View:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="student: ${students}">
+                        <td><span th:text="${student.name}"></span></td>
+                        <td><span th:text="${student.assignmentNum}"></span></td>
+                        <td><span th:text="${student.githubHandle.handle}"></span></td>
+                        <td><span th:text="${student.linkedIn.url}"></span></td>
+                        <td><span th:text="${student.ide}"></span></td>
+                        <td><span th:text="${student.youtube.profile}"></span></td>
+                        <td><span th:text="${student.finalProject.title}"></span></td>
+                        <td><span th:text="${student.resume.resumeFile}"></span></td>
+                        <td><span th:text="${student.networking.meetups}"></span></td>
+                        <td><span th:text="${student.website.url}"></span></td>
+                        <td><a th:href="@{/student/update/{studentId}(studentId=${student.id})}">
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                    fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
                                                 <path
                                                         d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
                                             </svg></span> </a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </main>
-                </div>
-                <div th:replace="~{fragments/footer :: footer}"></div>
-            </div>
-        </fbauth-element>
-        <div th:replace="~{fragments/authscript :: script}"></div>
-    </body>
+                    </tr>
+                    </tbody>
+                </table>
+            </main>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+<div th:replace="~{fragments/authscript :: script}"></div>
+</body>
 </html>

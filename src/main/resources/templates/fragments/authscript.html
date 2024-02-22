@@ -1,30 +1,62 @@
+<!--NEW SCRIPT-->
 <script>
-    document.getElementById("toggleCheckbox").addEventListener("change", function () {
-        var controls = document.getElementById("controlsToToggle");
-        if (this.checked) {
-            controls.style.display = "block";
-        } else {
-            controls.style.display = "none";
-        }
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const fbauth = document.querySelector('fbauth-element');
+        const uid = document.getElementById('uid');
+        const displayName = document.getElementById('display-name');
 
-    const fbauth = document.querySelector('fbauth-element');
-    const uid = document.getElementById('uid');
-    const displayName = document.getElementById('display-name');
-    console.log('line13: ' , displayName);
-    fbauth.addEventListener('user-changed', (event) => {
-    	console.log('line15: ' + displayName.value);
-    	const {newValue} = event.detail;
-        if (newValue) {
-            uid.value = newValue.uid;
+        // Ensuring elements exist before logging or adding event listeners
+        if (fbauth && uid && displayName) {
+            // console.log('line13: ', displayName);
+
+            fbauth.addEventListener('user-changed', (event) => {
+                const { newValue } = event.detail;
+
+                // Using nullish coalescing operator to provide fallbacks
+                uid.value = newValue ? newValue.uid : '';
+                displayName.value = newValue ? newValue.displayName : '';
+
+                // Conditional logging based on newValue existence
+                if (newValue) {
+                    // console.log('line24: ' + displayName.value);
+                }
+            });
         } else {
-            uid.value = '';
-        }
-        if (newValue) {
-            displayName.value = newValue.displayName;
-            console.log('line24: ' + displayName.value);
-        } else {
-            displayName.value = '';
+            // console.error("One or more elements do not exist in the DOM.");
         }
     });
 </script>
+
+
+
+<!--ORIGINAL SCRIPT-->
+<!--<script>-->
+<!--    document.getElementById("toggleCheckbox").addEventListener("change", function () {-->
+<!--        var controls = document.getElementById("controlsToToggle");-->
+<!--        if (this.checked) {-->
+<!--            controls.style.display = "block";-->
+<!--        } else {-->
+<!--            controls.style.display = "none";-->
+<!--        }-->
+<!--    });-->
+
+<!--    const fbauth = document.querySelector('fbauth-element');-->
+<!--    const uid = document.getElementById('uid');-->
+<!--    const displayName = document.getElementById('display-name');-->
+<!--    console.log('line13: ' , displayName);-->
+<!--    fbauth.addEventListener('user-changed', (event) => {-->
+<!--    	console.log('line15: ' + displayName);-->
+<!--    	const {newValue} = event.detail;-->
+<!--        if (newValue) {-->
+<!--            uid.value = newValue.uid;-->
+<!--        } else {-->
+<!--            uid.value = '';-->
+<!--        }-->
+<!--        if (newValue) {-->
+<!--            displayName.value = newValue.displayName;-->
+<!--            console.log('line24: ' + displayName.value);-->
+<!--        } else {-->
+<!--            displayName.value = '';-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
