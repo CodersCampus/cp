@@ -11,8 +11,10 @@
     const fbauth = document.querySelector('fbauth-element');
     const uid = document.getElementById('uid');
     const displayName = document.getElementById('display-name');
+    console.log('line13: ' , displayName);
     fbauth.addEventListener('user-changed', (event) => {
-        const {newValue} = event.detail;
+    	console.log('line15: ' + displayName.value);
+    	const {newValue} = event.detail;
         if (newValue) {
             uid.value = newValue.uid;
         } else {
@@ -20,6 +22,7 @@
         }
         if (newValue) {
             displayName.value = newValue.displayName;
+            console.log('line24: ' + displayName.value);
         } else {
             displayName.value = '';
         }

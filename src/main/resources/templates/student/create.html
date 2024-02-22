@@ -72,8 +72,37 @@
                 <div th:replace="~{fragments/footer :: footer}"></div>
             </div>
         </fbauth-element>
+<script>
+    document.getElementById("toggleCheckbox").addEventListener("change", function () {
+        var controls = document.getElementById("controlsToToggle");
+        if (this.checked) {
+            controls.style.display = "block";
+        } else {
+            controls.style.display = "none";
+        }
+    });
 
-        <div th:replace="~{fragments/authscript :: script}"></div>
+    const fbauth = document.querySelector('fbauth-element');
+    const uid = document.getElementById('uid');
+    const displayName = document.getElementById('display-name');
+    console.log('line13: ' , displayName);
+    fbauth.addEventListener('user-changed', (event) => {
+    	console.log('line15: ' + displayName.value);
+    	const {newValue} = event.detail;
+        if (newValue) {
+            uid.value = newValue.uid;
+        } else {
+            uid.value = '';
+        }
+        if (newValue) {
+            displayName.value = newValue.displayName;
+            console.log('line24: ' + displayName.value);
+        } else {
+            displayName.value = '';
+        }
+    });
+</script>
+      <!--    <div th:replace="~{fragments/authscript :: script}"></div> -->
     </body>
 
 </html>
