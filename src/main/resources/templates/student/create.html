@@ -1,109 +1,88 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-    <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 
-    <body layout="layout-secured">
-        <fbauth-element>
-            <div layout="layout-sidebar">
-                <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-                <div class="sidebar-grid-area">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link active"
-                                                        aria-current="page" href="/student/">Student Home</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div class="ga-content-main">
-                    <main>
-                        <form method="post" action="/student/create">
-                            <h1>Create Student</h1>
-                            <input name="uid" type="hidden" id="uid"/>
-                            <div class="mb-3">
-                                <label class="form-label">Name:</label>
-                                <input class="form-control" type="text" id="display-name" th:field="${student.name}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Assignment Number:</label><input
-                                    class="form-control" type="text"
-                                    th:field="${student.assignmentNum}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Github Handle:</label>
-                                <input class="form-control" type="text" th:field="${student.githubHandle.handle}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">LinkedIn URL:</label>
-                                <input class="form-control" type="text" th:field="${student.linkedIn.url}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">IDE: </label>
-                                <input class="form-control" type="text" th:field="${student.ide}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">YouTube:</label>
-                                <input class="form-control" type="text" th:field="${student.youtube.profile}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Final Project:</label>
-                                <input class="form-control" type="text" th:field="${student.finalProject.title}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Resume:</label>
-                                <input class="form-control" type="text" th:field="${student.resume.resumeFile}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Networking:</label>
-                                <input class="form-control" type="text" th:field="${student.networking.meetups}"/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Website:</label>
-                                <input class="form-control" type="text" th:field="${student.website.url}"/>
-                            </div>
-                            <div class="mb-3">
-                                <input onfocus="assignUid()" class="form-control btn btn-primary"
-                                       type="submit" value="Create"/>
-                            </div>
-                        </form>
-                    </main>
-                </div>
-                <div th:replace="~{fragments/footer :: footer}"></div>
-            </div>
-        </fbauth-element>
-<script>
-    document.getElementById("toggleCheckbox").addEventListener("change", function () {
-        var controls = document.getElementById("controlsToToggle");
-        if (this.checked) {
-            controls.style.display = "block";
-        } else {
-            controls.style.display = "none";
-        }
-    });
-
-    const fbauth = document.querySelector('fbauth-element');
-    const uid = document.getElementById('uid');
-    const displayName = document.getElementById('display-name');
-    console.log('line13: ' , displayName);
-    fbauth.addEventListener('user-changed', (event) => {
-    	console.log('line15: ' + displayName.value);
-    	const {newValue} = event.detail;
-        if (newValue) {
-            uid.value = newValue.uid;
-        } else {
-            uid.value = '';
-        }
-        if (newValue) {
-            displayName.value = newValue.displayName;
-            console.log('line24: ' + displayName.value);
-        } else {
-            displayName.value = '';
-        }
-    });
-</script>
-      <!--    <div th:replace="~{fragments/authscript :: script}"></div> -->
-    </body>
+<body layout="layout-secured">
+	<fbauth-element>
+	<div layout="layout-sidebar">
+		<header th:replace="~{fragments/header :: header(${activePage})}"></header>
+		<div class="sidebar-grid-area">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" href="/student/">Student Home</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<div class="ga-content-main">
+			<main>
+				<form method="post" action="/student/create">
+					<h1>Create Student</h1>
+					<input name="uid" type="hidden" id="uid" />
+					<div class="mb-3">
+						<label class="form-label">Name:</label> <input
+							class="form-control" type="text" id="display-name"
+							th:field="${student.name}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Assignment Number:</label><input
+							class="form-control" type="text"
+							th:field="${student.assignmentNum}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Github Handle:</label> <input
+							class="form-control" type="text"
+							th:field="${student.githubHandle.handle}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">LinkedIn URL:</label> <input
+							class="form-control" type="text"
+							th:field="${student.linkedIn.url}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">IDE: </label> <input
+							class="form-control" type="text" th:field="${student.ide}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">YouTube:</label> <input
+							class="form-control" type="text"
+							th:field="${student.youtube.profile}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Final Project:</label> <input
+							class="form-control" type="text"
+							th:field="${student.finalProject.title}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Resume:</label> <input
+							class="form-control" type="text"
+							th:field="${student.resume.resumeFile}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Networking:</label> <input
+							class="form-control" type="text"
+							th:field="${student.networking.meetups}" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Website:</label> <input
+							class="form-control" type="text"
+							th:field="${student.website.url}" />
+					</div>
+					<div class="mb-3">
+						<input onfocus="assignUid()" class="form-control btn btn-primary"
+							type="submit" value="Create" />
+					</div>
+				</form>
+			</main>
+		</div>
+		<div th:replace="~{fragments/footer :: footer}"></div>
+	</div>
+	</fbauth-element>
+	
+	<div th:replace="~{fragments/authscript :: script}"></div>
+</body>
 
 </html>
 
