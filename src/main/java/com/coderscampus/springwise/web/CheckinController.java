@@ -1,3 +1,4 @@
+
 package com.coderscampus.springwise.web;
 
 import com.coderscampus.springwise.domain.Checkin;
