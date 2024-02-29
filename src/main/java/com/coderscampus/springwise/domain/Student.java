@@ -165,6 +165,7 @@ public class Student {
 		this.checkin = checkin;
 	}
 
+
 //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
 //				   FinalProject finalProject, Resume resume, Foobar foobar, Networking networking, Website website, List<Checkin> checkin) {
 //		super();
