@@ -25,7 +25,7 @@ Not necessarily in order
 
 If 90% of success is showing up, then 90% of the job of the leader is making sure that everyone who wants to participate knows which checkins to show up for, and what will be happening at each! Yup!
 
-People plan their lives around their priorities. If you want to help people, let them know days in advance which checkins will be SpringWise checkins.
+People plan their lives around their priorities. If you want to help people, let them know days in advance which checkins will be cp checkins.
 
 Want to go one step further? Canvas participants regularly, and figure out the best schedules to set!
 

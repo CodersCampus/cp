@@ -59,8 +59,8 @@
 ### Run cp
 19. To run **cp** application you will traverse through the **cp** folder structure clicking the dropdown arrows as you go.
   - That path is, cp/src/main/java/com.coderscampus/SpringWiseApplication.java. 
-  - Open SpringWiseApplication.java
-  - Press the green `Run` button to run application or right click on main method of SpringWiseApplication.java, and select `Run As` > `Java Application`.
+  - Open CPApplication.java
+  - Press the green `Run` button to run application or right click on main method of CPApplication.java, and select `Run As` > `Java Application`.
 20. You should see the Spring Boot design in the console with a bunch of other content.
 
 <img style="border-radius: 10px" width="700" alt="Running SpringWise" src="../src/main/resources/static/images/Running_SpringWise.jpg">

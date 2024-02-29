@@ -12,7 +12,7 @@ What considerations make for an ideal schedule?
 
 ## Resultant Filters:
 
-To make it easy to catch 2 per week, that means 3-4 meetings a week need to be scheduled as SpringWise, because students often cannot make some times.
+To make it easy to catch 2 per week, that means 3-4 meetings a week need to be scheduled as cp, because students often cannot make some times.
 
 This pretty much means the most popular 4 times a week:
 
@@ -21,7 +21,7 @@ This pretty much means the most popular 4 times a week:
 - Wednesday 7pm CST (Unless co-opted for Final Project presentation)
 - Thurs 12:30pm CST
 
-By scheduling each of these 4 times as always #SpringWise, that also satisfies the above high level filters of predictability and consistency
+By scheduling each of these 4 times as always #cp, that also satisfies the above high level filters of predictability and consistency
 
 ## Planned Task
 
@@ -36,10 +36,10 @@ Even something as simple as "Billy will attempt Issue 345" can be a good start t
 
 Where are announcements made?
 
-- _**SpringWise Leads**_ Can and should announce their weekly plans on #springwise channel in slack.
+- _**cp Leads**_ Can and should announce their weekly plans on #leads-cp channel in slack.
 - _**Instructor**_ only should be left to make all schedule announcements on the FullStack channel.
 
-## Tier system for how we run spring wise sessions
+## Tier system for how we run cp sessions
 
 - Assignment 13-FP (Tier 1)</br>
  <sub><sup>Advanced students leading live coding in the spectrum of CRUD</sub></sub></br>
