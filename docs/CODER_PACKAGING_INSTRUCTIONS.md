@@ -46,7 +46,7 @@
 
 13. If you do not see that option, then open **Eclipse IDE** app, click on `File` > `Open Projects from File System...` > `Directory` > locate **cp** root folder, and click `Open`.
 
-<img style="border-radius: 10px" width="600" alt="SpringWise root folder" src="../src/main/resources/static/images/SpringWise_root_folder.jpg">
+<img style="border-radius: 10px" width="600" alt="cp root folder" src="../src/main/resources/static/images/SpringWise_root_folder.jpg">
 
 
 ### Eclipse IDE
@@ -58,12 +58,12 @@
 
 ### Run cp
 19. To run **cp** application you will traverse through the **cp** folder structure clicking the dropdown arrows as you go.
-  - That path is, cp/src/main/java/com.coderscampus/SpringWiseApplication.java. 
+  - That path is, cp/src/main/java/com.coderscampus/cpApplication.java. 
   - Open CPApplication.java
   - Press the green `Run` button to run application or right click on main method of CPApplication.java, and select `Run As` > `Java Application`.
 20. You should see the Spring Boot design in the console with a bunch of other content.
 
-<img style="border-radius: 10px" width="700" alt="Running SpringWise" src="../src/main/resources/static/images/Running_SpringWise.jpg">
+<img style="border-radius: 10px" width="700" alt="Running cp" src="../src/main/resources/static/images/Running_SpringWise.jpg">
 
 21. Now navigate to browser of choice, we use Chrome, and type into the address bar `localhost:8080`, this is the local address the **cp** application is being served too.
 22. **cp** application should be live on your browser.
