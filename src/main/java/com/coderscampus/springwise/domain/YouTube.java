@@ -27,5 +27,4 @@ public class YouTube {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
-
 }

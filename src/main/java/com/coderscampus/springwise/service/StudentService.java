@@ -2,7 +2,6 @@ package com.coderscampus.springwise.service;
 
 import com.coderscampus.springwise.domain.Student;
 import com.coderscampus.springwise.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.RuntimeErrorException;
@@ -12,8 +11,11 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
-    @Autowired
     private StudentRepository studentRepo;
+
+    public StudentService(StudentRepository studentRepo) {
+        this.studentRepo = studentRepo;
+    }
 
 
     public Student save(Student student) {
@@ -86,4 +88,7 @@ public class StudentService {
         return true;
     }
 
+    public List<Student> getFeaturedStudents() {
+        return null;
+    }
 }
