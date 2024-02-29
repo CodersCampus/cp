@@ -28,8 +28,8 @@ public class ObjectNameHere {
 ### `repository/ObjectRepository`
 
 ```Java
-package com.coderscampus.springwise.repository;
-import com.coderscampus.springwise.domain.Checkin;
+package com.coderscampus.cp.repository;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

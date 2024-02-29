@@ -31,8 +31,8 @@ public class ModuleNameHere {
 ### `repository/ObjectRepository`
 
 ```Java
-package com.coderscampus.springwise.repository;
-import com.coderscampus.springwise.domain.Checkin;
+package com.coderscampus.cp.repository;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -49,12 +49,12 @@ public interface CheckinRepository extends JpaRepository<ModuleNameHere, Long> {
 - Use `service/CheckinService` as a resource not a template
 
 ```Java
-package com.coderscampus.springwise.service;
+package com.coderscampus.cp.service;
 
-import com.coderscampus.springwise.domain.Checkin;
-import com.coderscampus.springwise.domain.Student;
-import com.coderscampus.springwise.repository.CheckinRepository;
-import com.coderscampus.springwise.repository.StudentRepository;
+import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.repository.CheckinRepository;
+import com.coderscampus.cp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -79,17 +79,17 @@ public class CheckinService {
         return checkinRepo.save(checkin);
     }
 
-	public Checkin saveByUid(Checkin checkin, String uid) {
-		List<Student> students = studentRepo.findByUid(uid);
-		if (students.size() > 1)
-			throw new IllegalStateException("Shouldn't have more than one student per uid");
-		if (!students.isEmpty()) {
-			Student student = students.get(0);
-			checkin.setStudent(student);
-			checkin.setUid(uid);
-		}
-		return checkinRepo.save(checkin);
-	}
+    public Checkin saveByUid(Checkin checkin, String uid) {
+        List<Student> students = studentRepo.findByUid(uid);
+        if (students.size() > 1)
+            throw new IllegalStateException("Shouldn't have more than one student per uid");
+        if (!students.isEmpty()) {
+            Student student = students.get(0);
+            checkin.setStudent(student);
+            checkin.setUid(uid);
+        }
+        return checkinRepo.save(checkin);
+    }
 
     public List<Checkin> findAll() {
         return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
@@ -113,11 +113,10 @@ public class CheckinService {
 - Use `web/CheckinController` as a resource not a template
 
 ```Java
-package com.coderscampus.springwise.web;
+package com.coderscampus.cp.web;
 
-import com.coderscampus.springwise.domain.Checkin;
-import com.coderscampus.springwise.domain.Foobar;
-import com.coderscampus.springwise.service.CheckinService;
+import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.service.CheckinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -128,63 +127,64 @@ import java.util.List;
 @Controller
 @RequestMapping("/checkin")
 public class CheckinController {
-	
-	@Autowired
-	private CheckinService checkinService;
-	
-	@GetMapping("/")
-	public String home(ModelMap model) {
-		List<Checkin> checkins = checkinService.findAll();
-		model.put("checkins", checkins);
+
+    @Autowired
+    private CheckinService checkinService;
+
+    @GetMapping("/")
+    public String home(ModelMap model) {
+        List<Checkin> checkins = checkinService.findAll();
+        model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Checkin Read");
-		model.put("isCheckin", true);
-		return "checkin/read";
-	}
-	
-	@GetMapping("/create")
-	public String getCreate (ModelMap model) {
-		Checkin checkin = new Checkin();
-		model.put("checkin", checkin);
+        model.put("isCheckin", true);
+        return "checkin/read";
+    }
+
+    @GetMapping("/create")
+    public String getCreate(ModelMap model) {
+        Checkin checkin = new Checkin();
+        model.put("checkin", checkin);
         model.addAttribute("pageTitle", "Checkin Create");
-		model.put("isCheckin", true);
-		return "checkin/create";
-	}
+        model.put("isCheckin", true);
+        return "checkin/create";
+    }
 
-	@PostMapping("/create")
-	public String create(Checkin checkin, @RequestParam("uid") String uid) {
-		checkin = checkinService.saveByUid(checkin, uid);
-		return "redirect:/checkin/";
-	}
+    @PostMapping("/create")
+    public String create(Checkin checkin, @RequestParam("uid") String uid) {
+        checkin = checkinService.saveByUid(checkin, uid);
+        return "redirect:/checkin/";
+    }
 
-	@GetMapping("/update/{id}")
-	public String fetch(ModelMap model, @PathVariable Long id) {
-		Checkin checkin = checkinService.findById(id);
-		model.put("checkin", checkin);
+    @GetMapping("/update/{id}")
+    public String fetch(ModelMap model, @PathVariable Long id) {
+        Checkin checkin = checkinService.findById(id);
+        model.put("checkin", checkin);
         model.addAttribute("pageTitle", "Checkin Update");
-		model.put("isCheckin", true);
-		return "checkin/update";
-	}
-	
-	@PostMapping("/update")
-	public String update(Checkin checkin) {
-		checkinService.save(checkin);
-		return "redirect:/checkin/";
-	}
-	
-	@PostMapping("/delete")
-	public String delete(Checkin checkin) {
-		checkinService.delete(checkin);
-		return "redirect:/checkin/";
-	}
+        model.put("isCheckin", true);
+        return "checkin/update";
+    }
 
-	@ModelAttribute("roleList")
-	public Checkin.Role[] getRoleList() {
-		return Checkin.Role.values();
-	}
-	@ModelAttribute("codingType")
-	public Checkin.CodingType[] getCodingType() {
-		return Checkin.CodingType.values();
-	}
+    @PostMapping("/update")
+    public String update(Checkin checkin) {
+        checkinService.save(checkin);
+        return "redirect:/checkin/";
+    }
+
+    @PostMapping("/delete")
+    public String delete(Checkin checkin) {
+        checkinService.delete(checkin);
+        return "redirect:/checkin/";
+    }
+
+    @ModelAttribute("roleList")
+    public Checkin.Role[] getRoleList() {
+        return Checkin.Role.values();
+    }
+
+    @ModelAttribute("codingType")
+    public Checkin.CodingType[] getCodingType() {
+        return Checkin.CodingType.values();
+    }
 }
 
 
