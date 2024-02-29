@@ -23,23 +23,23 @@ public class Student {
 	private String uid;
 	private String name;
 	private Integer assignmentNum;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private GitHub githubHandle;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private LinkedIn linkedIn;
 	private String ide;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private YouTube youtube;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private FinalProject finalProject;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Resume resume;
-    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Foobar foobar;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Networking networking;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Website website;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) 
+//	private GitHub githubHandle;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private LinkedIn linkedIn;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private YouTube youtube;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private FinalProject finalProject;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Resume resume;
+//    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private Foobar foobar;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Networking networking;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Website website;
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Checkin> checkin = new ArrayList<Checkin>();
 
@@ -85,77 +85,77 @@ public class Student {
 		this.assignmentNum = assignmentNum;
 	}
 
-	public GitHub getGithubHandle() {
-		return githubHandle;
-	}
-
-	public void setGithubHandle(GitHub githubHandle) {
-		this.githubHandle = githubHandle;
-	}
-
-	public LinkedIn getLinkedIn() {
-		return linkedIn;
-	}
-
-	public void setLinkedIn(LinkedIn linkedIn) {
-		this.linkedIn = linkedIn;
-	}
-
 	public String getIde() {
 		return ide;
 	}
-
+	
 	public void setIde(String ide) {
 		this.ide = ide;
 	}
-
-	public YouTube getYoutube() {
-		return youtube;
-	}
-
-	public void setYoutube(YouTube youtube) {
-		this.youtube = youtube;
-	}
-
-	public FinalProject getFinalProject() {
-		return finalProject;
-	}
-
-	public void setFinalProject(FinalProject finalProject) {
-		this.finalProject = finalProject;
-	}
-
-	public Resume getResume() {
-		return resume;
-	}
-
-	public void setResume(Resume resume) {
-		this.resume = resume;
-	}
-
-	public Foobar getFoobar() {
-		return foobar;
-	}
-
-	public void setFoobar(Foobar foobar) {
-		this.foobar = foobar;
-	}
-
-	public Networking getNetworking() {
-		return networking;
-	}
-
-	public void setNetworking(Networking networking) {
-		this.networking = networking;
-	}
-
-	public Website getWebsite() {
-		return website;
-	}
-
-	public void setWebsite(Website website) {
-		this.website = website;
-	}
+//	public GitHub getGithubHandle() {
+//		return githubHandle;
+//	}
+//
+//	public void setGithubHandle(GitHub githubHandle) {
+//		this.githubHandle = githubHandle;
+//	}
+//
+//	public LinkedIn getLinkedIn() {
+//		return linkedIn;
+//	}
+//
+//	public void setLinkedIn(LinkedIn linkedIn) {
+//		this.linkedIn = linkedIn;
+//	}
+//
+//
+//	public YouTube getYoutube() {
+//		return youtube;
+//	}
+//
+//	public void setYoutube(YouTube youtube) {
+//		this.youtube = youtube;
+//	}
+//
+//	public FinalProject getFinalProject() {
+//		return finalProject;
+//	}
+//
+//	public void setFinalProject(FinalProject finalProject) {
+//		this.finalProject = finalProject;
+//	}
+//
+//	public Resume getResume() {
+//		return resume;
+//	}
+//
+//	public void setResume(Resume resume) {
+//		this.resume = resume;
+//	}
+//
+//	public Foobar getFoobar() {
+//		return foobar;
+//	}
+//
+//	public void setFoobar(Foobar foobar) {
+//		this.foobar = foobar;
+//	}
+//
+//	public Networking getNetworking() {
+//		return networking;
+//	}
+//
+//	public void setNetworking(Networking networking) {
+//		this.networking = networking;
+//	}
+//
+//	public Website getWebsite() {
+//		return website;
+//	}
+//
+//	public void setWebsite(Website website) {
+//		this.website = website;
+//	}
 
 	public List<Checkin> getCheckin() {
 		return checkin;
@@ -163,6 +163,12 @@ public class Student {
 
 	public void setCheckin(List<Checkin> checkin) {
 		this.checkin = checkin;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", uid=" + uid + ", name=" + name + ", assignmentNum=" + assignmentNum + ", ide="
+				+ ide + ", checkin=" + checkin + "]";
 	}
 
 
@@ -185,23 +191,5 @@ public class Student {
 //		this.checkin = checkin;
 //	}
 
-	@Override
-	public String toString() {
-		return "Student{" +
-				"id=" + id +
-				", uid='" + uid + '\'' +
-				", name='" + name + '\'' +
-				", assignmentNum=" + assignmentNum +
-				", githubHandle=" + githubHandle +
-				", linkedIn=" + linkedIn +
-				", ide='" + ide + '\'' +
-				", youtube=" + youtube +
-				", finalProject=" + finalProject +
-				", resume=" + resume +
-				", foobar=" + foobar +
-				", networking=" + networking +
-				", website=" + website +
-				", checkin=" + checkin +
-				'}';
-	}
+	
 }

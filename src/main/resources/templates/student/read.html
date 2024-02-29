@@ -38,14 +38,14 @@
                                 <tr th:each="student: ${students}">
                                     <td><span th:text="${student.name}"></span></td>
                                     <td><span th:text="${student.assignmentNum}"></span></td>
-                                    <td><span th:text="${student.githubHandle.handle}"></span></td>
-                                    <td><span th:text="${student.linkedIn.url}"></span></td>
+                                    <!-- <td><span th:text="${student.githubHandle.handle}"></span></td>
+                                    <td><span th:text="${student.linkedIn.url}"></span></td> -->
                                     <td><span th:text="${student.ide}"></span></td>
-                                    <td><span th:text="${student.youtube.profile}"></span></td>
+                                    <!-- <td><span th:text="${student.youtube.profile}"></span></td>
                                     <td><span th:text="${student.finalProject.title}"></span></td>
                                     <td><span th:text="${student.resume.resumeFile}"></span></td>
                                     <td><span th:text="${student.networking.meetups}"></span></td>
-                                    <td><span th:text="${student.website.url}"></span></td>
+                                    <td><span th:text="${student.website.url}"></span></td> -->
                                     <td><a th:href="@{/student/update/{studentId}(studentId=${student.id})}">
                                         <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                    fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
