@@ -1,0 +1,350 @@
+/* Please add the below at the top of your CSS page to import the Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* These are the main colors passed as CSS variables
+   To access them within your styles, please use
+   var(--your-color)
+
+   for example:
+   color: var(--primary);
+*/
+
+:root {
+    --primary: #2b6777;
+    --secondary: #52ab98;
+    --accent: #c8d8ee;
+    --background: #ffffff;
+    --background-accent: #f2f2f2;
+    --gradient: linear-gradient(114.23deg, #52ab98 0%, #f2f2f2 100%);
+    --live-session: #FFD0D0;
+    --live-session-accent: #FC6F6F;
+}
+
+/* This if for text styles
+    When designing HTML, please add this class to a tag
+
+    for example:
+    <h1 class="headline1"></h1>
+
+    I created responsiveness for different types of screen as follows:
+    Desktop:  > 1024px
+    Tablet: between 480px and 1024px
+    Smartphone: < 480px
+
+    feel free to adjust these values in the media queries
+*/
+
+
+/* Base DESKTOP text styles (superior to 1024px width) */
+
+
+/*
+Display styles are reserved for short, important text or numerals.
+They work best on large screens.
+*/
+.display-small{
+    font-size: 64px;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    line-height: 44px;
+}
+.display-small-bold{
+    font-size: 64px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    line-height: 44px;
+}
+.display-small-bold-italic{
+    font-size: 64px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 44px;
+}
+
+/*
+Headlines are best-suited for short, high-emphasis text on smaller screens.
+These styles can be good for marking primary passages of text or important regions of content.
+*/
+
+.headline-large{
+    font-size: 57px;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    line-height: 40px;
+}
+.headline-large-light{
+    font-size: 57px;
+    font-family: Poppins, sans-serif;
+    font-weight: 300;
+    line-height: 40px;
+}
+.headline-medium{
+    font-size: 45px;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    line-height: 36px;
+}
+.headline-medium-thin{
+    font-size: 45px;
+    font-family: Poppins, sans-serif;
+    font-weight: 100;
+    line-height: 36px;
+}
+.headline-small{
+    font-size: 24px;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    line-height: 32px;
+}
+.headline-xs{
+    font-size: 18px;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+    line-height: 20px;
+}
+
+/* Titles are smaller than headline styles, and should be used
+for medium-emphasis text that remains relatively short. For example,
+consider using title styles to divide secondary passages of text or
+secondary regions of content.
+*/
+
+.title-large{
+    font-size: 45px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    line-height: 36px;
+}
+.title-large-thin{
+    font-size: 45px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 100;
+    line-height: 36px;
+}
+.title-small{
+    font-size: 24px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+/*
+Body styles are used for longer passages
+of text in your app.
+*/
+
+.body-large{
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.15000000596046448px;
+    line-height: 24px;
+}
+.body-large-bold{
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.15000000596046448px;
+    line-height: 24px;
+}
+.body-medium{
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+    line-height: 20px;
+}
+.body-medium-bold{
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.25px;
+    line-height: 20px;
+}
+.body-small{
+    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.4000000059604645px;
+    line-height: 16px;
+}
+
+/* TABLET text styles (between 480px and 1024px width) */
+
+@media only screen and (max-width: 1024px) and (min-width: 481px){
+    .display-small{
+        font-size: 45px;
+        font-family: Poppins, sans-serif;
+        font-weight: 400;
+        line-height: 44px;
+    }
+    .display-small-bold{
+        font-size: 45px;
+        font-family: Poppins, sans-serif;
+        font-weight: 700;
+        line-height: 44px;
+    }
+    .display-small-bold-italic{
+        font-size: 45px;
+        font-family: Poppins, sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        line-height: 44px;
+    }
+    .headline-large{
+        font-size: 36px;
+        font-family: Poppins, sans-serif;
+        font-weight: 400;
+        line-height: 40px;
+    }
+    .headline-large-light{
+        font-size: 36px;
+        font-family: Poppins, sans-serif;
+        font-weight: 300;
+        line-height: 40px;
+    }
+    .headline-medium{
+        font-size: 32px;
+        font-family: Poppins, sans-serif;
+        font-weight: 400;
+        line-height: 36px;
+    }
+    .headline-medium-thin{
+        font-size: 32px;
+        font-family: Poppins, sans-serif;
+        font-weight: 100;
+        line-height: 36px;
+    }
+    .headline-xs{
+        font-size: 18px;
+        font-family: Poppins, sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.25px;
+        line-height: 20px;
+    }
+    .title-large{
+        font-size: 32px;
+        font-family: Montserrat, sans-serif;
+        font-weight: 400;
+        line-height: 36px;
+    }
+    .title-large-thin{
+        font-size: 32px;
+        font-family: Montserrat, sans-serif;
+        font-weight: 100;
+        line-height: 36px;
+    }
+}
+
+/* SMARTPHONE text styles (inferior to 480px width) */
+
+@media only screen and (max-width: 480px){
+    .display-small{
+        font-size: 36px;
+        font-family: Poppins, sans-serif;
+        font-weight: 400;
+        line-height: 44px;
+    }
+    .display-small-bold{
+        font-size: 36px;
+        font-family: Poppins, sans-serif;
+        font-weight: 700;
+        line-height: 44px;
+    }
+    .display-small-bold-italic{
+        font-size: 36px;
+        font-family: Poppins, sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        line-height: 44px;
+    }
+    .headline-large{
+        font-size: 32px;
+        font-family: Poppins, sans-serif;
+        font-weight: 400;
+        line-height: 40px;
+    }
+    .headline-large-light{
+        font-size: 32px;
+        font-family: Poppins, sans-serif;
+        font-weight: 300;
+        line-height: 40px;
+    }
+    .headline-medium{
+        font-size: 28px;
+        font-family: Poppins, sans-serif;
+        font-weight: 400;
+        line-height: 36px;
+    }
+    .headline-medium-thin{
+        font-size: 28px;
+        font-family: Poppins, sans-serif;
+        font-weight: 100;
+        line-height: 36px;
+    }
+    .title-large{
+        font-size: 28px;
+        font-family: Montserrat, sans-serif;
+        font-weight: 400;
+        line-height: 36px;
+    }
+    .title-large-thin{
+        font-size: 28px;
+        font-family: Montserrat, sans-serif;
+        font-weight: 100;
+        line-height: 36px;
+    }
+}
+
+/*This is for shadows
+    feel free to add these to a class
+
+    example:
+    <h1 class="headline-1 umbra-16dp"></h1>
+*/
+
+.umbra-16dp{
+       box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.14);
+   }
+.penumbra-16dp{
+       box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.12);
+   }
+.ambient-16dp{
+       box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+   }
+
+/* These are the basic buttons for all documents */
+
+button {
+    display: flex;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    border: none;
+    background: var(--primary);
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.12);
+    color: var(--background-accent);
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+button:hover {
+    color: var(--background);
+    box-shadow: none;
+}
+
+button:active {
+    background-color: var(--accent);
+    color: var(--background);
+    box-shadow: none;
+}
+
