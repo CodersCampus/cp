@@ -99,6 +99,12 @@ These styles can be good for marking primary passages of text or important regio
     font-weight: 400;
     line-height: 32px;
 }
+.headline-small-bold{
+    font-size: 24px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    line-height: 32px;
+}
 .headline-xs{
     font-size: 18px;
     font-family: Poppins, sans-serif;
@@ -308,14 +314,14 @@ of text in your app.
 */
 
 .umbra-16dp{
-       box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.14);
-   }
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.14);
+}
 .penumbra-16dp{
-       box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.12);
-   }
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.12);
+}
 .ambient-16dp{
-       box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
-   }
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+}
 
 /* These are the basic buttons for all documents */
 
@@ -348,3 +354,62 @@ button:active {
     box-shadow: none;
 }
 
+/*  Setting the global body font and size */
+
+body {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+}
+
+/* navbar styling */
+
+.ui-navbar {
+    color: var(--primary);
+    padding-top: 4px;
+}
+
+.ui-container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+.ui-navbar-brand {
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0 10px 16px;
+}
+.ui-navbar-brand:hover {
+    color: var(--secondary);
+}
+
+.ui-navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 14px;
+    gap: 20px;
+    margin: 0;
+}
+
+.ui-nav-item {
+    list-style: none;
+}
+
+.ui-nav-link {
+    text-decoration: none;
+    color: var(--primary);
+}
+.ui-nav-link:hover {
+    color: var(--secondary);
+}
+
+/* Main Content on Index */
+
+.welcome {
+    color: var(--background-accent);
+    align-self: center;
+    justify-self: center;
+}

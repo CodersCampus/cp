@@ -1844,7 +1844,7 @@ function(t,i){const e=li(t,"auth");if(e.isInitialized()){const t=e.getImmediate(
       <slot></slot>
       `:L`
         <div class="full-screen">
-          <button @click=${this._handleLoginClick} class="login-button">Login</button>
+          <button @click=${this._handleLoginClick} class="login-button">Log-in</button>
         </div>
     `}updated(t){t.forEach(((t,i)=>{"user"===i&&this.dispatchEvent(new CustomEvent("user-changed",{detail:{newValue:this.user},bubbles:!0,composed:!0}))}))}async _initAuth(){eu.onAuthStateChanged((async t=>{if(t){console.log("LOGGING IN - FOUND USER");const t=await eu.currentUser;this.user=t}else console.log("LOGGING OUT")}))}async _handleLoginClick(){const t=await On(eu,new qe);this.user=t.user}async _handleLogoutClick(t){t.altKey?this.showHideUser?this.showHideUser=!1:this.showHideUser=!0:(await this._signMeOut(),this.user=null)}async _signMeOut(){(function(t){return kt(t).signOut()})(eu).then((()=>{this.user=null})).catch((t=>{alert(t)}))}};su.styles=((t,...i)=>{const n=1===t.length?t[0]:i.reduce(((i,e,n)=>i+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(e)+t[n+1]),t[0]);return new s(n,t,e)})`
     :host {

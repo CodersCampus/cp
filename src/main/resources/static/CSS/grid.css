@@ -11,7 +11,7 @@ fbauth-element {
 [layout="layout-home"] {
     display: grid;
     grid-template-columns: minmax(800px, 1500px);
-    grid-template-rows: 70px minmax(350px, auto) 70px minmax(
+    grid-template-rows: 160px minmax(350px, auto) 70px minmax(
       300px,
       auto
     ) auto;
@@ -24,10 +24,15 @@ fbauth-element {
     overflow-x: hidden;
 }
 
+/* Center vertically the navbar*/
+[layout="layout-home"] > :first-child {
+    align-self: center;
+}
+
 [layout="layout-sidebar"] {
     display: grid;
     grid-template-columns: 200px minmax(800px, 1500px);
-    grid-template-rows: 70px minmax(350px, auto) 70px minmax(
+    grid-template-rows: 160px minmax(350px, auto) 70px minmax(
       300px,
       auto
     ) auto;
@@ -38,6 +43,11 @@ fbauth-element {
     grid-auto-rows: 0;
     grid-auto-columns: 0;
     overflow-x: hidden;
+}
+
+/* Center vertically the navbar*/
+[layout="layout-sidebar"] > :first-child {
+    align-self: center;
 }
 
 .header-grid-area {
