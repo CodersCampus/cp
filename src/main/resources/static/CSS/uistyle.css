@@ -44,19 +44,21 @@
 Display styles are reserved for short, important text or numerals.
 They work best on large screens.
 */
-.display-small{
+.display-small {
     font-size: 64px;
     font-family: Poppins, sans-serif;
     font-weight: 400;
     line-height: 44px;
 }
-.display-small-bold{
+
+.display-small-bold {
     font-size: 64px;
     font-family: Poppins, sans-serif;
     font-weight: 700;
     line-height: 44px;
 }
-.display-small-bold-italic{
+
+.display-small-bold-italic {
     font-size: 64px;
     font-family: Poppins, sans-serif;
     font-weight: 700;
@@ -69,43 +71,49 @@ Headlines are best-suited for short, high-emphasis text on smaller screens.
 These styles can be good for marking primary passages of text or important regions of content.
 */
 
-.headline-large{
+.headline-large {
     font-size: 57px;
     font-family: Poppins, sans-serif;
     font-weight: 400;
     line-height: 40px;
 }
-.headline-large-light{
+
+.headline-large-light {
     font-size: 57px;
     font-family: Poppins, sans-serif;
     font-weight: 300;
     line-height: 40px;
 }
-.headline-medium{
+
+.headline-medium {
     font-size: 45px;
     font-family: Poppins, sans-serif;
     font-weight: 400;
     line-height: 36px;
 }
-.headline-medium-thin{
+
+.headline-medium-thin {
     font-size: 45px;
     font-family: Poppins, sans-serif;
     font-weight: 100;
     line-height: 36px;
 }
-.headline-small{
+
+.headline-small {
     font-size: 24px;
     font-family: Poppins, sans-serif;
     font-weight: 400;
     line-height: 32px;
 }
-.headline-small-bold{
+
+.headline-small-bold {
     font-size: 24px;
     font-family: Poppins, sans-serif;
     font-weight: 700;
     line-height: 32px;
 }
-.headline-xs{
+
+.headline-xs {
     font-size: 18px;
     font-family: Poppins, sans-serif;
     font-weight: 400;
@@ -119,19 +127,21 @@ consider using title styles to divide secondary passages of text or
 secondary regions of content.
 */
 
-.title-large{
+.title-large {
     font-size: 45px;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
     line-height: 36px;
 }
-.title-large-thin{
+
+.title-large-thin {
     font-size: 45px;
     font-family: Montserrat, sans-serif;
     font-weight: 100;
     line-height: 36px;
 }
-.title-small{
+
+.title-small {
     font-size: 24px;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
@@ -143,35 +153,39 @@ Body styles are used for longer passages
 of text in your app.
 */
 
-.body-large{
+.body-large {
     font-size: 16px;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
     letter-spacing: 0.15000000596046448px;
     line-height: 24px;
 }
-.body-large-bold{
+
+.body-large-bold {
     font-size: 16px;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
     letter-spacing: 0.15000000596046448px;
     line-height: 24px;
 }
-.body-medium{
+
+.body-medium {
     font-size: 14px;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
     letter-spacing: 0.25px;
     line-height: 20px;
 }
-.body-medium-bold{
+
+.body-medium-bold {
     font-size: 14px;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
     letter-spacing: 0.25px;
     line-height: 20px;
 }
-.body-small{
+
+.body-small {
     font-size: 12px;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
@@ -181,64 +195,73 @@ of text in your app.
 
 /* TABLET text styles (between 480px and 1024px width) */
 
-@media only screen and (max-width: 1024px) and (min-width: 481px){
-    .display-small{
+@media only screen and (max-width: 1024px) and (min-width: 481px) {
+    .display-small {
         font-size: 45px;
         font-family: Poppins, sans-serif;
         font-weight: 400;
         line-height: 44px;
     }
-    .display-small-bold{
+
+    .display-small-bold {
         font-size: 45px;
         font-family: Poppins, sans-serif;
         font-weight: 700;
         line-height: 44px;
     }
-    .display-small-bold-italic{
+
+    .display-small-bold-italic {
         font-size: 45px;
         font-family: Poppins, sans-serif;
         font-weight: 700;
         font-style: italic;
         line-height: 44px;
     }
-    .headline-large{
+
+    .headline-large {
         font-size: 36px;
         font-family: Poppins, sans-serif;
         font-weight: 400;
         line-height: 40px;
     }
-    .headline-large-light{
+
+    .headline-large-light {
         font-size: 36px;
         font-family: Poppins, sans-serif;
         font-weight: 300;
         line-height: 40px;
     }
-    .headline-medium{
+
+    .headline-medium {
         font-size: 32px;
         font-family: Poppins, sans-serif;
         font-weight: 400;
         line-height: 36px;
     }
-    .headline-medium-thin{
+
+    .headline-medium-thin {
         font-size: 32px;
         font-family: Poppins, sans-serif;
         font-weight: 100;
         line-height: 36px;
     }
-    .headline-xs{
+
+    .headline-xs {
         font-size: 18px;
         font-family: Poppins, sans-serif;
         font-weight: 400;
         letter-spacing: 0.25px;
         line-height: 20px;
     }
-    .title-large{
+
+    .title-large {
         font-size: 32px;
         font-family: Montserrat, sans-serif;
         font-weight: 400;
         line-height: 36px;
     }
-    .title-large-thin{
+
+    .title-large-thin {
         font-size: 32px;
         font-family: Montserrat, sans-serif;
         font-weight: 100;
@@ -248,57 +271,65 @@ of text in your app.
 
 /* SMARTPHONE text styles (inferior to 480px width) */
 
-@media only screen and (max-width: 480px){
-    .display-small{
+@media only screen and (max-width: 480px) {
+    .display-small {
         font-size: 36px;
         font-family: Poppins, sans-serif;
         font-weight: 400;
         line-height: 44px;
     }
-    .display-small-bold{
+
+    .display-small-bold {
         font-size: 36px;
         font-family: Poppins, sans-serif;
         font-weight: 700;
         line-height: 44px;
     }
-    .display-small-bold-italic{
+
+    .display-small-bold-italic {
         font-size: 36px;
         font-family: Poppins, sans-serif;
         font-weight: 700;
         font-style: italic;
         line-height: 44px;
     }
-    .headline-large{
+
+    .headline-large {
         font-size: 32px;
         font-family: Poppins, sans-serif;
         font-weight: 400;
         line-height: 40px;
     }
-    .headline-large-light{
+
+    .headline-large-light {
         font-size: 32px;
         font-family: Poppins, sans-serif;
         font-weight: 300;
         line-height: 40px;
     }
-    .headline-medium{
+
+    .headline-medium {
         font-size: 28px;
         font-family: Poppins, sans-serif;
         font-weight: 400;
         line-height: 36px;
     }
-    .headline-medium-thin{
+
+    .headline-medium-thin {
         font-size: 28px;
         font-family: Poppins, sans-serif;
         font-weight: 100;
         line-height: 36px;
     }
-    .title-large{
+
+    .title-large {
         font-size: 28px;
         font-family: Montserrat, sans-serif;
         font-weight: 400;
         line-height: 36px;
     }
-    .title-large-thin{
+
+    .title-large-thin {
         font-size: 28px;
         font-family: Montserrat, sans-serif;
         font-weight: 100;
@@ -313,13 +344,15 @@ of text in your app.
     <h1 class="headline-1 umbra-16dp"></h1>
 */
 
-.umbra-16dp{
+.umbra-16dp {
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.14);
 }
-.penumbra-16dp{
+
+.penumbra-16dp {
     box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.12);
 }
-.ambient-16dp{
+
+.ambient-16dp {
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -382,6 +415,7 @@ body {
     text-decoration: none;
     padding: 0 10px 16px;
 }
+
 .ui-navbar-brand:hover {
     color: var(--secondary);
 }
@@ -400,21 +434,20 @@ body {
     list-style: none;
 }
 
-.ui-nav-item .active {
-    list-style: none;
-    border-bottom: 1px solid black;
-}
-
 .ui-nav-link {
     text-decoration: none;
     color: var(--primary);
 }
+
 .ui-nav-link:hover {
     color: var(--secondary);
 }
 
-.active-underline {
-    text-decoration: underline;
+
+.active {
+    border-bottom: 1.5px solid transparent;
+    border-image: linear-gradient(90deg, rgba(82, 171, 152, 0) 0%, rgba(82, 171, 152, 1) 25%, rgba(82, 171, 152, 1) 75%, rgba(82, 171, 152, 0) 100%);
+    border-image-slice: 1;
 }
 
 /* Main Content on Index */

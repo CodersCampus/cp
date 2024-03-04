@@ -3,20 +3,16 @@
         <div class="ui-container-fluid">
             <a class="ui-navbar-brand display-small-bold-italic" href="/">cp</a>
             <ul class="ui-navbar-nav">
-                <li class="ui-nav-item" th:unless="${isStudent}"
-                    th:classappend="${activePage == 'student'} ? 'active'">
+                <li class="ui-nav-item" th:classappend="${isStudent} ? 'active'">
                     <a class="ui-nav-link" href="/student/">Student</a>
                 </li>
-                <li class="ui-nav-item" th:unless="${isUserHistory}"
-                    th:classappend="${activePage == 'user-history'} ? 'active'">
+                <li class="ui-nav-item" th:classappend="${isUserHistory} ? 'active'">
                     <a class="ui-nav-link" href="/user-history/">User Queue</a>
                 </li>
-                <li class="ui-nav-item" th:unless="${isCheckin}"
-                    th:classappend="${activePage == 'checkin'} ? 'active'">
+                <li class="ui-nav-item" th:classappend="${isCheckin} ? 'active'">
                     <a class="ui-nav-link" href="/checkin/">Check-In</a>
                 </li>
-                <li class="ui-nav-item" th:unless="${isDatabaseConsole}"
-                    th:classappend="${activePage == 'h2-console'} ? 'active'">
+                <li class="ui-nav-item" th:classappend="${isDatabaseConsole} ? 'active'">
                     <a class="ui-nav-link" href="/h2-console/">Database Console</a>
                 </li>
             </ul>
