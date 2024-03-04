@@ -1,6 +1,15 @@
+/* Removed Grid to layout-secured in order to get all contents to edge*/
+
 body[layout='layout-secured'] {
     display: grid;
-    grid-template-columns: 1fr minmax(400px, 1500px) 1fr;
+    grid-template-columns: 110px auto 110px;
+    align-items: center;
+    justify-items: center;
+}
+
+body[layout='layout-sidebar-secured'] {
+    display: grid;
+    grid-template-columns: auto;
     align-items: center;
     justify-items: center;
 }
@@ -12,8 +21,8 @@ fbauth-element {
 
 [layout="layout-home"] {
     display: grid;
-    grid-template-columns: minmax(800px, 1500px);
-    grid-template-rows: 126px minmax(656px, auto) 96px;
+    grid-template-columns: minmax(800px, 2000px);
+    grid-template-rows: 120px 600px 95px;
     grid-template-areas:
     "head-main"
     "content-main"
@@ -30,9 +39,9 @@ fbauth-element {
 
 [layout="layout-sidebar"] {
     display: grid;
-    grid-template-columns: 200px minmax(800px, 1500px);
-    column-gap: 16px;
-    grid-template-rows: 126px auto 1fr;
+    grid-template-columns: 360px auto 104px;
+    column-gap: 24px;
+    grid-template-rows: 120px 600px 95px;
     grid-template-areas:
     "head-main head-main"
     "content-side content-main"

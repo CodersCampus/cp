@@ -408,6 +408,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     gap: 14px;
+    width: max-content;
 }
 
 .ui-navbar-brand {
@@ -447,6 +448,14 @@ body {
     border-bottom: 1.5px solid transparent;
     border-image: linear-gradient(90deg, rgba(82, 171, 152, 0) 0%, rgba(82, 171, 152, 1) 25%, rgba(82, 171, 152, 1) 75%, rgba(82, 171, 152, 0) 100%);
     border-image-slice: 1;
+}
+
+.active-link {
+    color: var(--secondary);
+}
+
+.ui-margins {
+    margin: 0 120px;
 }
 
 /* Main Content on Index */
@@ -517,12 +526,15 @@ Sidebar Styles
 
 .ui-panel > ul {
     padding: 16px 0 0 0;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
 }
 
-/*
-Main content styles
-this is for the table on Read
-*/
+/* Main content styles */
 
+/*Adjusting the border radius of main content*/
+
+.ga-content-main {
+    border-radius: 8px;
+    background-color: var(--background-accent);
+}

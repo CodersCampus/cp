@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
-
-<body layout="layout-secured">
+<body>
 <fbauth-element>
     <div layout="layout-sidebar">
-        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div class="ui-margins">
+            <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        </div>
         <div class="sidebar-grid-area">
-            <section class="ui-panel-title title-small">
-                Actions
-            </section>
+            <section class="ui-panel-title title-small">Check In</section>
             <nav class="ui-panel">
                 <ul class="ui-navbar-nav">
-                    <li class="ui-nav-item"><a class="ui-button" aria-current="page" href="/checkin/">Checkin Home</a>
-                    </li>
-                    <li class="ui-nav-item"><a class="ui-button" href="/checkin/create">Create Checkin</a>
-                    </li>
+                    <li class="ui-nav-item"><a class="ui-button" href="/checkin/create">Create New</a></li>
+                    <li class="ui-nav-item"><a class="ui-button" aria-current="page" href="/checkin/">Back</a></li>
                 </ul>
             </nav>
         </div>

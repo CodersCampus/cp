@@ -4,7 +4,7 @@
             <a class="ui-navbar-brand display-small-bold-italic" href="/">cp</a>
             <ul class="ui-navbar-nav">
                 <li class="ui-nav-item" th:classappend="${isStudent} ? 'active'">
-                    <a class="ui-nav-link" href="/student/">Student</a>
+                    <a class="ui-nav-link" th:classappend="${isStudent} ? 'active-link'" href="/student/">Student</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isUserHistory} ? 'active'">
                     <a class="ui-nav-link" href="/user-history/">User Queue</a>
