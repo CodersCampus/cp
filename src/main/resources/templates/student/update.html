@@ -7,15 +7,21 @@
             <div layout="layout-sidebar">
                 <header th:replace="~{fragments/header :: header(${activePage})}"></header>
                 <div class="sidebar-grid-area">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link active"
+                    <section class="ui-panel-title title-small">
+                        Actions
+                    </section>
+                    <nav class="ui-panel">
+                        <ul class="ui-navbar-nav">
+                            <li class="ui-nav-item"><a class="ui-button"
+
                                                         aria-current="page" href="/student/">Student Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/student/create">Create
-                                    Student</a></li>
-                            </ul>
-                        </div>
+
+                            <li class="ui-nav-item"><a class="ui-button"
+
+                                                        href="/student/create">Create Student</a></li>
+
+
+                        </ul>
                     </nav>
                 </div>
                 <div class="ga-content-main">

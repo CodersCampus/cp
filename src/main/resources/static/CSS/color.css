@@ -8,5 +8,5 @@
     background-color: var(--background-accent);
 }
 .ga-foot-main {
-    background-color: lightgrey;
+    background-color: var(--background);
 }

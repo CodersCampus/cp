@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-    <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 
-    <body layout="layout-secured">
-        <fbauth-element>
-            <div layout="layout-sidebar">
-                <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-                <div class="sidebar-grid-area">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                                        href="/foobar/">Foobar Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/foobar/create">Create Foobar</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div class="ga-content-main">
-                    <main>
-                        <form method="post" action="/foobar/update" class="mb-3">
-                            <input class="form-control" type="hidden" th:field="${foobar.id}"/>
-                            <label class="form-label">Name: </label>
-                            <input class="form-control" type="text" th:field="${foobar.name}"/>
-                            <input class="form-control btn btn-primary mt-3" type="submit" value="Update"/>
-                        </form>
-                        <form method="post" action="/foobar/delete" class="mb-3">
-                            <input type="hidden" th:field="${foobar.id}"/>
-                            <input class="form-control btn btn-danger" type="submit" value="Delete"/>
-                        </form>
-                    </main>
-                </div>
-                <div th:replace="~{fragments/footer :: footer}"></div>
-            </div>
-        </fbauth-element>
+<body layout="layout-secured">
+<fbauth-element>
+    <div layout="layout-sidebar">
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div class="sidebar-grid-area">
+            <section class="ui-panel-title title-small">
+                Actions
+            </section>
+            <nav class="ui-panel">
+                <ul class="ui-navbar-nav">
+                    <li class="ui-nav-item"><a class="ui-button" aria-current="page" href="/foobar/">Foobar Home</a>
+                    </li>
+                    <li class="ui-nav-item"><a class="ui-button" href="/foobar/create">Create Foobar</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="ga-content-main">
+            <main>
+                <form method="post" action="/foobar/update" class="mb-3">
+                    <input class="form-control" type="hidden" th:field="${foobar.id}"/>
+                    <label class="form-label">Name: </label>
+                    <input class="form-control" type="text" th:field="${foobar.name}"/>
+                    <input class="form-control btn btn-primary mt-3" type="submit" value="Update"/>
+                </form>
+                <form method="post" action="/foobar/delete" class="mb-3">
+                    <input type="hidden" th:field="${foobar.id}"/>
+                    <input class="form-control btn btn-danger" type="submit" value="Delete"/>
+                </form>
+            </main>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
 
-        <div th:replace="~{fragments/authscript :: script}"></div>
-    </body>
+<div th:replace="~{fragments/authscript :: script}"></div>
+</body>
 
 </html>
