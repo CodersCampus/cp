@@ -360,7 +360,7 @@ of text in your app.
 
 .ui-button {
     display: flex;
-    padding: 12px 24px;
+    padding: 8px 16px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -442,7 +442,6 @@ body {
 .ui-nav-link:hover {
     color: var(--secondary);
 }
-
 
 .active {
     border-bottom: 1.5px solid transparent;
