@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
-<body layout="layout-secured">
+<body>
 <fbauth-element>
-  <div layout="layout-home">
+  <div>
     <header th:replace="~{fragments/header :: header(${activePage})}"></header>
     <div class="welcome">
-      <div class="display-small-bold-italic">Welcome to coder packaging</div>
+      <div class="welcome-text display-small-bold-italic">Welcome to coder packaging</div>
     </div>
     <div th:replace="~{fragments/footer :: footer}"></div>
   </div>

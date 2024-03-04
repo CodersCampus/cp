@@ -3,37 +3,37 @@
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body>
 <fbauth-element>
-    <div layout="layout-sidebar">
-        <div class="ui-margins">
-            <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-        </div>
-        <div class="sidebar-grid-area">
-            <section class="ui-panel-title title-small">User Queue</section>
-            <nav class="ui-panel">
-                <ul class="ui-navbar-nav">
-                    <li class="ui-nav-item"><a class="ui-button" href="/user-history/create">Create New</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="ga-content-main">
-            <main>
-                <form method="post" action="/user-history/create">
-                    <h1>Create User History</h1>
-                    <input name="uid" type="hidden" id="uid"/>
-                    <div class="mb-3">
-                        <label class="form-label">Name:</label>
-                        <input class="form-control" type="text" id="display-name"
-                               th:field="${userHistory.name}"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Issue #:</label>
-                        <input class="form-control" type="text" th:field="${userHistory.issue}"/>
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control btn btn-primary" type="submit" value="Create"/>
-                    </div>
-                </form>
-            </main>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">User Queue</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <li class="ui-nav-item"><a class="ui-button" href="/user-history/create">Create New</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <form method="post" action="/user-history/create">
+                        <h1>Create User History</h1>
+                        <input name="uid" type="hidden" id="uid"/>
+                        <div class="mb-3">
+                            <label class="form-label">Name:</label>
+                            <input class="form-control" type="text" id="display-name"
+                                   th:field="${userHistory.name}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Issue #:</label>
+                            <input class="form-control" type="text" th:field="${userHistory.issue}"/>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control btn btn-primary" type="submit" value="Create"/>
+                        </div>
+                    </form>
+                </main>
+            </div>
         </div>
         <div th:replace="~{fragments/footer :: footer}"></div>
     </div>

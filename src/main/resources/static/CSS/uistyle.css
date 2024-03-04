@@ -400,8 +400,23 @@ body {
 
 .ui-navbar {
     color: var(--primary);
-    padding-top: 4px;
+    height: 120px;
+    display: flex;
+    margin: 0 120px;
 }
+
+@media screen and (max-width: 1024px) {
+    .ui-navbar {
+        margin: 0 64px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ui-navbar {
+        margin: 0 8px;
+    }
+}
+
 
 .ui-container-fluid {
     display: flex;
@@ -462,8 +477,15 @@ body {
 
 .welcome {
     color: var(--background-accent);
-    align-self: center;
-    justify-self: center;
+    /*We will need to remove the "-50px" below when we don't have the fb-auth header*/
+    height: calc(100vh - 120px - 96px - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-text {
+    text-align: center;
 }
 
 /*
@@ -471,21 +493,26 @@ Footer styles:
 */
 
 .ui-footer {
-    margin: 16px 16px 0px;
+    margin-top: 60px;
+    bottom: 0;
+    width: 100vw;
 }
 
 .ui-hr {
-    margin: 0;
+    margin: 0 auto;
     border: none;
     height: 0.2px;
+    width: 90vw;
     background-color: var(--primary);
 }
 
 .ui-footer-content {
     display: flex;
     justify-content: center;
-    padding-top: 35px;
-    color: var(--primary)
+    color: var(--primary);
+    height: 96px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .ui-footer-link {

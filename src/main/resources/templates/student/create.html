@@ -3,78 +3,78 @@
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body>
 <fbauth-element>
-    <div layout="layout-sidebar">
-        <div class="ui-margins">
-            <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-        </div>
-        <div class="sidebar-grid-area">
-            <section class="ui-panel-title title-small">Students</section>
-            <nav class="ui-panel">
-                <ul class="ui-navbar-nav">
-                    <li class="ui-nav-item"><a class="ui-button" aria-current="page" href="/student/">Back</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="ga-content-main">
-            <main>
-                <form method="post" action="/student/create">
-                    <h1>Create Student</h1>
-                    <input name="uid" type="hidden" id="uid"/>
-                    <div class="mb-3">
-                        <label class="form-label">Name:</label> <input
-                            class="form-control" type="text" id="display-name"
-                            th:field="${student.name}"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Assignment Number:</label><input
-                            class="form-control" type="text"
-                            th:field="${student.assignmentNum}"/>
-                    </div>
-                    <!-- <div class="mb-3">
-                        <label class="form-label">Github Handle:</label> <input
-                            class="form-control" type="text"
-                            th:field="${student.githubHandle.handle}" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">LinkedIn URL:</label> <input
-                            class="form-control" type="text"
-                            th:field="${student.linkedIn.url}" />
-                    </div> -->
-                    <div class="mb-3">
-                        <label class="form-label">IDE: </label> <input
-                            class="form-control" type="text" th:field="${student.ide}"/>
-                    </div>
-                    <!-- <div class="mb-3">
-                        <label class="form-label">YouTube:</label> <input
-                            class="form-control" type="text"
-                            th:field="${student.youtube.profile}" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Final Project:</label> <input
-                            class="form-control" type="text"
-                            th:field="${student.finalProject.title}" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Resume:</label> <input
-                            class="form-control" type="text"
-                            th:field="${student.resume.resumeFile}" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Networking:</label> <input
-                            class="form-control" type="text"
-                            th:field="${student.networking.meetups}" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Website:</label> <input
-                            class="form-control" type="text"
-                            th:field="${student.website.url}" />
-                    </div> -->
-                    <div class="mb-3">
-                        <input onfocus="assignUid()" class="form-control btn btn-primary"
-                               type="submit" value="Create"/>
-                    </div>
-                </form>
-            </main>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">Students</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <li class="ui-nav-item"><a class="ui-button" aria-current="page" href="/student/">Back</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <form method="post" action="/student/create">
+                        <h1>Create Student</h1>
+                        <input name="uid" type="hidden" id="uid"/>
+                        <div class="mb-3">
+                            <label class="form-label">Name:</label> <input
+                                class="form-control" type="text" id="display-name"
+                                th:field="${student.name}"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Assignment Number:</label><input
+                                class="form-control" type="text"
+                                th:field="${student.assignmentNum}"/>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label class="form-label">Github Handle:</label> <input
+                                class="form-control" type="text"
+                                th:field="${student.githubHandle.handle}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">LinkedIn URL:</label> <input
+                                class="form-control" type="text"
+                                th:field="${student.linkedIn.url}" />
+                        </div> -->
+                        <div class="mb-3">
+                            <label class="form-label">IDE: </label> <input
+                                class="form-control" type="text" th:field="${student.ide}"/>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label class="form-label">YouTube:</label> <input
+                                class="form-control" type="text"
+                                th:field="${student.youtube.profile}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Final Project:</label> <input
+                                class="form-control" type="text"
+                                th:field="${student.finalProject.title}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Resume:</label> <input
+                                class="form-control" type="text"
+                                th:field="${student.resume.resumeFile}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Networking:</label> <input
+                                class="form-control" type="text"
+                                th:field="${student.networking.meetups}" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Website:</label> <input
+                                class="form-control" type="text"
+                                th:field="${student.website.url}" />
+                        </div> -->
+                        <div class="mb-3">
+                            <input onfocus="assignUid()" class="form-control btn btn-primary"
+                                   type="submit" value="Create"/>
+                        </div>
+                    </form>
+                </main>
+            </div>
         </div>
         <div th:replace="~{fragments/footer :: footer}"></div>
     </div>
