@@ -1830,23 +1830,22 @@ class qa{constructor(t,i,e,n){this.authCredentials=t,this.appCheckCredentials=i,
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function(t,i){const e=li(t,"auth");if(e.isInitialized()){const t=e.getImmediate();if(It(e.getOptions(),null!=i?i:{}))return t;Li(t,"already-initialized")}return e.initialize({options:i})}(t,{popupRedirectResolver:hs,persistence:[bn,nn,rn]}),n=wt("authTokenSyncURL");if(n){const t=(s=n,async t=>{const i=t&&await t.getIdTokenResult(),e=i&&((new Date).getTime()-Date.parse(i.issuedAtTime))/1e3;if(e&&e>ls)return;const n=null==i?void 0:i.token;fs!==n&&(fs=n,await fetch(s,{method:n?"POST":"DELETE",headers:n?{Authorization:`Bearer ${n}`}:{}}))});!function(t,i,e){kt(t).beforeAuthStateChanged(i,e)}(e,t,(()=>t(e.currentUser))),function(t,i,e,n){kt(t).onIdTokenChanged(i,e,n)}(e,(i=>t(i)))}var s;const r=pt("auth");return r&&xe(e,`http://${r}`),e}(iu);!function(t,i){const e="string"==typeof t?t:i||"(default)",n=li("object"==typeof t?t:wi(),"firestore").getImmediate({identifier:e});if(!n._initialized){const t=(t=>{const i=pt(t);if(!i)return;const e=i.lastIndexOf(":");if(e<=0||e+1===i.length)throw new Error(`Invalid host ${i} with no separate hostname and port!`);const n=parseInt(i.substring(e+1),10);return"["===i[0]?[i.substring(1,e-1),n]:[i.substring(0,e),n]})("firestore");t&&Qa(n,...t)}}(iu);var nu=function(t,i,e,n){for(var s,r=arguments.length,o=r<3?i:null===n?n=Object.getOwnPropertyDescriptor(i,e):n,h=t.length-1;h>=0;h--)(s=t[h])&&(o=(r<3?s(o):r>3?s(i,e,o):s(i,e))||o);return r>3&&o&&Object.defineProperty(i,e,o),o};let su=class extends et{constructor(){super(),this.showHideUser=!1,this.user=null,this._initAuth()}render(){var t,i;return this.user?L`
-      <div class="full-width-div">
-        <img height="50" width="50" src="${null===(t=this.user)||void 0===t?void 0:t.photoURL}"/>
-        <h2>${null===(i=this.user)||void 0===i?void 0:i.displayName}</h2>
-        <button id="logout" @click=${this._handleLogoutClick}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="12" viewBox="0 0 60 12">
-            <text x="3" y="10" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:extra-condensed;font-size:12.7px;font-family:'Arial';-inkscape-font-specification:'DIN Condensed, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;word-spacing:-0.0211667px;stroke-width:0;stroke-dasharray:none" fill="black">LOGOUT</text>
-          </svg>
-        </button>
-      </div>  
-      ${this.showHideUser?L`<pre>${JSON.stringify(this.user,null,2)}</pre>`:""}
-      <slot></slot>
-      `:L`
-        <div class="full-screen">
-          <button @click=${this._handleLoginClick} class="login-button">Login</button>
-        </div>
-    `}updated(t){t.forEach(((t,i)=>{"user"===i&&this.dispatchEvent(new CustomEvent("user-changed",{detail:{newValue:this.user},bubbles:!0,composed:!0}))}))}async _initAuth(){eu.onAuthStateChanged((async t=>{if(t){console.log("LOGGING IN - FOUND USER");const t=await eu.currentUser;this.user=t}else console.log("LOGGING OUT")}))}async _handleLoginClick(){const t=await On(eu,new qe);this.user=t.user}async _handleLogoutClick(t){t.altKey?this.showHideUser?this.showHideUser=!1:this.showHideUser=!0:(await this._signMeOut(),this.user=null)}async _signMeOut(){(function(t){return kt(t).signOut()})(eu).then((()=>{this.user=null})).catch((t=>{alert(t)}))}};su.styles=((t,...i)=>{const n=1===t.length?t[0]:i.reduce(((i,e,n)=>i+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(e)+t[n+1]),t[0]);return new s(n,t,e)})`
+function(t,i){const e=li(t,"auth");if(e.isInitialized()){const t=e.getImmediate();if(It(e.getOptions(),null!=i?i:{}))return t;Li(t,"already-initialized")}return e.initialize({options:i})}(t,{popupRedirectResolver:hs,persistence:[bn,nn,rn]}),n=wt("authTokenSyncURL");if(n){const t=(s=n,async t=>{const i=t&&await t.getIdTokenResult(),e=i&&((new Date).getTime()-Date.parse(i.issuedAtTime))/1e3;if(e&&e>ls)return;const n=null==i?void 0:i.token;fs!==n&&(fs=n,await fetch(s,{method:n?"POST":"DELETE",headers:n?{Authorization:`Bearer ${n}`}:{}}))});!function(t,i,e){kt(t).beforeAuthStateChanged(i,e)}(e,t,(()=>t(e.currentUser))),function(t,i,e,n){kt(t).onIdTokenChanged(i,e,n)}(e,(i=>t(i)))}var s;const r=pt("auth");return r&&xe(e,`http://${r}`),e}(iu);!function(t,i){const e="string"==typeof t?t:i||"(default)",n=li("object"==typeof t?t:wi(),"firestore").getImmediate({identifier:e});if(!n._initialized){const t=(t=>{const i=pt(t);if(!i)return;const e=i.lastIndexOf(":");if(e<=0||e+1===i.length)throw new Error(`Invalid host ${i} with no separate hostname and port!`);const n=parseInt(i.substring(e+1),10);return"["===i[0]?[i.substring(1,e-1),n]:[i.substring(0,e),n]})("firestore");t&&Qa(n,...t)}}(iu);var nu=function(t,i,e,n){for(var s,r=arguments.length,o=r<3?i:null===n?n=Object.getOwnPropertyDescriptor(i,e):n,h=t.length-1;h>=0;h--)(s=t[h])&&(o=(r<3?s(o):r>3?s(i,e,o):s(i,e))||o);return r>3&&o&&Object.defineProperty(i,e,o),o};let su=class extends et{constructor(){super(),this.showHideUser=!1,this.user=null,this.headless=!1,this._initAuth()}render(){var t,i;const e=L`
+      <div class="full-screen">
+        <button @click=${this._handleLoginClick} class="login-button">Login</button>
+      </div>`,n=L`
+    <div class="full-width-div">
+      <img height="50" width="50" src="${null===(t=this.user)||void 0===t?void 0:t.photoURL}"/>
+      <h2>${null===(i=this.user)||void 0===i?void 0:i.displayName}</h2>
+      <button id="logout" @click=${this._handleLogoutClick}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="12" viewBox="0 0 60 12">
+          <text x="3" y="10" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:extra-condensed;font-size:12.7px;font-family:'Arial';-inkscape-font-specification:'DIN Condensed, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;word-spacing:-0.0211667px;stroke-width:0;stroke-dasharray:none" fill="black">LOGOUT</text>
+        </svg>
+      </button>
+    </div>  
+    ${this.showHideUser?L`<pre>${JSON.stringify(this.user,null,2)}</pre>`:""}
+    <slot></slot>
+    `,s=L`<slot></slot>`;return this.headless?this.user?s:e:this.user?n:e}updated(t){t.forEach(((t,i)=>{"user"===i&&this.dispatchEvent(new CustomEvent("user-changed",{detail:{newValue:this.user},bubbles:!0,composed:!0}))}))}async _initAuth(){eu.onAuthStateChanged((async t=>{if(t){console.log("LOGGING IN - FOUND USER");const t=await eu.currentUser;this.user=t}else console.log("LOGGING OUT")}))}async _handleLoginClick(){const t=await On(eu,new qe);this.user=t.user}async _handleLogoutClick(t){t.altKey?this.showHideUser?this.showHideUser=!1:this.showHideUser=!0:(await this._signMeOut(),this.user=null)}async _signMeOut(){(function(t){return kt(t).signOut()})(eu).then((()=>{this.user=null})).catch((t=>{alert(t)}))}};su.styles=((t,...i)=>{const n=1===t.length?t[0]:i.reduce(((i,e,n)=>i+(t=>{if(!0===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(e)+t[n+1]),t[0]);return new s(n,t,e)})`
     :host {
       padding: 1px;
     }
@@ -1892,4 +1891,4 @@ function(t,i){const e=li(t,"auth");if(e.isInitialized()){const t=e.getImmediate(
     #logout {
       min-width: 80px;
     }
-  `,nu([rt({type:Boolean})],su.prototype,"showHideUser",void 0),nu([rt({type:Object})],su.prototype,"user",void 0),su=nu([(t=>i=>"function"==typeof i?((t,i)=>(customElements.define(t,i),i))(t,i):((t,i)=>{const{kind:e,elements:n}=i;return{kind:e,elements:n,finisher(i){customElements.define(t,i)}}})(t,i))("fbauth-element")],su);export{su as FBAuthElement};
+  `,nu([rt({type:Boolean})],su.prototype,"showHideUser",void 0),nu([rt({type:Object})],su.prototype,"user",void 0),nu([rt({type:Boolean})],su.prototype,"headless",void 0),su=nu([(t=>i=>"function"==typeof i?((t,i)=>(customElements.define(t,i),i))(t,i):((t,i)=>{const{kind:e,elements:n}=i;return{kind:e,elements:n,finisher(i){customElements.define(t,i)}}})(t,i))("fbauth-element")],su);export{su as FBAuthElement};
