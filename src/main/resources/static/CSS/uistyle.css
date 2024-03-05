@@ -15,11 +15,30 @@
     --primary: #2b6777;
     --secondary: #52ab98;
     --accent: #c8d8ee;
-    --background: #ffffff;
+    --background: #EDEDED;
     --background-accent: #f2f2f2;
     --gradient: linear-gradient(114.23deg, #52ab98 0%, #f2f2f2 100%);
     --live-session: #FFD0D0;
     --live-session-accent: #FC6F6F;
+}
+
+/* Dark Mode variables below
+
+it is currently commented out until we have a button to select Dark / Light
+
+*/
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #87C3D4;
+        --secondary: #53AC99;
+        --accent: #112137;
+        --background: #121212;
+        --background-accent: #1F1F1F;
+        --gradient: linear-gradient(114.23deg, #53AC99 0%, #1F1F1F 100%);
+        --live-session: #FFD0D0;
+        --live-session-accent: #FC6F6F;
+    }
 }
 
 /* This if for text styles
@@ -391,9 +410,10 @@ of text in your app.
 
 /*  Setting the global body font and size */
 
-body {
+.ui-background {
     font-family: Montserrat, sans-serif;
     font-size: 14px;
+    background-color: var(--background);
 }
 
 /* navbar styling */
@@ -476,6 +496,7 @@ body {
 /* Main Content on Index */
 
 .welcome {
+    background-color: var(--background);
     color: var(--background-accent);
     /*We will need to remove the "-50px" below when we don't have the fb-auth header*/
     height: calc(100vh - 120px - 96px - 50px);
