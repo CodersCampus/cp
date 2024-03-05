@@ -2,7 +2,7 @@ package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.management.RuntimeErrorException;
@@ -12,9 +12,11 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
-    @Autowired
-    private StudentRepository studentRepo;
+    private final StudentRepository studentRepo;
 
+    public StudentService(StudentRepository studentRepo) {
+        this.studentRepo = studentRepo;
+    }
 
     public Student save(Student student) {
         if (isValidNewStudent(student)) {
@@ -85,5 +87,12 @@ public class StudentService {
 
         return true;
     }
-
+    public Student updateStudentPhoto(Long studentId, byte[] photoData) {
+        Student existingStudent = studentRepo.findById(studentId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Check-in not found for student with id: " + studentId));
+        existingStudent.setStudentPhoto(photoData);
+        studentRepo.save(existingStudent);
+        return existingStudent;
+    }
 }

@@ -2,6 +2,8 @@ package com.coderscampus.cp.domain;
 
 import jakarta.persistence.*;
 
+import java.math.BigInteger;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 
@@ -22,6 +24,8 @@ public class Checkin {
 	private Instant endTime;
 	private CodingType codingType;
 	private Integer issueNumber;
+	private BigInteger timeInClassInSeconds;
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "student_id")
 	private Student student;
@@ -138,6 +142,22 @@ public class Checkin {
 		this.student = student;
 	}
 
+	public Boolean getSetUp() {
+		return isSetUp;
+	}
+
+	public void setSetUp(Boolean setUp) {
+		isSetUp = setUp;
+	}
+
+	public BigInteger getTimeInClassInSeconds() {
+		return timeInClassInSeconds;
+	}
+
+	public void setTimeInClassInSeconds(BigInteger timeInClassInSeconds) {
+		this.timeInClassInSeconds = timeInClassInSeconds;
+	}
+
 	// ENUMS
 	public enum CodingType{
 		FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
@@ -164,5 +184,13 @@ public class Checkin {
 				", codingType=" + codingType +
 				", student=" + student +
 				'}';
+	}
+	public void calculateTimeInClass() {
+		if (startTime != null && endTime != null) {
+			long seconds = Duration.between(startTime, endTime).getSeconds();
+			setTimeInClassInSeconds(BigInteger.valueOf(seconds));
+		} else {
+			setTimeInClassInSeconds(BigInteger.ZERO);
+		}
 	}
 }

@@ -4,9 +4,11 @@ import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
@@ -15,11 +17,14 @@ import java.util.stream.Collectors;
 @Service
 public class CheckinService {
 
-    @Autowired
     private CheckinRepository checkinRepo;
-
-    @Autowired
     private StudentRepository studentRepo;
+
+    public CheckinService(CheckinRepository checkinRepo, StudentRepository studentRepo) {
+        this.checkinRepo = checkinRepo;
+        this.studentRepo = studentRepo;
+    }
+
 
     public Checkin save(Checkin checkin) {
         if (checkin.getDate() == null) {
@@ -50,6 +55,42 @@ public class CheckinService {
 
     public void delete(Checkin checkin) {
         checkinRepo.delete(checkin);
+    }
+
+    @Transactional
+    public Checkin createStudentCheckin(Long studentId) {
+        Instant now = Instant.now();
+//      Prevents accidental opening of multiple check-ins
+        if(checkinRepo.findByStudentIdAndCheckoutTimeIsNull(studentId).isPresent()){
+            System.out.println("Unclosed Checkin Found for Student with ID: " + studentId);
+            endStudentCheckin(studentId);
+        }
+        System.out.println("Creating Checkin for Student with ID: " + studentId);
+        Checkin newCheckin = new Checkin();
+        Student existingStudent = studentRepo.findById(studentId)
+                .orElseThrow(() -> new EntityNotFoundException("Student not found with id: " + studentId));
+        newCheckin.setStudent(existingStudent);
+        newCheckin.setStartTime(now);
+        checkinRepo.save(newCheckin);
+        existingStudent.getCheckin().add(newCheckin);
+        studentRepo.save(existingStudent);
+        return newCheckin;
+    }
+    @Transactional
+    public Checkin endStudentCheckin(Long studentId) {
+        Instant now = Instant.now();
+        System.out.println("Creating Checkout for Student with ID: " + studentId);
+        Student existingStudent = studentRepo.findById(studentId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Student not found with id: " + studentId));
+        Checkin unclosedCheckin = checkinRepo.findByStudentIdAndCheckoutTimeIsNull(studentId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Unclosed Check-in not found for student with id: " + studentId));
+        unclosedCheckin.setEndTime(now);
+        checkinRepo.save(unclosedCheckin);
+        existingStudent.getCheckin().add(unclosedCheckin);
+        System.out.println("Service: Saving finished checkin with ID: " + unclosedCheckin.getId());
+        return unclosedCheckin;
     }
 
 }
