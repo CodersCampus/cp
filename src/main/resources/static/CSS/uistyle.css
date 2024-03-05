@@ -15,11 +15,12 @@
     --primary: #2b6777;
     --secondary: #52ab98;
     --accent: #c8d8ee;
-    --background: #EDEDED;
-    --background-accent: #f2f2f2;
+    --background: #f2f2f2;
+    --background-accent: #EDEDED;
     --gradient: linear-gradient(114.23deg, #52ab98 0%, #f2f2f2 100%);
     --live-session: #FFD0D0;
     --live-session-accent: #FC6F6F;
+    --nav: #ffffff
 }
 
 /* Dark Mode variables below
@@ -109,6 +110,14 @@ These styles can be good for marking primary passages of text or important regio
     font-family: Poppins, sans-serif;
     font-weight: 400;
     line-height: 36px;
+}
+
+.headline-medium-bold-italic {
+    font-size: 45px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 44px;
 }
 
 .headline-medium-thin {
@@ -258,6 +267,14 @@ of text in your app.
         line-height: 36px;
     }
 
+    .headline-medium-bold-italic {
+        font-size: 32px;
+        font-family: Poppins, sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        line-height: 36px;
+    }
+
     .headline-medium-thin {
         font-size: 32px;
         font-family: Poppins, sans-serif;
@@ -331,6 +348,14 @@ of text in your app.
         font-size: 28px;
         font-family: Poppins, sans-serif;
         font-weight: 400;
+        line-height: 36px;
+    }
+
+    .headline-medium-bold-italic {
+        font-size: 28px;
+        font-family: Poppins, sans-serif;
+        font-weight: 700;
+        font-style: italic;
         line-height: 36px;
     }
 
@@ -414,20 +439,27 @@ of text in your app.
     font-family: Montserrat, sans-serif;
     font-size: 14px;
     background-color: var(--background);
+    height: 100vh;
 }
 
 /* navbar styling */
 
 .ui-navbar {
     color: var(--primary);
-    height: 120px;
+    height: 80px;
     display: flex;
-    margin: 0 120px;
+    margin: -21px 120px 0;
 }
 
 @media screen and (max-width: 1024px) {
     .ui-navbar {
         margin: 0 64px;
+    }
+    .ui-navbar-brand {
+        padding: 0 0 8px;
+    }
+    .ui-navbar-nav {
+        padding-left: 0;
     }
 }
 
@@ -449,7 +481,7 @@ of text in your app.
 .ui-navbar-brand {
     color: var(--primary);
     text-decoration: none;
-    padding: 0 10px 16px;
+    padding: 0 0 10px;
 }
 
 .ui-navbar-brand:hover {
@@ -497,9 +529,9 @@ of text in your app.
 
 .welcome {
     background-color: var(--background);
-    color: var(--background-accent);
+    color: var(--accent);
     /*We will need to remove the "-50px" below when we don't have the fb-auth header*/
-    height: calc(100vh - 120px - 96px - 50px);
+    height: calc(100vh - 160px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -514,7 +546,7 @@ Footer styles:
 */
 
 .ui-footer {
-    margin-top: 60px;
+    /*margin-top: 60px;*/
     bottom: 0;
     width: 100vw;
 }
@@ -531,7 +563,7 @@ Footer styles:
     display: flex;
     justify-content: center;
     color: var(--primary);
-    height: 96px;
+    height: 80px;
     flex-direction: column;
     align-items: center;
 }

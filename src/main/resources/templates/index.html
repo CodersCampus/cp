@@ -3,13 +3,15 @@
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
 <fbauth-element headless>
-  <div>
-    <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-    <div class="welcome">
-      <div class="welcome-text display-small-bold-italic">Welcome to coder packaging</div>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}">
+        </header>
+        <div class="welcome">
+            <div class="welcome-text display-small-bold-italic">Welcome to coder packaging</div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}">
+        </div>
     </div>
-    <div th:replace="~{fragments/footer :: footer}"></div>
-  </div>
 </fbauth-element>
 </body>
 </html>
