@@ -37,7 +37,7 @@
 
 [//]: # (![GitHub Desktop default]&#40;images/GitHub_Desktop_default.jpg&#41;)
 
-<img style="border-radius: 10px" width="600" alt="GitHub Desktop default" src="images/1_gitHubDesktop.png">
+<img style="border-radius: 10px" width="550" alt="GitHub Desktop default" src="images/1_gitHubDesktop.png">
 
 
   
@@ -45,11 +45,11 @@
 11. Now open **cp** repository 
 12. If you are given the option in GitHub Desktop to `Open in Eclipse IDE...`, then click that button.
 
-<img style="border-radius: 10px" width="600" alt="Open with Eclipse IDE" src="images/2_openWithEclipseIDE.png">
+<img style="border-radius: 10px" width="550" alt="Open with Eclipse IDE" src="images/2_openWithEclipseIDE.png">
 
 13. If you do not see that option, then open **Eclipse IDE** app, click on `File` > `Open Projects from File System...` > `Directory` > locate **cp** root folder, and click `Open`.
 
-<img style="border-radius: 10px" width="500" alt="cp root folder" src="images/3_cpRootFolder.png">
+<img style="border-radius: 10px" width="450" alt="cp root folder" src="images/3_cpRootFolder.png">
 
 
 ### Eclipse IDE
@@ -66,7 +66,7 @@
   - Press the green `Run` button to run application or right click on main method of CPApplication.java, and select `Run As` > `Java Application`.
 20. You should see the Spring Boot design in the console with a bunch of other content.
 
-<img style="border-radius: 10px" width="700" alt="Running cp" src="images/4_runningCP.png">
+<img style="border-radius: 10px" width="600" alt="Running cp" src="images/4_runningCP.png">
 
 21. Now navigate to browser of choice, we use Chrome, and type into the address bar `localhost:8080`, this is the local address the **cp** application is being served too.
 22. **cp** application should be live on your browser.
@@ -101,7 +101,7 @@ To set up **cp** on your computer, follow these guidelines:
 6. Open IDE of choice
    - If using Eclipse IDE, right click root `cp` folder and click **Refresh** if it's not already on `dev` branch.
 
-<img style="border-radius: 10px" width="600" alt="GitHub Desktop screenshot instructions" src="images/5_runningWithGitHubDesktop.png">
+<img style="border-radius: 10px" width="550" alt="GitHub Desktop screenshot instructions" src="images/5_runningWithGitHubDesktop.png">
 
 #### Terminal/Git BASH Instructions
 
@@ -118,7 +118,7 @@ git pull
 ```
 - Open IDE of choice
 
-<img style="border-radius: 10px" width="500" alt="GitHub Desktop screenshot instructions" src="images/6_terminal.png">
+<img style="border-radius: 10px" width="450" alt="GitHub Desktop screenshot instructions" src="images/6_terminal.png">
 
 
 ### Step 2: Open cp app and run it locally
@@ -132,7 +132,7 @@ git pull
 3. `[cp dev]` should appear to the right of your cp project.
 4. Navigate to [localhost:8080](http://localhost:8080/) in your browser of choice, we suggest Google Chrome, and ensure it's running successfully.
 
-<img style="border-radius: 10px" width="350" alt="GitHub Desktop screenshot instructions" src="images/7_eclipse.png">
+<img style="border-radius: 10px" width="300" alt="GitHub Desktop screenshot instructions" src="images/7_eclipse.png">
 
 #### Eclipse Troubleshooting Steps
 **Solution 1**
@@ -152,7 +152,7 @@ _If the Installation fails:_
 2. Ensure that you see the **dev** branch selected.
 3. Navigate to [localhost:8080](http://localhost:8080/) in your browser of choice, we suggest Google Chrome, and ensure it's running successfully.
 
-<img style="border-radius: 10px" width="400" alt="GitHub Desktop screenshot instructions" src="images/8_intelliJ.png">
+<img style="border-radius: 10px" width="300" alt="GitHub Desktop screenshot instructions" src="images/8_intelliJ.png">
 
 
 ### Issues
