@@ -8,8 +8,9 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
+import java.math.BigInteger;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,12 +66,14 @@ public class CheckinService {
             System.out.println("Unclosed Checkin Found for Student with ID: " + studentId);
             endStudentCheckin(studentId);
         }
+
         System.out.println("Creating Checkin for Student with ID: " + studentId);
         Checkin newCheckin = new Checkin();
         Student existingStudent = studentRepo.findById(studentId)
                 .orElseThrow(() -> new EntityNotFoundException("Student not found with id: " + studentId));
         newCheckin.setStudent(existingStudent);
         newCheckin.setStartTime(now);
+        setCheckinTypeByDayHour(now, newCheckin);
         checkinRepo.save(newCheckin);
         existingStudent.getCheckin().add(newCheckin);
         studentRepo.save(existingStudent);
@@ -88,9 +91,96 @@ public class CheckinService {
                         "Unclosed Check-in not found for student with id: " + studentId));
         unclosedCheckin.setEndTime(now);
         checkinRepo.save(unclosedCheckin);
+        BigInteger oneHourInSeconds = BigInteger.valueOf(3600);
+        //Sets max checkin time to 1 hour:
+        if(unclosedCheckin.getTimeInClassInSeconds().compareTo(oneHourInSeconds) > 0){
+            unclosedCheckin.setTimeInClassInSeconds(oneHourInSeconds);
+        }
         existingStudent.getCheckin().add(unclosedCheckin);
         System.out.println("Service: Saving finished checkin with ID: " + unclosedCheckin.getId());
         return unclosedCheckin;
     }
 
+    public void setCheckinTypeByDayHour(Instant now, Checkin newCheckin){
+        Instant nowMinus10Minutes = now.minus(10, ChronoUnit.MINUTES);
+        //The time shift means students who checkin a bit early get credit for the checkin type,
+        // while only students who arrive in the last 10 minutes of class do not get a checkin type
+        ZonedDateTime zdt = nowMinus10Minutes.atZone(ZoneId.of("America/Chicago"));
+        DayOfWeek dayOfWeek = zdt.getDayOfWeek();
+        Integer hour = zdt.getHour();
+        switch (dayOfWeek) {
+            case SUNDAY:
+                if (hour == 12) {
+                    newCheckin.setCodingType(Checkin.CodingType.FOUNDATIONS);
+                } else {
+                    System.out.println("No Coding Type Set");
+                }
+                break;
+            case MONDAY:
+                if (hour == 8) {
+                    newCheckin.setCodingType(Checkin.CodingType.DESIGN);
+                }
+                if (hour == 9){
+                    newCheckin.setCodingType(Checkin.CodingType.FOUNDATIONS);
+                }
+                if (hour == 18){
+                    newCheckin.setCodingType(Checkin.CodingType.FOUNDATIONS);
+                }
+                if (hour == 19){
+                    newCheckin.setCodingType(Checkin.CodingType.CRUD);
+                } else {
+                    System.out.println("No Coding Type Set");
+                }
+                break;
+            case TUESDAY:
+                if (hour == 12){
+                    newCheckin.setCodingType(Checkin.CodingType.CRUD);
+                } else {
+                    System.out.println("No Coding Type Set");
+                }
+                break;
+            case WEDNESDAY:
+                if (hour == 8) {
+                    newCheckin.setCodingType(Checkin.CodingType.DESIGN);
+                }
+                if (hour == 18){
+                    newCheckin.setCodingType(Checkin.CodingType.FOUNDATIONS);
+                }
+                if (hour == 19){
+                    newCheckin.setCodingType(Checkin.CodingType.CRUD);
+                } else {
+                    System.out.println("No Coding Type Set");
+                }
+                break;
+            case THURSDAY:
+                if (hour == 12) {
+                    newCheckin.setCodingType(Checkin.CodingType.CRUD);
+                }
+                if (hour == 19){
+                    newCheckin.setCodingType(Checkin.CodingType.CODE_REVIEW);
+                } else {
+                    System.out.println("No Coding Type Set");
+                }
+                break;
+            case FRIDAY:
+                if (hour == 8) {
+                    newCheckin.setCodingType(Checkin.CodingType.DESIGN);
+                }
+                if (hour == 9){
+                    newCheckin.setCodingType(Checkin.CodingType.FOUNDATIONS);
+                }
+                if (hour == 18){
+                    newCheckin.setCodingType(Checkin.CodingType.FOUNDATIONS);
+                } else {
+                    System.out.println("No Coding Type Set");
+                }
+                break;
+            case SATURDAY:
+                System.out.println("Saturday, no class!");
+                break;
+            default:
+                System.out.println("Not a day.");
+                break;
+        }
+    }
 }

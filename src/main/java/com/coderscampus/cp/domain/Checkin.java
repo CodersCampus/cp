@@ -172,7 +172,7 @@ public class Checkin {
 				"id=" + id +
 				", uid='" + uid + '\'' +
 				", date=" + date +
-				", assignment=" + nextAssignment +
+				", nextAssignment=" + nextAssignment +
 				", blockers=" + blockers +
 				", blockerDescription='" + blockerDescription + '\'' +
 				", isSetUp=" + isSetUp +
@@ -180,11 +180,12 @@ public class Checkin {
 				", role=" + role +
 				", startTime=" + startTime +
 				", endTime=" + endTime +
-				", issueNumber=" + issueNumber +
 				", codingType=" + codingType +
-				", student=" + student +
+				", issueNumber=" + issueNumber +
+				", timeInClassInSeconds=" + timeInClassInSeconds +
 				'}';
 	}
+
 	public void calculateTimeInClass() {
 		if (startTime != null && endTime != null) {
 			long seconds = Duration.between(startTime, endTime).getSeconds();
