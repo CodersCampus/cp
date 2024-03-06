@@ -9,4 +9,4 @@ cp.iml
 CP.iml
 bin/
 .vscode/
-.DS_Store
+**/application-dev.properties
