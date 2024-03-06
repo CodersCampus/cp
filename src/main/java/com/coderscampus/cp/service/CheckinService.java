@@ -73,8 +73,7 @@ public class CheckinService {
                 .orElseThrow(() -> new EntityNotFoundException("Student not found with id: " + studentId));
         newCheckin.setStudent(existingStudent);
         newCheckin.setStartTime(now);
-        setCheckinTypeByDayHour(now, newCheckin);
-        checkinRepo.save(newCheckin);
+        checkinRepo.save(setCheckinTypeByDayHour(now, newCheckin));
         existingStudent.getCheckin().add(newCheckin);
         studentRepo.save(existingStudent);
         return newCheckin;
@@ -101,10 +100,10 @@ public class CheckinService {
         return unclosedCheckin;
     }
 
-    public void setCheckinTypeByDayHour(Instant now, Checkin newCheckin){
+    public Checkin setCheckinTypeByDayHour(Instant now, Checkin newCheckin){
         Instant nowMinus10Minutes = now.minus(10, ChronoUnit.MINUTES);
         //The time shift means students who checkin a bit early get credit for the checkin type,
-        // while only students who arrive in the last 10 minutes of class do not get a checkin type
+        //while only students who arrive in the last 10 minutes of class do not get a checkin type
         ZonedDateTime zdt = nowMinus10Minutes.atZone(ZoneId.of("America/Chicago"));
         DayOfWeek dayOfWeek = zdt.getDayOfWeek();
         Integer hour = zdt.getHour();
@@ -182,5 +181,6 @@ public class CheckinService {
                 System.out.println("Not a day.");
                 break;
         }
+        return newCheckin;
     }
 }
