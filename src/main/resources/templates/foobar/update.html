@@ -17,15 +17,19 @@
             </div>
             <div class="ga-content-main">
                 <main>
-                    <form method="post" action="/foobar/update" class="mb-3">
-                        <input class="form-control" type="hidden" th:field="${foobar.id}"/>
-                        <label class="form-label">Name: </label>
-                        <input class="form-control" type="text" th:field="${foobar.name}"/>
-                        <input class="form-control btn btn-primary mt-3" type="submit" value="Update"/>
+                    <form method="post" action="/foobar/update" class="ui-form">
+                        <input name="uid" type="hidden" th:field="${foobar.id}"/>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Name:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" id="display-name" th:field="${foobar.name}"/>
+                            </div>
+                        </div>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
                     </form>
-                    <form method="post" action="/foobar/delete" class="mb-3">
+                    <form method="post" action="/foobar/delete" class="ui-form" style="padding-top:0;">
                         <input type="hidden" th:field="${foobar.id}"/>
-                        <input class="form-control btn btn-danger" type="submit" value="Delete"/>
+                        <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
                     </form>
                 </main>
             </div>
