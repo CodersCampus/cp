@@ -19,6 +19,7 @@
                     <form method="post" class="ui-form" action="/checkin/create">
 <!--                        <h1 class="title-small">Create Checkin</h1>-->
                         <input name="uid" type="hidden" id="uid"/>
+
                         <div class="ui-input-field">
                             <label class="ui-label">Next Assignment:</label>
                             <div class="ui-text-input">
@@ -26,6 +27,7 @@
                                        th:field="${checkin.nextAssignment}"/>
                             </div>
                         </div>
+
                         <label class="ui-checkbox">
                             <input type="checkbox" th:field="${checkin.blockers}"/>
                             <span>I have a Blocker</span>
