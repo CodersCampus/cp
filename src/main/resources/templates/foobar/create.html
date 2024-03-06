@@ -17,15 +17,15 @@
             <div class="ga-content-main">
                 <main>
                     <form method="post" class="ui-form" action="/foobar/create">
-                        <h1 class="title-small">Create Foobar</h1>
-                        <div class="mb-3">
-                            <label class="form-label">Name: </label>
-                            <input class="form-control" type="text" id="display-name" th:field="${foobar.name}"/>
-                            <input name="uid" type="hidden" id="uid"/>
+<!--                        <h1 class="title-small">Create Foobar</h1>-->
+                        <input name="uid" type="hidden" id="uid"/>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Name:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" id="display-name" th:field="${foobar.name}"/>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <input class="form-control btn btn-primary" type="submit" value="Create"/>
-                        </div>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
                     </form>
                 </main>
             </div>

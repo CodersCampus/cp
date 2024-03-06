@@ -17,20 +17,21 @@
             <div class="ga-content-main">
                 <main>
                     <form method="post" class="ui-form" action="/user-history/create">
-                        <h1 class="title-small">Create User History</h1>
+<!--                        <h1 class="title-small">Create User History</h1>-->
                         <input name="uid" type="hidden" id="uid"/>
-                        <div class="mb-3">
-                            <label class="form-label">Name:</label>
-                            <input class="form-control" type="text" id="display-name"
-                                   th:field="${userHistory.name}"/>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Name:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" id="display-name" th:field="${userHistory.name}"/>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Issue #:</label>
-                            <input class="form-control" type="text" th:field="${userHistory.issue}"/>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Issue #:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="number" placeholder="ex: 461" th:field="${userHistory.issue}"/>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <input class="form-control btn btn-primary" type="submit" value="Create"/>
-                        </div>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
                     </form>
                 </main>
             </div>
