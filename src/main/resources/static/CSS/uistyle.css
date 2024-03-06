@@ -752,7 +752,7 @@ Sidebar Styles
     position: relative;
     letter-spacing: 0.25px;
     line-height: 20px;
-    color: #2d3648;
+    color: var(--primary);
     text-align: left;
     min-width: 118px;
 }
