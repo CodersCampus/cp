@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+
 /* These are the main colors passed as CSS variables
    To access them within your styles, please use
    var(--your-color)
@@ -440,6 +441,18 @@ of text in your app.
     color: var(--background-accent);
 }
 
+.ui-button span {
+    display: block;
+    padding: 8px 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    color: var(--background-accent);
+}
+
 .ui-button:before {
     content: "";
     position: absolute;
@@ -458,6 +471,78 @@ of text in your app.
 }
 
 .ui-button:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.ui-button-secondary {
+    position: relative;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(182, 182, 182, 0.6);
+    background-color: var(--accent);
+    transition: background-color .3s;
+    text-decoration: none;
+}
+
+.ui-button-secondary:hover, .ui-button-secondary:focus {
+    color: var(--background);
+    opacity: 0.7;
+}
+
+.ui-button-secondary > * {
+    position: relative;
+}
+
+
+.ui-button-secondary a {
+    display: block;
+    padding: 8px 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.ui-button-secondary span {
+    display: block;
+    padding: 8px 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.ui-button-secondary:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 0;
+    padding-top: 0;
+    border-radius: 100%;
+    background-color: rgba(236, 240, 241, .3);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.ui-button-secondary:active:before {
     width: 120%;
     padding-top: 120%;
 
@@ -654,7 +739,6 @@ Sidebar Styles
 .ga-content-main {
     border-radius: 8px;
     background-color: var(--background-accent);
-    padding: 16px;
 }
 
 /* table styles */
@@ -711,8 +795,12 @@ Sidebar Styles
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 20px;
+    padding: 20px;
+    width: 400px
 }
+
+/* Input field */
 
 .ui-input-field {
     width: 100%;
@@ -721,7 +809,7 @@ Sidebar Styles
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 8px 0;
+    gap: 4px 0;
     text-align: left;
     font-size: 14px;
     color: var(--primary);
@@ -731,12 +819,12 @@ Sidebar Styles
     align-self: stretch;
     position: relative;
     letter-spacing: -0.01em;
-    line-height: 16px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .ui-text-input,
-.ui-value {
+.ui-value,
+.ui-text-dropdown{
     display: flex;
     align-items: center;
 }
@@ -744,15 +832,15 @@ Sidebar Styles
     width: 100%;
     border: 0;
     outline: 0;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 14px;
-    background-color: transparent;
+    background-color: transparent !important;
     height: 14px;
     flex: 1;
     position: relative;
     letter-spacing: 0.25px;
     line-height: 20px;
-    color: var(--primary);
+    color: var(--primary) !important;
     text-align: left;
     min-width: 118px;
 }
@@ -764,5 +852,81 @@ Sidebar Styles
     flex-direction: row;
     justify-content: center;
     padding: 8px;
+}
+
+/* Checkbox */
+
+.ui-checkbox {
+    display: flex;
+    gap: 4px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+/*input[type='checkbox'] {*/
+/*    accent-color: var(--primary);*/
+/*}*/
+
+input[type='checkbox'] {
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -o-appearance:none;
+    outline: none;
+    content: none;
+}
+
+input[type=checkbox]:before {
+    font-family: "FontAwesome";
+    content: "\f00c";
+    font-size: 14px;
+    color: transparent !important;
+    background: var(--background);
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    margin-right: 8px;
+    line-height: 22px;
+    text-align: center;
+}
+
+input[type=checkbox]:checked:before {
+
+    background-color: var(--primary) !important;
+    color: var(--background) !important;
+    border: none;
+
+}
+
+.ui-checkbox span {
+    font-weight: 600;
+}
+
+.ui-toggle-controls {
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding-right: 29px;
+}
+
+
+/* drop down menu */
+
+.ui-text-dropdown {
+    align-self: stretch;
+    border-radius: 6px;
+    background-color: var(--table-odd);
+    border: 2px solid var(--accent);
+    flex-direction: row;
+    justify-content: center;
+    padding: 8px;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 400;
 }
 
