@@ -10,37 +10,39 @@
                 <section class="ui-panel-title title-small">User Queue</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <li class="ui-nav-item"><a class="ui-button" href="/user-history/create">Create New</a></li>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/user-history/create">Create New</a></button>
                     </ul>
                 </nav>
             </div>
             <div class="ga-content-main">
                 <main>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name:</th>
-                            <th scope="col">Issue</th>
-                            <th scope="col">Date:</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="userHistory: ${userHistorys}">
+                    <div class="ui-table" role="region" tabindex="0">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th scope="col">Name:</th>
+                                <th scope="col">Issue</th>
+                                <th scope="col">Date:</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="userHistory: ${userHistorys}">
 
-                            <td><span th:text="${userHistory.name}"></span></td>
-                            <td><span th:text="${userHistory.issue}"></span></td>
-                            <td><span th:text="${userHistory.date}"></span></td>
+                                <td><span th:text="${userHistory.name}"></span></td>
+                                <td><span th:text="${userHistory.issue}"></span></td>
+                                <td><span th:text="${userHistory.date}"></span></td>
 
-                            <td>
-                                <a th:href="@{/user-history/update/{userHistoryId}(userHistoryId=${userHistory.id})}">
+                                <td>
+                                    <a th:href="@{/user-history/update/{userHistoryId}(userHistoryId=${userHistory.id})}">
 					<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                class="bi bi-view-list" viewBox="0 0 16 16">
   <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
 </svg></span> </a></td>
-                        </tr>
+                            </tr>
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </main>
             </div>
         </div>
