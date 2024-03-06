@@ -20,7 +20,7 @@
     --gradient: linear-gradient(114.23deg, #52ab98 0%, #f2f2f2 100%);
     --live-session: #FFD0D0;
     --live-session-accent: #FC6F6F;
-    --nav: #ffffff
+    --table-odd: #F9F9F9
 }
 
 /* Dark Mode variables below
@@ -33,12 +33,13 @@ it is currently commented out until we have a button to select Dark / Light
     :root {
         --primary: #87C3D4;
         --secondary: #53AC99;
-        --accent: #112137;
+        --accent: #334050;
         --background: #121212;
         --background-accent: #1F1F1F;
         --gradient: linear-gradient(114.23deg, #53AC99 0%, #1F1F1F 100%);
         --live-session: #FFD0D0;
         --live-session-accent: #FC6F6F;
+        --table-odd: #050505
     }
 }
 
@@ -618,3 +619,50 @@ Sidebar Styles
     border-radius: 8px;
     background-color: var(--background-accent);
 }
+
+/* table styles */
+
+.ui-table {
+    overflow: auto;
+    width: 100%;
+}
+
+.ui-table table {
+    border: 1px solid var(--background);
+    height: 100%;
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: left;
+}
+
+.ui-table tr {
+    height: 48px;
+}
+
+.ui-table th {
+    border: 1px solid var(--background);
+    background-color: var(--accent);
+    color: var(--primary);
+    padding: 8px;
+}
+
+.ui-table td {
+    border: 1px solid var(--background);
+    padding: 8px;
+}
+
+.ui-table tr:nth-child(even) td {
+    background-color: var(--background-accent);
+    color: var(--primary);
+}
+
+.ui-table tr:nth-child(odd) td {
+    background-color: var(--table-odd);
+    color: #2b6777;
+}
+
+.ui-table tr:first-child th:first-child { border-top-left-radius: 8px; }
+
+.ui-table tr:first-child th:last-child { border-top-right-radius: 8px; }
