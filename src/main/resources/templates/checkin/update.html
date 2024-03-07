@@ -1,95 +1,105 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-    <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
-
-    <body layout="layout-secured">
-        <fbauth-element>
-            <div layout="layout-sidebar">
-                <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-                <div class="sidebar-grid-area">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/checkin/">Checkin
-                                    Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/checkin/create">Create Checkin</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div class="ga-content-main">
-                    <main>
-                        <form method="post" action="/checkin/update" class="mb-3">
-                            <input class="form-control" type="hidden" th:field="${checkin.id}"/> <br>
-
-                            <div class="mb-3">
-                                <label class="form-label">Date:</label>
-                                <input type="text" th:field="${checkin.date}" disabled/>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Next Assignment:</label>
-                                <input type="number" th:field="${checkin.nextAssignment}"/>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Blockers: </label>
-                                <input type="checkbox" th:field="${checkin.blockers}"/>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Blocker Description:</label>
-                                <input type="text" th:field="${checkin.blockerDescription}"/>
-                            </div>
-
-                            <label class="form-label">Live Coding Session?</label>
-                            <input type="checkbox" id="toggleCheckbox" name="toggleCheckbox"><br><br>
-                            <div id="controlsToToggle" style="display: none;">
-                                <div class="mb-3">
-                                    <label class="form-label">Box Ready for Live Coding?:</label>
-                                    <input type="checkbox" th:field="${checkin.isSetUp}"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Are You Available/willing to Code?:</label>
-                                    <input type="checkbox" th:field="${checkin.available}"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Role:</label>
-                                    <select class="form-control" th:field="*{checkin.role}">
-                                        <option th:each="role : ${roleList}" th:value="${role}"
-                                                th:text="${#strings.capitalize(role.toString())}">
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Coding Type:</label>
-                                    <select class="form-control" th:field="*{checkin.codingType}">
-                                        <option th:each="codingType : ${codingType}" th:value="${codingType}"
-                                                th:text="${#strings.capitalize(codingType.toString())}">
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Issue Number:</label>
-                                    <input class="form-control" type="number" th:field="${checkin.issueNumber}"/>
-                                </div>
-                            </div>
-
-                            <input class="form-control btn btn-primary mt-3" type="submit" value="Update"/>
-                            <input class="form-control btn btn-secondary" type="" value="Start Time/End Time"/>
-                            <input name="uid" type="hidden" id="uid"/>
-                        </form>
-                        <form method="post" action="/checkin/delete" class="mb-3">
-                            <input type="hidden" th:field="${checkin.id}"/>
-                            <input class="form-control btn btn-danger" type="submit" value="Delete"/>
-                        </form>
-                    </main>
-                </div>
-                <div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">Check In</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a></button>
+                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page" href="/checkin/">Back</a></button>
+                    </ul>
+                </nav>
             </div>
-        </fbauth-element>
+            <div class="ga-content-main">
+                <main>
+                    <form method="post" action="/checkin/update" class="ui-form">
+                        <input class="form-control" type="hidden" th:field="${checkin.id}"/> <br>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Date:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" th:field="${checkin.date}" disabled/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Next Assignment:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="number" placeholder="ex: 1, 10, 15..."
+                                       th:field="${checkin.nextAssignment}"/>
+                            </div>
+                        </div>
 
-        <div th:replace="~{fragments/authscript :: script}"></div>
-    </body>
+                        <label class="ui-checkbox">
+                            <input type="checkbox" th:field="${checkin.blockers}"/>
+                            <span>I have a Blocker</span>
+                        </label>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Blocker Description:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: my 'while' loop is looping..."
+                                       th:field="${checkin.blockerDescription}"/>
+                            </div>
+                        </div>
+                        <label class="ui-checkbox">
+                            <input type="checkbox" id="toggleCheckbox" name="toggleCheckbox"/>
+                            <span>This is a LiveCoding session</span>
+                        </label>
+                        <!--                        <br><br>-->
+                        <div id="controlsToToggle" style="display: none;">
+                            <div class="ui-toggle-controls">
+
+                                <label class="ui-checkbox">
+                                    <input type="checkbox" th:field="${checkin.isSetUp}"/>
+                                    <span>My box is ready for LiveCoding</span>
+                                </label>
+                                <label class="ui-checkbox">
+                                    <input type="checkbox" th:field="${checkin.available}"/>
+                                    <span>I am available / willing to Code</span>
+                                </label>
+                                <div class="ui-input-field">
+                                    <label class="ui-label">Role:</label>
+                                    <select class="ui-text-dropdown" th:field="*{checkin.role}">
+                                        <option class="ui-option" th:each="role : ${roleList}" th:value="${role}"
+                                                th:text="${#strings.capitalize(role.toString())}"></option>
+                                    </select>
+                                </div>
+                                <div class="ui-input-field">
+                                    <label class="ui-label">Coding Type:</label>
+                                    <select class="ui-text-dropdown" th:field="*{checkin.codingType}">
+                                        <option class="ui-option" th:each="codingType : ${codingType}"
+                                                th:value="${codingType}"
+                                                th:text="${#strings.capitalize(codingType.toString())}"></option>
+                                    </select>
+                                </div>
+                                <div class="ui-input-field">
+                                    <label class="ui-label">Issue Number:</label>
+                                    <div class="ui-text-input">
+                                        <input class="ui-value" type="number" placeholder="ex: 458"
+                                               th:field="${checkin.issueNumber}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
+                        <button class="ui-nav-item ui-button-secondary" type=""><span>Start Time/End Time</span></button>
+                        <input name="uid" type="hidden" id="uid"/>
+                    </form>
+                    <form method="post" action="/checkin/delete" class="ui-form" style="padding-top:0;">
+                        <input type="hidden" th:field="${checkin.id}"/>
+                        <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
+                    </form>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+</body>
 </html>
 

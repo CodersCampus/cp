@@ -1,4 +1,3 @@
 html,body{
-	background-image: linear-gradient(to right top, #03b703, #00b693, #00aae8, #0090fa, #996ccb);
-	 height: 100%;
+	background-color: var(--background)
 }

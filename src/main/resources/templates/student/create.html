@@ -1,87 +1,115 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">Students</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page"
+                                                                               href="/student/">Back</a></button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <form method="post" class="ui-form" action="/student/create">
+                        <!--                        <h1 class="title-small">Create Student</h1>-->
 
-<body layout="layout-secured">
-	<fbauth-element>
-	<div layout="layout-sidebar">
-		<header th:replace="~{fragments/header :: header(${activePage})}"></header>
-		<div class="sidebar-grid-area">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/student/">Student Home</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-		<div class="ga-content-main">
-			<main>
-				<form method="post" action="/student/create">
-					<h1>Create Student</h1>
-					<input name="uid" type="hidden" id="uid" />
-					<div class="mb-3">
-						<label class="form-label">Name:</label> <input
-							class="form-control" type="text" id="display-name"
-							th:field="${student.name}" />
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Assignment Number:</label><input
-							class="form-control" type="text"
-							th:field="${student.assignmentNum}" />
-					</div>
-					<!-- <div class="mb-3">
-						<label class="form-label">Github Handle:</label> <input
-							class="form-control" type="text"
-							th:field="${student.githubHandle.handle}" />
-					</div>
-					<div class="mb-3">
-						<label class="form-label">LinkedIn URL:</label> <input
-							class="form-control" type="text"
-							th:field="${student.linkedIn.url}" />
-					</div> -->
-					<div class="mb-3">
-						<label class="form-label">IDE: </label> <input
-							class="form-control" type="text" th:field="${student.ide}" />
-					</div>
-					<!-- <div class="mb-3">
-						<label class="form-label">YouTube:</label> <input
-							class="form-control" type="text"
-							th:field="${student.youtube.profile}" />
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Final Project:</label> <input
-							class="form-control" type="text"
-							th:field="${student.finalProject.title}" />
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Resume:</label> <input
-							class="form-control" type="text"
-							th:field="${student.resume.resumeFile}" />
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Networking:</label> <input
-							class="form-control" type="text"
-							th:field="${student.networking.meetups}" />
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Website:</label> <input
-							class="form-control" type="text"
-							th:field="${student.website.url}" />
-					</div> -->
-					<div class="mb-3">
-						<input onfocus="assignUid()" class="form-control btn btn-primary"
-							type="submit" value="Create" />
-					</div>
-				</form>
-			</main>
-		</div>
-		<div th:replace="~{fragments/footer :: footer}"></div>
-	</div>
-	</fbauth-element>
-	
-	<div th:replace="~{fragments/authscript :: script}"></div>
+                        <input name="uid" type="hidden" id="uid"/>
+
+                        <div class="ui-input-field">
+                            <label class="ui-label">Name:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" id="display-name" th:field="${student.name}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-input-field">
+                            <label class="ui-label">Assignment #:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: 1, 10, 15..."
+                                       th:field="${student.assignmentNum}"/>
+                            </div>
+                        </div>
+
+
+                        <!-- Hidden Fields (updated by KevinGallaccio to fit new UI)
+
+                        <div class="ui-input-field">
+                            <label class="ui-label">GitHub Handle:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: JaneDoe" th:field="${student.githubHandle.handle}" />
+                            </div>
+                        </div>
+
+                        <div class="ui-input-field">
+                            <label class="ui-label">LinkedIn URL:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: https://www.linkedin.com/in/jdoe" th:field="${student.linkedIn.url}" />
+                            </div>
+                        </div>
+
+                        -->
+
+
+                        <div class="ui-input-field">
+                            <label class="ui-label">IDE:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: IntelliJ, Eclipse..."
+                                       th:field="${student.ide}"/>
+                            </div>
+                        </div>
+
+
+                        <!-- More Hidden Fields (updated by KevinGallaccio to fit new UI)
+
+                        <div class="ui-input-field">
+                            <label class="ui-label">YouTube:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: www.youtube.com/CodersCampus" th:field="${student.youtube.profile}" />
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Final Project:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: www.my-link.com" th:field=${student.finalProject.title}" />
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label class="ui-label">My Resume:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: www.my-link.com" th:field="${student.resume.resumeFile}" />
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Networking:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: next meetup on 1/1/25" th:field="${student.networking.meetups}" />
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Website:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" placeholder="ex: www.my-link.com" th:field="${student.website.url}" />
+                            </div>
+                        </div>
+                        -->
+
+                        <button onfocus="assignUid()" class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
+                    </form>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
 </body>
 
 </html>

@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-    <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
-    <body layout="layout-secured">
-        <fbauth-element>
-            <div layout="layout-sidebar">
-                <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-                <div class="sidebar-grid-area">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link active"
-                                                        aria-current="page" href="/user-history/">User History Home</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link"
-                                                        href="/user-history/create">Create User History</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div class="ga-content-main">
-                    <main>
-                        <form method="post" action="/user-history/update" class="mb-3">
-                            <input class="form-control" type="hidden" th:field="${userHistory.id}"/>
-
-                            <label class="form-label">Name:</label>
-                            <input class="form-control" type="text" th:field="${userHistory.name}"/>
-
-                            <label class="form-label">Issue:</label>
-                            <input class="form-control" type="text" th:field="${userHistory.issue}"/>
-
-                            <label class="form-label">Date:</label>
-                            <label class="form-label" th:text="${userHistory.date}"></label>
-                            <input class="form-control" type="hidden" th:field="${userHistory.date}"/>
-
-                            <input class="form-control btn btn-primary mt-3" type="submit" value="Update"/>
-                        </form>
-                        <form method="post" action="/user-history/delete" class="mb-3">
-                            <input type="hidden" th:field="${userHistory.id}"/>
-                            <input class="form-control btn btn-danger" type="submit" value="Delete"/>
-                        </form>
-                    </main>
-                </div>
-                <div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">User Queue</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/user-history/create">Create New</a></button>
+                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page" href="/user-history/">Back</a></button>
+                    </ul>
+                </nav>
             </div>
-        </fbauth-element>
-        <div th:replace="~{fragments/authscript :: script}"></div>
-    </body>
+            <div class="ga-content-main">
+                <main>
+                    <form method="post" action="/user-history/update" class="ui-form">
+                        <input class="form-control" type="hidden" th:field="${userHistory.id}"/>
+
+                        <div class="ui-input-field">
+                            <label class="ui-label">Name:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" id="display-name" th:field="${userHistory.name}"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Issue #:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="number" placeholder="ex: 461" th:field="${userHistory.issue}"/>
+                            </div>
+                        </div>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
+                    </form>
+                    <form method="post" action="/user-history/delete" class="ui-form" style="padding-top:0;">
+                        <input type="hidden" th:field="${userHistory.id}"/>
+                        <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
+                    </form>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+<div th:replace="~{fragments/authscript :: script}"></div>
+</body>
 </html>
 
 
