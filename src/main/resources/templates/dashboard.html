@@ -10,7 +10,7 @@
             <!-- Page content goes here -->
             <div>
                 <main>
-                    <form method="post" action="/student/create">
+                    <form method="post" action="/student/create" class="ui-form">
                         <h1>Create Student</h1>
                         <input name="uid" type="hidden" id="uid"/>
                         <div class="mb-3">
@@ -33,6 +33,7 @@
     </div>
 
 </fbauth-element>
+<div th:replace="~{fragments/authscript :: script}"></div>
 </body>
 
 </html>
