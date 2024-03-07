@@ -3,34 +3,36 @@
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 
 <body layout="layout-secured">
-  <fbauth-element>
+<fbauth-element>
     <div layout="layout-home">
-      <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-      <div class="ga-content-main">
-        <!-- Page content goes here -->
-        <div>
-          <main>
-            <form method="post" action="/student/create">
-              <h1>Create Student</h1>
-              <input name="uid" type="hidden" id="uid" />
-              <div class="mb-3">
-                <label class="form-label">Name:</label> <input class="form-control" type="text" id="display-name"
-                  th:field="${student.name}" />
-              </div>
-              <div class="mb-3">
-                <input onfocus="assignUid()" class="form-control btn btn-primary" type="submit" value="Create" />
-              </div>
-            </form>
-          </main>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div class="ga-content-main">
+            <!-- Page content goes here -->
+            <div>
+                <main>
+                    <form method="post" action="/student/create">
+                        <h1>Create Student</h1>
+                        <input name="uid" type="hidden" id="uid"/>
+                        <div class="mb-3">
+                            <input class="form-control" type="hidden" id="display-name"
+                                    th:field="${student.name}"/>
+                        </div>
+                        <div class="mb-3">
+                            <input onfocus="assignUid()" class="form-control btn btn-primary"
+                                   type="submit" value="Create"/>
+                        </div>
+                    </form>
+
+                </main>
+            </div>
+            <div>green</div>
+            <div>blue</div>
+            <div>yellow</div>
         </div>
-        <div>green</div>
-        <div>blue</div>
-        <div>yellow</div>
-      </div>
-      <div th:replace="~{fragments/footer :: footer}"></div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
     </div>
 
-  </fbauth-element>
+</fbauth-element>
 </body>
 
 </html>
