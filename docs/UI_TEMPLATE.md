@@ -2,7 +2,7 @@
 _03/08/2024 - Kevin Gallaccio_
 ***
 
->This document will reference all components to be used in HTML sections of the `cp` app.
+> This document will reference all components to be used in HTML sections of the `cp` app.
 
 <br>
 
@@ -207,7 +207,7 @@ _03/08/2024 - Kevin Gallaccio_
 
 ### Form fields
 > All fields that can be included in forms
->
+
 <br>
 
 #### Input fields:
@@ -293,7 +293,7 @@ _03/08/2024 - Kevin Gallaccio_
 <img src="images/primary-light-button.png"> (light mode)
 <br><img src="images/primary-button.png"> (dark mode)
 
->This is the go-to button that needs to be used primarily
+> This is the go-to button that needs to be used primarily
 
 ```HTML
 <button class="ui-nav-item ui-button" type="submit">
@@ -305,7 +305,7 @@ _03/08/2024 - Kevin Gallaccio_
 <br><br>
 <img src="images/secondary-light-button.png">(light mode)
 <br><img src="images/secondary-button.png">(dark mode)
->Secondary buttons need to be used when there are two very different choices
+> Secondary buttons need to be used when there are two very different choices
 ```HTML
 <button class="ui-nav-item ui-button-secondary" type="">
   <span>Your Text Here</span>
@@ -315,7 +315,7 @@ _03/08/2024 - Kevin Gallaccio_
 - Danger buttons:
 <br><br>
 <img src="images/danger-button.png">
->"Danger" buttons need to be used to **Stop**, **Delete** or any dangerous prompts <br>
+> "Danger" buttons need to be used to **Stop**, **Delete** or any dangerous prompts
 > these have the same color on light and dark modes.
 ```HTML
 <button class="ui-nav-item ui-button-danger" type="submit">
