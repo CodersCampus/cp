@@ -315,12 +315,12 @@ _03/08/2024 - Kevin Gallaccio_
 - Danger buttons:
 <br><br>
 <img src="images/danger-button.png">
->"Danger" buttons need to be used to **Stop**, **Delete** or any dangerous prompts<br>
-> these have the same color on light and dark modes. 
-
-
+>"Danger" buttons need to be used to **Stop**, **Delete** or any dangerous prompts <br>
+> these have the same color on light and dark modes.
 ```HTML
 <button class="ui-nav-item ui-button-danger" type="submit">
   <span>Your Text Here</span>
 </button>
 ```
+
+
