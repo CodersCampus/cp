@@ -315,6 +315,7 @@ _03/08/2024 - Kevin Gallaccio_
 - Danger buttons:
 <br><br>
 <img src="images/danger-button.png">
+
 > "Danger" buttons need to be used to **Stop**, **Delete** or any dangerous prompts
 > these have the same color on light and dark modes.
 
