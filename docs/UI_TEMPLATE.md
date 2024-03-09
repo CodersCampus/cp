@@ -1,4 +1,5 @@
 # New UI Template
+
 _03/08/2024 - Kevin Gallaccio_
 ***
 
@@ -7,27 +8,32 @@ _03/08/2024 - Kevin Gallaccio_
 <br>
 
 **Table of content:**
+
 - [HTML page](#html-page-template)
-  * [Standard page](#standard-page)
-  * [Landing page](#landing-page)
-  * [Sidebar page](#sidebar-page)
+    * [Standard page](#standard-page)
+    * [Landing page](#landing-page)
+    * [Sidebar page](#sidebar-page)
 - [Components](#components)
-  * [Tables](#tables)
-  * [Forms](#forms)
-  * [Form fields](#form-fields)
-    * [input fields](#input-fields)
-    * [text area](#text-area)
-    * [checkboxes](#checkboxes)
-    * [buttons](#buttons)
+    * [Tables](#tables)
+    * [Forms](#forms)
+    * [Form fields](#form-fields)
+        * [input fields](#input-fields)
+        * [text area](#text-area)
+        * [checkboxes](#checkboxes)
+        * [buttons](#buttons)
+- [Colors](#colors)
+- [Text](#text)
 
 ***
 ***
 <br>
 
 <a id="HTML"></a>
+
 ## HTML Page Template
 
 ### Standard page
+
 > Every Page Uses This Identical HTML Template
 
 ```HTML
@@ -36,17 +42,17 @@ _03/08/2024 - Kevin Gallaccio_
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
 <fbauth-element headless>
-  <div>
-    <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-    <div class="ga-content-main">
-      <main>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div class="ga-content-main">
+            <main>
 
-        <!-- * MAIN CONTENT GOES HERE * -->
-        
-      </main>
+                <!-- * MAIN CONTENT GOES HERE * -->
+
+            </main>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
     </div>
-    <div th:replace="~{fragments/footer :: footer}"></div>
-  </div>
 </fbauth-element>
 <div th:replace="~{fragments/authscript :: script}"></div>
 </body>
@@ -54,6 +60,7 @@ _03/08/2024 - Kevin Gallaccio_
 ```
 
 ### Landing page
+
 > This is a template for a homepage, displaying a message e.g. "**Welcome to coder packaging**"
 
 ```HTML
@@ -62,31 +69,32 @@ _03/08/2024 - Kevin Gallaccio_
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body layout="layout-secured">
 <fbauth-element>
-  <div layout="layout-home">
-    <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-    <div class="ga-content-main">
-      <body class="ui-background">
-      <fbauth-element headless>
-        <div>
-          <header th:replace="~{fragments/header :: header(${activePage})}">
-          </header>
-          <div class="welcome">
-            <div class="welcome-text display-small-bold-italic">
-              <!-- REPLACE BELOW TEXT -->
-              Welcome to coder packaging
-            </div>
-          </div>
-          <div th:replace="~{fragments/footer :: footer}">
-          </div>
+    <div layout="layout-home">
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div class="ga-content-main">
+            <body class="ui-background">
+            <fbauth-element headless>
+                <div>
+                    <header th:replace="~{fragments/header :: header(${activePage})}">
+                    </header>
+                    <div class="welcome">
+                        <div class="welcome-text display-small-bold-italic">
+                            <!-- REPLACE BELOW TEXT -->
+                            Welcome to coder packaging
+                        </div>
+                    </div>
+                    <div th:replace="~{fragments/footer :: footer}">
+                    </div>
+                </div>
+                <div th:replace="~{fragments/footer :: footer}"></div>
         </div>
-        <div th:replace="~{fragments/footer :: footer}"></div>
-    </div>
 </fbauth-element>
 </body>
 </html>
 ```
 
 ### Sidebar page
+
 > For pages that include a sidebar, please use this template:
 
 ```HTML
@@ -127,16 +135,21 @@ _03/08/2024 - Kevin Gallaccio_
 </body>
 </html>
 ```
+
 <br>
 
 ***
+
 ## Components
+
 <br>
 
 ### Tables:
+
 > This is the template for using tables (see `*/read` for reference)
 
 ```HTML 
+
 <div class="ui-table" role="region" tabindex="0">
     <table>
         <thead>
@@ -156,28 +169,28 @@ _03/08/2024 - Kevin Gallaccio_
         </thead>
         <tbody>
         <tr <!--th:each=" ENTER THYMELEAF REFERENCE e.g. student: ${students}"-->>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-            <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
-        
-            <td> <!-- HAMBURGER UPDATE BUTTON BELOW (to be updated to Material UI) -->
-                <a th:href="@{/student/update/{studentId}(studentId=${student.id})}"> 
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+        <td><span <!-- th:text=" ENTER THYMELEAF REFERENCE e.g. ${student.name}"-->></span></td>
+
+        <td> <!-- HAMBURGER UPDATE BUTTON BELOW (to be updated to Material UI) -->
+            <a th:href="@{/student/update/{studentId}(studentId=${student.id})}"> 
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-view-list" viewBox="0 0 16 16"> 
                             <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
                         </svg>
                     </span>
-                </a>
-            </td>
+            </a>
+        </td>
         </tr>
         </tbody>
     </table>
@@ -187,6 +200,7 @@ _03/08/2024 - Kevin Gallaccio_
 <br>
 
 ### Forms:
+
 > All forms should be built using this template
 
 ```HTML
@@ -206,14 +220,17 @@ _03/08/2024 - Kevin Gallaccio_
 <br>
 
 ### Form fields
+
 > All fields that can be included in forms
 
 <br>
 
 #### Input fields:
+
 <img src="images/ui-input-fields.png">
 
 ```HTML
+
 <div class="ui-input-field">
     <label class="ui-label">
 
@@ -244,9 +261,11 @@ _03/08/2024 - Kevin Gallaccio_
 <br>
 
 #### Text area:
+
 <img src="images/ui-text-area.png">
 
 ```HTML
+
 <div class="ui-input-field">
     <label class="ui-label">
 
@@ -263,7 +282,7 @@ _03/08/2024 - Kevin Gallaccio_
             - Replace th:field="" by the value that should be submitted 
          -->
 
-        <textarea class="ui-value" cols="20" rows="5" 
+        <textarea class="ui-value" cols="20" rows="5"
                   name="comments" placeholder="write something"
                   th:field="${checkin.comments}"></textarea>
     </div>
@@ -273,6 +292,7 @@ _03/08/2024 - Kevin Gallaccio_
 <br>
 
 #### Checkboxes:
+
 <img src="images/ui-checkboxes.png">
 
 ```HTML
@@ -288,41 +308,73 @@ _03/08/2024 - Kevin Gallaccio_
 ```
 
 #### Buttons:
+
 - Primary buttons:
-<br><br>
-<img src="images/primary-light-button.png"> (light mode)
-<br><img src="images/primary-button.png"> (dark mode)
+  <br><br>
+  <img src="images/primary-light-button.png"> (light mode)
+  <br><img src="images/primary-button.png"> (dark mode)
 
 > This is the go-to button that needs to be used primarily
 
 ```HTML
+
 <button class="ui-nav-item ui-button" type="submit">
-  <span>Your Text Here</span>
+    <span>Your Text Here</span>
 </button>
 ```
 
 - Secondary buttons:
-<br><br>
-<img src="images/secondary-light-button.png">(light mode)
-<br><img src="images/secondary-button.png">(dark mode)
+  <br><br>
+  <img src="images/secondary-light-button.png">(light mode)
+  <br><img src="images/secondary-button.png">(dark mode)
+
 > Secondary buttons need to be used when there are two very different choices
+
 ```HTML
+
 <button class="ui-nav-item ui-button-secondary" type="">
-  <span>Your Text Here</span>
+    <span>Your Text Here</span>
 </button>
 ```
 
 - Danger buttons:
-<br><br>
-<img src="images/danger-button.png">
+  <br><br>
+  <img src="images/danger-button.png">
 
 > "Danger" buttons need to be used to **Stop**, **Delete** or any dangerous prompts
 > these have the same color on light and dark modes.
 
 ```HTML
+
 <button class="ui-nav-item ui-button-danger" type="submit">
-  <span>Your Text Here</span>
+    <span>Your Text Here</span>
 </button>
 ```
 
+<br>
 
+***
+
+## Colors
+>CSS variables need to be used inside **stylesheet** (e.g. `background-color: var(--primary);`) or can be added 
+> in-line on **HTML pages** (e.g. `<div style="color: var(--secondary);"`)
+> 
+
+| Color Name          | CSS variable                 | Light                                                 | Dark                                                 | Usage                                                            |
+|---------------------|------------------------------|-------------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------|
+| Primary             | `var(--primary)`             | <img src="images/colors/light-primary.png">           | <img src="images/colors/dark-primary.png">           | Used for main text                                               |
+| Secondary           | `var(--secondary)`           | <img src="images/colors/light-secondary.png">         | <img src="images/colors/dark-secondary.png">         | Used for highlighted text                                        |
+| Accent              | `var(--accent)`              | <img src="images/colors/light-accent.png">            | <img src="images/colors/dark-accent.png">            | Used for headers backgrounds                                     |
+| Background          | `var(--background)`          | <img src="images/colors/light-background.png">        | <img src="images/colors/dark-background.png">        | Used for main background                                         |
+| Background Accent   | `var(--background-accent)`   | <img src="images/colors/light-background-accent.png"> | <img src="images/colors/dark-background-accent.png"> | Used for elevated sections on background                         |
+| Gradient            | `var(--gradient)`            | <img src="images/colors/light-gradient.png">          | <img src="images/colors/dark-gradient.png">          | Used for headlines (in italic)                                   |
+| Live Session        | `var(--live-session)`        | <img src="images/colors/live-session.png">            | <img src="images/colors/live-session.png">           | Used indicate live session is on. Also used for "danger" buttons |
+| Live Session Accent | `var(--live-session-accent)` | <img src="images/colors/live-session-accent.png">     | <img src="images/colors/live-session-accent.png">    | Same as above but as the accent or background color              |
+| Table Even          | `var(--table-even)`          | <img src="images/colors/light-table-even.png">        | <img src="images/colors/dark-table-even.png">        | Used for even rows in tables. (same as background accent)        |
+| Table Odd           | `var(--table-odd)`           | <img src="images/colors/light-table-odd.png">         | <img src="images/colors/dark-table-odd.png">         | Used for odd rows in tables.                                     |
+
+<br>
+
+***
+
+## Text
