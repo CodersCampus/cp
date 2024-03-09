@@ -907,7 +907,7 @@ Sidebar Styles
     font-family: Montserrat, sans-serif;
     font-size: 14px;
     background-color: transparent !important;
-    height: 14px;
+    height: auto;
     flex: 1;
     position: relative;
     letter-spacing: 0.25px;
