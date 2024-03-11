@@ -26,7 +26,7 @@ body {
     --toggle-button-transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-. dark body {
+.dark body {
     --primary: #87C3D4;
     --secondary: #53AC99;
     --accent: #334050;
