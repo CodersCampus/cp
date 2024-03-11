@@ -23,8 +23,7 @@ body {
     --live-session-accent: #FC6F6F;
     --table-odd: #F9F9F9;
     --text-input: #f2f2f2;
-    --bg-color: #fff;
-    --text-color: #303030;
+    --toggle-button-color: #1F1F1F;
     --switch-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1) inset;
     --transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
 }
@@ -39,8 +38,7 @@ body {
     --live-session: #FFD0D0;
     --live-session-accent: #FC6F6F;
     --table-odd: #191919;
-    --bg-color: #292639;
-    --text-color: #ebeaf7;
+    --toggle-button-color: #EDEDED;
     --switch-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5) inset;
 }
 
@@ -61,8 +59,7 @@ it is currently commented out until we have a button to select Dark / Light
         --live-session: #FFD0D0;
         --live-session-accent: #FC6F6F;
         --table-odd: #191919;
-        --bg-color: #292639;
-        --text-color: #ebeaf7;
+        --toggle-button-color: #EDEDED;
         --switch-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5) inset;
     }
 
@@ -77,8 +74,7 @@ it is currently commented out until we have a button to select Dark / Light
         --live-session-accent: #FC6F6F;
         --table-odd: #F9F9F9;
         --text-input: #f2f2f2;
-        --bg-color: #fff;
-        --text-color: #303030;
+        --toggle-button-color: #1F1F1F;
         --switch-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1) inset;
         --transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
     }
@@ -688,9 +684,11 @@ of text in your app.
     .ui-navbar {
         margin: 0 64px;
     }
+
     .ui-navbar-brand {
         padding: 0 0 8px;
     }
+
     .ui-navbar-nav {
         padding-left: 0;
     }
@@ -895,9 +893,13 @@ Sidebar Styles
     color: var(--primary);
 }
 
-.ui-table tr:first-child th:first-child { border-top-left-radius: 8px; }
+.ui-table tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
 
-.ui-table tr:first-child th:last-child { border-top-right-radius: 8px; }
+.ui-table tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
 
 /* form styles */
 
@@ -935,10 +937,11 @@ Sidebar Styles
 
 .ui-text-input,
 .ui-value,
-.ui-text-dropdown{
+.ui-text-dropdown {
     display: flex;
     align-items: center;
 }
+
 .ui-value {
     width: 100%;
     border: 0;
@@ -955,6 +958,7 @@ Sidebar Styles
     text-align: left;
     min-width: 118px;
 }
+
 .ui-text-input {
     align-self: stretch;
     border-radius: 6px;
@@ -980,9 +984,9 @@ Sidebar Styles
 /*}*/
 
 input[type='checkbox'] {
-    -moz-appearance:none;
-    -webkit-appearance:none;
-    -o-appearance:none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
     outline: none;
     content: none;
 }
@@ -1044,9 +1048,9 @@ input[type=checkbox]:checked:before {
 /* Light / Dark toggle switch */
 
 .theme-switch {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    top: 24px;
+    right: 38px;
 }
 
 .theme-switch .checkbox {
@@ -1064,8 +1068,9 @@ input[type=checkbox]:checked:before {
     height: 40px;
     width: 80px;
     cursor: pointer;
-    box-shadow: var(--switch-shadow);
+    /*box-shadow: var(--switch-shadow);*/
     transition: var(--transition);
+    background-color: var(--background-accent);
 }
 
 .theme-switch .label:hover .moon,
@@ -1075,7 +1080,7 @@ input[type=checkbox]:checked:before {
 
 .theme-switch .ball {
     transition: var(--transition);
-    background-color: var(--text-color);
+    background-color: var(--toggle-button-color);
     position: absolute;
     border-radius: 50%;
     top: 5px;
