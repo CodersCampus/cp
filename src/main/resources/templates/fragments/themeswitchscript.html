@@ -1,12 +1,31 @@
 <script>
-const btn = document.querySelector(".theme-switch input");
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.querySelector(".theme-switch input");
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-btn.addEventListener("click", () => {
-if (prefersDarkScheme.matches) {
-document.documentElement.classList.toggle("light");
-} else {
-document.documentElement.classList.toggle("dark");
-}
-});
+        // Check if there's a saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+
+        // Set the initial theme based on the user's preference
+        if (savedTheme) {
+            document.documentElement.classList.add(savedTheme);
+        } else {
+            // If no preference is saved, use the system preference
+            document.documentElement.classList.add(prefersDarkScheme.matches ? "dark" : "light");
+        }
+
+        // Toggle theme on button click
+        btn.addEventListener("click", () => {
+            if (document.documentElement.classList.contains("dark")) {
+                document.documentElement.classList.remove("dark");
+                document.documentElement.classList.add("light");
+            } else {
+                document.documentElement.classList.remove("light");
+                document.documentElement.classList.add("dark");
+            }
+
+            // Save the user's theme preference in localStorage
+            localStorage.setItem('theme', document.documentElement.classList.contains("dark") ? 'dark' : 'light');
+        });
+    });
 </script>
