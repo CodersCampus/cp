@@ -87,6 +87,9 @@ They work best on large screens.
     font-weight: 700;
     font-style: italic;
     line-height: 44px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--primary);
+    color: transparent;
 }
 
 /*
