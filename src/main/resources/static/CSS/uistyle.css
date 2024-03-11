@@ -116,6 +116,9 @@ They work best on large screens.
     font-weight: 700;
     font-style: italic;
     line-height: 44px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--primary);
+    color: transparent;
 }
 
 /*
@@ -943,7 +946,7 @@ Sidebar Styles
     font-family: Montserrat, sans-serif;
     font-size: 14px;
     background-color: transparent !important;
-    height: 14px;
+    height: auto;
     flex: 1;
     position: relative;
     letter-spacing: 0.25px;
