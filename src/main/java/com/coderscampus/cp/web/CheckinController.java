@@ -25,7 +25,7 @@ public class CheckinController {
 		model.put("isCheckin", true);
 		return "checkin/read";
 	}
-	
+
 	@GetMapping("/create")
 	public String getCreate (ModelMap model) {
 		Checkin checkin = new Checkin();

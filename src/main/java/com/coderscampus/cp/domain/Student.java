@@ -3,13 +3,8 @@ package com.coderscampus.cp.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
 public class Student {
@@ -21,6 +16,9 @@ public class Student {
 	private String name;
 	private Integer assignmentNum;
 	private String ide;
+	@Lob
+	@Column(name = "student_photo", columnDefinition="MEDIUMBLOB")
+	private byte[] studentPhoto;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) 
 //	private GitHub githubHandle;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -37,7 +35,8 @@ public class Student {
 //	private Networking networking;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Website website;
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Checkin> checkin = new ArrayList<Checkin>();
 
 
@@ -89,7 +88,15 @@ public class Student {
 	public void setIde(String ide) {
 		this.ide = ide;
 	}
-//	public GitHub getGithubHandle() {
+
+	public byte[] getStudentPhoto() {
+		return studentPhoto;
+	}
+
+	public void setStudentPhoto(byte[] studentPhoto) {
+		this.studentPhoto = studentPhoto;
+	}
+	//	public GitHub getGithubHandle() {
 //		return githubHandle;
 //	}
 //
@@ -157,6 +164,7 @@ public class Student {
 	public List<Checkin> getCheckin() {
 		return checkin;
 	}
+
 
 	public void setCheckin(List<Checkin> checkin) {
 		this.checkin = checkin;
