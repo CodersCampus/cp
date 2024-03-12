@@ -8,8 +8,10 @@
     	const {newValue} = event.detail;
         if (newValue) {
             uid.value = newValue.uid;
+            localStorage.setItem('userUID', newValue.uid);
         } else {
             uid.value = '';
+            localStorage.removeItem('userUID');
         }
         if (newValue) {
             displayName.value = newValue.displayName;
@@ -17,6 +19,5 @@
         } else {
             displayName.value = '';
         }
-        console.log('UID = ' + uid);
     });
 </script>

@@ -19,13 +19,15 @@ public class StudentController {
 		this.studentService = studentService;
 	}
 
+
 	@GetMapping("/")
-	public String home(ModelMap model) {
-		String uid = "";
-		List<Student> students = studentService.findByUid(uid);
-		model.put("students", students);
+	public String home(ModelMap model, @RequestParam(name="uid", required = false) String uid) {
+		if (uid != null && !uid.isEmpty()) {
+			List<Student> students = studentService.findByUid(uid);
+			model.put("students", students);
+			model.put("isStudent", true);
+		}
         model.addAttribute("pageTitle", "Student Read");
-		model.put("isStudent", true);
 		return "student/read";
 	}
 	
@@ -41,7 +43,7 @@ public class StudentController {
 	@PostMapping("/create")
 	public String create(Student student,@RequestParam("uid") String uid) {
 		studentService.saveByUid(student, uid);
-		return "redirect:/student/";
+		return "student/checkuid";
 	}
 
 	@GetMapping("/update/{id}")

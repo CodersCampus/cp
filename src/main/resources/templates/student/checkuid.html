@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check UID</title>
+</head>
+<body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const uid = localStorage.getItem('userUID');
+        if (uid) {
+            // Redirect to the student page with the UID as a query parameter
+            window.location.href = `/student/?uid=${encodeURIComponent(uid)}`;
+        } else {
+            // Redirect to the student page without a UID
+            window.location.href = `/student/`;
+            console.log('No UID found in local storage.');
+        }
+    });
+</script>
+</body>
+</html>
