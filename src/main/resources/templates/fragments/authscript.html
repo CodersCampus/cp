@@ -2,12 +2,24 @@
     const fbauth = document.querySelector('fbauth-element');
     const uid = document.getElementById('uid');
     const displayName = document.getElementById('display-name');
-    console.log('line13: ' , displayName);
+    console.log('line13: ', displayName);
     fbauth.addEventListener('user-changed', (event) => {
-    	console.log('line15: ' + displayName.value);
-    	const {newValue} = event.detail;
+        console.log('line15: ' + displayName.value);
+        const {newValue} = event.detail;
         if (newValue) {
             uid.value = newValue.uid;
+            console.log('newValue: ' + JSON.stringify(newValue))
+            fetch("/send-oauth", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    displayName: newValue.displayName,
+                    uid: newValue.uid,
+                }),
+            })
+                .then(response => response.json());
         } else {
             uid.value = '';
         }
