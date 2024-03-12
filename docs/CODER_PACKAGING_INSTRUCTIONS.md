@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-> Anywhere you see **SpringWise** in the _documentation_ or _video_, think "**cp**"
+> Anywhere you see/hear **SpringWise** in the _documentation_ or _video_, think "**cp**"
 
 1. [Starting cp](#1-starting-cp)
 
@@ -14,13 +14,15 @@
 ---
 
 ## Must Have's Before Getting Set-Up
-1. Ensure you have **Java JDK 17** in your IDE. If you don't, the **cp** app will not run. 
+1. **Java JDK 17** in your IDE/IDEA. If you don't, the **cp** app will not run. 
 2. Eclipse IDE users need **Eclipse 2021-09 (4.21)** or later. If you don't, please install a newer version.
 
 
-## 1. Starting cp
+## Starting cp
 
-### GitHub
+---
+
+### 1. GitHub
 <details>
 <summary>What is GitHub?</summary>
 
@@ -28,6 +30,7 @@
 > - Think of it as a very cool online storage location where you can safely store your code to share with yourself or others.
 >  - You can have as many versions/iterations of your code as you'd like.
 >  - In case you accidentally delete your code/project on your computer, it's good to have your code safely on GitHub, so you can safely retrieve it whenever you like.
+---
 </details>
 
 1. Be given access to contribute too https://github.com/CodersCampus/cp, private repository via (Pete).
@@ -36,12 +39,13 @@
 4. Browser will display pop up window `Open GitHub Desktop.app?`.
 5. Click `Open GitHub Desktop.app` button.
 
-### GitHub Dektop
+### 2. GitHub Dektop
 <details>
 <summary>What is GitHub Desktop?</summary>
 
 > - At the most basic level, GitHub Desktop is an application that allows us to grab projects from GitHub and store them onto our computer.
 >   - GitHub Desktop handles a lot of technical features under the hood. 
+---
 </details>
 
 6. In GitHub Desktop, **Clone a Repository** window opens to the **URL** tab.
@@ -53,7 +57,7 @@
 <img style="border-radius: 10px" width="550" alt="GitHub Desktop default" src="images/1_gitHubDesktop.png">
 
 
-### Opening cp
+### 3. Opening cp
 <details>
 <summary>What is cp?</summary>
 
@@ -62,11 +66,12 @@
 >   - It is growing to become an application that the students are using daily to track their coding experience.
 >   - From day one, this application is a teaching tool for students, designed to show us what the real world is like as a Software Engineer. 
 >     - We learn how to work as a team, disagree and communicate as a team, and build something bigger than ourselves together.
-
+---
 </details>
 
 11. Now open **cp** repository 
 12. If you are given the option in GitHub Desktop to `Open in Eclipse IDE...`, then click that button.
+> If you do not see `Open in Eclipse IDE...`, you have the option of clicking on "Preferences" and updating the programming application you'd like to use.
 
 <img style="border-radius: 10px" width="550" alt="Open with Eclipse IDE" src="images/2_openWithEclipseIDE.png">
 
@@ -75,7 +80,7 @@
 <img style="border-radius: 10px" width="450" alt="cp root folder" src="images/3_cpRootFolder.png">
 
 
-### Eclipse IDE
+### 4. Eclipse IDE
 <details>
 <summary>What is Eclipse IDE</summary>
 
@@ -93,12 +98,12 @@
 17. You may see "**Import as Maven project**", if you do, select **Maven**, as this is how you need to import this project.
 18. **cp** should populate within the **Project Explorer** side panel of **Eclipse IDE**.
 
-### Run cp
+### 5. Run cp
 19. To run **cp** application you will traverse through the **cp** folder structure clicking the dropdown arrows as you go.
-  - That path is, cp/src/main/java/com.coderscampus/cpApplication.java. 
-  - Open CPApplication.java
-  - Press the green `Run` button to run application or right click on main method of CPApplication.java, and select `Run As` > `Java Application`.
-20. You should see the Spring Boot design in the console with a bunch of other content.
+  - That path is, `cp/src/main/java/com.coderscampus/cpApplication.java`. 
+  - Open `CPApplication.java`.
+  - Press the green `Run` button to run application or right click on main method of `CPApplication.java`, and select `Run As` > `Java Application`.
+20. You should see the **Spring Boot** design in the console with a bunch of other content.
 
 <img style="border-radius: 10px" width="600" alt="Running cp" src="images/4_runningCP.png">
 
@@ -106,60 +111,58 @@
 22. **cp** application should be live on your browser.
 23. If prompted to **Login**, then login to the application using a Gmail account.
 
+---
 ### 📹 [Starting cp Instructional Video](https://youtu.be/N8m2b1AFvDo)
 
-_- If you have any questions please follow up the Team at Coder Campus for Assistance_
+_- If you have any questions please follow up the team at Coder Campus for assistance_
 
 ---
 
-## 2. Setting up cp
+## Setting up cp
 
 To set up **cp** on your computer, follow these guidelines:
 
-- Use GitHub Desktop and your preferred IDE, or
-- Use Terminal/Git BASH with your IDE.
+- Grab the `dev` branch via **GitHub Desktop** or **Terminal/BASH**
+- Run it via **Eclipse IDE** or **IntelliJ IDEA**
 
 > Choose the method you're most comfortable with to get **cp** operational.
 
-### Step 1: Get the cp `dev` branch
+### 1. Get cp `dev` branch
 
 ---
 
 #### GitHub Desktop Instructions
 
 1. Open **GitHub Desktop**
-2. Ensure the **Current Repository** is `cp`, if not click the drop down and select the `cp` repository.
+2. Ensure the **Current Repository** is `cp`, if not click the **Current Repository** drop-down and select the `cp` repository.
 3. Ensure **Current Branch** is the `dev` branch.
 4. Click `Fetch origin`.
 5. If you see `Pull`, after pressing `Fetch origin`, then click `Pull`.
 6. Open IDE of choice
-   - If using Eclipse IDE, right click root `cp` folder and click **Refresh** if it's not already on `dev` branch.
+   - If using **Eclipse IDE**, right click root `cp` folder and click **Refresh** if it's not already on `dev` branch.
 
 <img style="border-radius: 10px" width="550" alt="GitHub Desktop screenshot instructions" src="images/5_runningWithGitHubDesktop.png">
 
+---
+
 #### Terminal/Git BASH Instructions
 
-- cd into **cp** project folder and type the following git commands into your Terminal/Git BASH
-
-#1 - `git status` provides info on the current state of the repo
-```git
-git status
-```
-#2 - `git pull` performs a `git fetch` to update local repository with changes from the remote, then performs a `git merge` to merge any
-changes fetched into the current branch.
-```git
-git pull
-```
-- Open IDE of choice
+1. `cd` into **cp** project folder and type the following git commands into your Terminal/Git BASH
+   - `git status` - provides info on the current state of the repo. Not required, just nice to info to have.
+   - `git fetch` - retrieves the latest changes from a remote repository without merging them to the local branch.
+   - `git pull` - performs a `git fetch` to update local repository with changes from the remote, then performs a `git merge` to merge any
+   changes fetched into the current branch.
+> _Performing a `git fetch` AND a `git pull` will mitigate potential issues, vs. just performing a `git pull`._
 
 <img style="border-radius: 10px" width="450" alt="GitHub Desktop screenshot instructions" src="images/6_terminal.png">
 
+2. Then open IDE of choice. Our go-to is **Eclipse IDE**.
 
-### Step 2: Open cp app and run it locally
+### 2: Open cp and run locally
 
 ---
 
-#### Eclipse IDE Instructions
+#### Run cp via Eclipse IDE
 
 1. Navigate or open to **cp** application, inside of **Eclipse IDE**.
 2. Right click on root folder of **cp** and click **Refresh**.
@@ -168,19 +171,16 @@ git pull
 
 <img style="border-radius: 10px" width="300" alt="GitHub Desktop screenshot instructions" src="images/7_eclipse.png">
 
-#### Eclipse Troubleshooting Steps
-**Solution 1**
-1. On the `pom.xml` file, `right click > Run As > Maven Clean`
-2. `Run As > Maven Install`
+> #### Eclipse Troubleshooting Steps
+> **Solution:**
+> 1. On the `pom.xml` file, `right click > Run As > Maven Clean`
+> 2. `Run As > Maven Install`
+>
+> _If the Installation fails:_
+> - **On Windows:** delete the h2 local database C:\Users\%user%\h2dataspringwise.mv
+>    - Repeat Solution 1, Steps 1 and 2.
 
-_If the Installation fails:_
-- **On Windows:** delete the h2 local database C:\Users\%user%\h2dataspringwise.mv
-    - Repeat Solution 1, Steps 1 and 2.
-
-#### [Open Project into VS Code via `code .` Command](VS_CODE_PATH_INSTRUCTIONS.md)
-
-
-#### IntelliJ IDEA Instructions
+#### Run cp via IntelliJ IDEA
 
 1. Navigate or open the **cp** application, inside of **IntelliJ IDEA**.
 2. Ensure that you see the **dev** branch selected.
@@ -188,9 +188,18 @@ _If the Installation fails:_
 
 <img style="border-radius: 10px" width="300" alt="GitHub Desktop screenshot instructions" src="images/8_intelliJ.png">
 
+---
+
+### Extras
+
+If using Terminal/BASH here's the shortcut installation instructions for opening projects into VS Code
+- [Open Project into VS Code via `code .` Command](VS_CODE_PATH_INSTRUCTIONS.md)
+
+---
+
 
 ### Issues
-Encounter any setup issues with **cp**? Please post your questions to the #active-full-stack Slack channel.
+Encounter any setup issues with **cp**? Please post your questions to the **#active-full-stack** Slack channel.
 
 
 
