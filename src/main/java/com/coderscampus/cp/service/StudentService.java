@@ -86,4 +86,7 @@ public class StudentService {
         return true;
     }
 
+    public List<Student> findByUid(String uid) {
+        return studentRepo.findByUid(uid);
+    }
 }

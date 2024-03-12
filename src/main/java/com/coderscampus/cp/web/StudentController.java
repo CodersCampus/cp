@@ -2,7 +2,6 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +12,17 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 	
-	@Autowired
+
 	private StudentService studentService;
-	
+
+	public StudentController(StudentService studentService) {
+		this.studentService = studentService;
+	}
+
 	@GetMapping("/")
 	public String home(ModelMap model) {
-		List<Student> students = studentService.findAll();
+		String uid = "";
+		List<Student> students = studentService.findByUid(uid);
 		model.put("students", students);
         model.addAttribute("pageTitle", "Student Read");
 		model.put("isStudent", true);
