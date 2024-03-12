@@ -13,7 +13,7 @@
 
 ---
 
-## Before Getting Set-Up
+## Must Have's Before Getting Set-Up
 1. Ensure you have **Java JDK 17** in your IDE. If you don't, the **cp** app will not run. 
 2. Eclipse IDE users need **Eclipse 2021-09 (4.21)** or later. If you don't, please install a newer version.
 
@@ -21,6 +21,15 @@
 ## 1. Starting cp
 
 ### GitHub
+<details>
+<summary>What is GitHub?</summary>
+
+> - GitHub is a web-based platform used for version control and collaboration on software development projects.
+> - Think of it as a very cool online storage location where you can safely store your code to share with yourself or others.
+>  - You can have as many versions/iterations of your code as you'd like.
+>  - In case you accidentally delete your code/project on your computer, it's good to have your code safely on GitHub, so you can safely retrieve it whenever you like.
+</details>
+
 1. Be given access to contribute too https://github.com/CodersCampus/cp, private repository via (Pete).
 2. Click on green `<> Clone` button.
 3. Click `Open with GitHub Desktop`.
@@ -28,20 +37,34 @@
 5. Click `Open GitHub Desktop.app` button.
 
 ### GitHub Dektop
+<details>
+<summary>What is GitHub Desktop?</summary>
+
+> - At the most basic level, GitHub Desktop is an application that allows us to grab projects from GitHub and store them onto our computer.
+>   - GitHub Desktop handles a lot of technical features under the hood. 
+</details>
+
 6. In GitHub Desktop, **Clone a Repository** window opens to the **URL** tab.
 7. Keep the _**Repository URL or GitHub username and repository**_ field as is.
 8. You can keep the _**Local Path**_ as is or change it by pressing the `Choose` button and selecting a different location in Finder/Explorer to store the cp repository.
 9. Next, click blue `Clone` button.
 10. **Current Repository** should be `cp`, **Current Branch** should be `dev`, and you'll have the option to `Fetch origin`.
 
-
-[//]: # (![GitHub Desktop default]&#40;images/GitHub_Desktop_default.jpg&#41;)
-
 <img style="border-radius: 10px" width="550" alt="GitHub Desktop default" src="images/1_gitHubDesktop.png">
 
 
-  
 ### Opening cp
+<details>
+<summary>What is cp?</summary>
+
+> - cp, aka **coder packaging**, is our in house application that we are building out as a team.
+>   - The app started with a handful of Coders Campus wanting to build an application that utilized what we were learning in the course.
+>   - It is growing to become an application that the students are using daily to track their coding experience.
+>   - From day one, this application is a teaching tool for students, designed to show us what the real world is like as a Software Engineer. 
+>     - We learn how to work as a team, disagree and communicate as a team, and build something bigger than ourselves together.
+
+</details>
+
 11. Now open **cp** repository 
 12. If you are given the option in GitHub Desktop to `Open in Eclipse IDE...`, then click that button.
 
@@ -53,6 +76,17 @@
 
 
 ### Eclipse IDE
+<details>
+<summary>What is Eclipse IDE</summary>
+
+> - Eclipse IDE (Integrated Development Environment) is a development platform used primarily for Java development. 
+>   - This is the programming application we'll use to code out our tasks, exercises and Assignments. 
+>   - Eclipse IDE is one of a few applications we use to code in.  
+>     - We'd like you to get familiar with Eclipse IDE, before branching out to other platforms.
+
+</details>
+
+
 14. Eclipse will open and give you the prompt window "**Import Projects from File System or Archive**".
 15. In the "**Import Source**" field, that should be left alone, as that's where you choose to store the **cp** repository, earlier in GitHub Desktop.
 16. Click bottom right button `Finish`.
