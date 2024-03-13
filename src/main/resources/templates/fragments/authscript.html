@@ -3,14 +3,15 @@
     <!--this should be obsolete as soon as we get httpSession-->
     const uid = document.getElementById('uid');
     const displayName = document.getElementById('display-name');
-    console.log('line13: ', displayName);
+    // console.log('line13: ', displayName); - for debugging purposes
     fbauth.addEventListener('user-changed', (event) => {
-        console.log('line15: ' + displayName.value);
+        // console.log('line15: ' + displayName.value); - for debugging purposes
         <!-- if already in sessionStorage, then skip next section.-->
         const {newValue} = event.detail;
         if (newValue) {
             uid.value = newValue.uid;
-            console.log('newValue: ' + JSON.stringify(newValue))
+            //..., null, 2)); = outputs JSON data in a prettier format for console output
+            console.log('newValue: ' + JSON.stringify(newValue, null, 2))
             fetch("/send-oauth", {
                 method: "POST",
                 headers: {
@@ -34,3 +35,5 @@
         }
     });
 </script>
+
+
