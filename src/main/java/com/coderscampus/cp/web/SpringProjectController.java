@@ -33,7 +33,7 @@ public class SpringProjectController {
     }
     @GetMapping("/")
     public String getDashboard(ModelMap model, HttpSession httpSession) {
-        String uid = (String)httpSession.getAttribute("authUid");
+        String uid = (String)httpSession.getAttribute("uid");
         String displayName = (String)httpSession.getAttribute("displayName");
         Checkin checkin = new Checkin();
         checkin = checkinService.saveByUid(checkin, uid);
@@ -47,7 +47,7 @@ public class SpringProjectController {
                                       HttpSession httpSession) {
         System.out.println(authDto);
         if(authDto != null){
-            httpSession.setAttribute("authUid", authDto.getUid());
+            httpSession.setAttribute("uid", authDto.getUid());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
         }
         return "redirect:/";
