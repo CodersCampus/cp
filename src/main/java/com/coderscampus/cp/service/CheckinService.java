@@ -29,14 +29,11 @@ public class CheckinService {
     }
 
 	public Checkin saveByUid(Checkin checkin, String uid) {
-		List<Student> students = studentRepo.findByUid(uid);
-		if (students.size() > 1)
-			throw new IllegalStateException("Shouldn't have more than one student per uid");
-		if (!students.isEmpty()) {
-			Student student = students.get(0);
-			checkin.setStudent(student);
-			checkin.setUid(uid);
-		}
+		Student students = studentRepo.findByUid(uid);
+        if(students != null){
+            checkin.setStudent(students);
+            checkin.setUid(uid);
+        }
 		return save(checkin);
 	}
 

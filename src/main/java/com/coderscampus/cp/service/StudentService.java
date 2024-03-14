@@ -45,12 +45,11 @@ public class StudentService {
     }
 
     boolean isValidNewStudent(Student student) {
-        List<Student> students = studentRepo.findByUid(student.getUid());
-        if (students.size() > 0) {
-
+        Student students = studentRepo.findByUid(student.getUid());
+        if (students == null) {
             return false;
         }
-        return student.getId() == 0;
+        return true;
     }
 
     public List<Student> findAll() {
@@ -86,7 +85,7 @@ public class StudentService {
         return true;
     }
 
-    public List<Student> findByUid(String uid) {
+    public Student findByUid(String uid) {
         return studentRepo.findByUid(uid);
     }
 }

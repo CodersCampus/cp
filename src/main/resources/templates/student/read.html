@@ -37,9 +37,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="student: ${students}">
-                                <td><span th:text="${student.name}"></span></td>
-                                <td><span th:text="${student.assignmentNum}"></span></td>
+                            <tr>
+<!--                                <td><span th:text="${student.name}"></span></td>-->
+<!--                                <td><span th:text="${student.assignmentNum}"></span></td>-->
 
                                 <!-- the below needs to be removed when the hidden columns are back in -->
                                 <td></td>
@@ -48,7 +48,7 @@
 
                                 <!-- <td><span th:text="${student.githubHandle.handle}"></span></td>
                                 <td><span th:text="${student.linkedIn.url}"></span></td> -->
-                                <td><span th:text="${student.ide}"></span></td>
+<!--                                <td><span th:text="${student.ide}"></span></td>-->
 
                                 <!-- the below needs to be removed when the hidden columns are back in -->
                                 <td></td>
@@ -63,12 +63,12 @@
                                 <td><span th:text="${student.networking.meetups}"></span></td>
                                 <td><span th:text="${student.website.url}"></span></td> -->
                                 <td>
-                                    <a th:href="@{/student/update/{studentId}(studentId=${student.id})}">
-                                        <span>
-                                         <i class="fa-solid fa-pen-to-square"
-                                            style="color: var(--primary); font-size:20px; font-weight:100"></i>
-                                        </span>
-                                    </a>
+<!--                                    <a th:href="@{/student/update/{studentId}(studentId=${student.id})}">-->
+<!--                                        <span>-->
+<!--                                         <i class="fa-solid fa-pen-to-square"-->
+<!--                                            style="color: var(&#45;&#45;primary); font-size:20px; font-weight:100"></i>-->
+<!--                                        </span>-->
+<!--                                    </a>-->
                                 </td>
                             </tr>
                             </tbody>
