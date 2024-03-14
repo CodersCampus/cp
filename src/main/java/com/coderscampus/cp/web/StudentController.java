@@ -13,13 +13,11 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
-
     private StudentService studentService;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
-
 
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {

@@ -15,14 +15,11 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepo;
 
-
     public Student save(Student student) {
         if (isValidNewStudent(student)) {
-
             return studentRepo.save(student);
         }
         if (isValidStudentUpdateOrDelete(student)) {
-
             return studentRepo.save(student);
         }
         return null;
@@ -30,7 +27,7 @@ public class StudentService {
 
     public Student saveByUid(Student student, String uid) {
         student.setUid(uid);
-        return studentRepo.save(student);
+        return save(student);
     }
 
     boolean isValidStudentUpdateOrDelete(Student student) {
@@ -38,7 +35,6 @@ public class StudentService {
 
         if (existingStudent.isPresent() && existingStudent.get().getUid() != null
                 && existingStudent.get().getUid().equals(student.getUid())) {
-
             return true;
         }
         return false;
@@ -53,7 +49,6 @@ public class StudentService {
     }
 
     public List<Student> findAll() {
-
         return studentRepo.findAll();
     }
 
@@ -62,13 +57,9 @@ public class StudentService {
     }
 
     public boolean delete(Student student) {
-        System.out.println("Inside StudentService delete method");
-
         try {
             if (isValidStudentUpdateOrDelete(student)) {
-
                 studentRepo.delete(student);
-
                 Optional<Student> user = studentRepo.findById(student.getId());
                 boolean foundUser = user.isPresent();
                 if (foundUser) {
@@ -81,7 +72,6 @@ public class StudentService {
             System.err.println(e);
             return false;
         }
-
         return true;
     }
 

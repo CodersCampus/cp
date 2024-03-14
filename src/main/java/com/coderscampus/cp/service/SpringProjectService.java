@@ -22,7 +22,5 @@ public class SpringProjectService {
 	public  Optional<SpringProject> findById(Long springProjectId) {
 		return springRepo.findById(springProjectId);
 	}
-			
-	
 }
  

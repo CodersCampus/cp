@@ -19,7 +19,6 @@ public class CodingCategoryService {
 	}
 
 	public List<CodingCategory> findAll() {
-
 		return codingCategoryRepo.findAll();
 	} 
 

@@ -31,6 +31,7 @@ public class SpringProjectController {
         this.studentService = studentService;
         this.checkinService = checkinService;
     }
+
     @GetMapping("/")
     public String getDashboard(ModelMap model, HttpSession httpSession) {
         String uid = (String)httpSession.getAttribute("uid");
@@ -40,7 +41,8 @@ public class SpringProjectController {
         Student student = new Student();
 		model.put("student", student);
     	return "dashboard";
-    } 
+    }
+
     @PostMapping("/send-oauth")
     @ResponseBody
     public String getOauth(@RequestBody AuthObjectDto authDto,
