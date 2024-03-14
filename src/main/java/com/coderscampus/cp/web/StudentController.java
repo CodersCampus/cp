@@ -2,6 +2,7 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.service.StudentService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class StudentController {
 
 
 	@GetMapping("/")
-	public String home(ModelMap model, @RequestParam(name="uid", required = false) String uid) {
+	public String home(ModelMap model, HttpSession httpSession) {
 		if (uid != null && !uid.isEmpty()) {
 			List<Student> students = studentService.findByUid(uid);
 			model.put("students", students);

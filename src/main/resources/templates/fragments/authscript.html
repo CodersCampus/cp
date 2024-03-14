@@ -1,17 +1,31 @@
 <script>
     const fbauth = document.querySelector('fbauth-element');
+    <!--this should be obsolete as soon as we get httpSession-->
     const uid = document.getElementById('uid');
     const displayName = document.getElementById('display-name');
-    console.log('line13: ' , displayName);
+    // console.log('line13: ', displayName); - for debugging purposes
     fbauth.addEventListener('user-changed', (event) => {
-    	console.log('line15: ' + displayName.value);
-    	const {newValue} = event.detail;
+        // console.log('line15: ' + displayName.value); - for debugging purposes
+        <!-- if already in sessionStorage, then skip next section.-->
+        const {newValue} = event.detail;
         if (newValue) {
             uid.value = newValue.uid;
-            localStorage.setItem('userUID', newValue.uid);
+            //..., null, 2)); = outputs JSON data in a prettier format for console output
+            console.log('newValue: ' + JSON.stringify(newValue, null, 2))
+            fetch("/send-oauth", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    displayName: newValue.displayName,
+                    uid: newValue.uid,
+                }),
+            })
+                .then(response => response.json());
+            <!-- persist in sessionStorage here.-->
         } else {
             uid.value = '';
-            localStorage.removeItem('userUID');
         }
         if (newValue) {
             displayName.value = newValue.displayName;
@@ -21,3 +35,5 @@
         }
     });
 </script>
+
+
