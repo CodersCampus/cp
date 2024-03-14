@@ -22,7 +22,7 @@ public class StudentController {
 
 
 	@GetMapping("/")
-	public String home(ModelMap model, HttpSession httpSession) {
+	public String home(ModelMap model, @RequestParam(name="uid", required = false) String uid){
 		if (uid != null && !uid.isEmpty()) {
 			List<Student> students = studentService.findByUid(uid);
 			model.put("students", students);
