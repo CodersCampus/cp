@@ -30,7 +30,7 @@ public class StudentService {
 
     public Student saveByUid(Student student, String uid) {
         student.setUid(uid);
-        return save(student);
+        return studentRepo.save(student);
     }
 
     boolean isValidStudentUpdateOrDelete(Student student) {
