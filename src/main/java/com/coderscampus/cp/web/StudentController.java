@@ -45,7 +45,7 @@ public class StudentController {
     @PostMapping("/create")
     public String create(Student student, @RequestParam("uid") String uid) {
         studentService.saveByUid(student, uid);
-        return "student/checkuid";
+        return "redirect:/student/";
     }
 
     @GetMapping("/update/{id}")
