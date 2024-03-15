@@ -1,0 +1,36 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.querySelector(".theme-switch input");
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // Check if there's a saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+
+        // Set the initial theme based on the user's preference or system preference
+        if (savedTheme) {
+            document.documentElement.classList.add(savedTheme);
+        } else {
+            document.documentElement.classList.add(prefersDarkScheme.matches ? "dark" : "light");
+        }
+
+        // Toggle theme on button click
+        btn.addEventListener("click", () => {
+            if (document.documentElement.classList.contains("dark")) {
+                document.documentElement.classList.remove("dark");
+                document.documentElement.classList.add("light");
+            } else {
+                document.documentElement.classList.remove("light");
+                document.documentElement.classList.add("dark");
+            }
+
+            // Save the user's theme preference in localStorage
+            localStorage.setItem('theme', document.documentElement.classList.contains("dark") ? 'dark' : 'light');
+        });
+
+        // Watch for changes in the system color scheme and update the theme accordingly
+        prefersDarkScheme.addListener((e) => {
+            document.documentElement.classList.remove("dark", "light");
+            document.documentElement.classList.add(e.matches ? "dark" : "light");
+        });
+    });
+</script>
