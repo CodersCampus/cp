@@ -26,9 +26,15 @@ public class StudentService {
     }
 
     public Student saveByUid(Student student, String uid) {
-        student.setUid(uid);
-        return studentRepo.save(student);
+        Student foundStudent =  studentRepo.findByUid(uid);
+          if (foundStudent == null) {
+            student.setUid(uid);
+            return studentRepo.save(student);
+        }
+        return foundStudent;
+
     }
+
 
     boolean isValidStudentUpdateOrDelete(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
