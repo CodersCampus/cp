@@ -2,6 +2,7 @@ package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.domain.UserHistory;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class CheckinService {
     }
 
     public List<Checkin> findByUid(String uid) {
-        return checkinRepo.findByUid(uid);
+        return checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
     }
 
 }
