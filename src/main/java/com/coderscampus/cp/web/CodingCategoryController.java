@@ -15,6 +15,7 @@ import com.coderscampus.cp.service.CodingCategoryService;
 @Controller
 @RequestMapping("coding-category")
 public class CodingCategoryController {
+
 	@Autowired
 	private CodingCategoryService codingCategoryService;
 	
@@ -38,7 +39,6 @@ public class CodingCategoryController {
 		return "redirect:/coding-category/";
 	}
 
-	
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		CodingCategory codingCategory = codingCategoryService.findById(id);
@@ -57,5 +57,4 @@ public class CodingCategoryController {
 		codingCategoryService.delete(codingCategory);
 		return "redirect:/coding-category/";
 	}
-
 }
