@@ -31,32 +31,31 @@
                                 <th scope="col">Resume:</th>
                                 <th scope="col">Networking:</th>
                                 <th scope="col">Website:</th>
-                                <th scope="col">View:</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="student: ${students}">
+                            <tr>
                                 <td><span th:text="${student.name}"></span></td>
                                 <td><span th:text="${student.assignmentNum}"></span></td>
 
-                                <!-- the below needs to be removed when the hidden columns are back in -->
+                                <!-- <td>'s below need to be removed when we bring back in the objects -->
                                 <td></td>
                                 <td></td>
+                                <!-- <td>'s above need to be removed when we bring back in the objects -->
 
+<!--                              <td><span th:text="${student.githubHandle.handle}"></span></td>-->
+<!--                              <td><span th:text="${student.linkedIn.url}"></span></td>-->
+<!--                              <td><span th:text="${student.ide}"></span></td>-->
 
-                                <!-- <td><span th:text="${student.githubHandle.handle}"></span></td>
-                                <td><span th:text="${student.linkedIn.url}"></span></td> -->
-                                <td><span th:text="${student.ide}"></span></td>
-
-                                <!-- the below needs to be removed when the hidden columns are back in -->
+                                <!-- <td>'s below need to be removed when we bring back in the objects -->
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-
+                                <!-- <td>'s above need to be removed when we bring back in the objects -->
 
                                 <!-- <td><span th:text="${student.youtube.profile}"></span></td>
                                 <td><span th:text="${student.finalProject.title}"></span></td>
@@ -82,5 +81,6 @@
     </div>
 </fbauth-element>
 <div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
 </body>
 </html>

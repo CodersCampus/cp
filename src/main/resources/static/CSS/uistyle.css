@@ -12,7 +12,7 @@
    color: var(--primary);
 */
 
-:root {
+body {
     --primary: #2b6777;
     --secondary: #52ab98;
     --accent: #c8d8ee;
@@ -22,7 +22,21 @@
     --live-session: #FFD0D0;
     --live-session-accent: #FC6F6F;
     --table-odd: #F9F9F9;
-    --text-input: #f2f2f2;
+    --toggle-button-color: #1F1F1F;
+    --toggle-button-transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.dark body {
+    --primary: #87C3D4;
+    --secondary: #53AC99;
+    --accent: #334050;
+    --background: #121212;
+    --background-accent: #1F1F1F;
+    --gradient: linear-gradient(114.23deg, #53AC99 0%, #1F1F1F 100%);
+    --live-session: #FFD0D0;
+    --live-session-accent: #FC6F6F;
+    --table-odd: #191919;
+    --toggle-button-color: #EDEDED;
 }
 
 /* Dark Mode variables below
@@ -32,7 +46,7 @@ it is currently commented out until we have a button to select Dark / Light
 */
 
 @media (prefers-color-scheme: dark) {
-    :root {
+    body {
         --primary: #87C3D4;
         --secondary: #53AC99;
         --accent: #334050;
@@ -42,6 +56,21 @@ it is currently commented out until we have a button to select Dark / Light
         --live-session: #FFD0D0;
         --live-session-accent: #FC6F6F;
         --table-odd: #191919;
+        --toggle-button-color: #EDEDED;
+    }
+
+    .light body {
+        --primary: #2b6777;
+        --secondary: #52ab98;
+        --accent: #c8d8ee;
+        --background: #ffffff;
+        --background-accent: #EDEDED;
+        --gradient: linear-gradient(114.23deg, #52ab98 0%, #f2f2f2 100%);
+        --live-session: #FFD0D0;
+        --live-session-accent: #FC6F6F;
+        --table-odd: #F9F9F9;
+        --toggle-button-color: #1F1F1F;
+        --toggle-button-transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
     }
 }
 
@@ -652,9 +681,11 @@ of text in your app.
     .ui-navbar {
         margin: 0 64px;
     }
+
     .ui-navbar-brand {
         padding: 0 0 8px;
     }
+
     .ui-navbar-nav {
         padding-left: 0;
     }
@@ -859,9 +890,13 @@ Sidebar Styles
     color: var(--primary);
 }
 
-.ui-table tr:first-child th:first-child { border-top-left-radius: 8px; }
+.ui-table tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
 
-.ui-table tr:first-child th:last-child { border-top-right-radius: 8px; }
+.ui-table tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
 
 /* form styles */
 
@@ -899,10 +934,11 @@ Sidebar Styles
 
 .ui-text-input,
 .ui-value,
-.ui-text-dropdown{
+.ui-text-dropdown {
     display: flex;
     align-items: center;
 }
+
 .ui-value {
     width: 100%;
     border: 0;
@@ -919,6 +955,7 @@ Sidebar Styles
     text-align: left;
     min-width: 118px;
 }
+
 .ui-text-input {
     align-self: stretch;
     border-radius: 6px;
@@ -944,9 +981,9 @@ Sidebar Styles
 /*}*/
 
 input[type='checkbox'] {
-    -moz-appearance:none;
-    -webkit-appearance:none;
-    -o-appearance:none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
     outline: none;
     content: none;
 }
@@ -1005,3 +1042,77 @@ input[type=checkbox]:checked:before {
     font-weight: 400;
 }
 
+/* Light / Dark toggle switch */
+
+.theme-switch {
+    position: fixed;
+    top: 24px;
+    right: 38px;
+}
+
+.theme-switch .checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.theme-switch .label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 50px;
+    position: relative;
+    height: 40px;
+    width: 80px;
+    cursor: pointer;
+    transition: var(--toggle-button-transition);
+    background-color: var(--background-accent);
+}
+
+.theme-switch .label:hover .moon,
+.theme-switch .label:hover .sun {
+    transform: rotate(360deg);
+}
+
+.theme-switch .ball {
+    transition: var(--toggle-button-transition);
+    background-color: var(--toggle-button-color);
+    position: absolute;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+.theme-switch .moon {
+    color: #f1c40f;
+    transform-origin: center center;
+    transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    transform: rotate(0);
+}
+
+.theme-switch .sun {
+    color: #ff6b00;
+    transform-origin: center center;
+    transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    transform: rotate(0);
+}
+
+.theme-switch .ball {
+    transform: translatex(0);
+}
+
+.dark .theme-switch .ball {
+    transform: translatex(40px);
+}
+
+@media (prefers-color-scheme: dark) {
+    .theme-switch .ball {
+        transform: translatex(40px);
+    }
+
+    .light .theme-switch .ball {
+        transform: translatex(0);
+    }
+}

@@ -40,7 +40,7 @@
 - [Thymeleaf Fragments](https://www.baeldung.com/spring-thymeleaf-fragments)
 - [Thymeleaf API docs](https://www.thymeleaf.org/apidocs/thymeleaf/3.0.0.RELEASE/help-doc.html) (Backup documentation. Would rarely use.)
 
-## Current Thymeleaf example in SpringWise
+## Current Thymeleaf example in cp
 
 footer.html
 ```html
@@ -55,7 +55,7 @@ footer.html
 Located at...
 
 ```markdown
-SpringWise > src > main > resources > templates > fragments > footer.html
+cp > src > main > resources > templates > fragments > footer.html
 ```
 
 Added to each HTML page where the footer would regularly go

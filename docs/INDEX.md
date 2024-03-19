@@ -10,5 +10,5 @@
 - [Resources](RESOURCES.md)
 - [Rules](RULES.md)
 - [Ideal Schedule](SCHEDULE_IDEAL.md)
-- [Setting up SpringWise](SETTING_UP_CP)
+- [coder packaging Instructions](CODER_PACKAGING_INSTRUCTIONS.md)
 - [VS Code Path Instructions](VS_CODE_PATH_INSTRUCTIONS.md)

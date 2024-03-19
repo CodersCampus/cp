@@ -15,46 +15,46 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepo;
 
-
     public Student save(Student student) {
         if (isValidNewStudent(student)) {
-
             return studentRepo.save(student);
         }
         if (isValidStudentUpdateOrDelete(student)) {
-
             return studentRepo.save(student);
         }
         return null;
     }
 
     public Student saveByUid(Student student, String uid) {
-        student.setUid(uid);
-        return save(student);
+        Student foundStudent =  studentRepo.findByUid(uid);
+          if (foundStudent == null) {
+            student.setUid(uid);
+            return studentRepo.save(student);
+        }
+        return foundStudent;
+
     }
+
 
     boolean isValidStudentUpdateOrDelete(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
 
         if (existingStudent.isPresent() && existingStudent.get().getUid() != null
                 && existingStudent.get().getUid().equals(student.getUid())) {
-
             return true;
         }
         return false;
     }
 
     boolean isValidNewStudent(Student student) {
-        List<Student> students = studentRepo.findByUid(student.getUid());
-        if (students.size() > 0) {
-
+        Student students = studentRepo.findByUid(student.getUid());
+        if (students == null) {
             return false;
         }
-        return student.getId() == 0;
+        return true;
     }
 
     public List<Student> findAll() {
-
         return studentRepo.findAll();
     }
 
@@ -63,13 +63,9 @@ public class StudentService {
     }
 
     public boolean delete(Student student) {
-        System.out.println("Inside StudentService delete method");
-
         try {
             if (isValidStudentUpdateOrDelete(student)) {
-
                 studentRepo.delete(student);
-
                 Optional<Student> user = studentRepo.findById(student.getId());
                 boolean foundUser = user.isPresent();
                 if (foundUser) {
@@ -82,8 +78,10 @@ public class StudentService {
             System.err.println(e);
             return false;
         }
-
         return true;
     }
 
+    public Student findByUid(String uid) {
+        return studentRepo.findByUid(uid);
+    }
 }

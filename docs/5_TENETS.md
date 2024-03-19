@@ -99,7 +99,7 @@ As above #3 - There are two types of report data in these areas.
 
 The same thing that makes for great documentation often makes it suck as documentation. Easy to access can make documentation hard to revise. Easy to revise can make it less consistent and reliable. Etc.
 
-Given the many competing concerns - too many to note here - it is proposed for initial design that markdown docs on the SpringWise repository be a first happy medium until a better approach comes along.
+Given the many competing concerns - too many to note here - it is proposed for initial design that markdown docs on the cp repository be a first happy medium until a better approach comes along.
 
 
 #### UX/UI

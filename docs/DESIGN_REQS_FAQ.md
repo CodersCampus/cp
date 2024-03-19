@@ -8,9 +8,9 @@ Terms `issue`, `ticket`, `task`, and `PR` or `Pull Request` may be used intercha
 
 If you only want the basics:
 
-- [Over-riding principle](#what-is-our-over-riding-principle-in-springwise-design--documentation)
+- [Over-riding principle](#what-is-our-over-riding-principle-in-cp-design--documentation)
 - [Modified CRUD](#modified-crud-is-the-simple-explanation)
-- [When is Modified CRUD not practical within Springwise?](#when-is-modified-crud-not-practical-within-springwise)
+- [When is Modified CRUD not practical within cp?](#when-is-modified-crud-not-practical-within-cp)
 
 ## Documentation on More Typical Design Requirements
 
@@ -27,7 +27,7 @@ Consult these as references:
 
 
 
-## What is our over-riding principle in Springwise Design & Documentation?
+## What is our over-riding principle in cp Design & Documentation?
 
 ### Primary Constraint
 LiveCoding constraints include:
@@ -67,7 +67,7 @@ Our primary form of Design & Requirements is `Modified CRUD`
 
 [back](#tldr)
 
-## When is Modified CRUD not practical within Springwise?
+## When is Modified CRUD not practical within cp?
 
 Even if rarely - sometimes we need to use more traditional design tools and processes.
 
@@ -98,7 +98,7 @@ As you can see at quick glance there is no single approach or formula but they a
 
 The most obvious time when we would want to use this to define requirements is when the verbal or words version of an interaction becomes so crazy and difficult that a it would be just easier to show it in a diagram. If it's starting to feel more like `Word Salad` than just `words` maybe one or more use case diagrams would be a better alternative.
 
-We have a number of such situations in Springwise, such as when David Roberts outlines a hard to follow or long winded process for setting up one's LinkedIn for success.
+We have a number of such situations in cp, such as when David Roberts outlines a hard to follow or long winded process for setting up one's LinkedIn for success.
 
 Another situation when it would be easier to use a use case diagram would be when there are multiple types of interactions with one table, each very different. Such as user experience data being a part of turn taking calculations, then much later for building statistics of work completed during LiveCoding sessions. Lotta words.
 
@@ -120,7 +120,7 @@ Notice the cruder parts below. Quite often, that's great!
 
 But you can even use more advance tools like Figma, by just ignoring their better capabilities that you don't yet need. 
 
-If you want to take wireframes too seriously, there are lots of great tools out there to help you do wireframes. I don't recommend them for Springwise types of teams, but they can be great in the corporate world.
+If you want to take wireframes too seriously, there are lots of great tools out there to help you do wireframes. I don't recommend them for cp types of teams, but they can be great in the corporate world.
 
 Here is a youtube for executing wireframe with Figma
 
