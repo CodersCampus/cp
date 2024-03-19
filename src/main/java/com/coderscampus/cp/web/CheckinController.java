@@ -25,6 +25,7 @@ public class CheckinController {
 		model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Checkin Read");
 		model.put("isCheckin", true);
+		System.out.println("checkins: " + checkins);
 		return "checkin/read";
 	}
 	
@@ -38,8 +39,8 @@ public class CheckinController {
 	}
 
 	@PostMapping("/create")
-	public String create(Checkin checkin, @RequestParam("uid") String uid) {
-		checkin = checkinService.saveByUid(checkin, uid);
+	public String create(Checkin checkin, @RequestParam("uid") String uid, @RequestParam("clientTimeZone") String clientTimeZone) {
+		checkin = checkinService.saveByUid(checkin, uid, clientTimeZone);
 		return "redirect:/checkin/";
 	}
 
@@ -51,10 +52,10 @@ public class CheckinController {
 		model.put("isCheckin", true);
 		return "checkin/update";
 	}
-	
+
 	@PostMapping("/update")
-	public String update(Checkin checkin, @RequestParam("uid") String uid) {
-		checkinService.saveByUid(checkin, uid);
+	public String update(Checkin checkin, @RequestParam("uid") String uid, @RequestParam("clientTimeZone") String clientTimeZone) {
+		checkinService.saveByUid(checkin, uid, clientTimeZone);
 		return "redirect:/checkin/";
 	}
 	
