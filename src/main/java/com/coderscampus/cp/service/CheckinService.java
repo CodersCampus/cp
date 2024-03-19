@@ -49,4 +49,9 @@ public class CheckinService {
         checkinRepo.delete(checkin);
     }
 
+    public List<Checkin> findByUid(String uid) {
+        return checkinRepo.findByUid(uid);
+    }
+
 }
+

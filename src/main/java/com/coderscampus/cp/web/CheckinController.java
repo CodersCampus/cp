@@ -3,6 +3,7 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.service.CheckinService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,8 +19,9 @@ public class CheckinController {
 	private CheckinService checkinService;
 	
 	@GetMapping("/")
-	public String home(ModelMap model) {
-		List<Checkin> checkins = checkinService.findAll();
+	public String home(ModelMap model,  HttpSession httpSession) {
+		String uid = (String) httpSession.getAttribute("uid");
+		List<Checkin> checkins = checkinService.findByUid(uid);
 		model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Checkin Read");
 		model.put("isCheckin", true);
