@@ -24,26 +24,39 @@ public class CheckinService {
     private StudentRepository studentRepo;
 
     public Checkin saveByUid(Checkin checkin, String uid, String clientTimeZone) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            checkin.setStudent(students);
-            checkin.setUid(uid);
-        }
-        if (checkin.getDate() == null) {
-            if (clientTimeZone == null) {
-                // Set the server's default time zone if clientTimeZone is null
-                clientTimeZone = ZoneId.systemDefault().getId();
-            }
-            LocalDateTime clientDateTime = LocalDateTime.now(ZoneId.of(clientTimeZone));
-            LocalDateTime serverDateTime = clientDateTime.atZone(ZoneId.of(clientTimeZone))
-                    .withZoneSameInstant(ZoneId.systemDefault())
-                    .toLocalDateTime();
-            checkin.setDate(serverDateTime);
-        }
+        setStudentAndUid(checkin, uid);
+        setDateIfNull(checkin, clientTimeZone);
         return checkinRepo.save(checkin);
     }
 
-    public String formatDate(LocalDateTime date) {
+    private void setStudentAndUid(Checkin checkin, String uid) {
+        Student student = studentRepo.findByUid(uid);
+        if (student != null) {
+            checkin.setStudent(student);
+            checkin.setUid(uid);
+        }
+    }
+
+    private void setDateIfNull(Checkin checkin, String clientTimeZone) {
+        if (checkin.getDate() == null) {
+            ZoneId clientZoneId = getClientZoneId(clientTimeZone);
+            LocalDateTime clientDateTime = LocalDateTime.now(clientZoneId);
+            LocalDateTime serverDateTime = convertToServerDateTime(clientDateTime, clientZoneId);
+            checkin.setDate(serverDateTime);
+        }
+    }
+
+    private ZoneId getClientZoneId(String clientTimeZone) {
+        return clientTimeZone != null ? ZoneId.of(clientTimeZone) : ZoneId.systemDefault();
+    }
+
+    private LocalDateTime convertToServerDateTime(LocalDateTime clientDateTime, ZoneId clientZoneId) {
+        return clientDateTime.atZone(clientZoneId)
+                .withZoneSameInstant(ZoneId.systemDefault())
+                .toLocalDateTime();
+    }
+
+    public String getFormattedDate(LocalDateTime date) {
         if (date == null) {
             return "";
         }
