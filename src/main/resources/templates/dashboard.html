@@ -2,11 +2,11 @@
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 
-<body layout="layout-secured">
+<body layout="layout-secured" class="ui-background">
 <fbauth-element headless>
     <div layout="layout-home">
         <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-        <div class="ga-content-main">
+        <div class="ga-content-main-no-radius">
             <!-- Page content goes here -->
             <div>
                 <main>

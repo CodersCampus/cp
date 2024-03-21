@@ -847,6 +847,10 @@ Sidebar Styles
     background-color: var(--background-accent);
 }
 
+.ga-content-main-no-radius {
+    background-color: var(--background-accent);
+}
+
 /* table styles */
 
 .ui-table {
