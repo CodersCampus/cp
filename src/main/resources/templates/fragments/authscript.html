@@ -3,6 +3,7 @@
     <!--this should be obsolete as soon as we get httpSession-->
     const uid = document.getElementById('uid');
     const displayName = document.getElementById('display-name');
+    const pageName = document.getElementById('page-name');
     // console.log('line13: ', displayName); - for debugging purposes
     fbauth.addEventListener('user-changed', (event) => {
         // console.log('line15: ' + displayName.value); - for debugging purposes
@@ -29,6 +30,7 @@
         }
         if (newValue) {
             displayName.value = newValue.displayName;
+            pageName.innerText = newValue.displayName;
             console.log('line24: ' + displayName.value);
         } else {
             displayName.value = '';
