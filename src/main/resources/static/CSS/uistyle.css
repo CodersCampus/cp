@@ -212,12 +212,22 @@ secondary regions of content.
     line-height: 36px;
 }
 
+/*.title-small {*/
+/*    font-size: 24px;*/
+/*    font-family: Montserrat, sans-serif;*/
+/*    font-weight: 400;*/
+/*    line-height: 32px;*/
+/*}*/
+
+/*// --------------------------------- //*/
+/*DN Updated CSS of .title-small*/
 .title-small {
-    font-size: 24px;
+    font-size: 20px;
     font-family: Montserrat, sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 32px;
 }
+/*// --------------------------------- //*/
 
 /*
 Body styles are used for longer passages
@@ -1127,9 +1137,19 @@ input[type=checkbox]:checked:before {
     }
 }
 
+/*.profile-picture {*/
+/*    width: 70px;*/
+/*    height: 70px;*/
+/*    border-radius: 50%;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*// --------------------------------- //*/
+/*DN Decreased width and size from 70px to 50px*/
 .profile-picture {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     overflow: hidden;
 }
+/*// --------------------------------- //*/
