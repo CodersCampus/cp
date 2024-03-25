@@ -3,9 +3,7 @@
     <!--this should be obsolete as soon as we get httpSession-->
     const uid = document.getElementById('uid');
     const displayName = document.getElementById('display-name');
-    // console.log('line13: ', displayName); - for debugging purposes
     fbauth.addEventListener('user-changed', (event) => {
-        // console.log('line15: ' + displayName.value); - for debugging purposes
         <!-- if already in sessionStorage, then skip next section.-->
         const {newValue} = event.detail;
         if (newValue) {
@@ -29,7 +27,6 @@
         }
         if (newValue) {
             displayName.value = newValue.displayName;
-            console.log('line24: ' + displayName.value);
         } else {
             displayName.value = '';
         }
