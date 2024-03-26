@@ -133,6 +133,14 @@ These styles can be good for marking primary passages of text or important regio
     line-height: 40px;
 }
 
+.headline-large-bold-italic {
+    font-size: 57px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 40px;
+}
+
 .headline-large-light {
     font-size: 57px;
     font-family: Poppins, sans-serif;
@@ -204,12 +212,22 @@ secondary regions of content.
     line-height: 36px;
 }
 
+/*.title-small {*/
+/*    font-size: 24px;*/
+/*    font-family: Montserrat, sans-serif;*/
+/*    font-weight: 400;*/
+/*    line-height: 32px;*/
+/*}*/
+
+/*// --------------------------------- //*/
+/*DN Updated CSS of .title-small*/
 .title-small {
-    font-size: 24px;
+    font-size: 20px;
     font-family: Montserrat, sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 32px;
 }
+/*// --------------------------------- //*/
 
 /*
 Body styles are used for longer passages
@@ -674,7 +692,8 @@ of text in your app.
     color: var(--primary);
     height: 80px;
     display: flex;
-    margin: -21px 120px 0;
+    margin: 0px 120px 24px;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 1024px) {
@@ -789,11 +808,12 @@ Footer styles:
 
 .ui-footer-content {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     color: var(--primary);
     height: 80px;
     flex-direction: column;
     align-items: center;
+    gap: 8px;
 }
 
 .ui-footer-link {
@@ -1045,9 +1065,9 @@ input[type=checkbox]:checked:before {
 /* Light / Dark toggle switch */
 
 .theme-switch {
-    position: fixed;
-    top: 24px;
-    right: 38px;
+    /*position: absolute;*/
+    /*bottom: 0px;*/
+    /*right: 38px;*/
 }
 
 .theme-switch .checkbox {
@@ -1116,3 +1136,20 @@ input[type=checkbox]:checked:before {
         transform: translatex(0);
     }
 }
+
+/*.profile-picture {*/
+/*    width: 70px;*/
+/*    height: 70px;*/
+/*    border-radius: 50%;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*// --------------------------------- //*/
+/*DN Decreased width and size from 70px to 50px*/
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+/*// --------------------------------- //*/

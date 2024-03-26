@@ -1,16 +1,18 @@
 <script>
     const fbauth = document.querySelector('fbauth-element');
-    <!--this should be obsolete as soon as we get httpSession-->
     const uid = document.getElementById('uid');
+    const studentName = document.getElementById('student-name');
     const displayName = document.getElementById('display-name');
-    // console.log('line13: ', displayName); - for debugging purposes
+    const photoURL = document.getElementById('photo-url');
+
     fbauth.addEventListener('user-changed', (event) => {
-        // console.log('line15: ' + displayName.value); - for debugging purposes
-        <!-- if already in sessionStorage, then skip next section.-->
         const {newValue} = event.detail;
         if (newValue) {
-            uid.value = newValue.uid;
-            //..., null, 2)); = outputs JSON data in a prettier format for console output
+            if (uid) {
+                uid.value = newValue.uid;
+            }
+            studentName.innerText = newValue.displayName;
+            photoURL.src = newValue.photoURL;
             console.log('newValue: ' + JSON.stringify(newValue, null, 2))
             fetch("/send-oauth", {
                 method: "POST",
@@ -20,20 +22,85 @@
                 body: JSON.stringify({
                     displayName: newValue.displayName,
                     uid: newValue.uid,
+                    photoURL: newValue.photoURL
                 }),
             })
                 .then(response => response.json());
-            <!-- persist in sessionStorage here.-->
         } else {
-            uid.value = '';
+            if (uid) {
+                uid.value = '';
+            }
+            studentName.innerText = '';
+            photoURL.src = '';
         }
         if (newValue) {
-            displayName.value = newValue.displayName;
-            console.log('line24: ' + displayName.value);
+            if (displayName) {
+                displayName.value = newValue.displayName;
+            }
+            studentName.innerText = newValue.displayName;
+            photoURL.src = newValue.photoURL;
+            console.log('line24: ' + (displayName ? displayName.value : ''));
         } else {
-            displayName.value = '';
+            if (displayName) {
+                displayName.value = '';
+            }
+            studentName.innerText = '';
+            photoURL.src = '';
         }
     });
 </script>
 
 
+<!--WHAT WE HAD ORIGIALLY BELOW-->
+
+<!--<script>-->
+<!--    const fbauth = document.querySelector('fbauth-element');-->
+<!--    &lt;!&ndash;this should be obsolete as soon as we get httpSession&ndash;&gt;-->
+<!--    const uid = document.getElementById('uid');-->
+<!--    const studentName = document.getElementById('student-name');-->
+<!--    const displayName = document.getElementById('display-name');-->
+<!--    const photoURL = document.getElementById('photo-url');-->
+<!--    // console.log('line13: ', displayName); - for debugging purposes-->
+<!--    fbauth.addEventListener('user-changed', (event) => {-->
+<!--        // console.log('line15: ' + displayName.value); - for debugging purposes-->
+<!--        &lt;!&ndash; if already in sessionStorage, then skip next section.&ndash;&gt;-->
+<!--        const {newValue} = event.detail;-->
+<!--        if (newValue) {-->
+<!--            uid.value = newValue.uid;-->
+<!--            studentName.innerText = newValue.displayName;-->
+<!--            photoURL.src = newValue.photoURL;-->
+<!--            //..., null, 2)); = outputs JSON data in a prettier format for console output-->
+<!--            console.log('newValue: ' + JSON.stringify(newValue, null, 2))-->
+<!--            fetch("/send-oauth", {-->
+<!--                method: "POST",-->
+<!--                headers: {-->
+<!--                    "Content-Type": "application/json",-->
+<!--                },-->
+<!--                body: JSON.stringify({-->
+<!--                    displayName: newValue.displayName,-->
+<!--                    uid: newValue.uid,-->
+<!--                    // ADDED LINE BELOW-->
+<!--                    photoURL: newValue.photoURL // Add this line-->
+
+<!--                }),-->
+<!--            })-->
+<!--                .then(response => response.json());-->
+<!--            &lt;!&ndash; persist in sessionStorage here.&ndash;&gt;-->
+<!--        } else {-->
+<!--            // uid.value = '';-->
+<!--            studentName.innerText = '';-->
+<!--            photoURL.src = '';-->
+<!--        }-->
+<!--        if (newValue) {-->
+<!--            displayName.value = newValue.displayName;-->
+<!--            studentName.innerText = newValue.displayName;-->
+<!--            photoURL.src = newValue.photoURL;-->
+<!--            console.log('line24: ' + displayName.value);-->
+<!--        } else {-->
+<!--            displayName.value = '';-->
+<!--            studentName.innerText = '';-->
+<!--            photoURL.src = '';-->
+<!--            // studentName.innerText = '';-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->

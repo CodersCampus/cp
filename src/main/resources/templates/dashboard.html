@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
-
-<body layout="layout-secured">
+<body class="ui-background">
 <fbauth-element headless>
-    <div layout="layout-home">
+    <div>
         <header th:replace="~{fragments/header :: header(${activePage})}"></header>
         <div class="ga-content-main">
-            <!-- Page content goes here -->
             <div>
                 <main>
                     <form method="post" action="/student/create" class="ui-form">
