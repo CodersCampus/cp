@@ -22,6 +22,7 @@ public class Checkin {
 	private Instant endTime;
 	private CodingType codingType;
 	private Integer issueNumber;
+	private String comment;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "student_id")
 	private Student student;
@@ -146,13 +147,21 @@ public class Checkin {
 		FOUNDATIONS, OBSERVER,  CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
 	}
 
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	@Override
 	public String toString() {
 		return "Checkin{" +
 				"id=" + id +
 				", uid='" + uid + '\'' +
 				", date=" + date +
-				", assignment=" + nextAssignment +
+				", nextAssignment=" + nextAssignment +
 				", blockers=" + blockers +
 				", blockerDescription='" + blockerDescription + '\'' +
 				", isSetUp=" + isSetUp +
@@ -160,8 +169,9 @@ public class Checkin {
 				", role=" + role +
 				", startTime=" + startTime +
 				", endTime=" + endTime +
-				", issueNumber=" + issueNumber +
 				", codingType=" + codingType +
+				", issueNumber=" + issueNumber +
+				", comment='" + comment + '\'' +
 				", student=" + student +
 				'}';
 	}
