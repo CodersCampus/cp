@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" th:with="checkinService=${@checkinService}">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
 <fbauth-element headless>
@@ -20,6 +20,7 @@
                         <table>
                             <thead>
                             <tr>
+                                <th scope="col">Date/Time:</th>
                                 <th scope="col">Next Assignment:</th>
                                 <th scope="col">Blockers:</th>
                                 <th scope="col">Blocker Description:</th>
@@ -33,6 +34,7 @@
                             </thead>
                             <tbody>
                             <tr th:each="checkin: ${checkins}">
+                                <td><span th:text="${@checkinService.getFormattedDate(checkin.date)}" readonly></span></td>
                                 <td><span th:text="${checkin.nextAssignment}"></span></td>
                                 <td><span th:text="${checkin.blockers}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>

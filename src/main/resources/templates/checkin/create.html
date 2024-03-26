@@ -17,9 +17,7 @@
             <div class="ga-content-main">
                 <main>
                     <form method="post" class="ui-form" action="/checkin/create">
-<!--                        <h1 class="title-small">Create Checkin</h1>-->
                         <input name="uid" type="hidden" id="uid"/>
-
                         <div class="ui-input-field">
                             <label class="ui-label">Next Assignment:</label>
                             <div class="ui-text-input">
@@ -45,7 +43,6 @@
                         <!--                        <br><br>-->
                         <div id="controlsToToggle" style="display: none;">
                             <div class="ui-toggle-controls">
-
                                 <label class="ui-checkbox">
                                     <input type="checkbox" th:field="${checkin.isSetUp}"/>
                                     <span>My box is ready for LiveCoding</span>
@@ -79,9 +76,9 @@
                             </div>
                         </div>
 
-
+                        <input type="hidden" name="clientTimeZone" id="clientTimeZone" />
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
-                        <button class="ui-nav-item ui-button-secondary" type=""><span>Start Time/End Time</span></button>
+                        <button class="ui-nav-item ui-button-secondary" type="button"><span>Start Time/End Time</span></button>
                     </form>
                 </main>
             </div>
@@ -92,6 +89,7 @@
 <div th:replace="~{fragments/togglescript :: script}"></div>
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
+<div th:replace="~{fragments/timezone-script :: script}"></div>
 </body>
 
 </html>

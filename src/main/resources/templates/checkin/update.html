@@ -25,6 +25,7 @@
                                 <input class="ui-value" type="text" th:field="${checkin.date}" disabled/>
                             </div>
                         </div>
+
                         <div class="ui-input-field">
                             <label class="ui-label">Next Assignment:</label>
                             <div class="ui-text-input">
@@ -44,11 +45,11 @@
                                        th:field="${checkin.blockerDescription}"/>
                             </div>
                         </div>
+
                         <label class="ui-checkbox">
                             <input type="checkbox" id="toggleCheckbox" name="toggleCheckbox"/>
                             <span>This is a LiveCoding session</span>
                         </label>
-                        <!--                        <br><br>-->
                         <div id="controlsToToggle" style="display: none;">
                             <div class="ui-toggle-controls">
 
@@ -84,8 +85,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <input name="clientTimeZone" type="hidden" id="clientTimeZone"/>
                         <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
-                        <button class="ui-nav-item ui-button-secondary" type=""><span>Start Time/End Time</span></button>
+                        <button class="ui-nav-item ui-button-secondary" type="button"><span>Start Time/End Time</span></button>
                         <input name="uid" type="hidden" id="uid"/>
                     </form>
                     <form method="post" action="/checkin/delete" class="ui-form" style="padding-top:0;">
@@ -101,6 +104,7 @@
 <div th:replace="~{fragments/togglescript :: script}"></div>
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
+<div th:replace="~{fragments/timezone-script :: script}"></div>
 </body>
 </html>
 
