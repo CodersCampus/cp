@@ -45,7 +45,17 @@
                                        th:field="${checkin.blockerDescription}"/>
                             </div>
                         </div>
+                        <div class="ui-input-field">
+                            <label class="ui-label">
+                                Comment:
+                            </label>
+                            <div class="ui-text-input">
 
+                                <textarea class="ui-value" cols="20" rows="5"
+                                          name="comment" placeholder="Add a comment"
+                                          th:field="${checkin.comment}"></textarea>
+                            </div>
+                        </div>
                         <label class="ui-checkbox">
                             <input type="checkbox" id="toggleCheckbox" name="toggleCheckbox"/>
                             <span>This is a LiveCoding session</span>
