@@ -22,6 +22,7 @@ public class Checkin {
 	private Instant endTime;
 	private CodingType codingType;
 	private Integer issueNumber;
+	@Column(length = 5000,nullable = true)
 	private String comment;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "student_id")
