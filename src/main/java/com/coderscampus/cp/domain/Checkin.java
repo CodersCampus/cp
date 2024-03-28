@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Checkin {
@@ -27,6 +29,9 @@ public class Checkin {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "student_id")
 	private Student student;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Tag> tag = new ArrayList<Tag>();
 
 	// ID
 	public Long getId() {
@@ -155,25 +160,19 @@ public class Checkin {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-
+	
+	public List<Tag> getTag() {
+		return tag;
+	}
+	public void setTag(List<Tag> tag) {
+		this.tag = tag;
+	}
 	@Override
 	public String toString() {
-		return "Checkin{" +
-				"id=" + id +
-				", uid='" + uid + '\'' +
-				", date=" + date +
-				", nextAssignment=" + nextAssignment +
-				", blockers=" + blockers +
-				", blockerDescription='" + blockerDescription + '\'' +
-				", isSetUp=" + isSetUp +
-				", available=" + available +
-				", role=" + role +
-				", startTime=" + startTime +
-				", endTime=" + endTime +
-				", codingType=" + codingType +
-				", issueNumber=" + issueNumber +
-				", comment='" + comment + '\'' +
-				", student=" + student +
-				'}';
+		return "Checkin [id=" + id + ", uid=" + uid + ", date=" + date + ", nextAssignment=" + nextAssignment
+				+ ", blockers=" + blockers + ", blockerDescription=" + blockerDescription + ", isSetUp=" + isSetUp
+				+ ", available=" + available + ", role=" + role + ", startTime=" + startTime + ", endTime=" + endTime
+				+ ", codingType=" + codingType + ", issueNumber=" + issueNumber + ", comment=" + comment + ", student="
+				+ student + ", tag=" + tag + "]";
 	}
 }
