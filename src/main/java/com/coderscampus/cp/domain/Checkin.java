@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Checkin {
@@ -15,18 +17,12 @@ public class Checkin {
 	private Integer nextAssignment;
 	private Boolean blockers;
 	private String blockerDescription;
-	private Boolean isSetUp;
-	private Boolean available;
-	private Role role;
-	private Instant startTime;
-	private Instant endTime;
-	private CodingType codingType;
-	private Integer issueNumber;
-	@Column(length = 5000,nullable = true)
-	private String comment;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "student_id")
 	private Student student;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ActivityLog> activityLog = new ArrayList<>();
 
 	// ID
 	public Long getId() {
@@ -76,62 +72,6 @@ public class Checkin {
 		this.blockerDescription = blockerDescription;
 	}
 
-	// Is Set Up
-	public Boolean getIsSetUp() {
-		return isSetUp;
-	}
-	public void setIsSetUp(Boolean isSetUp) {
-		this.isSetUp = isSetUp;
-	}
-
-	// Available
-	public Boolean getAvailable() {
-		return available;
-	}
-	public void setAvailable(Boolean available) {
-		this.available = available;
-	}
-
-	// Role
-	public Role getRole() {
-		return role;
-	}
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	// Start Time
-	public Instant getStartTime() {
-		return startTime;
-	}
-	public void setStartTime(Instant startTime) {
-		this.startTime = startTime;
-	}
-
-	// End Time
-	public Instant getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(Instant endTime) {
-		this.endTime = endTime;
-	}
-
-	// Coding Type
-	public CodingType getCodingType() {
-		return codingType;
-	}
-	public void setCodingType(CodingType codingType) {
-		this.codingType = codingType;
-	}
-
-	// Issue Number
-	public Integer getIssueNumber() {
-		return issueNumber;
-	}
-	public void setIssueNumber(Integer issueNumber) {
-		this.issueNumber = issueNumber;
-	}
-
 	// Student
 	public Student getStudent() {
 		return student;
@@ -148,12 +88,12 @@ public class Checkin {
 		FOUNDATIONS, OBSERVER,  CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
 	}
 
-	public String getComment() {
-		return comment;
+	public List<ActivityLog> getActivityLog() {
+		return activityLog;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setActivityLog(List<ActivityLog> activityLog) {
+		this.activityLog = activityLog;
 	}
 
 	@Override
@@ -165,15 +105,8 @@ public class Checkin {
 				", nextAssignment=" + nextAssignment +
 				", blockers=" + blockers +
 				", blockerDescription='" + blockerDescription + '\'' +
-				", isSetUp=" + isSetUp +
-				", available=" + available +
-				", role=" + role +
-				", startTime=" + startTime +
-				", endTime=" + endTime +
-				", codingType=" + codingType +
-				", issueNumber=" + issueNumber +
-				", comment='" + comment + '\'' +
 				", student=" + student +
+				", activityLog=" + activityLog +
 				'}';
 	}
 }
