@@ -169,8 +169,7 @@ _04/03/2024 - Kevin Gallaccio_
 
 >Please Replace **lines 8 through 25** of the `dashboard.html` file    
 >_(on `<div class="ga-content-main">` and below)_
->     
->  . **ALSO: Make sure to check every single thymeleaf field.**
+>
 
 ```HTML
 <main class="ui-welcome-page">
@@ -205,6 +204,10 @@ _04/03/2024 - Kevin Gallaccio_
             </main>
 
 ```
+> #### Techincal Debt:
+>  . **Make sure to check every single thymeleaf field.**   
+> . The `th:if` methods for "if new student" / "if returning student" need to be implemented  
+
 
 ***
 
@@ -275,7 +278,7 @@ _04/03/2024 - Kevin Gallaccio_
 ```
 
 > #### Techincal Debt:
-> > . **Make sure to check every single thymeleaf field.**   
+>  . **Make sure to check every single thymeleaf field.**   
 > . The form needs to redirect to `checkin/update.html`   
 > . We need to decided if we keep "I am ready/available for LiveCoding" or if we change the concept altogether.
 
