@@ -36,55 +36,7 @@
                                        th:field="${checkin.blockerDescription}"/>
                             </div>
                         </div>
-<!--                        <div class="ui-input-field">-->
-<!--                            <label class="ui-label">-->
-<!--                                Comment:-->
-<!--                            </label>-->
-<!--                            <div class="ui-text-input">-->
 
-<!--                                <textarea class="ui-value" cols="20" rows="5"-->
-<!--                                          name="comment" placeholder="Add a comment"-->
-<!--                                          th:field="${checkin.comment}"></textarea>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <label class="ui-checkbox">-->
-<!--                            <input type="checkbox" id="toggleCheckbox" name="toggleCheckbox"/>-->
-<!--                            <span>This is a LiveCoding session</span>-->
-<!--                        </label>-->
-<!--                        <div id="controlsToToggle" style="display: none;">-->
-<!--                            <div class="ui-toggle-controls">-->
-<!--&lt;!&ndash;                                <label class="ui-checkbox">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <input type="checkbox" th:field="${checkin.isSetUp}"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <span>My box is ready for LiveCoding</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
-<!--                                <label class="ui-checkbox">-->
-<!--                                    <input type="checkbox" th:field="${checkin.available}"/>-->
-<!--                                    <span>I am available / willing to Code</span>-->
-<!--                                </label>-->
-<!--                                <div class="ui-input-field">-->
-<!--                                    <label class="ui-label">Role:</label>-->
-<!--                                    <select class="ui-text-dropdown" th:field="*{checkin.role}">-->
-<!--                                        <option class="ui-option" th:each="role : ${roleList}" th:value="${role}"-->
-<!--                                                th:text="${#strings.capitalize(role.toString())}"></option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                                <div class="ui-input-field">-->
-<!--                                    <label class="ui-label">Coding Type:</label>-->
-<!--                                    <select class="ui-text-dropdown" th:field="*{checkin.codingType}">-->
-<!--                                        <option class="ui-option" th:each="codingType : ${codingType}"-->
-<!--                                                th:value="${codingType}"-->
-<!--                                                th:text="${#strings.capitalize(codingType.toString())}"></option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                                <div class="ui-input-field">-->
-<!--                                    <label class="ui-label">Issue Number:</label>-->
-<!--                                    <div class="ui-text-input">-->
-<!--                                        <input class="ui-value" type="number" placeholder="ex: 458"-->
-<!--                                               th:field="${checkin.issueNumber}"/>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
 
                         <input type="hidden" name="clientTimeZone" id="clientTimeZone" />
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
