@@ -27,7 +27,6 @@ public class CheckinController {
 		model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Checkin Read");
 		model.put("isCheckin", true);
-		System.out.println("checkins: " + checkins);
 		return "checkin/read";
 	}
 	
@@ -49,16 +48,19 @@ public class CheckinController {
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Checkin checkin = checkinService.findById(id);
-//		if (checkin.getActivityLog().isEmpty()) {
-//
-//			List<ActivityLog> activityLog = new ArrayList<>();
-//			checkin.setActivityLog(activityLog);
-//		}
 		model.put("checkin", checkin);
+        ActivityLog activityLog = new ActivityLog();
+        model.put("activityLog", activityLog);
         model.addAttribute("pageTitle", "Checkin Update");
 		model.put("isCheckin", true);
 		return "checkin/update";
 	}
+
+    @PostMapping("/update/{id}")
+    public String update(@ModelAttribute("checkin") Checkin checkin, @ModelAttribute("activityLog") ActivityLog activityLog) {
+        checkin.getActivityLog().add(activityLog);
+        return "redirect:/checkin/";
+    }
 
 	@PostMapping("/update")
 	public String update(Checkin checkin, @RequestParam("uid") String uid, @RequestParam("clientTimeZone") String clientTimeZone) {
