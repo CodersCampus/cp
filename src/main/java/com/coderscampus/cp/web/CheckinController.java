@@ -1,7 +1,9 @@
 
 package com.coderscampus.cp.web;
 
+import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.service.ActivityLogService;
 import com.coderscampus.cp.service.CheckinService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,11 @@ public class CheckinController {
 	@GetMapping("/update/{id}")
 	public String fetch(ModelMap model, @PathVariable Long id) {
 		Checkin checkin = checkinService.findById(id);
+//		if (checkin.getActivityLog().isEmpty()) {
+//
+//			List<ActivityLog> activityLog = new ArrayList<>();
+//			checkin.setActivityLog(activityLog);
+//		}
 		model.put("checkin", checkin);
         model.addAttribute("pageTitle", "Checkin Update");
 		model.put("isCheckin", true);
