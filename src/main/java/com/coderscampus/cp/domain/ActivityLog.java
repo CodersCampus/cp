@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
-
+import com.coderscampus.cp.domain.Checkin.Role;
 import com.coderscampus.cp.domain.Checkin.CodingType;
 
 @Entity
@@ -26,10 +26,6 @@ public class ActivityLog {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "checkin_id")
     private Checkin checkin;
-
-    public Boolean getSetUp() { return isSetUp; }
-
-    public void setSetUp(Boolean setUp) { isSetUp = setUp; }
 
     public Long getId() {
         return id;
