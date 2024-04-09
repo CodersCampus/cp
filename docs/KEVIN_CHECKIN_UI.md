@@ -374,14 +374,14 @@ _04/03/2024 - Kevin Gallaccio_
 
                     <div class="ui-horizontal-input-field">
                         <label class="ui-label">Role:</label>
-                        <select class="ui-text-dropdown" th:field="*{checkin.role}">
+                        <select class="ui-text-dropdown" th:field="*{activityLog.role}">
                             <option class="ui-option" th:each="role : ${roleList}" th:value="${role}"
                                     th:text="${#strings.capitalize(role.toString())}"></option>
                         </select>
                     </div>
                     <div class="ui-horizontal-input-field">
                         <label class="ui-label">Coding Type:</label>
-                        <select class="ui-text-dropdown" th:field="*{checkin.codingType}">
+                        <select class="ui-text-dropdown" th:field="*{activityLog.codingType}">
                             <option class="ui-option" th:each="codingType : ${codingType}"
                                     th:value="${codingType}"
                                     th:text="${#strings.capitalize(codingType.toString())}"></option>
@@ -391,7 +391,7 @@ _04/03/2024 - Kevin Gallaccio_
                         <label class="ui-label">Issue Number:</label>
                         <div class="ui-text-input">
                             <input class="ui-value" type="number" placeholder="ex: 458"
-                                   th:field="${checkin.issueNumber}"/>
+                                   th:field="${activityLog.issueNumber}"/>
                         </div>
                     </div>
                     <input type="hidden" name="clientTimeZone" id="clientTimeZone"/>
@@ -415,17 +415,17 @@ _04/03/2024 - Kevin Gallaccio_
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="checkin: ${checkins}">
-                            <td><span th:text="${@checkinService.getFormattedDate(checkin.date)}" readonly></span></td>
+                        <tr th:each="activityLog: ${activityLogs}">
+                            <td><span th:text="${@activityLogService.getFormattedDate(activityLog.date)}" readonly></span></td>
 
 <!--                ABOVE NEEDS TO BE CHANGED TO DISPLAY ONLY TIME AND NOT DATE                   -->
 
-                            <td><span th:text="${checkin.role}"></span></td>
-                            <td><span th:text="${checkin.codingType}"></span></td>
-                            <td><span th:text="${checkin.issueNumber}"></span></td>
+                            <td><span th:text="${activityLog.role}"></span></td>
+                            <td><span th:text="${activityLog.codingType}"></span></td>
+                            <td><span th:text="${activityLog.issueNumber}"></span></td>
                             <td>
                                 <div class="ui-text-input">
-                                    <input class="ui-value" type="text" placeholder="write a comment + press:  ↩" th:field="${checkin.comment}">
+                                    <input class="ui-value" type="text" placeholder="write a comment + press:  ↩" th:field="${activityLog.comment}">
 
 <!--                ABOVE FIELD NEEDS TO POST WHEN RETURN KEY IS PRESSED                           -->
                                 </div>
