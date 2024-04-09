@@ -1,5 +1,6 @@
 package com.coderscampus.cp.web;
 
+import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.service.ActivityLogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ActivityLogController {
     @Autowired
     private ActivityLogService activityLogService;
+
     @PostMapping("/create")
-    public String update(Checkin checkin, @RequestParam("uid") String uid, @RequestParam("clientTimeZone") String clientTimeZone) {
-        checkinService.saveByUid(checkin, uid, clientTimeZone);
-        return "redirect:/checkin/";
+    public String postCreate(ActivityLog activityLog, @RequestParam("uid") String uid, @RequestParam("clientTimeZone") String clientTimeZone) {
+        activityLogService.saveByUid(activityLog, uid, clientTimeZone);
+        return "redirect:/checkin/update";
     }
 }

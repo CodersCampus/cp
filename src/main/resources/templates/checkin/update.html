@@ -61,6 +61,7 @@
                         <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
                     </form>
                     <!--                    <div th:each="role : ${roleList}"></div> Something like this-->
+                    <hr>
                     <form method="post" action="/activityLog/create" class="ui-form">
                         <div class="ui-input-field">
                             <label class="ui-label">
@@ -107,7 +108,7 @@
                                        th:field="${activityLog.issueNumber}"/>
                             </div>
                         </div>
-                        <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Add Activity</span></button>
                     </form>
                 </main>
             </div>
