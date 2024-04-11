@@ -1,15 +1,11 @@
 package com.coderscampus.cp.service;
-
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
+import java.time.Instant;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,9 +19,8 @@ public class CheckinService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Checkin saveByUid(Checkin checkin, String uid, String clientTimeZone) {
+    public Checkin saveByUid(Checkin checkin, String uid) {
         setStudentAndUid(checkin, uid);
-        setDateIfNull(checkin, clientTimeZone);
         return checkinRepo.save(checkin);
     }
 
@@ -37,31 +32,10 @@ public class CheckinService {
         }
     }
 
-    private void setDateIfNull(Checkin checkin, String clientTimeZone) {
+    private void setDateIfNull(Checkin checkin) {
         if (checkin.getDate() == null) {
-            ZoneId clientZoneId = getClientZoneId(clientTimeZone);
-            LocalDateTime clientDateTime = LocalDateTime.now(clientZoneId);
-            LocalDateTime serverDateTime = convertToServerDateTime(clientDateTime, clientZoneId);
-            checkin.setDate(serverDateTime);
+            checkin.setDate(Instant.now());
         }
-    }
-
-    private ZoneId getClientZoneId(String clientTimeZone) {
-        return clientTimeZone != null ? ZoneId.of(clientTimeZone) : ZoneId.systemDefault();
-    }
-
-    private LocalDateTime convertToServerDateTime(LocalDateTime clientDateTime, ZoneId clientZoneId) {
-        return clientDateTime.atZone(clientZoneId)
-                .withZoneSameInstant(ZoneId.systemDefault())
-                .toLocalDateTime();
-    }
-
-    public String getFormattedDate(LocalDateTime date) {
-        if (date == null) {
-            return "";
-        }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy, h:mm a");
-        return date.format(formatter);
     }
 
     public List<Checkin> findAll() {

@@ -40,8 +40,8 @@ public class CheckinController {
 	}
 
 	@PostMapping("/create")
-	public String create(Checkin checkin, @RequestParam("uid") String uid, @RequestParam("clientTimeZone") String clientTimeZone) {
-		checkin = checkinService.saveByUid(checkin, uid, clientTimeZone);
+	public String create(Checkin checkin, @RequestParam("uid") String uid) {
+		checkin = checkinService.saveByUid(checkin, uid);
 		return "redirect:/checkin/";
 	}
 
@@ -63,8 +63,8 @@ public class CheckinController {
     }
 
 	@PostMapping("/update")
-	public String update(Checkin checkin, @RequestParam("uid") String uid, @RequestParam("clientTimeZone") String clientTimeZone) {
-		checkinService.saveByUid(checkin, uid, clientTimeZone);
+	public String update(Checkin checkin, @RequestParam("uid") String uid) {
+		checkinService.saveByUid(checkin, uid);
 		return "redirect:/checkin/";
 	}
 	

@@ -267,7 +267,6 @@ _04/03/2024 - Kevin Gallaccio_
                         <input type="checkbox" th:field="${checkin.isSetUp}"/>
                         <span>My box is ready for LiveCoding</span>
                     </label>
-                    <input type="hidden" name="clientTimeZone" id="clientTimeZone"/>
                     <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
                     <button class="ui-nav-item ui-button-secondary" type="button"><span>Start Time/End Time</span>
                     </button>
@@ -359,7 +358,6 @@ _04/03/2024 - Kevin Gallaccio_
                         <input type="checkbox" th:field="${checkin.isSetUp}"/>
                         <span>My box is ready for LiveCoding</span>
                     </label>
-                    <input type="hidden" name="clientTimeZone" id="clientTimeZone"/>
                     <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
                 </form>
             </div>
@@ -394,7 +392,6 @@ _04/03/2024 - Kevin Gallaccio_
                                    th:field="${activityLog.issueNumber}"/>
                         </div>
                     </div>
-                    <input type="hidden" name="clientTimeZone" id="clientTimeZone"/>
                     <button class="ui-nav-item ui-button" type="submit"><span>Update Status</span></button>
                 </form>
             </div>

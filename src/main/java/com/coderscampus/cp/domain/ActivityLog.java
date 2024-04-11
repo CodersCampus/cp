@@ -1,8 +1,5 @@
 package com.coderscampus.cp.domain;
-
 import jakarta.persistence.*;
-
-import java.sql.Timestamp;
 import java.time.Instant;
 import com.coderscampus.cp.domain.Checkin.Role;
 import com.coderscampus.cp.domain.Checkin.CodingType;
@@ -13,7 +10,7 @@ public class ActivityLog {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String uid;
-	private Timestamp date;
+	private Instant date;
 	private Boolean isSetUp;
 	private Boolean available;
 	private Role role;
@@ -43,12 +40,20 @@ public class ActivityLog {
 		this.uid = uid;
 	}
 
-	public Timestamp getDate() {
+	public Instant getDate() {
 		return date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(Instant date) {
 		this.date = date;
+	}
+
+	public Boolean getSetUp() {
+		return isSetUp;
+	}
+
+	public void setSetUp(Boolean setUp) {
+		isSetUp = setUp;
 	}
 
 	public Boolean getIsSetUp() {
@@ -125,9 +130,19 @@ public class ActivityLog {
 
 	@Override
 	public String toString() {
-		return "ActivityLog [id=" + id + ", uid=" + uid + ", date=" + date + ", isSetUp=" + isSetUp + ", available="
-				+ available + ", role=" + role + ", startTime=" + startTime + ", endTime=" + endTime + ", codingType="
-				+ codingType + ", issueNumber=" + issueNumber + ", comment=" + comment + ", checkin=" + checkin + "]";
+		return "ActivityLog{" +
+				"id=" + id +
+				", uid='" + uid + '\'' +
+				", date=" + date +
+				", isSetUp=" + isSetUp +
+				", available=" + available +
+				", role=" + role +
+				", startTime=" + startTime +
+				", endTime=" + endTime +
+				", codingType=" + codingType +
+				", issueNumber=" + issueNumber +
+				", comment='" + comment + '\'' +
+				", checkin=" + checkin +
+				'}';
 	}
-
 }
