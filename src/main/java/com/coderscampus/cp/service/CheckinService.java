@@ -20,6 +20,10 @@ public class CheckinService {
     private StudentRepository studentRepo;
 
     public Checkin saveByUid(Checkin checkin, String uid) {
+//        if (checkinRepo.findByUid(uid) == null) {
+//            checkin.setDate(Instant.now());
+//        }
+        setDateIfNull(checkin);
         setStudentAndUid(checkin, uid);
         return checkinRepo.save(checkin);
     }

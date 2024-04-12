@@ -413,7 +413,7 @@ _04/03/2024 - Kevin Gallaccio_
                         </thead>
                         <tbody>
                         <tr th:each="activityLog: ${activityLogs}">
-                            <td><span th:text="${@activityLogService.getFormattedDate(activityLog.date)}" readonly></span></td>
+<!--                            <td><span th:text="${@activityLogService.getFormattedDate(activityLog.date)}" readonly></span></td>-->
 
 <!--                ABOVE NEEDS TO BE CHANGED TO DISPLAY ONLY TIME AND NOT DATE                   -->
 
