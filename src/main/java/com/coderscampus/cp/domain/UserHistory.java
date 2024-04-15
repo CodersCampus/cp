@@ -8,55 +8,61 @@ import java.time.Instant;
 
 @Entity
 public class UserHistory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private String issue;
+  private String name;
 
-    private Instant date;
+  private String issue;
 
-    public Long getId() {
-        return id;
-    }
+  private Instant date;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getIssue() {
-        return issue;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setIssue(String issue) {
-        this.issue = issue;
-    }
+  public String getIssue() {
+    return issue;
+  }
 
+  public void setIssue(String issue) {
+    this.issue = issue;
+  }
 
-    public Instant getDate() {
-        return date;
-    }
+  public Instant getDate() {
+    return date;
+  }
 
-    public void setDate(Instant date) {
-        this.date = date;
-    }
+  public void setDate(Instant date) {
+    this.date = date;
+  }
 
-    @Override
-    public String toString() {
-        return "UserHistory{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", issue='" + issue + '\'' +
-                ", date=" + date +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "UserHistory{"
+        + "id="
+        + id
+        + ", name='"
+        + name
+        + '\''
+        + ", issue='"
+        + issue
+        + '\''
+        + ", date="
+        + date
+        + '}';
+  }
 }

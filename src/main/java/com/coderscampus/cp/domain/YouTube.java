@@ -7,25 +7,25 @@ import jakarta.persistence.Id;
 
 @Entity
 public class YouTube {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String profile;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-	public Long getId() {
-		return id;
-	}
+  private String profile;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public String getProfile() {
-		return profile;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public void setProfile(String profile) {
-		this.profile = profile;
-	}
+  public String getProfile() {
+    return profile;
+  }
 
+  public void setProfile(String profile) {
+    this.profile = profile;
+  }
 }

@@ -1,148 +1,166 @@
 package com.coderscampus.cp.domain;
+
+import com.coderscampus.cp.domain.Checkin.CodingType;
+import com.coderscampus.cp.domain.Checkin.Role;
 import jakarta.persistence.*;
 import java.time.Instant;
-import com.coderscampus.cp.domain.Checkin.Role;
-import com.coderscampus.cp.domain.Checkin.CodingType;
 
 @Entity
 public class ActivityLog {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String uid;
-	private Instant date;
-	private Boolean isSetUp;
-	private Boolean available;
-	private Role role;
-	private Instant startTime;
-	private Instant endTime;
-	private CodingType codingType;
-	private Integer issueNumber;
-	@Column(length = 5000, nullable = true)
-	private String comment;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "checkin_id")
-	private Checkin checkin;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-	public Long getId() {
-		return id;
-	}
+  private String uid;
+  private Instant date;
+  private Boolean isSetUp;
+  private Boolean available;
+  private Role role;
+  private Instant startTime;
+  private Instant endTime;
+  private CodingType codingType;
+  private Integer issueNumber;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  @Column(length = 5000, nullable = true)
+  private String comment;
 
-	public String getUid() {
-		return uid;
-	}
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "checkin_id")
+  private Checkin checkin;
 
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public Instant getDate() {
-		return date;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public void setDate(Instant date) {
-		this.date = date;
-	}
+  public String getUid() {
+    return uid;
+  }
 
-	public Boolean getSetUp() {
-		return isSetUp;
-	}
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
 
-	public void setSetUp(Boolean setUp) {
-		isSetUp = setUp;
-	}
+  public Instant getDate() {
+    return date;
+  }
 
-	public Boolean getIsSetUp() {
-		return isSetUp;
-	}
+  public void setDate(Instant date) {
+    this.date = date;
+  }
 
-	public void setIsSetUp(Boolean isSetUp) {
-		this.isSetUp = isSetUp;
-	}
+  public Boolean getSetUp() {
+    return isSetUp;
+  }
 
-	public Boolean getAvailable() {
-		return available;
-	}
+  public void setSetUp(Boolean setUp) {
+    isSetUp = setUp;
+  }
 
-	public void setAvailable(Boolean available) {
-		this.available = available;
-	}
+  public Boolean getIsSetUp() {
+    return isSetUp;
+  }
 
-	public Role getRole() {
-		return role;
-	}
+  public void setIsSetUp(Boolean isSetUp) {
+    this.isSetUp = isSetUp;
+  }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+  public Boolean getAvailable() {
+    return available;
+  }
 
-	public Instant getStartTime() {
-		return startTime;
-	}
+  public void setAvailable(Boolean available) {
+    this.available = available;
+  }
 
-	public void setStartTime(Instant startTime) {
-		this.startTime = startTime;
-	}
+  public Role getRole() {
+    return role;
+  }
 
-	public Instant getEndTime() {
-		return endTime;
-	}
+  public void setRole(Role role) {
+    this.role = role;
+  }
 
-	public void setEndTime(Instant endTime) {
-		this.endTime = endTime;
-	}
+  public Instant getStartTime() {
+    return startTime;
+  }
 
-	public CodingType getCodingType() {
-		return codingType;
-	}
+  public void setStartTime(Instant startTime) {
+    this.startTime = startTime;
+  }
 
-	public void setCodingType(CodingType codingType) {
-		this.codingType = codingType;
-	}
+  public Instant getEndTime() {
+    return endTime;
+  }
 
-	public Integer getIssueNumber() {
-		return issueNumber;
-	}
+  public void setEndTime(Instant endTime) {
+    this.endTime = endTime;
+  }
 
-	public void setIssueNumber(Integer issueNumber) {
-		this.issueNumber = issueNumber;
-	}
+  public CodingType getCodingType() {
+    return codingType;
+  }
 
-	public String getComment() {
-		return comment;
-	}
+  public void setCodingType(CodingType codingType) {
+    this.codingType = codingType;
+  }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+  public Integer getIssueNumber() {
+    return issueNumber;
+  }
 
-	public Checkin getCheckin() {
-		return checkin;
-	}
+  public void setIssueNumber(Integer issueNumber) {
+    this.issueNumber = issueNumber;
+  }
 
-	public void setCheckin(Checkin checkin) {
-		this.checkin = checkin;
-	}
+  public String getComment() {
+    return comment;
+  }
 
-	@Override
-	public String toString() {
-		return "ActivityLog{" +
-				"id=" + id +
-				", uid='" + uid + '\'' +
-				", date=" + date +
-				", isSetUp=" + isSetUp +
-				", available=" + available +
-				", role=" + role +
-				", startTime=" + startTime +
-				", endTime=" + endTime +
-				", codingType=" + codingType +
-				", issueNumber=" + issueNumber +
-				", comment='" + comment + '\'' +
-				", checkin=" + checkin +
-				'}';
-	}
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
+
+  public Checkin getCheckin() {
+    return checkin;
+  }
+
+  public void setCheckin(Checkin checkin) {
+    this.checkin = checkin;
+  }
+
+  @Override
+  public String toString() {
+    return "ActivityLog{"
+        + "id="
+        + id
+        + ", uid='"
+        + uid
+        + '\''
+        + ", date="
+        + date
+        + ", isSetUp="
+        + isSetUp
+        + ", available="
+        + available
+        + ", role="
+        + role
+        + ", startTime="
+        + startTime
+        + ", endTime="
+        + endTime
+        + ", codingType="
+        + codingType
+        + ", issueNumber="
+        + issueNumber
+        + ", comment='"
+        + comment
+        + '\''
+        + ", checkin="
+        + checkin
+        + '}';
+  }
 }

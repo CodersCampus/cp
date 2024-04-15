@@ -8,38 +8,37 @@ import jakarta.persistence.Id;
 @Entity
 public class Resume {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String resumeFile; // TODO decide on how we are storing the resume file itself
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    public Resume() {}
-    public Resume(Long id, String resumeFile) {
-        this.id = id;
-        this.resumeFile = resumeFile;
-    }
+  private String resumeFile; // TODO decide on how we are storing the resume file itself
 
-    public Long getId() {
-        return id;
-    }
+  public Resume() {}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Resume(Long id, String resumeFile) {
+    this.id = id;
+    this.resumeFile = resumeFile;
+  }
 
-    public String getResumeFile() {
-        return resumeFile;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setResumeFile(String resumeFile) {
-        this.resumeFile = resumeFile;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    @Override
-    public String toString() {
-        return "Resume{" +
-                "id=" + id +
-                ", resumeFile='" + resumeFile + '\'' +
-                '}';
-    }
+  public String getResumeFile() {
+    return resumeFile;
+  }
+
+  public void setResumeFile(String resumeFile) {
+    this.resumeFile = resumeFile;
+  }
+
+  @Override
+  public String toString() {
+    return "Resume{" + "id=" + id + ", resumeFile='" + resumeFile + '\'' + '}';
+  }
 }

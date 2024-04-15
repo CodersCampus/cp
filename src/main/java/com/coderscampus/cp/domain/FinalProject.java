@@ -8,49 +8,47 @@ import jakarta.persistence.Id;
 @Entity
 public class FinalProject {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String title;
-    private String url;
-    public FinalProject() {}
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    public FinalProject(Long id, String title, String url) {
-        this.id = id;
-        this.title = title;
-        this.url = url;
-    }
+  private String title;
+  private String url;
 
-    public Long getId() {
-        return id;
-    }
+  public FinalProject() {}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public FinalProject(Long id, String title, String url) {
+    this.id = id;
+    this.title = title;
+    this.url = url;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public String getUrl() {
-        return url;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    @Override
-    public String toString() {
-        return "FinalProject{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", url='" + url + '\'' +
-                '}';
-    }
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  @Override
+  public String toString() {
+    return "FinalProject{" + "id=" + id + ", title='" + title + '\'' + ", url='" + url + '\'' + '}';
+  }
 }

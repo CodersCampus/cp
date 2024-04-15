@@ -1,4 +1,5 @@
 package com.coderscampus.cp.domain;
+
 import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -6,133 +7,153 @@ import java.util.List;
 
 @Entity
 public class Checkin {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String uid;
-    private Instant date;
-    private Integer nextAssignment;
-    private Boolean blockers;
-    private String blockerDescription;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_id")
-    private Student student;
-    private Role role;
-    private CodingType codingType;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
+  private String uid;
+  private Instant date;
+  private Integer nextAssignment;
+  private Boolean blockers;
+  private String blockerDescription;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ActivityLog> activityLog = new ArrayList<>();
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "student_id")
+  private Student student;
 
-    // ID
-    public Long getId() {
-        return id;
-    }
+  private Role role;
+  private CodingType codingType;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  private List<ActivityLog> activityLog = new ArrayList<>();
 
-    // UID
-    public String getUid() {
-        return uid;
-    }
+  // ID
+  public Long getId() {
+    return id;
+  }
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    // Date
+  // UID
+  public String getUid() {
+    return uid;
+  }
 
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
 
-    public Instant getDate() {
-        return date;
-    }
+  // Date
 
-    public void setDate(Instant date) {
-        this.date = date;
-    }
+  public Instant getDate() {
+    return date;
+  }
 
-    // Assignment
-    public Integer getNextAssignment() {
-        return nextAssignment;
-    }
+  public void setDate(Instant date) {
+    this.date = date;
+  }
 
-    public void setNextAssignment(Integer nextAssignment) {
-        this.nextAssignment = nextAssignment;
-    }
+  // Assignment
+  public Integer getNextAssignment() {
+    return nextAssignment;
+  }
 
-    // Blockers
-    public Boolean getBlockers() {
-        return blockers;
-    }
+  public void setNextAssignment(Integer nextAssignment) {
+    this.nextAssignment = nextAssignment;
+  }
 
-    public void setBlockers(Boolean blockers) {
-        this.blockers = blockers;
-    }
+  // Blockers
+  public Boolean getBlockers() {
+    return blockers;
+  }
 
-    // Blocker Description
-    public String getBlockerDescription() {
-        return blockerDescription;
-    }
+  public void setBlockers(Boolean blockers) {
+    this.blockers = blockers;
+  }
 
-    public void setBlockerDescription(String blockerDescription) {
-        this.blockerDescription = blockerDescription;
-    }
+  // Blocker Description
+  public String getBlockerDescription() {
+    return blockerDescription;
+  }
 
-    // Student
-    public Student getStudent() {
-        return student;
-    }
+  public void setBlockerDescription(String blockerDescription) {
+    this.blockerDescription = blockerDescription;
+  }
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
+  // Student
+  public Student getStudent() {
+    return student;
+  }
 
-    public Role getRole() {
-        return role;
-    }
+  public void setStudent(Student student) {
+    this.student = student;
+  }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+  public Role getRole() {
+    return role;
+  }
 
-    public CodingType getCodingType() {
-        return codingType;
-    }
+  public void setRole(Role role) {
+    this.role = role;
+  }
 
-    public void setCodingType(CodingType codingType) {
-        this.codingType = codingType;
-    }
+  public CodingType getCodingType() {
+    return codingType;
+  }
 
-    public List<ActivityLog> getActivityLog() {
-        return activityLog;
-    }
+  public void setCodingType(CodingType codingType) {
+    this.codingType = codingType;
+  }
 
-    public void setActivityLog(List<ActivityLog> activityLog) {
-        this.activityLog = activityLog;
-    }
+  public List<ActivityLog> getActivityLog() {
+    return activityLog;
+  }
 
-    @Override
-    public String toString() {
-        return "Checkin{" +
-                "id=" + id +
-                ", uid='" + uid + '\'' +
-                ", date=" + date +
-                ", nextAssignment=" + nextAssignment +
-                ", blockers=" + blockers +
-                ", blockerDescription='" + blockerDescription + '\'' +
-                ", student=" + student +
-                ", activityLog=" + activityLog +
-                '}';
-    }
+  public void setActivityLog(List<ActivityLog> activityLog) {
+    this.activityLog = activityLog;
+  }
 
-    // ENUMS
-    public enum CodingType {
-        FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
-    }
+  @Override
+  public String toString() {
+    return "Checkin{"
+        + "id="
+        + id
+        + ", uid='"
+        + uid
+        + '\''
+        + ", date="
+        + date
+        + ", nextAssignment="
+        + nextAssignment
+        + ", blockers="
+        + blockers
+        + ", blockerDescription='"
+        + blockerDescription
+        + '\''
+        + ", student="
+        + student
+        + ", activityLog="
+        + activityLog
+        + '}';
+  }
 
-    public enum Role {
-        FOUNDATIONS, OBSERVER, CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
-    }
+  // ENUMS
+  public enum CodingType {
+    FOUNDATIONS,
+    CRUD,
+    CODE_REVIEW,
+    DESIGN,
+    DOCUMENTATION
+  }
+
+  public enum Role {
+    FOUNDATIONS,
+    OBSERVER,
+    CODER,
+    GUIDE,
+    SCRUM_MASTER,
+    PRODUCT_OWNER
+  }
 }
