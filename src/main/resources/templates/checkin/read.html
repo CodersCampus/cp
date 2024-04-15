@@ -35,7 +35,7 @@
                             </thead>
                             <tbody>
                             <tr th:each="checkin: ${checkins}">
-<!--                                <td><span th:text="${@checkinService.getFormattedDate(checkin.date)}" readonly></span></td>-->
+                                <td><span th:text="${checkin.date}" readonly></span></td>
                                 <td><span th:text="${checkin.nextAssignment}"></span></td>
                                 <td><span th:text="${checkin.blockers}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>
