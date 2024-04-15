@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ActivityLogService {
-    public void saveByUid(ActivityLog activityLog, String uid, String clientTimeZone) {
+    public void saveByUid(ActivityLog activityLog, String uid) {
 //        setStudentAndUid(checkin, uid);
-//        setDateIfNull(checkin, clientTimeZone);
 //        return checkinRepo.save(checkin);
     }
 }

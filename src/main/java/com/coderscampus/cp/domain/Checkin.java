@@ -1,8 +1,6 @@
 package com.coderscampus.cp.domain;
-
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,7 @@ public class Checkin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String uid;
-    private LocalDateTime date;
+    private Instant date;
     private Integer nextAssignment;
     private Boolean blockers;
     private String blockerDescription;
@@ -45,11 +43,13 @@ public class Checkin {
     }
 
     // Date
-    public LocalDateTime getDate() {
+
+
+    public Instant getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Instant date) {
         this.date = date;
     }
 
