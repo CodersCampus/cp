@@ -1,27 +1,23 @@
 package com.coderscampus.cp.domain;
 
+import jakarta.persistence.*;
+
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Student {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private String uid;
-	private String name;
-	private Integer assignmentNum;
-	private String ide;
-//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String uid;
+    private String name;
+    private Integer assignmentNum;
+    private String ide;
+    private Instant dateCreated;
+    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private GitHub githubHandle;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private LinkedIn linkedIn;
@@ -37,58 +33,62 @@ public class Student {
 //	private Networking networking;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Website website;
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Checkin> checkin = new ArrayList<Checkin>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Checkin> checkin = new ArrayList<Checkin>();
 
+    public Student() {
+    }
 
-	public Student() {}
+    public Student(long id, String name, Integer assignmentNum, String uid) {
+        this.id = id;
+        this.uid = uid;
+        this.name = name;
+        this.assignmentNum = assignmentNum;
+    }
 
-	public Student(long id,  String name, Integer assignmentNum, String uid) {
-		this.id = id;
-		this.uid = uid;
-		this.name = name;
-		this.assignmentNum = assignmentNum;
-	}
+    public Instant getDateCreated() { return dateCreated; }
 
-	public long getId() {
-		return id;
-	}
+    public void setDateCreated(Instant dateCreated) { this.dateCreated = dateCreated; }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public String getUid() {
-		return uid;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
+    public String getUid() {
+        return uid;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Integer getAssignmentNum() {
-		return assignmentNum;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAssignmentNum(Integer assignmentNum) {
-		this.assignmentNum = assignmentNum;
-	}
+    public Integer getAssignmentNum() {
+        return assignmentNum;
+    }
 
-	public String getIde() {
-		return ide;
-	}
-	
-	public void setIde(String ide) {
-		this.ide = ide;
-	}
+    public void setAssignmentNum(Integer assignmentNum) {
+        this.assignmentNum = assignmentNum;
+    }
+
+    public String getIde() {
+        return ide;
+    }
+
+    public void setIde(String ide) {
+        this.ide = ide;
+    }
 //	public GitHub getGithubHandle() {
 //		return githubHandle;
 //	}
@@ -154,22 +154,27 @@ public class Student {
 //		this.website = website;
 //	}
 
-	public List<Checkin> getCheckin() {
-		return checkin;
-	}
+    public List<Checkin> getCheckin() {
+        return checkin;
+    }
 
-	public void setCheckin(List<Checkin> checkin) {
-		this.checkin = checkin;
-	}
+    public void setCheckin(List<Checkin> checkin) {
+        this.checkin = checkin;
+    }
 
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", uid=" + uid + ", name=" + name + ", assignmentNum=" + assignmentNum + ", ide="
-				+ ide + ", checkin=" + checkin + "]";
-	}
-
-
-//	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", uid='" + uid + '\'' +
+                ", name='" + name + '\'' +
+                ", assignmentNum=" + assignmentNum +
+                ", ide='" + ide + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", checkin=" + checkin +
+                '}';
+    }
+    //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
 //				   FinalProject finalProject, Resume resume, Foobar foobar, Networking networking, Website website, List<Checkin> checkin) {
 //		super();
 //		this.id = id;
@@ -188,5 +193,5 @@ public class Student {
 //		this.checkin = checkin;
 //	}
 
-	
+
 }

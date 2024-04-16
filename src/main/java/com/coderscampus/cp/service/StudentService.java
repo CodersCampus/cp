@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.RuntimeErrorException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,7 @@ public class StudentService {
     public Student saveByUid(Student student, String uid) {
         Student foundStudent =  studentRepo.findByUid(uid);
           if (foundStudent == null) {
+              student.setDateCreated(Instant.now());
             student.setUid(uid);
             return studentRepo.save(student);
         }

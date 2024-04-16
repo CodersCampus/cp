@@ -98,13 +98,18 @@
                             </div>
                         </div>
                         -->
+                        <div class="ui-input-field">
+                            <label class="ui-label">Profile Created On:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" type="text" th:field="${student.dateCreated}" disabled/>
+                            </div>
+                        </div>
                         <button onfocus="assignUid()" class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
                     </form>
                     <form method="post" action="/student/delete" class="ui-form" style="padding-top:0;">
                         <input type="hidden" id="new-uid" th:field="${student.id}"/>
                         <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
                     </form>
-
                 </main>
             </div>
         </div>
