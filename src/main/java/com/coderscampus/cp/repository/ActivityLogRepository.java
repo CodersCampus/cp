@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ActivityLogRepository extends JpaRepository<ActivityLog, Long> {
+
+	ActivityLog findByUid(String uid);
 }
 

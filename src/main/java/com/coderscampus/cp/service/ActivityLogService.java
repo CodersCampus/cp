@@ -1,20 +1,30 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.ActivityLog;
-import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.repository.ActivityLogRepository;
-import com.coderscampus.cp.repository.CheckinRepository;
+import java.time.Instant;
 
-import jakarta.transaction.Transactional;
-
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.coderscampus.cp.domain.ActivityLog;
+import com.coderscampus.cp.repository.ActivityLogRepository;
 
 @Service
 public class ActivityLogService {
-    public void saveByUid(ActivityLog activityLog, String uid) {
-//        setStudentAndUid(checkin, uid);
-//        return checkinRepo.save(checkin);
-    }
+
+	@Autowired
+	private ActivityLogRepository activityLogRepo;
+
+	public ActivityLog saveByUid(ActivityLog activityLog, String uid) {
+		if(uid.isEmpty()) {
+			return null;
+		}
+		ActivityLog foundActivityLog = activityLogRepo.findByUid(uid);
+		if (foundActivityLog == null) {
+			activityLog.setDate(Instant.now());
+			activityLog.setUid(uid);
+			return activityLogRepo.save(activityLog);
+		}
+		return activityLogRepo.save(foundActivityLog);
+
+	}
 }
