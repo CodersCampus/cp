@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Entity
 public class UserHistory {
@@ -16,8 +15,7 @@ public class UserHistory {
 
     private String issue;
 
-    private LocalDateTime date;
-
+    private Instant date;
 
     public Long getId() {
         return id;
@@ -44,11 +42,11 @@ public class UserHistory {
     }
 
 
-    public LocalDateTime getDate() {
+    public Instant getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Instant date) {
         this.date = date;
     }
 

@@ -33,11 +33,11 @@ public class SpringProjectController {
     }
 
     @GetMapping("/")
-    public String getDashboard(ModelMap model, HttpSession httpSession, String clientTimeZone) {
+    public String getDashboard(ModelMap model, HttpSession httpSession) {
         String uid = (String)httpSession.getAttribute("uid");
         String displayName = (String)httpSession.getAttribute("displayName");
-        Checkin checkin = new Checkin();
-        checkin = checkinService.saveByUid(checkin, uid, clientTimeZone);
+//        Checkin checkin = new Checkin();
+//        checkin = checkinService.saveByUid(checkin, uid);
         Student student = new Student();
 		model.put("student", student);
     	return "dashboard";

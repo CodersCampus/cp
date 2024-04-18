@@ -16,8 +16,8 @@ public class ActivityLogController {
     private ActivityLogService activityLogService;
 
     @PostMapping("/create")
-    public String postCreate(ActivityLog activityLog, @RequestParam("uid") String uid, @RequestParam("clientTimeZone") String clientTimeZone) {
-        activityLogService.saveByUid(activityLog, uid, clientTimeZone);
+    public String postCreate(ActivityLog activityLog, @RequestParam("uid") String uid) {
+        activityLogService.saveByUid(activityLog, uid);
         return "redirect:/checkin/update";
     }
 }
