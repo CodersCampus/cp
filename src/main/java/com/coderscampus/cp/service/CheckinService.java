@@ -1,10 +1,12 @@
 package com.coderscampus.cp.service;
+
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.Instant;
 import java.util.Comparator;
 import java.util.List;

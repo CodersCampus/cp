@@ -12,7 +12,7 @@ public class ObjectNameHere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // ADD INSTANCE VARIABLES HERE
-    
+
 }
 
 // ADD GETTERS AND SETTERS HERE
@@ -38,7 +38,6 @@ public interface CheckinRepository extends JpaRepository<ObjectNameHere, Long> {
 }
 
 ```
-
 
 ## Service
 

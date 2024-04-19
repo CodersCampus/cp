@@ -13,7 +13,9 @@ public class FinalProject {
     private Long id;
     private String title;
     private String url;
-    public FinalProject() {}
+
+    public FinalProject() {
+    }
 
     public FinalProject(Long id, String title, String url) {
         this.id = id;

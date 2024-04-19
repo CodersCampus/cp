@@ -10,36 +10,37 @@
                 <section class="ui-panel-title title-small">Check In</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a></button>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
+                        </button>
                     </ul>
                 </nav>
             </div>
             <div class="ga-content-main">
                 <main>
-                    <form method="post" class="ui-form" action="/checkin/create">
-                        <input name="uid" type="hidden" id="uid"/>
+                    <form action="/checkin/create" class="ui-form" method="post">
+                        <input id="uid" name="uid" type="hidden"/>
                         <div class="ui-input-field">
                             <label class="ui-label">Next Assignment:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="number" placeholder="ex: 1, 10, 15..."
-                                       th:field="${checkin.nextAssignment}"/>
+                                <input class="ui-value" placeholder="ex: 1, 10, 15..." th:field="${checkin.nextAssignment}"
+                                       type="number"/>
                             </div>
                         </div>
                         <label class="ui-checkbox">
-                            <input type="checkbox" th:field="${checkin.blockers}"/>
+                            <input th:field="${checkin.blockers}" type="checkbox"/>
                             <span>I have a Blocker</span>
                         </label>
                         <div class="ui-input-field">
                             <label class="ui-label">Blocker Description:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="text" placeholder="ex: my 'while' loop is looping..."
-                                       th:field="${checkin.blockerDescription}"/>
+                                <input class="ui-value" placeholder="ex: my 'while' loop is looping..." th:field="${checkin.blockerDescription}"
+                                       type="text"/>
                             </div>
                         </div>
 
 
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
-<!--                        <button class="ui-nav-item ui-button-secondary" type="button"><span>Start Time/End Time</span></button>-->
+                        <!--                        <button class="ui-nav-item ui-button-secondary" type="button"><span>Start Time/End Time</span></button>-->
                     </form>
                 </main>
             </div>

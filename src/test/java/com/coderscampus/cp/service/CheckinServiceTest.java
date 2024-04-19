@@ -1,4 +1,5 @@
 package com.coderscampus.cp.service;
+
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
@@ -8,7 +9,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.lang.reflect.Method;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -22,7 +25,6 @@ public class CheckinServiceTest {
 
     @InjectMocks
     private CheckinService checkinService;
-
 
 
     @Test
@@ -49,10 +51,6 @@ public class CheckinServiceTest {
         assertEquals(student, checkin.getStudent());
         assertEquals(uid, checkin.getUid());
     }
-
-
-
-
 
 
 }

@@ -19,32 +19,32 @@
             </div>
             <div class="ga-content-main">
                 <main>
-                    <form method="post" action="/checkin/update" class="ui-form">
-                        <input class="form-control" type="hidden" th:field="${checkin.id}"/> <br>
+                    <form action="/checkin/update" class="ui-form" method="post">
+                        <input class="form-control" th:field="${checkin.id}" type="hidden"/> <br>
                         <div class="ui-input-field">
                             <label class="ui-label">Date:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="text" th:field="${checkin.date}" disabled/>
+                                <input class="ui-value" disabled th:field="${checkin.date}" type="text"/>
                             </div>
                         </div>
 
                         <div class="ui-input-field">
                             <label class="ui-label">Next Assignment:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="number" placeholder="ex: 1, 10, 15..."
-                                       th:field="${checkin.nextAssignment}"/>
+                                <input class="ui-value" placeholder="ex: 1, 10, 15..." th:field="${checkin.nextAssignment}"
+                                       type="number"/>
                             </div>
                         </div>
 
                         <label class="ui-checkbox">
-                            <input type="checkbox" th:field="${checkin.blockers}"/>
+                            <input th:field="${checkin.blockers}" type="checkbox"/>
                             <span>I have a Blocker</span>
                         </label>
                         <div class="ui-input-field">
                             <label class="ui-label">Blocker Description:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="text" placeholder="ex: my 'while' loop is looping..."
-                                       th:field="${checkin.blockerDescription}"/>
+                                <input class="ui-value" placeholder="ex: my 'while' loop is looping..." th:field="${checkin.blockerDescription}"
+                                       type="text"/>
                             </div>
                         </div>
                         <div>
@@ -53,58 +53,58 @@
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
                         <!--                        <button class="ui-nav-item ui-button-secondary" type="button"><span>Start Time/End Time</span></button>-->
-                        <input name="uid" type="hidden" id="uid"/>
+                        <input id="uid" name="uid" type="hidden"/>
                     </form>
-                    <form method="post" action="/checkin/delete" class="ui-form" style="padding-top:0;">
-                        <input type="hidden" th:field="${checkin.id}"/>
+                    <form action="/checkin/delete" class="ui-form" method="post" style="padding-top:0;">
+                        <input th:field="${checkin.id}" type="hidden"/>
                         <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
                     </form>
                     <!--                    <div th:each="role : ${roleList}"></div> Something like this-->
                     <hr>
-                    <form method="post" action="/activityLog/create" class="ui-form">
+                    <form action="/activityLog/create" class="ui-form" method="post">
                         <div class="ui-input-field">
                             <label class="ui-label">
                                 Comment:
                             </label>
                             <div class="ui-text-input">
-                                    <textarea class="ui-value" cols="20" rows="5" name="comment"
-                                              placeholder="Add a comment"
+                                    <textarea class="ui-value" cols="20" name="comment" placeholder="Add a comment"
+                                              rows="5"
                                               th:field="${activityLog.comment}"></textarea>
                             </div>
                         </div>
                         <label class="ui-checkbox">
-                            <input type="checkbox" id="toggleCheckbox" name="toggleCheckbox"/>
+                            <input id="toggleCheckbox" name="toggleCheckbox" type="checkbox"/>
                             <span>This is a LiveCoding session</span>
                         </label>
                         <label class="ui-checkbox">
-                            <input type="checkbox" th:field="${activityLog.isSetUp}"/>
+                            <input th:field="${activityLog.isSetUp}" type="checkbox"/>
                             <span>My box is ready for LiveCoding</span>
                         </label>
                         <label class="ui-checkbox">
-                            <input type="checkbox" th:field="${activityLog.available}"/>
+                            <input th:field="${activityLog.available}" type="checkbox"/>
                             <span>I am available / willing to Code</span>
                         </label>
                         <div class="ui-input-field">
                             <label class="ui-label">Role:</label>
                             <select class="ui-text-dropdown" th:field="*{checkin.role}">
                                 <option class="ui-option" th:each="role : ${roleList}"
-                                        th:value="${role}"
-                                        th:text="${#strings.capitalize(role.toString())}"></option>
+                                        th:text="${#strings.capitalize(role.toString())}"
+                                        th:value="${role}"></option>
                             </select>
                         </div>
                         <div class="ui-input-field">
                             <label class="ui-label">Coding Type:</label>
                             <select class="ui-text-dropdown" th:field="*{checkin.codingType}">
                                 <option class="ui-option" th:each="codingType : ${codingType}"
-                                        th:value="${codingType}"
-                                        th:text="${#strings.capitalize(codingType.toString())}"></option>
+                                        th:text="${#strings.capitalize(codingType.toString())}"
+                                        th:value="${codingType}"></option>
                             </select>
                         </div>
                         <div class="ui-input-field">
                             <label class="ui-label">Issue Number:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="number" placeholder="ex: 458"
-                                       th:field="${activityLog.issueNumber}"/>
+                                <input class="ui-value" placeholder="ex: 458" th:field="${activityLog.issueNumber}"
+                                       type="number"/>
                             </div>
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Add Activity</span></button>

@@ -10,7 +10,8 @@
                 <section class="ui-panel-title title-small">Foobar</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/foobar/create">Create New</a></button>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/foobar/create">Create New</a>
+                        </button>
                     </ul>
                 </nav>
             </div>
@@ -21,7 +22,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">Name:</th>
-                                <th scope="col"> </th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,7 +30,8 @@
                                 <td><span th:text="${foobar.name}"></span></td>
                                 <td>
                                     <a th:href="@{/foobar/update/{foobarId}(foobarId=${foobar.id})}">
-                                    <i class="fa-solid fa-pen-to-square" style="color: var(--primary); font-size:20px; font-weight:100"></i>
+                                        <i class="fa-solid fa-pen-to-square"
+                                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
                                     </a>
                                 </td>
                             </tr>

@@ -1,20 +1,20 @@
-<header th:fragment="navbar(activePage)" class="header-grid-area">
+<header class="header-grid-area" th:fragment="navbar(activePage)">
     <nav class="ui-navbar">
         <div class="ui-container-fluid">
             <a class="ui-navbar-brand headline-large-bold-italic" href="/">cp</a>
             <ul class="ui-navbar-nav">
                 <li class="ui-nav-item" th:classappend="${isStudent} ? 'active'">
-                    <a class="ui-nav-link" th:classappend="${isStudent} ? 'active-link'" href="/student/">Student</a>
+                    <a class="ui-nav-link" href="/student/" th:classappend="${isStudent} ? 'active-link'">Student</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isUserHistory} ? 'active'">
-                    <a class="ui-nav-link" th:classappend="${isUserHistory} ? 'active-link'" href="/user-history/">User
+                    <a class="ui-nav-link" href="/user-history/" th:classappend="${isUserHistory} ? 'active-link'">User
                         Queue</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isCheckin} ? 'active'">
-                    <a class="ui-nav-link" th:classappend="${isCheckin} ? 'active-link'" href="/checkin/">Check-In</a>
+                    <a class="ui-nav-link" href="/checkin/" th:classappend="${isCheckin} ? 'active-link'">Check-In</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isDatabaseConsole} ? 'active'">
-                    <a class="ui-nav-link" th:classappend="${isDatabaseConsole} ? 'active-link'" href="/h2-console/">Database
+                    <a class="ui-nav-link" href="/h2-console/" th:classappend="${isDatabaseConsole} ? 'active-link'">Database
                         Console</a>
                 </li>
             </ul>

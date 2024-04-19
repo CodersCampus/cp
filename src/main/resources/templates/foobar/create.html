@@ -10,19 +10,20 @@
                 <section class="ui-panel-title title-small">Foobar</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/foobar/create">Create New</a></button>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/foobar/create">Create New</a>
+                        </button>
                     </ul>
                 </nav>
             </div>
             <div class="ga-content-main">
                 <main>
-                    <form method="post" class="ui-form" action="/foobar/create">
-<!--                        <h1 class="title-small">Create Foobar</h1>-->
-                        <input name="uid" type="hidden" id="uid"/>
+                    <form action="/foobar/create" class="ui-form" method="post">
+                        <!--                        <h1 class="title-small">Create Foobar</h1>-->
+                        <input id="uid" name="uid" type="hidden"/>
                         <div class="ui-input-field">
                             <label class="ui-label">Name:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="text" id="display-name" th:field="${foobar.name}"/>
+                                <input class="ui-value" id="display-name" th:field="${foobar.name}" type="text"/>
                             </div>
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>

@@ -5,7 +5,6 @@ _03/08/2024 - Kevin Gallaccio_
 
 > This document will reference all components to be used in HTML sections of the `cp` app.
 
-
 ## Table of content:
 
 - [HTML page](#html-page-template)
@@ -364,9 +363,10 @@ _03/08/2024 - Kevin Gallaccio_
 ***
 
 ## Colors
->CSS variables need to be used inside **stylesheet** (e.g. `background-color: var(--primary);`) or can be added 
+
+> CSS variables need to be used inside **stylesheet** (e.g. `background-color: var(--primary);`) or can be added
 > in-line on **HTML pages** (e.g. `<div style="color: var(--secondary);"`)
-> 
+>
 
 | Color Name          | CSS variable                 | Light                                                 | Dark                                                 | Usage                                                            |
 |---------------------|------------------------------|-------------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------|
@@ -386,22 +386,26 @@ _03/08/2024 - Kevin Gallaccio_
 ***
 
 ## Typography
->All fonts follow [**Material 3** guidelines](https://m3.material.io/styles/typography/type-scale-tokens) for font-size, line-height and letter-spacing
+
+> All fonts follow [**Material 3** guidelines](https://m3.material.io/styles/typography/type-scale-tokens) for
+> font-size, line-height and letter-spacing
 >
 > When designing HTML, please add the corresponding class to a tag for example:   
->`<h1 class="headline-medium-bold-italic"></h1>`
+> `<h1 class="headline-medium-bold-italic"></h1>`
 >
 > You can add as many classes as you wish on in-line HTML:   
 > `<h1 class="ui-title display-small-bold"></h1>`
-> 
+>
 >    Fonts are built responsive for different types of screen as follows:   
->    **Desktop**: 1024px and up   
->    **Tablet**: between 480px and 1024px   
->    **Smartphone**: less than 480px   
->    _feel free to adjust these values in the media queries_
+> **Desktop**: 1024px and up   
+> **Tablet**: between 480px and 1024px   
+> **Smartphone**: less than 480px   
+> _feel free to adjust these values in the media queries_
+
 ### Display
->Display styles are reserved for **short, important text or numerals.**   
-They work best on large screens.
+
+> Display styles are reserved for **short, important text or numerals.**   
+> They work best on large screens.
 
 <img src="images/text/display-small.png">
 
@@ -419,8 +423,9 @@ Code: `class="display-small-bold-italic"`
 <br>
 
 ### Headline
->Headlines are best-suited for **short, high-emphasis text on smaller screens.**   
-These styles can be good for marking primary passages of text or important regions of content.
+
+> Headlines are best-suited for **short, high-emphasis text on smaller screens.**   
+> These styles can be good for marking primary passages of text or important regions of content.
 
 <img src="images/text/headline-large.png">
 
@@ -458,7 +463,9 @@ Code: `class="headline-xs"`
 <br>
 
 ### Title
->Titles are smaller than headline styles, and should be used for **medium-emphasis text** that remains relatively short.    
+
+> Titles are smaller than headline styles, and should be used for **medium-emphasis text** that remains relatively
+> short.    
 > For example, consider using title styles to divide secondary passages of text or secondary regions of content.
 
 <img src="images/text/title-large.png">
@@ -474,7 +481,8 @@ Code: `class="title-large-thin"`
 <br>
 
 ### Body
->Body styles are used for longer passages of text in the app.
+
+> Body styles are used for longer passages of text in the app.
 
 <img src="images/text/body-large.png">
 

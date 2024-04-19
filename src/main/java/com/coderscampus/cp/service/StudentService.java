@@ -27,9 +27,9 @@ public class StudentService {
     }
 
     public Student saveByUid(Student student, String uid) {
-        Student foundStudent =  studentRepo.findByUid(uid);
-          if (foundStudent == null) {
-              student.setDateCreated(Instant.now());
+        Student foundStudent = studentRepo.findByUid(uid);
+        if (foundStudent == null) {
+            student.setDateCreated(Instant.now());
             student.setUid(uid);
             return studentRepo.save(student);
         }

@@ -1,16 +1,18 @@
 # coder packaging
 
-## Basic Idea 
+## Basic Idea
 
 - We are creating this app to showcase our skills and learn new skills along the way.
 
 - The app will consist of a main database table/ hibernate entity/ java object, the "Spring Project".
 
-- The Spring Project will have an id, a name, a description, a set of contributors, etc.There will be a main page where you can see all of the projects and click each one to be sent to its view.
+- The Spring Project will have an id, a name, a description, a set of contributors, etc.There will be a main page where
+  you can see all of the projects and click each one to be sent to its view.
 
-- Each project will be contained in this parent project. 
+- Each project will be contained in this parent project.
 
 ## What **you** will be doing
+
 You will be responsible for:
 
 - Creating new issues, tickets, features to be added, bugs to be fixed, etc.

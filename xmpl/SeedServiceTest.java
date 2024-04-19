@@ -8,21 +8,21 @@ import org.junit.jupiter.api.Test;
 
 class SeedServiceTest {
 
-	@Test
-	void testRandomTransmission() {
+    @Test
+    void testRandomTransmission() {
 
-		
-		SeedService seedService = new SeedService();
 
-		List<String> transmissions = new ArrayList<String>();
+        SeedService seedService = new SeedService();
 
-		for (int i = 0; i < 20; i++) {
-			transmissions.add(seedService.randomTransmission());
+        List<String> transmissions = new ArrayList<String>();
 
-			
-		}
-		assert (transmissions.contains("Automatic"));
-		assert (transmissions.contains("Manual")); 
-	}
+        for (int i = 0; i < 20; i++) {
+            transmissions.add(seedService.randomTransmission());
+
+
+        }
+        assert (transmissions.contains("Automatic"));
+        assert (transmissions.contains("Manual"));
+    }
 
 }

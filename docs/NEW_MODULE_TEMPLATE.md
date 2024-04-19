@@ -1,6 +1,7 @@
 # New Object Template
 
-This is a basic template based off of the Checkin Module. We are not 100% done with Checkin so this is not quite 100% a Template.
+This is a basic template based off of the Checkin Module. We are not 100% done with Checkin so this is not quite 100% a
+Template.
 Use carefully.
 
 ## Domain
@@ -15,7 +16,7 @@ public class ModuleNameHere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // ADD INSTANCE VARIABLES HERE
-    
+
 }
 
 // ADD GETTERS AND SETTERS HERE
@@ -42,10 +43,10 @@ public interface CheckinRepository extends JpaRepository<ModuleNameHere, Long> {
 
 ```
 
-
 ## Service
 
 ### `service/ObjectService`
+
 - Use `service/CheckinService` as a resource not a template
 
 ```Java
@@ -110,6 +111,7 @@ public class CheckinService {
 ## Web
 
 ### `web/ModuleNameHereService`
+
 - Use `web/CheckinController` as a resource not a template
 
 ```Java
@@ -193,6 +195,7 @@ public class CheckinController {
 ## Templates
 
 ### templates/moduleNameHere/read.html
+
 - Use `checkin/read.html` as a resource, not a template
 
 ```HTML 
@@ -280,6 +283,7 @@ public class CheckinController {
 ```
 
 ### templates/moduleNameHere/create.html
+
 - Use `checkin/create.html` as a resource, not a template
 
 ```HTML
@@ -387,8 +391,8 @@ public class CheckinController {
 </html>
 ```
 
-
 ### templates/moduleNameHere/update.html
+
 - Use `checkin/update.html` as a resource, not a template
 
 ```HTML
@@ -397,68 +401,68 @@ public class CheckinController {
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 
 <body layout="layout-secured">
-	<fbauth-element>
-	<div layout="layout-sidebar">
-		<header th:replace="~{fragments/header :: header(${activePage})}"></header>
-		<div class="sidebar-grid-area">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/checkin/">Checkin Home</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/checkin/create">Create Checkin</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-		<div class="ga-content-main">
-			<main>
-				<form method="post" action="/checkin/update" class="mb-3">
-					<input class="form-control" type="hidden" th:field="${checkin.id}" />
-					<label class="form-label">Date: </label> <input
-						class="form-control" type="text" th:field="${checkin.date}"
-						disabled /> <br> <label class="form-label">Assignment:
-					</label> <input class="form-control" type="number"
-						th:field="${checkin.assignment}" /> <br> <label
-						class="form-label">Blockers: </label> <input type="checkbox"
-						th:field="${checkin.blockers}" /> <br> <label
-						class="form-label">SpringWise: </label> <input type="checkbox"
-						th:field="${checkin.springWise}" /> <br> <label
-						class="form-label">Available: </label> <input type="checkbox"
-						th:field="${checkin.available}" /> <br> <input
-						class="form-control btn btn-primary mt-3" type="submit"
-						value="Update" />
-				</form>
-				<form method="post" action="/checkin/delete" class="mb-3">
-					<input type="hidden" th:field="${checkin.id}" /> <input
-						class="form-control btn btn-danger" type="submit" value="Delete" />
-				</form>
-			</main>
-		</div>
-		<div th:replace="~{fragments/footer :: footer}"></div>
-	</div>
-	</fbauth-element>
-    <script>
-        const fbauth = document.querySelector('fbauth-element');
-        const uid = document.getElementById('uid');
-        console.log("UID: " + uid);
-        const displayName = document.getElementById('display-name');
-        fbauth.addEventListener('user-changed', (event) => {
-            const {newValue} = event.detail;
-            console.log("SETTING UID TO " + newValue.uid + " AND DISPLAY NAME TO " + newValue.displayName);
-            if (newValue) {
-                uid.value = newValue.uid;
-            } else {
-                uid.value = '';
-            }
-            if (newValue) {
-                displayName.value = newValue.displayName;
-            } else {
-                displayName.value = '';
-            }
-        });
-    </script>
+<fbauth-element>
+    <div layout="layout-sidebar">
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div class="sidebar-grid-area">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link active"
+                                                aria-current="page" href="/checkin/">Checkin Home</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                                href="/checkin/create">Create Checkin</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="ga-content-main">
+            <main>
+                <form method="post" action="/checkin/update" class="mb-3">
+                    <input class="form-control" type="hidden" th:field="${checkin.id}"/>
+                    <label class="form-label">Date: </label> <input
+                        class="form-control" type="text" th:field="${checkin.date}"
+                        disabled/> <br> <label class="form-label">Assignment:
+                </label> <input class="form-control" type="number"
+                                th:field="${checkin.assignment}"/> <br> <label
+                        class="form-label">Blockers: </label> <input type="checkbox"
+                                                                     th:field="${checkin.blockers}"/> <br> <label
+                        class="form-label">SpringWise: </label> <input type="checkbox"
+                                                                       th:field="${checkin.springWise}"/> <br> <label
+                        class="form-label">Available: </label> <input type="checkbox"
+                                                                      th:field="${checkin.available}"/> <br> <input
+                        class="form-control btn btn-primary mt-3" type="submit"
+                        value="Update"/>
+                </form>
+                <form method="post" action="/checkin/delete" class="mb-3">
+                    <input type="hidden" th:field="${checkin.id}"/> <input
+                        class="form-control btn btn-danger" type="submit" value="Delete"/>
+                </form>
+            </main>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+<script>
+    const fbauth = document.querySelector('fbauth-element');
+    const uid = document.getElementById('uid');
+    console.log("UID: " + uid);
+    const displayName = document.getElementById('display-name');
+    fbauth.addEventListener('user-changed', (event) => {
+        const {newValue} = event.detail;
+        console.log("SETTING UID TO " + newValue.uid + " AND DISPLAY NAME TO " + newValue.displayName);
+        if (newValue) {
+            uid.value = newValue.uid;
+        } else {
+            uid.value = '';
+        }
+        if (newValue) {
+            displayName.value = newValue.displayName;
+        } else {
+            displayName.value = '';
+        }
+    });
+</script>
 </body>
 
 </html>

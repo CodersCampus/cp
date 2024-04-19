@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Update Coding Category</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-	crossorigin="anonymous" />
-	<link rel="stylesheet" type="text/css" href="/style.css">
+    <meta charset="UTF-8">
+    <title>Update Coding Category</title>
+    <link
+            crossorigin="anonymous"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            rel="stylesheet"/>
+    <link href="/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container-md mx-auto">
-	<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="/">All Projects</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarNav"
-					aria-controls="navbarNav" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/coding-category/">Coding Category Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="/coding-category/create">Create
-								Coding Category</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">All Projects</a>
+            <button aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation" class="navbar-toggler"
+                    data-bs-target="#navbarNav" data-bs-toggle="collapse"
+                    type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a aria-current="page"
+                                            class="nav-link active" href="/coding-category/">Coding Category Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/coding-category/create">Create
+                        Coding Category</a></li>
 
-					</ul>
-				</div>
-			</div>
-		</nav>
-<div>
-	<form method="post" action="/coding-category/update" class="mb-3">
-		<input class="form-control" type="hidden" th:field="${codingCategory.id}" />
-		<label class="form-label">Name: </label> 
-		<input class="form-control" type="text" th:field="${codingCategory.name}" />
-		<input class="form-control btn btn-primary mt-3" type="submit" value="Update" />
-	</form>
-	<form method="post" action="/coding-category/delete" class="mb-3">
-		<input type="hidden" th:field="${codingCategory.id}" /> <input class="form-control btn btn-danger" type="submit" value="Delete" />
-	</form>
-	</div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <form action="/coding-category/update" class="mb-3" method="post">
+            <input class="form-control" th:field="${codingCategory.id}" type="hidden"/>
+            <label class="form-label">Name: </label>
+            <input class="form-control" th:field="${codingCategory.name}" type="text"/>
+            <input class="form-control btn btn-primary mt-3" type="submit" value="Update"/>
+        </form>
+        <form action="/coding-category/delete" class="mb-3" method="post">
+            <input th:field="${codingCategory.id}" type="hidden"/> <input class="form-control btn btn-danger"
+                                                                          type="submit" value="Delete"/>
+        </form>
+    </div>
 </div>
 </body>
 </html>

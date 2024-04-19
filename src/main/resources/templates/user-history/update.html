@@ -10,32 +10,35 @@
                 <section class="ui-panel-title title-small">User Queue</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/user-history/create">Create New</a></button>
-                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page" href="/user-history/">Back</a></button>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/user-history/create">Create
+                            New</a></button>
+                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page"
+                                                                               href="/user-history/">Back</a></button>
                     </ul>
                 </nav>
             </div>
             <div class="ga-content-main">
                 <main>
-                    <form method="post" action="/user-history/update" class="ui-form">
-                        <input class="form-control" type="hidden" th:field="${userHistory.id}"/>
+                    <form action="/user-history/update" class="ui-form" method="post">
+                        <input class="form-control" th:field="${userHistory.id}" type="hidden"/>
 
                         <div class="ui-input-field">
                             <label class="ui-label">Name:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="text" id="display-name" th:field="${userHistory.name}"/>
+                                <input class="ui-value" id="display-name" th:field="${userHistory.name}" type="text"/>
                             </div>
                         </div>
                         <div class="ui-input-field">
                             <label class="ui-label">Issue #:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="number" placeholder="ex: 461" th:field="${userHistory.issue}"/>
+                                <input class="ui-value" placeholder="ex: 461" th:field="${userHistory.issue}"
+                                       type="number"/>
                             </div>
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
                     </form>
-                    <form method="post" action="/user-history/delete" class="ui-form" style="padding-top:0;">
-                        <input type="hidden" th:field="${userHistory.id}"/>
+                    <form action="/user-history/delete" class="ui-form" method="post" style="padding-top:0;">
+                        <input th:field="${userHistory.id}" type="hidden"/>
                         <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
                     </form>
                 </main>

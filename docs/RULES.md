@@ -12,6 +12,6 @@
 - In the future maybe squash commits
 - Unit Testing coverage
 - Remove Sys-out's, console.log's, and comments
-- Changesets 
+- Changesets
 - have issues been closed that are completed
 - Document what we are doing
