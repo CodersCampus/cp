@@ -1,7 +1,7 @@
 # Code Formatting Guide
 This document provides step-by-step instructions on how to use the .editorconfig file located in the root of the project folder in different Integrated Development Environments (IDEs).
 
-<span style="color: red; font-weight: bold">Be sure to format your code before you commit to avoid unnecessary confusion during code reviews.</span>
+<span style="color: red">Be sure to format all changed files **<u>before</u>** you commit to avoid unnecessary confusion during code reviews.</span>
 
 ---
 
@@ -17,14 +17,18 @@ To use the `.editorconfig` file as your formatting option in Eclipse, you will n
 
 1. Open Eclipse.
 2. Go to `Help` `->` `Eclipse Marketplace...`.
-3. In the Eclipse Marketplace dialog, search for `EditorConfig`.
+3. In the `Eclipse Marketplace` dialog, search for `EditorConfig`.
 4. Click `Go`, and from the search results, find `EditorConfig` and click Install.
-5. On the next dialog, tick the `"I accept the terms of the license agreement"` radio button, and then click `Finish`.
+5. In the next dialog, tick the `"I accept the terms of the license agreement"` radio button, and then click `Finish`.
 6. Next, the `Trust Authorities` dialog will open. Click the `Select All` button and then the `Trust Selected` button.
 7. The `Trust Artifacts` dialog will open next. Again, click `Select All` followed by the `Trust Selected` button.
 8. Finally, the `Software Updates` dialog should open. Select the `Restart Now` button. If it doesn't open, just 
 
 Eclipse will now automatically use the `.editorconfig` file in the root of the project for code formatting.
+
+#### To format your code in Eclipse, use the following hotkeys:
++ Windows/Linux: `Ctrl + Shift + F`
++ Mac: `⌘ + Shift + F`
 
 ---
 
@@ -40,6 +44,10 @@ IntelliJ IDEA supports `.editorconfig` files out of the box. Here’s how to ena
 
 IntelliJ IDEA will now automatically use the `.editorconfig` file in the root of the project for code formatting.
 
+#### To format your code in IntelliJ, use the following hotkeys:
++ Windows/Linux: `Ctrl + Alt + L`
++ Mac: `⌥ + ⌘ + L`
+
 ---
 
 ### Visual Studio Code
@@ -51,3 +59,8 @@ Visual Studio Code supports `.editorconfig` files through the `EditorConfig for 
 4. Reload Visual Studio Code after the installation is complete.
 
 Visual Studio Code will now automatically use the `.editorconfig` file in the root of the project for code formatting.
+
+#### To format your code in Visual Studio Code, use the following hotkeys:
++ Windows: `Shift + Alt + F`
++ Mac: `Shift + Option + F`
++ Linux: `Ctrl + Shift + I`
