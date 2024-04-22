@@ -1,8 +1,10 @@
 # Coders Packaging Leadership Basics
 
-Leadership, in this context, defines which people have volunteered to function as the servants of other students, within the project. 
+Leadership, in this context, defines which people have volunteered to function as the servants of other students, within
+the project.
 
-Thus, Leadership, here is a fancy word for an age old concept of [servant/leader](https://en.wikipedia.org/wiki/Servant_leadership).
+Thus, Leadership, here is a fancy word for an age old concept
+of [servant/leader](https://en.wikipedia.org/wiki/Servant_leadership).
 
 ## The Basic Function of This Project
 
@@ -23,13 +25,16 @@ Not necessarily in order
 - Live Coding
 - Feeling Welcome
 
-If 90% of success is showing up, then 90% of the job of the leader is making sure that everyone who wants to participate knows which checkins to show up for, and what will be happening at each! Yup!
+If 90% of success is showing up, then 90% of the job of the leader is making sure that everyone who wants to participate
+knows which checkins to show up for, and what will be happening at each! Yup!
 
-People plan their lives around their priorities. If you want to help people, let them know days in advance which checkins will be cp checkins.
+People plan their lives around their priorities. If you want to help people, let them know days in advance which
+checkins will be cp checkins.
 
 Want to go one step further? Canvas participants regularly, and figure out the best schedules to set!
 
-Not all leaders will serve this function, other leaders provide training, or technical leadership, high speed coding, or even just encouragement. Whatever it takes. This is what servant-leaders do.
+Not all leaders will serve this function, other leaders provide training, or technical leadership, high speed coding, or
+even just encouragement. Whatever it takes. This is what servant-leaders do.
 
 ## Succession
 

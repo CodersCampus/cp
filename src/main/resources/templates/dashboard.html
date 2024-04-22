@@ -8,15 +8,15 @@
         <div class="ga-content-main">
             <div>
                 <main>
-                    <form method="post" action="/student/create" class="ui-form">
+                    <form action="/student/create" class="ui-form" method="post">
                         <h1>Create Student</h1>
-                        <input name="uid" type="hidden" id="uid"/>
+                        <input id="uid" name="uid" type="hidden"/>
                         <div class="mb-3">
-                            <input class="form-control" type="hidden" id="display-name"
-                                    th:field="${student.name}"/>
+                            <input class="form-control" id="display-name" th:field="${student.name}"
+                                   type="hidden"/>
                         </div>
                         <div class="mb-3">
-                            <input onfocus="assignUid()" class="form-control btn btn-primary"
+                            <input class="form-control btn btn-primary" onfocus="assignUid()"
                                    type="submit" value="Create"/>
                         </div>
                     </form>

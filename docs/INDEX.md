@@ -2,6 +2,7 @@
 
 - [5 Tenets](5_TENETS.md)
 - [FAQ for Design & Requirements Documentation](DESIGN_REQS_FAQ.md)
+- [Code Formatting Guide](CODE_FORMATTING_GUIDE.md)
 - [How to make a Release](HOW_TO_MAKE_A_RELEASE.md)
 - [How to Secure Record by User](HOW_TO_SECURE_RECORD_BY_USER.md)
 - [Land Your 1st Dev Job](LAND_YOUR_1st_DEV_JOB.md)

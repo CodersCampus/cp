@@ -4,12 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 @Entity
 public class LinkedIn {
-    public LinkedIn() {
-
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,6 +16,9 @@ public class LinkedIn {
     private String featuredPosts;
     private String activity;
     private String skills;
+    public LinkedIn() {
+
+    }
 
     public LinkedIn(Long id, String decoratedHeader, String collapsedBio, String url, String featuredPosts, String activity, String skills) {
         this.id = id;

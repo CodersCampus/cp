@@ -1,23 +1,21 @@
 package com.coderscampus.cp.web;
 
-import java.util.List;
-
-import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.domain.SpringProject;
+import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.AuthObjectDto;
+import com.coderscampus.cp.repository.SpringProjectRepository;
 import com.coderscampus.cp.service.CheckinService;
+import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.coderscampus.cp.domain.SpringProject;
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.repository.SpringProjectRepository;
-import com.coderscampus.cp.service.StudentService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class SpringProjectController {
@@ -34,13 +32,13 @@ public class SpringProjectController {
 
     @GetMapping("/")
     public String getDashboard(ModelMap model, HttpSession httpSession) {
-        String uid = (String)httpSession.getAttribute("uid");
-        String displayName = (String)httpSession.getAttribute("displayName");
+        String uid = (String) httpSession.getAttribute("uid");
+        String displayName = (String) httpSession.getAttribute("displayName");
 //        Checkin checkin = new Checkin();
 //        checkin = checkinService.saveByUid(checkin, uid);
         Student student = new Student();
-		model.put("student", student);
-    	return "dashboard";
+        model.put("student", student);
+        return "dashboard";
     }
 
     @PostMapping("/send-oauth")
@@ -48,7 +46,7 @@ public class SpringProjectController {
     public String getOauth(@RequestBody AuthObjectDto authDto,
                            HttpSession httpSession) {
         System.out.println("authDto_V1: " + authDto);
-        if(authDto != null){
+        if (authDto != null) {
             httpSession.setAttribute("uid", authDto.getUid());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
 //            DO NOT NEED FOR #512 TO WORK

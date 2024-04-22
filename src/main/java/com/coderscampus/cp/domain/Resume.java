@@ -13,7 +13,9 @@ public class Resume {
     private Long id;
     private String resumeFile; // TODO decide on how we are storing the resume file itself
 
-    public Resume() {}
+    public Resume() {
+    }
+
     public Resume(Long id, String resumeFile) {
         this.id = id;
         this.resumeFile = resumeFile;

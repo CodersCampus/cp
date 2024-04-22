@@ -6,7 +6,6 @@ _04/03/2024 - Kevin Gallaccio_
 > Please take this doc as a companion for implementing the new UI during LiveCoding   
 > Please follow these steps in order.
 
-
 ## Table of content:
 
 - [1. CSS](#css)
@@ -30,7 +29,7 @@ _04/03/2024 - Kevin Gallaccio_
 
 ## CSS
 
->Before starting to copy/paste the html code, you need to add the following to: `/static/css/uistyle.css` 
+> Before starting to copy/paste the html code, you need to add the following to: `/static/css/uistyle.css`
 
 ```CSS
 .big-title {
@@ -144,6 +143,7 @@ _04/03/2024 - Kevin Gallaccio_
     color: var(--primary);
 }
 ```
+
 ***
 
 ## HOME
@@ -152,23 +152,25 @@ _04/03/2024 - Kevin Gallaccio_
 > I tried simplifying the UI and have two different versions for **known users** and **new users**
 
 <a id="home-visuals"></a>
+
 ### Visuals:
 
->if student is returning:
+> if student is returning:
 
 <img src="images/home-light.png">
 <img src="images/home-dark.png">
 
->if student is new:
+> if student is new:
 
 <img src="images/home-new-light.png">
 <img src="images/home-new-dark.png">
 
 <a id="home-code"></a>
+
 ### Code:
 
->Please Replace **lines 8 through 25** of the `dashboard.html` file    
->_(on `<div class="ga-content-main">` and below)_
+> Please Replace **lines 8 through 25** of the `dashboard.html` file    
+> _(on `<div class="ga-content-main">` and below)_
 >
 
 ```HTML
@@ -204,9 +206,10 @@ _04/03/2024 - Kevin Gallaccio_
             </main>
 
 ```
+
 > #### Techincal Debt:
 >  . **Make sure to check every single thymeleaf field.**   
-> . The `th:if` methods for "if new student" / "if returning student" need to be implemented  
+> . The `th:if` methods for "if new student" / "if returning student" need to be implemented
 
 
 ***
@@ -219,19 +222,19 @@ _04/03/2024 - Kevin Gallaccio_
 > _feel free to adjust the features_
 
 <a id="home-visuals"></a>
-### Visuals:
 
+### Visuals:
 
 <img src="images/create-light.png">
 <img src="images/create-dark.png">
 
 
 <a id="home-code"></a>
+
 ### Code:
 
->Please Replace **lines 8 through 95** of the `checkin/create.html` file    
->_(on `<div layout="layout-sidebar">` and below)_
-
+> Please Replace **lines 8 through 95** of the `checkin/create.html` file    
+> _(on `<div layout="layout-sidebar">` and below)_
 
 ```HTML
     <div layout="layout-new">
@@ -288,27 +291,26 @@ _04/03/2024 - Kevin Gallaccio_
 > Checkin Update is the entity that has the most changes  
 > UI is divided into two panels:   
 > . on the left --> Checkin Data   
-> . on the right --> Activity Data    
->    
+> . on the right --> Activity Data
+>
 > _**make sure to check the technical debt at the end of the section !**_
 
 <a id="home-visuals"></a>
-### Visuals:
 
+### Visuals:
 
 <img src="images/update-light.png">
 <img src="images/update-dark.png">
 
 
 <a id="home-code"></a>
+
 ### Code:
 
->Please Replace **lines 8 through 110** of the `checkin/create.html` file    
->_(on `<div layout="layout-sidebar">` and below)_
+> Please Replace **lines 8 through 110** of the `checkin/create.html` file    
+> _(on `<div layout="layout-sidebar">` and below)_
 
 > ⚠ MAKE SURE TO READ ALL THE COMMENTS. ⚠
-
-
 
 ```HTML
 <div layout="layout-live">
@@ -438,8 +440,8 @@ _04/03/2024 - Kevin Gallaccio_
 > #### Techincal Debt:
 > . **Make sure to check every single thymeleaf field.**   
 > . Both forms need to redirect self (`checkin/update.html`)   
-> . `comment` input field also needs to redirect self when pressing **Return ↩** key     
+> . `comment` input field also needs to redirect self when pressing **Return ↩** key
 
 
-    
+
 **************************************************************** 

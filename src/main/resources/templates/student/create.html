@@ -17,23 +17,23 @@
             </div>
             <div class="ga-content-main">
                 <main>
-                    <form method="post" class="ui-form" action="/student/create">
+                    <form action="/student/create" class="ui-form" method="post">
                         <!--                        <h1 class="title-small">Create Student</h1>-->
 
-                        <input name="uid" type="hidden" id="uid"/>
+                        <input id="uid" name="uid" type="hidden"/>
 
                         <div class="ui-input-field">
                             <label class="ui-label">Name:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="text" id="display-name" th:field="${student.name}"/>
+                                <input class="ui-value" id="display-name" th:field="${student.name}" type="text"/>
                             </div>
                         </div>
 
                         <div class="ui-input-field">
                             <label class="ui-label">Assignment #:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="text" placeholder="ex: 1, 10, 15..."
-                                       th:field="${student.assignmentNum}"/>
+                                <input class="ui-value" placeholder="ex: 1, 10, 15..." th:field="${student.assignmentNum}"
+                                       type="text"/>
                             </div>
                         </div>
 
@@ -60,8 +60,8 @@
                         <div class="ui-input-field">
                             <label class="ui-label">IDE:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" type="text" placeholder="ex: IntelliJ, Eclipse..."
-                                       th:field="${student.ide}"/>
+                                <input class="ui-value" placeholder="ex: IntelliJ, Eclipse..." th:field="${student.ide}"
+                                       type="text"/>
                             </div>
                         </div>
 
@@ -100,7 +100,8 @@
                         </div>
                         -->
 
-                        <button onfocus="assignUid()" class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
+                        <button class="ui-nav-item ui-button" onfocus="assignUid()" type="submit"><span>Create</span>
+                        </button>
                     </form>
                 </main>
             </div>

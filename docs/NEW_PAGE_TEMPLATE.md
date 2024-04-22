@@ -53,31 +53,41 @@ For Thymeleaf assistance, please refer to our [Thymeleaf Resources](RESOURCES.md
 
 ## Controller Template
 
-Within `blank_Controller.java` add the following lines of code, on the line above the return path, for each of the methods below.
-> Make sure to update the _pageTitle_ value for each corresponding Controller. 
+Within `blank_Controller.java` add the following lines of code, on the line above the return path, for each of the
+methods below.
+> Make sure to update the _pageTitle_ value for each corresponding Controller.
 
 `@GetMapping("/")`
 
 **home** method
+
 ```Java
-        model.addAttribute("pageTitle", "Checkin Read");
-		model.put("isCheckin", true);
+        model.addAttribute("pageTitle","Checkin Read");
+		model.
+
+put("isCheckin",true);
 ```
 
 `@GetMapping("/create")`
 
 **getCreate** method
+
 ```Java
-        model.addAttribute("pageTitle", "Checkin Create");
-		model.put("isCheckin", true);
+        model.addAttribute("pageTitle","Checkin Create");
+		model.
+
+put("isCheckin",true);
 ```
 
 `@GetMapping("/update/{id}")`
 
 **fetch** method
+
 ```Java
-        model.addAttribute("pageTitle", "Checkin Update");
-		model.put("isCheckin", true);
+        model.addAttribute("pageTitle","Checkin Update");
+		model.
+
+put("isCheckin",true);
 ```
 
 

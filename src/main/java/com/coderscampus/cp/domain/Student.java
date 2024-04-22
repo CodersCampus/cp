@@ -46,9 +46,13 @@ public class Student {
         this.assignmentNum = assignmentNum;
     }
 
-    public Instant getDateCreated() { return dateCreated; }
+    public Instant getDateCreated() {
+        return dateCreated;
+    }
 
-    public void setDateCreated(Instant dateCreated) { this.dateCreated = dateCreated; }
+    public void setDateCreated(Instant dateCreated) {
+        this.dateCreated = dateCreated;
+    }
 
     public long getId() {
         return id;

@@ -9,6 +9,7 @@ public class XmplData {
     public List<XmplDatum> getXmplDataList() {
         return xmplDataList;
     }
+
     public void addXmplData(XmplDatum xmplDatum) {
         xmplDataList.add(xmplDatum);
     }

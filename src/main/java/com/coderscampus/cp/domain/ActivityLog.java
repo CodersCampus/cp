@@ -1,148 +1,150 @@
 package com.coderscampus.cp.domain;
-import jakarta.persistence.*;
-import java.time.Instant;
-import com.coderscampus.cp.domain.Checkin.Role;
+
 import com.coderscampus.cp.domain.Checkin.CodingType;
+import com.coderscampus.cp.domain.Checkin.Role;
+import jakarta.persistence.*;
+
+import java.time.Instant;
 
 @Entity
 public class ActivityLog {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String uid;
-	private Instant date;
-	private Boolean isSetUp;
-	private Boolean available;
-	private Role role;
-	private Instant startTime;
-	private Instant endTime;
-	private CodingType codingType;
-	private Integer issueNumber;
-	@Column(length = 5000, nullable = true)
-	private String comment;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "checkin_id")
-	private Checkin checkin;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String uid;
+    private Instant date;
+    private Boolean isSetUp;
+    private Boolean available;
+    private Role role;
+    private Instant startTime;
+    private Instant endTime;
+    private CodingType codingType;
+    private Integer issueNumber;
+    @Column(length = 5000, nullable = true)
+    private String comment;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "checkin_id")
+    private Checkin checkin;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getUid() {
-		return uid;
-	}
+    public String getUid() {
+        return uid;
+    }
 
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
-	public Instant getDate() {
-		return date;
-	}
+    public Instant getDate() {
+        return date;
+    }
 
-	public void setDate(Instant date) {
-		this.date = date;
-	}
+    public void setDate(Instant date) {
+        this.date = date;
+    }
 
-	public Boolean getSetUp() {
-		return isSetUp;
-	}
+    public Boolean getSetUp() {
+        return isSetUp;
+    }
 
-	public void setSetUp(Boolean setUp) {
-		isSetUp = setUp;
-	}
+    public void setSetUp(Boolean setUp) {
+        isSetUp = setUp;
+    }
 
-	public Boolean getIsSetUp() {
-		return isSetUp;
-	}
+    public Boolean getIsSetUp() {
+        return isSetUp;
+    }
 
-	public void setIsSetUp(Boolean isSetUp) {
-		this.isSetUp = isSetUp;
-	}
+    public void setIsSetUp(Boolean isSetUp) {
+        this.isSetUp = isSetUp;
+    }
 
-	public Boolean getAvailable() {
-		return available;
-	}
+    public Boolean getAvailable() {
+        return available;
+    }
 
-	public void setAvailable(Boolean available) {
-		this.available = available;
-	}
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
 
-	public Role getRole() {
-		return role;
-	}
+    public Role getRole() {
+        return role;
+    }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
-	public Instant getStartTime() {
-		return startTime;
-	}
+    public Instant getStartTime() {
+        return startTime;
+    }
 
-	public void setStartTime(Instant startTime) {
-		this.startTime = startTime;
-	}
+    public void setStartTime(Instant startTime) {
+        this.startTime = startTime;
+    }
 
-	public Instant getEndTime() {
-		return endTime;
-	}
+    public Instant getEndTime() {
+        return endTime;
+    }
 
-	public void setEndTime(Instant endTime) {
-		this.endTime = endTime;
-	}
+    public void setEndTime(Instant endTime) {
+        this.endTime = endTime;
+    }
 
-	public CodingType getCodingType() {
-		return codingType;
-	}
+    public CodingType getCodingType() {
+        return codingType;
+    }
 
-	public void setCodingType(CodingType codingType) {
-		this.codingType = codingType;
-	}
+    public void setCodingType(CodingType codingType) {
+        this.codingType = codingType;
+    }
 
-	public Integer getIssueNumber() {
-		return issueNumber;
-	}
+    public Integer getIssueNumber() {
+        return issueNumber;
+    }
 
-	public void setIssueNumber(Integer issueNumber) {
-		this.issueNumber = issueNumber;
-	}
+    public void setIssueNumber(Integer issueNumber) {
+        this.issueNumber = issueNumber;
+    }
 
-	public String getComment() {
-		return comment;
-	}
+    public String getComment() {
+        return comment;
+    }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	public Checkin getCheckin() {
-		return checkin;
-	}
+    public Checkin getCheckin() {
+        return checkin;
+    }
 
-	public void setCheckin(Checkin checkin) {
-		this.checkin = checkin;
-	}
+    public void setCheckin(Checkin checkin) {
+        this.checkin = checkin;
+    }
 
-	@Override
-	public String toString() {
-		return "ActivityLog{" +
-				"id=" + id +
-				", uid='" + uid + '\'' +
-				", date=" + date +
-				", isSetUp=" + isSetUp +
-				", available=" + available +
-				", role=" + role +
-				", startTime=" + startTime +
-				", endTime=" + endTime +
-				", codingType=" + codingType +
-				", issueNumber=" + issueNumber +
-				", comment='" + comment + '\'' +
-				", checkin=" + checkin +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "ActivityLog{" +
+                "id=" + id +
+                ", uid='" + uid + '\'' +
+                ", date=" + date +
+                ", isSetUp=" + isSetUp +
+                ", available=" + available +
+                ", role=" + role +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", codingType=" + codingType +
+                ", issueNumber=" + issueNumber +
+                ", comment='" + comment + '\'' +
+                ", checkin=" + checkin +
+                '}';
+    }
 }

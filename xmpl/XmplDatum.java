@@ -8,12 +8,14 @@ public class XmplDatum {
 
     public XmplDatum() {
     }
+
     public XmplDatum(String yada, int foo, boolean bar, String wah) {
         this.yada = yada;
         this.foo = foo;
         this.bar = bar;
         this.wah = wah;
     }
+
     public String toString() {
         return "XmplDatum{" +
                 "yada='" + yada + '\'' +
@@ -23,35 +25,35 @@ public class XmplDatum {
                 '}';
     }
 
-    public void setYada(String yada) {
-        this.yada = yada;
-    }
-
-    public void setFoo(int foo) {
-        this.foo = foo;
-    }
-
-    public void setBar(boolean bar) {
-        this.bar = bar;
-    }
-
-    public void setWah(String wah) {
-        this.wah = wah;
-    }
-
     public String getYada() {
         return yada;
+    }
+
+    public void setYada(String yada) {
+        this.yada = yada;
     }
 
     public int getFoo() {
         return foo;
     }
 
+    public void setFoo(int foo) {
+        this.foo = foo;
+    }
+
     public boolean isBar() {
         return bar;
     }
 
+    public void setBar(boolean bar) {
+        this.bar = bar;
+    }
+
     public String getWah() {
         return wah;
+    }
+
+    public void setWah(String wah) {
+        this.wah = wah;
     }
 }

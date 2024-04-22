@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class XmplDataController {
 
-	@Autowired
-	private XmplDataService xmplDataService;
+    @Autowired
+    private XmplDataService xmplDataService;
 
-	@PostMapping("/xmpl/data")
-	public ResponseEntity<XmplData> getData() {
-		XmplData xmplData =  xmplDataService.getData();
-		return ResponseEntity.ok(xmplData);
-	}
+    @PostMapping("/xmpl/data")
+    public ResponseEntity<XmplData> getData() {
+        XmplData xmplData = xmplDataService.getData();
+        return ResponseEntity.ok(xmplData);
+    }
 
-	@PostMapping("/datum")
-	public ResponseEntity<XmplDatum> getDatum() {
-		XmplDatum xmplDatum =  xmplDataService.getDatum();
-		return ResponseEntity.ok(xmplDatum);
-	}
+    @PostMapping("/datum")
+    public ResponseEntity<XmplDatum> getDatum() {
+        XmplDatum xmplDatum = xmplDataService.getDatum();
+        return ResponseEntity.ok(xmplDatum);
+    }
 }
