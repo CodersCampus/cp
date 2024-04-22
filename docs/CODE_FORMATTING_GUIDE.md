@@ -3,8 +3,8 @@
 This document provides step-by-step instructions on how to use the .editorconfig file located in the root of the project
 folder in different Integrated Development Environments (IDEs).
 
-<span style="color: red">Be sure to format all changed files **<u>before</u>** you commit to avoid unnecessary confusion
-during code reviews.</span>
+<span style="color: red; font-size: medium">**Be sure to format all changed files before you commit to avoid unnecessary 
+confusion during code reviews.**</span>
 
 ---
 
@@ -75,5 +75,5 @@ Visual Studio Code will now automatically use the `.editorconfig` file in the ro
 #### To format your code in Visual Studio Code, use the following hotkeys:
 
 + Windows: `Shift + Alt + F`
-+ Mac: `Shift + Option + F`
++ Mac: `Shift + ⌥ + F`
 + Linux: `Ctrl + Shift + I`
