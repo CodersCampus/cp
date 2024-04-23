@@ -51,9 +51,9 @@ public class StudentService {
     boolean isValidNewStudent(Student student) {
         Student students = studentRepo.findByUid(student.getUid());
         if (students == null) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public List<Student> findAll() {
