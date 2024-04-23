@@ -51,6 +51,7 @@ class StudentServiceTest {
     void testIsValidNewStudent() {
         String uid = UUID.randomUUID().toString();
         Student student = new Student(0, "bobby", 12, uid);
+        studentService.saveByUid(student,uid);
         assertTrue(studentService.isValidNewStudent(student));
         studentRepo.delete(student);
 
