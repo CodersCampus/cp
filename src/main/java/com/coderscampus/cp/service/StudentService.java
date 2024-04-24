@@ -2,6 +2,7 @@ package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,15 +26,16 @@ public class StudentService {
         }
         return null;
     }
-
+    @Transactional
     public Student saveByUid(Student student, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
         if (foundStudent == null) {
             student.setDateCreated(Instant.now());
             student.setUid(uid);
-            return studentRepo.save(student);
+            foundStudent = studentRepo.save(student);
         }
-        return foundStudent;
+        Student returnStudent = foundStudent;
+        return returnStudent;
 
     }
 
@@ -84,6 +86,8 @@ public class StudentService {
     }
 
     public Student findByUid(String uid) {
+        Student student = studentRepo.findByUid(uid);
+        System.out.println("Student" + student);
         return studentRepo.findByUid(uid);
     }
 }

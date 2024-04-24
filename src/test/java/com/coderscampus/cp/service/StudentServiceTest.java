@@ -8,8 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
 
 @SpringBootTest
 class StudentServiceTest {
@@ -65,6 +65,14 @@ class StudentServiceTest {
         studentRepo.delete(student2);
         studentRepo.delete(student);
     }
+    @Test
+    void testUIDRemovedOnSave() {
+        Student student = new Student(0, "bobby", 12, UUID.randomUUID().toString());
+        student = studentService.saveByUid(student, student.getUid());
+        assertNotNull(student);
+        assertNull(student.getUid());
+    }
+
 
 
 }

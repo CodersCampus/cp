@@ -20,6 +20,7 @@ public class StudentController {
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
+        System.out.println("UID: " + uid);
         String displayName = (String) httpSession.getAttribute("displayName");
         if (uid != null && !uid.isEmpty()) {
             Student student = studentService.findByUid(uid);
