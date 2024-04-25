@@ -1,6 +1,7 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class StudentController {
         System.out.println("UID: " + uid);
         String displayName = (String) httpSession.getAttribute("displayName");
         if (uid != null && !uid.isEmpty()) {
-            Student student = studentService.findByUid(uid);
+            StudentDTO student = studentService.findByUid(uid);
             System.out.println(student);
             model.put("student", student);
             model.put("isStudent", true);
@@ -49,7 +50,7 @@ public class StudentController {
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
-        Student student = studentService.findById(id);
+        StudentDTO student = studentService.findById(id);
         model.put("student", student);
         model.addAttribute("pageTitle", "Student Update");
         model.put("isStudent", true);

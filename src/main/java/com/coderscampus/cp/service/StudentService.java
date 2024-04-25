@@ -1,6 +1,7 @@
 package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,21 +28,16 @@ public class StudentService {
         return null;
     }
     @Transactional
-    public Student saveByUid(Student student, String uid) {
+    public StudentDTO saveByUid(Student student, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
         if (foundStudent == null) {
             student.setDateCreated(Instant.now());
             student.setUid(uid);
             foundStudent = studentRepo.save(student);
         }
-        Student returnStudent;
-		try {
-			returnStudent = foundStudent.clone();
-		} catch (CloneNotSupportedException e) {
+        StudentDTO returnStudent = new StudentDTO(foundStudent);
+       
 		
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
         return returnStudent;
 
     }
@@ -69,8 +65,8 @@ public class StudentService {
         return studentRepo.findAll();
     }
 
-    public Student findById(Long id) {
-        return studentRepo.findById(id).get();
+    public StudentDTO findById(Long id) {
+        return new StudentDTO(studentRepo.findById(id).get());
     }
 
     public boolean delete(Student student) {
@@ -92,9 +88,9 @@ public class StudentService {
         return true;
     }
 
-    public Student findByUid(String uid) {
+    public StudentDTO findByUid(String uid) {
         Student student = studentRepo.findByUid(uid);
         System.out.println("Student" + student);
-        return studentRepo.findByUid(uid);
+        return new StudentDTO(studentRepo.findByUid(uid));
     }
 }

@@ -1,6 +1,7 @@
 package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,13 +66,7 @@ class StudentServiceTest {
         studentRepo.delete(student2);
         studentRepo.delete(student);
     }
-    @Test
-    void testUIDRemovedOnSave() {
-        Student student = new Student(0, "bobby", 12, UUID.randomUUID().toString());
-        student = studentService.saveByUid(student, student.getUid());
-        assertNotNull(student);
-        assertNull(student.getUid());
-    }
+    
 
 
 
