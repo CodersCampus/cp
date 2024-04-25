@@ -7,9 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Student {
+public class Student implements Cloneable {
 
-    @Id
+    @Override
+	public Student clone() throws CloneNotSupportedException {
+		Student student = new Student();
+		student.setName(name);
+		student.setAssignmentNum(assignmentNum);
+		student.setIde(ide);
+		student.setDateCreated(dateCreated);
+		student.setId(id);
+		return student;
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String uid;

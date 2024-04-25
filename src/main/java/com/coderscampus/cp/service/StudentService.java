@@ -34,7 +34,14 @@ public class StudentService {
             student.setUid(uid);
             foundStudent = studentRepo.save(student);
         }
-        Student returnStudent = foundStudent;
+        Student returnStudent;
+		try {
+			returnStudent = foundStudent.clone();
+		} catch (CloneNotSupportedException e) {
+		
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
         return returnStudent;
 
     }
