@@ -21,12 +21,9 @@ public class StudentController {
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
-        System.out.println("UID: " + uid);
-        String displayName = (String) httpSession.getAttribute("displayName");
         if (uid != null && !uid.isEmpty()) {
-            StudentDTO student = studentService.findByUid(uid);
-            System.out.println(student);
-            model.put("student", student);
+            StudentDTO studentDTO = studentService.findByUid(uid);
+            model.put("student", studentDTO);
             model.put("isStudent", true);
         }
         model.addAttribute("pageTitle", "Student Read");
@@ -35,8 +32,8 @@ public class StudentController {
 
     @GetMapping("/create")
     public String getCreate(ModelMap model) {
-        Student student = new Student();
-        model.put("student", student);
+        StudentDTO studentDTO = new StudentDTO();
+        model.put("student", studentDTO);
         model.addAttribute("pageTitle", "Student Create");
         model.put("isStudent", true);
         return "student/create";
@@ -50,8 +47,8 @@ public class StudentController {
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
-        StudentDTO student = studentService.findById(id);
-        model.put("student", student);
+        StudentDTO studentDTO = studentService.findById(id);
+        model.put("student", studentDTO);
         model.addAttribute("pageTitle", "Student Update");
         model.put("isStudent", true);
         return "student/update";

@@ -18,14 +18,13 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Student save(Student student) {
+    public void save(Student student) {
         if (isValidNewStudent(student)) {
-            return studentRepo.save(student);
+            studentRepo.save(student);
         }
         if (isValidStudentUpdateOrDelete(student)) {
-            return studentRepo.save(student);
+            studentRepo.save(student);
         }
-        return null;
     }
     @Transactional
     public StudentDTO saveByUid(Student student, String uid) {
@@ -36,10 +35,7 @@ public class StudentService {
             foundStudent = studentRepo.save(student);
         }
         StudentDTO returnStudent = new StudentDTO(foundStudent);
-       
-		
         return returnStudent;
-
     }
 
 
@@ -59,10 +55,6 @@ public class StudentService {
             return true;
         }
         return false;
-    }
-
-    public List<Student> findAll() {
-        return studentRepo.findAll();
     }
 
     public StudentDTO findById(Long id) {
@@ -90,7 +82,6 @@ public class StudentService {
 
     public StudentDTO findByUid(String uid) {
         Student student = studentRepo.findByUid(uid);
-        System.out.println("Student" + student);
-        return new StudentDTO(studentRepo.findByUid(uid));
+        return new StudentDTO(student);
     }
 }

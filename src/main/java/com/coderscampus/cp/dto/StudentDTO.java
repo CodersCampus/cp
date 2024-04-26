@@ -6,7 +6,7 @@ import com.coderscampus.cp.domain.Student;
 
 public class StudentDTO {
 
-	private long id;
+	private Long id;
 	private String name;
 	private Integer assignmentNum;
 	private String ide;
@@ -14,6 +14,7 @@ public class StudentDTO {
 	
 
 	public StudentDTO(Student foundStudent) {
+        super();
 		this.id = foundStudent.getId();
 		this.name = foundStudent.getName();
 		this.assignmentNum = foundStudent.getAssignmentNum();
@@ -21,7 +22,11 @@ public class StudentDTO {
 		this.dateCreated = foundStudent.getDateCreated();
 	}
 
-	public long getId() {
+    public StudentDTO() {
+        this(new Student());
+    }
+
+	public Long getId() {
 		return id;
 	}
 
