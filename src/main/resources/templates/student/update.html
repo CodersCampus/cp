@@ -20,7 +20,7 @@
             <div class="ga-content-main">
                 <main>
                     <form action="/student/update" class="ui-form" method="post">
-                        <input id="new-uid" th:field="${student.uid}" type="hidden"/>
+                        <input id="uid" name="uid" type="hidden"/>
                         <input class="form-control" th:field="${student.id}" type="hidden"/>
 
                         <div class="ui-input-field">

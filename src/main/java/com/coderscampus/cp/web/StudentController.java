@@ -30,14 +30,7 @@ public class StudentController {
         return "student/read";
     }
 
-    @GetMapping("/create")
-    public String getCreate(ModelMap model) {
-        StudentDTO studentDTO = new StudentDTO();
-        model.put("student", studentDTO);
-        model.addAttribute("pageTitle", "Student Create");
-        model.put("isStudent", true);
-        return "student/create";
-    }
+
 
     @PostMapping("/create")
     public String create(Student student, @RequestParam("uid") String uid) {
@@ -55,8 +48,8 @@ public class StudentController {
     }
 
     @PostMapping("/update")
-    public String update(Student student) {
-        studentService.save(student);
+    public String update(Student student, @RequestParam("uid") String uid) {
+        studentService.saveByUid(student, uid);
         return "redirect:/student/";
     }
 
