@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Student {
+public class Student  {
 
-    @Id
+    
+	
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String uid;

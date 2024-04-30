@@ -1,0 +1,53 @@
+package com.coderscampus.cp.dto;
+
+import java.time.Instant;
+
+import com.coderscampus.cp.domain.Student;
+
+public class StudentDTO {
+
+	private Long id;
+	private String name;
+	private Integer assignmentNum;
+	private String ide;
+	private Instant dateCreated;
+	
+
+	public StudentDTO(Student foundStudent) {
+        super();
+		this.id = foundStudent.getId();
+		this.name = foundStudent.getName();
+		this.assignmentNum = foundStudent.getAssignmentNum();
+		this.ide = foundStudent.getIde();
+		this.dateCreated = foundStudent.getDateCreated();
+	}
+
+    public StudentDTO() {
+        this(new Student());
+    }
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Integer getAssignmentNum() {
+		return assignmentNum;
+	}
+
+	public String getIde() {
+		return ide;
+	}
+
+	public Instant getDateCreated() {
+		return dateCreated;
+	}
+
+	
+
+
+
+}
