@@ -15,16 +15,16 @@ import java.util.stream.Collectors;
 @Service
 public class CheckinService {
 
-    @Autowired
-    private CheckinRepository checkinRepo;
+    private final CheckinRepository checkinRepo;
+    private final StudentRepository studentRepo;
 
     @Autowired
-    private StudentRepository studentRepo;
+    public CheckinService(CheckinRepository checkinRepo, StudentRepository studentRepo) {
+        this.checkinRepo = checkinRepo;
+        this.studentRepo = studentRepo;
+    }
 
     public Checkin saveByUid(Checkin checkin, String uid) {
-//        if (checkinRepo.findByUid(uid) == null) {
-//            checkin.setDate(Instant.now());
-//        }
         setDateIfNull(checkin);
         setStudentAndUid(checkin, uid);
         return checkinRepo.save(checkin);
@@ -45,7 +45,8 @@ public class CheckinService {
     }
 
     public List<Checkin> findAll() {
-        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed())
+                .collect(Collectors.toList());
     }
 
     public Checkin findById(Long id) {
@@ -57,7 +58,7 @@ public class CheckinService {
     }
 
     public List<Checkin> findByUid(String uid) {
-        return checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+        return checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed())
+                .collect(Collectors.toList());
     }
 }
-

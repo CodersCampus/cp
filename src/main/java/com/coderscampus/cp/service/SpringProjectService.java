@@ -11,8 +11,12 @@ import java.util.Optional;
 @Service
 public class SpringProjectService {
 
+    private final SpringProjectRepository springRepo;
+
     @Autowired
-    SpringProjectRepository springRepo;
+    public SpringProjectService(SpringProjectRepository springRepo) {
+        this.springRepo = springRepo;
+    }
 
     public List<SpringProject> findAll() {
         return springRepo.findAll();
@@ -22,4 +26,3 @@ public class SpringProjectService {
         return springRepo.findById(springProjectId);
     }
 }
- 

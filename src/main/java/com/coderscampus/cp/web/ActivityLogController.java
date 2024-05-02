@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/activityLog")
 public class ActivityLogController {
+
+    private final ActivityLogService activityLogService;
+
     @Autowired
-    private ActivityLogService activityLogService;
+    public ActivityLogController(ActivityLogService activityLogService) {
+        this.activityLogService = activityLogService;
+    }
 
     @PostMapping("/create")
     public String postCreate(ActivityLog activityLog, @RequestParam("uid") String uid) {

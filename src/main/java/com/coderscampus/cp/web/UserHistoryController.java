@@ -16,8 +16,12 @@ import java.util.List;
 @RequestMapping("/user-history")
 public class UserHistoryController {
 
+    private final UserHistoryService userHistoryService;
+
     @Autowired
-    private UserHistoryService userHistoryService;
+    public UserHistoryController(UserHistoryService userHistoryService) {
+        this.userHistoryService = userHistoryService;
+    }
 
     @GetMapping("/")
     public String home(ModelMap model) {
@@ -42,7 +46,6 @@ public class UserHistoryController {
         userHistoryService.save(userHistory);
         return "redirect:/user-history/";
     }
-
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {

@@ -13,8 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class UserHistoryService {
 
+    private final UserHistoryRepository userHistoryRepo;
+
     @Autowired
-    private UserHistoryRepository userHistoryRepo;
+    public UserHistoryService(UserHistoryRepository userHistoryRepo) {
+        this.userHistoryRepo = userHistoryRepo;
+    }
 
     public UserHistory save(UserHistory userHistory) {
         if (userHistory.getDate() == null) {
@@ -24,7 +28,8 @@ public class UserHistoryService {
     }
 
     public List<UserHistory> findAll() {
-        return userHistoryRepo.findAll().stream().sorted(Comparator.comparing(UserHistory::getDate).reversed()).collect(Collectors.toList());
+        return userHistoryRepo.findAll().stream().sorted(Comparator.comparing(UserHistory::getDate).reversed())
+                .collect(Collectors.toList());
     }
 
     public UserHistory findById(Long id) {

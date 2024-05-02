@@ -25,26 +25,32 @@ import com.coderscampus.practice.repository.TruckRepository;
 @Service
 public class SeedService {
     Map<Long, Car> cars = new LinkedHashMap<>();
-    @Autowired
-    private AirplaneRepository airRepo;
-    @Autowired
-    private FrogRepository frogRepo;
-    @Autowired
-    private DogRepository dogRepo;
-    @Autowired
-    private DataFileService dataFileService;
-    @Autowired
-    private TruckRepository truckRepo;
-    @Autowired
-    private CarRepository carRepo;
 
-    @Autowired
-    private MovieRepository movieRepo;
+    private final AirplaneRepository airRepo;
+    private final FrogRepository frogRepo;
+    private final DogRepository dogRepo;
+    private final DataFileService dataFileService;
+    private final TruckRepository truckRepo;
+    private final CarRepository carRepo;
+    private final MovieRepository movieRepo;
 
     private Random random = new Random();
 
     private String[] names = null;
-    private String[] colors = {"Yellow", "Red", "Blue", "Orange", "Purple", "White", "Black", "Grey"};
+    private String[] colors = { "Yellow", "Red", "Blue", "Orange", "Purple", "White", "Black", "Grey" };
+
+    @Autowired
+    public SeedService(AirplaneRepository airRepo, FrogRepository frogRepo, DogRepository dogRepo,
+            DataFileService dataFileService, TruckRepository truckRepo, CarRepository carRepo,
+            MovieRepository movieRepo) {
+        this.airRepo = airRepo;
+        this.frogRepo = frogRepo;
+        this.dogRepo = dogRepo;
+        this.dataFileService = dataFileService;
+        this.truckRepo = truckRepo;
+        this.carRepo = carRepo;
+        this.movieRepo = movieRepo;
+    }
 
     public void populateData() {
 
@@ -89,7 +95,7 @@ public class SeedService {
                 int yearOf = Integer.parseInt(line.substring(line.indexOf("|") + 1, line.length()));
                 movie.setYearOf(yearOf);
                 movie.setName(line.substring(0, line.indexOf("|")).trim());
-                String[] movieRatings = {"1", "2", "3", "4", "5"};
+                String[] movieRatings = { "1", "2", "3", "4", "5" };
                 movie.setGenre("unknown");
                 movie.setRating(movieRatings[random.nextInt(movieRatings.length - 1)]);
                 movieRepo.save(movie);
@@ -101,7 +107,7 @@ public class SeedService {
         List<Frog> frogs = frogRepo.findAll();
         if (frogs.size() < 10) {
             String[] frogSpecies = dataFileService.getData("src/main/resources/data/frogs.txt");
-            String[] frogAge = {"young", "old"};
+            String[] frogAge = { "young", "old" };
 
             for (int i = 0; i < 10; i++) {
 
@@ -121,7 +127,7 @@ public class SeedService {
         if (dogs.size() < 10) {
             String[] dogBreed = dataFileService.getData("src/main/resources/data/dogs.txt");
             String[] dogName = names;
-            String[] dogAge = {"young", "old", "young", "old"};
+            String[] dogAge = { "young", "old", "young", "old" };
 
             for (int i = 0; i < 10; i++) {
 
@@ -142,7 +148,7 @@ public class SeedService {
         List<Truck> trucks = truckRepo.findAll();
         if (trucks.size() < 10) {
             String[] trucksData = dataFileService.getData("src/main/resources/data/trucks.txt");
-            Integer[] motorSizes = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+            Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 
             for (int i = 0; i < 10; i++) {
 
@@ -162,7 +168,7 @@ public class SeedService {
     }
 
     String randomTransmission() {
-        String[] transmission = {"Automatic", "Manual", "Automatic", "Manual"};
+        String[] transmission = { "Automatic", "Manual", "Automatic", "Manual" };
         return transmission[random.nextInt(transmission.length - 1)];
     }
 
@@ -171,8 +177,8 @@ public class SeedService {
         List<Car> cars = carRepo.findAll();
         if (cars.size() < 30) {
             String[] carsData = dataFileService.getData("src/main/resources/data/cars.txt");
-            Integer[] motorSizes = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
-            Integer[] wheelSizes = {14, 15, 16, 17, 18, 19, 20, 21};
+            Integer[] motorSizes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
+            Integer[] wheelSizes = { 14, 15, 16, 17, 18, 19, 20, 21 };
 
             for (int i = 0; i < 10; i++) {
 
