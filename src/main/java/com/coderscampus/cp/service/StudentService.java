@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import javax.management.RuntimeErrorException;
 import java.time.Instant;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,7 +21,7 @@ public class StudentService {
         if (isValidNewStudent(student)) {
             studentRepo.save(student);
         }
-        if (isValidStudentUpdateOrDelete(student)) {
+        if (doesStudentExistInRepository(student)) {
             studentRepo.save(student);
         }
     }
@@ -39,7 +38,7 @@ public class StudentService {
     }
 
 
-    boolean isValidStudentUpdateOrDelete(Student student) {
+    boolean doesStudentExistInRepository(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
 
         if (existingStudent.isPresent() && existingStudent.get().getUid() != null
@@ -63,7 +62,7 @@ public class StudentService {
 
     public boolean delete(Student student) {
         try {
-            if (isValidStudentUpdateOrDelete(student)) {
+            if (doesStudentExistInRepository(student)) {
                 studentRepo.delete(student);
                 Optional<Student> user = studentRepo.findById(student.getId());
                 boolean foundUser = user.isPresent();
