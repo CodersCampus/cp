@@ -29,6 +29,7 @@ public class StudentController {
         String uid = (String) httpSession.getAttribute("uid");
         if (uid != null && !uid.isEmpty()) {
             StudentDTO studentDTO = studentService.findByUid(uid);
+            System.out.println(studentDTO);
             model.put("student", studentDTO);
             model.put("isStudent", true);
         }
@@ -39,7 +40,7 @@ public class StudentController {
 
 
     @PostMapping("/create")
-    public String create(Student student, @RequestParam("uid") String uid) {
+    public String create(StudentDTO student, @RequestParam("uid") String uid) {
         studentService.saveByUid(student, uid);
         return "redirect:/student/";
     }
@@ -54,7 +55,7 @@ public class StudentController {
     }
 
     @PostMapping("/update")
-    public String update(Student student, @RequestParam("uid") String uid) {
+    public String update(StudentDTO student, @RequestParam("uid") String uid) {
         studentService.saveByUid(student, uid);
         return "redirect:/student/";
     }

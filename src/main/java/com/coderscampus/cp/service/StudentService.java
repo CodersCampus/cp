@@ -26,9 +26,10 @@ public class StudentService {
         }
     }
     @Transactional
-    public StudentDTO saveByUid(Student student, String uid) {
+    public StudentDTO saveByUid(StudentDTO studentDTO, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
         if (foundStudent == null) {
+        	Student student = new Student(studentDTO);
             student.setDateCreated(Instant.now());
             student.setUid(uid);
             foundStudent = studentRepo.save(student);

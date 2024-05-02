@@ -6,6 +6,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.coderscampus.cp.dto.StudentDTO;
+
 @Entity
 public class Student  {
 
@@ -49,7 +51,14 @@ public class Student  {
         this.assignmentNum = assignmentNum;
     }
 
-    public Instant getDateCreated() {
+    public Student(StudentDTO studentDTO) {
+		this.name = studentDTO.getName();
+		this.assignmentNum =studentDTO.getAssignmentNum();
+		this.ide = studentDTO.getIde();
+		
+	}
+
+	public Instant getDateCreated() {
         return dateCreated;
     }
 

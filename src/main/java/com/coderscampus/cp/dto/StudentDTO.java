@@ -6,6 +6,12 @@ import com.coderscampus.cp.domain.Student;
 
 public class StudentDTO {
 
+	@Override
+	public String toString() {
+		return "StudentDTO [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", ide=" + ide
+				+ ", dateCreated=" + dateCreated + "]";
+	}
+
 	private Long id;
 	private String name;
 	private Integer assignmentNum;
