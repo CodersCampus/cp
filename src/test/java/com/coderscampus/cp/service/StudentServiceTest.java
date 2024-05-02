@@ -1,7 +1,6 @@
 package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ class StudentServiceTest {
         Student existingStudent = new Student(0, "bobby", 17, uid);
         existingStudent = studentRepo.save(existingStudent);
         Student student = new Student(existingStudent.getId(), "bobby", 12, uid);
-        assertTrue(studentService.isValidStudentUpdateOrDelete(student));
+        assertTrue(studentService.doesStudentExistInRepository(student));
         studentRepo.delete(existingStudent);
     }
 
