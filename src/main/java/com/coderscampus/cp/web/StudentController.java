@@ -27,11 +27,12 @@ public class StudentController {
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
+        System.out.println("uid: " + uid);
         if (uid != null && !uid.isEmpty()) {
             StudentDTO studentDTO = studentService.findByUid(uid);
             System.out.println(studentDTO);
-            model.put("student", studentDTO);
-            model.put("isStudent", true);
+            model.addAttribute("student", studentDTO);
+            model.addAttribute("isStudent", true);
         }
         model.addAttribute("pageTitle", "Student Read");
         return "student/read";
