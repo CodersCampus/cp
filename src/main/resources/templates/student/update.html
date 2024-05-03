@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
-<body class="ui-background">
-<fbauth-element headless>
-    <div>
-        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-        <div layout="layout-sidebar">
-            <div class="sidebar-grid-area">
-                <section class="ui-panel-title title-small">Students</section>
-                <nav class="ui-panel">
-                    <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/student/create">Create New</a>
-                        </button>
-                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page"
-                                                                               href="/student/">Back</a></button>
-                    </ul>
-                </nav>
-            </div>
-            <div class="ga-content-main">
-                <main>
-                    <form action="/student/update" class="ui-form" method="post">
-                        <input id="uid" name="uid" type="hidden"/>
-                        <input class="form-control" th:field="${student.id}" type="hidden"/>
+    <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+    <body class="ui-background">
+        <fbauth-element headless>
+            <div>
+                <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+                <div layout="layout-sidebar">
+                    <div class="sidebar-grid-area">
+                        <section class="ui-panel-title title-small">Students</section>
+                        <nav class="ui-panel">
+                            <ul class="ui-navbar-nav">
+                                <button class="ui-nav-item ui-button" type="button">
+                                    <a href="/student/create">Create New</a>
+                                </button>
+                                <button class="ui-nav-item ui-button" type="button">
+                                    <a aria-current="page" href="/student/">Back</a>
+                                </button>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="ga-content-main">
+                        <main>
+                            <form action="/student/update" class="ui-form" method="post">
+                                <input id="uid" name="uid" type="hidden" />
+                                <input class="form-control" th:field="${student.id}" type="hidden" />
 
-                        <div class="ui-input-field">
-                            <label class="ui-label">Name:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" id="display-name" readonly th:field="${student.name}"
-                                       type="text"/>
-                            </div>
-                        </div>
+                                <div class="ui-input-field">
+                                    <label class="ui-label">Name:</label>
+                                    <div class="ui-text-input">
+                                        <input
+                                            class="ui-value"
+                                            id="display-name"
+                                            readonly
+                                            th:field="${student.name}"
+                                            type="text"
+                                        />
+                                    </div>
+                                </div>
 
-                        <div class="ui-input-field">
-                            <label class="ui-label">Assignment #:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" placeholder="ex: 1, 10, 15..." th:field="${student.assignmentNum}"
-                                       type="text"/>
-                            </div>
-                        </div>
+                                <div class="ui-input-field">
+                                    <label class="ui-label">Assignment #:</label>
+                                    <div class="ui-text-input">
+                                        <input
+                                            class="ui-value"
+                                            placeholder="ex: 1, 10, 15..."
+                                            th:field="${student.assignmentNum}"
+                                            type="text"
+                                        />
+                                    </div>
+                                </div>
 
-
-                        <!-- Hidden Fields (updated by KevinGallaccio to fit new UI)
+                                <!-- Hidden Fields (updated by KevinGallaccio to fit new UI)
 
                         <div class="ui-input-field">
                             <label class="ui-label">GitHub Handle:</label>
@@ -58,17 +68,29 @@
 
                         -->
 
+                                <div class="ui-input-field">
+                                    <label class="ui-label">IDE:</label>
+                                    <div class="ui-text-input">
+                                        <input
+                                            class="ui-value"
+                                            placeholder="ex: IntelliJ, Eclipse..."
+                                            th:field="${student.ide}"
+                                            type="text"
+                                        />
+                                    </div>
+                                </div>
 
-                        <div class="ui-input-field">
-                            <label class="ui-label">IDE:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" placeholder="ex: IntelliJ, Eclipse..." th:field="${student.ide}"
-                                       type="text"/>
-                            </div>
-                        </div>
+                                <div class="ui-input-field">
+                                    <label for="willingToMentor" class="ui-label">Willing to Mentor:</label>
+                                    <input
+                                        id="willingToMentor"
+                                        th:field="${willingToMentor}"
+                                        type="checkbox"
+                                        class="ui-checkbox"
+                                    />
+                                </div>
 
-
-                        <!-- More Hidden Fields (updated by KevinGallaccio to fit new UI)
+                                <!-- More Hidden Fields (updated by KevinGallaccio to fit new UI)
 
                         <div class="ui-input-field">
                             <label class="ui-label">YouTube:</label>
@@ -101,29 +123,32 @@
                             </div>
                         </div>
                         -->
-                        <div class="ui-input-field">
-                            <label class="ui-label">Profile Created On:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" disabled th:field="${student.dateCreated}" type="text"/>
-                            </div>
-                        </div>
-                        <button class="ui-nav-item ui-button" onfocus="assignUid()" type="submit"><span>Update</span>
-                        </button>
-                    </form>
-                    <form action="/student/delete" class="ui-form" method="post" style="padding-top:0;">
-                        <input id="new-uid" th:field="${student.id}" type="hidden"/>
-                        <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
-                    </form>
-                </main>
+                                <div class="ui-input-field">
+                                    <label class="ui-label">Profile Created On:</label>
+                                    <div class="ui-text-input">
+                                        <input
+                                            class="ui-value"
+                                            disabled
+                                            th:field="${student.dateCreated}"
+                                            type="text"
+                                        />
+                                    </div>
+                                </div>
+                                <button class="ui-nav-item ui-button" onfocus="assignUid()" type="submit">
+                                    <span>Update</span>
+                                </button>
+                            </form>
+                            <form action="/student/delete" class="ui-form" method="post" style="padding-top: 0">
+                                <input id="new-uid" th:field="${student.id}" type="hidden" />
+                                <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
+                            </form>
+                        </main>
+                    </div>
+                </div>
+                <div th:replace="~{fragments/footer :: footer}"></div>
+                <div th:replace="~{fragments/themeswitchscript :: script}"></div>
             </div>
-        </div>
-        <div th:replace="~{fragments/footer :: footer}"></div>
-        <div th:replace="~{fragments/themeswitchscript :: script}"></div>
-    </div>
-</fbauth-element>
-<div th:replace="~{fragments/authscript :: script}"></div>
-</body>
-
+        </fbauth-element>
+        <div th:replace="~{fragments/authscript :: script}"></div>
+    </body>
 </html>
-
-

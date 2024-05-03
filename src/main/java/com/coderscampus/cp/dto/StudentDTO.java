@@ -11,10 +11,11 @@ public class StudentDTO {
 	private Integer assignmentNum;
 	private String ide;
 	private Instant dateCreated;
-	
+	private Boolean willingToMentor;
+	private String mentee;
 
 	public StudentDTO(Student foundStudent) {
-        super();
+		super();
 		this.id = foundStudent.getId();
 		this.name = foundStudent.getName();
 		this.assignmentNum = foundStudent.getAssignmentNum();
@@ -22,9 +23,9 @@ public class StudentDTO {
 		this.dateCreated = foundStudent.getDateCreated();
 	}
 
-    public StudentDTO() {
-        this(new Student());
-    }
+	public StudentDTO() {
+		this(new Student());
+	}
 
 	public Long getId() {
 		return id;
@@ -46,8 +47,20 @@ public class StudentDTO {
 		return dateCreated;
 	}
 
-	
+	public Boolean getWillingToMentor() {
+		return willingToMentor;
+	}
 
+	public void setWillingToMentor(Boolean willingToMentor) {
+		this.willingToMentor = willingToMentor;
+	}
 
+	public String getMentee() {
+		return mentee;
+	}
+
+	public void setMentee(String mentee) {
+		this.mentee = mentee;
+	}
 
 }
