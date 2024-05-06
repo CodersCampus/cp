@@ -1,6 +1,7 @@
 package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
+
 
 @SpringBootTest
 class StudentServiceTest {
@@ -65,8 +66,17 @@ class StudentServiceTest {
         studentRepo.delete(student2);
         studentRepo.delete(student);
     }
-    
 
-
+    @Test
+    void testStudentSaveByUid(){
+        String uid = UUID.randomUUID().toString();
+        Student student = new Student(554, "bobby", 12, uid);
+        StudentDTO studentDTO = new StudentDTO(student);
+        StudentDTO result = studentService.saveByUid(studentDTO, uid);
+        assertEquals("bobby", result.getName());
+        studentRepo.save(student);
+        Student studentResult = studentRepo.findByUid(uid);
+        assertEquals("bobby", studentResult.getName());
+    }
 
 }

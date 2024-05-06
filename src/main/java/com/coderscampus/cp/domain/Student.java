@@ -52,10 +52,14 @@ public class Student  {
     }
 
     public Student(StudentDTO studentDTO) {
+        Long id = studentDTO.getId();
+        if(id != null && id > 0){
+            this.id = id;
+        }
+
 		this.name = studentDTO.getName();
-		this.assignmentNum =studentDTO.getAssignmentNum();
+		this.assignmentNum = studentDTO.getAssignmentNum();
 		this.ide = studentDTO.getIde();
-		
 	}
 
 	public Instant getDateCreated() {
