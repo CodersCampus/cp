@@ -1,0 +1,6 @@
+name: "cp"
+appmap_dir: "tmp/appmap"
+packages:
+- path: "com.coderscampus"
+- path: "static"
+- path: "templates"

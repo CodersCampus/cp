@@ -1,0 +1,6 @@
+[
+  "com/coderscampus/cp/domain",
+  "com/coderscampus/cp/repository",
+  "com/coderscampus/cp/service",
+  "com/coderscampus/cp/web"
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "route": "POST /student/update",
+    "parameters": "(uid,id,name,assignmentNum,ide)",
+    "status": 302
+  }
+]

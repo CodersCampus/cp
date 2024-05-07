@@ -1,0 +1,124 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "home",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/web/CheckinController.java:23"
+                      }
+                    ],
+                    "name": "CheckinController",
+                    "type": "class"
+                  }
+                ],
+                "name": "web",
+                "type": "package"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "findByUid",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/repository/CheckinRepository.java:-1"
+                      }
+                    ],
+                    "name": "CheckinRepository",
+                    "type": "class"
+                  }
+                ],
+                "name": "repository",
+                "type": "package"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "findByUid",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/service/CheckinService.java:60"
+                      }
+                    ],
+                    "name": "CheckinService",
+                    "type": "class"
+                  }
+                ],
+                "name": "service",
+                "type": "package"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "values",
+                        "type": "function",
+                        "static": true,
+                        "location": "src/main/java/com/coderscampus/cp/domain/Checkin.java:133"
+                      }
+                    ],
+                    "name": "Checkin$CodingType",
+                    "type": "class"
+                  },
+                  {
+                    "children": [
+                      {
+                        "name": "values",
+                        "type": "function",
+                        "static": true,
+                        "location": "src/main/java/com/coderscampus/cp/domain/Checkin.java:137"
+                      }
+                    ],
+                    "name": "Checkin$Role",
+                    "type": "class"
+                  }
+                ],
+                "name": "domain",
+                "type": "package"
+              }
+            ],
+            "name": "cp",
+            "type": "package"
+          }
+        ],
+        "name": "coderscampus",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "GET /checkin/"
+      }
+    ]
+  },
+  {
+    "type": "database",
+    "name": "Database",
+    "children": [
+      {
+        "type": "query",
+        "name": "select c1_0.id,c1_0.blocker_description,c1_0.blockers,c1_0.coding_type,c1_0.date,c1_0.next_assignment,c1_0.role,c1_0.student_id,c1_0.uid from checkin c1_0 where c1_0.uid=?"
+      }
+    ]
+  }
+]

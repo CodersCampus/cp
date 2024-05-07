@@ -1,0 +1,301 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "referer": "http://localhost:8080/student/update/1",
+          "sec-fetch-site": "same-origin",
+          "accept-language": "en-US,en;q=0.9",
+          "cookie": "JSESSIONID=09459F7AA493367617D9C763E3260900",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:8080",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "cache-control": "max-age=0",
+          "accept-encoding": "gzip, deflate, br, zstd",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/student/",
+        "path_info": "/student/",
+        "protocol": "HTTP/1.1",
+        "request_method": "GET"
+      },
+      "id": 1,
+      "thread_id": 59
+    },
+    {
+      "defined_class": "com.coderscampus.cp.web.StudentController",
+      "event": "call",
+      "id": 2,
+      "lineno": 23,
+      "method_id": "home",
+      "parameters": [
+        {
+          "class": "org.springframework.validation.support.BindingAwareModelMap",
+          "kind": "req",
+          "name": "model",
+          "object_id": 803918050,
+          "value": "{}"
+        },
+        {
+          "class": "org.apache.catalina.session.StandardSessionFacade",
+          "kind": "req",
+          "name": "httpSession",
+          "object_id": 263644686,
+          "value": "org.apache.catalina.session.StandardSessionFacade@fb6e60e"
+        }
+      ],
+      "path": "src/main/java/com/coderscampus/cp/web/StudentController.java",
+      "receiver": {
+        "class": "com.coderscampus.cp.web.StudentController",
+        "object_id": 1388625705,
+        "value": "com.coderscampus.cp.web.StudentController@52c4bf29"
+      },
+      "static": false,
+      "thread_id": 59
+    },
+    {
+      "defined_class": "com.coderscampus.cp.service.StudentService",
+      "event": "call",
+      "id": 3,
+      "lineno": 84,
+      "method_id": "findByUid",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "uid",
+          "object_id": 735396295,
+          "value": "KtNf0biEhghMC89dYTbdPIGOjdb2"
+        }
+      ],
+      "path": "src/main/java/com/coderscampus/cp/service/StudentService.java",
+      "receiver": {
+        "class": "com.coderscampus.cp.service.StudentService",
+        "object_id": 1361494221,
+        "value": "com.coderscampus.cp.service.StudentService@5126c0cd"
+      },
+      "static": false,
+      "thread_id": 59
+    },
+    {
+      "defined_class": "com.coderscampus.cp.repository.StudentRepository",
+      "event": "call",
+      "id": 4,
+      "lineno": -1,
+      "method_id": "findByUid",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "p0",
+          "object_id": 735396295,
+          "value": "KtNf0biEhghMC89dYTbdPIGOjdb2"
+        }
+      ],
+      "path": "src/main/java/com/coderscampus/cp/repository/StudentRepository.java",
+      "receiver": {
+        "class": "jdk.proxy2.$Proxy188",
+        "object_id": 956329508,
+        "value": "org.springframework.data.jpa.repository.support.SimpleJpaRepository@7d42494a"
+      },
+      "static": false,
+      "thread_id": 59
+    },
+    {
+      "event": "call",
+      "id": 5,
+      "sql_query": {
+        "database_type": "H2",
+        "sql": "select s1_0.id,s1_0.assignment_num,s1_0.date_created,s1_0.ide,s1_0.name,s1_0.uid from student s1_0 where s1_0.uid=?"
+      },
+      "thread_id": 59
+    },
+    {
+      "elapsed": 0.00010005,
+      "event": "return",
+      "id": 6,
+      "parent_id": 5,
+      "thread_id": 59
+    },
+    {
+      "elapsed": 0.0002,
+      "event": "return",
+      "id": 7,
+      "parent_id": 4,
+      "return_value": {
+        "class": "com.coderscampus.cp.domain.Student",
+        "object_id": 1392452803,
+        "value": "Student{id=1, uid='KtNf0biEhghMC89dYTbdPIGOjdb2', name='Al Fu', assignmentNum=null, ide='null', dateCreated=2024-04-30T16:11:51.357982Z, checkin=[]}"
+      },
+      "thread_id": 59
+    },
+    {
+      "elapsed": 0.0002,
+      "event": "return",
+      "id": 8,
+      "parent_id": 3,
+      "return_value": {
+        "class": "com.coderscampus.cp.dto.StudentDTO",
+        "object_id": 1168971369,
+        "value": "com.coderscampus.cp.dto.StudentDTO@45ad1669"
+      },
+      "thread_id": 59
+    },
+    {
+      "elapsed": 0.00030005,
+      "event": "return",
+      "id": 9,
+      "parent_id": 2,
+      "return_value": {
+        "class": "java.lang.String",
+        "object_id": 1480519768,
+        "value": "student/read"
+      },
+      "thread_id": 59
+    },
+    {
+      "elapsed": 0.00090016,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "Transfer-Encoding": "chunked",
+          "Keep-Alive": "timeout=60",
+          "Connection": "keep-alive",
+          "Content-Language": "en-US",
+          "Date": "Tue, 30 Apr 2024 16:11:57 GMT",
+          "Content-Type": "text/html;charset=UTF-8"
+        },
+        "status": 200
+      },
+      "id": 10,
+      "parent_id": 1,
+      "thread_id": 59
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "GET /student/ (200) - 12:11:57.507",
+    "app": "cp",
+    "language": {
+      "name": "java",
+      "version": "21.0.2+13-58",
+      "engine": "OpenJDK 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/CodersCampus/cp.git",
+      "branch": "issue546",
+      "commit": "317f884180d9fda7702122b3d4fb8b8b37dbb45a"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "findByUid",
+                          "type": "function",
+                          "static": false,
+                          "location": "src/main/java/com/coderscampus/cp/service/StudentService.java:84"
+                        }
+                      ],
+                      "name": "StudentService",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "service",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "findByUid",
+                          "type": "function",
+                          "static": false,
+                          "location": "src/main/java/com/coderscampus/cp/repository/StudentRepository.java:-1"
+                        }
+                      ],
+                      "name": "StudentRepository",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "repository",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "home",
+                          "type": "function",
+                          "static": false,
+                          "location": "src/main/java/com/coderscampus/cp/web/StudentController.java:23"
+                        }
+                      ],
+                      "name": "StudentController",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "web",
+                  "type": "package"
+                }
+              ],
+              "name": "cp",
+              "type": "package"
+            }
+          ],
+          "name": "coderscampus",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /student/"
+        }
+      ]
+    },
+    {
+      "type": "database",
+      "name": "Database",
+      "children": [
+        {
+          "type": "query",
+          "name": "select s1_0.id,s1_0.assignment_num,s1_0.date_created,s1_0.ide,s1_0.name,s1_0.uid from student s1_0 where s1_0.uid=?"
+        }
+      ]
+    }
+  ]
+}

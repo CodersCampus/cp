@@ -1,0 +1,76 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "fetch",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/web/StudentController.java:43"
+                      }
+                    ],
+                    "name": "StudentController",
+                    "type": "class"
+                  }
+                ],
+                "name": "web",
+                "type": "package"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "findById",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/service/StudentService.java:61"
+                      }
+                    ],
+                    "name": "StudentService",
+                    "type": "class"
+                  }
+                ],
+                "name": "service",
+                "type": "package"
+              }
+            ],
+            "name": "cp",
+            "type": "package"
+          }
+        ],
+        "name": "coderscampus",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "GET /student/update/{id}"
+      }
+    ]
+  },
+  {
+    "type": "database",
+    "name": "Database",
+    "children": [
+      {
+        "type": "query",
+        "name": "select s1_0.id,s1_0.assignment_num,s1_0.date_created,s1_0.ide,s1_0.name,s1_0.uid from student s1_0 where s1_0.id=?"
+      }
+    ]
+  }
+]

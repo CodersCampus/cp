@@ -1,0 +1,48 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "getOauth",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/web/SpringProjectController.java:48"
+                      }
+                    ],
+                    "name": "SpringProjectController",
+                    "type": "class"
+                  }
+                ],
+                "name": "web",
+                "type": "package"
+              }
+            ],
+            "name": "cp",
+            "type": "package"
+          }
+        ],
+        "name": "coderscampus",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "POST /send-oauth"
+      }
+    ]
+  }
+]

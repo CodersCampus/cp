@@ -1,0 +1,82 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "isValidStudentUpdateOrDelete",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/service/StudentService.java:43"
+                      },
+                      {
+                        "name": "delete",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/service/StudentService.java:66"
+                      }
+                    ],
+                    "name": "StudentService",
+                    "type": "class"
+                  }
+                ],
+                "name": "service",
+                "type": "package"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "delete",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/web/StudentController.java:58"
+                      }
+                    ],
+                    "name": "StudentController",
+                    "type": "class"
+                  }
+                ],
+                "name": "web",
+                "type": "package"
+              }
+            ],
+            "name": "cp",
+            "type": "package"
+          }
+        ],
+        "name": "coderscampus",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "POST /student/delete"
+      }
+    ]
+  },
+  {
+    "type": "database",
+    "name": "Database",
+    "children": [
+      {
+        "type": "query",
+        "name": "select s1_0.id,s1_0.assignment_num,s1_0.date_created,s1_0.ide,s1_0.name,s1_0.uid from student s1_0 where s1_0.id=?"
+      }
+    ]
+  }
+]

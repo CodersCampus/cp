@@ -1,0 +1,2 @@
+Syntax error found near VALUES Clause (SELECT Statement): insert into student (id, assignment_num, date_created, ide, name, uid) values (default, ?, ?, ?, ?, ?)
+Syntax error found near VALUES Clause (SELECT Statement): insert into checkin (id, blocker_description, blockers, coding_type, date, next_assignment, role, student_id, uid) values (default, ?, ?, ?, ?, ?, ?, ?, ?)

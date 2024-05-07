@@ -1,0 +1,7 @@
+[
+  "com/coderscampus/cp/domain/Checkin$CodingType",
+  "com/coderscampus/cp/domain/Checkin$Role",
+  "com/coderscampus/cp/repository/StudentRepository",
+  "com/coderscampus/cp/service/CheckinService",
+  "com/coderscampus/cp/web/CheckinController"
+]

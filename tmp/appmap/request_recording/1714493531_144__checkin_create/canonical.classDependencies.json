@@ -1,0 +1,14 @@
+[
+  {
+    "caller": "POST /checkin/create",
+    "callee": "com/coderscampus"
+  },
+  {
+    "caller": "com/coderscampus",
+    "callee": "insert into checkin (id, blocker_description, blockers, coding_type, date, next_assignment, role, student_id, uid) values (default, ?, ?, ?, ?, ?, ?, ?, ?)"
+  },
+  {
+    "caller": "com/coderscampus",
+    "callee": "select s1_0.id,s1_0.assignment_num,s1_0.date_created,s1_0.ide,s1_0.name,s1_0.uid from student s1_0 where s1_0.uid=?"
+  }
+]

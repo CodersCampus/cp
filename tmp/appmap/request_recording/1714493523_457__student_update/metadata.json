@@ -1,0 +1,23 @@
+{
+  "name": "POST /student/update (302) - 12:12:03.457",
+  "app": "cp",
+  "language": {
+    "name": "java",
+    "version": "21.0.2+13-58",
+    "engine": "OpenJDK 64-Bit Server VM"
+  },
+  "client": {
+    "name": "appmap-java",
+    "url": "https://github.com/appland/appmap-java"
+  },
+  "recorder": {
+    "name": "request_recording",
+    "type": "requests"
+  },
+  "recording": {},
+  "git": {
+    "repository": "https://github.com/CodersCampus/cp.git",
+    "branch": "issue546",
+    "commit": "317f884180d9fda7702122b3d4fb8b8b37dbb45a"
+  }
+}

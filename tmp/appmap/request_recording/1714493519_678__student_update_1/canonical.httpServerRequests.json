@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /student/update/{id}",
+    "parameters": "()",
+    "status": 200
+  }
+]

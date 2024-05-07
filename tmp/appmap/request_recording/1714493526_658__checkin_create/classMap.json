@@ -1,0 +1,78 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "values",
+                        "type": "function",
+                        "static": true,
+                        "location": "src/main/java/com/coderscampus/cp/domain/Checkin.java:133"
+                      }
+                    ],
+                    "name": "Checkin$CodingType",
+                    "type": "class"
+                  },
+                  {
+                    "children": [
+                      {
+                        "name": "values",
+                        "type": "function",
+                        "static": true,
+                        "location": "src/main/java/com/coderscampus/cp/domain/Checkin.java:137"
+                      }
+                    ],
+                    "name": "Checkin$Role",
+                    "type": "class"
+                  }
+                ],
+                "name": "domain",
+                "type": "package"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "name": "getCreate",
+                        "type": "function",
+                        "static": false,
+                        "location": "src/main/java/com/coderscampus/cp/web/CheckinController.java:33"
+                      }
+                    ],
+                    "name": "CheckinController",
+                    "type": "class"
+                  }
+                ],
+                "name": "web",
+                "type": "package"
+              }
+            ],
+            "name": "cp",
+            "type": "package"
+          }
+        ],
+        "name": "coderscampus",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "GET /checkin/create"
+      }
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "route": "POST /student/create",
+    "parameters": "(uid,name)",
+    "status": 302
+  }
+]

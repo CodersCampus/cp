@@ -1,0 +1,6 @@
+[
+  {
+    "caller": "POST /send-oauth",
+    "callee": "com/coderscampus"
+  }
+]

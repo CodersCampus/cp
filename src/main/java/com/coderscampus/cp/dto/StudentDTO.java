@@ -52,8 +52,20 @@ public class StudentDTO {
 		return dateCreated;
 	}
 
-	
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setAssignmentNum(Integer assignmentNum) {
+        this.assignmentNum = assignmentNum;
+    }
+
+    public void setIde(String ide) {
+        this.ide = ide;
+    }
 }

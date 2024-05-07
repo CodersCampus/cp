@@ -1,0 +1,5 @@
+[
+  "com/coderscampus/cp/repository/StudentRepository",
+  "com/coderscampus/cp/service/StudentService",
+  "com/coderscampus/cp/web/StudentController"
+]

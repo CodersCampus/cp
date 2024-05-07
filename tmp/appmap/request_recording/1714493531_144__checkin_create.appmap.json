@@ -1,0 +1,430 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "content-length": "83",
+          "referer": "http://localhost:8080/checkin/create",
+          "sec-fetch-site": "same-origin",
+          "accept-language": "en-US,en;q=0.9",
+          "cookie": "JSESSIONID=09459F7AA493367617D9C763E3260900",
+          "origin": "http://localhost:8080",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:8080",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "content-type": "application/x-www-form-urlencoded",
+          "cache-control": "max-age=0",
+          "accept-encoding": "gzip, deflate, br, zstd",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/checkin/create",
+        "path_info": "/checkin/create",
+        "protocol": "HTTP/1.1",
+        "request_method": "POST"
+      },
+      "id": 1,
+      "message": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "uid",
+          "object_id": 134569661,
+          "value": "KtNf0biEhghMC89dYTbdPIGOjdb2"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "nextAssignment",
+          "object_id": 1060880814,
+          "value": "99"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "_blockers",
+          "object_id": 2016796524,
+          "value": "on"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "blockerDescription",
+          "object_id": 110218815,
+          "value": ""
+        }
+      ],
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.coderscampus.cp.domain.Checkin$Role",
+      "event": "call",
+      "id": 2,
+      "lineno": 137,
+      "method_id": "values",
+      "path": "src/main/java/com/coderscampus/cp/domain/Checkin.java",
+      "static": true,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 3,
+      "parent_id": 2,
+      "return_value": {
+        "class": "[Lcom.coderscampus.cp.domain.Checkin$Role;",
+        "object_id": 1003045009,
+        "value": "[Lcom.coderscampus.cp.domain.Checkin$Role;@3bc94091"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.coderscampus.cp.domain.Checkin$CodingType",
+      "event": "call",
+      "id": 4,
+      "lineno": 133,
+      "method_id": "values",
+      "path": "src/main/java/com/coderscampus/cp/domain/Checkin.java",
+      "static": true,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 5,
+      "parent_id": 4,
+      "return_value": {
+        "class": "[Lcom.coderscampus.cp.domain.Checkin$CodingType;",
+        "object_id": 2012401327,
+        "value": "[Lcom.coderscampus.cp.domain.Checkin$CodingType;@77f2ceaf"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.coderscampus.cp.web.CheckinController",
+      "event": "call",
+      "id": 6,
+      "lineno": 42,
+      "method_id": "create",
+      "parameters": [
+        {
+          "class": "com.coderscampus.cp.domain.Checkin",
+          "kind": "req",
+          "name": "checkin",
+          "object_id": 1563009745,
+          "value": "Checkin{id=null, uid='KtNf0biEhghMC89dYTbdPIGOjdb2', date=null, nextAssignment=99, blockers=false, blockerDescription='', student=null, activityLog=[]}"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "uid",
+          "object_id": 134569661,
+          "value": "KtNf0biEhghMC89dYTbdPIGOjdb2"
+        }
+      ],
+      "path": "src/main/java/com/coderscampus/cp/web/CheckinController.java",
+      "receiver": {
+        "class": "com.coderscampus.cp.web.CheckinController",
+        "object_id": 1854285798,
+        "value": "com.coderscampus.cp.web.CheckinController@6e8627e6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.coderscampus.cp.service.CheckinService",
+      "event": "call",
+      "id": 7,
+      "lineno": 28,
+      "method_id": "saveByUid",
+      "parameters": [
+        {
+          "class": "com.coderscampus.cp.domain.Checkin",
+          "kind": "req",
+          "name": "checkin",
+          "object_id": 1563009745,
+          "value": "Checkin{id=null, uid='KtNf0biEhghMC89dYTbdPIGOjdb2', date=2024-04-30T16:12:11.148385Z, nextAssignment=99, blockers=false, blockerDescription='', student=null, activityLog=[]}"
+        },
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "uid",
+          "object_id": 134569661,
+          "value": "KtNf0biEhghMC89dYTbdPIGOjdb2"
+        }
+      ],
+      "path": "src/main/java/com/coderscampus/cp/service/CheckinService.java",
+      "receiver": {
+        "class": "com.coderscampus.cp.service.CheckinService",
+        "object_id": 1741048732,
+        "value": "com.coderscampus.cp.service.CheckinService@67c64b9c"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.coderscampus.cp.repository.StudentRepository",
+      "event": "call",
+      "id": 8,
+      "lineno": -1,
+      "method_id": "findByUid",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "p0",
+          "object_id": 134569661,
+          "value": "KtNf0biEhghMC89dYTbdPIGOjdb2"
+        }
+      ],
+      "path": "src/main/java/com/coderscampus/cp/repository/StudentRepository.java",
+      "receiver": {
+        "class": "jdk.proxy2.$Proxy188",
+        "object_id": 956329508,
+        "value": "org.springframework.data.jpa.repository.support.SimpleJpaRepository@7d42494a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "event": "call",
+      "id": 9,
+      "sql_query": {
+        "database_type": "H2",
+        "sql": "select s1_0.id,s1_0.assignment_num,s1_0.date_created,s1_0.ide,s1_0.name,s1_0.uid from student s1_0 where s1_0.uid=?"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 10,
+      "parent_id": 9,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00020006,
+      "event": "return",
+      "id": 11,
+      "parent_id": 8,
+      "return_value": {
+        "class": "com.coderscampus.cp.domain.Student",
+        "object_id": 1896855152,
+        "value": "Student{id=1, uid='KtNf0biEhghMC89dYTbdPIGOjdb2', name='Al Fu', assignmentNum=null, ide='null', dateCreated=2024-04-30T16:11:51.357982Z, checkin=[]}"
+      },
+      "thread_id": 60
+    },
+    {
+      "event": "call",
+      "id": 12,
+      "sql_query": {
+        "database_type": "H2",
+        "sql": "insert into checkin (id, blocker_description, blockers, coding_type, date, next_assignment, role, student_id, uid) values (default, ?, ?, ?, ?, ?, ?, ?, ?)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 13,
+      "parent_id": 12,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.0006001,
+      "event": "return",
+      "id": 14,
+      "parent_id": 7,
+      "return_value": {
+        "class": "com.coderscampus.cp.domain.Checkin",
+        "object_id": 1563009745,
+        "value": "Checkin{id=1, uid='KtNf0biEhghMC89dYTbdPIGOjdb2', date=2024-04-30T16:12:11.148385Z, nextAssignment=99, blockers=false, blockerDescription='', student=Student{id=1, uid='KtNf0biEhghMC89dYTbdPIGOjdb2', name='Al Fu', assignmentNum=null, ide='null', dateCreated=2024-04-30T16:11:51.357982Z, checkin=[]}, activityLog=[]}"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.0006001,
+      "event": "return",
+      "id": 15,
+      "parent_id": 6,
+      "return_value": {
+        "class": "java.lang.String",
+        "object_id": 1214203711,
+        "value": "redirect:/checkin/"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00099989,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "Location": "http://localhost:8080/checkin/"
+        },
+        "status": 302
+      },
+      "id": 16,
+      "parent_id": 1,
+      "thread_id": 60
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "POST /checkin/create (302) - 12:12:11.144",
+    "app": "cp",
+    "language": {
+      "name": "java",
+      "version": "21.0.2+13-58",
+      "engine": "OpenJDK 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/CodersCampus/cp.git",
+      "branch": "issue546",
+      "commit": "317f884180d9fda7702122b3d4fb8b8b37dbb45a"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "saveByUid",
+                          "type": "function",
+                          "static": false,
+                          "location": "src/main/java/com/coderscampus/cp/service/CheckinService.java:28"
+                        }
+                      ],
+                      "name": "CheckinService",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "service",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "findByUid",
+                          "type": "function",
+                          "static": false,
+                          "location": "src/main/java/com/coderscampus/cp/repository/StudentRepository.java:-1"
+                        }
+                      ],
+                      "name": "StudentRepository",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "repository",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "create",
+                          "type": "function",
+                          "static": false,
+                          "location": "src/main/java/com/coderscampus/cp/web/CheckinController.java:42"
+                        }
+                      ],
+                      "name": "CheckinController",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "web",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "values",
+                          "type": "function",
+                          "static": true,
+                          "location": "src/main/java/com/coderscampus/cp/domain/Checkin.java:133"
+                        }
+                      ],
+                      "name": "Checkin$CodingType",
+                      "type": "class"
+                    },
+                    {
+                      "children": [
+                        {
+                          "name": "values",
+                          "type": "function",
+                          "static": true,
+                          "location": "src/main/java/com/coderscampus/cp/domain/Checkin.java:137"
+                        }
+                      ],
+                      "name": "Checkin$Role",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "domain",
+                  "type": "package"
+                }
+              ],
+              "name": "cp",
+              "type": "package"
+            }
+          ],
+          "name": "coderscampus",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "POST /checkin/create"
+        }
+      ]
+    },
+    {
+      "type": "database",
+      "name": "Database",
+      "children": [
+        {
+          "type": "query",
+          "name": "select s1_0.id,s1_0.assignment_num,s1_0.date_created,s1_0.ide,s1_0.name,s1_0.uid from student s1_0 where s1_0.uid=?"
+        },
+        {
+          "type": "query",
+          "name": "insert into checkin (id, blocker_description, blockers, coding_type, date, next_assignment, role, student_id, uid) values (default, ?, ?, ?, ?, ?, ?, ?, ?)"
+        }
+      ]
+    }
+  ]
+}
