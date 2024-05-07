@@ -74,7 +74,6 @@ class StudentServiceTest {
         StudentDTO studentDTO = new StudentDTO(student);
         StudentDTO result = studentService.saveByUid(studentDTO, uid);
         assertEquals("bobby", result.getName());
-        studentRepo.save(student);
         Student studentResult = studentRepo.findByUid(uid);
         assertEquals("bobby", studentResult.getName());
     }

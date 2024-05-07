@@ -42,6 +42,7 @@ public class StudentController {
 
     @PostMapping("/create")
     public String create(StudentDTO student, @RequestParam("uid") String uid) {
+    	System.out.println("This line is being saved" + student.getName());
         studentService.saveByUid(student, uid);
         return "redirect:/student/";
     }
