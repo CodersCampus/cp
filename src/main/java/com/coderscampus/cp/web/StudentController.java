@@ -3,6 +3,7 @@ package com.coderscampus.cp.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,9 +54,15 @@ public class StudentController {
         return "student/update";
     }
 
+//    @PostMapping("/update")
+//    public String update(Student student, @RequestParam("uid") String uid) {
+//        studentService.saveByUid(student, uid);
+//        return "redirect:/student/";
+//    }
+    
     @PostMapping("/update")
-    public String update(Student student, @RequestParam("uid") String uid) {
-        studentService.saveByUid(student, uid);
+    public String update(@ModelAttribute("student") StudentDTO studentDTO, @RequestParam("uid") String uid) {
+        studentService.updateStudent(studentDTO, uid);
         return "redirect:/student/";
     }
 
