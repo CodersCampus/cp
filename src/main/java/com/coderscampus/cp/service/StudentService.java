@@ -14,93 +14,90 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
-    @Autowired
-    private StudentRepository studentRepo;
+	@Autowired
+	private StudentRepository studentRepo;
 
-    public void save(Student student) {
-        if (isValidNewStudent(student)) {
-            studentRepo.save(student);
-        }
-        if (doesStudentExistInRepository(student)) {
-            studentRepo.save(student);
-        }
-    }
-    @Transactional
-    public StudentDTO saveByUid(Student student, String uid) {
-        Student foundStudent = studentRepo.findByUid(uid);
-        if (foundStudent == null) {
-            student.setDateCreated(Instant.now());
-            student.setUid(uid);
-            foundStudent = studentRepo.save(student);
-        }
-        StudentDTO returnStudent = new StudentDTO(foundStudent);
-        return returnStudent;
-    }
+	public void save(Student student) {
+		if (isValidNewStudent(student)) {
+			studentRepo.save(student);
+		}
+		if (doesStudentExistInRepository(student)) {
+			studentRepo.save(student);
+		}
+	}
 
+	@Transactional
+	public StudentDTO saveByUid(Student student, String uid) {
+		Student foundStudent = studentRepo.findByUid(uid);
+		if (foundStudent == null) {
+			student.setDateCreated(Instant.now());
+			student.setUid(uid);
+			foundStudent = studentRepo.save(student);
+		}
+		StudentDTO returnStudent = new StudentDTO(foundStudent);
+		return returnStudent;
+	}
 
-    boolean doesStudentExistInRepository(Student student) {
-        Optional<Student> existingStudent = studentRepo.findById(student.getId());
+	boolean doesStudentExistInRepository(Student student) {
+		Optional<Student> existingStudent = studentRepo.findById(student.getId());
 
-        if (existingStudent.isPresent() && existingStudent.get().getUid() != null
-                && existingStudent.get().getUid().equals(student.getUid())) {
-            return true;
-        }
-        return false;
-    }
+		if (existingStudent.isPresent() && existingStudent.get().getUid() != null
+				&& existingStudent.get().getUid().equals(student.getUid())) {
+			return true;
+		}
+		return false;
+	}
 
-    boolean isValidNewStudent(Student student) {
-        Student students = studentRepo.findByUid(student.getUid());
-        if (students == null) {
-            return true;
-        }
-        return false;
-    }
+	boolean isValidNewStudent(Student student) {
+		Student students = studentRepo.findByUid(student.getUid());
+		if (students == null) {
+			return true;
+		}
+		return false;
+	}
 
-    public StudentDTO findById(Long id) {
-        return new StudentDTO(studentRepo.findById(id).get());
-    }
+	public StudentDTO findById(Long id) {
+		return new StudentDTO(studentRepo.findById(id).get());
+	}
 
-    public boolean delete(Student student) {
-        try {
-            if (doesStudentExistInRepository(student)) {
-                studentRepo.delete(student);
-                Optional<Student> user = studentRepo.findById(student.getId());
-                boolean foundUser = user.isPresent();
-                if (foundUser) {
-                    throw new RuntimeErrorException(null, "User was not deleted");
-                }
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            System.err.println(e);
-            return false;
-        }
-        return true;
-    }
+	public boolean delete(Student student) {
+		try {
+			if (doesStudentExistInRepository(student)) {
+				studentRepo.delete(student);
+				Optional<Student> user = studentRepo.findById(student.getId());
+				boolean foundUser = user.isPresent();
+				if (foundUser) {
+					throw new RuntimeErrorException(null, "User was not deleted");
+				}
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+			return false;
+		}
+		return true;
+	}
 
-    public StudentDTO findByUid(String uid) {
-        Student student = studentRepo.findByUid(uid);
-        return new StudentDTO(student);
-    }
-    
-    @Transactional
-    public StudentDTO updateStudent(StudentDTO studentDTO, String uid) {
-        Student student = studentRepo.findByUid(uid);
-        if (student != null) {
-            // Map fields from StudentDTO to Student
-            student.setName(studentDTO.getName());
-            student.setAssignmentNum(studentDTO.getAssignmentNum());
-            student.setIde(studentDTO.getIde());
-            student.setWillingToMentor(studentDTO.getWillingToMentor());
-            student.setMentee(studentDTO.getMentee());
-            // Update any other necessary fields
-            studentRepo.save(student);
-        } else {
-            // Handle non-existing student scenario
-            throw new IllegalArgumentException("No student found with UID: " + uid);
-        }
-        return new StudentDTO(student);
-    }
+	public StudentDTO findByUid(String uid) {
+		Student student = studentRepo.findByUid(uid);
+		return new StudentDTO(student);
+	}
+
+	@Transactional
+	public StudentDTO updateStudent(StudentDTO studentDTO, String uid) {
+		Student student = studentRepo.findByUid(uid);
+		if (student != null) {
+			student.setName(studentDTO.getName());
+			student.setAssignmentNum(studentDTO.getAssignmentNum());
+			student.setIde(studentDTO.getIde());
+			student.setWillingToMentor(studentDTO.getWillingToMentor());
+			student.setMentee(studentDTO.getMentee());
+			studentRepo.save(student);
+		} else {
+			throw new IllegalArgumentException("No student found with UID: " + uid);
+		}
+		return new StudentDTO(student);
+	}
 
 }
