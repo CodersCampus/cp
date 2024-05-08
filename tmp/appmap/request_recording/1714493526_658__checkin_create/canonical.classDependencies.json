@@ -1,6 +1,0 @@
-[
-  {
-    "caller": "GET /checkin/create",
-    "callee": "com/coderscampus"
-  }
-]

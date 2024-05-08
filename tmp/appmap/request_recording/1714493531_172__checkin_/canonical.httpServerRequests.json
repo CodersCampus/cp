@@ -1,7 +1,0 @@
-[
-  {
-    "route": "GET /checkin/",
-    "parameters": "()",
-    "status": 200
-  }
-]

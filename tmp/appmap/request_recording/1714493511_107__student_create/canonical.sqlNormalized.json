@@ -1,4 +1,0 @@
-[
-  "insert into student (id, assignment_num, date_created, ide, name, uid) values (default, ?, ?, ?, ?, ?)",
-  "select s1_0.id,s1_0.assignment_num,s1_0.date_created,s1_0.ide,s1_0.name,s1_0.uid from student s1_0 where s1_0.uid=?"
-]

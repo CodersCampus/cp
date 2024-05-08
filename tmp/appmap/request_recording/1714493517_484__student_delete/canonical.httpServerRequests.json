@@ -1,7 +1,0 @@
-[
-  {
-    "route": "POST /student/delete",
-    "parameters": "(id)",
-    "status": 302
-  }
-]

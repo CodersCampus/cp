@@ -1,7 +1,0 @@
-[
-  {
-    "route": "POST /send-oauth",
-    "parameters": "()",
-    "status": 200
-  }
-]

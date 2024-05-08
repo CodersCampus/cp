@@ -1,7 +1,0 @@
-[
-  {
-    "route": "GET /student/",
-    "parameters": "()",
-    "status": 200
-  }
-]

@@ -1,3 +1,0 @@
-[
-  "select c1_0.id,c1_0.blocker_description,c1_0.blockers,c1_0.coding_type,c1_0.date,c1_0.next_assignment,c1_0.role,c1_0.student_id,c1_0.uid from checkin c1_0 where c1_0.uid=?"
-]

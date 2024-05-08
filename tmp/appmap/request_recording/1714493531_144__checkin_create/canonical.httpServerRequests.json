@@ -1,7 +1,0 @@
-[
-  {
-    "route": "POST /checkin/create",
-    "parameters": "(uid,nextAssignment,_blockers,blockerDescription)",
-    "status": 302
-  }
-]

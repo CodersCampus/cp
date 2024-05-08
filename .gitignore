@@ -10,3 +10,4 @@ CP.iml
 bin/
 .vscode/
 .DS_Store
+tmp/
