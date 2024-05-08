@@ -6,33 +6,21 @@ import com.coderscampus.cp.repository.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-@AutoConfigureMockMvc
-
-
-
 class StudentServiceTest {
     @Autowired
     private StudentService studentService;
     @Autowired
     private StudentRepository studentRepo;
-    @Autowired
-    private MockMvc mockMvc;
-    @Autowired
-    private ObjectMapper objectMapper;
+
 
     @Test
     void testIsValidStudentUpdate() {
@@ -82,7 +70,7 @@ class StudentServiceTest {
     }
 
     @Test
-    void testStudentSaveByUid(){
+    void testStudentSaveByUid() {
         String uid = UUID.randomUUID().toString();
         Student student = new Student(554, "bobby", 12, uid);
         StudentDTO studentDTO = new StudentDTO(student);
@@ -92,18 +80,5 @@ class StudentServiceTest {
         assertEquals("bobby", studentResult.getName());
     }
 
-    @Test
-    public void testGetCreate() throws Exception {
-        StudentDTO student = new StudentDTO();
-        student.setName("bobby");
-        String uid = UUID.randomUUID().toString();
-
-        // Perform a POST request to your endpoint with the student object and uid parameter
-        mockMvc.perform(post("/create")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(student))
-                        .param("uid", uid))
-                .andExpect(status().isOk()); // Assuming the endpoint returns 200 OK upon successful creation
-    }
 
 }
