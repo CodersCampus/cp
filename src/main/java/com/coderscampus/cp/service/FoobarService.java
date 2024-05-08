@@ -19,7 +19,6 @@ public class FoobarService {
     private StudentRepository studentRepo;
 
     public Foobar save(Foobar foobar) {
-        System.out.println("FoobarService.java save method| Foobar is: " + foobar);
         return foobarRepo.save(foobar);
     }
 

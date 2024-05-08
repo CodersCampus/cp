@@ -27,10 +27,8 @@ public class StudentController {
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
-        System.out.println("uid: " + uid);
         if (uid != null && !uid.isEmpty()) {
             StudentDTO studentDTO = studentService.findByUid(uid);
-            System.out.println(studentDTO);
             model.addAttribute("student", studentDTO);
             model.addAttribute("isStudent", true);
         }
@@ -42,7 +40,6 @@ public class StudentController {
 
     @PostMapping("/create")
     public String create(StudentDTO student, @RequestParam("uid") String uid) {
-    	System.out.println("This line is being saved" + student.getName());
         studentService.saveByUid(student, uid);
         return "redirect:/student/";
     }
