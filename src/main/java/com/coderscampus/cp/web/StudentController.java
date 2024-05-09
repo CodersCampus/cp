@@ -19,57 +19,49 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/student")
 public class StudentController {
 
-    private StudentService studentService;
+	private StudentService studentService;
 
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
+	public StudentController(StudentService studentService) {
+		this.studentService = studentService;
+	}
 
-    @GetMapping("/")
-    public String home(ModelMap model, HttpSession httpSession) {
-        String uid = (String) httpSession.getAttribute("uid");
-        if (uid != null && !uid.isEmpty()) {
-            StudentDTO studentDTO = studentService.findByUid(uid);
-            model.put("student", studentDTO);
-            model.put("isStudent", true);
-        }
-        model.addAttribute("pageTitle", "Student Read");
-        return "student/read";
-    }
+	@GetMapping("/")
+	public String home(ModelMap model, HttpSession httpSession) {
+		String uid = (String) httpSession.getAttribute("uid");
+		if (uid != null && !uid.isEmpty()) {
+			StudentDTO studentDTO = studentService.findByUid(uid);
+			model.put("student", studentDTO);
+			model.put("isStudent", true);
+		}
+		model.addAttribute("pageTitle", "Student Read");
+		return "student/read";
+	}
 
+	@PostMapping("/create")
+	public String create(Student student, @RequestParam("uid") String uid) {
+		studentService.saveByUid(student, uid);
+		return "redirect:/student/";
+	}
 
+	@GetMapping("/update/{id}")
+	public String fetch(ModelMap model, @PathVariable Long id) {
+		StudentDTO studentDTO = studentService.findById(id);
+		model.put("student", studentDTO);
+		model.addAttribute("pageTitle", "Student Update");
+		model.put("isStudent", true);
+		return "student/update";
+	}
 
-    @PostMapping("/create")
-    public String create(Student student, @RequestParam("uid") String uid) {
-        studentService.saveByUid(student, uid);
-        return "redirect:/student/";
-    }
+	@PostMapping("/update")
+	public String update(@ModelAttribute("student") StudentDTO studentDTO, @RequestParam("uid") String uid) {
+		studentService.updateStudent(studentDTO, uid);
+		return "redirect:/student/";
+	}
 
-    @GetMapping("/update/{id}")
-    public String fetch(ModelMap model, @PathVariable Long id) {
-        StudentDTO studentDTO = studentService.findById(id);
-        model.put("student", studentDTO);
-        model.addAttribute("pageTitle", "Student Update");
-        model.put("isStudent", true);
-        return "student/update";
-    }
+	@PostMapping("/delete")
+	public String delete(Student student) {
+		studentService.delete(student);
+		return "redirect:/student/";
 
-//    @PostMapping("/update")
-//    public String update(Student student, @RequestParam("uid") String uid) {
-//        studentService.saveByUid(student, uid);
-//        return "redirect:/student/";
-//    }
-    
-    @PostMapping("/update")
-    public String update(@ModelAttribute("student") StudentDTO studentDTO, @RequestParam("uid") String uid) {
-        studentService.updateStudent(studentDTO, uid);
-        return "redirect:/student/";
-    }
-
-    @PostMapping("/delete")
-    public String delete(Student student) {
-        studentService.delete(student);
-        return "redirect:/student/";
-
-    }
+	}
 }
