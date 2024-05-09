@@ -10,3 +10,6 @@ CP.iml
 bin/
 .vscode/
 .DS_Store
+tmp/
+appmap.yml
+sql_warning.txt

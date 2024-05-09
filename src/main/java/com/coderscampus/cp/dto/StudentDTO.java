@@ -11,10 +11,9 @@ public class StudentDTO {
 	private Integer assignmentNum;
 	private String ide;
 	private Instant dateCreated;
-	
 
 	public StudentDTO(Student foundStudent) {
-        super();
+		super();
 		this.id = foundStudent.getId();
 		this.name = foundStudent.getName();
 		this.assignmentNum = foundStudent.getAssignmentNum();
@@ -22,9 +21,9 @@ public class StudentDTO {
 		this.dateCreated = foundStudent.getDateCreated();
 	}
 
-    public StudentDTO() {
-        this(new Student());
-    }
+	public StudentDTO() {
+		this(new Student());
+	}
 
 	public Long getId() {
 		return id;
@@ -46,8 +45,25 @@ public class StudentDTO {
 		return dateCreated;
 	}
 
-	
+	public void setId(Long id) {
+		this.id = id;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public void setAssignmentNum(Integer assignmentNum) {
+		this.assignmentNum = assignmentNum;
+	}
 
+	public void setIde(String ide) {
+		this.ide = ide;
+	}
+
+	@Override
+	public String toString() {
+		return "StudentDTO [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", ide=" + ide
+				+ ", dateCreated=" + dateCreated + "]";
+	}
 }

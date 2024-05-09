@@ -45,14 +45,12 @@ public class SpringProjectController {
     @ResponseBody
     public String getOauth(@RequestBody AuthObjectDto authDto,
                            HttpSession httpSession) {
-        System.out.println("authDto_V1: " + authDto);
         if (authDto != null) {
             httpSession.setAttribute("uid", authDto.getUid());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
 //            DO NOT NEED FOR #512 TO WORK
 //            httpSession.setAttribute("photoURL", authDto.getPhotoURL()); // Add this line
         }
-        System.out.println("authDto_V2: " + authDto);
         return "redirect:/";
     }
 
