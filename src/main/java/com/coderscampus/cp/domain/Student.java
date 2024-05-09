@@ -30,6 +30,8 @@ public class Student  {
     private Integer assignmentNum;
     private String ide;
     private Instant dateCreated;
+    private Boolean willingToMentor;
+    private String mentee;
     //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private GitHub githubHandle;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -117,6 +119,8 @@ public class Student  {
     public void setIde(String ide) {
         this.ide = ide;
     }
+    
+    
 //	public GitHub getGithubHandle() {
 //		return githubHandle;
 //	}
@@ -182,7 +186,23 @@ public class Student  {
 //		this.website = website;
 //	}
 
-    public List<Checkin> getCheckin() {
+    public Boolean getWillingToMentor() {
+		return willingToMentor;
+	}
+
+	public void setWillingToMentor(Boolean willingToMentor) {
+		this.willingToMentor = willingToMentor;
+	}
+
+	public String getMentee() {
+		return mentee;
+	}
+
+	public void setMentee(String mentee) {
+		this.mentee = mentee;
+	}
+
+	public List<Checkin> getCheckin() {
         return checkin;
     }
 

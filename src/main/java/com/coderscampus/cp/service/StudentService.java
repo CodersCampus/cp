@@ -84,4 +84,20 @@ public class StudentService {
         Student student = studentRepo.findByUid(uid);
         return new StudentDTO(student);
     }
+    
+    @Transactional
+	public StudentDTO updateStudent(StudentDTO studentDTO, String uid) {
+		Student student = studentRepo.findByUid(uid);
+		if (student != null) {
+			student.setName(studentDTO.getName());
+			student.setAssignmentNum(studentDTO.getAssignmentNum());
+			student.setIde(studentDTO.getIde());
+			student.setWillingToMentor(studentDTO.getWillingToMentor());
+			student.setMentee(studentDTO.getMentee());
+			studentRepo.save(student);
+		} else {
+			throw new IllegalArgumentException("No student found with UID: " + uid);
+		}
+		return new StudentDTO(student);
+	}
 }
