@@ -11,6 +11,8 @@ public class StudentDTO {
 	private Integer assignmentNum;
 	private String ide;
 	private Instant dateCreated;
+	private Boolean willingToMentor;
+	private String mentee;
 
 	public StudentDTO(Student foundStudent) {
 		super();
@@ -59,6 +61,22 @@ public class StudentDTO {
 
 	public void setIde(String ide) {
 		this.ide = ide;
+	}
+
+	public Boolean getWillingToMentor() {
+		return willingToMentor;
+	}
+
+	public void setWillingToMentor(Boolean willingToMentor) {
+		this.willingToMentor = willingToMentor;
+	}
+
+	public String getMentee() {
+		return mentee;
+	}
+
+	public void setMentee(String mentee) {
+		this.mentee = mentee;
 	}
 
 	@Override
