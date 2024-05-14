@@ -56,7 +56,7 @@ public class StudentController {
 
     @PostMapping("/update")
 	public String update(@ModelAttribute("student") StudentDTO studentDTO, @RequestParam("uid") String uid) {
-		studentService.updateStudent(studentDTO, uid);
+		studentService.saveByUid(studentDTO, uid);
 		return "redirect:/student/";
 	}
 

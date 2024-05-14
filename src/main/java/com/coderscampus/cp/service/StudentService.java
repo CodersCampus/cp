@@ -29,15 +29,21 @@ public class StudentService {
     public StudentDTO saveByUid(StudentDTO studentDTO, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
         if (foundStudent == null) {
-        	Student student = new Student(studentDTO);
+            Student student = new Student(studentDTO);
             student.setDateCreated(Instant.now());
             student.setUid(uid);
             foundStudent = studentRepo.save(student);
+        } else if (foundStudent != null) {
+            foundStudent.setName(studentDTO.getName());
+            foundStudent.setAssignmentNum(studentDTO.getAssignmentNum());
+            foundStudent.setIde(studentDTO.getIde());
+            foundStudent.setWillingToMentor(studentDTO.getWillingToMentor());
+            foundStudent.setMentee(studentDTO.getMentee());
+
         }
         StudentDTO returnStudent = new StudentDTO(foundStudent);
         return returnStudent;
     }
-
 
     boolean doesStudentExistInRepository(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
@@ -85,19 +91,14 @@ public class StudentService {
         return new StudentDTO(student);
     }
     
-    @Transactional
-	public StudentDTO updateStudent(StudentDTO studentDTO, String uid) {
-		Student student = studentRepo.findByUid(uid);
-		if (student != null) {
-			student.setName(studentDTO.getName());
-			student.setAssignmentNum(studentDTO.getAssignmentNum());
-			student.setIde(studentDTO.getIde());
-			student.setWillingToMentor(studentDTO.getWillingToMentor());
-			student.setMentee(studentDTO.getMentee());
-			studentRepo.save(student);
-		} else {
-			throw new IllegalArgumentException("No student found with UID: " + uid);
-		}
-		return new StudentDTO(student);
-	}
+//    @Transactional
+//	public StudentDTO updateStudent(StudentDTO studentDTO, String uid) {
+//		Student student = studentRepo.findByUid(uid);
+//
+//			studentRepo.save(student);
+//		} else {
+//			throw new IllegalArgumentException("No student found with UID: " + uid);
+//		}
+//		return new StudentDTO(student);
+//	}
 }
