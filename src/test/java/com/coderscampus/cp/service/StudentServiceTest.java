@@ -1,17 +1,20 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.StudentDTO;
-import com.coderscampus.cp.repository.StudentRepository;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.StudentRepository;
+
+import jakarta.transaction.Transactional;
 
 
 @SpringBootTest
@@ -79,6 +82,21 @@ class StudentServiceTest {
         Student studentResult = studentRepo.findByUid(uid);
         assertEquals("bobby", studentResult.getName());
     }
-
+    @Transactional
+    @Test
+    void testUpdateStudentByUid() {
+    	String uid = UUID.randomUUID().toString();
+        Student student = new Student(554, "bobby", 12, uid);
+        StudentDTO studentDTO = new StudentDTO(student);
+        studentDTO.setName("Kevin");
+        studentDTO.setAssignmentNum(9);
+        studentDTO.setIde("Eclipse");
+        studentDTO.setMentee("Bobby");
+        studentDTO.setWillingToMentor(true);
+        studentService.saveByUid(studentDTO, uid);
+        assertEquals("Kevin", student.getName());
+        
+        
+    }
 
 }

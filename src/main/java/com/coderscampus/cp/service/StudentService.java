@@ -39,7 +39,8 @@ public class StudentService {
             foundStudent.setIde(studentDTO.getIde());
             foundStudent.setWillingToMentor(studentDTO.getWillingToMentor());
             foundStudent.setMentee(studentDTO.getMentee());
-
+            foundStudent = studentRepo.save(foundStudent);
+            
         }
         StudentDTO returnStudent = new StudentDTO(foundStudent);
         return returnStudent;
