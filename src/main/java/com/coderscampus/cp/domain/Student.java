@@ -52,19 +52,18 @@ public class Student  {
     private List<Checkin> checkin = new ArrayList<Checkin>();
 
     public Student() {
+    	this.dateCreated = Instant.now();
     }
 
 
 
-    public Student(long id, String uid, String name, Integer assignmentNum, String ide, Instant dateCreated,
+    public Student( String uid, String name, Integer assignmentNum, String ide,
 			Boolean willingToMentor, String mentee, List<Checkin> checkin) {
 		super();
-		this.id = id;
 		this.uid = uid;
 		this.name = name;
 		this.assignmentNum = assignmentNum;
 		this.ide = ide;
-		this.dateCreated = dateCreated;
 		this.willingToMentor = willingToMentor;
 		this.mentee = mentee;
 		this.checkin = checkin;
@@ -73,6 +72,7 @@ public class Student  {
 
 
 	public Student(StudentDTO studentDTO) {
+		super();
         Long id = studentDTO.getId();
         if(id != null && id > 0){
             this.id = id;
@@ -87,17 +87,11 @@ public class Student  {
         return dateCreated;
     }
 
-    public void setDateCreated(Instant dateCreated) {
-        this.dateCreated = dateCreated;
-    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getUid() {
         return uid;

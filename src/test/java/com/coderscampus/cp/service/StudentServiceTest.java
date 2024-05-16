@@ -17,90 +17,86 @@ import com.coderscampus.cp.repository.StudentRepository;
 
 import jakarta.transaction.Transactional;
 
-
 @SpringBootTest
 class StudentServiceTest {
-    @Autowired
-    private StudentService studentService;
-    @Autowired
-    private StudentRepository studentRepo;
+	@Autowired
+	private StudentService studentService;
+	@Autowired
+	private StudentRepository studentRepo;
 
+	@Test
+	void testIsValidStudentUpdate() {
+		String uid = UUID.randomUUID().toString();
+		Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null);
+		existingStudent = studentRepo.save(existingStudent);
+		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+		assertTrue(studentService.doesStudentExistInRepository(student));
+		studentRepo.delete(existingStudent);
+	}
 
-    @Test
-    void testIsValidStudentUpdate() {
-        String uid = UUID.randomUUID().toString();
-        Student existingStudent = new Student(0, "bobby", 17, uid);
-        existingStudent = studentRepo.save(existingStudent);
-        Student student = new Student(existingStudent.getId(), "bobby", 12, uid);
-        assertTrue(studentService.doesStudentExistInRepository(student));
-        studentRepo.delete(existingStudent);
-    }
+	@Test
+	void testIsValidNewStudent() {
+		String uid = UUID.randomUUID().toString();
+		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+		assertTrue(studentService.isValidNewStudent(student));
+		studentRepo.delete(student);
 
+	}
 
-    @Test
-    void testIsValidNewStudent() {
-        String uid = UUID.randomUUID().toString();
-        Student student = new Student(0, "bobby", 12, uid);
-        assertTrue(studentService.isValidNewStudent(student));
-        studentRepo.delete(student);
+	@Test
+	void testValidNewStudentIfExists() {
+		String uid = UUID.randomUUID().toString();
+		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+		Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null);
+		studentRepo.save(existingStudent);
+		assertFalse(studentService.isValidNewStudent(student));
+		studentRepo.delete(existingStudent);
+		studentRepo.delete(student);
+	}
 
-    }
+	@Test
+	void testCanAddSecondStudent() {
+		String uid = UUID.randomUUID().toString();
+		String uid2 = UUID.randomUUID().toString();
+		Student student2 = new Student(uid2, "Bobby", 12, "IntelliJ", false, "name", null);
+		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+		studentRepo.save(student);
+		studentRepo.save(student2);
+		assertFalse(studentService.isValidNewStudent(student));
+		assertFalse(studentService.isValidNewStudent(student2));
+		studentRepo.delete(student2);
+		studentRepo.delete(student);
+	}
 
+	@Test
+	void testStudentSaveByUid() {
+		String uid = UUID.randomUUID().toString();
+		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+		StudentDTO studentDTO = new StudentDTO(student);
+		StudentDTO result = studentService.saveByUid(studentDTO, uid);
+		assertEquals("bobby", result.getName());
+		Student studentResult = studentRepo.findByUid(uid);
+		assertEquals("bobby", studentResult.getName());
+	}
 
-    @Test
-    void testValidNewStudentIfExists() {
-        String uid = UUID.randomUUID().toString();
-        Student student = new Student(0, "bobby", 12, uid);
-        Student existingStudent = new Student(0, "bobby", 17, uid);
-        studentRepo.save(existingStudent);
-        assertFalse(studentService.isValidNewStudent(student));
-        studentRepo.delete(existingStudent);
-        studentRepo.delete(student);
-    }
-
-
-    @Test
-    void testCanAddSecondStudent() {
-        String uid = UUID.randomUUID().toString();
-        String uid2 = UUID.randomUUID().toString();
-        Student student2 = new Student(1, "bobby", 12, uid2);
-        Student student = new Student(0, "bobby", 12, uid);
-        studentRepo.save(student);
-        studentRepo.save(student2);
-        assertFalse(studentService.isValidNewStudent(student));
-        assertFalse(studentService.isValidNewStudent(student2));
-        studentRepo.delete(student2);
-        studentRepo.delete(student);
-    }
-
-    @Test
-    void testStudentSaveByUid() {
-        String uid = UUID.randomUUID().toString();
-        Student student = new Student(554, "bobby", 12, uid);
-        StudentDTO studentDTO = new StudentDTO(student);
-        StudentDTO result = studentService.saveByUid(studentDTO, uid);
-        assertEquals("bobby", result.getName());
-        Student studentResult = studentRepo.findByUid(uid);
-        assertEquals("bobby", studentResult.getName());
-    }
-    @Transactional
-    @Test
-    void testUpdateStudentByUid() {
-    	String uid = UUID.randomUUID().toString();
-        Student student = new Student(1, uid, "Bobby", 12, "IntelliJ", Instant.now(), false, "name", null);
-        StudentDTO studentDTO = new StudentDTO(student);
-        studentDTO.setName("Kevin");
-        studentDTO.setAssignmentNum(9);
-        studentDTO.setIde("Eclipse");
-        studentDTO.setMentee("Bobby");
-        studentDTO.setWillingToMentor(true);
-        studentService.saveByUid(studentDTO, uid);
-        StudentDTO student2 = studentService.findByUid(uid);
-        assertEquals("Kevin", student2.getName());
-        assertEquals(9, student2.getAssignmentNum());
-        assertEquals("Eclipse", student2.getIde());
-        assertEquals("Bobby", student2.getMentee());
-        assertEquals(true, student2.getWillingToMentor());
-    }
+	@Transactional
+	@Test
+	void testUpdateStudentByUid() {
+		String uid = UUID.randomUUID().toString();
+		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+		StudentDTO studentDTO = new StudentDTO(student);
+		studentDTO.setName("Kevin");
+		studentDTO.setAssignmentNum(9);
+		studentDTO.setIde("Eclipse");
+		studentDTO.setMentee("Bobby");
+		studentDTO.setWillingToMentor(true);
+		studentService.saveByUid(studentDTO, uid);
+		StudentDTO student2 = studentService.findByUid(uid);
+		assertEquals("Kevin", student2.getName());
+		assertEquals(9, student2.getAssignmentNum());
+		assertEquals("Eclipse", student2.getIde());
+		assertEquals("Bobby", student2.getMentee());
+		assertEquals(true, student2.getWillingToMentor());
+	}
 
 }

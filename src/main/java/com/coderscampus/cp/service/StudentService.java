@@ -30,7 +30,6 @@ public class StudentService {
         Student foundStudent = studentRepo.findByUid(uid);
         if (foundStudent == null) {
             Student student = new Student(studentDTO);
-            student.setDateCreated(Instant.now());
             student.setUid(uid);
             foundStudent = studentRepo.save(student);
         } else if (foundStudent != null) {
