@@ -12,11 +12,14 @@ import java.util.List;
 @Service
 public class FoobarService {
 
-    @Autowired
-    private FoobarRepository foobarRepo;
+    private final FoobarRepository foobarRepo;
+    private final StudentRepository studentRepo;
 
     @Autowired
-    private StudentRepository studentRepo;
+    public FoobarService(FoobarRepository foobarRepo, StudentRepository studentRepo) {
+        this.foobarRepo = foobarRepo;
+        this.studentRepo = studentRepo;
+    }
 
     public Foobar save(Foobar foobar) {
         return foobarRepo.save(foobar);

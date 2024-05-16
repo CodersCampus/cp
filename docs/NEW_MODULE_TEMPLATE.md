@@ -67,11 +67,14 @@ import java.util.stream.Collectors;
 @Service
 public class CheckinService {
 
-    @Autowired
-    private CheckinRepository checkinRepo;
+    private final CheckinRepository checkinRepo;
+    private final StudentRepository studentRepo;
 
     @Autowired
-    private StudentRepository studentRepo;
+    public CheckinService(CheckinRepository checkinRepo, StudentRepository studentRepo) {
+        this.checkinRepo = checkinRepo;
+        this.studentRepo = studentRepo;
+    }
 
     public Checkin save(Checkin checkin) {
         if (checkin.getDate() == null) {
@@ -130,8 +133,12 @@ import java.util.List;
 @RequestMapping("/checkin")
 public class CheckinController {
 
+    private final CheckinService checkinService;
+
     @Autowired
-    private CheckinService checkinService;
+    public CheckinController(CheckinService checkinService) {
+        this.checkinService = checkinService;
+    }
 
     @GetMapping("/")
     public String home(ModelMap model) {
@@ -198,7 +205,7 @@ public class CheckinController {
 
 - Use `checkin/read.html` as a resource, not a template
 
-```HTML 
+```HTML
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
@@ -242,7 +249,7 @@ public class CheckinController {
                         <td><span th:text="${checkin.codingType}"></span></td>
                         <td><span th:text="${checkin.issueNumber}"></span></td>
                         <td><a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
-									<span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+         <span><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                height="16" fill="currentColor" class="bi bi-view-list"
                                                viewBox="0 0 16 16">
   <path

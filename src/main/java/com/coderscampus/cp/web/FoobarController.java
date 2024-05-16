@@ -13,8 +13,12 @@ import java.util.List;
 @RequestMapping("/foobar")
 public class FoobarController {
 
+    private final FoobarService foobarService;
+
     @Autowired
-    private FoobarService foobarService;
+    public FoobarController(FoobarService foobarService) {
+        this.foobarService = foobarService;
+    }
 
     @GetMapping("/")
     public String home(ModelMap model) {

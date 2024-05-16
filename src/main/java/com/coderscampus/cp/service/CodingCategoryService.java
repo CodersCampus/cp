@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class CodingCategoryService {
 
+    private final CodingCategoryRepository codingCategoryRepo;
+
     @Autowired
-    private CodingCategoryRepository codingCategoryRepo;
+    public CodingCategoryService(CodingCategoryRepository codingCategoryRepo) {
+        this.codingCategoryRepo = codingCategoryRepo;
+    }
 
     public CodingCategory save(CodingCategory codingCategory) {
         return codingCategoryRepo.save(codingCategory);

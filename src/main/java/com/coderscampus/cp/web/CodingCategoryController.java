@@ -16,8 +16,12 @@ import java.util.List;
 @RequestMapping("coding-category")
 public class CodingCategoryController {
 
+    private final CodingCategoryService codingCategoryService;
+
     @Autowired
-    private CodingCategoryService codingCategoryService;
+    public CodingCategoryController(CodingCategoryService codingCategoryService) {
+        this.codingCategoryService = codingCategoryService;
+    }
 
     @GetMapping("/")
     public String home(ModelMap model) {

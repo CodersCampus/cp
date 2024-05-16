@@ -4,6 +4,8 @@ import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.service.CheckinService;
 import jakarta.servlet.http.HttpSession;
+
+import org.hibernate.annotations.DialectOverride.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,8 +17,12 @@ import java.util.List;
 @RequestMapping("/checkin")
 public class CheckinController {
 
+    private final CheckinService checkinService;
+
     @Autowired
-    private CheckinService checkinService;
+    public CheckinController(CheckinService checkinService) {
+        this.checkinService = checkinService;
+    }
 
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
@@ -55,7 +61,8 @@ public class CheckinController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@ModelAttribute("checkin") Checkin checkin, @ModelAttribute("activityLog") ActivityLog activityLog) {
+    public String update(@ModelAttribute("checkin") Checkin checkin,
+            @ModelAttribute("activityLog") ActivityLog activityLog) {
         checkin.getActivityLog().add(activityLog);
         return "redirect:/checkin/";
     }

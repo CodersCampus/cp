@@ -14,8 +14,12 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
+    private final StudentRepository studentRepo;
+
     @Autowired
-    private StudentRepository studentRepo;
+    public StudentService(StudentRepository studentRepo) {
+        this.studentRepo = studentRepo;
+    }
 
     public void save(Student student) {
         if (isValidNewStudent(student)) {
@@ -25,6 +29,7 @@ public class StudentService {
             studentRepo.save(student);
         }
     }
+
     @Transactional
     public StudentDTO saveByUid(StudentDTO studentDTO, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
@@ -37,7 +42,6 @@ public class StudentService {
         StudentDTO returnStudent = new StudentDTO(foundStudent);
         return returnStudent;
     }
-
 
     boolean doesStudentExistInRepository(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
