@@ -54,14 +54,25 @@ public class Student  {
     public Student() {
     }
 
-    public Student(long id, String name, Integer assignmentNum, String uid) {
-        this.id = id;
-        this.uid = uid;
-        this.name = name;
-        this.assignmentNum = assignmentNum;
-    }
 
-    public Student(StudentDTO studentDTO) {
+
+    public Student(long id, String uid, String name, Integer assignmentNum, String ide, Instant dateCreated,
+			Boolean willingToMentor, String mentee, List<Checkin> checkin) {
+		super();
+		this.id = id;
+		this.uid = uid;
+		this.name = name;
+		this.assignmentNum = assignmentNum;
+		this.ide = ide;
+		this.dateCreated = dateCreated;
+		this.willingToMentor = willingToMentor;
+		this.mentee = mentee;
+		this.checkin = checkin;
+	}
+
+
+
+	public Student(StudentDTO studentDTO) {
         Long id = studentDTO.getId();
         if(id != null && id > 0){
             this.id = id;

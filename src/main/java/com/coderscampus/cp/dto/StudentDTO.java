@@ -21,6 +21,8 @@ public class StudentDTO {
 		this.assignmentNum = foundStudent.getAssignmentNum();
 		this.ide = foundStudent.getIde();
 		this.dateCreated = foundStudent.getDateCreated();
+		this.mentee = foundStudent.getMentee();
+		this.willingToMentor = foundStudent.getWillingToMentor();
 	}
 
 	public StudentDTO() {
@@ -82,6 +84,7 @@ public class StudentDTO {
 	@Override
 	public String toString() {
 		return "StudentDTO [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", ide=" + ide
-				+ ", dateCreated=" + dateCreated + "]";
+				+ ", dateCreated=" + dateCreated + ", willingToMentor=" + willingToMentor + ", mentee=" + mentee + "]";
 	}
+
 }

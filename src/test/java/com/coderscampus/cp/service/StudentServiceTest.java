@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Instant;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
@@ -86,7 +87,7 @@ class StudentServiceTest {
     @Test
     void testUpdateStudentByUid() {
     	String uid = UUID.randomUUID().toString();
-        Student student = new Student(554, "bobby", 12, uid);
+        Student student = new Student(1, uid, "Bobby", 12, "IntelliJ", Instant.now(), false, "name", null);
         StudentDTO studentDTO = new StudentDTO(student);
         studentDTO.setName("Kevin");
         studentDTO.setAssignmentNum(9);
@@ -94,9 +95,12 @@ class StudentServiceTest {
         studentDTO.setMentee("Bobby");
         studentDTO.setWillingToMentor(true);
         studentService.saveByUid(studentDTO, uid);
-        assertEquals("Kevin", student.getName());
-        
-        
+        StudentDTO student2 = studentService.findByUid(uid);
+        assertEquals("Kevin", student2.getName());
+        assertEquals(9, student2.getAssignmentNum());
+        assertEquals("Eclipse", student2.getIde());
+        assertEquals("Bobby", student2.getMentee());
+        assertEquals(true, student2.getWillingToMentor());
     }
 
 }
