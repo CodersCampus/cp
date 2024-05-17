@@ -26,7 +26,7 @@ class StudentServiceTest {
 
 	@Test
 	void testIsValidStudentUpdate() {
-        //we need to put comments there to explain this:
+        //we need to put comments here to explain and remember what we have done.
 		String uid = UUID.randomUUID().toString();
 		Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null);
 		existingStudent = studentRepo.save(existingStudent);
