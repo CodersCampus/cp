@@ -26,11 +26,20 @@ class StudentServiceTest {
 
 	@Test
 	void testIsValidStudentUpdate() {
+        //we need to put comments there to explain this:
 		String uid = UUID.randomUUID().toString();
 		Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null);
 		existingStudent = studentRepo.save(existingStudent);
-		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-		assertTrue(studentService.doesStudentExistInRepository(student));
+        StudentDTO studentDTO = new StudentDTO(existingStudent);
+        studentDTO.setName("Lucas");
+        studentDTO.setAssignmentNum(12);
+        studentDTO.setIde("Eclipes");
+        studentDTO.setWillingToMentor(true);
+        studentDTO.setMentee("bobby");
+
+		Student student = new Student(studentDTO);
+        assertEquals(existingStudent.getId(), student.getId());  //passed
+		assertTrue(studentService.doesStudentExistInRepository(student)); //not passed
 		studentRepo.delete(existingStudent);
 	}
 
