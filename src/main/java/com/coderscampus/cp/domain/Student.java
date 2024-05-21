@@ -81,6 +81,8 @@ public class Student  {
 		this.name = studentDTO.getName();
 		this.assignmentNum = studentDTO.getAssignmentNum();
 		this.ide = studentDTO.getIde();
+        this.willingToMentor = studentDTO.getWillingToMentor();
+        this.mentee = studentDTO.getMentee();
 	}
 
 	public Instant getDateCreated() {

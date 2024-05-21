@@ -26,21 +26,28 @@ class StudentServiceTest {
 
 	@Test
 	void testIsValidStudentUpdate() {
-        //we need to put comments here to explain and remember what we have done.
+//        Creating a test to verify we're able to create and access students without sending the UID to front end for security reasons
 		String uid = UUID.randomUUID().toString();
 		Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null);
 		existingStudent = studentRepo.save(existingStudent);
         StudentDTO studentDTO = new StudentDTO(existingStudent);
         studentDTO.setName("Lucas");
         studentDTO.setAssignmentNum(12);
-        studentDTO.setIde("Eclipes");
+        studentDTO.setIde("Eclipse");
         studentDTO.setWillingToMentor(true);
-        studentDTO.setMentee("bobby");
+        studentDTO.setMentee("Fred");
 
 		Student student = new Student(studentDTO);
-        assertEquals(existingStudent.getId(), student.getId());  //passed
-		assertTrue(studentService.doesStudentExistInRepository(student)); //not passed
-		studentRepo.delete(existingStudent);
+        student.setUid(uid);
+        assertEquals(existingStudent.getId(), student.getId());
+		assertTrue(studentService.doesStudentExistInRepository(student));
+        assertEquals(student.getName(), "Lucas");
+        assertEquals(student.getAssignmentNum(), 12);
+        assertEquals(student.getIde(), "Eclipse");
+        assertEquals(student.getWillingToMentor(), true);
+        assertEquals(student.getMentee(), "Fred");
+
+        studentRepo.delete(existingStudent);
 	}
 
 	@Test
@@ -83,9 +90,9 @@ class StudentServiceTest {
 		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
 		StudentDTO studentDTO = new StudentDTO(student);
 		StudentDTO result = studentService.saveByUid(studentDTO, uid);
-		assertEquals("bobby", result.getName());
+		assertEquals("Bobby", result.getName());
 		Student studentResult = studentRepo.findByUid(uid);
-		assertEquals("bobby", studentResult.getName());
+		assertEquals("Bobby", studentResult.getName());
 	}
 
 	@Transactional
