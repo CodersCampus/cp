@@ -1,14 +1,15 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.UserHistory;
-import com.coderscampus.cp.repository.UserHistoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.Instant;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.coderscampus.cp.domain.UserHistory;
+import com.coderscampus.cp.repository.UserHistoryRepository;
 
 @Service
 public class UserHistoryService {

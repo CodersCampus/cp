@@ -1,15 +1,17 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.StudentDTO;
-import com.coderscampus.cp.repository.StudentRepository;
-import jakarta.transaction.Transactional;
+import java.util.Optional;
+
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.management.RuntimeErrorException;
-import java.time.Instant;
-import java.util.Optional;
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.StudentRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class StudentService {
@@ -91,14 +93,4 @@ public class StudentService {
         return new StudentDTO(student);
     }
     
-//    @Transactional
-//	public StudentDTO updateStudent(StudentDTO studentDTO, String uid) {
-//		Student student = studentRepo.findByUid(uid);
-//
-//			studentRepo.save(student);
-//		} else {
-//			throw new IllegalArgumentException("No student found with UID: " + uid);
-//		}
-//		return new StudentDTO(student);
-//	}
 }

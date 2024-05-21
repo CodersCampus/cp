@@ -1,10 +1,11 @@
 package com.coderscampus.cp.repository;
 
-import com.coderscampus.cp.domain.Checkin;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.coderscampus.cp.domain.Checkin;
 
 @Repository
 public interface CheckinRepository extends JpaRepository<Checkin, Long> {

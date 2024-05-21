@@ -1,7 +1,8 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.ActivityLog;
 import org.springframework.stereotype.Service;
+
+import com.coderscampus.cp.domain.ActivityLog;
 
 @Service
 public class ActivityLogService {

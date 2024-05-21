@@ -1,13 +1,14 @@
 package com.coderscampus.cp.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.coderscampus.cp.domain.Foobar;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.FoobarRepository;
 import com.coderscampus.cp.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class FoobarService {
