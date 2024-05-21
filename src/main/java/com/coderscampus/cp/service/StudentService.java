@@ -1,15 +1,17 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.StudentDTO;
-import com.coderscampus.cp.repository.StudentRepository;
-import jakarta.transaction.Transactional;
+import java.util.Optional;
+
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.management.RuntimeErrorException;
-import java.time.Instant;
-import java.util.Optional;
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.StudentRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class StudentService {
@@ -29,15 +31,21 @@ public class StudentService {
     public StudentDTO saveByUid(StudentDTO studentDTO, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
         if (foundStudent == null) {
-        	Student student = new Student(studentDTO);
-            student.setDateCreated(Instant.now());
+            Student student = new Student(studentDTO);
             student.setUid(uid);
             foundStudent = studentRepo.save(student);
+        } else if (foundStudent != null) {
+            foundStudent.setName(studentDTO.getName());
+            foundStudent.setAssignmentNum(studentDTO.getAssignmentNum());
+            foundStudent.setIde(studentDTO.getIde());
+            foundStudent.setWillingToMentor(studentDTO.getWillingToMentor());
+            foundStudent.setMentee(studentDTO.getMentee());
+            foundStudent = studentRepo.save(foundStudent);
+            
         }
         StudentDTO returnStudent = new StudentDTO(foundStudent);
         return returnStudent;
     }
-
 
     boolean doesStudentExistInRepository(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
@@ -85,19 +93,4 @@ public class StudentService {
         return new StudentDTO(student);
     }
     
-    @Transactional
-	public StudentDTO updateStudent(StudentDTO studentDTO, String uid) {
-		Student student = studentRepo.findByUid(uid);
-		if (student != null) {
-			student.setName(studentDTO.getName());
-			student.setAssignmentNum(studentDTO.getAssignmentNum());
-			student.setIde(studentDTO.getIde());
-			student.setWillingToMentor(studentDTO.getWillingToMentor());
-			student.setMentee(studentDTO.getMentee());
-			studentRepo.save(student);
-		} else {
-			throw new IllegalArgumentException("No student found with UID: " + uid);
-		}
-		return new StudentDTO(student);
-	}
 }
