@@ -1,56 +1,36 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.lang.reflect.Method;
+import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class CheckinServiceTest {
-    @Mock
+    @Autowired
+    private CheckinService checkinService;
+    @Autowired
     private CheckinRepository checkinRepo;
 
-    @Mock
+    @Autowired
+    private StudentService studentService;
+    @Autowired
     private StudentRepository studentRepo;
 
-    @InjectMocks
-    private CheckinService checkinService;
-
-
-    @Test
-    public void testSetStudentAndUid() throws Exception {
-        // Create a sample Checkin object
-        Checkin checkin = new Checkin();
-
-        // Create a sample Student object
-        Student student = new Student();
-        String uid = "sGvKUXo0M4PgKMoPC73fdSrM6659";
-        student.setUid(uid);
-
-        // Mock the behavior of the studentRepo.findByUid() method
-        when(studentRepo.findByUid(uid)).thenReturn(student);
-
-        // Use reflection to access the private method
-        Method setStudentAndUidMethod = CheckinService.class.getDeclaredMethod("setStudentAndUid", Checkin.class, String.class);
-        setStudentAndUidMethod.setAccessible(true);
-
-        // Invoke the private method using reflection
-        setStudentAndUidMethod.invoke(checkinService, checkin, uid);
-
-        // Verify that the student and UID are set correctly
-        assertEquals(student, checkin.getStudent());
-        assertEquals(uid, checkin.getUid());
+    @BeforeEach
+    void setup() {
+        String uid = UUID.randomUUID().toString();
+        Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null); // Creates hypothetical existing student
+        existingStudent = studentRepo.save(existingStudent); // Saves that existing student to the database
     }
 
-
+    @Test
+    void testCanCreateCheckin(){
+        //TODO: Finish Implementing this test class with the checkin DTO
+    }
 }
