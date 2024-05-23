@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.coderscampus.cp.dto.CheckinDTO;
+import com.coderscampus.cp.dto.StudentDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,10 +31,40 @@ public class Checkin {
     private Student student;
     private Role role;
     private CodingType codingType;
-
-
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ActivityLog> activityLog = new ArrayList<>();
+
+    public Checkin() {
+        this.date = Instant.now();
+    }
+
+    public Checkin(Long id, String uid, List<ActivityLog> activityLog, Integer nextAssignment, Boolean blockers, String blockerDescription, Student student, Role role, CodingType codingType) {
+        super();
+        this.id = id;
+        this.uid = uid;
+        this.activityLog = activityLog;
+        this.nextAssignment = nextAssignment;
+        this.blockers = blockers;
+        this.blockerDescription = blockerDescription;
+        this.student = student;
+        this.role = role;
+        this.codingType = codingType;
+    }
+
+    public Checkin(CheckinDTO checkinDTO) {
+        super();
+        Long id = checkinDTO.getId();
+        if (id != null && id > 0) {
+            this.id = id;
+        }
+        // Left out activityLog
+        this.nextAssignment = checkinDTO.getNextAssignment();
+        this.blockers = checkinDTO.getBlockers();
+        this.blockerDescription = checkinDTO.getBlockerDescription();
+        //left out student
+        this.role = checkinDTO.getRole();
+        this.codingType = checkinDTO.getCodingType();
+    }
 
     // ID
     public Long getId() {
@@ -53,14 +85,8 @@ public class Checkin {
     }
 
     // Date
-
-
     public Instant getDate() {
         return date;
-    }
-
-    public void setDate(Instant date) {
-        this.date = date;
     }
 
     // Assignment
