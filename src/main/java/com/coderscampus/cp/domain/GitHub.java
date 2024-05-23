@@ -15,20 +15,19 @@ public class GitHub {
     private String renamedAssignments;
     private String pinnedRepos;
     private String externalLinks;
+
     public GitHub() {
 
     }
 
-
     public GitHub(String handle, String enhancedReadMe, String renamedAssignments, String pinnedRepos,
                   String externalLinks) {
-        super();
+        this();
         this.handle = handle;
         this.enhancedReadMe = enhancedReadMe;
         this.renamedAssignments = renamedAssignments;
         this.pinnedRepos = pinnedRepos;
         this.externalLinks = externalLinks;
-
     }
 
     public String getHandle() {
@@ -85,6 +84,5 @@ public class GitHub {
                 + ", renamedAssignments=" + renamedAssignments + ", pinnedRepos=" + pinnedRepos + ", externalLinks="
                 + externalLinks + "]";
     }
-
 
 }

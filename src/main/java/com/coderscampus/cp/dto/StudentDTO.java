@@ -15,7 +15,6 @@ public class StudentDTO {
 	private String mentee;
 
 	public StudentDTO(Student foundStudent) {
-		super();
 		this.id = foundStudent.getId();
 		this.name = foundStudent.getName();
 		this.assignmentNum = foundStudent.getAssignmentNum();
