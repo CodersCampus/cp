@@ -5,7 +5,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.coderscampus.cp.dto.CheckinDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.info.InfoEndpointAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import com.coderscampus.cp.domain.Checkin;
@@ -21,15 +23,29 @@ public class CheckinService {
 
     @Autowired
     private StudentRepository studentRepo;
+    @Autowired
+    private InfoEndpointAutoConfiguration infoEndpointAutoConfiguration;
 
-    public Checkin saveByUid(Checkin checkin, String uid) {
-//        if (checkinRepo.findByUid(uid) == null) {
-//            checkin.setDate(Instant.now());
-//        }
-        setDateIfNull(checkin);
-        setStudentAndUid(checkin, uid);
-        return checkinRepo.save(checkin);
+    public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
+        Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+        if (foundCheckin == null) {
+            Checkin checkin = new Checkin(checkinDTO);
+            setStudentAndUid(checkin, uid);
+            foundCheckin = checkinRepo.save(checkin);
+
+        } else {
+            foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
+            foundCheckin.setBlockers(checkinDTO.getBlockers());
+            foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
+            foundCheckin.setRole(checkinDTO.getRole());
+            foundCheckin.setCodingType(checkinDTO.getCodingType());
+            foundCheckin = checkinRepo.save(foundCheckin);
+        }
+        CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
+
+        return returnCheckinDTO;
     }
+
 
     private void setStudentAndUid(Checkin checkin, String uid) {
         Student student = studentRepo.findByUid(uid);
@@ -39,11 +55,6 @@ public class CheckinService {
         }
     }
 
-    private void setDateIfNull(Checkin checkin) {
-        if (checkin.getDate() == null) {
-            checkin.setDate(Instant.now());
-        }
-    }
 
     public List<Checkin> findAll() {
         return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());

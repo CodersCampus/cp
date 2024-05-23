@@ -25,9 +25,8 @@ public class CheckinDTO {
         this.role = checkin.getRole();
         this.codingType = checkin.getCodingType();
     }
-    public CheckinDTO() {
-        this(new Checkin());
-    }
+
+    public CheckinDTO() {this(new Checkin());}
 
     public Long getId() {
         return id;

@@ -4,6 +4,7 @@ import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
+import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,6 +26,7 @@ public class CheckinServiceTest {
 
     @InjectMocks
     private CheckinService checkinService;
+
 
 
     @Test

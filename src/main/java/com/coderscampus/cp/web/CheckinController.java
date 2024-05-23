@@ -2,6 +2,7 @@ package com.coderscampus.cp.web;
 
 import java.util.List;
 
+import com.coderscampus.cp.dto.CheckinDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -45,8 +46,8 @@ public class CheckinController {
     }
 
     @PostMapping("/create")
-    public String create(Checkin checkin, @RequestParam("uid") String uid) {
-        checkin = checkinService.saveByUid(checkin, uid);
+    public String create(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
+        checkinDTO = checkinService.saveByUid(checkinDTO, uid);
         return "redirect:/checkin/";
     }
 
@@ -68,6 +69,7 @@ public class CheckinController {
     }
 
     @PostMapping("/update")
+    //TODO: refactor this by using checkinDTO
     public String update(Checkin checkin, @RequestParam("uid") String uid) {
         checkinService.saveByUid(checkin, uid);
         return "redirect:/checkin/";

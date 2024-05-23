@@ -27,6 +27,7 @@ public class StudentService {
             studentRepo.save(student);
         }
     }
+
     @Transactional
     public StudentDTO saveByUid(StudentDTO studentDTO, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
@@ -34,14 +35,15 @@ public class StudentService {
             Student student = new Student(studentDTO);
             student.setUid(uid);
             foundStudent = studentRepo.save(student);
-        } else if (foundStudent != null) {
+
+        } else {
             foundStudent.setName(studentDTO.getName());
             foundStudent.setAssignmentNum(studentDTO.getAssignmentNum());
             foundStudent.setIde(studentDTO.getIde());
             foundStudent.setWillingToMentor(studentDTO.getWillingToMentor());
             foundStudent.setMentee(studentDTO.getMentee());
             foundStudent = studentRepo.save(foundStudent);
-            
+
         }
         StudentDTO returnStudent = new StudentDTO(foundStudent);
         return returnStudent;
@@ -92,5 +94,5 @@ public class StudentService {
         Student student = studentRepo.findByUid(uid);
         return new StudentDTO(student);
     }
-    
+
 }
