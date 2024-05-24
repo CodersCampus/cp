@@ -2,7 +2,7 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.AuthObjectDto;
+import com.coderscampus.cp.dto.AuthObjectDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
 import com.coderscampus.cp.service.CheckinService;
 import com.coderscampus.cp.service.StudentService;
@@ -43,7 +43,7 @@ public class SpringProjectController {
 
     @PostMapping("/send-oauth")
     @ResponseBody
-    public String getOauth(@RequestBody AuthObjectDto authDto,
+    public String getOauth(@RequestBody AuthObjectDTO authDto,
                            HttpSession httpSession) {
         if (authDto != null) {
             httpSession.setAttribute("uid", authDto.getUid());
