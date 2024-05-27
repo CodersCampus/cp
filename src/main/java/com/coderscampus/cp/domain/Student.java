@@ -18,9 +18,6 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Student  {
 
-    
-	
-
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -55,11 +52,9 @@ public class Student  {
     	this.dateCreated = Instant.now();
     }
 
-
-
     public Student( String uid, String name, Integer assignmentNum, String ide,
 			Boolean willingToMentor, String mentee, List<Checkin> checkin) {
-		super();
+		this();
 		this.uid = uid;
 		this.name = name;
 		this.assignmentNum = assignmentNum;
@@ -69,10 +64,8 @@ public class Student  {
 		this.checkin = checkin;
 	}
 
-
-
 	public Student(StudentDTO studentDTO) {
-		super();
+        this();
         Long id = studentDTO.getId();
         if(id != null && id > 0){
             this.id = id;
@@ -89,11 +82,9 @@ public class Student  {
         return dateCreated;
     }
 
-
     public long getId() {
         return id;
     }
-
 
     public String getUid() {
         return uid;
@@ -231,7 +222,7 @@ public class Student  {
     }
     //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
 //				   FinalProject finalProject, Resume resume, Foobar foobar, Networking networking, Website website, List<Checkin> checkin) {
-//		super();
+//		this();
 //		this.id = id;
 //		this.uid = uid;
 //		this.name = name;
@@ -247,6 +238,5 @@ public class Student  {
 //		this.website = website;
 //		this.checkin = checkin;
 //	}
-
 
 }
