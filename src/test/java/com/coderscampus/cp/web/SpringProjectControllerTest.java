@@ -41,34 +41,22 @@ class SpringProjectControllerTest {
     MvcResult mvcResult;
     @Test
     void getDashboard() throws Exception {
-        //MockHttpSession session = new MockHttpSession();
         session.setAttribute("uid", "123");
         session.setAttribute("displayName", "bobby");
          mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/").session(session))
-        		
-
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("dashboard"))
-                //.andExpect(request().sessionAttribute("displayName", "bobby"))
-                //.andExpect(MockMvcResultMatchers.model().attribute("pageTitle","Student Read"))
                 .andReturn();
         //Star here next time
         ModelMap modelMap = mvcResult.getModelAndView().getModelMap();
         Student student = new Student();
         Student mappedStudent = (Student) modelMap.get("student");
         assertEquals(student.getName(), mappedStudent.getName());
-       // assertEquals(student)
     }
     
     @Test
     void getHomePage() throws Exception{
-    	//session.setAttribute("uid", "123");
-        //session.setAttribute("displayName", "bobby");
-        mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/").session(session)).andReturn();
-    	System.out.println("HELLLOOOOOOOOOOO" + session.getAttribute("uid"));
-    	mockMvc.perform(MockMvcRequestBuilders.post("/student/create"))
-    	.andExpect(status().is3xxRedirection())
-    	.andExpect(MockMvcResultMatchers.redirectedUrl("/student"));
-    	
+    	mockMvc.perform(MockMvcRequestBuilders.get("/"))
+    	.andExpect(status().isOk());
     }
 }

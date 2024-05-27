@@ -12,6 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.UUID;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @ExtendWith(SpringExtension.class)
@@ -32,12 +33,11 @@ public class StudentControllerTest {
         student.setName("bobby");
         String uid = UUID.randomUUID().toString();
 
-
-        mockMvc.perform(post("/create")
+        mockMvc.perform(post("/student/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(student))
                         .param("uid", uid))
-                .andExpect(status().isOk());
+                .andExpect(redirectedUrl("/student/"));
     }
 
 }
