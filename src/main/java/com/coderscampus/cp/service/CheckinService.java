@@ -14,6 +14,7 @@ import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class CheckinService {
@@ -64,8 +65,11 @@ public class CheckinService {
         return checkinRepo.findById(id).get();
     }
 
-    public void delete(Checkin checkin) {
-        checkinRepo.delete(checkin);
+    public void delete(CheckinDTO checkinDTO, String uid) {
+        Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+        if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
+            checkinRepo.delete(foundCheckin);
+        }
     }
 
     public List<Checkin> findByUid(String uid) {

@@ -70,14 +70,14 @@ public class CheckinController {
 
     @PostMapping("/update")
     //TODO: refactor this by using checkinDTO
-    public String update(Checkin checkin, @RequestParam("uid") String uid) {
-        checkinService.saveByUid(checkin, uid);
+    public String update(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
+        checkinService.saveByUid(checkinDTO, uid);
         return "redirect:/checkin/";
     }
 
     @PostMapping("/delete")
-    public String delete(Checkin checkin) {
-        checkinService.delete(checkin);
+    public String delete(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
+        checkinService.delete(checkinDTO, uid);
         return "redirect:/checkin/";
     }
 
