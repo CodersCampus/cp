@@ -1,58 +1,53 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Checkin;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.UUID;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
-import net.minidev.json.JSONUtil;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.lang.reflect.Method;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class CheckinServiceTest {
-    @Mock
-    private CheckinRepository checkinRepo;
+	
+	@Autowired
+	private StudentService studentService;
+	@Autowired
+	private StudentRepository studentRepo;
+	
+	@Autowired
+	private CheckinService checkinService;
+	@Autowired
+	private CheckinRepository checkinRepo;
+	
+	@Test
+	void testDeleteCheckin() {
+		//Create UID 
+		//Create new student with new UID
+		//Save the student
+		//Create new checkin
+		//Save checkin
+		//Instantiate a checkin DTO from a new checkin
+		//Create second checkin object from checkin DTO
+		//Confirm existence of second checkin in database
+		//Delete second checkin
+		//Confirm deletion from database
+		//Clean up by deleting student from database
+		
+		
+		
+		
+		String uid = UUID.randomUUID().toString();
+		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+		assertTrue(studentService.isValidNewStudent(student));
+		studentRepo.delete(student);
 
-    @Mock
-    private StudentRepository studentRepo;
-
-    @InjectMocks
-    private CheckinService checkinService;
-
-
-
-    @Test
-    public void testSetStudentAndUid() throws Exception {
-        // Create a sample Checkin object
-        Checkin checkin = new Checkin();
-
-        // Create a sample Student object
-        Student student = new Student();
-        String uid = "sGvKUXo0M4PgKMoPC73fdSrM6659";
-        student.setUid(uid);
-
-        // Mock the behavior of the studentRepo.findByUid() method
-        when(studentRepo.findByUid(uid)).thenReturn(student);
-
-        // Use reflection to access the private method
-        Method setStudentAndUidMethod = CheckinService.class.getDeclaredMethod("setStudentAndUid", Checkin.class, String.class);
-        setStudentAndUidMethod.setAccessible(true);
-
-        // Invoke the private method using reflection
-        setStudentAndUidMethod.invoke(checkinService, checkin, uid);
-
-        // Verify that the student and UID are set correctly
-        assertEquals(student, checkin.getStudent());
-        assertEquals(uid, checkin.getUid());
-    }
+	}
 
 
 }
