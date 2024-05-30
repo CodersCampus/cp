@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.UUID;
 
+import com.coderscampus.cp.domain.ActivityLog;
+import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.dto.CheckinDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,13 +30,22 @@ public class CheckinServiceTest {
 	
 	@Test
 	void testDeleteCheckin() {
-		//Create UID 
+		//Create UID
+        String uid = UUID.randomUUID().toString();
 		//Create new student with new UID
+        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
 		//Save the student
+        studentRepo.save(student);
 		//Create new checkin
+        Checkin checkin = new Checkin( 1L, uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
 		//Save checkin
+        checkinRepo.save(checkin);
 		//Instantiate a checkin DTO from a new checkin
+        CheckinDTO checkinDTO = new CheckinDTO(checkin);
+
 		//Create second checkin object from checkin DTO
+        //need to use checking constructor that takes a checkinDTO and a uid
+        Checkin foundCheckin = new Checkin(checkinDTO.getId(), uid,);
 		//Confirm existence of second checkin in database
 		//Delete second checkin
 		//Confirm deletion from database
@@ -42,8 +54,8 @@ public class CheckinServiceTest {
 		
 		
 		
-		String uid = UUID.randomUUID().toString();
-		Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+
+
 		assertTrue(studentService.isValidNewStudent(student));
 		studentRepo.delete(student);
 

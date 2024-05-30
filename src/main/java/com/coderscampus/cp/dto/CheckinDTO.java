@@ -14,6 +14,7 @@ public class CheckinDTO {
     private String blockerDescription;
     private Checkin.Role role;
     private Checkin.CodingType codingType;
+    private Long studentId;
 
     public CheckinDTO(Checkin checkin) {
         super();
@@ -24,9 +25,17 @@ public class CheckinDTO {
         this.blockerDescription = checkin.getBlockerDescription();
         this.role = checkin.getRole();
         this.codingType = checkin.getCodingType();
+        this.studentId=checkin.getStudent().getId();
+    }
+    public CheckinDTO() {this(new Checkin());}
+
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public CheckinDTO() {this(new Checkin());}
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
 
     public Long getId() {
         return id;
