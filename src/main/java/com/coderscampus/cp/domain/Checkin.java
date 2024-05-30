@@ -52,6 +52,7 @@ public class Checkin {
     }
 
     public Checkin(CheckinDTO checkinDTO) {
+        //This constructor needs to take a uid
         super();
         Long id = checkinDTO.getId();
         if (id != null && id > 0) {
