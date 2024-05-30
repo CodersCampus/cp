@@ -21,7 +21,7 @@ public class Student  {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-	@Column(unique=true)
+	@Column(nullable = false, unique=true)
     private String uid;
     private String name;
     private Integer assignmentNum;
@@ -52,7 +52,7 @@ public class Student  {
     	this.dateCreated = Instant.now();
     }
 
-    public Student( String uid, String name, Integer assignmentNum, String ide,
+    public Student(String uid, String name, Integer assignmentNum, String ide,
 			Boolean willingToMentor, String mentee, List<Checkin> checkin) {
 		this();
 		this.uid = uid;
