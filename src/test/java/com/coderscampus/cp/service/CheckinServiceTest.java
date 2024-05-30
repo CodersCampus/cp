@@ -44,8 +44,7 @@ public class CheckinServiceTest {
         CheckinDTO checkinDTO = new CheckinDTO(checkin);
 
 		//Create second checkin object from checkin DTO
-        //need to use checking constructor that takes a checkinDTO and a uid
-        Checkin foundCheckin = new Checkin(checkinDTO.getId(), uid,);
+        Checkin foundCheckin = new Checkin(checkinDTO, uid);
 		//Confirm existence of second checkin in database
 		//Delete second checkin
 		//Confirm deletion from database

@@ -1,6 +1,5 @@
 package com.coderscampus.cp.service;
 
-import java.time.Instant;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +13,6 @@ import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class CheckinService {
@@ -30,8 +28,8 @@ public class CheckinService {
     public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
         Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
         if (foundCheckin == null) {
-            Checkin checkin = new Checkin(checkinDTO);
-            setStudentAndUid(checkin, uid);
+            Checkin checkin = new Checkin(checkinDTO, uid);
+            setStudentFromUid(checkin, uid);
             foundCheckin = checkinRepo.save(checkin);
 
         } else {
@@ -48,11 +46,10 @@ public class CheckinService {
     }
 
 
-    private void setStudentAndUid(Checkin checkin, String uid) {
+    private void setStudentFromUid(Checkin checkin, String uid) {
         Student student = studentRepo.findByUid(uid);
         if (student != null) {
             checkin.setStudent(student);
-            checkin.setUid(uid);
         }
     }
 

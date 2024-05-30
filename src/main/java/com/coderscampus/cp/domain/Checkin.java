@@ -6,21 +6,14 @@ import java.util.List;
 
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.dto.StudentDTO;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class Checkin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String uid;
     private Instant date;
     private Integer nextAssignment;
@@ -39,7 +32,7 @@ public class Checkin {
     }
 
     public Checkin(Long id, String uid, List<ActivityLog> activityLog, Integer nextAssignment, Boolean blockers, String blockerDescription, Student student, Role role, CodingType codingType) {
-        super();
+        this();
         this.id = id;
         this.uid = uid;
         this.activityLog = activityLog;
@@ -51,13 +44,13 @@ public class Checkin {
         this.codingType = codingType;
     }
 
-    public Checkin(CheckinDTO checkinDTO) {
-        //This constructor needs to take a uid
-        super();
+    public Checkin(CheckinDTO checkinDTO, String uid) {
+        this();
         Long id = checkinDTO.getId();
         if (id != null && id > 0) {
             this.id = id;
         }
+        this.uid = uid;
         // Left out activityLog
         this.nextAssignment = checkinDTO.getNextAssignment();
         this.blockers = checkinDTO.getBlockers();
