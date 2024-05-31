@@ -32,7 +32,7 @@ public class StudentService {
     public StudentDTO saveByUid(StudentDTO studentDTO, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
         if (foundStudent == null) {
-            Student student = new Student(studentDTO);
+            Student student = new Student(studentDTO, uid);
             student.setUid(uid);
             foundStudent = studentRepo.save(student);
 
