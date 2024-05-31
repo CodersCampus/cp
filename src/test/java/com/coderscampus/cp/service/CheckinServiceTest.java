@@ -46,6 +46,7 @@ public class CheckinServiceTest {
 		//Create second checkin object from checkin DTO
         Checkin foundCheckin = new Checkin(checkinDTO, uid);
 		//Confirm existence of second checkin in database
+        assertTrue(checkinRepo.findById(foundCheckin.getId()).isPresent());
 		//Delete second checkin
 		//Confirm deletion from database
 		//Clean up by deleting student from database

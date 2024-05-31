@@ -22,8 +22,7 @@ public class CheckinService {
 
     @Autowired
     private StudentRepository studentRepo;
-    @Autowired
-    private InfoEndpointAutoConfiguration infoEndpointAutoConfiguration;
+   
 
     public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
         Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
