@@ -1,27 +1,19 @@
 package com.coderscampus.cp.domain;
 
+import com.coderscampus.cp.dto.StudentDTO;
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.coderscampus.cp.dto.StudentDTO;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-
 @Entity
-public class Student  {
+public class Student {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-	@Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String uid;
     private String name;
     private Integer assignmentNum;
@@ -49,36 +41,36 @@ public class Student  {
     private List<Checkin> checkin = new ArrayList<Checkin>();
 
     public Student() {
-    	this.dateCreated = Instant.now();
+        this.dateCreated = Instant.now();
     }
 
     public Student(String uid, String name, Integer assignmentNum, String ide,
-			Boolean willingToMentor, String mentee, List<Checkin> checkin) {
-		this();
-		this.uid = uid;
-		this.name = name;
-		this.assignmentNum = assignmentNum;
-		this.ide = ide;
-		this.willingToMentor = willingToMentor;
-		this.mentee = mentee;
-		this.checkin = checkin;
-	}
+                   Boolean willingToMentor, String mentee, List<Checkin> checkin) {
+        this();
+        this.uid = uid;
+        this.name = name;
+        this.assignmentNum = assignmentNum;
+        this.ide = ide;
+        this.willingToMentor = willingToMentor;
+        this.mentee = mentee;
+        this.checkin = checkin;
+    }
 
-	public Student(StudentDTO studentDTO) {
+    public Student(StudentDTO studentDTO, String uid) {
         this();
         Long id = studentDTO.getId();
-        if(id != null && id > 0){
+        if (id != null && id > 0) {
             this.id = id;
         }
-
-		this.name = studentDTO.getName();
-		this.assignmentNum = studentDTO.getAssignmentNum();
-		this.ide = studentDTO.getIde();
+        this.uid = uid;
+        this.name = studentDTO.getName();
+        this.assignmentNum = studentDTO.getAssignmentNum();
+        this.ide = studentDTO.getIde();
         this.willingToMentor = studentDTO.getWillingToMentor();
         this.mentee = studentDTO.getMentee();
-	}
+    }
 
-	public Instant getDateCreated() {
+    public Instant getDateCreated() {
         return dateCreated;
     }
 
@@ -117,8 +109,8 @@ public class Student  {
     public void setIde(String ide) {
         this.ide = ide;
     }
-    
-    
+
+
 //	public GitHub getGithubHandle() {
 //		return githubHandle;
 //	}
@@ -185,22 +177,22 @@ public class Student  {
 //	}
 
     public Boolean getWillingToMentor() {
-		return willingToMentor;
-	}
+        return willingToMentor;
+    }
 
-	public void setWillingToMentor(Boolean willingToMentor) {
-		this.willingToMentor = willingToMentor;
-	}
+    public void setWillingToMentor(Boolean willingToMentor) {
+        this.willingToMentor = willingToMentor;
+    }
 
-	public String getMentee() {
-		return mentee;
-	}
+    public String getMentee() {
+        return mentee;
+    }
 
-	public void setMentee(String mentee) {
-		this.mentee = mentee;
-	}
+    public void setMentee(String mentee) {
+        this.mentee = mentee;
+    }
 
-	public List<Checkin> getCheckin() {
+    public List<Checkin> getCheckin() {
         return checkin;
     }
 
