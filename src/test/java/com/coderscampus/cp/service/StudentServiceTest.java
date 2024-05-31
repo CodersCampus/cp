@@ -37,7 +37,7 @@ class StudentServiceTest {
         studentDTO.setWillingToMentor(true);
         studentDTO.setMentee("Fred"); //updating studentDTO information
 
-		Student student = new Student(studentDTO); // Simulates sending updated DTO back to server side
+		Student student = new Student(studentDTO, uid); // Simulates sending updated DTO back to server side
         student.setUid(uid); // Sets Uid to student object created from studentDTO
         
         assertTrue(studentService.doesStudentExistInRepository(student));
