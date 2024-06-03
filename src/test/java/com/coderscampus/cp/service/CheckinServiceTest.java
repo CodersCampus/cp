@@ -1,12 +1,13 @@
 package com.coderscampus.cp.service;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import java.util.List;
 import java.util.UUID;
 
 import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.dto.CheckinDTO;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class CheckinServiceTest {
@@ -27,6 +30,10 @@ public class CheckinServiceTest {
 	private CheckinService checkinService;
 	@Autowired
 	private CheckinRepository checkinRepo;
+
+//    Consider for later, more streamlined
+//    @BeforeEach
+//    void setUpBeforeClass() throws Exception {}
 	
 	@Test
 	void testDeleteCheckin() {
@@ -46,21 +53,63 @@ public class CheckinServiceTest {
 		//Create second checkin object from checkin DTO
         Checkin foundCheckin = new Checkin(checkinDTO, uid);
 		//Confirm existence of second checkin in database
-        //Test failed
         assertTrue(checkinRepo.findById(foundCheckin.getId()).isPresent());
 		//Delete second checkin
+        checkinRepo.delete(foundCheckin);
 		//Confirm deletion from database
+        assertFalse(checkinRepo.findById(foundCheckin.getId()).isPresent());
 		//Clean up by deleting student from database
-		
-		
-		
-		
-
-
-		assertTrue(studentService.isValidNewStudent(student));
-		studentRepo.delete(student);
-
+        studentRepo.delete(student);
 	}
 
+    @Test
+    void testSaveByUid(){
+        //Create UID
+        String uid = UUID.randomUUID().toString();
+        //Create new student with new UID
+        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+        //Save the student
+        studentRepo.save(student);
+        //Create new checkin
+        Checkin checkin = new Checkin( 1L, uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
+        //Save checkin
+        checkinRepo.save(checkin);
+        //Instantiate a checkin DTO from a new checkin
+        CheckinDTO checkinDTO = new CheckinDTO(checkin);
 
+        //Create second checkin object from checkin DTO
+        Checkin foundCheckin = new Checkin(checkinDTO, uid);
+        //Confirm existence of second checkin in database
+        assertTrue(checkinRepo.findById(foundCheckin.getId()).isPresent());
+        //Change all relevant (non-id, uid, and creation date) fields in checkin
+        checkinDTO.setBlockers(false);
+        checkinDTO.setRole(Checkin.Role.OBSERVER);
+        checkinDTO.setBlockerDescription("Blep");
+        checkinDTO.setCodingType(Checkin.CodingType.CODE_REVIEW);
+        checkinDTO.setNextAssignment(11);
+        //Save by uid against the change
+        checkinService.saveByUid(checkinDTO, uid);
+        //Get the changed record
+        List<Checkin> checkinList = checkinService.findByUid(uid);
+        Checkin changedCheckin = null;
+        for (Checkin checkin1 : checkinList) {
+            if (checkinDTO.getId().equals(checkin1.getId())) {
+                changedCheckin = checkin1;
+            }
+        }
+        //verify that all fields changed
+        assertEquals(false, changedCheckin.getBlockers());
+        assertEquals("Blep", changedCheckin.getBlockerDescription());
+        assertEquals(11, changedCheckin.getNextAssignment());
+        assertEquals(Checkin.Role.OBSERVER, changedCheckin.getRole());
+        assertEquals(Checkin.CodingType.CODE_REVIEW, changedCheckin.getCodingType());
+        //Delete second checkin
+        //Start here
+
+        checkinRepo.delete(foundCheckin);
+        //Confirm deletion from database
+        assertFalse(checkinRepo.findById(foundCheckin.getId()).isPresent());
+        //Clean up by deleting student from database
+        studentRepo.delete(student);
+    }
 }
