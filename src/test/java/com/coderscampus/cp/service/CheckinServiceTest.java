@@ -90,9 +90,9 @@ public class CheckinServiceTest {
         //Save by uid against the change
         checkinService.saveByUid(checkinDTO, uid);
         //Get the changed record
-        List<Checkin> checkinList = checkinService.findByUid(uid);
-        Checkin changedCheckin = null;
-        for (Checkin checkin1 : checkinList) {
+        List<CheckinDTO> checkinList = checkinService.findByUid(uid);
+        CheckinDTO changedCheckin = null;
+        for (CheckinDTO checkin1 : checkinList) {
             if (checkinDTO.getId().equals(checkin1.getId())) {
                 changedCheckin = checkin1;
             }
@@ -111,5 +111,29 @@ public class CheckinServiceTest {
         assertFalse(checkinRepo.findById(changedCheckin.getId()).isPresent());
         //Clean up by deleting student from database
         studentRepo.delete(student);
+    }
+    @Test
+    void testFindByUid(){
+    	//Create UID
+        String uid = UUID.randomUUID().toString();
+        String uid2 = UUID.randomUUID().toString();
+        //Create new student with new UID
+        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+        Student student2 = new Student(uid2, "Bobby", 12, "IntelliJ", false, "name", null);
+        //Save the student
+        studentRepo.save(student);
+        studentRepo.save(student2);
+        //Create new checkin
+        Checkin checkin = new Checkin( 1L, uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
+        Checkin checkin2 = new Checkin( 2L, uid2, null, 9, true, "assignment10", student2, Checkin.Role.CODER, Checkin.CodingType.CRUD);
+        //Save checkin
+        checkinRepo.save(checkin);
+        checkinRepo.save(checkin2);
+        List<CheckinDTO> checkinDTOs = checkinService.findByUid(uid);
+        for(CheckinDTO checkinDTO: checkinDTOs) {
+        	assertEquals(checkin.getId(), checkinDTO.getId());
+        }
+        //start here
+        
     }
 }

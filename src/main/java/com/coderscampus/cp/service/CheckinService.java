@@ -18,73 +18,59 @@ import com.coderscampus.cp.repository.StudentRepository;
 @Service
 public class CheckinService {
 
-    @Autowired
-    private CheckinRepository checkinRepo;
+	@Autowired
+	private CheckinRepository checkinRepo;
 
-    @Autowired
-    private StudentRepository studentRepo;
-   
+	@Autowired
+	private StudentRepository studentRepo;
 
-    public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
-        Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
-        if (foundCheckin == null) {
-            Checkin checkin = new Checkin(checkinDTO, uid);
-            setStudentFromUid(checkin, uid);
-            foundCheckin = checkinRepo.save(checkin);
+	public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
+		Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+		if (foundCheckin == null) {
+			Checkin checkin = new Checkin(checkinDTO, uid);
+			setStudentFromUid(checkin, uid);
+			foundCheckin = checkinRepo.save(checkin);
 
-        } else {
-            foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
-            foundCheckin.setBlockers(checkinDTO.getBlockers());
-            foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
-            foundCheckin.setRole(checkinDTO.getRole());
-            foundCheckin.setCodingType(checkinDTO.getCodingType());
-            foundCheckin = checkinRepo.save(foundCheckin);
-        }
-        CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
+		} else {
+			foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
+			foundCheckin.setBlockers(checkinDTO.getBlockers());
+			foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
+			foundCheckin.setRole(checkinDTO.getRole());
+			foundCheckin.setCodingType(checkinDTO.getCodingType());
+			foundCheckin = checkinRepo.save(foundCheckin);
+		}
+		CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
 
-        return returnCheckinDTO;
-    }
+		return returnCheckinDTO;
+	}
 
+	private void setStudentFromUid(Checkin checkin, String uid) {
+		Student student = studentRepo.findByUid(uid);
+		if (student != null) {
+			checkin.setStudent(student);
+		}
+	}
 
-    private void setStudentFromUid(Checkin checkin, String uid) {
-        Student student = studentRepo.findByUid(uid);
-        if (student != null) {
-            checkin.setStudent(student);
-        }
-    }
+	public List<Checkin> findAll() {
+		return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed())
+				.collect(Collectors.toList());
+	}
 
+	public Checkin findById(Long id) {
+		return checkinRepo.findById(id).get();
+	}
 
-    public List<Checkin> findAll() {
-        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
-    }
+	public void delete(CheckinDTO checkinDTO, String uid) {
+		Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+		if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
+			checkinRepo.delete(foundCheckin);
+		}
+	}
 
-    public Checkin findById(Long id) {
-        return checkinRepo.findById(id).get();
-    }
+	public List<CheckinDTO> findByUid(String uid) {
+		List<Checkin> checkins = checkinRepo.findByUid(uid).stream()
+				.sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+		return checkins.stream().map(CheckinDTO::new).collect(Collectors.toList());
 
-    public void delete(CheckinDTO checkinDTO, String uid) {
-        Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
-        if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
-            checkinRepo.delete(foundCheckin);
-        }
-    }
-
-    public List<CheckinDTO> findByUid(String uid) {
-        List<Checkin> checkins = checkinRepo.findByUid(uid).stream()
-                                            .sorted(Comparator.comparing(Checkin::getDate).reversed())
-                                            .collect(Collectors.toList());
-        List<CheckinDTO> checkinDTOs = new ArrayList<>();
-        for (Checkin checkin : checkins) {
-            CheckinDTO checkinDTO = new CheckinDTO(checkin);
-            checkinDTOs.add(checkinDTO);
-        }
-
-
-        return checkinDTOs;
-//if use stream instead, can replace lines 76-83 with:
-//        return checkins.stream()  //use stream() operation on the checkins list to create a stream of Checkin objects
-//                .map(CheckinDTO::new)  //to create a new CheckinDTO object for each Checkin object
-//                .collect(Collectors.toList());  //to collect the resulting stream of CheckinDTO objects into a new list.
-    }
+	}
 }
-
