@@ -70,13 +70,21 @@ public class CheckinService {
     }
 
     public List<CheckinDTO> findByUid(String uid) {
-        List<Checkin> checkins = checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+        List<Checkin> checkins = checkinRepo.findByUid(uid).stream()
+                                            .sorted(Comparator.comparing(Checkin::getDate).reversed())
+                                            .collect(Collectors.toList());
         List<CheckinDTO> checkinDTOs = new ArrayList<>();
         for (Checkin checkin : checkins) {
             CheckinDTO checkinDTO = new CheckinDTO(checkin);
             checkinDTOs.add(checkinDTO);
         }
+
+
         return checkinDTOs;
+//if use stream instead, can replace lines 76-83 with:
+//        return checkins.stream()  //use stream() operation on the checkins list to create a stream of Checkin objects
+//                .map(CheckinDTO::new)  //to create a new CheckinDTO object for each Checkin object
+//                .collect(Collectors.toList());  //to collect the resulting stream of CheckinDTO objects into a new list.
     }
 }
 
