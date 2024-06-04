@@ -1,5 +1,6 @@
 package com.coderscampus.cp.service;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -68,8 +69,14 @@ public class CheckinService {
         }
     }
 
-    public List<Checkin> findByUid(String uid) {
-        return checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+    public List<CheckinDTO> findByUid(String uid) {
+        List<Checkin> checkins = checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+        List<CheckinDTO> checkinDTOs = new ArrayList<>();
+        for (Checkin checkin : checkins) {
+            CheckinDTO checkinDTO = new CheckinDTO(checkin);
+            checkinDTOs.add(checkinDTO);
+        }
+        return checkinDTOs;
     }
 }
 

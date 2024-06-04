@@ -106,9 +106,9 @@ public class CheckinServiceTest {
         //Delete second checkin
         //Start here
 
-        checkinRepo.delete(foundCheckin);
+        checkinService.delete(checkinDTO, uid);
         //Confirm deletion from database
-        assertFalse(checkinRepo.findById(foundCheckin.getId()).isPresent());
+        assertFalse(checkinRepo.findById(changedCheckin.getId()).isPresent());
         //Clean up by deleting student from database
         studentRepo.delete(student);
     }
