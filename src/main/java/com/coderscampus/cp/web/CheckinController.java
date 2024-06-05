@@ -29,7 +29,7 @@ public class CheckinController {
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
-        List<Checkin> checkins = checkinService.findByUid(uid);
+        List<CheckinDTO> checkins = checkinService.findByUid(uid);
         model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Checkin Read");
         model.put("isCheckin", true);

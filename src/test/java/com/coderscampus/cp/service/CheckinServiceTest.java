@@ -124,11 +124,17 @@ public class CheckinServiceTest {
         studentRepo.save(student);
         studentRepo.save(student2);
         //Create new checkin
+        //Please fix the checkin constructor so that an id is not required
         Checkin checkin = new Checkin( 1L, uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
         Checkin checkin2 = new Checkin( 2L, uid2, null, 9, true, "assignment10", student2, Checkin.Role.CODER, Checkin.CodingType.CRUD);
         //Save checkin
         checkinRepo.save(checkin);
         checkinRepo.save(checkin2);
+        System.out.println(checkin);
+        System.out.println(checkin2);
+        System.out.println(student);
+        System.out.println(student2);
+        //please note that checkins are not listed in students above
         List<CheckinDTO> checkinDTOs = checkinService.findByUid(uid);
         for(CheckinDTO checkinDTO: checkinDTOs) {
         	assertEquals(checkin.getId(), checkinDTO.getId());
