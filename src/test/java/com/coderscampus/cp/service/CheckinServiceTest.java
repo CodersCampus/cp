@@ -44,7 +44,7 @@ public class CheckinServiceTest {
 		//Save the student
         studentRepo.save(student);
 		//Create new checkin
-        Checkin checkin = new Checkin( 1L, uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
+        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
 		//Save checkin
         checkinRepo.save(checkin);
 		//Instantiate a checkin DTO from a new checkin
@@ -71,7 +71,7 @@ public class CheckinServiceTest {
         //Save the student
         studentRepo.save(student);
         //Create new checkin
-        Checkin checkin = new Checkin( 1L, uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
+        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
         //Save checkin
         checkinRepo.save(checkin);
         //Instantiate a checkin DTO from a new checkin
@@ -125,8 +125,8 @@ public class CheckinServiceTest {
         studentRepo.save(student2);
         //Create new checkin
         //Please fix the checkin constructor so that an id is not required
-        Checkin checkin = new Checkin( 1L, uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
-        Checkin checkin2 = new Checkin( 2L, uid2, null, 9, true, "assignment10", student2, Checkin.Role.CODER, Checkin.CodingType.CRUD);
+        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
+        Checkin checkin2 = new Checkin(uid2, null, 9, true, "assignment10", student2, Checkin.Role.CODER, Checkin.CodingType.CRUD);
         //Save checkin
         checkinRepo.save(checkin);
         checkinRepo.save(checkin2);
@@ -142,4 +142,5 @@ public class CheckinServiceTest {
         //start here
         
     }
+    
 }

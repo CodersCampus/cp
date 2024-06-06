@@ -31,9 +31,8 @@ public class Checkin {
         this.date = Instant.now();
     }
 
-    public Checkin(Long id, String uid, List<ActivityLog> activityLog, Integer nextAssignment, Boolean blockers, String blockerDescription, Student student, Role role, CodingType codingType) {
+    public Checkin(String uid, List<ActivityLog> activityLog, Integer nextAssignment, Boolean blockers, String blockerDescription, Student student, Role role, CodingType codingType) {
         this();
-        this.id = id;
         this.uid = uid;
         this.activityLog = activityLog;
         this.nextAssignment = nextAssignment;
