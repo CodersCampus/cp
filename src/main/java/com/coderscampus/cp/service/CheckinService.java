@@ -52,8 +52,11 @@ public class CheckinService {
         }
     }
 
-    public List<Checkin> findAll() {
-        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed())
+    public List<CheckinDTO> findAll() {
+        return checkinRepo.findAll().stream()
+                .sorted(Comparator.comparing(Checkin::getDate)
+                .reversed())
+                .map(CheckinDTO::new)
                 .collect(Collectors.toList());
     }
 
@@ -70,8 +73,12 @@ public class CheckinService {
 
     public List<CheckinDTO> findByUid(String uid) {
         List<Checkin> checkins = checkinRepo.findByUid(uid).stream()
-                .sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
-        return checkins.stream().map(CheckinDTO::new).collect(Collectors.toList());
+                .sorted(Comparator.comparing(Checkin::getDate)
+                .reversed())
+                .collect(Collectors.toList());
+        return checkins.stream()
+                .map(CheckinDTO::new)
+                .collect(Collectors.toList());
 
     }
 }
