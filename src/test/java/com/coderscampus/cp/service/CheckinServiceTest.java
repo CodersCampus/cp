@@ -199,7 +199,29 @@ public class CheckinServiceTest {
         assertTrue(ids.contains("" + checkinDTO4.getId()));
         assertEquals(4, checkinDTOs.size());
 //        keep testing properties of checkins
+        String assignment1 = "";
+        String assignment2 = "";
+        String assignment3 = "";
+        String assignment4 = "";
+        for (CheckinDTO checkinDTO : checkinDTOs) {
+            assignment4 = assignment4 + checkinDTO.getNextAssignment();
+            assignment3 = assignment3 + checkinDTO.getNextAssignment();
+            assignment2 = assignment2 + checkinDTO.getNextAssignment();
+            assignment1 = assignment1 + checkinDTO.getNextAssignment();
+        }
+
+        assertTrue(assignment1.contains("" + checkinDTO1.getNextAssignment()));
+        assertTrue(assignment2.contains("" + checkinDTO2.getNextAssignment()));
+        assertTrue(assignment3.contains("" + checkinDTO3.getNextAssignment()));
+        assertTrue(assignment4.contains("" + checkinDTO4.getNextAssignment()));
     }
+    @Test
+    @Transactional
+    void testFindById() {
+        //create a student with uid
+        //Start here next time
+    }
+
 }
 	
 

@@ -60,8 +60,13 @@ public class CheckinService {
                 .collect(Collectors.toList());
     }
 
-    public Checkin findById(Long id) {
-        return checkinRepo.findById(id).get();
+    public CheckinDTO findById(Long id, String uid) {
+        Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
+        if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
+            CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
+            return returnCheckinDTO;
+        }
+        return null;
     }
 
     public void delete(CheckinDTO checkinDTO, String uid) {
