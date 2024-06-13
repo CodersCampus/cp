@@ -222,7 +222,7 @@ public class CheckinServiceTest {
         // Create new student with new UID
         Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
         // Save the student
-        studentRepo.save(student);
+        student = studentRepo.save(student);
         // Create new checkin
         Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER,
                 Checkin.CodingType.CRUD);

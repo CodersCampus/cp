@@ -46,6 +46,7 @@ public class CheckinService {
     }
 
     private void setStudentFromUid(Checkin checkin, String uid) {
+    	// Debug uid and student from here 
         Student student = studentRepo.findByUid(uid);
         if (student != null) {
             checkin.setStudent(student);
