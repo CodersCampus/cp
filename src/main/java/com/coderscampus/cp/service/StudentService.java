@@ -49,6 +49,12 @@ public class StudentService {
         return returnStudent;
     }
 
+    @Transactional
+    public Student findStudentByUid(String uid) {
+        Student foundStudent = studentRepo.findByUid(uid);
+    	return foundStudent;
+    }
+    
     boolean doesStudentExistInRepository(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
 

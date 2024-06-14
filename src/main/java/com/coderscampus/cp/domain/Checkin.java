@@ -4,8 +4,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.service.StudentService;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -54,11 +58,14 @@ public class Checkin {
         this.nextAssignment = checkinDTO.getNextAssignment();
         this.blockers = checkinDTO.getBlockers();
         this.blockerDescription = checkinDTO.getBlockerDescription();
-        //left out student
+        this.student = studentService.findStudentByUid(uid);
         this.role = checkinDTO.getRole();
         this.codingType = checkinDTO.getCodingType();
     }
-
+//	should not do autowire in POJO. Start here next time
+//    @Autowired 
+//    private StudentService studentService;
+    
     // ID
     public Long getId() {
         return id;
