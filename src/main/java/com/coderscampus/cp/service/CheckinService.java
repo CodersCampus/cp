@@ -20,7 +20,10 @@ public class CheckinService {
 
     @Autowired
     private StudentRepository studentRepo;
-
+    
+	@Autowired 
+	private StudentService studentService;
+	
     public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
         Checkin foundCheckin = null;
         if (checkinDTO.getId() != null) {
@@ -28,7 +31,19 @@ public class CheckinService {
         }
 
         if (foundCheckin == null) {
-            Checkin checkin = new Checkin(checkinDTO, uid);
+        	// Everything below needs to move to a separate method 
+        	
+        	// Need a checkin object
+        	
+        	// Need to validate that the uid matches the student and isnt bogus
+        	
+        	// Student must have been instantiated there is no way can come in as null
+        	
+        	// Set student inside the checkin as the actual student object
+        	
+        	// 
+            Checkin checkin = new Checkin();
+            // Call all relevant setters
             setStudentFromUid(checkin, uid);
             foundCheckin = checkinRepo.save(checkin);
 
@@ -45,6 +60,9 @@ public class CheckinService {
         return returnCheckinDTO;
     }
 
+    
+    
+    
     private void setStudentFromUid(Checkin checkin, String uid) {
     	// Debug uid and student from here 
         Student student = studentRepo.findByUid(uid);

@@ -47,24 +47,8 @@ public class Checkin {
         this.codingType = codingType;
     }
 
-    public Checkin(CheckinDTO checkinDTO, String uid) {
-        this();
-        Long id = checkinDTO.getId();
-        if (id != null && id > 0) {
-            this.id = id;
-        }
-        this.uid = uid;
-        // Left out activityLog
-        this.nextAssignment = checkinDTO.getNextAssignment();
-        this.blockers = checkinDTO.getBlockers();
-        this.blockerDescription = checkinDTO.getBlockerDescription();
-        this.student = studentService.findStudentByUid(uid);
-        this.role = checkinDTO.getRole();
-        this.codingType = checkinDTO.getCodingType();
-    }
-//	should not do autowire in POJO. Start here next time
-//    @Autowired 
-//    private StudentService studentService;
+
+
     
     // ID
     public Long getId() {
