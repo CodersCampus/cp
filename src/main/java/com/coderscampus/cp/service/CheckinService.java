@@ -31,21 +31,7 @@ public class CheckinService {
         }
 
         if (foundCheckin == null) {
-        	// Everything below needs to move to a separate method 
-        	
-        	// Need a checkin object
-        	
-        	// Need to validate that the uid matches the student and isnt bogus
-        	
-        	// Student must have been instantiated there is no way can come in as null
-        	
-        	// Set student inside the checkin as the actual student object
-        	
-        	// 
-            Checkin checkin = new Checkin();
-            // Call all relevant setters
-            setStudentFromUid(checkin, uid);
-            foundCheckin = checkinRepo.save(checkin);
+            foundCheckin = createCheckin(checkinDTO, uid);
 
         } else {
             foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
@@ -59,7 +45,28 @@ public class CheckinService {
 
         return returnCheckinDTO;
     }
+private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
 
+    // Need a checkin object x
+    Checkin checkin = new Checkin();
+    // Need to validate that the uid matches the student and isnt bogus
+    Student student = studentService.findStudentByUid(uid);
+    // Student must have been instantiated there is no way can come in as null
+    if (student.getId() == checkinDTO.getStudentId()) {
+        // Set student inside the checkin as the actual student object
+
+        //
+
+        // Call all relevant setters
+        // please double check this still works i might have broke it all
+        setStudentFromUid(checkin, uid);
+        return checkinRepo.save(checkin);
+    }
+    else {
+        return null;
+    }
+
+}
     
     
     
