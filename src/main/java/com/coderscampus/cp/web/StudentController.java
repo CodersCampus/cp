@@ -39,9 +39,9 @@ public class StudentController {
 
 
 
-    @PostMapping("/create")
+    @PostMapping("/create") //Once moved, we can delete this endpoint
     public String create(StudentDTO student, @RequestParam("uid") String uid) {
-        studentService.saveByUid(student, uid);
+        studentService.saveByUid(student, uid); //Move this line to SpringProjectController root mapping to create student upon page arrival
         return "redirect:/student/";
     }
 

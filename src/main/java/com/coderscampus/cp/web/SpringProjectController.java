@@ -38,9 +38,13 @@ public class SpringProjectController {
         String displayName = (String) httpSession.getAttribute("displayName");
 //        Checkin checkin = new Checkin();
 //        checkin = checkinService.saveByUid(checkin, uid);
-        Student student = new Student();
-        model.put("student", student);
-        return "dashboard";
+        // if student can be found by Uid
+        // then student = foundStudent
+        // else
+        // studentDTO = studentService.saveByUid
+        Student student = new Student(); // change to studentDTO
+        model.put("student", student); // change to studentDTO
+        return "dashboard"; // redirect to check-in read
     }
 
     @PostMapping("/send-oauth")
