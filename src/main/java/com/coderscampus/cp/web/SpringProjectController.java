@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.AuthObjectDto;
+import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
 import com.coderscampus.cp.service.CheckinService;
 import com.coderscampus.cp.service.StudentService;
@@ -36,15 +37,14 @@ public class SpringProjectController {
     public String getDashboard(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         String displayName = (String) httpSession.getAttribute("displayName");
-//        Checkin checkin = new Checkin();
-//        checkin = checkinService.saveByUid(checkin, uid);
+        StudentDTO foundStudent = studentService.findByUid(uid);
         // if student can be found by Uid
-        // then student = foundStudent
-        // else
-        // studentDTO = studentService.saveByUid
-        Student student = new Student(); // change to studentDTO
-        model.put("student", student); // change to studentDTO
-        return "dashboard"; // redirect to check-in read
+        if (foundStudent != null) {
+        	// then student = foundStudent
+        	foundStudent = studentService.saveByUid(foundStudent, uid);
+        }        	
+        model.put("studentDTO", foundStudent); // change to studentDTO
+        return "dashboard"; // Don't need redirect to checkin. Later on we will bring checkin activities to dashboard
     }
 
     @PostMapping("/send-oauth")
