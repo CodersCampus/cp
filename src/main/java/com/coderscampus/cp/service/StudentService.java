@@ -1,17 +1,14 @@
 package com.coderscampus.cp.service;
 
-import java.util.Optional;
-
-import javax.management.RuntimeErrorException;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.StudentRepository;
-
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.management.RuntimeErrorException;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -27,11 +24,12 @@ public class StudentService {
             studentRepo.save(student);
         }
     }
+
     @Transactional
     public StudentDTO saveByUid(StudentDTO studentDTO, String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
         if (foundStudent == null) {
-            Student student = new Student(studentDTO, uid);
+            Student student = new Student();
             student.setUid(uid);
             foundStudent = studentRepo.save(student);
         } else if (foundStudent != null) {
@@ -41,7 +39,7 @@ public class StudentService {
             foundStudent.setWillingToMentor(studentDTO.getWillingToMentor());
             foundStudent.setMentee(studentDTO.getMentee());
             foundStudent = studentRepo.save(foundStudent);
-            
+
         }
         StudentDTO returnStudent = new StudentDTO(foundStudent);
         return returnStudent;
@@ -90,7 +88,11 @@ public class StudentService {
 
     public StudentDTO findByUid(String uid) {
         Student student = studentRepo.findByUid(uid);
-        return new StudentDTO(student);
+        if (student != null) {
+            return new StudentDTO(student);
+        } else {
+            return null;
+        }
     }
-    
+
 }

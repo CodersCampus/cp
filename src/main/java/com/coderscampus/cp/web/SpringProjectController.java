@@ -39,11 +39,12 @@ public class SpringProjectController {
         String displayName = (String) httpSession.getAttribute("displayName");
         StudentDTO foundStudent = studentService.findByUid(uid);
         // if student can be found by Uid
-        if (foundStudent != null) {
-        	// then student = foundStudent
-        	foundStudent = studentService.saveByUid(foundStudent, uid);
-        }        	
+        if (foundStudent == null) {
+            // then student = foundStudent
+            foundStudent = studentService.saveByUid(foundStudent, uid);
+        }
         model.put("studentDTO", foundStudent); // change to studentDTO
+        System.out.println("FFFF"+ foundStudent);
         return "dashboard"; // Don't need redirect to checkin. Later on we will bring checkin activities to dashboard
     }
 
