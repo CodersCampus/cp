@@ -22,3 +22,5 @@
 - Standardize these methods in a process:
     - findByUid
     - saveByUid
+
+- Ordered list of service tests and then controller tests for each - with the emphasis actually on the order as much as the tests themselves
