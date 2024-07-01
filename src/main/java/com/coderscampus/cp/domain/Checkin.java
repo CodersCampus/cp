@@ -47,9 +47,6 @@ public class Checkin {
         this.codingType = codingType;
     }
 
-
-
-    
     // ID
     public Long getId() {
         return id;

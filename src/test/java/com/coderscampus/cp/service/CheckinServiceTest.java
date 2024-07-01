@@ -3,14 +3,17 @@ package com.coderscampus.cp.service;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.CheckinDTO;
+import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,10 +31,37 @@ public class CheckinServiceTest {
     private CheckinService checkinService;
     @Autowired
     private CheckinRepository checkinRepo;
+    Student student1;
+    Student student2;
+
+    StudentDTO studentDTO1;
+    StudentDTO studentDTO2;
+
+    String student1Uid;
+    String student2Uid;
+
+    List<CheckinDTO> student1CheckinDTOList;
+    List<CheckinDTO> student2CheckinDTOList;
 
     //    Consider for later, more streamlined
     @BeforeEach
-    void cleanUpData() {
+    void prepData() {
+
+        studentDTO1 = new StudentDTO();
+        studentDTO2 = new StudentDTO();
+
+        student1Uid = UUID.randomUUID().toString();
+        student2Uid = UUID.randomUUID().toString();
+
+        student1 = new Student(student1Uid, "Bobby", 12, "IntelliJ", false, "name", null);
+        student2 = new Student(student2Uid, "Bobby", 12, "IntelliJ", false, "name", null);
+
+        student1CheckinDTOList = new ArrayList<>();
+        student2CheckinDTOList = new ArrayList<>();
+    }
+
+    @AfterEach
+    void cleanUpData(){
         checkinRepo.deleteAll();
         studentRepo.deleteAll();
     }
@@ -238,7 +268,6 @@ public class CheckinServiceTest {
         CheckinDTO foundCheckinDTO2 = checkinService.findById(checkinDTO2.getId(), uid);
         assertEquals("assignment10", foundCheckinDTO2.getBlockerDescription());
     }
-
 }
 	
 

@@ -20,10 +20,10 @@ public class CheckinService {
 
     @Autowired
     private StudentRepository studentRepo;
-    
-	@Autowired 
+
+	@Autowired
 	private StudentService studentService;
-	
+
     public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
         Checkin foundCheckin = null;
         if (checkinDTO.getId() != null) {
@@ -45,33 +45,31 @@ public class CheckinService {
 
         return returnCheckinDTO;
     }
-private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
 
-    // Need a checkin object x
-    Checkin checkin = new Checkin();
-    // Need to validate that the uid matches the student and isnt bogus
-    Student student = studentService.findStudentByUid(uid);
-    // Student must have been instantiated there is no way can come in as null
-    if (student.getId() == checkinDTO.getStudentId()) {
-        // Set student inside the checkin as the actual student object
+    private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
 
-        //
+        // Need a checkin object x
+        Checkin checkin = new Checkin();
+        // Need to validate that the uid matches the student and isnt bogus
+        Student student = studentService.findStudentByUid(uid);
+        // Student must have been instantiated there is no way can come in as null
+        if (student.getId() == checkinDTO.getStudentId()) {
+            // Set student inside the checkin as the actual student object
 
-        // Call all relevant setters
-        // please double check this still works i might have broke it all
-        setStudentFromUid(checkin, uid);
-        return checkinRepo.save(checkin);
+            //
+
+            // Call all relevant setters
+            // please double check this still works i might have broke it all
+            setStudentFromUid(checkin, uid);
+            return checkinRepo.save(checkin);
+        }
+        else {
+            return null;
+        }
     }
-    else {
-        return null;
-    }
 
-}
-    
-    
-    
     private void setStudentFromUid(Checkin checkin, String uid) {
-    	// Debug uid and student from here 
+    	// Debug uid and student from here
         Student student = studentRepo.findByUid(uid);
         if (student != null) {
             checkin.setStudent(student);
@@ -110,6 +108,5 @@ private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
         return checkins.stream()
                 .map(CheckinDTO::new)
                 .collect(Collectors.toList());
-
     }
 }
