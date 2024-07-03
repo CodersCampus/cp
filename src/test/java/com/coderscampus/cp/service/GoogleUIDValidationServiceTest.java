@@ -9,14 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class GoogleUIDValidationServiceTest {
-	@Autowired
-	private GoogleUIDValidationService googleUIDValidationService;
+    @Autowired
+    private GoogleUIDValidationService googleUIDValidationService;
 
-	@Test
-	void testIsValidGoogleUID() {
-		String uid = "abc";
-		assertTrue(googleUIDValidationService.isValidGoogleUID(uid));
-
-	}
+    @Test
+    void testIsValidGoogleUID() {
+        String uid = "abc";
+        String passUid = "A1bc-DEF2gh34-IJ567-klmnoPq8";
+        
+        assertFalse(googleUIDValidationService.isValidGoogleUID(uid));
+        assertTrue(googleUIDValidationService.isValidGoogleUID(passUid));
+        assertFalse(googleUIDValidationService.isValidGoogleUID(null));
+    }
 
 }
