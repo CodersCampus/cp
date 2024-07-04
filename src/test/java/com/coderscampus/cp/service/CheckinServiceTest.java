@@ -43,11 +43,6 @@ public class CheckinServiceTest {
     List<CheckinDTO> student1CheckinDTOList;
     List<CheckinDTO> student2CheckinDTOList;
 
-    for(int i = 0; i < 4; i++){
-        CheckinDTO checkinDTO = new CheckinDTO();
-        checkinDTO.setBlockerDescription("Blokker" +i);
-     //   checkinDTO.setStudentId();
-    }
     //    Consider for later, more streamlined
     @BeforeEach
     void prepData() {
@@ -61,13 +56,37 @@ public class CheckinServiceTest {
         student1 = new Student(student1Uid, "name1", 1, "IntelliJ", false, "mentor1", null);
         student2 = new Student(student2Uid, "name2", 2, "IntelliJ", false, "mentor2", null);
 
+        studentRepo.save(student1);
+        studentRepo.save(student2);
+
         student1CheckinDTOList = new ArrayList<>();
         student2CheckinDTOList = new ArrayList<>();
+
+        for (int i = 0; i < 4; i++) {
+            Checkin checkin = new Checkin();
+            checkin.setBlockerDescription("Blocker" + i);
+            checkin.setNextAssignment(i);
+            checkin.setBlockers(true);
+            checkin.setRole(Checkin.Role.CODER);
+            checkin.setCodingType(Checkin.CodingType.CRUD);
+            checkin.setStudent(student1);
+            checkin.setUid(student1Uid);
+            checkinRepo.save(checkin);
+            CheckinDTO checkinDTO = new CheckinDTO(checkin);
+            student1CheckinDTOList.add(checkinDTO);
+        }
     }
+
     @AfterEach
-    void cleanUpData(){
+    void cleanUpData() {
         checkinRepo.deleteAll();
         studentRepo.deleteAll();
+    }
+
+    @Test
+    @Transactional
+    void testSetUpCreateCheckIn() {
+        assertEquals(student1CheckinDTOList.size(),4);
     }
 
     @Test
@@ -95,8 +114,6 @@ public class CheckinServiceTest {
     void testUpdateWithWrongUID() {
 
     }
-
-
 
 
     @Test
@@ -224,7 +241,7 @@ public class CheckinServiceTest {
     @Test
     @Transactional
 //    This will fail if "spring.jpa.hibernate.ddl-auto=create-drop" is changed in application.properties
-    void testFindAll(){
+    void testFindAll() {
 //        Create 2 new students
         String uid1 = UUID.randomUUID().toString();
         String uid2 = UUID.randomUUID().toString();
@@ -277,6 +294,7 @@ public class CheckinServiceTest {
         assertTrue(assignment3.contains("" + checkinDTO3.getNextAssignment()));
         assertTrue(assignment4.contains("" + checkinDTO4.getNextAssignment()));
     }
+
     @Test
     @Transactional
     void testFindById() {
