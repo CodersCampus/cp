@@ -43,6 +43,11 @@ public class CheckinServiceTest {
     List<CheckinDTO> student1CheckinDTOList;
     List<CheckinDTO> student2CheckinDTOList;
 
+    for(int i = 0; i < 4; i++){
+        CheckinDTO checkinDTO = new CheckinDTO();
+        checkinDTO.setBlockerDescription("Blokker" +i);
+     //   checkinDTO.setStudentId();
+    }
     //    Consider for later, more streamlined
     @BeforeEach
     void prepData() {
@@ -53,18 +58,46 @@ public class CheckinServiceTest {
         student1Uid = UUID.randomUUID().toString();
         student2Uid = UUID.randomUUID().toString();
 
-        student1 = new Student(student1Uid, "Bobby", 12, "IntelliJ", false, "name", null);
-        student2 = new Student(student2Uid, "Bobby", 12, "IntelliJ", false, "name", null);
+        student1 = new Student(student1Uid, "name1", 1, "IntelliJ", false, "mentor1", null);
+        student2 = new Student(student2Uid, "name2", 2, "IntelliJ", false, "mentor2", null);
 
         student1CheckinDTOList = new ArrayList<>();
         student2CheckinDTOList = new ArrayList<>();
     }
-
     @AfterEach
     void cleanUpData(){
         checkinRepo.deleteAll();
         studentRepo.deleteAll();
     }
+
+    @Test
+    @Transactional
+    void testNullUID() {
+//  create a new checkingDTO
+//  save the checkingDTO using the saveBYUid method and a nullUID
+// assertEquals = nullDTO
+    }
+
+    @Test
+    @Transactional
+    void testValidUID() {
+
+    }
+
+    @Test
+    @Transactional
+    void testUpdateWithExistingUID() {
+
+    }
+
+    @Test
+    @Transactional
+    void testUpdateWithWrongUID() {
+
+    }
+
+
+
 
     @Test
     @Transactional

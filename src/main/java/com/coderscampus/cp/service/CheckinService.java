@@ -25,6 +25,10 @@ public class CheckinService {
 	private StudentService studentService;
 
     public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
+        if (uid == null){
+            return null;
+        }
+
         Checkin foundCheckin = null;
         if (checkinDTO.getId() != null) {
             foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
