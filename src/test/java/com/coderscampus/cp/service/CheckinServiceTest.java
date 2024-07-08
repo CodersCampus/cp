@@ -116,7 +116,20 @@ public class CheckinServiceTest {
 	@Test
 	@Transactional
 	void testValidUID() {
-
+		String badUid ="abc";
+		String goodUid = student1Uid;
+		student1CheckinDTOList.stream().forEach(checkinDTO -> {
+			CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, goodUid);
+			assertNotNull(checkinDTOUt);
+		});
+		student1CheckinDTOList.stream().forEach(checkinDTO -> {
+			CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, badUid);
+			assertNull(checkinDTOUt);
+		});
+		student1CheckinDTOList.stream().forEach(checkinDTO -> {
+			CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, null);
+			assertNull(checkinDTOUt);
+		});
 	}
 
 	@Test

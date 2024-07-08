@@ -24,8 +24,14 @@ public class CheckinService {
 	@Autowired
 	private StudentService studentService;
 
+	@Autowired
+	private GoogleUIDValidationService googleUIDValidationService;
     public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
         if (uid == null){
+            return null;
+        }
+        
+        if (!googleUIDValidationService.isValidGoogleUID(uid)){
             return null;
         }
 
