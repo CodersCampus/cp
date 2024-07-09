@@ -38,6 +38,9 @@ public class CheckinService {
         Checkin foundCheckin = null;
         if (checkinDTO.getId() != null) {
             foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            if(!foundCheckin.getUid().equals(uid)){
+                return null;
+            }
         }
 
         if (foundCheckin == null) {
