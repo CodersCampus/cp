@@ -14,10 +14,10 @@ class GoogleUIDValidationServiceTest {
 
     @Test
     void testIsValidGoogleUID() {
-        String uid = "abc";
+        String invalidUid = "abc";
         String passUid = "A1bc-DEF2gh34-IJ567-klmnoPq8";
         
-        assertFalse(googleUIDValidationService.isValidGoogleUID(uid));
+        assertFalse(googleUIDValidationService.isValidGoogleUID(invalidUid));
         assertTrue(googleUIDValidationService.isValidGoogleUID(passUid));
         assertFalse(googleUIDValidationService.isValidGoogleUID(null));
     }
