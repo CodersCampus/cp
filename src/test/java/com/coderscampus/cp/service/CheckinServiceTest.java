@@ -125,6 +125,43 @@ public class CheckinServiceTest {
 		});
 	}
 
+    @Test
+    @Transactional
+    void testFindByUIDWhenNull(){
+        List<CheckinDTO> checkinDTOListUt = checkinService.findByUid(null);
+        assertEquals(0, checkinDTOListUt.size());
+    }
+
+    @Test
+    @Transactional
+    void testFindByUIDWhenInvalid(){
+        String badUid = "abc";
+        List<CheckinDTO> checkinDTOListUt = checkinService.findByUid(badUid);
+        assertEquals(0, checkinDTOListUt.size());
+    }
+
+    @Test
+    @Transactional
+    void testFindByUIDWhenUpdatedWithExistingUID(){
+        // taking a checkin that already exists and updating related fields
+        // see if we can use findByUID to find the same UID from initial checkin
+        // validate that checkins returned by findByUID have the correct changes
+        // Loop over existing lists of checkins
+        student1CheckinDTOList.stream().forEach(checkinDTO -> {
+            CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, student1Uid);
+            //continue from here
+            assertNull(checkinDTOUt);
+        });
+        }
+    }
+
+    @Test
+    @Transactional
+    void testFindByUIDWhenWrongUIDSent(){
+
+    }
+
+
 	@Test
 	@Transactional
 	void testUpdateWithExistingUID() {
