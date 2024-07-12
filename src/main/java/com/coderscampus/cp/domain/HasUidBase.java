@@ -15,23 +15,21 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Checkin {
+public abstract class HasUidBase {
+    // wants to be a valid UID but visually distinct and readable as pure fluff
+    public static void String SOME_CONSTANT_TO_BE_DEFINED_CAREFULLY_THOUGHTFULLY="asdfasdfs"
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String uid;
-    private Instant date;
-    private Integer nextAssignment;
-    private Boolean blockers;
-    private String blockerDescription;
+    protected Long id;
+    protected String uid;
+    protected Instant date;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
     private Student student;
-    private Role role;
-    private CodingType codingType;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ActivityLog> activityLog = new ArrayList<>();
+    public void removeUid() {
+        this.uid = SOME_CONSTANT_TO_BE_DEFINED_CAREFULLY_THOUGHTFULLY;
+    }
 
     // ID
     public Long getId() {
@@ -61,32 +59,7 @@ public class Checkin {
         this.date = date;
     }
 
-    // Assignment
-    public Integer getNextAssignment() {
-        return nextAssignment;
-    }
-
-    public void setNextAssignment(Integer nextAssignment) {
-        this.nextAssignment = nextAssignment;
-    }
-
-    // Blockers
-    public Boolean getBlockers() {
-        return blockers;
-    }
-
-    public void setBlockers(Boolean blockers) {
-        this.blockers = blockers;
-    }
-
-    // Blocker Description
-    public String getBlockerDescription() {
-        return blockerDescription;
-    }
-
-    public void setBlockerDescription(String blockerDescription) {
-        this.blockerDescription = blockerDescription;
-    }
+    p
 
     // Student
     public Student getStudent() {

@@ -23,9 +23,9 @@ public class CheckinService {
     private StudentRepository studentRepo;
 
     public Checkin saveByUid(Checkin checkin, String uid) {
-//        if (checkinRepo.findByUid(uid) == null) {
-//            checkin.setDate(Instant.now());
-//        }
+        // if (checkinRepo.findByUid(uid) == null) {
+        // checkin.setDate(Instant.now());
+        // }
         setDateIfNull(checkin);
         setStudentAndUid(checkin, uid);
         return checkinRepo.save(checkin);
@@ -46,7 +46,10 @@ public class CheckinService {
     }
 
     public List<Checkin> findAll() {
-        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+        // first iterate through the list of whatevers and call removeUid on each
+        // also this is super critical security testing when dev
+        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed())
+                .collect(Collectors.toList());
     }
 
     public Checkin findById(Long id) {
@@ -58,7 +61,7 @@ public class CheckinService {
     }
 
     public List<Checkin> findByUid(String uid) {
-        return checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+        return checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed())
+                .collect(Collectors.toList());
     }
 }
-

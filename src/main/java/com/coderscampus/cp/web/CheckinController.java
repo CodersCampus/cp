@@ -25,6 +25,7 @@ public class CheckinController {
     @Autowired
     private CheckinService checkinService;
 
+    // this is one that always needs to return a sanitize version of the UID
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
@@ -50,6 +51,7 @@ public class CheckinController {
         return "redirect:/checkin/";
     }
 
+    // this is one that always needs to return a sanitize version of the UID
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
         Checkin checkin = checkinService.findById(id);
@@ -62,7 +64,8 @@ public class CheckinController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@ModelAttribute("checkin") Checkin checkin, @ModelAttribute("activityLog") ActivityLog activityLog) {
+    public String update(@ModelAttribute("checkin") Checkin checkin,
+            @ModelAttribute("activityLog") ActivityLog activityLog) {
         checkin.getActivityLog().add(activityLog);
         return "redirect:/checkin/";
     }
