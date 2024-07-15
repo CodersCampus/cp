@@ -200,6 +200,50 @@ public class CheckinServiceTest {
             assertNull(checkinDTOUt);
         });
     }
+    
+    //Start here for CheckinService.findAll() test cases
+    
+    @Test
+    @Transactional
+    void testUpdateWithWrongUID() {
+        
+    }
+    
+    @Test
+    @Transactional
+    void testUpdateWithWrongUID() {
+        
+    }
+    
+    @Test
+    @Transactional
+    void testUpdateWithWrongUID() {
+        
+    }
+    
+    @Test
+    @Transactional
+    void testUpdateWithWrongUID() {
+        
+    }
+    
+    @Test
+    @Transactional
+    void testUpdateWithWrongUID() {
+        
+    }
+    
+    @Test
+    @Transactional
+    void testUpdateWithWrongUID() {
+        
+    }
+    
+    @Test
+    @Transactional
+    void testUpdateWithWrongUID() {
+        
+    }
 
     //Everything below this is abandoned for now to be replaced
 
