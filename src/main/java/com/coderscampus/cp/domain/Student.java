@@ -18,18 +18,18 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Student {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(nullable = false, unique = true)
-    private String uid;
-    private String name;
-    private Integer assignmentNum;
-    private String ide;
-    private Instant dateCreated;
-    private Boolean willingToMentor;
-    private String mentee;
-    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	@Column(nullable = false, unique = true)
+	private String uid;
+	private String name;
+	private Integer assignmentNum;
+	private String ide;
+	private Instant dateCreated;
+	private Boolean willingToMentor;
+	private String mentee;
+	// @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private GitHub githubHandle;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private LinkedIn linkedIn;
@@ -45,79 +45,82 @@ public class Student {
 //	private Networking networking;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Website website;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Checkin> checkin = new ArrayList<Checkin>();
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Checkin> checkin = new ArrayList<Checkin>();
 
-    public Student() {
-        this.dateCreated = Instant.now();
-    }
+	// Adding for the Work project
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Work> works = new ArrayList<Work>();
 
-    public Student(String uid, String name, Integer assignmentNum, String ide,
-                   Boolean willingToMentor, String mentee, List<Checkin> checkin) {
-        this();
-        this.uid = uid;
-        this.name = name;
-        this.assignmentNum = assignmentNum;
-        this.ide = ide;
-        this.willingToMentor = willingToMentor;
-        this.mentee = mentee;
-        this.checkin = checkin;
-    }
+	public Student() {
+		this.dateCreated = Instant.now();
+	}
 
-    public Student(StudentDTO studentDTO, String uid) {
-        this();
-        Long id = studentDTO.getId();
-        if (id != null && id > 0) {
-            this.id = id;
-        }
-        this.uid = uid;
-        this.name = studentDTO.getName();
-        this.assignmentNum = studentDTO.getAssignmentNum();
-        this.ide = studentDTO.getIde();
-        this.willingToMentor = studentDTO.getWillingToMentor();
-        this.mentee = studentDTO.getMentee();
-    }
+	public Student(String uid, String name, Integer assignmentNum, String ide, Boolean willingToMentor, String mentee,
+			List<Checkin> checkin) {
+		this();
+		this.uid = uid;
+		this.name = name;
+		this.assignmentNum = assignmentNum;
+		this.ide = ide;
+		this.willingToMentor = willingToMentor;
+		this.mentee = mentee;
+		this.checkin = checkin;
+	}
 
-    public Instant getDateCreated() {
-        return dateCreated;
-    }
+	public Student(StudentDTO studentDTO, String uid) {
+		this();
+		Long id = studentDTO.getId();
+		if (id != null && id > 0) {
+			this.id = id;
+		}
+		this.uid = uid;
+		this.name = studentDTO.getName();
+		this.assignmentNum = studentDTO.getAssignmentNum();
+		this.ide = studentDTO.getIde();
+		this.willingToMentor = studentDTO.getWillingToMentor();
+		this.mentee = studentDTO.getMentee();
+	}
 
-    public long getId() {
-        return id;
-    }
+	public Instant getDateCreated() {
+		return dateCreated;
+	}
 
-    public String getUid() {
-        return uid;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
+	public String getUid() {
+		return uid;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Integer getAssignmentNum() {
-        return assignmentNum;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setAssignmentNum(Integer assignmentNum) {
-        this.assignmentNum = assignmentNum;
-    }
+	public Integer getAssignmentNum() {
+		return assignmentNum;
+	}
 
-    public String getIde() {
-        return ide;
-    }
+	public void setAssignmentNum(Integer assignmentNum) {
+		this.assignmentNum = assignmentNum;
+	}
 
-    public void setIde(String ide) {
-        this.ide = ide;
-    }
+	public String getIde() {
+		return ide;
+	}
 
+	public void setIde(String ide) {
+		this.ide = ide;
+	}
 
 //	public GitHub getGithubHandle() {
 //		return githubHandle;
@@ -184,43 +187,47 @@ public class Student {
 //		this.website = website;
 //	}
 
-    public Boolean getWillingToMentor() {
-        return willingToMentor;
-    }
+	public Boolean getWillingToMentor() {
+		return willingToMentor;
+	}
 
-    public void setWillingToMentor(Boolean willingToMentor) {
-        this.willingToMentor = willingToMentor;
-    }
+	public void setWillingToMentor(Boolean willingToMentor) {
+		this.willingToMentor = willingToMentor;
+	}
 
-    public String getMentee() {
-        return mentee;
-    }
+	public String getMentee() {
+		return mentee;
+	}
 
-    public void setMentee(String mentee) {
-        this.mentee = mentee;
-    }
+	public void setMentee(String mentee) {
+		this.mentee = mentee;
+	}
 
-    public List<Checkin> getCheckin() {
-        return checkin;
-    }
+	public List<Checkin> getCheckin() {
+		return checkin;
+	}
 
-    public void setCheckin(List<Checkin> checkin) {
-        this.checkin = checkin;
-    }
+	public void setCheckin(List<Checkin> checkin) {
+		this.checkin = checkin;
+	}
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", uid='" + uid + '\'' +
-                ", name='" + name + '\'' +
-                ", assignmentNum=" + assignmentNum +
-                ", ide='" + ide + '\'' +
-                ", dateCreated=" + dateCreated +
-                ", checkin=" + checkin +
-                '}';
-    }
-    //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
+	public List<Work> getWorks() {
+		return works;
+	}
+
+	public void setWorks(List<Work> works) {
+		this.works = works;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", uid=" + uid + ", name=" + name + ", assignmentNum=" + assignmentNum + ", ide="
+				+ ide + ", dateCreated=" + dateCreated + ", willingToMentor=" + willingToMentor + ", mentee=" + mentee
+				+ ", checkin=" + checkin + ", works=" + works + "]";
+	}
+
+	// public Student(long id, String uid, String name, Integer assignmentNum,
+	// GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
 //				   FinalProject finalProject, Resume resume, Foobar foobar, Networking networking, Website website, List<Checkin> checkin) {
 //		this();
 //		this.id = id;
