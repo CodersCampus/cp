@@ -1,5 +1,6 @@
 package com.coderscampus.cp.web;
 
+import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,29 +20,36 @@ import java.util.Set;
 public class WorkController {
 
     private final WorkService workService;
-	private final StudentService studentService;
 
     @Autowired
-    public WorkController(WorkService workService, StudentService studentService) {
+    public WorkController(WorkService workService) {
         this.workService = workService;
-        this.studentService = studentService;
-
 
     }
 
     @GetMapping("/new")
     public String showCreateForm(Model model) {
-        model.addAttribute("work", new Work());
+        Work work = new Work();
+        Student defaultStudent = new Student();
+        defaultStudent.setUid("whateverclever");
+        work.setStudent(defaultStudent);
+        model.addAttribute("work", work);
 //        model.addAttribute("students", studentService.findByUid(uid));
         return "work/work";
     }
 
     @PostMapping("/create")
     public String createWork(@ModelAttribute Work work, Model model) {
-//        StudentDTO studentDTO = studentService.saveByUid(uid);
+        if (work.getStudent() == null) {
+            Student defaultStudent = new Student();
+            defaultStudent.setUid("whateverclever");
+            work.setStudent(defaultStudent);
+        } else if (work.getStudent().getUid() == null || work.getStudent().getUid().isEmpty()) {
+            work.getStudent().setUid("whateverclever");
+        }
         workService.saveWork(work);
 		model.addAttribute("message", "Work entry created successfully");
-        return "redirect:/works";
+        return "redirect:/works/new";
     }
 
     @GetMapping("/{id}")
