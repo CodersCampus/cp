@@ -202,48 +202,55 @@ public class CheckinServiceTest {
     }
     
     //Start here for CheckinService.findAll() test cases
+
+    @Test
+    @Transactional
+    void testCorrectCountOfAddedCheckins() {
+
+        // check the initial count
+        int start = student1CheckinDTOList.size();
+        // add 2 checkin
+        for (int i = 0; i < 2; i++) {
+            Checkin checkin = new Checkin();
+            checkin.setBlockerDescription("Blocker" + i);
+            checkin.setNextAssignment(i);
+            checkin.setBlockers(true);
+            checkin.setRole(Checkin.Role.CODER);
+            checkin.setCodingType(Checkin.CodingType.CRUD);
+            checkin.setStudent(student1);
+            checkin.setUid(student1Uid);
+            checkinRepo.save(checkin);
+            CheckinDTO checkinDTO = new CheckinDTO(checkin);
+            student1CheckinDTOList.add(checkinDTO);
+        }
+        // check the count = 6
+        assertEquals(start + 2, student1CheckinDTOList.size());
+    }
     
     @Test
     @Transactional
-    void testUpdateWithWrongUID() {
+    void testCorrectCountOfRemovedCheckins(){
         
     }
     
     @Test
     @Transactional
-    void testUpdateWithWrongUID() {
+    void testCorrectCountOfUpdatedCheckins() {
         
     }
     
     @Test
     @Transactional
-    void testUpdateWithWrongUID() {
+    void testUpdateReallyHappened() {
         
     }
     
     @Test
     @Transactional
-    void testUpdateWithWrongUID() {
+    void testCheckinsAreReturnedInDescendingOrderByDate() {
         
     }
-    
-    @Test
-    @Transactional
-    void testUpdateWithWrongUID() {
-        
-    }
-    
-    @Test
-    @Transactional
-    void testUpdateWithWrongUID() {
-        
-    }
-    
-    @Test
-    @Transactional
-    void testUpdateWithWrongUID() {
-        
-    }
+
 
     //Everything below this is abandoned for now to be replaced
 
