@@ -1,6 +1,7 @@
 package com.coderscampus.cp.domain;
 
 import java.time.Instant;
+import java.util.UUID;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.FetchType;
@@ -14,7 +15,7 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class HasUidBase {
 	// wants to be a valid UID but visually distinct and readable as pure fluff
-	public static void String SOME_CONSTANT_TO_BE_DEFINED_CAREFULLY_THOUGHTFULLY="asdfasdfs"
+	protected static final String fauxValidUid = "GFLUFF-" + UUID.randomUUID().toString();
 			
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +28,7 @@ public abstract class HasUidBase {
 	private Student student;
 
 	public void removeUid() {
-		this.uid = SOME_CONSTANT_TO_BE_DEFINED_CAREFULLY_THOUGHTFULLY;
+		this.uid = fauxValidUid;
 	}
 
 	// ID

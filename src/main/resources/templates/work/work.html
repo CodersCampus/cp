@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
@@ -60,4 +60,40 @@
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Work Log</title>
+</head>
+<body>
+    <h1>Work Log</h1>
+    <form action="/works/create" method="post">
+        <div>
+            <label>Name:</label>
+            <input type="text" th:field="${work.student.name}" readonly/>
+        </div>
+        <div>
+            <label>Worked:</label>
+            <input type="checkbox" th:field="${work.worked}"/>
+        </div>
+        <div>
+            <label>Assignment Number:</label>
+            <input type="number" th:field="${work.assignmentNumber}"/>
+        </div>
+        <div>
+            <label>Number of Hours:</label>
+            <input type="number" th:field="${work.numberHours}"/>
+        </div>
+        <div>
+            <label>Description:</label>
+            <textarea th:field="${work.description}" rows="4"></textarea>
+        </div>
+        <button type="submit">Create</button>
+    </form>
+</body>
 </html>
+
+
+
