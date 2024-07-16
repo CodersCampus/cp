@@ -205,10 +205,12 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testCorrectCountOfAddedCheckins() {
+    void testFindAllCorrectCountOfAddedCheckins() {
 
         // check the initial count
         int start = student1CheckinDTOList.size();
+        int size = checkinService.findAll().size();
+        assertTrue(size >= start);
         // add 2 checkin
         for (int i = 0; i < 2; i++) {
             Checkin checkin = new Checkin();
@@ -224,30 +226,32 @@ public class CheckinServiceTest {
             student1CheckinDTOList.add(checkinDTO);
         }
         // check the count = 6
-        assertEquals(start + 2, student1CheckinDTOList.size());
+        assertEquals(size + 2, checkinService.findAll().size());
     }
     
     @Test
     @Transactional
-    void testCorrectCountOfRemovedCheckins(){
+    void testFindAllCorrectCountOfRemovedCheckins(){
+        // get the initial size from findAll
+        // remove 2 of student1CheckinDTOList data from checkinRepo
+        // assert the new size from findAll is 2 less the initial size
+    }
+    
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfUpdatedCheckins() {
         
     }
     
     @Test
     @Transactional
-    void testCorrectCountOfUpdatedCheckins() {
+    void testFindAllUpdateReallyHappened() {
         
     }
     
     @Test
     @Transactional
-    void testUpdateReallyHappened() {
-        
-    }
-    
-    @Test
-    @Transactional
-    void testCheckinsAreReturnedInDescendingOrderByDate() {
+    void testFindAllCheckinsAreReturnedInDescendingOrderByDate() {
         
     }
 
