@@ -232,9 +232,10 @@ public class CheckinServiceTest {
 	void testFindAllCorrectCountOfRemovedCheckins() {
 		// get the initial size from findAll
 		int size = checkinService.findAll().size();
+        List<CheckinDTO> checkinDTOsToRemove = new ArrayList<>(student1CheckinDTOList);
 		int i = 0;
 		// remove 2 of student1CheckinDTOList data from checkinRepo
-		for (CheckinDTO checkinDTO : student1CheckinDTOList) {
+		for (CheckinDTO checkinDTO : checkinDTOsToRemove) {
 			i++;
 			if (i > 2) {
 				break;
@@ -252,14 +253,49 @@ public class CheckinServiceTest {
 	@Test
 	@Transactional
 	void testFindAllCorrectCountOfUpdatedCheckins() {
-
+        // get the initial size from findAll
+        int size = checkinService.findAll().size();
+        List<CheckinDTO> checkinDTOsToUpdate = new ArrayList<>(student1CheckinDTOList);
+        int i = 0;
+        // update 2 of student1CheckinDTOList data from checkinRepo
+        for (CheckinDTO checkinDTO : checkinDTOsToUpdate) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
+            checkin.setRole(Checkin.Role.OBSERVER);
+            checkinRepo.save(checkin);
+        }
+        assertEquals(size, checkinService.findAll().size());
 	}
 
 	@Test
 	@Transactional
 	void testFindAllUpdateReallyHappened() {
-
-	}
+        // get the initial size from findAll
+        int size = checkinService.findAll().size();
+        List<CheckinDTO> checkinDTOsToUpdate = new ArrayList<>(student1CheckinDTOList);
+        int i = 0;
+        // update 2 of student1CheckinDTOList data from checkinRepo
+        for (CheckinDTO checkinDTO : checkinDTOsToUpdate) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
+            checkin.setBlockerDescription("I'm Stuck on the while loop");
+            checkinRepo.save(checkin);
+        }
+        int j = 0;
+        //work from here next time. need a list
+        for (CheckinDTO checkinDTO : student1CheckinDTOList) {
+            if(checkinDTO.getBlockerDescription().equals("I'm Stuck on the while loop")) {
+                j++;
+            }
+        }
+        assertEquals(2, j);
+    }
 
 	@Test
 	@Transactional
