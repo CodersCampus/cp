@@ -1,23 +1,29 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.CheckinDTO;
-import com.coderscampus.cp.dto.StudentDTO;
-import com.coderscampus.cp.repository.CheckinRepository;
-import com.coderscampus.cp.repository.StudentRepository;
-import jakarta.transaction.Transactional;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.CheckinDTO;
+import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.CheckinRepository;
+import com.coderscampus.cp.repository.StudentRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import jakarta.transaction.Transactional;
 
 @SpringBootTest
 public class CheckinServiceTest {
@@ -289,7 +295,17 @@ public class CheckinServiceTest {
     @Test
     @Transactional
     void testFindAllCheckinsAreReturnedInDescendingOrderByDate() {
-    // call the findAll method and store it in a list to find all checkinDTOs 
+        List<CheckinDTO> everythingInDatabase = checkinService.findAll();
+    	Instant previousDate = Instant.now();
+    	boolean allGood = true;
+    	for (CheckinDTO checkinDTO : everythingInDatabase) {
+    		if(previousDate.isBefore(checkinDTO.getDate())) {
+    			allGood = false;
+    			break;
+    		}
+    		previousDate = checkinDTO.getDate();
+        }
+    	assertTrue(allGood);
     }
 
     // Everything below this is abandoned for now to be replaced
