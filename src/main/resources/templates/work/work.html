@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="ui-input-field">
-                            <label class="ui-label">Assignment Number:</label>
+                            <label class="ui-label">Next Assignment Number:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" placeholder="ex: 3" th:field="${work.assignmentNumber}" type="number"/>
                             </div>
@@ -46,6 +46,7 @@
                             <label class="ui-label">Description:</label>
                             <div class="ui-text-input">
                                 <textarea class="ui-value" th:field="${work.description}" rows="4"></textarea>
+                                <textarea th:field="${work.description}" rows="4" placeholder="ex: U2L04 Exercises&#10;drills U3L06&#10;Assignment 0-b&#10;Udemy JavaScript course"></textarea>
                             </div>
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
