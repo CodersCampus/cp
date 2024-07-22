@@ -205,8 +205,6 @@ public class CheckinServiceTest {
         });
     }
 
-    // Start here for CheckinService.findAll() test cases
-
     @Test
     @Transactional
     void testFindAllCorrectCountOfAddedCheckins() {
@@ -338,62 +336,6 @@ public class CheckinServiceTest {
 //        studentRepo.delete(student);
     }
 
-    @Test
-    @Transactional
-//    This will fail if "spring.jpa.hibernate.ddl-auto=create-drop" is changed in application.properties
-    void testFindAll() {
-//        Create 2 new students
-        String uid1 = UUID.randomUUID().toString();
-        String uid2 = UUID.randomUUID().toString();
-        // Create new student with new UID
-        Student student1 = new Student(uid1, "Bobby", 12, "IntelliJ", false, "name", null);
-        Student student2 = new Student(uid2, "Fred", 12, "IntelliJ", false, "name", null);
-//        Save students
-        studentRepo.save(student1);
-        studentRepo.save(student2);
-//        Create 2 new checkins for each student
-        Checkin checkin1 = new Checkin(uid1, null, 9, true, "assignment9", student1, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        Checkin checkin2 = new Checkin(uid1, null, 12, true, "assignment10", student1, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        Checkin checkin3 = new Checkin(uid2, null, 13, true, "assignment9", student2, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        Checkin checkin4 = new Checkin(uid2, null, 14, true, "assignment10", student2, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-//        Save the checkins
-        CheckinDTO checkinDTO1 = checkinService.saveByUid(new CheckinDTO(checkin1), uid1);
-        CheckinDTO checkinDTO2 = checkinService.saveByUid(new CheckinDTO(checkin2), uid1);
-        CheckinDTO checkinDTO3 = checkinService.saveByUid(new CheckinDTO(checkin3), uid2);
-        CheckinDTO checkinDTO4 = checkinService.saveByUid(new CheckinDTO(checkin4), uid2);
-//        call findAll()
-        List<CheckinDTO> checkinDTOs = checkinService.findAll();
-//        Assert that the size is correct
-        String ids = "";
-        for (CheckinDTO checkinDTO : checkinDTOs) {
-            ids = ids + checkinDTO.getId();
-        }
-        assertTrue(ids.contains("" + checkinDTO1.getId()));
-        assertTrue(ids.contains("" + checkinDTO2.getId()));
-        assertTrue(ids.contains("" + checkinDTO3.getId()));
-        assertTrue(ids.contains("" + checkinDTO4.getId()));
-        assertEquals(4, checkinDTOs.size());
-//        keep testing properties of checkins
-        String assignment1 = "";
-        String assignment2 = "";
-        String assignment3 = "";
-        String assignment4 = "";
-        for (CheckinDTO checkinDTO : checkinDTOs) {
-            assignment4 = assignment4 + checkinDTO.getNextAssignment();
-            assignment3 = assignment3 + checkinDTO.getNextAssignment();
-            assignment2 = assignment2 + checkinDTO.getNextAssignment();
-            assignment1 = assignment1 + checkinDTO.getNextAssignment();
-        }
-
-        assertTrue(assignment1.contains("" + checkinDTO1.getNextAssignment()));
-        assertTrue(assignment2.contains("" + checkinDTO2.getNextAssignment()));
-        assertTrue(assignment3.contains("" + checkinDTO3.getNextAssignment()));
-        assertTrue(assignment4.contains("" + checkinDTO4.getNextAssignment()));
-    }
 
     @Test
     @Transactional
