@@ -306,6 +306,34 @@ public class CheckinServiceTest {
     	assertTrue(allGood);
     }
 
+    @Test
+    @Transactional
+    void testCreateCheckinUidNull(){}
+    
+    @Test
+    @Transactional
+    void testCreateCheckinCheckinDTONull(){}
+    
+    @Test
+    @Transactional
+    void testCreateCheckinUidIsInvalid(){}
+    
+    @Test
+    @Transactional
+    void testCreateCheckinUidIsValid(){}
+    
+    @Test
+    @Transactional
+    void testCreateCheckinRejectDuplicateDTO(){}
+    
+    @Test
+    @Transactional
+    void testCreateCheckinMismatchStudentId(){}
+    
+    @Test
+    @Transactional
+    void testCreateCheckinPassForMatchingStudentId(){}
+    
     // Everything below this is abandoned for now to be replaced
 
     @Test
