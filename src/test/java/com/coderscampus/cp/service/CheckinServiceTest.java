@@ -1,23 +1,29 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.CheckinDTO;
-import com.coderscampus.cp.dto.StudentDTO;
-import com.coderscampus.cp.repository.CheckinRepository;
-import com.coderscampus.cp.repository.StudentRepository;
-import jakarta.transaction.Transactional;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.CheckinDTO;
+import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.CheckinRepository;
+import com.coderscampus.cp.repository.StudentRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import jakarta.transaction.Transactional;
 
 @SpringBootTest
 public class CheckinServiceTest {
@@ -153,14 +159,12 @@ public class CheckinServiceTest {
         });
     }
 
-
     @Test
     @Transactional
     void testFindByUIDWhenWrongUIDSent() {
         List<CheckinDTO> checkinDTOListUt = checkinService.findByUid(student2Uid);
         assertEquals(0, checkinDTOListUt.size());
     }
-
 
     @Test
     @Transactional
@@ -201,7 +205,108 @@ public class CheckinServiceTest {
         });
     }
 
-    //Everything below this is abandoned for now to be replaced
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfAddedCheckins() {
+
+        int start = student1CheckinDTOList.size();
+        int size = checkinService.findAll().size();
+        assertTrue(size >= start);
+        for (int i = 0; i < 2; i++) {
+            Checkin checkin = new Checkin();
+            checkin.setBlockerDescription("Blocker" + i);
+            checkin.setNextAssignment(i);
+            checkin.setBlockers(true);
+            checkin.setRole(Checkin.Role.CODER);
+            checkin.setCodingType(Checkin.CodingType.CRUD);
+            checkin.setStudent(student1);
+            checkin.setUid(student1Uid);
+            checkinRepo.save(checkin);
+            CheckinDTO checkinDTO = new CheckinDTO(checkin);
+            student1CheckinDTOList.add(checkinDTO);
+        }
+        assertEquals(size + 2, checkinService.findAll().size());
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfRemovedCheckins() {
+        int size = checkinService.findAll().size();
+        List<CheckinDTO> checkinDTOsToRemove = new ArrayList<>(student1CheckinDTOList);
+        int i = 0;
+        for (CheckinDTO checkinDTO : checkinDTOsToRemove) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
+            checkinRepo.delete(checkin);
+            student1CheckinDTOList.remove(checkinDTO);
+        }
+        int newSize = checkinService.findAll().size();
+        assertEquals(size - 2, newSize);
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfUpdatedCheckins() {
+        int size = checkinService.findAll().size();
+        List<CheckinDTO> checkinDTOsToUpdate = new ArrayList<>(student1CheckinDTOList);
+        int i = 0;
+        for (CheckinDTO checkinDTO : checkinDTOsToUpdate) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
+            checkin.setRole(Checkin.Role.OBSERVER);
+            checkinRepo.save(checkin);
+        }
+        assertEquals(size, checkinService.findAll().size());
+    }
+
+    @Test
+    @Transactional
+    void testFindAllUpdateReallyHappened() {
+        List<CheckinDTO> checkinDTOsToUpdate = new ArrayList<>(student1CheckinDTOList);
+        int i = 0;
+        String randomString = UUID.randomUUID().toString();
+        for (CheckinDTO checkinDTO : checkinDTOsToUpdate) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
+            checkin.setBlockerDescription(randomString);
+            checkinRepo.save(checkin);
+        }
+        List<CheckinDTO> everythingInDatabase = checkinService.findAll();
+        int j = 0;
+        for (CheckinDTO checkinDTO : everythingInDatabase) {
+            if (checkinDTO.getBlockerDescription().equals(randomString)) {
+                j++;
+            }
+        }
+        assertEquals(2, j);
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCheckinsAreReturnedInDescendingOrderByDate() {
+        List<CheckinDTO> everythingInDatabase = checkinService.findAll();
+    	Instant previousDate = Instant.now();
+    	boolean allGood = true;
+    	for (CheckinDTO checkinDTO : everythingInDatabase) {
+    		if(previousDate.isBefore(checkinDTO.getDate())) {
+    			allGood = false;
+    			break;
+    		}
+    		previousDate = checkinDTO.getDate();
+        }
+    	assertTrue(allGood);
+    }
+
+    // Everything below this is abandoned for now to be replaced
 
     @Test
     @Transactional
@@ -231,62 +336,6 @@ public class CheckinServiceTest {
 //        studentRepo.delete(student);
     }
 
-    @Test
-    @Transactional
-//    This will fail if "spring.jpa.hibernate.ddl-auto=create-drop" is changed in application.properties
-    void testFindAll() {
-//        Create 2 new students
-        String uid1 = UUID.randomUUID().toString();
-        String uid2 = UUID.randomUUID().toString();
-        // Create new student with new UID
-        Student student1 = new Student(uid1, "Bobby", 12, "IntelliJ", false, "name", null);
-        Student student2 = new Student(uid2, "Fred", 12, "IntelliJ", false, "name", null);
-//        Save students
-        studentRepo.save(student1);
-        studentRepo.save(student2);
-//        Create 2 new checkins for each student
-        Checkin checkin1 = new Checkin(uid1, null, 9, true, "assignment9", student1, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        Checkin checkin2 = new Checkin(uid1, null, 12, true, "assignment10", student1, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        Checkin checkin3 = new Checkin(uid2, null, 13, true, "assignment9", student2, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        Checkin checkin4 = new Checkin(uid2, null, 14, true, "assignment10", student2, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-//        Save the checkins
-        CheckinDTO checkinDTO1 = checkinService.saveByUid(new CheckinDTO(checkin1), uid1);
-        CheckinDTO checkinDTO2 = checkinService.saveByUid(new CheckinDTO(checkin2), uid1);
-        CheckinDTO checkinDTO3 = checkinService.saveByUid(new CheckinDTO(checkin3), uid2);
-        CheckinDTO checkinDTO4 = checkinService.saveByUid(new CheckinDTO(checkin4), uid2);
-//        call findAll()
-        List<CheckinDTO> checkinDTOs = checkinService.findAll();
-//        Assert that the size is correct
-        String ids = "";
-        for (CheckinDTO checkinDTO : checkinDTOs) {
-            ids = ids + checkinDTO.getId();
-        }
-        assertTrue(ids.contains("" + checkinDTO1.getId()));
-        assertTrue(ids.contains("" + checkinDTO2.getId()));
-        assertTrue(ids.contains("" + checkinDTO3.getId()));
-        assertTrue(ids.contains("" + checkinDTO4.getId()));
-        assertEquals(4, checkinDTOs.size());
-//        keep testing properties of checkins
-        String assignment1 = "";
-        String assignment2 = "";
-        String assignment3 = "";
-        String assignment4 = "";
-        for (CheckinDTO checkinDTO : checkinDTOs) {
-            assignment4 = assignment4 + checkinDTO.getNextAssignment();
-            assignment3 = assignment3 + checkinDTO.getNextAssignment();
-            assignment2 = assignment2 + checkinDTO.getNextAssignment();
-            assignment1 = assignment1 + checkinDTO.getNextAssignment();
-        }
-
-        assertTrue(assignment1.contains("" + checkinDTO1.getNextAssignment()));
-        assertTrue(assignment2.contains("" + checkinDTO2.getNextAssignment()));
-        assertTrue(assignment3.contains("" + checkinDTO3.getNextAssignment()));
-        assertTrue(assignment4.contains("" + checkinDTO4.getNextAssignment()));
-    }
 
     @Test
     @Transactional
