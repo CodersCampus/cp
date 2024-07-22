@@ -27,7 +27,7 @@ public class WorkController {
 
     }
 
-    @GetMapping("/new")
+    @GetMapping("/create")
     public String showCreateForm(Model model) {
         Work work = new Work();
         Student defaultStudent = new Student();
@@ -49,7 +49,7 @@ public class WorkController {
         }
         workService.saveWork(work);
 		model.addAttribute("message", "Work entry created successfully");
-        return "redirect:/works/new";
+        return "redirect:/works/create";
     }
 
     @GetMapping("/{id}")

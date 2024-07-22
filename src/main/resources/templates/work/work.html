@@ -10,7 +10,6 @@
                 <section class="ui-panel-title title-small">Work Log</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/works/new">Create New</a></button>
                     </ul>
                 </nav>
             </div>
@@ -25,16 +24,11 @@
                             </div>
                         </div>
                         <div class="ui-input-field">
-                            <label class="ui-label">Worked:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" th:field="${work.worked}" type="checkbox"/>
-                            </div>
-                        </div>
-                        <div class="ui-input-field">
                             <label class="ui-label">Next Assignment Number:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" placeholder="ex: 3" th:field="${work.assignmentNumber}" type="number"/>
                             </div>
+                            <p>Data used for full student context only</p>
                         </div>
                         <div class="ui-input-field">
                             <label class="ui-label">Number of Hours:</label>
@@ -46,8 +40,8 @@
                             <label class="ui-label">Description:</label>
                             <div class="ui-text-input">
                                 <textarea class="ui-value" th:field="${work.description}" rows="4"></textarea>
-                                <textarea th:field="${work.description}" rows="4" placeholder="ex: U2L04 Exercises&#10;drills U3L06&#10;Assignment 0-b&#10;Udemy JavaScript course"></textarea>
                             </div>
+                            <p>Examples: U2L04 Exercises, drills U3L06, Assignment 0-b, Udemy JavaScript course</p>
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
                     </form>
@@ -60,41 +54,7 @@
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
 </body>
-
 </html>
-
-<!-- <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
-<head>
-    <title>Work Log</title>
-</head>
-<body>
-    <h1>Work Log</h1>
-    <form action="/works/create" method="post">
-        <div>
-            <label>Name:</label>
-            <input type="text" th:field="${work.student.name}" readonly/>
-        </div>
-        <div>
-            <label>Worked:</label>
-            <input type="checkbox" th:field="${work.worked}"/>
-        </div>
-        <div>
-            <label>Assignment Number:</label>
-            <input type="number" th:field="${work.assignmentNumber}"/>
-        </div>
-        <div>
-            <label>Number of Hours:</label>
-            <input type="number" th:field="${work.numberHours}"/>
-        </div>
-        <div>
-            <label>Description:</label>
-            <textarea th:field="${work.description}" rows="4"></textarea>
-        </div>
-        <button type="submit">Create</button>
-    </form>
-</body>
-</html> -->
 
 
 

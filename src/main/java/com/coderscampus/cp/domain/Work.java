@@ -6,15 +6,12 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "work")
 public class Work extends HasUidBase {
-
-	private boolean worked;
 	private Integer assignmentNumber;
 	private Integer numberHours;
 	private String description;
 
-	public Work(boolean worked, Integer assignmentNumber, Integer numberHours, String description) {
+	public Work(Integer assignmentNumber, Integer numberHours, String description) {
 		super();
-		this.worked = worked;
 		this.assignmentNumber = assignmentNumber;
 		this.numberHours = numberHours;
 		this.description = description;
@@ -22,14 +19,6 @@ public class Work extends HasUidBase {
 
 	public Work() {
 		super();
-	}
-
-	public boolean isWorked() {
-		return worked;
-	}
-
-	public void setWorked(boolean worked) {
-		this.worked = worked;
 	}
 
 	public Integer getAssignmentNumber() {
@@ -58,7 +47,7 @@ public class Work extends HasUidBase {
 
 	@Override
 	public String toString() {
-		return "Work [worked=" + worked + ", assignmentNumber=" + assignmentNumber + ", numberHours=" + numberHours
+		return "Work [assignmentNumber=" + assignmentNumber + ", numberHours=" + numberHours
 				+ ", description=" + description + "]";
 	}
 
