@@ -308,23 +308,38 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testCreateCheckinUidNull(){}
+    void testCreateCheckinUidNull(){
+//        This is a duplicate of testNullUid()
+    }
     
     @Test
     @Transactional
-    void testCreateCheckinCheckinDTONull(){}
+    void testCreateCheckinCheckinDTONull(){
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            CheckinDTO checkinDTOUt = checkinService.saveByUid(null, student1Uid);
+            assertNull(checkinDTOUt);
+        });
+    }
     
     @Test
     @Transactional
-    void testCreateCheckinUidIsInvalid(){}
+    void testCreateCheckinUidIsInvalid(){
+//        This is a duplicate of testInvalidUID()
+    }
     
     @Test
     @Transactional
-    void testCreateCheckinUidIsValid(){}
+    void testCreateCheckinUidIsValid(){
+//        This is a duplicate of testValidUID()
+    }
     
     @Test
     @Transactional
-    void testCreateCheckinRejectDuplicateDTO(){}
+    void testCreateCheckinRejectDuplicateDTO(){
+//        Create checkin
+
+//        test against timestamp -- if it's created within ~1 hour(?)
+    }
     
     @Test
     @Transactional

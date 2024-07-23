@@ -30,6 +30,10 @@ public class CheckinService {
         if (uid == null){
             return null;
         }
+
+        if(checkinDTO == null){
+            return null;
+        }
         
         if (!googleUIDValidationService.isValidGoogleUID(uid)){
             return null;
