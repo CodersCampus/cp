@@ -7,13 +7,13 @@ import jakarta.persistence.Table;
 @Table(name = "work")
 public class Work extends HasUidBase {
 	private Integer assignmentNumber;
-	private Integer numberHours;
+	private Integer numberMinutes;
 	private String description;
 
-	public Work(Integer assignmentNumber, Integer numberHours, String description) {
+	public Work(Integer assignmentNumber, Integer numberMinutes, String description) {
 		super();
 		this.assignmentNumber = assignmentNumber;
-		this.numberHours = numberHours;
+		this.numberMinutes = numberMinutes;
 		this.description = description;
 	}
 
@@ -29,12 +29,12 @@ public class Work extends HasUidBase {
 		this.assignmentNumber = assignmentNumber;
 	}
 
-	public Integer getNumberHours() {
-		return numberHours;
+	public Integer getNumberMinutes() {
+		return numberMinutes;
 	}
 
-	public void setNumberHours(Integer numberHours) {
-		this.numberHours = numberHours;
+	public void setNumberMinutes(Integer numberMinutes) {
+		this.numberMinutes = numberMinutes;
 	}
 
 	public String getDescription() {
@@ -47,7 +47,7 @@ public class Work extends HasUidBase {
 
 	@Override
 	public String toString() {
-		return "Work [assignmentNumber=" + assignmentNumber + ", numberHours=" + numberHours
+		return "Work [assignmentNumber=" + assignmentNumber + ", numberMinutes=" + numberMinutes
 				+ ", description=" + description + "]";
 	}
 
