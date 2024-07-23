@@ -72,7 +72,7 @@ public class CheckinService {
         // Student must have been instantiated there is no way can come in as null
         if (student.getId() == checkinDTO.getStudentId()) {
             // Set student inside the checkin as the actual student object
-
+            System.out.println("Ran succesfully");
             //
 
             // Call all relevant setters
@@ -80,7 +80,9 @@ public class CheckinService {
             setStudentFromUid(checkin, uid);
             return checkinRepo.save(checkin);
         }
+
         else {
+            System.out.println("Ran failed");
             return null;
         }
     }

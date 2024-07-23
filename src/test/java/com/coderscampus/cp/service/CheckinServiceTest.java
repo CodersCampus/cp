@@ -333,21 +333,25 @@ public class CheckinServiceTest {
 //        This is a duplicate of testValidUID()
     }
     
+//    @Test
+//    @Transactional
+//    void testCreateCheckinRejectDuplicateDTO(){
+////        Create checkin
+//
+////        test against timestamp -- if it's created within ~1 hour(?)
+//    }
+    
     @Test
     @Transactional
-    void testCreateCheckinRejectDuplicateDTO(){
-//        Create checkin
-
-//        test against timestamp -- if it's created within ~1 hour(?)
+    void testCreateCheckinMismatchStudentId(){
+        //This does not appear to be a valid use case. Because when Check in comes in, it does not have an Id until it is saved.
     }
     
     @Test
     @Transactional
-    void testCreateCheckinMismatchStudentId(){}
-    
-    @Test
-    @Transactional
-    void testCreateCheckinPassForMatchingStudentId(){}
+    void testCreateCheckinPassForMatchingStudentId(){
+        //This does not appear to be a valid use case. Because when Check in comes in, it does not have an Id until it is saved.
+    }
     
     // Everything below this is abandoned for now to be replaced
 
