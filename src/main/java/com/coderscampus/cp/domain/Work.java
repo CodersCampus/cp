@@ -21,8 +21,6 @@ public class Work extends HasUidBase {
     public Work() {
         super();
     }
-
-    // Getter and setter for studentName
     public String getStudentName() {
         return studentName;
     }
@@ -30,8 +28,6 @@ public class Work extends HasUidBase {
     public void setStudentName(String studentName) {
         this.studentName = studentName;
     }
-
-    // Other getters and setters...
 
     public Integer getAssignmentNumber() {
         return assignmentNumber;

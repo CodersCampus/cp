@@ -84,7 +84,7 @@ public class WorkController {
     @GetMapping("/create")
     public String showCreateForm(Model model) {
         Work work = new Work();
-        work.setStudentName("Default Name"); // Set a default name if needed
+        work.setStudentName(work.getStudentName()); // Set a default name if needed
         model.addAttribute("work", work);
         return "work/work";
     }
@@ -92,10 +92,10 @@ public class WorkController {
     @PostMapping("/create")
     public String createWork(@ModelAttribute Work work, Model model) {
         if (work.getStudentName() == null || work.getStudentName().isEmpty()) {
-            work.setStudentName("Default Name"); // Set a default name if none is provided
+            work.setStudentName(work.getStudentName());
+        } else {
+            workService.saveWork(work);
         }
-        workService.saveWork(work);
-        model.addAttribute("message", "Work entry created successfully");
         return "redirect:/works/create";
     }
 
