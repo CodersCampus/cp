@@ -343,8 +343,14 @@ public class CheckinServiceTest {
     
     @Test
     @Transactional
-    void testCreateCheckinMismatchStudentId(){
-        //This does not appear to be a valid use case. Because when Check in comes in, it does not have an Id until it is saved.
+    void testCreateCheckinStudentIdFromUidDoesNotMatchStudentIdFromCheckinDto (){
+        for (CheckinDTO checkinDTO : student1CheckinDTOList) {
+
+
+     //      Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
+     //       checkinRepo.delete(checkin);
+     //       student1CheckinDTOList.remove(checkinDTO);
+        }
     }
     
     @Test
