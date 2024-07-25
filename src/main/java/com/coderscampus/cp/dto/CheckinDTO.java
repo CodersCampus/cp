@@ -27,7 +27,12 @@ public class CheckinDTO {
         this.codingType = checkin.getCodingType();
         this.studentId=checkin.getStudent().getId();
     }
-    public CheckinDTO() {this(new Checkin());}
+
+    public CheckinDTO(long studentId) {
+        super();
+        this.studentId=studentId;
+    }
+//    public CheckinDTO() {this(new Checkin());}
 
     public Long getStudentId() {
         return studentId;

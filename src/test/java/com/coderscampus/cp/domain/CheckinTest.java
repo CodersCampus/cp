@@ -32,7 +32,7 @@ class CheckinTest {
         existingStudent = studentRepo.save(existingStudent); // Saves that existing student to the database
 //        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", existingStudent, Checkin.Role.CODER,
 //                Checkin.CodingType.CRUD);
-        CheckinDTO checkinDTO1 = new CheckinDTO();
+        CheckinDTO checkinDTO1 = new CheckinDTO(existingStudent.getId());
         //setting the values
         checkinDTO1.setNextAssignment(9);
         checkinDTO1.setBlockers(true);

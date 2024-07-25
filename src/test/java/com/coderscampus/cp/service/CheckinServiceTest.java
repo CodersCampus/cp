@@ -344,13 +344,10 @@ public class CheckinServiceTest {
     @Test
     @Transactional
     void testCreateCheckinStudentIdFromUidDoesNotMatchStudentIdFromCheckinDto (){
-        for (CheckinDTO checkinDTO : student1CheckinDTOList) {
-
-
-     //      Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
-     //       checkinRepo.delete(checkin);
-     //       student1CheckinDTOList.remove(checkinDTO);
-        }
+        CheckinDTO checkinDTO = new CheckinDTO(student1.getId());
+        checkinDTO.setNextAssignment(4);
+        checkinDTO.setBlockers(false);
+        assertNull(checkinService.saveByUid(checkinDTO, student2Uid));
     }
     
     @Test

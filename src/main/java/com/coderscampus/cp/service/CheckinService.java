@@ -58,7 +58,8 @@ public class CheckinService {
             foundCheckin.setCodingType(checkinDTO.getCodingType());
             foundCheckin = checkinRepo.save(foundCheckin);
         }
-        CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
+        TODO: Al Fu wants to look at this tomorrow
+        CheckinDTO returnCheckinDTO = foundCheckin != null ? new CheckinDTO(foundCheckin) : null;
 
         return returnCheckinDTO;
     }
