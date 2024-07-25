@@ -1,55 +1,64 @@
 package com.coderscampus.cp.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "work")
 public class Work extends HasUidBase {
-	private Integer assignmentNumber;
-	private Integer numberMinutes;
-	private String description;
+    private String studentName;
+    private Integer assignmentNumber;
+    private Integer numberMinutes;
+    private String description;
 
-	public Work(Integer assignmentNumber, Integer numberMinutes, String description) {
-		super();
-		this.assignmentNumber = assignmentNumber;
-		this.numberMinutes = numberMinutes;
-		this.description = description;
-	}
+    public Work(String studentName, Integer assignmentNumber, Integer numberMinutes, String description) {
+        super();
+        this.studentName = studentName;
+        this.assignmentNumber = assignmentNumber;
+        this.numberMinutes = numberMinutes;
+        this.description = description;
+    }
 
-	public Work() {
-		super();
-	}
+    public Work() {
+        super();
+    }
 
-	public Integer getAssignmentNumber() {
-		return assignmentNumber;
-	}
+    // Getter and setter for studentName
+    public String getStudentName() {
+        return studentName;
+    }
 
-	public void setAssignmentNumber(Integer assignmentNumber) {
-		this.assignmentNumber = assignmentNumber;
-	}
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
 
-	public Integer getNumberMinutes() {
-		return numberMinutes;
-	}
+    // Other getters and setters...
 
-	public void setNumberMinutes(Integer numberMinutes) {
-		this.numberMinutes = numberMinutes;
-	}
+    public Integer getAssignmentNumber() {
+        return assignmentNumber;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setAssignmentNumber(Integer assignmentNumber) {
+        this.assignmentNumber = assignmentNumber;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public Integer getNumberMinutes() {
+        return numberMinutes;
+    }
 
-	@Override
-	public String toString() {
-		return "Work [assignmentNumber=" + assignmentNumber + ", numberMinutes=" + numberMinutes
-				+ ", description=" + description + "]";
-	}
+    public void setNumberMinutes(Integer numberMinutes) {
+        this.numberMinutes = numberMinutes;
+    }
 
-	
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Work [studentName=" + studentName + ", assignmentNumber=" + assignmentNumber + ", numberMinutes=" + numberMinutes + ", description=" + description + "]";
+    }
 }
