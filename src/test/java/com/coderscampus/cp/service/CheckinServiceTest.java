@@ -305,12 +305,6 @@ public class CheckinServiceTest {
         }
     	assertTrue(allGood);
     }
-
-    @Test
-    @Transactional
-    void testCreateCheckinUidNull(){
-//        This is a duplicate of testNullUid()
-    }
     
     @Test
     @Transactional
@@ -320,26 +314,6 @@ public class CheckinServiceTest {
             assertNull(checkinDTOUt);
         });
     }
-    
-    @Test
-    @Transactional
-    void testCreateCheckinUidIsInvalid(){
-//        This is a duplicate of testInvalidUID()
-    }
-    
-    @Test
-    @Transactional
-    void testCreateCheckinUidIsValid(){
-//        This is a duplicate of testValidUID()
-    }
-    
-//    @Test
-//    @Transactional
-//    void testCreateCheckinRejectDuplicateDTO(){
-////        Create checkin
-//
-////        test against timestamp -- if it's created within ~1 hour(?)
-//    }
     
     @Test
     @Transactional

@@ -21,28 +21,29 @@ public class CheckinService {
     @Autowired
     private StudentRepository studentRepo;
 
-	@Autowired
-	private StudentService studentService;
+    @Autowired
+    private StudentService studentService;
 
-	@Autowired
-	private GoogleUIDValidationService googleUIDValidationService;
+    @Autowired
+    private GoogleUIDValidationService googleUIDValidationService;
+
     public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
-        if (uid == null){
+        if (uid == null) {
             return null;
         }
 
-        if(checkinDTO == null){
+        if (checkinDTO == null) {
             return null;
         }
-        
-        if (!googleUIDValidationService.isValidGoogleUID(uid)){
+
+        if (!googleUIDValidationService.isValidGoogleUID(uid)) {
             return null;
         }
 
         Checkin foundCheckin = null;
         if (checkinDTO.getId() != null) {
             foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
-            if(!foundCheckin.getUid().equals(uid)){
+            if (!foundCheckin.getUid().equals(uid)) {
                 return null;
             }
         }
@@ -58,38 +59,25 @@ public class CheckinService {
             foundCheckin.setCodingType(checkinDTO.getCodingType());
             foundCheckin = checkinRepo.save(foundCheckin);
         }
-        TODO: Al Fu wants to look at this tomorrow
+
         CheckinDTO returnCheckinDTO = foundCheckin != null ? new CheckinDTO(foundCheckin) : null;
+
 
         return returnCheckinDTO;
     }
 
     private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
-
-        // Need a checkin object x
         Checkin checkin = new Checkin();
-        // Need to validate that the uid matches the student and isnt bogus
         Student student = studentService.findStudentByUid(uid);
-        // Student must have been instantiated there is no way can come in as null
         if (student.getId() == checkinDTO.getStudentId()) {
-            // Set student inside the checkin as the actual student object
-            System.out.println("Ran succesfully");
-            //
-
-            // Call all relevant setters
-            // please double check this still works i might have broke it all
             setStudentFromUid(checkin, uid);
             return checkinRepo.save(checkin);
-        }
-
-        else {
-            System.out.println("Ran failed");
+        } else {
             return null;
         }
     }
 
     private void setStudentFromUid(Checkin checkin, String uid) {
-    	// Debug uid and student from here
         Student student = studentRepo.findByUid(uid);
         if (student != null) {
             checkin.setStudent(student);
@@ -97,11 +85,7 @@ public class CheckinService {
     }
 
     public List<CheckinDTO> findAll() {
-        return checkinRepo.findAll().stream()
-                .sorted(Comparator.comparing(Checkin::getDate)
-                .reversed())
-                .map(CheckinDTO::new)
-                .collect(Collectors.toList());
+        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).map(CheckinDTO::new).collect(Collectors.toList());
     }
 
     public CheckinDTO findById(Long id, String uid) {
@@ -121,12 +105,7 @@ public class CheckinService {
     }
 
     public List<CheckinDTO> findByUid(String uid) {
-        List<Checkin> checkins = checkinRepo.findByUid(uid).stream()
-                .sorted(Comparator.comparing(Checkin::getDate)
-                .reversed())
-                .collect(Collectors.toList());
-        return checkins.stream()
-                .map(CheckinDTO::new)
-                .collect(Collectors.toList());
+        List<Checkin> checkins = checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+        return checkins.stream().map(CheckinDTO::new).collect(Collectors.toList());
     }
 }
