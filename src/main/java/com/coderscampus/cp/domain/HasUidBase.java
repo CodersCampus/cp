@@ -31,7 +31,6 @@ public abstract class HasUidBase {
 		this.uid = fauxValidUid;
 	}
 
-	// ID
 	public Long getId() {
 		return id;
 	}
@@ -40,7 +39,6 @@ public abstract class HasUidBase {
 		this.id = id;
 	}
 
-	// UID
 	public String getUid() {
 		return uid;
 	}
@@ -49,7 +47,6 @@ public abstract class HasUidBase {
 		this.uid = uid;
 	}
 
-	// Date
 
 	public Instant getDate() {
 		return date;
@@ -59,7 +56,6 @@ public abstract class HasUidBase {
 		this.date = date;
 	}
 
-	// Student
 	public Student getStudent() {
 		return student;
 	}
