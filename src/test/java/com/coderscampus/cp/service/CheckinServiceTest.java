@@ -1,29 +1,24 @@
 package com.coderscampus.cp.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
-
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class CheckinServiceTest {
@@ -294,16 +289,34 @@ public class CheckinServiceTest {
     @Transactional
     void testFindAllCheckinsAreReturnedInDescendingOrderByDate() {
         List<CheckinDTO> everythingInDatabase = checkinService.findAll();
-    	Instant previousDate = Instant.now();
-    	boolean allGood = true;
-    	for (CheckinDTO checkinDTO : everythingInDatabase) {
-    		if(previousDate.isBefore(checkinDTO.getDate())) {
-    			allGood = false;
-    			break;
-    		}
-    		previousDate = checkinDTO.getDate();
+        Instant previousDate = Instant.now();
+        boolean allGood = true;
+        for (CheckinDTO checkinDTO : everythingInDatabase) {
+            if (previousDate.isBefore(checkinDTO.getDate())) {
+                allGood = false;
+                break;
+            }
+            previousDate = checkinDTO.getDate();
         }
-    	assertTrue(allGood);
+        assertTrue(allGood);
+    }
+
+    @Test
+    @Transactional
+    void testCreateCheckinCheckinDTONull() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            CheckinDTO checkinDTOUt = checkinService.saveByUid(null, student1Uid);
+            assertNull(checkinDTOUt);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testCreateCheckinStudentIdFromUidDoesNotMatchStudentIdFromCheckinDto() {
+        CheckinDTO checkinDTO = new CheckinDTO(student1.getId());
+        checkinDTO.setNextAssignment(4);
+        checkinDTO.setBlockers(false);
+        assertNull(checkinService.saveByUid(checkinDTO, student2Uid));
     }
 
     // Everything below this is abandoned for now to be replaced
