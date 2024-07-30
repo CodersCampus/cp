@@ -99,7 +99,7 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testNullUID() {
+    void testSaveByUidForNullUID() {
         student1CheckinDTOList.forEach(checkinDTO -> {
             CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, null);
             assertNull(checkinDTOUt);
@@ -108,7 +108,7 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testValidUID() {
+    void testSaveByUidForValidUID() {
         String goodUid = student1Uid;
         student1CheckinDTOList.forEach(checkinDTO -> {
             CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, goodUid);
@@ -118,7 +118,7 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testInvalidUID() {
+    void testSaveByUidForInvalidUID() {
         String badUid = "abc";
         student1CheckinDTOList.forEach(checkinDTO -> {
             CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, badUid);
@@ -163,7 +163,7 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testUpdateWithExistingUID() {
+    void testSaveByUidForUpdateWithExistingUID() {
         student1CheckinDTOList.forEach(checkinDTO -> {
 
             checkinDTO.setBlockers(false);
@@ -184,7 +184,7 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testUpdateWithWrongUID() {
+    void testSaveByUidForUpdateWithWrongUID() {
         String wrongUid = student2Uid;
         student1CheckinDTOList.forEach(checkinDTO -> {
 
