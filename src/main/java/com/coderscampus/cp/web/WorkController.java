@@ -12,7 +12,7 @@ import com.coderscampus.cp.domain.Work;
 import com.coderscampus.cp.service.WorkService;
 
 @Controller
-@RequestMapping("/works")
+@RequestMapping("/work")
 public class WorkController {
 
     private final WorkService workService;
@@ -43,7 +43,7 @@ public class WorkController {
 
         workService.saveWork(work);
         model.addAttribute("message", "Work entry created successfully");
-        return "redirect:/works/create";
+        return "redirect:/work/create";
     }
 
     @GetMapping("/{id}")
