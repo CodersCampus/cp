@@ -318,6 +318,47 @@ public class CheckinServiceTest {
         checkinDTO.setBlockers(false);
         assertNull(checkinService.saveByUid(checkinDTO, student2Uid));
     }
+    
+    @Test
+    @Transactional
+    void testDeleteWhenUidIsNull() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            //Use checkinDTO from student1CheckinDtoList
+        	//Set Uid to null
+        	//Call delete() with CheckinDTO and null Uid
+        	//Assert result is null
+        });
+    }
+    
+    void testDeleteWhenCheckinDTOIsNull() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            
+        });
+    }
+    
+    void testDeleteWhenCheckinIDIsInvalid() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            
+        });
+    }
+    
+    void testDeleteWhenCheckinIDIsValid() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            
+        });
+    }
+    
+    void testDeleteWhenUidIsValidAndMatchesOwner() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            
+        });
+    }
+    
+    void testDeleteWhenUidDoesNotOwnCheckin() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            
+        });
+    }
 
     // Everything below this is abandoned for now to be replaced
 
