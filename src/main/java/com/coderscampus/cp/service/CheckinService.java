@@ -98,6 +98,9 @@ public class CheckinService {
     }
 
     public void delete(CheckinDTO checkinDTO, String uid) {
+        if (uid == null || checkinDTO == null || checkinDTO.getId() == null) {
+            return;
+        }
         Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
         if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
             checkinRepo.delete(foundCheckin);

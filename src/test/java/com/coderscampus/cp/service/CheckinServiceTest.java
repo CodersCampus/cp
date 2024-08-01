@@ -322,11 +322,13 @@ public class CheckinServiceTest {
     @Test
     @Transactional
     void testDeleteWhenUidIsNull() {
+        Integer size = student1CheckinDTOList.size();
         student1CheckinDTOList.forEach(checkinDTO -> {
-            //Use checkinDTO from student1CheckinDtoList
-        	//Set Uid to null
-        	//Call delete() with CheckinDTO and null Uid
-        	//Assert result is null
+            Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            assertNotNull(foundCheckin);
+            checkinService.delete(checkinDTO, null);
+            foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            assertNotNull(foundCheckin);
         });
     }
     
