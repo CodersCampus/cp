@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -322,40 +323,59 @@ public class CheckinServiceTest {
     @Test
     @Transactional
     void testDeleteWhenUidIsNull() {
-        Integer size = student1CheckinDTOList.size();
         student1CheckinDTOList.forEach(checkinDTO -> {
             Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
             assertNotNull(foundCheckin);
-            checkinService.delete(checkinDTO, null);
+            Long deleted = checkinService.delete(checkinDTO, null);
             foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
             assertNotNull(foundCheckin);
+            assertEquals(0L, deleted);
         });
     }
-    
+
+    @Test
+    @Transactional
     void testDeleteWhenCheckinDTOIsNull() {
         student1CheckinDTOList.forEach(checkinDTO -> {
-            
+                Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+                assertNotNull(foundCheckin);
+                Long deleted = checkinService.delete(null, student1Uid);
+                foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+                assertNotNull(foundCheckin);
+                assertEquals(0L, deleted);
         });
     }
-    
+    @Test
+    @Transactional
     void testDeleteWhenCheckinIDIsInvalid() {
+        Random random = new Random();
+        Long wrongId = (long) (random.nextInt(1000) + 1);
         student1CheckinDTOList.forEach(checkinDTO -> {
-            
+            Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            assertNotNull(foundCheckin);
+            checkinDTO.setId(wrongId);
+            Long deleted = checkinService.delete(checkinDTO, student1Uid);
+            foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            assertNotNull(foundCheckin);
+            assertEquals(0L, deleted);
         });
     }
-    
+    @Test
+    @Transactional
     void testDeleteWhenCheckinIDIsValid() {
         student1CheckinDTOList.forEach(checkinDTO -> {
             
         });
     }
-    
+    @Test
+    @Transactional
     void testDeleteWhenUidIsValidAndMatchesOwner() {
         student1CheckinDTOList.forEach(checkinDTO -> {
             
         });
     }
-    
+    @Test
+    @Transactional
     void testDeleteWhenUidDoesNotOwnCheckin() {
         student1CheckinDTOList.forEach(checkinDTO -> {
             
