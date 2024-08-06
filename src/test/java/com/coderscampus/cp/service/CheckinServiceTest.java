@@ -377,6 +377,7 @@ public class CheckinServiceTest {
             assertEquals( checkinDTO.getId(), deleted);
 
         });
+        student1CheckinDTOList = new ArrayList<CheckinDTO>(); //Reinitialized to make sure it doesn't barf on clean up.
     }
 
     @Test
