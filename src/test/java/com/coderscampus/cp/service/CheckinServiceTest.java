@@ -81,12 +81,10 @@ public class CheckinServiceTest {
     @AfterEach
     void cleanUpData() {
         student1CheckinDTOList.forEach(checkinDTO -> {
-            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
-            checkinRepo.delete(checkin);
+            checkinRepo.findById(checkinDTO.getId()).ifPresent(checkinRepo::delete);
         });
         student2CheckinDTOList.forEach(checkinDTO -> {
-            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
-            checkinRepo.delete(checkin);
+            checkinRepo.findById(checkinDTO.getId()).ifPresent(checkinRepo::delete);
         });
         studentRepo.delete(student1);
         studentRepo.delete(student2);
@@ -377,14 +375,20 @@ public class CheckinServiceTest {
             assertEquals( checkinDTO.getId(), deleted);
 
         });
-        student1CheckinDTOList = new ArrayList<CheckinDTO>(); //Reinitialized to make sure it doesn't barf on clean up.
     }
 
     @Test
     @Transactional
     void testDeleteWhenUidDoesNotOwnCheckin() {
         student1CheckinDTOList.forEach(checkinDTO -> {
-
+            Long originalId = checkinDTO.getId();
+            Checkin foundCheckin = checkinRepo.findById(originalId).orElse(null);
+            assertNotNull(foundCheckin);
+            Long deleted = checkinService.delete(checkinDTO, student2Uid);
+            foundCheckin = checkinRepo.findById(originalId).orElse(null);
+            assertNotNull(foundCheckin);
+            //start here next time
+            assertEquals( checkinDTO.getId(), deleted);
         });
     }
 
