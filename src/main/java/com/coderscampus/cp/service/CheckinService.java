@@ -87,15 +87,15 @@ public class CheckinService {
     public List<CheckinDTO> findAll() {
         return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).map(CheckinDTO::new).collect(Collectors.toList());
     }
-
-    public CheckinDTO findById(Long id, String uid) {
-        Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
-        if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
-            CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
-            return returnCheckinDTO;
-        }
-        return null;
-    }
+//leaving this in because it doesn't seem logical because no one is calling it
+//    public CheckinDTO findById(Long id, String uid) {
+//        Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
+//        if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
+//            CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
+//            return returnCheckinDTO;
+//        }
+//        return null;
+//    }
 
     public Long delete(CheckinDTO checkinDTO, String uid) {
         if (uid == null || checkinDTO == null || checkinDTO.getId() == null) {

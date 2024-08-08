@@ -387,42 +387,15 @@ public class CheckinServiceTest {
             Long deleted = checkinService.delete(checkinDTO, student2Uid);
             foundCheckin = checkinRepo.findById(originalId).orElse(null);
             assertNotNull(foundCheckin);
-            //start here next time
-            assertEquals( checkinDTO.getId(), deleted);
+            assertEquals(0L, deleted);
         });
     }
 
     // Everything below this is abandoned for now to be replaced
 
-//    @Test
-//    @Transactional
-//    void testDeleteCheckin() {
-//        // Create UID
-//        String uid = UUID.randomUUID().toString();
-//        // Create new student with new UID
-//        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-//        // Save the student
-//        studentRepo.save(student);
-//        // Create new checkin
-//        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER,
-//                Checkin.CodingType.CRUD);
-//        // Save checkin
-//        // Instantiate a checkin DTO from a new checkin
-//        CheckinDTO checkinDTO = checkinService.saveByUid(new CheckinDTO(checkin), uid);
-
-    // Create second checkin object from checkin DTO
-//        Checkin foundCheckin = new Checkin(checkinDTO, uid);
-//        // Confirm existence of second checkin in database
-//        assertTrue(checkinRepo.findById(foundCheckin.getId()).isPresent());
-//        // Delete second checkin
-//        checkinRepo.delete(foundCheckin);
-//        // Confirm deletion from database
-//        assertFalse(checkinRepo.findById(foundCheckin.getId()).isPresent());
-//        // Clean up by deleting student from database
-//        studentRepo.delete(student);
-//    }
 
 
+//leaving this in because it doesn't seem logical because no one is calling checkInService.findById()
 //    @Test
 //    @Transactional
 //    void testFindById() {
