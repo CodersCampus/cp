@@ -24,8 +24,8 @@
                                     <tr>
                                         <th scope="col">Name</th>
                                         <th scope="col">Assignment Number</th>
-                                        <th scope="col">Number of Minutes</th>
                                         <th scope="col">Description</th>
+                                        <th scope="col">Number of Minutes</th>
                                         <th scope="col">Date</th>
                                     </tr>
                                 </thead>
@@ -33,8 +33,8 @@
                                     <tr th:each="work : ${workList}">
                                         <td><span th:text="${work.studentName}"></span></td>
                                         <td><span th:text="${work.assignmentNumber}"></span></td>
-                                        <td><span th:text="${work.numberMinutes}"></span></td>
                                         <td><span th:text="${work.description}"></span></td>
+                                        <td><span th:text="${work.numberMinutes}"></span></td>
                                         <td><span th:text="${work.date}"></span></td>
                                     </tr>
                                 </tbody>

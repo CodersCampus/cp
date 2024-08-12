@@ -2,6 +2,8 @@ package com.coderscampus.cp.domain;
 
 import jakarta.persistence.*;
 
+import java.time.Instant;
+
 @Entity
 @Table(name = "work")
 public class Work extends HasUidBase {
@@ -21,6 +23,7 @@ public class Work extends HasUidBase {
     public Work() {
         super();
     }
+
     public String getStudentName() {
         return studentName;
     }
@@ -55,6 +58,11 @@ public class Work extends HasUidBase {
 
     @Override
     public String toString() {
-        return "Work [studentName=" + studentName + ", assignmentNumber=" + assignmentNumber + ", numberMinutes=" + numberMinutes + ", description=" + description + "]";
+        return "Work{" +
+                "studentName='" + studentName + '\'' +
+                ", assignmentNumber=" + assignmentNumber +
+                ", numberMinutes=" + numberMinutes +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

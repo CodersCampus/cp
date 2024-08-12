@@ -3,14 +3,7 @@ package com.coderscampus.cp.domain;
 import java.time.Instant;
 import java.util.UUID;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class HasUidBase {
@@ -21,11 +14,18 @@ public abstract class HasUidBase {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 	protected String uid;
+
+    @Column(nullable = false)
 	protected Instant date;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "student_id")
 	private Student student;
+
+    public HasUidBase() {
+        this.uid = fauxValidUid;
+        this.date = Instant.now();
+    }
 
 	public void removeUid() {
 		this.uid = fauxValidUid;
