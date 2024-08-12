@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import com.coderscampus.cp.domain.Work;
 import com.coderscampus.cp.service.WorkService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/work")
 public class WorkController {
@@ -25,8 +27,8 @@ public class WorkController {
     @GetMapping("/create")
     public String showCreateForm(Model model) {
         Work work = new Work();
-        work.setStudentName(work.getStudentName()); // Set a default name if needed
         model.addAttribute("work", work);
+        model.addAttribute("isWorkLog", true);
         return "work/work";
     }
 
@@ -43,12 +45,21 @@ public class WorkController {
 
         workService.saveWork(work);
         model.addAttribute("message", "Work entry created successfully");
-        return "redirect:/work/create";
+        return "redirect:/work/read";
     }
 
     @GetMapping("/{id}")
     public String getWorkById(@PathVariable Long id, Model model) {
         workService.findWorkById(id).ifPresent(work -> model.addAttribute("work", work));
+        model.addAttribute("isWorkLog, true");
         return "work/work-details";
+    }
+
+    @GetMapping("/read")
+    public String listWorkLogs(Model model) {
+        List<Work> workList = workService.findAllWorks();
+        model.addAttribute("workList", workList);
+        model.addAttribute("isWorkLog", true);
+        return "work/read";
     }
 }

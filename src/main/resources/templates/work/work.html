@@ -9,8 +9,6 @@
             <div class="sidebar-grid-area">
                 <section class="ui-panel-title title-small">Work Log</section>
                 <nav class="ui-panel">
-                    <ul class="ui-navbar-nav">
-                    </ul>
                 </nav>
             </div>
             <div class="ga-content-main">
@@ -34,7 +32,7 @@
                         <div class="ui-input-field">
                             <label class="ui-label">Number of Minutes:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" placeholder="ex: 120" th:field="${work.numberMinutes}" type="number"/>
+                                <input class="ui-value" placeholder="ex: 120" th:field="${work.numberMinutes}" type="number" min="0" max="2147483647"/>
                             </div>
                         </div>
                         <div class="ui-input-field">
@@ -56,7 +54,3 @@
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
 </body>
 </html>
-
-
-
-

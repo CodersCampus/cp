@@ -1,5 +1,6 @@
 package com.coderscampus.cp.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,4 +27,7 @@ public class WorkService {
 		return workRepository.findById(id);
 	}
 
+    public List<Work> findAllWorks() {
+        return workRepository.findAll();
+    }
 }
