@@ -391,6 +391,30 @@ public class CheckinServiceTest {
         });
     }
 
+
+    @Test
+    @Transactional
+    void testFindByIdWhenIdAndUidMatchOwner() {
+        //start with lines 383 - 386 in the above method
+    }
+
+    @Test
+    @Transactional
+    void testFindByIdWhenUidDoesNotMatchOwner() {
+
+    }
+
+    @Test
+    @Transactional
+    void testFindByIdWhenIdDoesNotExistInDatabase() {
+
+    }
+
+    @Test
+    @Transactional
+    void testFindByIdWhenIdIsNull() {
+
+    }
     // Everything below this is abandoned for now to be replaced
 
 
