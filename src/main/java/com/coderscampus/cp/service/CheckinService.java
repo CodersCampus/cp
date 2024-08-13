@@ -97,11 +97,18 @@ public class CheckinService {
         return null;
     }
 
-    public void delete(CheckinDTO checkinDTO, String uid) {
+    public Long delete(CheckinDTO checkinDTO, String uid) {
+        if (uid == null || checkinDTO == null || checkinDTO.getId() == null) {
+            return 0L;
+        }
+        Long id = checkinDTO.getId();
         Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
         if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
             checkinRepo.delete(foundCheckin);
+        } else {
+            id = 0L;
         }
+        return id;
     }
 
     public List<CheckinDTO> findByUid(String uid) {

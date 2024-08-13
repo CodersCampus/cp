@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -80,12 +81,10 @@ public class CheckinServiceTest {
     @AfterEach
     void cleanUpData() {
         student1CheckinDTOList.forEach(checkinDTO -> {
-            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
-            checkinRepo.delete(checkin);
+            checkinRepo.findById(checkinDTO.getId()).ifPresent(checkinRepo::delete);
         });
         student2CheckinDTOList.forEach(checkinDTO -> {
-            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
-            checkinRepo.delete(checkin);
+            checkinRepo.findById(checkinDTO.getId()).ifPresent(checkinRepo::delete);
         });
         studentRepo.delete(student1);
         studentRepo.delete(student2);
@@ -319,59 +318,106 @@ public class CheckinServiceTest {
         assertNull(checkinService.saveByUid(checkinDTO, student2Uid));
     }
 
+    @Test
+    @Transactional
+    void testDeleteWhenUidIsNull() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            assertNotNull(foundCheckin);
+            Long deleted = checkinService.delete(checkinDTO, null);
+            foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            assertNotNull(foundCheckin);
+            assertEquals(0L, deleted);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testDeleteWhenCheckinDTOIsNull() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            assertNotNull(foundCheckin);
+            Long deleted = checkinService.delete(null, student1Uid);
+            foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+            assertNotNull(foundCheckin);
+            assertEquals(0L, deleted);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testDeleteWhenCheckinIDIsInvalid() {
+        Random random = new Random();
+        Long wrongId = (long) (random.nextInt(1000) + 1);
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            Long originalId = checkinDTO.getId();
+            Checkin foundCheckin = checkinRepo.findById(originalId).orElse(null);
+            assertNotNull(foundCheckin);
+            checkinDTO.setId(wrongId);
+            Long deleted = checkinService.delete(checkinDTO, student1Uid);
+            foundCheckin = checkinRepo.findById(originalId).orElse(null);
+            assertNotNull(foundCheckin);
+            assertEquals(0L, deleted);
+            checkinDTO.setId(originalId);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testDeleteWhenUidIsValidAndMatchesOwner() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            Long originalId = checkinDTO.getId();
+            Checkin foundCheckin = checkinRepo.findById(originalId).orElse(null);
+            assertNotNull(foundCheckin);
+            Long deleted = checkinService.delete(checkinDTO, student1Uid);
+            foundCheckin = checkinRepo.findById(originalId).orElse(null);
+            assertNull(foundCheckin);
+            assertEquals( checkinDTO.getId(), deleted);
+
+        });
+    }
+
+    @Test
+    @Transactional
+    void testDeleteWhenUidDoesNotOwnCheckin() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            Long originalId = checkinDTO.getId();
+            Checkin foundCheckin = checkinRepo.findById(originalId).orElse(null);
+            assertNotNull(foundCheckin);
+            Long deleted = checkinService.delete(checkinDTO, student2Uid);
+            foundCheckin = checkinRepo.findById(originalId).orElse(null);
+            assertNotNull(foundCheckin);
+            assertEquals(0L, deleted);
+        });
+    }
+
     // Everything below this is abandoned for now to be replaced
 
-    @Test
-    @Transactional
-    void testDeleteCheckin() {
-        // Create UID
-        String uid = UUID.randomUUID().toString();
-        // Create new student with new UID
-        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-        // Save the student
-        studentRepo.save(student);
-        // Create new checkin
-        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        // Save checkin
-        // Instantiate a checkin DTO from a new checkin
-        CheckinDTO checkinDTO = checkinService.saveByUid(new CheckinDTO(checkin), uid);
-
-        // Create second checkin object from checkin DTO
-//        Checkin foundCheckin = new Checkin(checkinDTO, uid);
-//        // Confirm existence of second checkin in database
-//        assertTrue(checkinRepo.findById(foundCheckin.getId()).isPresent());
-//        // Delete second checkin
-//        checkinRepo.delete(foundCheckin);
-//        // Confirm deletion from database
-//        assertFalse(checkinRepo.findById(foundCheckin.getId()).isPresent());
-//        // Clean up by deleting student from database
-//        studentRepo.delete(student);
-    }
 
 
-    @Test
-    @Transactional
-    void testFindById() {
-        // Create UID
-        String uid = UUID.randomUUID().toString();
-        // Create new student with new UID
-        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-        // Save the student
-        studentRepo.save(student);
-        assertNotNull(student.getId());
-        // Create new checkin
-        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        Checkin checkin2 = new Checkin(uid, null, 11, true, "assignment10", student, Checkin.Role.CODER,
-                Checkin.CodingType.CRUD);
-        // Save checkin
-        CheckinDTO checkinDTO1 = checkinService.saveByUid(new CheckinDTO(checkin), uid);
-        CheckinDTO checkinDTO2 = checkinService.saveByUid(new CheckinDTO(checkin2), uid);
-        // Check find by id
-        CheckinDTO foundCheckinDTO = checkinService.findById(checkinDTO1.getId(), uid);
-        assertEquals("assignment9", foundCheckinDTO.getBlockerDescription());
-        CheckinDTO foundCheckinDTO2 = checkinService.findById(checkinDTO2.getId(), uid);
-        assertEquals("assignment10", foundCheckinDTO2.getBlockerDescription());
-    }
+//leaving this in because it doesn't seem logical because no one is calling checkInService.findById()
+//    @Test
+//    @Transactional
+//    void testFindById() {
+//        // Create UID
+//        String uid = UUID.randomUUID().toString();
+//        // Create new student with new UID
+//        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
+//        // Save the student
+//        studentRepo.save(student);
+//        assertNotNull(student.getId());
+//        // Create new checkin
+//        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER,
+//                Checkin.CodingType.CRUD);
+//        Checkin checkin2 = new Checkin(uid, null, 11, true, "assignment10", student, Checkin.Role.CODER,
+//                Checkin.CodingType.CRUD);
+//        // Save checkin
+//        CheckinDTO checkinDTO1 = checkinService.saveByUid(new CheckinDTO(checkin), uid);
+//        CheckinDTO checkinDTO2 = checkinService.saveByUid(new CheckinDTO(checkin2), uid);
+//        // Check find by id
+//        CheckinDTO foundCheckinDTO = checkinService.findById(checkinDTO1.getId(), uid);
+//        assertEquals("assignment9", foundCheckinDTO.getBlockerDescription());
+//        CheckinDTO foundCheckinDTO2 = checkinService.findById(checkinDTO2.getId(), uid);
+//        assertEquals("assignment10", foundCheckinDTO2.getBlockerDescription());
+//    }
 }
