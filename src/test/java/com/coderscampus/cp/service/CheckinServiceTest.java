@@ -396,7 +396,6 @@ public class CheckinServiceTest {
     @Test
     @Transactional
     void testFindByIdWhenIdAndUidMatchOwner() {
-        //start with lines 383 - 386 in the above method
         student1CheckinDTOList.forEach(checkinDTO -> {
             Long originalId = checkinDTO.getId();
             CheckinDTO foundCheckinDTO = checkinService.findById(originalId, student1Uid);
@@ -435,32 +434,4 @@ public class CheckinServiceTest {
             });
         });
     }
-    // Everything below this is abandoned for now to be replaced
-
-
-//leaving this in because it doesn't seem logical because no one is calling checkInService.findById()
-//    @Test
-//    @Transactional
-//    void testFindById() {
-//        // Create UID
-//        String uid = UUID.randomUUID().toString();
-//        // Create new student with new UID
-//        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-//        // Save the student
-//        studentRepo.save(student);
-//        assertNotNull(student.getId());
-//        // Create new checkin
-//        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER,
-//                Checkin.CodingType.CRUD);
-//        Checkin checkin2 = new Checkin(uid, null, 11, true, "assignment10", student, Checkin.Role.CODER,
-//                Checkin.CodingType.CRUD);
-//        // Save checkin
-//        CheckinDTO checkinDTO1 = checkinService.saveByUid(new CheckinDTO(checkin), uid);
-//        CheckinDTO checkinDTO2 = checkinService.saveByUid(new CheckinDTO(checkin2), uid);
-//        // Check find by id
-//        CheckinDTO foundCheckinDTO = checkinService.findById(checkinDTO1.getId(), uid);
-//        assertEquals("assignment9", foundCheckinDTO.getBlockerDescription());
-//        CheckinDTO foundCheckinDTO2 = checkinService.findById(checkinDTO2.getId(), uid);
-//        assertEquals("assignment10", foundCheckinDTO2.getBlockerDescription());
-//    }
 }
