@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -372,7 +373,7 @@ public class CheckinServiceTest {
             Long deleted = checkinService.delete(checkinDTO, student1Uid);
             foundCheckin = checkinRepo.findById(originalId).orElse(null);
             assertNull(foundCheckin);
-            assertEquals( checkinDTO.getId(), deleted);
+            assertEquals(checkinDTO.getId(), deleted);
 
         });
     }
@@ -391,33 +392,46 @@ public class CheckinServiceTest {
         });
     }
 
-    // Everything below this is abandoned for now to be replaced
 
+    @Test
+    @Transactional
+    void testFindByIdWhenIdAndUidMatchOwner() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            Long originalId = checkinDTO.getId();
+            CheckinDTO foundCheckinDTO = checkinService.findById(originalId, student1Uid);
+            assertNotNull(foundCheckinDTO);
+            assertEquals(originalId, foundCheckinDTO.getId());
+        });
+    }
 
+    @Test
+    @Transactional
+    void testFindByIdWhenUidDoesNotMatchOwner() {
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            Long originalId = checkinDTO.getId();
+            CheckinDTO foundCheckinDTO = checkinService.findById(originalId, student2Uid);
+            assertNull(foundCheckinDTO);
+        });
+    }
 
-//leaving this in because it doesn't seem logical because no one is calling checkInService.findById()
-//    @Test
-//    @Transactional
-//    void testFindById() {
-//        // Create UID
-//        String uid = UUID.randomUUID().toString();
-//        // Create new student with new UID
-//        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-//        // Save the student
-//        studentRepo.save(student);
-//        assertNotNull(student.getId());
-//        // Create new checkin
-//        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER,
-//                Checkin.CodingType.CRUD);
-//        Checkin checkin2 = new Checkin(uid, null, 11, true, "assignment10", student, Checkin.Role.CODER,
-//                Checkin.CodingType.CRUD);
-//        // Save checkin
-//        CheckinDTO checkinDTO1 = checkinService.saveByUid(new CheckinDTO(checkin), uid);
-//        CheckinDTO checkinDTO2 = checkinService.saveByUid(new CheckinDTO(checkin2), uid);
-//        // Check find by id
-//        CheckinDTO foundCheckinDTO = checkinService.findById(checkinDTO1.getId(), uid);
-//        assertEquals("assignment9", foundCheckinDTO.getBlockerDescription());
-//        CheckinDTO foundCheckinDTO2 = checkinService.findById(checkinDTO2.getId(), uid);
-//        assertEquals("assignment10", foundCheckinDTO2.getBlockerDescription());
-//    }
+    @Test
+    @Transactional
+    void testFindByIdWhenIdDoesNotExistInDatabase() {
+        Long idToFind = Long.MAX_VALUE - 12;
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            CheckinDTO foundCheckinDTO = checkinService.findById(idToFind, student1Uid);
+            assertNull(foundCheckinDTO);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testFindByIdWhenIdIsNull() {
+        Long idToFind = null;
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            assertThrows(InvalidDataAccessApiUsageException.class, () -> {
+                checkinService.findById(idToFind, student1Uid);
+            });
+        });
+    }
 }
