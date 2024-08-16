@@ -1,5 +1,6 @@
 package com.coderscampus.cp.service;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.CheckinDTO;
@@ -8,6 +9,7 @@ import com.coderscampus.cp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -85,7 +87,9 @@ public class CheckinService {
     }
 
     public List<CheckinDTO> findAll() {
-        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).map(CheckinDTO::new).collect(Collectors.toList());
+        System.out.println("WE GOT TO FINDALL");
+        //        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).map(CheckinDTO::new).collect(Collectors.toList());
+    return null;
     }
 
     public CheckinDTO findById(Long id, String uid) {
@@ -113,6 +117,13 @@ public class CheckinService {
 
     public List<CheckinDTO> findByUid(String uid) {
         List<Checkin> checkins = checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
-        return checkins.stream().map(CheckinDTO::new).collect(Collectors.toList());
+        System.out.println("WE GOT HERE" + checkins.size());
+//        return checkins.stream().map(CheckinDTO::new).collect(Collectors.toList());
+        List<CheckinDTO> checkinDTOS = new ArrayList<>();
+        for(Checkin checkin : checkins) {
+            CheckinDTO checkinDTO = new CheckinDTO(checkin);
+            checkinDTOS.add(checkinDTO);
+        }
+        return checkinDTOS;
     }
 }

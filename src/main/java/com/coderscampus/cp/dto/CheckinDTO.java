@@ -33,7 +33,7 @@ public class CheckinDTO {
         super();
         this.studentId=studentId;
     }
-    public CheckinDTO() {this(new Checkin());}
+    public CheckinDTO() {super();}
 
     public Long getStudentId() {
         return studentId;
