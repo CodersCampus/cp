@@ -45,15 +45,15 @@ public class CheckinService {
         Checkin foundCheckin = null;
         if (checkinDTO.getId() != null) {
             foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
-            if (!foundCheckin.getUid().equals(uid)) {
-                return null;
-            }
         }
 
         if (foundCheckin == null) {
             foundCheckin = createCheckin(checkinDTO, uid);
 
         } else {
+            if (!foundCheckin.getUid().equals(uid)) {
+                return null;
+            }
             foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
             foundCheckin.setBlockers(checkinDTO.getBlockers());
             foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
