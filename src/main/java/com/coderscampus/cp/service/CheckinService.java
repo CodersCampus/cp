@@ -46,14 +46,22 @@ public class CheckinService {
         if (checkinDTO.getId() != null) {
             foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
         }
+        Student student = studentService.findStudentByUid(uid); // if the student is null we know that we have a problem
 
+        if(student != null){
+            foundCheckin.setStudent(student);
+        }
         if (foundCheckin == null) {
+
+
             foundCheckin = createCheckin(checkinDTO, uid);
 
         } else {
-            if (!foundCheckin.getUid().equals(uid)) {
+            if (!foundCheckin.getUid().equals(uid)) { //this is for real necessary
                 return null;
             }
+//            Somewhere above here make sure that foundCheckIn has set the student properly
+//If all the rest of the code was good these lines are necessary
             foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
             foundCheckin.setBlockers(checkinDTO.getBlockers());
             foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
@@ -67,10 +75,10 @@ public class CheckinService {
 
         return returnCheckinDTO;
     }
-
+//Pete thinks this method may no longer be needed
     private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
         Checkin checkin = new Checkin();
-        Student student = studentService.findStudentByUid(uid);
+
         System.out.println("STUDENT IS HERE, LOOK \n \t" + student + " \n" + checkinDTO);
         if (checkinDTO.getStudentId() != null && student.getId() == checkinDTO.getStudentId()) {
             setStudentFromUid(checkin, uid);
