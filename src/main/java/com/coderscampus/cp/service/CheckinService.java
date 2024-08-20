@@ -71,7 +71,8 @@ public class CheckinService {
     private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
         Checkin checkin = new Checkin();
         Student student = studentService.findStudentByUid(uid);
-        if (student.getId() == checkinDTO.getStudentId()) {
+        System.out.println("STUDENT IS HERE, LOOK \n \t" + student + " \n" + checkinDTO);
+        if (checkinDTO.getStudentId() != null && student.getId() == checkinDTO.getStudentId()) {
             setStudentFromUid(checkin, uid);
             return checkinRepo.save(checkin);
         } else {
