@@ -30,63 +30,47 @@ public class CheckinService {
     private GoogleUIDValidationService googleUIDValidationService;
 
     public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
-        if (uid == null) {
+        Checkin foundCheckin = new Checkin();
+        Student student = studentService.findStudentByUid(uid); // if the student is null we know that we have a problem
+        if (student == null ||
+                uid == null ||
+                checkinDTO == null ||
+                !googleUIDValidationService.isValidGoogleUID(uid)) {
             return null;
         }
 
-        if (checkinDTO == null) {
-            return null;
-        }
-
-        if (!googleUIDValidationService.isValidGoogleUID(uid)) {
-            return null;
-        }
-
-        Checkin foundCheckin = null;
         if (checkinDTO.getId() != null) {
             foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
-        }
-        Student student = studentService.findStudentByUid(uid); // if the student is null we know that we have a problem
-
-        if(student != null){
-            foundCheckin.setStudent(student);
-        }
-        if (foundCheckin == null) {
-
-
-            foundCheckin = createCheckin(checkinDTO, uid);
-
-        } else {
             if (!foundCheckin.getUid().equals(uid)) { //this is for real necessary
                 return null;
             }
-//            Somewhere above here make sure that foundCheckIn has set the student properly
-//If all the rest of the code was good these lines are necessary
-            foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
-            foundCheckin.setBlockers(checkinDTO.getBlockers());
-            foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
-            foundCheckin.setRole(checkinDTO.getRole());
-            foundCheckin.setCodingType(checkinDTO.getCodingType());
-            foundCheckin = checkinRepo.save(foundCheckin);
         }
 
-        CheckinDTO returnCheckinDTO = foundCheckin != null ? new CheckinDTO(foundCheckin) : null;
-
-
-        return returnCheckinDTO;
+        foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
+        foundCheckin.setBlockers(checkinDTO.getBlockers());
+        foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
+        foundCheckin.setRole(checkinDTO.getRole());
+        foundCheckin.setCodingType(checkinDTO.getCodingType());
+        System.out.println("STUDENT EXISTS: " + student);
+        foundCheckin.setStudent(student);
+        foundCheckin.setUid(student.getUid());
+        foundCheckin = checkinRepo.save(foundCheckin);
+        System.out.println("SAVED CHECKIN: " + foundCheckin);
+        return new CheckinDTO(foundCheckin);
     }
+
 //Pete thinks this method may no longer be needed
-    private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
-        Checkin checkin = new Checkin();
-
-        System.out.println("STUDENT IS HERE, LOOK \n \t" + student + " \n" + checkinDTO);
-        if (checkinDTO.getStudentId() != null && student.getId() == checkinDTO.getStudentId()) {
-            setStudentFromUid(checkin, uid);
-            return checkinRepo.save(checkin);
-        } else {
-            return null;
-        }
-    }
+//    private Checkin createCheckin(CheckinDTO checkinDTO, String uid) {
+//        Checkin checkin = new Checkin();
+//
+//        System.out.println("STUDENT IS HERE, LOOK \n \t" + student + " \n" + checkinDTO);
+//        if (checkinDTO.getStudentId() != null && student.getId() == checkinDTO.getStudentId()) {
+//            setStudentFromUid(checkin, uid);
+//            return checkinRepo.save(checkin);
+//        } else {
+//            return null;
+//        }
+//    }
 
     private void setStudentFromUid(Checkin checkin, String uid) {
         Student student = studentRepo.findByUid(uid);
@@ -96,9 +80,8 @@ public class CheckinService {
     }
 
     public List<CheckinDTO> findAll() {
-        System.out.println("WE GOT TO FINDALL");
-        //        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).map(CheckinDTO::new).collect(Collectors.toList());
-    return null;
+        System.out.println("WE GOT TO FIND ALL");
+                return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).map(CheckinDTO::new).collect(Collectors.toList());
     }
 
     public CheckinDTO findById(Long id, String uid) {
