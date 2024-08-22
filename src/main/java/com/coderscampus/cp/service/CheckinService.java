@@ -52,6 +52,7 @@ public class CheckinService {
         foundCheckin.setRole(checkinDTO.getRole());
         foundCheckin.setCodingType(checkinDTO.getCodingType());
         System.out.println("STUDENT EXISTS: " + student);
+        //wtf, are we sure we want to reset the student every single time we save or update a check-in every time.
         foundCheckin.setStudent(student);
         foundCheckin.setUid(student.getUid());
         foundCheckin = checkinRepo.save(foundCheckin);
