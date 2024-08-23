@@ -41,10 +41,15 @@ public class CheckinService {
 
         if (checkinDTO.getId() != null) {
             foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
-            if (!foundCheckin.getUid().equals(uid)) { //this is for real necessary
+            if (!foundCheckin.getUid().equals(uid)) {
                 return null;
             }
+            
+        } else if (checkinDTO.getStudentId() != null && checkinDTO.getStudentId() != student.getId()) {
+            // If checkinDTO.getId() is null AND the studentId in the CheckinDTO does not match the studentId associated with the provided uid, return null
+            return null;
         }
+        
 
         foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
         foundCheckin.setBlockers(checkinDTO.getBlockers());
