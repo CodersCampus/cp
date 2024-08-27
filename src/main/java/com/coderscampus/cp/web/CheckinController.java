@@ -53,7 +53,6 @@ public class CheckinController {
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id, @RequestParam("uid") String uid) {
-        System.out.println("**** This is the u-i-d!" + uid);
         CheckinDTO checkinDTO = checkinService.findById(id, uid);
         model.put("checkin", checkinDTO);
         ActivityLog activityLog = new ActivityLog();
@@ -70,7 +69,6 @@ public class CheckinController {
     }
 
     @PostMapping("/update")
-    //TODO: refactor this by using checkinDTO
     public String update(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinService.saveByUid(checkinDTO, uid);
         return "redirect:/checkin/";

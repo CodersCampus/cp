@@ -7,103 +7,100 @@ import java.time.Instant;
 
 public class CheckinDTO {
 
-    private Long id;
-    private Instant date;
-    private Integer nextAssignment;
-    private Boolean blockers;
-    private String blockerDescription;
-    private Checkin.Role role;
-    private Checkin.CodingType codingType;
-    private Long studentId;
+	private Long id;
+	private Instant date;
+	private Integer nextAssignment;
+	private Boolean blockers;
+	private String blockerDescription;
+	private Checkin.Role role;
+	private Checkin.CodingType codingType;
+	private Long studentId;
 
-    public CheckinDTO(Checkin checkin) {
-        super();
-        this.id = checkin.getId();
-        this.date = checkin.getDate();
-        this.nextAssignment = checkin.getNextAssignment();
-        this.blockers = checkin.getBlockers();
-        this.blockerDescription = checkin.getBlockerDescription();
-        this.role = checkin.getRole();
-        this.codingType = checkin.getCodingType();
-        this.studentId=checkin.getStudent().getId();
-    }
+	public CheckinDTO(Checkin checkin) {
+		super();
+		this.id = checkin.getId();
+		this.date = checkin.getDate();
+		this.nextAssignment = checkin.getNextAssignment();
+		this.blockers = checkin.getBlockers();
+		this.blockerDescription = checkin.getBlockerDescription();
+		this.role = checkin.getRole();
+		this.codingType = checkin.getCodingType();
+		this.studentId = checkin.getStudent().getId();
+	}
 
-    public CheckinDTO(long studentId) {
-        super();
-        this.studentId=studentId;
-    }
-//    public CheckinDTO() {this(new Checkin());}
+	public CheckinDTO(long studentId) {
+		super();
+		this.studentId = studentId;
+	}
 
-    public Long getStudentId() {
-        return studentId;
-    }
+	public CheckinDTO() {
+		super();
+	}
 
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
+	public Long getStudentId() {
+		return studentId;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Instant getDate() {
-        return date;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Integer getNextAssignment() {
-        return nextAssignment;
-    }
+	public Instant getDate() {
+		return date;
+	}
 
-    public void setNextAssignment(Integer nextAssignment) {
-        this.nextAssignment = nextAssignment;
-    }
+	public Integer getNextAssignment() {
+		return nextAssignment;
+	}
 
-    public Boolean getBlockers() {
-        return blockers;
-    }
+	public void setNextAssignment(Integer nextAssignment) {
+		this.nextAssignment = nextAssignment;
+	}
 
-    public void setBlockers(Boolean blockers) {
-        this.blockers = blockers;
-    }
+	public Boolean getBlockers() {
+		return blockers;
+	}
 
-    public String getBlockerDescription() {
-        return blockerDescription;
-    }
+	public void setBlockers(Boolean blockers) {
+		this.blockers = blockers;
+	}
 
-    public void setBlockerDescription(String blockerDescription) {
-        this.blockerDescription = blockerDescription;
-    }
+	public String getBlockerDescription() {
+		return blockerDescription;
+	}
 
-    public Checkin.Role getRole() {
-        return role;
-    }
+	public void setBlockerDescription(String blockerDescription) {
+		this.blockerDescription = blockerDescription;
+	}
 
-    public void setRole(Checkin.Role role) {
-        this.role = role;
-    }
+	public Checkin.Role getRole() {
+		return role;
+	}
 
-    public Checkin.CodingType getCodingType() {
-        return codingType;
-    }
+	public void setRole(Checkin.Role role) {
+		this.role = role;
+	}
 
-    public void setCodingType(Checkin.CodingType codingType) {
-        this.codingType = codingType;
-    }
+	public Checkin.CodingType getCodingType() {
+		return codingType;
+	}
 
-    @Override
-    public String toString() {
-        return "CheckinDTO{" +
-                "id=" + id +
-                ", date=" + date +
-                ", nextAssignment=" + nextAssignment +
-                ", blockers=" + blockers +
-                ", blockerDescription='" + blockerDescription + '\'' +
-                ", role=" + role +
-                ", codingType=" + codingType +
-                '}';
-    }
+	public void setCodingType(Checkin.CodingType codingType) {
+		this.codingType = codingType;
+	}
+
+	@Override
+	public String toString() {
+		return "CheckinDTO{" + "id=" + id + ", date=" + date + ", nextAssignment=" + nextAssignment + ", blockers="
+				+ blockers + ", blockerDescription='" + blockerDescription + '\'' + ", role=" + role + ", codingType="
+				+ codingType + '}';
+	}
 }
