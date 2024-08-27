@@ -47,7 +47,6 @@ public class Checkin {
         this.codingType = codingType;
     }
 
-    // ID
     public Long getId() {
         return id;
     }
@@ -56,7 +55,6 @@ public class Checkin {
         this.id = id;
     }
 
-    // UID
     public String getUid() {
         return uid;
     }
@@ -65,12 +63,10 @@ public class Checkin {
         this.uid = uid;
     }
 
-    // Date
     public Instant getDate() {
         return date;
     }
 
-    // Assignment
     public Integer getNextAssignment() {
         return nextAssignment;
     }
@@ -79,7 +75,6 @@ public class Checkin {
         this.nextAssignment = nextAssignment;
     }
 
-    // Blockers
     public Boolean getBlockers() {
         return blockers;
     }
@@ -88,7 +83,6 @@ public class Checkin {
         this.blockers = blockers;
     }
 
-    // Blocker Description
     public String getBlockerDescription() {
         return blockerDescription;
     }
@@ -97,7 +91,6 @@ public class Checkin {
         this.blockerDescription = blockerDescription;
     }
 
-    // Student
     public Student getStudent() {
         return student;
     }
@@ -144,7 +137,6 @@ public class Checkin {
                 '}';
     }
 
-    // ENUMS
     public enum CodingType {
         FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
     }

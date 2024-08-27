@@ -25,8 +25,6 @@ public class CheckinDTO {
 		this.blockerDescription = checkin.getBlockerDescription();
 		this.role = checkin.getRole();
 		this.codingType = checkin.getCodingType();
-		// Start here next time
-		System.out.println("IN CHECKIN DTO CONSTRUCTOR");
 		this.studentId = checkin.getStudent().getId();
 	}
 
