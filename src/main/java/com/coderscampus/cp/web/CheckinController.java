@@ -2,6 +2,7 @@ package com.coderscampus.cp.web;
 
 import java.util.List;
 
+import com.coderscampus.cp.dto.CheckinDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,7 +29,7 @@ public class CheckinController {
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
-        List<Checkin> checkins = checkinService.findByUid(uid);
+        List<CheckinDTO> checkins = checkinService.findByUid(uid);
         model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Checkin Read");
         model.put("isCheckin", true);
@@ -45,15 +46,15 @@ public class CheckinController {
     }
 
     @PostMapping("/create")
-    public String create(Checkin checkin, @RequestParam("uid") String uid) {
-        checkin = checkinService.saveByUid(checkin, uid);
+    public String create(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
+        checkinDTO = checkinService.saveByUid(checkinDTO, uid);
         return "redirect:/checkin/";
     }
 
     @GetMapping("/update/{id}")
-    public String fetch(ModelMap model, @PathVariable Long id) {
-        Checkin checkin = checkinService.findById(id);
-        model.put("checkin", checkin);
+    public String fetch(ModelMap model, @PathVariable Long id, @RequestParam("uid") String uid) {
+        CheckinDTO checkinDTO = checkinService.findById(id, uid);
+        model.put("checkin", checkinDTO);
         ActivityLog activityLog = new ActivityLog();
         model.put("activityLog", activityLog);
         model.addAttribute("pageTitle", "Checkin Update");
@@ -68,14 +69,14 @@ public class CheckinController {
     }
 
     @PostMapping("/update")
-    public String update(Checkin checkin, @RequestParam("uid") String uid) {
-        checkinService.saveByUid(checkin, uid);
+    public String update(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
+        checkinService.saveByUid(checkinDTO, uid);
         return "redirect:/checkin/";
     }
 
     @PostMapping("/delete")
-    public String delete(Checkin checkin) {
-        checkinService.delete(checkin);
+    public String delete(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
+        checkinService.delete(checkinDTO, uid);
         return "redirect:/checkin/";
     }
 

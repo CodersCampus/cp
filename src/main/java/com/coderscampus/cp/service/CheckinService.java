@@ -1,6 +1,6 @@
 package com.coderscampus.cp.service;
 
-import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,55 +10,86 @@ import org.springframework.stereotype.Service;
 
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.repository.CheckinRepository;
-import com.coderscampus.cp.repository.StudentRepository;
 
 @Service
 public class CheckinService {
 
-    @Autowired
-    private CheckinRepository checkinRepo;
+	@Autowired
+	private CheckinRepository checkinRepo;
 
-    @Autowired
-    private StudentRepository studentRepo;
+	@Autowired
+	private StudentService studentService;
 
-    public Checkin saveByUid(Checkin checkin, String uid) {
-//        if (checkinRepo.findByUid(uid) == null) {
-//            checkin.setDate(Instant.now());
-//        }
-        setDateIfNull(checkin);
-        setStudentAndUid(checkin, uid);
-        return checkinRepo.save(checkin);
-    }
+	@Autowired
+	private GoogleUIDValidationService googleUIDValidationService;
 
-    private void setStudentAndUid(Checkin checkin, String uid) {
-        Student student = studentRepo.findByUid(uid);
-        if (student != null) {
-            checkin.setStudent(student);
-            checkin.setUid(uid);
-        }
-    }
+	public CheckinDTO saveByUid(CheckinDTO checkinDTO, String uid) {
+		Checkin foundCheckin = new Checkin();
+		Student student = studentService.findStudentByUid(uid);
+		if (student == null || uid == null || checkinDTO == null || !googleUIDValidationService.isValidGoogleUID(uid)) {
+			return null;
+		}
 
-    private void setDateIfNull(Checkin checkin) {
-        if (checkin.getDate() == null) {
-            checkin.setDate(Instant.now());
-        }
-    }
+		if (checkinDTO.getId() != null) {
+			foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+			if (!foundCheckin.getUid().equals(uid)) {
+				return null;
+			}
 
-    public List<Checkin> findAll() {
-        return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
-    }
+		} else if (checkinDTO.getStudentId() != null && checkinDTO.getStudentId() != student.getId()) {
 
-    public Checkin findById(Long id) {
-        return checkinRepo.findById(id).get();
-    }
+			return null;
+		}
 
-    public void delete(Checkin checkin) {
-        checkinRepo.delete(checkin);
-    }
+		foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
+		foundCheckin.setBlockers(checkinDTO.getBlockers());
+		foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
+		foundCheckin.setRole(checkinDTO.getRole());
+		foundCheckin.setCodingType(checkinDTO.getCodingType());
+		foundCheckin.setStudent(student);
+		foundCheckin.setUid(student.getUid());
+		foundCheckin = checkinRepo.save(foundCheckin);
+		return new CheckinDTO(foundCheckin);
+	}
 
-    public List<Checkin> findByUid(String uid) {
-        return checkinRepo.findByUid(uid).stream().sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
-    }
+	public List<CheckinDTO> findAll() {
+		return checkinRepo.findAll().stream().sorted(Comparator.comparing(Checkin::getDate).reversed())
+				.map(CheckinDTO::new).collect(Collectors.toList());
+	}
+
+	public CheckinDTO findById(Long id, String uid) {
+		Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
+		if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
+			CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
+			return returnCheckinDTO;
+		}
+		return null;
+	}
+
+	public Long delete(CheckinDTO checkinDTO, String uid) {
+		if (uid == null || checkinDTO == null || checkinDTO.getId() == null) {
+			return 0L;
+		}
+		Long id = checkinDTO.getId();
+		Checkin foundCheckin = checkinRepo.findById(checkinDTO.getId()).orElse(null);
+		if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
+			checkinRepo.delete(foundCheckin);
+		} else {
+			id = 0L;
+		}
+		return id;
+	}
+
+	public List<CheckinDTO> findByUid(String uid) {
+		List<Checkin> checkins = checkinRepo.findByUid(uid).stream()
+				.sorted(Comparator.comparing(Checkin::getDate).reversed()).collect(Collectors.toList());
+		List<CheckinDTO> checkinDTOS = new ArrayList<>();
+		for (Checkin checkin : checkins) {
+			CheckinDTO checkinDTO = new CheckinDTO(checkin);
+			checkinDTOS.add(checkinDTO);
+		}
+		return checkinDTOS;
+	}
 }
-

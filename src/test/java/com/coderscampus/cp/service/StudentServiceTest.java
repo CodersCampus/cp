@@ -28,8 +28,8 @@ class StudentServiceTest {
 	void testIsValidStudentUpdate() {
 //        Creating a test to verify we're able to create and access students without sending the UID to front end for security reasons
 		String uid = UUID.randomUUID().toString();
-		Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null); // Creates hypothetical existing student
-		existingStudent = studentRepo.save(existingStudent); // Saves that existing student to the database
+        Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null); // Creates hypothetical existing student
+        existingStudent = studentRepo.save(existingStudent); // Saves that existing student to the database
         StudentDTO studentDTO = new StudentDTO(existingStudent); // Sends studentDTO to the front-end because it does not have a Uid
         studentDTO.setName("Lucas");
         studentDTO.setAssignmentNum(12);

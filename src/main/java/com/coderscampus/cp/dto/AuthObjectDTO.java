@@ -1,6 +1,6 @@
 package com.coderscampus.cp.dto;
 
-public class AuthObjectDto {
+public class AuthObjectDTO {
     private String uid;
     private String displayName;
     //    DON NOT NEED FOR #512 TO WORK, BUT NICE TO HAVE
