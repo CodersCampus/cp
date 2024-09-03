@@ -26,19 +26,17 @@ class StudentServiceTest {
 
 	@Test
 	void testIsValidStudentUpdate() {
-//        Creating a test to verify we're able to create and access students without sending the UID to front end for security reasons
 		String uid = UUID.randomUUID().toString();
-        Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null); // Creates hypothetical existing student
-        existingStudent = studentRepo.save(existingStudent); // Saves that existing student to the database
-        StudentDTO studentDTO = new StudentDTO(existingStudent); // Sends studentDTO to the front-end because it does not have a Uid
+        Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null); 
+        existingStudent = studentRepo.save(existingStudent); 
+        StudentDTO studentDTO = new StudentDTO(existingStudent);
         studentDTO.setName("Lucas");
         studentDTO.setAssignmentNum(12);
         studentDTO.setIde("Eclipse");
         studentDTO.setWillingToMentor(true);
-        studentDTO.setMentee("Fred"); //updating studentDTO information
-
-		Student student = new Student(studentDTO, uid); // Simulates sending updated DTO back to server side
-        student.setUid(uid); // Sets Uid to student object created from studentDTO
+        studentDTO.setMentee("Fred"); 
+		Student student = new Student(studentDTO, uid);
+        student.setUid(uid); 
         
         assertTrue(studentService.doesStudentExistInRepository(student));
         assertEquals(existingStudent.getId(), student.getId());
