@@ -33,7 +33,7 @@ public class StudentControllerTest {
         String uid = UUID.randomUUID().toString();
 
 
-        mockMvc.perform(post("/create")
+        mockMvc.perform(post("/student/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(student))
                         .param("uid", uid))
