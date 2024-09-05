@@ -1,17 +1,16 @@
 package com.coderscampus.cp.service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.repository.CheckinRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CheckinService {

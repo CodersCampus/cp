@@ -1,8 +1,8 @@
 package com.coderscampus.cp.dto;
 
-import java.time.Instant;
-
 import com.coderscampus.cp.domain.Student;
+
+import java.time.Instant;
 
 public class StudentDTO {
 

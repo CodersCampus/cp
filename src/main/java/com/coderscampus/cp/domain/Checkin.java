@@ -1,16 +1,10 @@
 package com.coderscampus.cp.domain;
 
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.coderscampus.cp.dto.CheckinDTO;
-import com.coderscampus.cp.dto.StudentDTO;
-import com.coderscampus.cp.service.StudentService;
-
-import jakarta.persistence.*;
 
 @Entity
 public class Checkin {

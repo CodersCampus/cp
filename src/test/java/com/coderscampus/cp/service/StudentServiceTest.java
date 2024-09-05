@@ -1,21 +1,16 @@
 package com.coderscampus.cp.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.time.Instant;
-import java.util.UUID;
-
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.StudentRepository;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.StudentDTO;
-import com.coderscampus.cp.repository.StudentRepository;
+import java.util.UUID;
 
-import jakarta.transaction.Transactional;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class StudentServiceTest {

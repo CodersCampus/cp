@@ -1,7 +1,6 @@
 package com.coderscampus.cp.dto;
 
 import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.domain.Student;
 
 import java.time.Instant;
 
