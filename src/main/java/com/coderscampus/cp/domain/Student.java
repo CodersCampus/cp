@@ -18,7 +18,7 @@ public class Student {
     private String name;
     private Integer assignmentNum;
     private String ide;
-    private Instant dateCreated;
+    private final Instant dateCreated;
     private Boolean willingToMentor;
     private String mentee;
     //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

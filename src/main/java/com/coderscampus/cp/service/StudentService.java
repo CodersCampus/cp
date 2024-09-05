@@ -55,19 +55,13 @@ public class StudentService {
     boolean doesStudentExistInRepository(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
 
-        if (existingStudent.isPresent() && existingStudent.get().getUid() != null
-                && existingStudent.get().getUid().equals(student.getUid())) {
-            return true;
-        }
-        return false;
+        return existingStudent.isPresent() && existingStudent.get().getUid() != null
+                && existingStudent.get().getUid().equals(student.getUid());
     }
 
     boolean isValidNewStudent(Student student) {
         Student students = studentRepo.findByUid(student.getUid());
-        if (students == null) {
-            return true;
-        }
-        return false;
+        return students == null;
     }
 
     public StudentDTO findById(Long id) {

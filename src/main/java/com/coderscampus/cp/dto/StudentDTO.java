@@ -10,7 +10,7 @@ public class StudentDTO {
     private String name;
     private Integer assignmentNum;
     private String ide;
-    private Instant dateCreated;
+    private final Instant dateCreated;
     private Boolean willingToMentor;
     private String mentee;
 

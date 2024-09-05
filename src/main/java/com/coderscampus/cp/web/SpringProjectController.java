@@ -20,9 +20,9 @@ import java.util.List;
 @Controller
 public class SpringProjectController {
 
-    private SpringProjectRepository springProjectRepository;
-    private StudentService studentService;
-    private CheckinService checkinService;
+    private final SpringProjectRepository springProjectRepository;
+    private final StudentService studentService;
+    private final CheckinService checkinService;
 
     public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
         this.springProjectRepository = springProjectRepository;

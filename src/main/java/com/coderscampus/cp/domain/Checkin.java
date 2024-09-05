@@ -13,7 +13,7 @@ public class Checkin {
     private Long id;
     @Column(nullable = false)
     private String uid;
-    private Instant date;
+    private final Instant date;
     private Integer nextAssignment;
     private Boolean blockers;
     private String blockerDescription;
