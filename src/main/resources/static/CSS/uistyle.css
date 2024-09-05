@@ -227,6 +227,7 @@ secondary regions of content.
     font-weight: 500;
     line-height: 32px;
 }
+
 /*// --------------------------------- //*/
 
 /*
@@ -1152,4 +1153,5 @@ input[type=checkbox]:checked:before {
     border-radius: 50%;
     overflow: hidden;
 }
+
 /*// --------------------------------- //*/

@@ -18,20 +18,20 @@ import jakarta.transaction.Transactional;
 @SpringBootTest
 class CheckinRepositoryTest {
 
-	@Autowired
-	private StudentService studentService;
-	@Autowired
-	private StudentRepository studentRepo;
-	
-	@Autowired
-	private CheckinService checkinService;
-	@Autowired
-	private CheckinRepository checkinRepo;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private StudentRepository studentRepo;
 
-	@Test
-	@Transactional
-	void testSave() {
-		//Create UID
+    @Autowired
+    private CheckinService checkinService;
+    @Autowired
+    private CheckinRepository checkinRepo;
+
+    @Test
+    @Transactional
+    void testSave() {
+        //Create UID
         String uid = UUID.randomUUID().toString();
         //Create new student with new UID
         Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
@@ -43,6 +43,6 @@ class CheckinRepositoryTest {
         checkinRepo.save(checkin);
         Checkin checkin2 = checkinRepo.findById(checkin.getId()).get();
         assertNotNull(checkin2);
-	}
+    }
 
 }

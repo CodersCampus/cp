@@ -38,7 +38,6 @@ public class StudentController {
     }
 
 
-
     @PostMapping("/create")
     public String create(StudentDTO student, @RequestParam("uid") String uid) {
         studentService.saveByUid(student, uid);
@@ -55,10 +54,10 @@ public class StudentController {
     }
 
     @PostMapping("/update")
-	public String update(@ModelAttribute("student") StudentDTO studentDTO, @RequestParam("uid") String uid) {
-		studentService.saveByUid(studentDTO, uid);
-		return "redirect:/student/";
-	}
+    public String update(@ModelAttribute("student") StudentDTO studentDTO, @RequestParam("uid") String uid) {
+        studentService.saveByUid(studentDTO, uid);
+        return "redirect:/student/";
+    }
 
     @PostMapping("/delete")
     public String delete(Student student) {

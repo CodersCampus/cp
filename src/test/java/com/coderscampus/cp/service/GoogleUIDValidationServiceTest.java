@@ -16,7 +16,7 @@ class GoogleUIDValidationServiceTest {
     void testIsValidGoogleUID() {
         String invalidUid = "abc";
         String passUid = "A1bc-DEF2gh34-IJ567-klmnoPq8";
-        
+
         assertFalse(googleUIDValidationService.isValidGoogleUID(invalidUid));
         assertTrue(googleUIDValidationService.isValidGoogleUID(passUid));
         assertFalse(googleUIDValidationService.isValidGoogleUID(null));
