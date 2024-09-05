@@ -1,7 +1,7 @@
 package com.coderscampus.cp.web;
 
-import java.util.List;
-
+import com.coderscampus.cp.domain.CodingCategory;
+import com.coderscampus.cp.service.CodingCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.coderscampus.cp.domain.CodingCategory;
-import com.coderscampus.cp.service.CodingCategoryService;
+import java.util.List;
 
 @Controller
 @RequestMapping("coding-category")

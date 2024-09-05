@@ -1,37 +1,35 @@
 package com.coderscampus.cp.repository;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import java.util.UUID;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.service.CheckinService;
 import com.coderscampus.cp.service.StudentService;
-
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class CheckinRepositoryTest {
 
-	@Autowired
-	private StudentService studentService;
-	@Autowired
-	private StudentRepository studentRepo;
-	
-	@Autowired
-	private CheckinService checkinService;
-	@Autowired
-	private CheckinRepository checkinRepo;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private StudentRepository studentRepo;
 
-	@Test
-	@Transactional
-	void testSave() {
-		//Create UID
+    @Autowired
+    private CheckinService checkinService;
+    @Autowired
+    private CheckinRepository checkinRepo;
+
+    @Test
+    @Transactional
+    void testSave() {
+        //Create UID
         String uid = UUID.randomUUID().toString();
         //Create new student with new UID
         Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
@@ -43,6 +41,6 @@ class CheckinRepositoryTest {
         checkinRepo.save(checkin);
         Checkin checkin2 = checkinRepo.findById(checkin.getId()).get();
         assertNotNull(checkin2);
-	}
+    }
 
 }

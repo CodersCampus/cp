@@ -1,12 +1,15 @@
 .header-grid-area {
     background-color: var(--background);
 }
+
 .ga-content-main {
     background-color: var(--background);
 }
+
 .sidebar-grid-area {
     background-color: var(--background-accent);
 }
+
 .ga-foot-main {
     background-color: var(--background);
 }

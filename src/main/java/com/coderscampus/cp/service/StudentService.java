@@ -1,17 +1,14 @@
 package com.coderscampus.cp.service;
 
-import java.util.Optional;
-
-import javax.management.RuntimeErrorException;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.StudentRepository;
-
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.management.RuntimeErrorException;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -52,25 +49,19 @@ public class StudentService {
     @Transactional
     public Student findStudentByUid(String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
-    	return foundStudent;
+        return foundStudent;
     }
-    
+
     boolean doesStudentExistInRepository(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
 
-        if (existingStudent.isPresent() && existingStudent.get().getUid() != null
-                && existingStudent.get().getUid().equals(student.getUid())) {
-            return true;
-        }
-        return false;
+        return existingStudent.isPresent() && existingStudent.get().getUid() != null
+                && existingStudent.get().getUid().equals(student.getUid());
     }
 
     boolean isValidNewStudent(Student student) {
         Student students = studentRepo.findByUid(student.getUid());
-        if (students == null) {
-            return true;
-        }
-        return false;
+        return students == null;
     }
 
     public StudentDTO findById(Long id) {
