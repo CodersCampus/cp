@@ -32,36 +32,36 @@ public class StudentDTO {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Integer getAssignmentNum() {
-        return assignmentNum;
-    }
-
-    public String getIde() {
-        return ide;
-    }
-
-    public Instant getDateCreated() {
-        return dateCreated;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public Integer getAssignmentNum() {
+        return assignmentNum;
+    }
+
     public void setAssignmentNum(Integer assignmentNum) {
         this.assignmentNum = assignmentNum;
     }
 
+    public String getIde() {
+        return ide;
+    }
+
     public void setIde(String ide) {
         this.ide = ide;
+    }
+
+    public Instant getDateCreated() {
+        return dateCreated;
     }
 
     public Boolean getWillingToMentor() {

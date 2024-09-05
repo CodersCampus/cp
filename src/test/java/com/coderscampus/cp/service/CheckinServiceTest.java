@@ -25,24 +25,20 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class CheckinServiceTest {
 
+    Student student1;
+    Student student2;
+    StudentDTO studentDTO1;
+    StudentDTO studentDTO2;
+    String student1Uid;
+    String student2Uid;
+    List<CheckinDTO> student1CheckinDTOList;
+    List<CheckinDTO> student2CheckinDTOList;
     @Autowired
     private StudentRepository studentRepo;
-
     @Autowired
     private CheckinService checkinService;
     @Autowired
     private CheckinRepository checkinRepo;
-    Student student1;
-    Student student2;
-
-    StudentDTO studentDTO1;
-    StudentDTO studentDTO2;
-
-    String student1Uid;
-    String student2Uid;
-
-    List<CheckinDTO> student1CheckinDTOList;
-    List<CheckinDTO> student2CheckinDTOList;
 
     @BeforeEach
     void prepData() {
