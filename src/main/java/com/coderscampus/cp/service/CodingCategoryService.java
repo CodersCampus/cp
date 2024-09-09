@@ -1,12 +1,11 @@
 package com.coderscampus.cp.service;
 
-import java.util.List;
-
+import com.coderscampus.cp.domain.CodingCategory;
+import com.coderscampus.cp.repository.CodingCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.coderscampus.cp.domain.CodingCategory;
-import com.coderscampus.cp.repository.CodingCategoryRepository;
+import java.util.List;
 
 @Service
 public class CodingCategoryService {

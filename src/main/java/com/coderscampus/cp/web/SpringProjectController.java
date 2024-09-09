@@ -1,7 +1,12 @@
 package com.coderscampus.cp.web;
 
-import java.util.List;
-
+import com.coderscampus.cp.domain.SpringProject;
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.AuthObjectDTO;
+import com.coderscampus.cp.repository.SpringProjectRepository;
+import com.coderscampus.cp.service.CheckinService;
+import com.coderscampus.cp.service.StudentService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -10,21 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.coderscampus.cp.domain.SpringProject;
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.AuthObjectDto;
-import com.coderscampus.cp.repository.SpringProjectRepository;
-import com.coderscampus.cp.service.CheckinService;
-import com.coderscampus.cp.service.StudentService;
-
-import jakarta.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class SpringProjectController {
 
-    private SpringProjectRepository springProjectRepository;
-    private StudentService studentService;
-    private CheckinService checkinService;
+    private final SpringProjectRepository springProjectRepository;
+    private final StudentService studentService;
+    private final CheckinService checkinService;
 
     public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
         this.springProjectRepository = springProjectRepository;
@@ -45,7 +43,7 @@ public class SpringProjectController {
 
     @PostMapping("/send-oauth")
     @ResponseBody
-    public String getOauth(@RequestBody AuthObjectDto authDto,
+    public String getOauth(@RequestBody AuthObjectDTO authDto,
                            HttpSession httpSession) {
         if (authDto != null) {
             httpSession.setAttribute("uid", authDto.getUid());
