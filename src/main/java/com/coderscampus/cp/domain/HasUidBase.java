@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class HasUidBase {
-	// wants to be a valid UID but visually distinct and readable as pure fluff
 	protected static final String fauxValidUid = "GFLUFF-" + UUID.randomUUID().toString();
 			
 	@Id

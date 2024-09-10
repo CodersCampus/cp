@@ -34,8 +34,6 @@ public class SpringProjectController {
     public String getDashboard(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         String displayName = (String) httpSession.getAttribute("displayName");
-//        Checkin checkin = new Checkin();
-//        checkin = checkinService.saveByUid(checkin, uid);
         Student student = new Student();
         model.put("student", student);
         return "dashboard";
@@ -48,8 +46,7 @@ public class SpringProjectController {
         if (authDto != null) {
             httpSession.setAttribute("uid", authDto.getUid());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
-//            DO NOT NEED FOR #512 TO WORK
-//            httpSession.setAttribute("photoURL", authDto.getPhotoURL()); // Add this line
+
         }
         return "redirect:/";
     }
