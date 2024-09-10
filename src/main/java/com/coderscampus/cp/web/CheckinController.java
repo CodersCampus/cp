@@ -44,6 +44,7 @@ public class CheckinController {
         return "redirect:/checkin/";
     }
 
+
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id, @RequestParam("uid") String uid) {
         CheckinDTO checkinDTO = checkinService.findById(id, uid);
@@ -56,7 +57,8 @@ public class CheckinController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@ModelAttribute("checkin") Checkin checkin, @ModelAttribute("activityLog") ActivityLog activityLog) {
+    public String update(@ModelAttribute("checkin") Checkin checkin,
+            @ModelAttribute("activityLog") ActivityLog activityLog) {
         checkin.getActivityLog().add(activityLog);
         return "redirect:/checkin/";
     }

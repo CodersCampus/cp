@@ -29,15 +29,10 @@ class CheckinRepositoryTest {
     @Test
     @Transactional
     void testSave() {
-        //Create UID
         String uid = UUID.randomUUID().toString();
-        //Create new student with new UID
         Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-        //Save the student
         studentRepo.save(student);
-        //Create new checkin
         Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
-        //Save checkin
         checkinRepo.save(checkin);
         Checkin checkin2 = checkinRepo.findById(checkin.getId()).get();
         assertNotNull(checkin2);
