@@ -3,6 +3,7 @@ package com.coderscampus.cp.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.coderscampus.cp.dto.WorkLogDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,9 @@ public class WorkService {
 
     public List<Work> findAllWorks() {
         return workRepository.findAll();
+    }
+
+    public List<WorkLogDTO> getWeeklyReport() {
+        return workRepository.getWeeklyWorkLog();
     }
 }

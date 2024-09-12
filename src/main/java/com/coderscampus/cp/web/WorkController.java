@@ -2,8 +2,11 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.dto.WorkLogDTO;
 import com.coderscampus.cp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -61,5 +64,14 @@ public class WorkController {
         model.addAttribute("workList", workList);
         model.addAttribute("isWorkLog", true);
         return "work/read";
+    }
+
+    @GetMapping("/log")
+    public ResponseEntity<?> getWorkLog() {
+        List<WorkLogDTO> workLogDTOList = workService.getWeeklyReport();
+        if(workLogDTOList == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return ResponseEntity.ok(workLogDTOList);
     }
 }
