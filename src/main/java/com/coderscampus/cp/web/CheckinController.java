@@ -52,8 +52,8 @@ public class CheckinController {
     }
 
     @GetMapping("/update/{id}")
-    public String fetch(ModelMap model, @PathVariable Long id, @RequestParam("uid") String uid) {
-        CheckinDTO checkinDTO = checkinService.findById(id, uid);
+    public String fetch(ModelMap model, @PathVariable Long id) {
+        CheckinDTO checkinDTO = checkinService.findById(id);
         model.put("checkin", checkinDTO);
         ActivityLog activityLog = new ActivityLog();
         model.put("activityLog", activityLog);

@@ -59,9 +59,9 @@ public class CheckinService {
 				.map(CheckinDTO::new).collect(Collectors.toList());
 	}
 
-	public CheckinDTO findById(Long id, String uid) {
+	public CheckinDTO findById(Long id) {
 		Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
-		if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
+		if (foundCheckin != null) {
 			CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
 			return returnCheckinDTO;
 		}
