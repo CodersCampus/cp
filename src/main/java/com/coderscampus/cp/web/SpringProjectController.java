@@ -1,7 +1,12 @@
 package com.coderscampus.cp.web;
 
-import java.util.List;
-
+import com.coderscampus.cp.domain.SpringProject;
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.AuthObjectDTO;
+import com.coderscampus.cp.repository.SpringProjectRepository;
+import com.coderscampus.cp.service.CheckinService;
+import com.coderscampus.cp.service.StudentService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -10,21 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.coderscampus.cp.domain.SpringProject;
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.AuthObjectDTO;
-import com.coderscampus.cp.repository.SpringProjectRepository;
-import com.coderscampus.cp.service.CheckinService;
-import com.coderscampus.cp.service.StudentService;
-
-import jakarta.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class SpringProjectController {
 
-    private SpringProjectRepository springProjectRepository;
-    private StudentService studentService;
-    private CheckinService checkinService;
+    private final SpringProjectRepository springProjectRepository;
+    private final StudentService studentService;
+    private final CheckinService checkinService;
 
     public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
         this.springProjectRepository = springProjectRepository;
@@ -36,8 +34,6 @@ public class SpringProjectController {
     public String getDashboard(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         String displayName = (String) httpSession.getAttribute("displayName");
-//        Checkin checkin = new Checkin();
-//        checkin = checkinService.saveByUid(checkin, uid);
         Student student = new Student();
         model.put("student", student);
         return "dashboard";
@@ -50,8 +46,7 @@ public class SpringProjectController {
         if (authDto != null) {
             httpSession.setAttribute("uid", authDto.getUid());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
-//            DO NOT NEED FOR #512 TO WORK
-//            httpSession.setAttribute("photoURL", authDto.getPhotoURL()); // Add this line
+
         }
         return "redirect:/";
     }

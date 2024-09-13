@@ -1,11 +1,11 @@
 package com.coderscampus.cp.repository;
 
-import com.coderscampus.cp.domain.Foobar;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.coderscampus.cp.domain.Work;
+
 @Repository
-public interface FoobarRepository extends JpaRepository<Foobar, Long> {
+public interface WorkRepository extends JpaRepository<Work, Long>{
+
 }
-
-
