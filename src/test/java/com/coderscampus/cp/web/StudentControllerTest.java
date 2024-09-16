@@ -40,7 +40,7 @@ public class StudentControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(student))
                         .param("uid", uid))
-                .andExpect(status().isOk());
+                .andExpect(status().is3xxRedirection());
     }
 
 }
