@@ -11,8 +11,7 @@ public class Resume {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String resumeFile; // TODO decide on how we are storing the resume file itself
-
+    private String resumeFile;
     public Resume() {
     }
 

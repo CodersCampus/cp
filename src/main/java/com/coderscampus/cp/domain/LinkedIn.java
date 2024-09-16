@@ -16,6 +16,7 @@ public class LinkedIn {
     private String featuredPosts;
     private String activity;
     private String skills;
+
     public LinkedIn() {
 
     }

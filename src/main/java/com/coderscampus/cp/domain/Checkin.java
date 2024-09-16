@@ -11,8 +11,9 @@ public class Checkin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String uid;
-    private Instant date;
+    private final Instant date;
     private Integer nextAssignment;
     private Boolean blockers;
     private String blockerDescription;
@@ -21,12 +22,25 @@ public class Checkin {
     private Student student;
     private Role role;
     private CodingType codingType;
-
-
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ActivityLog> activityLog = new ArrayList<>();
 
-    // ID
+    public Checkin() {
+        this.date = Instant.now();
+    }
+
+    public Checkin(String uid, List<ActivityLog> activityLog, Integer nextAssignment, Boolean blockers, String blockerDescription, Student student, Role role, CodingType codingType) {
+        this();
+        this.uid = uid;
+        this.activityLog = activityLog;
+        this.nextAssignment = nextAssignment;
+        this.blockers = blockers;
+        this.blockerDescription = blockerDescription;
+        this.student = student;
+        this.role = role;
+        this.codingType = codingType;
+    }
+
     public Long getId() {
         return id;
     }
@@ -35,7 +49,6 @@ public class Checkin {
         this.id = id;
     }
 
-    // UID
     public String getUid() {
         return uid;
     }
@@ -44,18 +57,10 @@ public class Checkin {
         this.uid = uid;
     }
 
-    // Date
-
-
     public Instant getDate() {
         return date;
     }
 
-    public void setDate(Instant date) {
-        this.date = date;
-    }
-
-    // Assignment
     public Integer getNextAssignment() {
         return nextAssignment;
     }
@@ -64,7 +69,6 @@ public class Checkin {
         this.nextAssignment = nextAssignment;
     }
 
-    // Blockers
     public Boolean getBlockers() {
         return blockers;
     }
@@ -73,7 +77,6 @@ public class Checkin {
         this.blockers = blockers;
     }
 
-    // Blocker Description
     public String getBlockerDescription() {
         return blockerDescription;
     }
@@ -82,7 +85,6 @@ public class Checkin {
         this.blockerDescription = blockerDescription;
     }
 
-    // Student
     public Student getStudent() {
         return student;
     }
@@ -129,7 +131,6 @@ public class Checkin {
                 '}';
     }
 
-    // ENUMS
     public enum CodingType {
         FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
     }
