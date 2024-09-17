@@ -47,7 +47,6 @@ class SpringProjectControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("dashboard"))
                 .andReturn();
-        //Star here next time
         ModelMap modelMap = mvcResult.getModelAndView().getModelMap();
         Student student = new Student();
         Student mappedStudent = (Student) modelMap.get("student");

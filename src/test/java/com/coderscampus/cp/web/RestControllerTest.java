@@ -62,7 +62,6 @@ public class RestControllerTest {
                 .andReturn();
 
         var response = mvcResult.getResponse().getContentAsString();
-        System.out.println(response);
 
         assertEquals(response, "redirect:/");
     }
