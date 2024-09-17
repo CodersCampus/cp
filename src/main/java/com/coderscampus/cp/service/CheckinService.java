@@ -1,16 +1,17 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.CheckinDTO;
-import com.coderscampus.cp.repository.CheckinRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.CheckinDTO;
+import com.coderscampus.cp.repository.CheckinRepository;
 
 @Service
 public class CheckinService {
@@ -58,9 +59,9 @@ public class CheckinService {
                 .map(CheckinDTO::new).collect(Collectors.toList());
     }
 
-    public CheckinDTO findById(Long id, String uid) {
+    public CheckinDTO findById(Long id) {
         Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
-        if (foundCheckin != null && foundCheckin.getUid().equals(uid)) {
+        if (foundCheckin != null) {
             CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
             return returnCheckinDTO;
         }

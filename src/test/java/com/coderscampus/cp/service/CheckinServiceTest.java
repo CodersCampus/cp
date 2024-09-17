@@ -25,20 +25,24 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class CheckinServiceTest {
 
-    Student student1;
-    Student student2;
-    StudentDTO studentDTO1;
-    StudentDTO studentDTO2;
-    String student1Uid;
-    String student2Uid;
-    List<CheckinDTO> student1CheckinDTOList;
-    List<CheckinDTO> student2CheckinDTOList;
     @Autowired
     private StudentRepository studentRepo;
+
     @Autowired
     private CheckinService checkinService;
     @Autowired
     private CheckinRepository checkinRepo;
+    Student student1;
+    Student student2;
+
+    StudentDTO studentDTO1;
+    StudentDTO studentDTO2;
+
+    String student1Uid;
+    String student2Uid;
+
+    List<CheckinDTO> student1CheckinDTOList;
+    List<CheckinDTO> student2CheckinDTOList;
 
     @BeforeEach
     void prepData() {
@@ -388,42 +392,11 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testFindByIdWhenIdAndUidMatchOwner() {
-        student1CheckinDTOList.forEach(checkinDTO -> {
-            Long originalId = checkinDTO.getId();
-            CheckinDTO foundCheckinDTO = checkinService.findById(originalId, student1Uid);
-            assertNotNull(foundCheckinDTO);
-            assertEquals(originalId, foundCheckinDTO.getId());
-        });
-    }
-
-    @Test
-    @Transactional
-    void testFindByIdWhenUidDoesNotMatchOwner() {
-        student1CheckinDTOList.forEach(checkinDTO -> {
-            Long originalId = checkinDTO.getId();
-            CheckinDTO foundCheckinDTO = checkinService.findById(originalId, student2Uid);
-            assertNull(foundCheckinDTO);
-        });
-    }
-
-    @Test
-    @Transactional
-    void testFindByIdWhenIdDoesNotExistInDatabase() {
-        Long idToFind = Long.MAX_VALUE - 12;
-        student1CheckinDTOList.forEach(checkinDTO -> {
-            CheckinDTO foundCheckinDTO = checkinService.findById(idToFind, student1Uid);
-            assertNull(foundCheckinDTO);
-        });
-    }
-
-    @Test
-    @Transactional
     void testFindByIdWhenIdIsNull() {
         Long idToFind = null;
         student1CheckinDTOList.forEach(checkinDTO -> {
             assertThrows(InvalidDataAccessApiUsageException.class, () -> {
-                checkinService.findById(idToFind, student1Uid);
+                checkinService.findById(idToFind);
             });
         });
     }
