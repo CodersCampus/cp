@@ -75,13 +75,13 @@ public class CheckinController {
         return "redirect:/checkin/";
     }
 
-    @ModelAttribute("roleList")
-    public Checkin.Role[] getRoleList() {
-        return Checkin.Role.values();
-    }
-
-    @ModelAttribute("codingType")
-    public Checkin.CodingType[] getCodingType() {
-        return Checkin.CodingType.values();
-    }
+//    @ModelAttribute("roleList")
+//    public Checkin.Role[] getRoleList() {
+//        return Checkin.Role.values();
+//    }
+//
+//    @ModelAttribute("codingType")
+//    public Checkin.CodingType[] getCodingType() {
+//        return Checkin.CodingType.values();
+//    }
 }
