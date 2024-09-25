@@ -40,18 +40,15 @@ public class ActivityLogService {
     }
     
     public List<ActivityLog> findByCheckin(Long id) {
-    	List<ActivityLog> activityList = new ArrayList<ActivityLog>();
+    	List<ActivityLog> activityLogList = new ArrayList<ActivityLog>();
     	if(id == null) {
-    		return activityList;
-    		
+    		return activityLogList;
     	}
     	Optional<Checkin> checkinOpt = checkinRepo.findById(id);
-    	
     	if(checkinOpt.isPresent()) {
     		return checkinOpt.get().getActivityLog(); 
     	}
-    	 
-    	return activityList;
+    	return activityLogList;
     }
 
 
