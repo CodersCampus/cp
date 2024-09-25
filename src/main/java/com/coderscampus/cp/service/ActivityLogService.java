@@ -1,13 +1,17 @@
 package com.coderscampus.cp.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.repository.ActivityLogRepository;
 import com.coderscampus.cp.repository.CheckinRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ActivityLogService {
@@ -33,6 +37,21 @@ public class ActivityLogService {
     public ActivityLog findById(Long id) {
         ActivityLog foundActivityLog = activityLogRepository.findById(id).orElse(null);
         return foundActivityLog;
+    }
+    
+    public List<ActivityLog> findByCheckin(Long id) {
+    	List<ActivityLog> activityList = new ArrayList<ActivityLog>();
+    	if(id == null) {
+    		return activityList;
+    		
+    	}
+    	Optional<Checkin> checkinOpt = checkinRepo.findById(id);
+    	
+    	if(checkinOpt.isPresent()) {
+    		return checkinOpt.get().getActivityLog(); 
+    	}
+    	 
+    	return activityList;
     }
 
 
