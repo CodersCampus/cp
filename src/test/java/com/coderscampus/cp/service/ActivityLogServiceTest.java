@@ -42,8 +42,6 @@ public class ActivityLogServiceTest {
     @Autowired
     private ActivityLogService activityLogService;
 
-    StudentDTO studentDTO1;
-    StudentDTO studentDTO2;
 
     String student1Uid;
     String student2Uid;
@@ -54,8 +52,6 @@ public class ActivityLogServiceTest {
     @BeforeEach
     void prepData() {
 
-        studentDTO1 = new StudentDTO();
-        studentDTO2 = new StudentDTO();
 
         student1Uid = UUID.randomUUID().toString();
         student2Uid = UUID.randomUUID().toString();
@@ -71,8 +67,6 @@ public class ActivityLogServiceTest {
 
         for (int i = 0; i < 4; i++) {
             Checkin checkin = new Checkin();
-            List<ActivityLog> activityLog = new ArrayList<>();
-            //Start here
             checkin.setBlockerDescription("Blocker" + i);
             checkin.setNextAssignment(i);
             checkin.setBlockers(true);
@@ -81,6 +75,16 @@ public class ActivityLogServiceTest {
             checkin.setStudent(student1);
             checkin.setUid(student1Uid);
             checkinRepo.save(checkin);
+            ActivityLog activityLog = new ActivityLog();
+            activityLog.setIsSetUp(true);
+            activityLog.setAvailable(true);
+            activityLog.setRole(Checkin.Role.OBSERVER);
+            activityLog.setCodingType(Checkin.CodingType.CRUD);
+            activityLog.setIssueNumber(628);
+            activityLog.setComment("Update");
+            activityLog.setCheckin(checkin);
+            activityLogRepository.save(activityLog);
+            checkin.getActivityLogs().add(activityLog);
             CheckinDTO checkinDTO = new CheckinDTO(checkin);
             student1CheckinDTOList.add(checkinDTO);
         }

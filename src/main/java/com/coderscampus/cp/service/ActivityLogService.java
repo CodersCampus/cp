@@ -46,7 +46,7 @@ public class ActivityLogService {
     	}
     	Optional<Checkin> checkinOpt = checkinRepo.findById(id);
     	if(checkinOpt.isPresent()) {
-    		return checkinOpt.get().getActivityLog(); 
+    		return checkinOpt.get().getActivityLogs();
     	}
     	return activityLogList;
     }
