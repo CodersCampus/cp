@@ -34,10 +34,7 @@ public class ActivityLogService {
         return null;
     }
 
-    public ActivityLog findById(Long id) {
-        ActivityLog foundActivityLog = activityLogRepository.findById(id).orElse(null);
-        return foundActivityLog;
-    }
+
     
     public List<ActivityLog> findByCheckin(Long id) {
     	List<ActivityLog> activityLogList = new ArrayList<ActivityLog>();

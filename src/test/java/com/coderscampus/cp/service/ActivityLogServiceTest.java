@@ -104,33 +104,33 @@ public class ActivityLogServiceTest {
 
     @Test
     @Transactional
-    void testSaveWhenCheckinDTOIsNull() {
+    void testSaveWhenCheckinIsNull() {
         
     }
     @Test
     @Transactional
-    void testSaveWhenCheckinDTOIdIsNull() {
+    void testSaveWhenCheckinIdIsNull() {
         
     }
     @Test
     @Transactional
-    void testSaveWhenCheckinDTOIsNotNullAndCheckinDTOIdIsNotNull() {
+    void testSave() {
         
     }
     @Test
     @Transactional
-    void testSaveWhenCheckinDTOIsNullTestFoundById() {
-        
+    void testFindByCheckinWhenCheckinIsNull() {
+
     }
     @Test
     @Transactional
-    void testSaveWhenCheckinDTOIsNull() {
-        
+    void testFindByCheckinWhenCheckinIdIsNull() {
+
     }
     @Test
     @Transactional
-    void testSaveWhenCheckinDTOIsNull() {
-        
+    void testFindByCheckin() {
+
     }
    
 }
