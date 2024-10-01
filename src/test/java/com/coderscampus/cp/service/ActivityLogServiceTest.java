@@ -6,7 +6,6 @@ import com.coderscampus.cp.domain.Checkin.CodingType;
 import com.coderscampus.cp.domain.Checkin.Role;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.CheckinDTO;
-import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.ActivityLogRepository;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
@@ -16,13 +15,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -76,7 +74,7 @@ public class ActivityLogServiceTest {
 			checkin.setUid(student1Uid);
 			checkinRepo.save(checkin);
 			ActivityLog activityLog = new ActivityLog();
-			activityLog.setIsSetUp(true);
+			activityLog.setSetUp(true);
 			activityLog.setAvailable(true);
 			activityLog.setRole(Checkin.Role.OBSERVER);
 			activityLog.setCodingType(Checkin.CodingType.CRUD);
@@ -117,21 +115,34 @@ public class ActivityLogServiceTest {
 	@Test
 	@Transactional
 	void testSave() {
-		ActivityLog activityLog = new ActivityLog();
-		activityLog.setAvailable(true);
-		activityLog.setCodingType(CodingType.CRUD);
-		activityLog.setComment("Test");
-		activityLog.setIsSetUp(true);
-		activityLog.setIssueNumber(15);
-		activityLog.setRole(Role.GUIDE);
-		activityLog.setSetUp(true);
-
+        AtomicLong i = new AtomicLong(0L);
+        AtomicInteger activityLogListSize = new AtomicInteger(0);
 		student1CheckinDTOList.forEach(checkinDTO -> {
+            ActivityLog activityLog = new ActivityLog();
+            activityLog.setAvailable(true);
+            activityLog.setCodingType(CodingType.CRUD);
+            activityLog.setComment("Test");
+            activityLog.setIssueNumber(15);
+            activityLog.setRole(Role.GUIDE);
+            activityLog.setSetUp(true);
 			Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
 			activityLog.setCheckin(checkin);
-			activityLogService.save(activityLog);
+			ActivityLog savedActivityLog = activityLogService.save(activityLog);
+            System.out.println(savedActivityLog.getId());
+            assertTrue(savedActivityLog.getId() > i.get());
+            i.set(savedActivityLog.getId());
+            assertEquals(activityLog.getAvailable(), savedActivityLog.getAvailable());
+            assertEquals(activityLog.getCodingType(), savedActivityLog.getCodingType());
+            assertEquals(activityLog.getComment(), savedActivityLog.getComment());
+            assertEquals(activityLog.getSetUp(), savedActivityLog.getSetUp());
+            assertEquals(activityLog.getIssueNumber(), savedActivityLog.getIssueNumber());
+            assertEquals(activityLog.getRole(), savedActivityLog.getRole());
+            assertEquals(activityLog.getCheckin().getId(), savedActivityLog.getCheckin().getId());
+            //start here next time
+            // increment activityLogListSize by 1 on each loop
+            assertEquals(checkin.getActivityLogs().size(), activityLogListSize);
+
 		});
-		//start here next time
 	}
 
 	@Test

@@ -44,14 +44,6 @@ public class ActivityLog {
         isSetUp = setUp;
     }
 
-    public Boolean getIsSetUp() {
-        return isSetUp;
-    }
-
-    public void setIsSetUp(Boolean isSetUp) {
-        this.isSetUp = isSetUp;
-    }
-
     public Boolean getAvailable() {
         return available;
     }
