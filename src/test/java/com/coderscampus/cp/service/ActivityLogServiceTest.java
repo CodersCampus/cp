@@ -103,10 +103,10 @@ public class ActivityLogServiceTest {
 	@Test
 	@Transactional
 	void testSaveWhenCheckinIsNull() {
-        //start here next time
-        //if we try to save an activity log when the checkin is null, assert=activityLog save fails
-        //because it's null
-        //save should fail, but not throw an error
+        ActivityLog activityLog = new ActivityLog();
+        activityLog.setCheckin(null);
+        ActivityLog savedActivityLog = activityLogService.save(activityLog);
+        assertNull(savedActivityLog);
 	}
 
 	@Test

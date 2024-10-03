@@ -27,6 +27,9 @@ public class ActivityLogService {
     private ActivityLogRepository activityLogRepository;
 
     public ActivityLog save(ActivityLog activityLog) {
+       if (activityLog == null || activityLog.getCheckin() == null || activityLog.getCheckin().getId() == null) {
+           return null;
+       }
         CheckinDTO checkinDTO = checkinService.findById(activityLog.getCheckin().getId());
         if (checkinDTO != null && checkinDTO.getId() != null) {
             return activityLogRepository.save(activityLog);
