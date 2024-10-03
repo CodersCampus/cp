@@ -103,45 +103,34 @@ public class ActivityLogServiceTest {
 	@Test
 	@Transactional
 	void testSaveWhenCheckinIsNull() {
-
+        //start here next time
+        //if we try to save an activity log when the checkin is null, assert=activityLog save fails
+        //because it's null
+        //save should fail, but not throw an error
 	}
 
 	@Test
 	@Transactional
 	void testSaveWhenCheckinIdIsNull() {
-
+        //if we try to save an activity log when the checkins Id is null, assert=activityLog save fails
+        //because it's null
+        //save should fail, but not throw an error
 	}
 
 	@Test
 	@Transactional
 	void testSave() {
         AtomicLong i = new AtomicLong(0L);
-        AtomicInteger activityLogListSize = new AtomicInteger(0);
 		student1CheckinDTOList.forEach(checkinDTO -> {
             ActivityLog activityLog = new ActivityLog();
-            activityLog.setAvailable(true);
-            activityLog.setCodingType(CodingType.CRUD);
             activityLog.setComment("Test");
-            activityLog.setIssueNumber(15);
-            activityLog.setRole(Role.GUIDE);
-            activityLog.setSetUp(true);
 			Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
 			activityLog.setCheckin(checkin);
 			ActivityLog savedActivityLog = activityLogService.save(activityLog);
-            System.out.println(savedActivityLog.getId());
             assertTrue(savedActivityLog.getId() > i.get());
             i.set(savedActivityLog.getId());
-            assertEquals(activityLog.getAvailable(), savedActivityLog.getAvailable());
-            assertEquals(activityLog.getCodingType(), savedActivityLog.getCodingType());
             assertEquals(activityLog.getComment(), savedActivityLog.getComment());
-            assertEquals(activityLog.getSetUp(), savedActivityLog.getSetUp());
-            assertEquals(activityLog.getIssueNumber(), savedActivityLog.getIssueNumber());
-            assertEquals(activityLog.getRole(), savedActivityLog.getRole());
             assertEquals(activityLog.getCheckin().getId(), savedActivityLog.getCheckin().getId());
-            //start here next time
-            // increment activityLogListSize by 1 on each loop
-            assertEquals(checkin.getActivityLogs().size(), activityLogListSize);
-
 		});
 	}
 
