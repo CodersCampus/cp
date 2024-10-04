@@ -112,9 +112,14 @@ public class ActivityLogServiceTest {
 	@Test
 	@Transactional
 	void testSaveWhenCheckinIdIsNull() {
-        //if we try to save an activity log when the checkins Id is null, assert=activityLog save fails
-        //because it's null
-        //save should fail, but not throw an error
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            ActivityLog activityLog = new ActivityLog();
+            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
+            checkin.setId(null);
+            activityLog.setCheckin(checkin);
+            ActivityLog savedActivityLog = activityLogService.save(activityLog);
+            assertNull(savedActivityLog);
+        });
 	}
 
 	@Test
@@ -149,8 +154,21 @@ public class ActivityLogServiceTest {
 	@Test
 	@Transactional
 	void testFindByCheckin() {
-
-	}
+                student2CheckinDTOList.forEach(checkinDTO -> {
+                    List<ActivityLog> activityLogList = activityLogService.findByCheckin(checkinDTO.getId());
+                    assertEquals(1, activityLogList.size());
+                    ActivityLog activityLog = new ActivityLog();
+                    activityLog.setSetUp(true);
+                    activityLog.setAvailable(true);
+                    activityLog.setRole(Checkin.Role.OBSERVER);
+                    activityLog.setCodingType(Checkin.CodingType.CRUD);
+                    activityLog.setIssueNumber(628);
+                    activityLog.setComment("Update");
+                    // Get checkin from checkinDTO
+                    activityLog.setCheckin(checkin);
+                    activityLogRepository.save(activityLog);
+                });
+    }
 
 	@Test
 	@Transactional
