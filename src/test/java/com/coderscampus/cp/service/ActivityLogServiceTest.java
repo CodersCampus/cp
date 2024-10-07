@@ -142,6 +142,28 @@ public class ActivityLogServiceTest {
 	@Test
 	@Transactional
 	void testFindByCheckinWhenCheckinIsNull() {
+        System.out.println("///////////////////**************************////////////////////////");
+        student2CheckinDTOList.forEach(checkinDTO -> {
+            List<ActivityLog> activityLogList = activityLogService.findByCheckin(checkinDTO.getId());
+            assertEquals(1, activityLogList.size());
+            ActivityLog activityLog = new ActivityLog();
+            System.out.println("******************************" + activityLog);
+//            activityLog.setSetUp(true);
+//            activityLog.setAvailable(true);
+//            activityLog.setRole(Checkin.Role.OBSERVER);
+//            activityLog.setCodingType(Checkin.CodingType.CRUD);
+//            activityLog.setIssueNumber(628);
+//            activityLog.setComment("Update");
+//            activityLog.setCheckin(null);
+//            activityLogRepository.save(activityLog);
+//            System.out.println("******************************" + activityLog);
+//            activityLogList.add(activityLog);
+//            assertEquals(1, activityLogList.size());
+        });
+
+
+
+
 
 	}
 
@@ -164,15 +186,17 @@ public class ActivityLogServiceTest {
                     activityLog.setCodingType(Checkin.CodingType.CRUD);
                     activityLog.setIssueNumber(628);
                     activityLog.setComment("Update");
-                    // Get checkin from checkinDTO
+                    Checkin checkin = activityLogList.get(0).getCheckin();
                     activityLog.setCheckin(checkin);
                     activityLogRepository.save(activityLog);
+                    activityLogList.add(activityLog);
+                    assertEquals(2, activityLogList.size());
                 });
     }
 
 	@Test
 	@Transactional
-	void testFindByAcvtivityLogIdWhenActivityLogIsNull() {
+	void testFindByActivityLogIdWhenActivityLogIsNull() {
 
 	}
 
