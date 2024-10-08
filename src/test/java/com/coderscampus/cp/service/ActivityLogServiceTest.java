@@ -143,13 +143,17 @@ public class ActivityLogServiceTest {
 	@Test
 	@Transactional
 	void testFindByCheckinWhenCheckinIdIsNull() {
-
+		 student1CheckinDTOList.forEach(checkinDTO -> {
+	            Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
+	            checkin.setId(null);
+	            assertTrue(activityLogService.findByCheckin(checkin.getId()).isEmpty());
+	        });
 	}
 
 	@Test
 	@Transactional
 	void testFindByCheckin() {
-                student2CheckinDTOList.forEach(checkinDTO -> {
+                student1CheckinDTOList.forEach(checkinDTO -> {
                     List<ActivityLog> activityLogList = activityLogService.findByCheckin(checkinDTO.getId());
                     assertEquals(1, activityLogList.size());
                     ActivityLog activityLog = new ActivityLog();
@@ -182,6 +186,17 @@ public class ActivityLogServiceTest {
 	@Test
 	@Transactional
 	void testFindByActivityLogId() {
-
+		student1CheckinDTOList.forEach(checkinDTO -> {
+            List<ActivityLog> activityLogList = activityLogService.findByCheckin(checkinDTO.getId());
+            Checkin checkin = activityLogList.get(0).getCheckin();
+            ActivityLog activityLog = checkin.getActivityLogs().get(0);
+            assertEquals(activityLog, activityLogService.findById(activityLog.getId()));
+        });
+	}
+	@Test
+	@Transactional
+	void testFindByCheckinWhenCheckinIsNull() {
+		List<ActivityLog> activityLogList = activityLogService.findByCheckin(null);
+		assertTrue(activityLogList.isEmpty());
 	}
 }
