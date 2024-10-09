@@ -31,8 +31,6 @@ public class ActivityLogServiceTest {
 	private StudentRepository studentRepo;
 
 	@Autowired
-	private CheckinService checkinService;
-	@Autowired
 	private CheckinRepository checkinRepo;
 	Student student1;
 	Student student2;
@@ -46,7 +44,6 @@ public class ActivityLogServiceTest {
 	String student2Uid;
 
 	List<CheckinDTO> student1CheckinDTOList;
-	List<CheckinDTO> student2CheckinDTOList;
 
 	@BeforeEach
 	void prepData() {
@@ -61,7 +58,6 @@ public class ActivityLogServiceTest {
 		student2 = studentRepo.save(student2);
 
 		student1CheckinDTOList = new ArrayList<>();
-		student2CheckinDTOList = new ArrayList<>();
 
 		for (int i = 0; i < 4; i++) {
 			Checkin checkin = new Checkin();
@@ -93,9 +89,7 @@ public class ActivityLogServiceTest {
 		student1CheckinDTOList.forEach(checkinDTO -> {
 			checkinRepo.findById(checkinDTO.getId()).ifPresent(checkinRepo::delete);
 		});
-		student2CheckinDTOList.forEach(checkinDTO -> {
-			checkinRepo.findById(checkinDTO.getId()).ifPresent(checkinRepo::delete);
-		});
+
 		studentRepo.delete(student1);
 		studentRepo.delete(student2);
 	}
@@ -139,7 +133,6 @@ public class ActivityLogServiceTest {
 		});
 	}
 
-
 	@Test
 	@Transactional
 	void testFindByCheckinWhenCheckinIdIsNull() {
@@ -173,14 +166,15 @@ public class ActivityLogServiceTest {
 
 	@Test
 	@Transactional
-	void testFindByActivityLogIdWhenActivityLogIsNull() {
-
-	}
-
-	@Test
-	@Transactional
 	void testFindByActivityLogIdWhenActivityLogIdIsNull() {
-
+        student1CheckinDTOList.forEach(checkinDTO -> {
+            List<ActivityLog> activityLogList = activityLogService.findByCheckin(checkinDTO.getId());
+            Checkin checkin = activityLogList.get(0).getCheckin();
+            ActivityLog activityLog = checkin.getActivityLogs().get(0);
+            assertNotNull(activityLog);
+            activityLog.setId(null);
+            assertNull(activityLogService.findById(activityLog.getId()));
+        });
 	}
 
 	@Test
