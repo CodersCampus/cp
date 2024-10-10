@@ -11,8 +11,6 @@ public class ActivityLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String uid;
-    private Instant date;
     private Boolean isSetUp;
     private Boolean available;
     private Role role;
@@ -26,6 +24,10 @@ public class ActivityLog {
     @JoinColumn(name = "checkin_id")
     private Checkin checkin;
 
+    public ActivityLog() {
+        this.startTime = Instant.now();
+    }
+
     public Long getId() {
         return id;
     }
@@ -34,36 +36,12 @@ public class ActivityLog {
         this.id = id;
     }
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public Instant getDate() {
-        return date;
-    }
-
-    public void setDate(Instant date) {
-        this.date = date;
-    }
-
     public Boolean getSetUp() {
         return isSetUp;
     }
 
     public void setSetUp(Boolean setUp) {
         isSetUp = setUp;
-    }
-
-    public Boolean getIsSetUp() {
-        return isSetUp;
-    }
-
-    public void setIsSetUp(Boolean isSetUp) {
-        this.isSetUp = isSetUp;
     }
 
     public Boolean getAvailable() {
@@ -134,8 +112,6 @@ public class ActivityLog {
     public String toString() {
         return "ActivityLog{" +
                 "id=" + id +
-                ", uid='" + uid + '\'' +
-                ", date=" + date +
                 ", isSetUp=" + isSetUp +
                 ", available=" + available +
                 ", role=" + role +

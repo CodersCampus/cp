@@ -59,7 +59,7 @@ public class CheckinController {
     @PostMapping("/update/{id}")
     public String update(@ModelAttribute("checkin") Checkin checkin,
             @ModelAttribute("activityLog") ActivityLog activityLog) {
-        checkin.getActivityLog().add(activityLog);
+        checkin.getActivityLogs().add(activityLog);
         return "redirect:/checkin/";
     }
 

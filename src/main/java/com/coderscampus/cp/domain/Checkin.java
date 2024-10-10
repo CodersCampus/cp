@@ -23,16 +23,16 @@ public class Checkin {
     private Role role;
     private CodingType codingType;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ActivityLog> activityLog = new ArrayList<>();
+    private List<ActivityLog> activityLogs = new ArrayList<>();
 
     public Checkin() {
         this.date = Instant.now();
     }
 
-    public Checkin(String uid, List<ActivityLog> activityLog, Integer nextAssignment, Boolean blockers, String blockerDescription, Student student, Role role, CodingType codingType) {
+    public Checkin(String uid, List<ActivityLog> activityLogs, Integer nextAssignment, Boolean blockers, String blockerDescription, Student student, Role role, CodingType codingType) {
         this();
         this.uid = uid;
-        this.activityLog = activityLog;
+        this.activityLogs = activityLogs;
         this.nextAssignment = nextAssignment;
         this.blockers = blockers;
         this.blockerDescription = blockerDescription;
@@ -109,12 +109,12 @@ public class Checkin {
         this.codingType = codingType;
     }
 
-    public List<ActivityLog> getActivityLog() {
-        return activityLog;
+    public List<ActivityLog> getActivityLogs() {
+        return activityLogs;
     }
 
-    public void setActivityLog(List<ActivityLog> activityLog) {
-        this.activityLog = activityLog;
+    public void setActivityLogs(List<ActivityLog> activityLog) {
+        this.activityLogs = activityLog;
     }
 
     @Override
@@ -127,7 +127,7 @@ public class Checkin {
                 ", blockers=" + blockers +
                 ", blockerDescription='" + blockerDescription + '\'' +
                 ", student=" + student +
-                ", activityLog=" + activityLog +
+                ", activityLog=" + activityLogs +
                 '}';
     }
 
