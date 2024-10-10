@@ -33,8 +33,8 @@ public class ActivityLogController {
     }
     @GetMapping("/read")
     public String home(ModelMap model, HttpSession httpSession) {
-        List<ActivityLog> activityLogs = activityLogService.findByUid(uid);
-        model.put("checkins", checkins);
+//        List<ActivityLog> activityLogs = activityLogService.findByUid(uid);
+//        model.put("checkins", checkins);
 //        model.addAttribute("pageTitle", "Checkin Read");
 //        model.put("isCheckin", true);
         return "checkin/read";
@@ -42,11 +42,11 @@ public class ActivityLogController {
 
 
 
-    @PostMapping("/create")
-    public String create(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
-//        checkinDTO = checkinService.saveByUid(checkinDTO, uid);
-        return "redirect:/checkin/";
-    }
+//    @PostMapping("/create")
+//    public String create(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
+////        checkinDTO = checkinService.saveByUid(checkinDTO, uid);
+//        return "redirect:/checkin/";
+//    }
 
 
     @GetMapping("/update/{id}")
