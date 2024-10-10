@@ -16,7 +16,7 @@ public class ActivityLogController {
 
     @PostMapping("/create")
     public String postCreate(ActivityLog activityLog, @RequestParam("uid") String uid) {
-        activityLogService.saveByUid(activityLog, uid);
+        activityLogService.save(activityLog);
         return "redirect:/checkin/update";
     }
 }
