@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">ActivityLog</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/activityLog/create">Create New</a>
+                        </button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <form action="/activityLog/create" class="ui-form" method="post">
+                        <!--                        <h1 class="title-small">Create ActivityLog</h1>-->
+                        <input id="uid" comment="uid" type="hidden"/>
+                        <div class="ui-input-field">
+                            <label class="ui-label">Comment:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="display-comment" th:field="${activityLog.comment}" type="text"/>
+                            </div>
+                        </div>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
+                    </form>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+
+</html>

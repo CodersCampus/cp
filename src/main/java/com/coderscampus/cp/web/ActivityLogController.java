@@ -20,11 +20,15 @@ public class ActivityLogController {
 
     @GetMapping("/create")
     public String getCreate(ModelMap model) {
+        ActivityLog activityLog = new ActivityLog();
+        model.put("activityLog", activityLog);
+        model.addAttribute("pageTitle", "activityLog Create");
+        model.put("comment", "");
 //        Checkin checkin = new Checkin();
 //        model.put("checkin", checkin);
 //        model.addAttribute("pageTitle", "Checkin Create");
 //        model.put("isCheckin", true);
-        return "checkin/create";
+        return "activityLog/create";
     }
     @PostMapping("/create")
     public String postCreate(ActivityLog activityLog, @RequestParam("uid") String uid) {
