@@ -27,6 +27,7 @@ public class ActivityLogService {
     private ActivityLogRepository activityLogRepository;
 
     public ActivityLog save(ActivityLog activityLog) {
+        System.out.println("HERE WE ARE" + activityLog);
        if (activityLog == null || activityLog.getCheckin() == null || activityLog.getCheckin().getId() == null) {
            return null;
        }

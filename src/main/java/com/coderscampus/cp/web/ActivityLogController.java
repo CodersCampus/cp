@@ -1,8 +1,9 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.ActivityLog;
+import com.coderscampus.cp.domain.ActivityLog;
+
 import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.service.ActivityLogService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,61 +21,61 @@ public class ActivityLogController {
 
     @GetMapping("/create")
     public String getCreate(ModelMap model) {
+        // START HERE AND NEED A CHECKIN TO GET ANYTHING DONE WITH ACTIVITYLOG
         ActivityLog activityLog = new ActivityLog();
         model.put("activityLog", activityLog);
         model.addAttribute("pageTitle", "activityLog Create");
         model.put("comment", "");
-//        Checkin checkin = new Checkin();
-//        model.put("checkin", checkin);
-//        model.addAttribute("pageTitle", "Checkin Create");
-//        model.put("isCheckin", true);
+//        ActivityLog activityLog = new ActivityLog();
+//        model.put("activityLog", activityLog);
+//        model.addAttribute("pageTitle", "ActivityLog Create");
+//        model.put("isActivityLog", true);
         return "activityLog/create";
     }
     @PostMapping("/create")
-    public String postCreate(ActivityLog activityLog, @RequestParam("uid") String uid) {
+    public String postCreate(@ModelAttribute("activityLog") ActivityLog activityLog) {
         activityLogService.save(activityLog);
-        return "redirect:/checkin/update";
+        return "redirect:/activityLog/read";
     }
     @GetMapping("/read")
     public String home(ModelMap model, HttpSession httpSession) {
 //        List<ActivityLog> activityLogs = activityLogService.findByUid(uid);
-//        model.put("checkins", checkins);
-//        model.addAttribute("pageTitle", "Checkin Read");
-//        model.put("isCheckin", true);
-        return "checkin/read";
+//        model.put("activityLogs", activityLogs);
+//        model.addAttribute("pageTitle", "ActivityLog Read");
+//        model.put("isActivityLog", true);
+        return "activityLog/read";
     }
 
 
 
 //    @PostMapping("/create")
-//    public String create(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
-////        checkinDTO = checkinService.saveByUid(checkinDTO, uid);
-//        return "redirect:/checkin/";
+//    public String create(ActivityLogDTO activityLogDTO, @RequestParam("uid") String uid) {
+////        activityLogDTO = activityLogService.saveByUid(activityLogDTO, uid);
+//        return "redirect:/activityLog/";
 //    }
 
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
-//        CheckinDTO checkinDTO = checkinService.findById(id);
-//        model.put("checkin", checkinDTO);
+//        ActivityLogDTO activityLogDTO = activityLogService.findById(id);
+//        model.put("activityLog", activityLogDTO);
 //        ActivityLog activityLog = new ActivityLog();
 //        model.put("activityLog", activityLog);
-//        model.addAttribute("pageTitle", "Checkin Update");
-//        model.put("isCheckin", true);
-        return "checkin/update";
+//        model.addAttribute("pageTitle", "ActivityLog Update");
+//        model.put("isActivityLog", true);
+        return "activityLog/update";
     }
 
     @PostMapping("/update/{id}")
-    public String update(@ModelAttribute("checkin") Checkin checkin,
-                         @ModelAttribute("activityLog") ActivityLog activityLog) {
-//        checkin.getActivityLog().add(activityLog);
-        return "redirect:/checkin/";
+    public String updateWithId(@ModelAttribute("activityLog") ActivityLog activityLog) {
+//        activityLog.getActivityLog().add(activityLog);
+        return "redirect:/activityLog/";
     }
 
     @PostMapping("/update")
-    public String update(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
-//        checkinService.saveByUid(checkinDTO, uid);
-        return "redirect:/checkin/";
+    public String update(ActivityLog activityLog) {
+//        activityLogService.saveByUid(activityLog, uid);
+        return "redirect:/activityLog/";
     }
     @ModelAttribute("roleList")
     public Checkin.Role[] getRoleList() {
@@ -83,6 +84,6 @@ public class ActivityLogController {
 
     @ModelAttribute("codingType")
     public Checkin.CodingType[] getCodingType() {
-        return Checkin.CodingType.values();
+        return Checkin  .CodingType.values();
     }
 }
