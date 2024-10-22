@@ -4,6 +4,8 @@ import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.dto.CheckinDTO;
+import com.coderscampus.cp.repository.CheckinRepository;
+import com.coderscampus.cp.service.ActivityLogService;
 import com.coderscampus.cp.service.CheckinService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,12 @@ public class CheckinController {
 
     @Autowired
     private CheckinService checkinService;
+
+    @Autowired
+    private ActivityLogService activityLogService;
+
+    @Autowired
+    private CheckinRepository checkinRepository;
 
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
@@ -46,16 +54,16 @@ public class CheckinController {
     }
 
     //start here - issue625
-    @PostMapping("/activityLogCreate")
-    public String createActivityLog(ModelMap model) {
-//        ActivityLog activityLog = new ActivityLog();
-//        model.put("activityLog", activityLog);
-//        model.addAttribute("pageTitle", "ActivityLog Create");
-//        model.put("isActivityLog", true);
-//        return "activityLog/create";
+    @PostMapping("/activityLogCreate/{checkinId}")
+    public String createActivityLog(ActivityLog activityLog, @PathVariable Long checkinId) {
+        System.out.println("HELOOOOOOOOOOOOOOOOO" + checkinId);
+        Checkin checkin = checkinRepository.findById(checkinId).orElse(null);
+       activityLog.setCheckin(checkin);
+        activityLog = activityLogService.save(activityLog);
+        return "redirect:/update/" + checkinId;
     }
 
-
+// Start HEREEE
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
         CheckinDTO checkinDTO = checkinService.findById(id);
