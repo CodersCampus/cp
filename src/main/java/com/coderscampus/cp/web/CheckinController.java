@@ -2,6 +2,7 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.service.CheckinService;
 import jakarta.servlet.http.HttpSession;
@@ -42,6 +43,16 @@ public class CheckinController {
     public String create(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinDTO = checkinService.saveByUid(checkinDTO, uid);
         return "redirect:/checkin/";
+    }
+
+    //start here - issue625
+    @PostMapping("/activityLogCreate")
+    public String createActivityLog(ModelMap model) {
+//        ActivityLog activityLog = new ActivityLog();
+//        model.put("activityLog", activityLog);
+//        model.addAttribute("pageTitle", "ActivityLog Create");
+//        model.put("isActivityLog", true);
+//        return "activityLog/create";
     }
 
 
