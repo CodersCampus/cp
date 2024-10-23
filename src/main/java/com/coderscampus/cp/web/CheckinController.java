@@ -63,7 +63,7 @@ public class CheckinController {
         return "redirect:/update/" + checkinId;
     }
 
-// Start HEREEE
+
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
         CheckinDTO checkinDTO = checkinService.findById(id);

@@ -111,7 +111,7 @@
 <!--                        </div>-->
 <!--                        <button class="ui-nav-item ui-button" type="submit"><span>Add Activity</span></button>-->
 <!--                    </form>-->
-                    <form action="/checkin/activityLogCreate/{checkinId}(checkinId=${checkin.id})}" class="ui-form" method="post"> <!-- ***Start HERE*** -->
+                    <form action="/checkin/activityLogCreate/" class="ui-form" method="post"> <!-- ***Start HERE*** -->
                         <!--                        <h1 class="title-small">Create Checkin</h1>-->
                         <input type="hidden" th:value="${checkin.id}" th:name="checkinId"/>
                         <div class="ui-input-field">
