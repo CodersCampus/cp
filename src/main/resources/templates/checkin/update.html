@@ -111,13 +111,17 @@
 <!--                        </div>-->
 <!--                        <button class="ui-nav-item ui-button" type="submit"><span>Add Activity</span></button>-->
 <!--                    </form>-->
-                    <form th:action ="@{/checkin/activityLogCreate/{checkinId}(checkinId=${checkin.id})}}" class="ui-form" method="post"> <!-- ***Start HERE*** -->
+                    <form th:action="@{/checkin/activityLogCreate/{checkinId}(checkinId=${checkin.id})}" class="ui-form" method="post"> <!-- ***Start HERE*** -->
                         <!--                        <h1 class="title-small">Create Checkin</h1>-->
                         <input type="hidden" th:value="${checkin.id}" th:name="checkinId"/>
                         <div class="ui-input-field">
                             <label class="ui-label">Comment:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="display-name" th:field="${activityLog.comment}" type="text"/>
+                                <input class="ui-value"  th:field="${activityLog.comment}" type="text"/>
+                            </div>
+                            <label class="ui-label">Issue Number:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value"  th:field="${activityLog.issueNumber}" type="text"/>
                             </div>
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>

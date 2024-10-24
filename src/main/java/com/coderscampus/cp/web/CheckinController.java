@@ -56,11 +56,11 @@ public class CheckinController {
     //start here - issue625
     @PostMapping("/activityLogCreate/{checkinId}")
     public String createActivityLog(ActivityLog activityLog, @PathVariable Long checkinId) {
-        System.out.println("HELOOOOOOOOOOOOOOOOO" + checkinId);
+        System.out.println("HELOOOOOOOOOOOOOOOOO " + checkinId);
         Checkin checkin = checkinRepository.findById(checkinId).orElse(null);
        activityLog.setCheckin(checkin);
         activityLog = activityLogService.save(activityLog);
-        return "redirect:/update/" + checkinId;
+        return "redirect:/checkin/update/" + checkinId;
     }
 
 
