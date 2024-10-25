@@ -121,7 +121,15 @@
                             </div>
                             <label class="ui-label">Issue Number:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value"  th:field="${activityLog.issueNumber}" type="text"/>
+                                <input class="ui-value"  th:field="${activityLog.issueNumber}" type="number"/>
+                            </div>
+                            <label class="ui-label" for="codingType">Coding Type:</label>
+                            <div>
+                                <select id="codingType" name="codingType">
+                                    <option th:each="type : ${codingTypes}"
+                                            th:value="${type}"
+                                            th:text="${type}">Coding Type</option>
+                                </select>
                             </div>
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
