@@ -7,6 +7,8 @@ import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.service.ActivityLogService;
 import com.coderscampus.cp.service.CheckinService;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -99,6 +101,9 @@ public class CheckinController {
     public Checkin.Role[] getRoleList() {
         return Checkin.Role.values();
     }
+
+    @Enumerated(EnumType.STRING)
+    private Checkin.CodingType codingType;
 
     @ModelAttribute("codingType")
     public Checkin.CodingType[] getCodingType() {
