@@ -13,6 +13,7 @@ public class ActivityLog {
     private Long id;
     private Boolean isSetUp;
     private Boolean available;
+    @Enumerated(EnumType.STRING)
     private Role role;
     private Instant startTime;
     private Instant endTime;

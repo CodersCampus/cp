@@ -125,10 +125,18 @@
                             </div>
                             <label class="ui-label" for="codingType">Coding Type:</label>
                             <div>
-                                <select id="codingType" name="codingType">
+                                <select class="ui-text-dropdown" id="codingType" name="codingType">
                                     <option th:each="type : ${codingTypes}"
                                             th:value="${type}"
                                             th:text="${type}">Coding Type</option>
+                                </select>
+                            </div>
+                            <label class="ui-label" for="role">Role</label>
+                            <div>
+                                <select class="ui-text-dropdown" id="role" name="role">
+                                    <option th:each="type : ${role}"
+                                            th:value="${type}"
+                                            th:text="${type}">Role</option>
                                 </select>
                             </div>
                         </div>

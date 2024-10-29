@@ -75,6 +75,7 @@ public class CheckinController {
         model.addAttribute("pageTitle", "Checkin Update");
         model.put("isCheckin", true);
         model.addAttribute("codingTypes", Checkin.CodingType.values());
+        model.addAttribute("role", Checkin.Role.values());
         return "checkin/update";
     }
 
