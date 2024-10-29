@@ -16,7 +16,8 @@ public class ActivityLog {
     private Role role;
     private Instant startTime;
     private Instant endTime;
-    private CodingType codingType;
+    @Enumerated(EnumType.STRING)
+    private Checkin.CodingType codingType;
     private Integer issueNumber;
     @Column(length = 5000, nullable = true)
     private String comment;

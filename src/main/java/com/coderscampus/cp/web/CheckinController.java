@@ -102,8 +102,7 @@ public class CheckinController {
         return Checkin.Role.values();
     }
 
-    @Enumerated(EnumType.STRING)
-    private Checkin.CodingType codingType;
+   
 
     @ModelAttribute("codingType")
     public Checkin.CodingType[] getCodingType() {
