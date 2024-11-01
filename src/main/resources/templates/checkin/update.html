@@ -111,6 +111,39 @@
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Add Activity</span></button>
                     </form>
+                     <div class="ui-checkin-table">
+                <div class="ui-table" role="region" tabindex="0">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th scope="col">Time:</th>
+                            <th scope="col">Role:</th>
+                            <th scope="col">Coding Type:</th>
+                            <th scope="col">Issue Number:</th>
+                            <th scope="col">Comment:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="activityLog: ${activityLogs}">
+<!--                            <td><span th:text="${@activityLogService.getFormattedDate(activityLog.date)}" readonly></span></td>-->
+
+<!--                ABOVE NEEDS TO BE CHANGED TO DISPLAY ONLY TIME AND NOT DATE                   -->
+
+                            <td><span th:text="${activityLog.role}"></span></td>
+                            <td><span th:text="${activityLog.codingType}"></span></td>
+                            <td><span th:text="${activityLog.issueNumber}"></span></td>
+                            <td>
+                                <div class="ui-text-input">
+                                    <input class="ui-value" type="text" placeholder="write a comment + press:  ↩" th:field="${activityLog.comment}">
+
+<!--                ABOVE FIELD NEEDS TO POST WHEN RETURN KEY IS PRESSED                           -->
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
                 </main>
             </div>
         </div>
