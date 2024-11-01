@@ -134,8 +134,9 @@ public class Checkin {
     public enum CodingType {
         FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
     }
+    
 
     public enum Role {
-        FOUNDATIONS, OBSERVER, CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
+         OBSERVER, CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
     }
 }

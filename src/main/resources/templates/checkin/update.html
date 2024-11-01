@@ -63,53 +63,84 @@
                     </form>
                     <!--                    <div th:each="role : ${roleList}"></div> Something like this-->
                     <hr>
-                    <form action="/activityLog/create" class="ui-form" method="post">
+<!--                    <form action="/activityLog/create" class="ui-form" method="post">-->
+<!--                        <div class="ui-input-field">-->
+<!--                            <label class="ui-label">-->
+<!--                                Comment:-->
+<!--                            </label>-->
+<!--                            <div class="ui-text-input">-->
+<!--                                    <textarea class="ui-value" cols="20" name="comment" placeholder="Add a comment"-->
+<!--                                              rows="5"-->
+<!--                                              th:field="${activityLog.comment}"></textarea>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <label class="ui-checkbox">-->
+<!--                            <input id="toggleCheckbox" name="toggleCheckbox" type="checkbox"/>-->
+<!--                            <span>This is a LiveCoding session</span>-->
+<!--                        </label>-->
+<!--                     &lt;!&ndash;   <label class="ui-checkbox">-->
+<!--                            <input th:field="${activityLog.isSetUp}" type="checkbox"/>-->
+<!--                            <span>My box is ready for LiveCoding</span>-->
+<!--                        </label>&ndash;&gt;-->
+<!--                        <label class="ui-checkbox">-->
+<!--                            <input th:field="${activityLog.available}" type="checkbox"/>-->
+<!--                            <span>I am available / willing to Code</span>-->
+<!--                        </label>-->
+<!--                        <div class="ui-input-field">-->
+<!--                            <label class="ui-label">Role:</label>-->
+<!--                            <select class="ui-text-dropdown" th:field="*{checkin.role}">-->
+<!--                                <option class="ui-option" th:each="role : ${roleList}"-->
+<!--                                        th:text="${#strings.capitalize(role.toString())}"-->
+<!--                                        th:value="${role}"></option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <div class="ui-input-field">-->
+<!--                            <label class="ui-label">Coding Type:</label>-->
+<!--                            <select class="ui-text-dropdown" th:field="*{checkin.codingType}">-->
+<!--                                <option class="ui-option" th:each="codingType : ${codingType}"-->
+<!--                                        th:text="${#strings.capitalize(codingType.toString())}"-->
+<!--                                        th:value="${codingType}"></option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <div class="ui-input-field">-->
+<!--                            <label class="ui-label">Issue Number:</label>-->
+<!--                            <div class="ui-text-input">-->
+<!--                                <input class="ui-value" placeholder="ex: 458" th:field="${activityLog.issueNumber}"-->
+<!--                                       type="number"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <button class="ui-nav-item ui-button" type="submit"><span>Add Activity</span></button>-->
+<!--                    </form>-->
+                    <form th:action="@{/checkin/activityLogCreate/{checkinId}(checkinId=${checkin.id})}" class="ui-form" method="post"> <!-- ***Start HERE*** -->
+                        <!--                        <h1 class="title-small">Create Checkin</h1>-->
+                        <input type="hidden" th:value="${checkin.id}" th:name="checkinId"/>
                         <div class="ui-input-field">
-                            <label class="ui-label">
-                                Comment:
-                            </label>
+                            <label class="ui-label">Comment:</label>
                             <div class="ui-text-input">
-                                    <textarea class="ui-value" cols="20" name="comment" placeholder="Add a comment"
-                                              rows="5"
-                                              th:field="${activityLog.comment}"></textarea>
+                                <input class="ui-value"  th:field="${activityLog.comment}" type="text"/>
                             </div>
-                        </div>
-                        <label class="ui-checkbox">
-                            <input id="toggleCheckbox" name="toggleCheckbox" type="checkbox"/>
-                            <span>This is a LiveCoding session</span>
-                        </label>
-                     <!--   <label class="ui-checkbox">
-                            <input th:field="${activityLog.isSetUp}" type="checkbox"/>
-                            <span>My box is ready for LiveCoding</span>
-                        </label>-->
-                        <label class="ui-checkbox">
-                            <input th:field="${activityLog.available}" type="checkbox"/>
-                            <span>I am available / willing to Code</span>
-                        </label>
-                        <div class="ui-input-field">
-                            <label class="ui-label">Role:</label>
-                            <select class="ui-text-dropdown" th:field="*{checkin.role}">
-                                <option class="ui-option" th:each="role : ${roleList}"
-                                        th:text="${#strings.capitalize(role.toString())}"
-                                        th:value="${role}"></option>
-                            </select>
-                        </div>
-                        <div class="ui-input-field">
-                            <label class="ui-label">Coding Type:</label>
-                            <select class="ui-text-dropdown" th:field="*{checkin.codingType}">
-                                <option class="ui-option" th:each="codingType : ${codingType}"
-                                        th:text="${#strings.capitalize(codingType.toString())}"
-                                        th:value="${codingType}"></option>
-                            </select>
-                        </div>
-                        <div class="ui-input-field">
                             <label class="ui-label">Issue Number:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" placeholder="ex: 458" th:field="${activityLog.issueNumber}"
-                                       type="number"/>
+                                <input class="ui-value"  th:field="${activityLog.issueNumber}" type="number"/>
+                            </div>
+                            <label class="ui-label" for="codingType">Coding Type:</label>
+                            <div>
+                                <select class="ui-text-dropdown" id="codingType" name="codingType">
+                                    <option th:each="type : ${codingTypes}"
+                                            th:value="${type}"
+                                            th:text="${type}">Coding Type</option>
+                                </select>
+                            </div>
+                            <label class="ui-label" for="role">Role</label>
+                            <div>
+                                <select class="ui-text-dropdown" id="role" name="role">
+                                    <option th:each="type : ${role}"
+                                            th:value="${type}"
+                                            th:text="${type}">Role</option>
+                                </select>
                             </div>
                         </div>
-                        <button class="ui-nav-item ui-button" type="submit"><span>Add Activity</span></button>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
                     </form>
                 </main>
             </div>
@@ -122,3 +153,4 @@
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
 </body>
 </html>
+

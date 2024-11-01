@@ -13,10 +13,12 @@ public class ActivityLog {
     private Long id;
     private Boolean isSetUp;
     private Boolean available;
+    @Enumerated(EnumType.STRING)
     private Role role;
     private Instant startTime;
     private Instant endTime;
-    private CodingType codingType;
+    @Enumerated(EnumType.STRING)
+    private Checkin.CodingType codingType;
     private Integer issueNumber;
     @Column(length = 5000, nullable = true)
     private String comment;
