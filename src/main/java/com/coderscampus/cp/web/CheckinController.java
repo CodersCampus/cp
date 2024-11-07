@@ -3,6 +3,7 @@ package com.coderscampus.cp.web;
 import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.dto.CheckinDTO;
+import com.coderscampus.cp.service.ActivityLogService;
 import com.coderscampus.cp.service.CheckinService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class CheckinController {
 
     @Autowired
     private CheckinService checkinService;
+    @Autowired
+    private ActivityLogService activityLogService;
+
 
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
@@ -48,7 +52,8 @@ public class CheckinController {
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
         CheckinDTO checkinDTO = checkinService.findById(id);
-        List<ActivityLog> activityLogs = checkinService.findActivityLogsByCheckinId(id);
+        List<ActivityLog> activityLogs = activityLogService.findByCheckinId(id);
+        System.out.println("HEY, LISTEN!!" + activityLogs);
         model.put("checkin", checkinDTO);
         model.put("activityLogs", activityLogs);
         ActivityLog activityLog = new ActivityLog();
