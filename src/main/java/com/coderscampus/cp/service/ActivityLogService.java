@@ -32,6 +32,7 @@ public class ActivityLogService {
        }
         CheckinDTO checkinDTO = checkinService.findById(activityLog.getCheckin().getId());
         if (checkinDTO != null && checkinDTO.getId() != null) {
+            System.out.println("OUCHIES"+activityLog);
             return activityLogRepository.save(activityLog);
         }
         return null;

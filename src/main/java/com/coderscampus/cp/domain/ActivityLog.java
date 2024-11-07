@@ -20,7 +20,7 @@ public class ActivityLog {
     private Integer issueNumber;
     @Column(length = 5000, nullable = true)
     private String comment;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "checkin_id")
     private Checkin checkin;
 
@@ -120,7 +120,7 @@ public class ActivityLog {
                 ", codingType=" + codingType +
                 ", issueNumber=" + issueNumber +
                 ", comment='" + comment + '\'' +
-                ", checkin=" + checkin +
+                ", checkin=" + checkin.getId() +
                 '}';
     }
 }
