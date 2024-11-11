@@ -164,7 +164,7 @@ public class CheckinServiceTest {
     void testSaveByUidForUpdateWithExistingUID() {
         student1CheckinDTOList.forEach(checkinDTO -> {
 
-            checkinDTO.setBlockers(false);
+            checkinDTO.setBlocker(false);
             checkinDTO.setRole(Checkin.Role.OBSERVER);
             checkinDTO.setBlockerDescription("Blep");
             checkinDTO.setCodingType(Checkin.CodingType.CODE_REVIEW);
@@ -172,7 +172,7 @@ public class CheckinServiceTest {
 
             CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, student1Uid);
 
-            assertEquals(false, checkinDTOUt.getBlockers());
+            assertEquals(false, checkinDTOUt.getBlocker());
             assertEquals("Blep", checkinDTOUt.getBlockerDescription());
             assertEquals(11, checkinDTOUt.getNextAssignment());
             assertEquals(Checkin.Role.OBSERVER, checkinDTOUt.getRole());
@@ -186,7 +186,7 @@ public class CheckinServiceTest {
         String wrongUid = student2Uid;
         student1CheckinDTOList.forEach(checkinDTO -> {
 
-            checkinDTO.setBlockers(false);
+            checkinDTO.setBlocker(false);
             checkinDTO.setRole(Checkin.Role.OBSERVER);
             checkinDTO.setBlockerDescription("Blep");
             checkinDTO.setCodingType(Checkin.CodingType.CODE_REVIEW);
@@ -313,7 +313,7 @@ public class CheckinServiceTest {
     void testCreateCheckinStudentIdFromUidDoesNotMatchStudentIdFromCheckinDto() {
         CheckinDTO checkinDTO = new CheckinDTO(student1.getId());
         checkinDTO.setNextAssignment(4);
-        checkinDTO.setBlockers(false);
+        checkinDTO.setBlocker(false);
         assertNull(checkinService.saveByUid(checkinDTO, student2Uid));
     }
 

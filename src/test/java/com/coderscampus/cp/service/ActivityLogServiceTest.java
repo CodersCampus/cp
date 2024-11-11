@@ -2,8 +2,7 @@ package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.domain.Checkin.CodingType;
-import com.coderscampus.cp.domain.Checkin.Role;
+
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.repository.ActivityLogRepository;

@@ -65,7 +65,7 @@ public class CheckinController {
 
     @PostMapping("/update/{id}")
     public String update(@ModelAttribute("checkin") Checkin checkin,
-            @ModelAttribute("activityLog") ActivityLog activityLog) {
+                         @ModelAttribute("activityLog") ActivityLog activityLog) {
         checkin.getActivityLogs().add(activityLog);
         System.out.println("HEYYYYYYY AGAIN");
         return "redirect:/checkin/";
@@ -82,14 +82,5 @@ public class CheckinController {
         checkinService.delete(checkinDTO, uid);
         return "redirect:/checkin/";
     }
-
-    @ModelAttribute("roleList")
-    public Checkin.Role[] getRoleList() {
-        return Checkin.Role.values();
-    }
-
-    @ModelAttribute("codingType")
-    public Checkin.CodingType[] getCodingType() {
-        return Checkin.CodingType.values();
-    }
 }
+

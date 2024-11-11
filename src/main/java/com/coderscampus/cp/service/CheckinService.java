@@ -45,10 +45,10 @@ public class CheckinService {
         }
 
         foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
-        foundCheckin.setBlockers(checkinDTO.getBlockers());
+        foundCheckin.setBlocker(checkinDTO.getBlocker());
+        foundCheckin.setSetup(checkinDTO.getSetup());
+        foundCheckin.setAvailable(checkinDTO.getAvailable());
         foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
-        foundCheckin.setRole(checkinDTO.getRole());
-        foundCheckin.setCodingType(checkinDTO.getCodingType());
         foundCheckin.setStudent(student);
         foundCheckin.setUid(student.getUid());
         foundCheckin = checkinRepo.save(foundCheckin);
