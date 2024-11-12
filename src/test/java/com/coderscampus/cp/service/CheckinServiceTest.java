@@ -66,9 +66,7 @@ public class CheckinServiceTest {
             Checkin checkin = new Checkin();
             checkin.setBlockerDescription("Blocker" + i);
             checkin.setNextAssignment(i);
-            checkin.setBlockers(true);
-            checkin.setRole(Checkin.Role.CODER);
-            checkin.setCodingType(Checkin.CodingType.CRUD);
+            checkin.setBlocker(true);
             checkin.setStudent(student1);
             checkin.setUid(student1Uid);
             checkinRepo.save(checkin);
@@ -165,9 +163,8 @@ public class CheckinServiceTest {
         student1CheckinDTOList.forEach(checkinDTO -> {
 
             checkinDTO.setBlocker(false);
-            checkinDTO.setRole(Checkin.Role.OBSERVER);
+           
             checkinDTO.setBlockerDescription("Blep");
-            checkinDTO.setCodingType(Checkin.CodingType.CODE_REVIEW);
             checkinDTO.setNextAssignment(11);
 
             CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, student1Uid);
@@ -175,8 +172,7 @@ public class CheckinServiceTest {
             assertEquals(false, checkinDTOUt.getBlocker());
             assertEquals("Blep", checkinDTOUt.getBlockerDescription());
             assertEquals(11, checkinDTOUt.getNextAssignment());
-            assertEquals(Checkin.Role.OBSERVER, checkinDTOUt.getRole());
-            assertEquals(Checkin.CodingType.CODE_REVIEW, checkinDTOUt.getCodingType());
+            
         });
     }
 
@@ -187,9 +183,9 @@ public class CheckinServiceTest {
         student1CheckinDTOList.forEach(checkinDTO -> {
 
             checkinDTO.setBlocker(false);
-            checkinDTO.setRole(Checkin.Role.OBSERVER);
+            
             checkinDTO.setBlockerDescription("Blep");
-            checkinDTO.setCodingType(Checkin.CodingType.CODE_REVIEW);
+          
             checkinDTO.setNextAssignment(11);
 
             CheckinDTO checkinDTOUt = checkinService.saveByUid(checkinDTO, wrongUid);
@@ -209,9 +205,8 @@ public class CheckinServiceTest {
             Checkin checkin = new Checkin();
             checkin.setBlockerDescription("Blocker" + i);
             checkin.setNextAssignment(i);
-            checkin.setBlockers(true);
-            checkin.setRole(Checkin.Role.CODER);
-            checkin.setCodingType(Checkin.CodingType.CRUD);
+            checkin.setBlocker(true);
+           
             checkin.setStudent(student1);
             checkin.setUid(student1Uid);
             checkinRepo.save(checkin);
@@ -252,7 +247,7 @@ public class CheckinServiceTest {
                 break;
             }
             Checkin checkin = checkinRepo.findById(checkinDTO.getId()).get();
-            checkin.setRole(Checkin.Role.OBSERVER);
+           
             checkinRepo.save(checkin);
         }
         assertEquals(size, checkinService.findAll().size());

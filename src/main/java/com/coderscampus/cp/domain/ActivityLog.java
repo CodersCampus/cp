@@ -95,8 +95,6 @@ public class ActivityLog {
         return "ActivityLog{" +
                 "id=" + id +
                 ", role=" + role +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
                 ", codingType=" + codingType +
                 ", issueNumber=" + issueNumber +
                 ", comment='" + comment + '\'' +

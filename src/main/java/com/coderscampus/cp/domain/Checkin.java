@@ -127,12 +127,12 @@ public class Checkin {
                 ", uid='" + uid + '\'' +
                 ", isSetup=" + isSetup +
                 ", available=" + available +
-                ", date=" + date +
+               
                 ", nextAssignment=" + nextAssignment +
                 ", blocker=" + blocker +
                 ", blockerDescription='" + blockerDescription + '\'' +
-                ", student=" + student +
-                ", activityLogs=" + activityLogs +
+                
+              
                 '}';
     }
 }
