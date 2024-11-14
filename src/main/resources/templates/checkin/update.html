@@ -36,7 +36,11 @@
                                        type="number"/>
                             </div>
                         </div>
-
+							   <label class="ui-checkbox">
+                            <input th:field="${activityLog.isSetUp}" type="checkbox"/>
+                            <span>My box is ready for LiveCoding</span>
+                        </label>
+                        
                         <label class="ui-checkbox">
                             <input th:field="${checkin.blocker}" type="checkbox"/>
                             <span>I have a Blocker</span>
@@ -83,10 +87,7 @@
                             <input id="toggleCheckbox" name="toggleCheckbox" type="checkbox"/>
                             <span>This is a LiveCoding session</span>
                         </label>
-                     <!--   <label class="ui-checkbox">
-                            <input th:field="${activityLog.isSetUp}" type="checkbox"/>
-                            <span>My box is ready for LiveCoding</span>
-                        </label>-->
+                     
 
 
 
