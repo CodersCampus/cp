@@ -37,7 +37,7 @@
                             </div>
                         </div>
 							   <label class="ui-checkbox">
-                            <input th:field="${activityLog.isSetUp}" type="checkbox"/>
+                            <input th:field="${checkin.setUp}" type="checkbox"/>
                             <span>My box is ready for LiveCoding</span>
                         </label>
                         
@@ -130,20 +130,14 @@
                         </thead>
                         <tbody>
                         <tr th:each="activityLog: ${activityLogs}">
-<!--                            <td><span th:text="${@activityLogService.getFormattedDate(activityLog.date)}" readonly></span></td>-->
+<!--                            <td><span th:text="${@activityLogService.getFormattedDate(activityLog.startTime)}"></span></td>-->
 
 <!--                ABOVE NEEDS TO BE CHANGED TO DISPLAY ONLY TIME AND NOT DATE                   -->
-
+                            <td><span th:text="${#dates.format(activityLog.startTime, 'HH:mm')}"></span></td>
                             <td><span th:text="${activityLog.role}"></span></td>
                             <td><span th:text="${activityLog.codingType}"></span></td>
                             <td><span th:text="${activityLog.issueNumber}"></span></td>
-                            <td>
-                                <div class="ui-text-input">
-                                    <input class="ui-value" type="text" placeholder="write a comment + press:  ↩" th:field="${activityLog.comment}">
-
-<!--                ABOVE FIELD NEEDS TO POST WHEN RETURN KEY IS PRESSED                           -->
-                                </div>
-                            </td>
+                            <td><span th:text="${activityLog.comment}"></span></td>
                         </tr>
                         </tbody>
                     </table>

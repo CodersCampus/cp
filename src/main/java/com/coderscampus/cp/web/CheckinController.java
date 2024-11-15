@@ -59,6 +59,8 @@ public class CheckinController {
         ActivityLog activityLog = new ActivityLog();
         model.put("activityLog", activityLog);
         model.addAttribute("pageTitle", "Checkin Update");
+        model.addAttribute("roleList", ActivityLog.Role.values());
+        model.addAttribute("codingType", ActivityLog.CodingType.values());
         model.put("isCheckin", true);
         return "checkin/update";
     }

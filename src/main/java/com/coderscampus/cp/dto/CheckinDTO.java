@@ -12,7 +12,7 @@ public class CheckinDTO {
     private Boolean blocker;
     private String blockerDescription;
     private Long studentId;
-    private Boolean isSetup;
+    private Boolean setUp;
     private Boolean available;
 
     public CheckinDTO(Checkin checkin) {
@@ -22,17 +22,17 @@ public class CheckinDTO {
         this.nextAssignment = checkin.getNextAssignment();
         this.blocker = checkin.getBlocker();
         this.blockerDescription = checkin.getBlockerDescription();
-        this.isSetup = checkin.getSetup();
+        this.setUp = checkin.getSetup();
         this.available = checkin.getAvailable();
         this.studentId = checkin.getStudent().getId();
     }
 
-    public Boolean getSetup() {
-        return isSetup;
+    public Boolean getSetUp() {
+        return setUp;
     }
 
-    public void setSetup(Boolean setup) {
-        isSetup = setup;
+    public void setSetUp(Boolean setUp) {
+        this.setUp = setUp;
     }
 
     public Boolean getAvailable() {
@@ -110,7 +110,7 @@ public class CheckinDTO {
                 ", blocker=" + blocker +
                 ", blockerDescription='" + blockerDescription + '\'' +
                 ", studentId=" + studentId +
-                ", isSetup=" + isSetup +
+                ", isSetup=" + setUp +
                 ", available=" + available +
                 '}';
     }

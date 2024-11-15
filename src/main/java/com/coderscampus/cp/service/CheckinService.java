@@ -46,7 +46,7 @@ public class CheckinService {
 
         foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
         foundCheckin.setBlocker(checkinDTO.getBlocker());
-        foundCheckin.setSetup(checkinDTO.getSetup());
+        foundCheckin.setSetup(checkinDTO.getSetUp());
         foundCheckin.setAvailable(checkinDTO.getAvailable());
         foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
         foundCheckin.setStudent(student);
