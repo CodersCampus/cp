@@ -22,12 +22,9 @@ public class ActivityLogController {
     @PostMapping("/create")
     public String postCreate(ActivityLog activityLog, @RequestParam("id") Long id) {
         activityLog.setId(null);
-        System.out.println("Here is the activity log" + activityLog.getId());
         Checkin checkin = checkinRepository.findById(id).get();
         activityLog.setCheckin(checkin);
-        System.out.println("Here is the id" + id);
         activityLogService.save(activityLog);
-        System.out.println("HEYYYYYYYYYYYYYYYYY" + activityLog);
         return "redirect:/checkin/update/" + id;
     }
 }

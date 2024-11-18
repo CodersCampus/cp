@@ -32,7 +32,6 @@ public class ActivityLogService {
        }
         CheckinDTO checkinDTO = checkinService.findById(activityLog.getCheckin().getId());
         if (checkinDTO != null && checkinDTO.getId() != null) {
-            System.out.println("OUCHIES"+activityLog);
             return activityLogRepository.save(activityLog);
         }
         return null;
@@ -57,20 +56,14 @@ public class ActivityLogService {
     	return activityLogList;
     }
     public List<ActivityLog> findByCheckinId(Long id) {
-        System.out.println("OUCHIES");
         List<ActivityLog> activityLogList = new ArrayList<ActivityLog>();
         if(id == null) {
-            System.out.println("IF NULL MAYBE?");
-
             return activityLogList;
         }
         Optional<Checkin> checkinOpt = checkinRepo.findById(id);
         if(checkinOpt.isPresent()) {
             activityLogList = activityLogRepository.findByCheckinId(id);
-            System.out.println("this ran" + activityLogList.size());
             return activityLogList;
-        } else {
-            System.out.println("no way Jose");
         }
         return activityLogList;
 

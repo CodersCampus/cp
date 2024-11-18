@@ -53,7 +53,6 @@ public class CheckinController {
     public String fetch(ModelMap model, @PathVariable Long id) {
         CheckinDTO checkinDTO = checkinService.findById(id);
         List<ActivityLog> activityLogs = activityLogService.findByCheckinId(id);
-        System.out.println("HEY, LISTEN!!" + activityLogs);
         model.put("checkin", checkinDTO);
         model.put("activityLogs", activityLogs);
         ActivityLog activityLog = new ActivityLog();
@@ -69,7 +68,6 @@ public class CheckinController {
     public String update(@ModelAttribute("checkin") Checkin checkin,
                          @ModelAttribute("activityLog") ActivityLog activityLog) {
         checkin.getActivityLogs().add(activityLog);
-        System.out.println("HEYYYYYYY AGAIN");
         return "redirect:/checkin/";
     }
 
