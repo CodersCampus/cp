@@ -1,7 +1,6 @@
 package com.coderscampus.cp.domain;
 
-import com.coderscampus.cp.domain.Checkin.CodingType;
-import com.coderscampus.cp.domain.Checkin.Role;
+
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -11,18 +10,14 @@ public class ActivityLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Boolean isSetUp;
-    private Boolean available;
-    @Enumerated(EnumType.STRING)
     private Role role;
     private Instant startTime;
     private Instant endTime;
-    @Enumerated(EnumType.STRING)
-    private Checkin.CodingType codingType;
+    private CodingType codingType;
     private Integer issueNumber;
     @Column(length = 5000, nullable = true)
     private String comment;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "checkin_id")
     private Checkin checkin;
 
@@ -38,21 +33,6 @@ public class ActivityLog {
         this.id = id;
     }
 
-    public Boolean getSetUp() {
-        return isSetUp;
-    }
-
-    public void setSetUp(Boolean setUp) {
-        isSetUp = setUp;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
 
     public Role getRole() {
         return role;
@@ -114,15 +94,19 @@ public class ActivityLog {
     public String toString() {
         return "ActivityLog{" +
                 "id=" + id +
-                ", isSetUp=" + isSetUp +
-                ", available=" + available +
                 ", role=" + role +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
                 ", codingType=" + codingType +
                 ", issueNumber=" + issueNumber +
                 ", comment='" + comment + '\'' +
                 ", checkin=" + checkin +
                 '}';
+    }
+
+    public enum CodingType {
+        FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
+    }
+
+    public enum Role {
+        FOUNDATIONS, OBSERVER, CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
     }
 }

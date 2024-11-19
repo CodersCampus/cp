@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.coderscampus.cp.domain.ActivityLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,10 +45,10 @@ public class CheckinService {
         }
 
         foundCheckin.setNextAssignment(checkinDTO.getNextAssignment());
-        foundCheckin.setBlockers(checkinDTO.getBlockers());
+        foundCheckin.setBlocker(checkinDTO.getBlocker());
+        foundCheckin.setSetup(checkinDTO.getSetUp());
+        foundCheckin.setAvailable(checkinDTO.getAvailable());
         foundCheckin.setBlockerDescription(checkinDTO.getBlockerDescription());
-        foundCheckin.setRole(checkinDTO.getRole());
-        foundCheckin.setCodingType(checkinDTO.getCodingType());
         foundCheckin.setStudent(student);
         foundCheckin.setUid(student.getUid());
         foundCheckin = checkinRepo.save(foundCheckin);
@@ -91,5 +92,14 @@ public class CheckinService {
             checkinDTOS.add(checkinDTO);
         }
         return checkinDTOS;
+    }
+
+    public List<ActivityLog> findActivityLogsByCheckinId(Long id) {
+        Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
+        if (foundCheckin != null) {
+            return foundCheckin.getActivityLogs();
+        } else {
+            return new ArrayList<>();
+        }
     }
 }

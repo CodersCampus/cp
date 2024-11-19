@@ -2,8 +2,7 @@ package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.domain.Checkin.CodingType;
-import com.coderscampus.cp.domain.Checkin.Role;
+
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.repository.ActivityLogRepository;
@@ -63,17 +62,16 @@ public class ActivityLogServiceTest {
 			Checkin checkin = new Checkin();
 			checkin.setBlockerDescription("Blocker" + i);
 			checkin.setNextAssignment(i);
-			checkin.setBlockers(true);
-			checkin.setRole(Checkin.Role.CODER);
-			checkin.setCodingType(Checkin.CodingType.CRUD);
+			checkin.setBlocker(true);
+			
+			
 			checkin.setStudent(student1);
 			checkin.setUid(student1Uid);
 			checkinRepo.save(checkin);
 			ActivityLog activityLog = new ActivityLog();
-			activityLog.setSetUp(true);
-			activityLog.setAvailable(true);
-			activityLog.setRole(Checkin.Role.OBSERVER);
-			activityLog.setCodingType(Checkin.CodingType.CRUD);
+			
+			activityLog.setRole(ActivityLog.Role.OBSERVER);
+			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
 			activityLog.setIssueNumber(628);
 			activityLog.setComment("Update");
 			activityLog.setCheckin(checkin);
@@ -150,10 +148,9 @@ public class ActivityLogServiceTest {
                     List<ActivityLog> activityLogList = activityLogService.findByCheckin(checkinDTO.getId());
                     assertEquals(1, activityLogList.size());
                     ActivityLog activityLog = new ActivityLog();
-                    activityLog.setSetUp(true);
-                    activityLog.setAvailable(true);
-                    activityLog.setRole(Checkin.Role.OBSERVER);
-                    activityLog.setCodingType(Checkin.CodingType.CRUD);
+                    
+                    activityLog.setRole(ActivityLog.Role.OBSERVER);
+                    activityLog.setCodingType(ActivityLog.CodingType.CRUD);
                     activityLog.setIssueNumber(628);
                     activityLog.setComment("Update");
                     Checkin checkin = activityLogList.get(0).getCheckin();

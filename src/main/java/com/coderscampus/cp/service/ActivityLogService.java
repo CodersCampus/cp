@@ -55,6 +55,19 @@ public class ActivityLogService {
     	}
     	return activityLogList;
     }
+    public List<ActivityLog> findByCheckinId(Long id) {
+        List<ActivityLog> activityLogList = new ArrayList<ActivityLog>();
+        if(id == null) {
+            return activityLogList;
+        }
+        Optional<Checkin> checkinOpt = checkinRepo.findById(id);
+        if(checkinOpt.isPresent()) {
+            activityLogList = activityLogRepository.findByCheckinId(id);
+            return activityLogList;
+        }
+        return activityLogList;
+
+    }
 
 
 }
