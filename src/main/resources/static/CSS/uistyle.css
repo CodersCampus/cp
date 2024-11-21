@@ -1266,3 +1266,12 @@ input[type=checkbox]:checked:before {
     font-size: 14px;
     color: var(--primary);
 }
+
+.checkin-form-container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border: solid 10px green;
+	
+	
+}
