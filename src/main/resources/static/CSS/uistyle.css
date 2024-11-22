@@ -1225,18 +1225,9 @@ input[type=checkbox]:checked:before {
 }
 
 [layout="layout-live"] {
-    display: grid;
-    grid-template-columns: 1fr minmax(100px, 482px) 1fr minmax(100px, 858px) 1fr;
-    grid-template-rows: 1fr 100px 20px auto 1fr;
-    grid-template-areas:
-        "margin-top margin-top margin-top margin-top margin-top"
-        "margin-left checkin-start gap-v checkin-type margin-right"
-        "margin-left checkin-start gap-v gap-h margin-right"
-        "margin-left checkin-start gap-v checkin-table margin-right"
-        "margin-bottom margin-bottom margin-bottom margin-bottom margin-bottom";
-    height: calc(100vh - 200px);
-    margin: 0;
-    justify-items: center;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
 }
 
 .horizontal-form {
@@ -1269,9 +1260,18 @@ input[type=checkbox]:checked:before {
 
 .checkin-form-container{
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	border: solid 10px green;
-	
+	padding: 20px;
 	
 }
+
+.activity-log-section{
+display: flex;
+flex-direction: column;
+max-width: min-content;
+padding: top 40px;
+}
+
+.button-group {
+
+}
+
