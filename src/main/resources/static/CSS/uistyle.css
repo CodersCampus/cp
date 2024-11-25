@@ -1268,7 +1268,7 @@ input[type=checkbox]:checked:before {
 display: flex;
 flex-direction: column;
 max-width: min-content;
-padding: top 40px;
+padding-top: 40px;
 }
 
 .button-group {
