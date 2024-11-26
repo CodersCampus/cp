@@ -3,6 +3,7 @@ package com.coderscampus.cp.web;
 import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.dto.CheckinDTO;
+import com.coderscampus.cp.service.ActivityLogService;
 import com.coderscampus.cp.service.CheckinService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class CheckinController {
 
     @Autowired
     private CheckinService checkinService;
+    @Autowired
+    private ActivityLogService activityLogService;
+
 
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
@@ -48,18 +52,22 @@ public class CheckinController {
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
         CheckinDTO checkinDTO = checkinService.findById(id);
+        List<ActivityLog> activityLogs = activityLogService.findByCheckinId(id);
         model.put("checkin", checkinDTO);
+        model.put("activityLogs", activityLogs);
         ActivityLog activityLog = new ActivityLog();
         model.put("activityLog", activityLog);
         model.addAttribute("pageTitle", "Checkin Update");
+        model.addAttribute("roleList", ActivityLog.Role.values());
+        model.addAttribute("codingType", ActivityLog.CodingType.values());
         model.put("isCheckin", true);
         return "checkin/update";
     }
 
     @PostMapping("/update/{id}")
     public String update(@ModelAttribute("checkin") Checkin checkin,
-            @ModelAttribute("activityLog") ActivityLog activityLog) {
-        checkin.getActivityLog().add(activityLog);
+                         @ModelAttribute("activityLog") ActivityLog activityLog) {
+        checkin.getActivityLogs().add(activityLog);
         return "redirect:/checkin/";
     }
 
@@ -74,14 +82,5 @@ public class CheckinController {
         checkinService.delete(checkinDTO, uid);
         return "redirect:/checkin/";
     }
-
-    @ModelAttribute("roleList")
-    public Checkin.Role[] getRoleList() {
-        return Checkin.Role.values();
-    }
-
-    @ModelAttribute("codingType")
-    public Checkin.CodingType[] getCodingType() {
-        return Checkin.CodingType.values();
-    }
 }
+

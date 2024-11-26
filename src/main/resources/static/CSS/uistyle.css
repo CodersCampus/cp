@@ -1155,3 +1155,123 @@ input[type=checkbox]:checked:before {
 }
 
 /*// --------------------------------- //*/
+
+.big-title {
+    display:flex;
+    flex-direction: row;
+    gap:16px;
+    color: var(--primary);
+}
+
+.ui-welcome-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin: auto;
+    height: calc(100vh - 200px);
+}
+
+.new-welcome {
+    align-items: center;
+}
+
+.welcome-button {
+    margin-top: 160px;
+}
+
+[layout="layout-new"] {
+    display: grid;
+    grid-template-columns: 1fr 442px 1fr;
+    grid-template-areas:
+        "margin-top margin-top margin-top"
+        "margin-left checkin-start margin-right"
+        "margin-bottom margin-bottom margin-bottom";
+    grid-template-rows: 1fr auto 1fr;
+    height: calc(100vh - 200px);
+    margin: 0;
+    justify-items: center;
+}
+
+.new-form {
+    width: 480px;
+}
+
+.new-form button {
+    align-self: center;
+}
+
+.new-form button:first-of-type {
+    margin-top: 24px;
+}
+
+.ui-checkin-start {
+    grid-area: checkin-start;
+    border-radius: 8px;
+    background-color: var(--background-accent);
+}
+
+.ui-checkin-type {
+    grid-area: checkin-type;
+    border-radius: 8px;
+    background-color: var(--background-accent);
+}
+
+.ui-checkin-table {
+    grid-area: checkin-table;
+    width: 100%;
+}
+
+[layout="layout-live"] {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.horizontal-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 20px;
+    width: 858px;
+    flex-wrap: wrap;
+}
+
+.horizontal-form button {
+    align-self: flex-end;
+    margin-bottom: 6px;
+}
+
+.ui-horizontal-input-field {
+    min-width: 25%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px 0;
+    text-align: left;
+    font-size: 14px;
+    color: var(--primary);
+}
+
+.checkin-form-container{
+	display: flex;
+	padding: 20px;
+	
+}
+
+.activity-log-section{
+display: flex;
+flex-direction: column;
+max-width: min-content;
+padding-top: 40px;
+}
+
+.button-group {
+
+}
+

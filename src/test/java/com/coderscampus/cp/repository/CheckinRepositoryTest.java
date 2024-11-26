@@ -32,7 +32,7 @@ class CheckinRepositoryTest {
         String uid = UUID.randomUUID().toString();
         Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
         studentRepo.save(student);
-        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student, Checkin.Role.CODER, Checkin.CodingType.CRUD);
+        Checkin checkin = new Checkin(uid, null, 9, true, "assignment9", student);
         checkinRepo.save(checkin);
         Checkin checkin2 = checkinRepo.findById(checkin.getId()).get();
         assertNotNull(checkin2);

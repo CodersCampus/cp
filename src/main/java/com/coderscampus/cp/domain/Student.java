@@ -208,8 +208,8 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", assignmentNum=" + assignmentNum +
                 ", ide='" + ide + '\'' +
-                ", dateCreated=" + dateCreated +
-                ", checkin=" + checkin +
+               
+                
                 '}';
     }
     //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,

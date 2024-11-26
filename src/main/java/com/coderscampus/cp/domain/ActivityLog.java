@@ -1,7 +1,6 @@
 package com.coderscampus.cp.domain;
 
-import com.coderscampus.cp.domain.Checkin.CodingType;
-import com.coderscampus.cp.domain.Checkin.Role;
+
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -11,10 +10,6 @@ public class ActivityLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String uid;
-    private Instant date;
-    private Boolean isSetUp;
-    private Boolean available;
     private Role role;
     private Instant startTime;
     private Instant endTime;
@@ -22,9 +17,13 @@ public class ActivityLog {
     private Integer issueNumber;
     @Column(length = 5000, nullable = true)
     private String comment;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "checkin_id")
     private Checkin checkin;
+
+    public ActivityLog() {
+        this.startTime = Instant.now();
+    }
 
     public Long getId() {
         return id;
@@ -34,45 +33,6 @@ public class ActivityLog {
         this.id = id;
     }
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public Instant getDate() {
-        return date;
-    }
-
-    public void setDate(Instant date) {
-        this.date = date;
-    }
-
-    public Boolean getSetUp() {
-        return isSetUp;
-    }
-
-    public void setSetUp(Boolean setUp) {
-        isSetUp = setUp;
-    }
-
-    public Boolean getIsSetUp() {
-        return isSetUp;
-    }
-
-    public void setIsSetUp(Boolean isSetUp) {
-        this.isSetUp = isSetUp;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
 
     public Role getRole() {
         return role;
@@ -134,17 +94,19 @@ public class ActivityLog {
     public String toString() {
         return "ActivityLog{" +
                 "id=" + id +
-                ", uid='" + uid + '\'' +
-                ", date=" + date +
-                ", isSetUp=" + isSetUp +
-                ", available=" + available +
                 ", role=" + role +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
                 ", codingType=" + codingType +
                 ", issueNumber=" + issueNumber +
                 ", comment='" + comment + '\'' +
                 ", checkin=" + checkin +
                 '}';
+    }
+
+    public enum CodingType {
+        FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
+    }
+
+    public enum Role {
+        FOUNDATIONS, OBSERVER, CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
     }
 }
