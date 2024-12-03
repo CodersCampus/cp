@@ -10,9 +10,11 @@ public class ActivityLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private Role role;
     private Instant startTime;
     private Instant endTime;
+    @Enumerated(EnumType.STRING)
     private CodingType codingType;
     private Integer issueNumber;
     @Column(length = 5000, nullable = true)
