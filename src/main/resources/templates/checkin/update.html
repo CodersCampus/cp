@@ -91,27 +91,24 @@
 									class="ui-form horizontal-form" method="post">
 									<input id="id" name="id" class="form-control"
 										th:field="${checkin.id}" type="hidden" />
-									<div class="ui-input-field">
-										<label class="ui-label"> Comment: </label>
+
+									<div class="ui-horizontal-input-field">
+										<label class="ui-label">Issue Number:</label>
 										<div class="ui-text-input">
-											<textarea class="ui-value" cols="20" name="comment"
-												placeholder="Add a comment" rows="5"
-												th:field="${activityLog.comment}"></textarea>
+											<input class="ui-value" placeholder="ex: 458"
+												th:field="${activityLog.issueNumber}" type="number" />
 										</div>
 									</div>
-
-
-
-
 
 									<div class="ui-horizontal-input-field">
 										<label class="ui-label">Role:</label> <select
 											class="ui-text-dropdown" th:field="*{activityLog.role}">
-											<option class="ui-option" th:each="role : ${roleList}"
+											<option class="ui-option" th:each="role : ${roleList}"      3A
 												th:text="${#strings.capitalize(role.toString())}"
 												th:value="${role}"></option>
 										</select>
 									</div>
+
 									<div class="ui-horizontal-input-field">
 										<label class="ui-label">Coding Type:</label> <select
 											class="ui-text-dropdown" th:field="*{activityLog.codingType}">
@@ -121,27 +118,32 @@
 												th:value="${codingType}"></option>
 										</select>
 									</div>
-									<div class="ui-horizontal-input-field">
-										<label class="ui-label">Issue Number:</label>
-										<div class="ui-text-input">
-											<input class="ui-value" placeholder="ex: 458"
-												th:field="${activityLog.issueNumber}" type="number" />
-										</div>
-									</div>
+
+
+                                    <div class="ui-input-field">
+                                        <label class="ui-label"> Comment: </label>
+                                        <div class="ui-text-input">
+											<textarea class="ui-value" cols="20" name="comment"
+                                                      placeholder="Add a comment" rows="1"
+                                                      th:field="${activityLog.comment}"></textarea>
+                                        </div>
+                                    </div>
+
 									<button class="ui-nav-item ui-button" type="submit">
 										<span>Add Activity</span>
 									</button>
 								</form>
 							</div>
+
 							<div class="ui-checkin-table">
 								<div class="ui-table" role="region" tabindex="0">
 									<table>
 										<thead>
 											<tr>
 												<th scope="col">Time:</th>
+												<th scope="col">Issue Number:</th>
 												<th scope="col">Role:</th>
 												<th scope="col">Coding Type:</th>
-												<th scope="col">Issue Number:</th>
 												<th scope="col">Comment:</th>
 											</tr>
 										</thead>
@@ -152,9 +154,9 @@
 												<!--                ABOVE NEEDS TO BE CHANGED TO DISPLAY ONLY TIME AND NOT DATE                   -->
 												<td><span
 													th:text="${#dates.format(activityLog.startTime, 'HH:mm')}"></span></td>
+													<td><span th:text="${activityLog.issueNumber}"></span></td>
 												<td><span th:text="${activityLog.role}"></span></td>
 												<td><span th:text="${activityLog.codingType}"></span></td>
-												<td><span th:text="${activityLog.issueNumber}"></span></td>
 												<td><span th:text="${activityLog.comment}"></span></td>
 											</tr>
 										</tbody>
