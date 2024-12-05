@@ -124,7 +124,7 @@
                                         <label class="ui-label"> Comment: </label>
                                         <div class="ui-text-input">
 											<textarea class="ui-value" cols="20" name="comment"
-                                                      placeholder="Add a comment" rows="5"
+                                                      placeholder="Add a comment" rows="1"
                                                       th:field="${activityLog.comment}"></textarea>
                                         </div>
                                     </div>
@@ -141,9 +141,9 @@
 										<thead>
 											<tr>
 												<th scope="col">Time:</th>
+												<th scope="col">Issue Number:</th>
 												<th scope="col">Role:</th>
 												<th scope="col">Coding Type:</th>
-												<th scope="col">Issue Number:</th>
 												<th scope="col">Comment:</th>
 											</tr>
 										</thead>
@@ -154,9 +154,9 @@
 												<!--                ABOVE NEEDS TO BE CHANGED TO DISPLAY ONLY TIME AND NOT DATE                   -->
 												<td><span
 													th:text="${#dates.format(activityLog.startTime, 'HH:mm')}"></span></td>
+													<td><span th:text="${activityLog.issueNumber}"></span></td>
 												<td><span th:text="${activityLog.role}"></span></td>
 												<td><span th:text="${activityLog.codingType}"></span></td>
-												<td><span th:text="${activityLog.issueNumber}"></span></td>
 												<td><span th:text="${activityLog.comment}"></span></td>
 											</tr>
 										</tbody>
