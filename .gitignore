@@ -13,3 +13,4 @@ bin/
 tmp/
 appmap.yml
 sql_warning.txt
+h2db/
