@@ -103,12 +103,12 @@ public class ActivityLog {
                 ", checkin=" + checkin +
                 '}';
     }
-
-    public enum CodingType {
-        FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
-    }
-
+    
     public enum Role {
-        FOUNDATIONS, OBSERVER, CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
+        FOUNDATIONS, OBSERVER, CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER 
+    }
+    
+    public enum CodingType {
+        NOT_APPLICABLE, DRILLS, PARKING_LOT, DESIGN, CRUD, CODE_REVIEW, DOCUMENTATION
     }
 }
