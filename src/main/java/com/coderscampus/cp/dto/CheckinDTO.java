@@ -1,6 +1,7 @@
 package com.coderscampus.cp.dto;
 
 import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.domain.InstantFormatter;
 
 import java.time.Instant;
 
@@ -8,6 +9,7 @@ public class CheckinDTO {
 
     private Long id;
     private Instant date;
+    private String createdAt;
     private Integer nextAssignment;
     private Boolean blocker;
     private String blockerDescription;
@@ -15,10 +17,20 @@ public class CheckinDTO {
     private Boolean setUp;
     private Boolean available;
 
+    public CheckinDTO() {
+        super();
+    }
+
+    public CheckinDTO(long studentId) {
+        super();
+        this.studentId = studentId;
+    }
+
     public CheckinDTO(Checkin checkin) {
         super();
         this.id = checkin.getId();
         this.date = checkin.getDate();
+        this.createdAt = InstantFormatter.format(date);
         this.nextAssignment = checkin.getNextAssignment();
         this.blocker = checkin.getBlocker();
         this.blockerDescription = checkin.getBlockerDescription();
@@ -43,17 +55,8 @@ public class CheckinDTO {
         this.available = available;
     }
 
-    public CheckinDTO(long studentId) {
-        super();
-        this.studentId = studentId;
-    }
-
     public void setDate(Instant date) {
         this.date = date;
-    }
-
-    public CheckinDTO() {
-        super();
     }
 
     public Long getStudentId() {
@@ -74,6 +77,10 @@ public class CheckinDTO {
 
     public Instant getDate() {
         return date;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
     }
 
     public Integer getNextAssignment() {
@@ -100,12 +107,12 @@ public class CheckinDTO {
         this.blockerDescription = blockerDescription;
     }
 
-
     @Override
     public String toString() {
         return "CheckinDTO{" +
                 "id=" + id +
                 ", date=" + date +
+                ", createdAt=" + createdAt +
                 ", nextAssignment=" + nextAssignment +
                 ", blocker=" + blocker +
                 ", blockerDescription='" + blockerDescription + '\'' +
