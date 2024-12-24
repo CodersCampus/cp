@@ -1,7 +1,7 @@
 package com.coderscampus.cp.dto;
 
 import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.domain.InstantFormatter;
+import com.coderscampus.cp.util.InstantFormatter;
 
 import java.time.Instant;
 
