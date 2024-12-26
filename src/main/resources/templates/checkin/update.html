@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
 	<fbauth-element headless>
@@ -33,8 +33,7 @@
 									<div class="ui-input-field">
 										<label class="ui-label">Date:</label>
 										<div class="ui-text-input">
-											<input class="ui-value" disabled th:field="${checkin.date}"
-												type="text" />
+											<input class="ui-value" disabled th:field="${checkin.createdAt}" type="text" />
 										</div>
 									</div>
 
