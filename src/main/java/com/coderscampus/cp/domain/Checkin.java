@@ -13,56 +13,32 @@ public class Checkin {
     private Long id;
     @Column(nullable = false)
     private String uid;
-    private Boolean isSetup;
-    private Boolean available;
     private final Instant date;
     private Integer nextAssignment;
-    private Boolean blocker;
+    private Boolean blockers;
     private String blockerDescription;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
     private Student student;
-
+    private Role role;
+    private CodingType codingType;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ActivityLog> activityLogs = new ArrayList<>();
+    private List<ActivityLog> activityLog = new ArrayList<>();
 
     public Checkin() {
         this.date = Instant.now();
     }
 
-    public Checkin(String uid, List<ActivityLog> activityLogs, Integer nextAssignment, Boolean blocker, String blockerDescription, Student student) {
+    public Checkin(String uid, List<ActivityLog> activityLog, Integer nextAssignment, Boolean blockers, String blockerDescription, Student student, Role role, CodingType codingType) {
         this();
         this.uid = uid;
-        this.activityLogs = activityLogs;
+        this.activityLog = activityLog;
         this.nextAssignment = nextAssignment;
-        this.blocker = blocker;
+        this.blockers = blockers;
         this.blockerDescription = blockerDescription;
         this.student = student;
-
-    }
-
-    public Boolean getSetup() {
-        return isSetup;
-    }
-
-    public void setSetup(Boolean setup) {
-        isSetup = setup;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
-
-    public Boolean getBlocker() {
-        return blocker;
-    }
-
-    public void setBlocker(Boolean blocker) {
-        this.blocker = blocker;
+        this.role = role;
+        this.codingType = codingType;
     }
 
     public Long getId() {
@@ -93,6 +69,13 @@ public class Checkin {
         this.nextAssignment = nextAssignment;
     }
 
+    public Boolean getBlockers() {
+        return blockers;
+    }
+
+    public void setBlockers(Boolean blockers) {
+        this.blockers = blockers;
+    }
 
     public String getBlockerDescription() {
         return blockerDescription;
@@ -110,29 +93,49 @@ public class Checkin {
         this.student = student;
     }
 
-
-    public List<ActivityLog> getActivityLogs() {
-        return activityLogs;
+    public Role getRole() {
+        return role;
     }
 
-    public void setActivityLogs(List<ActivityLog> activityLog) {
-        this.activityLogs = activityLog;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
+    public CodingType getCodingType() {
+        return codingType;
+    }
+
+    public void setCodingType(CodingType codingType) {
+        this.codingType = codingType;
+    }
+
+    public List<ActivityLog> getActivityLog() {
+        return activityLog;
+    }
+
+    public void setActivityLog(List<ActivityLog> activityLog) {
+        this.activityLog = activityLog;
+    }
 
     @Override
     public String toString() {
         return "Checkin{" +
                 "id=" + id +
                 ", uid='" + uid + '\'' +
-                ", isSetup=" + isSetup +
-                ", available=" + available +
-               
+                ", date=" + date +
                 ", nextAssignment=" + nextAssignment +
-                ", blocker=" + blocker +
+                ", blockers=" + blockers +
                 ", blockerDescription='" + blockerDescription + '\'' +
-                
-              
+                ", student=" + student +
+                ", activityLog=" + activityLog +
                 '}';
+    }
+
+    public enum CodingType {
+        FOUNDATIONS, CRUD, CODE_REVIEW, DESIGN, DOCUMENTATION
+    }
+
+    public enum Role {
+        FOUNDATIONS, OBSERVER, CODER, GUIDE, SCRUM_MASTER, PRODUCT_OWNER
     }
 }

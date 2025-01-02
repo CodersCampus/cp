@@ -28,6 +28,6 @@ public class WorkService {
 	}
 
     public List<Work> findAllWorks() {
-        return workRepository.findAllByOrderByDateDesc();
+        return workRepository.findAll();
     }
 }

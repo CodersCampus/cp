@@ -1,7 +1,6 @@
 package com.coderscampus.cp.dto;
 
 import com.coderscampus.cp.domain.Checkin;
-import com.coderscampus.cp.util.InstantFormatter;
 
 import java.time.Instant;
 
@@ -9,16 +8,23 @@ public class CheckinDTO {
 
     private Long id;
     private Instant date;
-    private String createdAt;
     private Integer nextAssignment;
-    private Boolean blocker;
+    private Boolean blockers;
     private String blockerDescription;
+    private Checkin.Role role;
+    private Checkin.CodingType codingType;
     private Long studentId;
-    private Boolean setUp;
-    private Boolean available;
 
-    public CheckinDTO() {
+    public CheckinDTO(Checkin checkin) {
         super();
+        this.id = checkin.getId();
+        this.date = checkin.getDate();
+        this.nextAssignment = checkin.getNextAssignment();
+        this.blockers = checkin.getBlockers();
+        this.blockerDescription = checkin.getBlockerDescription();
+        this.role = checkin.getRole();
+        this.codingType = checkin.getCodingType();
+        this.studentId = checkin.getStudent().getId();
     }
 
     public CheckinDTO(long studentId) {
@@ -26,37 +32,8 @@ public class CheckinDTO {
         this.studentId = studentId;
     }
 
-    public CheckinDTO(Checkin checkin) {
+    public CheckinDTO() {
         super();
-        this.id = checkin.getId();
-        this.date = checkin.getDate();
-        this.createdAt = InstantFormatter.format(date);
-        this.nextAssignment = checkin.getNextAssignment();
-        this.blocker = checkin.getBlocker();
-        this.blockerDescription = checkin.getBlockerDescription();
-        this.setUp = checkin.getSetup();
-        this.available = checkin.getAvailable();
-        this.studentId = checkin.getStudent().getId();
-    }
-
-    public Boolean getSetUp() {
-        return setUp;
-    }
-
-    public void setSetUp(Boolean setUp) {
-        this.setUp = setUp;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
-
-    public void setDate(Instant date) {
-        this.date = date;
     }
 
     public Long getStudentId() {
@@ -79,10 +56,6 @@ public class CheckinDTO {
         return date;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
     public Integer getNextAssignment() {
         return nextAssignment;
     }
@@ -91,12 +64,12 @@ public class CheckinDTO {
         this.nextAssignment = nextAssignment;
     }
 
-    public Boolean getBlocker() {
-        return blocker;
+    public Boolean getBlockers() {
+        return blockers;
     }
 
-    public void setBlocker(Boolean blocker) {
-        this.blocker = blocker;
+    public void setBlockers(Boolean blockers) {
+        this.blockers = blockers;
     }
 
     public String getBlockerDescription() {
@@ -107,18 +80,26 @@ public class CheckinDTO {
         this.blockerDescription = blockerDescription;
     }
 
+    public Checkin.Role getRole() {
+        return role;
+    }
+
+    public void setRole(Checkin.Role role) {
+        this.role = role;
+    }
+
+    public Checkin.CodingType getCodingType() {
+        return codingType;
+    }
+
+    public void setCodingType(Checkin.CodingType codingType) {
+        this.codingType = codingType;
+    }
+
     @Override
     public String toString() {
-        return "CheckinDTO{" +
-                "id=" + id +
-                ", date=" + date +
-                ", createdAt=" + createdAt +
-                ", nextAssignment=" + nextAssignment +
-                ", blocker=" + blocker +
-                ", blockerDescription='" + blockerDescription + '\'' +
-                ", studentId=" + studentId +
-                ", isSetup=" + setUp +
-                ", available=" + available +
-                '}';
+        return "CheckinDTO{" + "id=" + id + ", date=" + date + ", nextAssignment=" + nextAssignment + ", blockers="
+                + blockers + ", blockerDescription='" + blockerDescription + '\'' + ", role=" + role + ", codingType="
+                + codingType + '}';
     }
 }
