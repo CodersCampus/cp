@@ -7,6 +7,7 @@ import com.coderscampus.cp.repository.SpringProjectRepository;
 import com.coderscampus.cp.service.CheckinService;
 import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -24,6 +25,9 @@ public class SpringProjectController {
     private final StudentService studentService;
     private final CheckinService checkinService;
 
+    @Value("${show.database.console.link}")
+    private boolean showDatabaseConsoleLink;
+
     public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
         this.springProjectRepository = springProjectRepository;
         this.studentService = studentService;
@@ -36,6 +40,7 @@ public class SpringProjectController {
         String displayName = (String) httpSession.getAttribute("displayName");
         Student student = new Student();
         model.put("student", student);
+        model.addAttribute("showDatabaseConsoleLink", showDatabaseConsoleLink);
         return "dashboard";
     }
 
