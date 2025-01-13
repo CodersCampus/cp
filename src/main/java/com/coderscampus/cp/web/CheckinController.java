@@ -82,5 +82,16 @@ public class CheckinController {
         checkinService.delete(checkinDTO, uid);
         return "redirect:/checkin/";
     }
+
+    @GetMapping("/sorted")
+    public String getCheckinsForBlockerReadButton(ModelMap model, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        List<CheckinDTO> checkins = checkinService.getSortedCheckinsByUid(uid);
+        model.put("checkins", checkins);
+        model.addAttribute("pageTitle", "Blocker Read");
+        model.put("isCheckin", true);
+        return "checkin/read";
+    }
+
 }
 

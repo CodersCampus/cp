@@ -60,6 +60,7 @@ public class CheckinService {
                 .map(CheckinDTO::new).collect(Collectors.toList());
     }
 
+
     public CheckinDTO findById(Long id) {
         Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
         if (foundCheckin != null) {
@@ -101,5 +102,13 @@ public class CheckinService {
         } else {
             return new ArrayList<>();
         }
+    }
+
+    public List<CheckinDTO> getSortedCheckinsByUid(String uid) {
+        return checkinRepo.findByUid(uid).stream()
+                .sorted(Comparator.comparing(Checkin::getBlocker).reversed()
+                        .thenComparing(Checkin::getDate).reversed())
+                .map(CheckinDTO::new)
+                .collect(Collectors.toList());
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:with="checkinService=${@checkinService}" xmlns:th="http://thymeleaf.org">
+<html th:with="checkinService=${@checkinService}" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
 <fbauth-element headless>
@@ -11,6 +11,8 @@
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
                         <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
+                        </button>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/sorted">Blocker Read</a>
                         </button>
                     </ul>
                 </nav>
