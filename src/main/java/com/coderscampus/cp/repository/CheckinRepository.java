@@ -16,6 +16,7 @@ public interface CheckinRepository extends JpaRepository<Checkin, Long> {
     @Query("SELECT c FROM Checkin c " +
             "JOIN c.student s " +
             "WHERE s.name = :name " +
+            "AND c.blocker = true " +
             "AND c.blockerDescription = :blockerDescription " +
             "AND c.date = :date")
     List<Checkin> findCheckinsByStudentNameAndBlockerAndDate(
