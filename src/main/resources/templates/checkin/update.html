@@ -95,17 +95,17 @@
 									</div>
 
 									<div class="ui-horizontal-input-field">
-										<label class="ui-label">Role:</label> <select
-											class="ui-text-dropdown" th:field="*{activityLog.role}">
-											<option class="ui-option" th:each="role : ${roleList}"      3A
+										<label class="ui-label">Role:</label>
+                                        <select id="role" class="ui-text-dropdown" th:field="*{activityLog.role}">
+											<option class="ui-option" th:each="role : ${roleList}"
 												th:text="${#strings.capitalize(role.toString())}"
 												th:value="${role}"></option>
 										</select>
 									</div>
 
 									<div class="ui-horizontal-input-field">
-										<label class="ui-label">Coding Type:</label> <select
-											class="ui-text-dropdown" th:field="*{activityLog.codingType}">
+										<label class="ui-label">Coding Type:</label>
+                                        <select id="codingType" class="ui-text-dropdown" th:field="*{activityLog.codingType}">
 											<option class="ui-option"
 												th:each="codingType : ${codingType}"
 												th:text="${#strings.capitalize(codingType.toString())}"
@@ -168,5 +168,6 @@
 	<div th:replace="~{fragments/togglescript :: script}"></div>
 	<div th:replace="~{fragments/authscript :: script}"></div>
 	<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+	<div th:replace="~{fragments/roleScript :: script}"></div>
 </body>
 </html>

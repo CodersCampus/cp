@@ -1,0 +1,14 @@
+<script>
+    const nextAssignment = document.getElementById('nextAssignment').value;
+    const role = document.getElementById('role');
+    const codingType = document.getElementById('codingType');
+
+    if (nextAssignment < 6) {
+        role.innerHTML = `<option value="FOUNDATIONS">FOUNDATIONS</option>`;
+        codingType.innerHtml = `
+            <option value="NOT_APPLICABLE">NOT_APPLICABLE</option>
+            <option value="DRILLS">DRILLS</option>
+            <option value="PARKING_LOT">PARKING_LOT</option>
+        `;
+    }
+</script>
