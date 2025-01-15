@@ -83,7 +83,7 @@ public class CheckinController {
         return "redirect:/checkin/";
     }
 
-    @GetMapping("/sorted")
+    @GetMapping("/blockers")
     public String getCheckinsForBlockerReadButton(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.getSortedCheckinsByUid(uid);

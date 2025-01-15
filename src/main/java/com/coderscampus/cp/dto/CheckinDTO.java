@@ -16,6 +16,7 @@ public class CheckinDTO {
     private Long studentId;
     private Boolean setUp;
     private Boolean available;
+    private String name;
 
     public CheckinDTO() {
         super();
@@ -28,6 +29,7 @@ public class CheckinDTO {
 
     public CheckinDTO(Checkin checkin) {
         super();
+        this.name=checkin.getStudent().getName();
         this.id = checkin.getId();
         this.date = checkin.getDate();
         this.createdAt = InstantFormatter.format(date);
@@ -107,18 +109,27 @@ public class CheckinDTO {
         this.blockerDescription = blockerDescription;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "CheckinDTO{" +
                 "id=" + id +
                 ", date=" + date +
-                ", createdAt=" + createdAt +
+                ", createdAt='" + createdAt + '\'' +
                 ", nextAssignment=" + nextAssignment +
                 ", blocker=" + blocker +
                 ", blockerDescription='" + blockerDescription + '\'' +
                 ", studentId=" + studentId +
-                ", isSetup=" + setUp +
+                ", setUp=" + setUp +
                 ", available=" + available +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

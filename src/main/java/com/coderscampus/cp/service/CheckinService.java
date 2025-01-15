@@ -106,8 +106,7 @@ public class CheckinService {
 
     public List<CheckinDTO> getSortedCheckinsByUid(String uid) {
         return checkinRepo.findByUid(uid).stream()
-                .sorted(Comparator.comparing(Checkin::getBlocker).reversed()
-                        .thenComparing(Checkin::getDate).reversed())
+                .sorted(Comparator.comparing(Checkin::getDate).reversed())
                 .map(CheckinDTO::new)
                 .collect(Collectors.toList());
     }

@@ -12,7 +12,7 @@
                     <ul class="ui-navbar-nav">
                         <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
                         </button>
-                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/sorted">Blocker Read</a>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/blockers">Blocker Read</a>
                         </button>
                     </ul>
                 </nav>
@@ -23,10 +23,9 @@
                         <table>
                             <thead>
                             <tr>
-                                <th scope="col">Date/Time:</th>
-                                <th scope="col">Next Assignment:</th>
-                                <th scope="col">Blocker:</th>
+                                <th scope="col">Name:</th>
                                 <th scope="col">Blocker Description:</th>
+                                <th scope="col">Date/Time:</th>
                                 <!--                                <th scope="col">Box Ready for Live Coding?:</th>-->
                                 <!--                                <th scope="col">Are You Available/willing to Code?:</th>-->
                                 <!--                                <th scope="col">Role:</th>-->
@@ -38,10 +37,9 @@
                             </thead>
                             <tbody>
                             <tr th:each="checkin: ${checkins}">
-                                <td><span readonly th:text="${checkin.date}"></span></td>
-                                <td><span th:text="${checkin.nextAssignment}"></span></td>
-                                <td><span th:text="${checkin.blocker}"></span></td>
+                                <td><span th:text="${checkin.name}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>
+                                <td><span th:text="${checkin.date}"></span></td>
                                 <!--                                <td><span th:text="${checkin.isSetUp}"></span></td>-->
                                 <!--                                <td><span th:text="${checkin.available}"></span></td>-->
                                 <!--                                <td><span th:text="${checkin.role}"></span></td>-->
