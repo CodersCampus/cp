@@ -1,14 +1,33 @@
-<script>
-    const nextAssignment = document.getElementById('nextAssignment').value;
-    const role = document.getElementById('role');
-    const codingType = document.getElementById('codingType');
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let roleList = /*[[${roleList}]]*/ '["Select Role"]';
+    let codingTypeList = /*[[${codingType}]]*/ '["Select Coding Type"]';
+    /*]]>*/
+    const nextAssignment = document.getElementById('next-assignment').value;
+    const issueNumberElm = document.getElementById('issue-number');
+    const roleElm = document.getElementById('role');
+    const codingTypeElm = document.getElementById('coding-type');
 
     if (nextAssignment < 6) {
-        role.innerHTML = `<option value="FOUNDATIONS">FOUNDATIONS</option>`;
-        codingType.innerHtml = `
-            <option value="NOT_APPLICABLE">NOT_APPLICABLE</option>
-            <option value="DRILLS">DRILLS</option>
-            <option value="PARKING_LOT">PARKING_LOT</option>
-        `;
+        issueNumberElm.disabled = true;
+        roleElm.innerHTML = roleList
+                .filter(role => role === 'FOUNDATIONS')
+                .map(role => `<option class="ui-option" value="${role}">${role}</option>`)
+                .join('');
+        codingTypeElm.innerHTML = codingTypeList
+                .slice(0, 3)
+                .map(codingType => `<option class="ui-option" value="${codingType}">${codingType}</option>`)
+                .join('');
+        // .filter(codingType => codingType === 'NOT_APPLICABLE' || codingType === 'DRILLS' || codingType === 'PARKING_LOT')  // only show these coding types
+    } else {
+        issueNumberElm.disabled = false;
+        roleElm.innerHTML = roleList
+                .filter(role => role !== 'FOUNDATIONS')
+                .map(role => `<option class="ui-option" value="${role}">${role}</option>`)
+                .join('');
+        codingTypeElm.innerHTML = codingTypeList
+                .slice(3, 7)
+                .map(codingType => `<option class="ui-option" value="${codingType}">${codingType}</option>`)
+                .join('');
     }
 </script>
