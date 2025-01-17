@@ -1,13 +1,12 @@
 package com.coderscampus.cp.service;
 
+import java.net.URI;
+
 import com.coderscampus.cp.dto.UserStatusDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
-import java.util.Objects;
 
 @Service
 public class UserStatusService {
@@ -22,7 +21,7 @@ public class UserStatusService {
     }
 
     public int getUserNextAssignment(String email) {
-        int assignmentSubmitted = Integer.parseInt(Objects.requireNonNull(getUserStatus(email).getBody()).getAssignmentSubmitted());
+        int assignmentSubmitted = Integer.parseInt(getUserStatus(email).getBody().getAssignmentSubmitted());
         return assignmentSubmitted >= MAX_ASSIGNMENTS ? assignmentSubmitted : assignmentSubmitted + 1;
     }
 
@@ -33,6 +32,7 @@ public class UserStatusService {
 
     public URI buildURI(String email) {
         UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(baseUrl).pathSegment(email);
+        // Do a try catch here
         return uri.build().toUri();
     }
 

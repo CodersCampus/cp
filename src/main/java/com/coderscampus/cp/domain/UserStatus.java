@@ -2,7 +2,7 @@ package com.coderscampus.cp.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Assignment {
+public class UserStatus {
 	@JsonProperty("id")
 	private String id;
 	@JsonProperty("email")

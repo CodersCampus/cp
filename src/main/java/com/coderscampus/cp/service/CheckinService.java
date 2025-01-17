@@ -63,8 +63,8 @@ public class CheckinService {
     public CheckinDTO findById(Long id) {
         Checkin foundCheckin = checkinRepo.findById(id).orElse(null);
         if (foundCheckin != null) {
-            CheckinDTO returnCheckinDTO = new CheckinDTO(foundCheckin);
-            return returnCheckinDTO;
+            CheckinDTO CheckinDTO = new CheckinDTO(foundCheckin);
+            return CheckinDTO;
         }
         return null;
     }
