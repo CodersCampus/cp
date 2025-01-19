@@ -23,32 +23,17 @@
                         <table>
                             <thead>
                             <tr>
+                                <th scope="col">Name:</th>
                                 <th scope="col">Blocker Description:</th>
                                 <th scope="col">Date/Time:</th>
-                                <!--                                <th scope="col">Box Ready for Live Coding?:</th>-->
-                                <!--                                <th scope="col">Are You Available/willing to Code?:</th>-->
-                                <!--                                <th scope="col">Role:</th>-->
-                                <!--                                <th scope="col">Coding Type:</th>-->
-                                <!--                                <th scope="col">Issue Number:</th>-->
-                                <!--                                <th scope="col">Comment:</th>-->
-                                <!--                                <th scope="col"> </th>-->
+
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="checkin: ${checkins}">
+                                <td><span th:text="${checkin.name}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>
                                 <td><span th:text="${checkin.date}"></span></td>
-                                <!--                                <td><span th:text="${checkin.isSetUp}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.available}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.role}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.codingType}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.issueNumber}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.comment}"></span></td>-->
-                                <td>
-                                    <a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
-                                        <i class="fa-solid fa-pen-to-square"
-                                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
-                                    </a>
                                 </td>
                             </tr>
                             </tbody>

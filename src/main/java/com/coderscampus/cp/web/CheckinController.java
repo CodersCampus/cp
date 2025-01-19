@@ -90,7 +90,7 @@ public class CheckinController {
         model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Blocker Read");
         model.put("isCheckin", true);
-        return "checkin/read";
+        return "checkin/blocker-read";
     }
 
 }
