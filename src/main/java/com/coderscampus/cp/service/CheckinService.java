@@ -102,4 +102,8 @@ public class CheckinService {
             return new ArrayList<>();
         }
     }
+
+    public List<CheckinDTO> getCheckinHistory() {
+        return checkinRepo.findAllCheckinsWithActivityLogs();
+    }
 }

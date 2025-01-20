@@ -8,6 +8,7 @@ import com.coderscampus.cp.service.CheckinService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,6 +82,13 @@ public class CheckinController {
     public String delete(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinService.delete(checkinDTO, uid);
         return "redirect:/checkin/";
+    }
+
+    @GetMapping("/checkin-history")
+    public String getCheckinHistory(Model model) {
+        List<CheckinDTO> checkinHistory = checkinService.getCheckinHistory();
+        model.addAttribute("checkins", checkinHistory);
+        return "checkin/checkin-history";
     }
 }
 

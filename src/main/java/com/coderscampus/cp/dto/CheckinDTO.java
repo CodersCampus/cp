@@ -16,6 +16,8 @@ public class CheckinDTO {
     private Long studentId;
     private Boolean setUp;
     private Boolean available;
+    private String comment;
+
 
     public CheckinDTO() {
         super();
@@ -24,6 +26,17 @@ public class CheckinDTO {
     public CheckinDTO(long studentId) {
         super();
         this.studentId = studentId;
+    }
+
+    public CheckinDTO(Long id, Instant date, Boolean blocker, String blockerDescription,
+                      Boolean setUp, Boolean available, String comment) {
+        this.id = id;
+        this.date = date;
+        this.blocker = blocker;
+        this.blockerDescription = blockerDescription;
+        this.setUp = setUp;
+        this.available = available;
+        this.comment = comment;
     }
 
     public CheckinDTO(Checkin checkin) {
@@ -37,6 +50,15 @@ public class CheckinDTO {
         this.setUp = checkin.getSetup();
         this.available = checkin.getAvailable();
         this.studentId = checkin.getStudent().getId();
+
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public Boolean getSetUp() {
@@ -119,6 +141,7 @@ public class CheckinDTO {
                 ", studentId=" + studentId +
                 ", isSetup=" + setUp +
                 ", available=" + available +
+                ", comment='" + comment + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:with="checkinService=${@checkinService}" xmlns:th="http://thymeleaf.org">
+<html th:with="checkinService=${@checkinService}" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
 <fbauth-element headless>
@@ -11,7 +11,6 @@
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
                         <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
-                            <button class="ui-nav-item ui-button" type="button"><a href="/checkin/checkin-history">Checkins</a>
                         </button>
                     </ul>
                 </nav>
@@ -26,13 +25,11 @@
                                 <th scope="col">Next Assignment:</th>
                                 <th scope="col">Blocker:</th>
                                 <th scope="col">Blocker Description:</th>
-                                <!--                                <th scope="col">Box Ready for Live Coding?:</th>-->
-                                <!--                                <th scope="col">Are You Available/willing to Code?:</th>-->
-                                <!--                                <th scope="col">Role:</th>-->
-                                <!--                                <th scope="col">Coding Type:</th>-->
-                                <!--                                <th scope="col">Issue Number:</th>-->
-                                <!--                                <th scope="col">Comment:</th>-->
-                                <!--                                <th scope="col"> </th>-->
+                                <th scope="col">Box Ready?</th>
+                                <th scope="col">Willing / Available to Code?</th>
+                                <th scope="col">Comments:</th>
+                                <th scope="col">Actions:</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -41,12 +38,11 @@
                                 <td><span th:text="${checkin.nextAssignment}"></span></td>
                                 <td><span th:text="${checkin.blocker}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>
-                                <!--                                <td><span th:text="${checkin.isSetUp}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.available}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.role}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.codingType}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.issueNumber}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.comment}"></span></td>-->
+                                <td><span th:text="${checkin.setUp != null ? (checkin.setUp ? 'Yes' : 'No') : 'Unknown'}"></span></td>
+                                <td><span th:text="${checkin.available != null ? (checkin.available ? 'Yes' : 'No') : 'Unknown'}"></span></td>
+                                <td><span th:text="${checkin.comment}"></span></td>
+
+
                                 <td>
                                     <a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
                                         <i class="fa-solid fa-pen-to-square"
