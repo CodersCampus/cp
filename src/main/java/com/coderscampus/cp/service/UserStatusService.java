@@ -26,13 +26,21 @@ public class UserStatusService {
     }
 
     public ResponseEntity<UserStatusDTO> getUserStatus(String email) {
-        URI uri = buildURI(email);
-        return rt.getForEntity(uri, UserStatusDTO.class);
+       try {
+    	   URI uri = buildURI(email);
+    	   ResponseEntity response = rt.getForEntity(uri, UserStatusDTO.class);
+    	   System.out.println(response);
+    	   
+    	   
+       } catch (RuntimeException e) {
+    	   System.err.println("Error creating URI: " + e.getMessage());
+       }
+       return null;
     }
 
     public URI buildURI(String email) {
         UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(baseUrl).pathSegment(email);
-        // Do a try catch here
+        // Do a try catch here                              
         return uri.build().toUri();
     }
 
