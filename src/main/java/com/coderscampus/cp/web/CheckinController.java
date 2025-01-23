@@ -38,8 +38,7 @@ public class CheckinController {
     @GetMapping("/create")
     public String getCreate(ModelMap model, HttpSession httpSession) {
         String userEmail = (String) httpSession.getAttribute("email");
-//        Integer nextAssignment = userStatusService.getUserNextAssignment(userEmail);
-        Integer nextAssignment = userStatusService.getUserNextAssignment("user@user.com");
+        Integer nextAssignment = userStatusService.getUserNextAssignment(userEmail);
         Checkin checkin = new Checkin();
         checkin.setNextAssignment(nextAssignment);
         model.put("checkin", checkin);
