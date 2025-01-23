@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:with="checkinService=${@checkinService}" xmlns:th="http://www.thymeleaf.org">
+<html th:with="checkinService=${@checkinService}" xmlns:th="http://thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
 <fbauth-element headless>
@@ -23,8 +23,10 @@
                         <table>
                             <thead>
                             <tr>
-                                <th scope="col">Blocker Description:</th>
                                 <th scope="col">Date/Time:</th>
+                                <th scope="col">Next Assignment:</th>
+                                <th scope="col">Blocker:</th>
+                                <th scope="col">Blocker Description:</th>
                                 <!--                                <th scope="col">Box Ready for Live Coding?:</th>-->
                                 <!--                                <th scope="col">Are You Available/willing to Code?:</th>-->
                                 <!--                                <th scope="col">Role:</th>-->
@@ -36,8 +38,10 @@
                             </thead>
                             <tbody>
                             <tr th:each="checkin: ${checkins}">
+                                <td><span readonly th:text="${checkin.date}"></span></td>
+                                <td><span th:text="${checkin.nextAssignment}"></span></td>
+                                <td><span th:text="${checkin.blocker}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>
-                                <td><span th:text="${checkin.date}"></span></td>
                                 <!--                                <td><span th:text="${checkin.isSetUp}"></span></td>-->
                                 <!--                                <td><span th:text="${checkin.available}"></span></td>-->
                                 <!--                                <td><span th:text="${checkin.role}"></span></td>-->
