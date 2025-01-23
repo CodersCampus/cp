@@ -1,12 +1,13 @@
 package com.coderscampus.cp.service;
 
-import java.net.URI;
-
 import com.coderscampus.cp.dto.UserStatusDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
 
 @Service
 public class UserStatusService {
@@ -21,27 +22,21 @@ public class UserStatusService {
     }
 
     public int getUserNextAssignment(String email) {
-        int assignmentSubmitted = Integer.parseInt(getUserStatus(email).getBody().getAssignmentSubmitted());
+        UserStatusDTO status = getUserStatus(email).getBody();
+        int assignmentSubmitted = 0;
+        if (status != null) {
+            assignmentSubmitted = Integer.parseInt(status.getAssignmentSubmitted());
+        }
         return assignmentSubmitted >= MAX_ASSIGNMENTS ? assignmentSubmitted : assignmentSubmitted + 1;
     }
 
     public ResponseEntity<UserStatusDTO> getUserStatus(String email) {
-       try {
-    	   URI uri = buildURI(email);
-    	   ResponseEntity response = rt.getForEntity(uri, UserStatusDTO.class);
-    	   System.out.println(response);
-    	   
-    	   
-       } catch (RuntimeException e) {
-    	   System.err.println("Error creating URI: " + e.getMessage());
-       }
-       return null;
-    }
-
-    public URI buildURI(String email) {
-        UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(baseUrl).pathSegment(email);
-        // Do a try catch here                              
-        return uri.build().toUri();
+        URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl).pathSegment(email).build().toUri();
+        try {
+            return rt.getForEntity(uri, UserStatusDTO.class);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
 }

@@ -38,13 +38,10 @@ public class CheckinController {
     @GetMapping("/create")
     public String getCreate(ModelMap model, HttpSession httpSession) {
         String userEmail = (String) httpSession.getAttribute("email");
-        //Integer nextAssignment = userStatusService.getUserNextAssignment(userEmail);
+//        Integer nextAssignment = userStatusService.getUserNextAssignment(userEmail);
         Integer nextAssignment = userStatusService.getUserNextAssignment("user@user.com");
-//        System.out.println(nextAssignment);
         Checkin checkin = new Checkin();
-        if (nextAssignment != null) {
-            checkin.setNextAssignment(nextAssignment);
-        }
+        checkin.setNextAssignment(nextAssignment);
         model.put("checkin", checkin);
         model.addAttribute("pageTitle", "Checkin Create");
         model.put("isCheckin", true);
@@ -56,7 +53,6 @@ public class CheckinController {
         checkinDTO = checkinService.saveByUid(checkinDTO, uid);
         return "redirect:/checkin/";
     }
-
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
