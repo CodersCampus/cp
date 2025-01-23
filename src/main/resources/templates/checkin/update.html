@@ -2,26 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
-	<fbauth-element headless>
-	<div>
-		<header th:replace="~{fragments/header :: header(${activePage})}"></header>
-		<div layout="layout-sidebar">
-			<div class="sidebar-grid-area">
-				<section class="ui-panel-title title-small">Check In</section>
-				<nav class="ui-panel">
-					<ul class="ui-navbar-nav">
-						<button class="ui-nav-item ui-button" type="button">
-							<a href="/checkin/create">Create New</a>
-						</button>
-						<button class="ui-nav-item ui-button" type="button">
-							<a aria-current="page" href="/checkin/">Back</a>
-						</button>
-					</ul>
-				</nav>
-			</div>
-			<div class="ga-content-main">
-				<main>
-					<div class="checkin-form-container">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">Check In</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button">
+                            <a href="/checkin/create">Create New</a>
+                        </button>
+                        <button class="ui-nav-item ui-button" type="button">
+                            <a aria-current="page" href="/checkin/">Back</a>
+                        </button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <div class="checkin-form-container">
 
 
 						<div layout="layout-live">
@@ -38,80 +38,85 @@
 										</div>
 									</div>
 
-									<div class="ui-input-field">
-										<label class="ui-label">Next Assignment:</label>
-										<div class="ui-text-input">
-											<input class="ui-value" placeholder="ex: 1, 10, 15..."
-												th:field="${checkin.nextAssignment}" type="number" />
-										</div>
-									</div>
-									<label class="ui-checkbox"> <input
-										th:field="${checkin.setUp}" type="checkbox" /> <span>My
-											box is ready for LiveCoding</span>
-									</label> <label class="ui-checkbox"> <input
-										th:field="${checkin.blocker}" type="checkbox" /> <span>I
-											have a Blocker</span>
-									</label> <label class="ui-checkbox"> <input
-										th:field="${checkin.available}" type="checkbox" /> <span>I
-											am available / willing to Code</span>
-									</label>
-									<div class="ui-input-field">
-										<label class="ui-label">Blocker Description:</label>
-										<div class="ui-text-input">
-											<input class="ui-value"
-												placeholder="ex: my 'while' loop is looping..."
-												th:field="${checkin.blockerDescription}" type="text" />
-										</div>
-									</div>
-									<div>
-										<!--                            Add Form Here!!!! Make sure its not nested!!!-->
+                                    <div class="ui-input-field">
+                                        <label for="next-assignment" class="ui-label">Next Assignment:</label>
+                                        <div class="ui-text-input">
+                                            <input id="next-assignment" class="ui-value" placeholder="ex: 1, 10, 15..." th:value="${checkin.nextAssignment}" min="1" max="15" type="number"/>
+                                        </div>
+                                    </div>
 
-									</div>
-									<button class="ui-nav-item ui-button" style="align-self: flex-start;" type="submit">
-										<span>Update</span>
-									</button>
-									<!--                        <button class="ui-nav-item ui-button-secondary" type="button"><span>Start Time/End Time</span></button>-->
-									<input id="uid" name="uid" type="hidden" />
-								</form>
+                                    <label class="ui-checkbox"> <input
+                                            th:field="${checkin.setUp}" type="checkbox"/>
+                                        <span>My box is ready for LiveCoding</span>
+                                    </label>
 
-							</div>
-						</div>
-						<!--                    <div th:each="role : ${roleList}"></div> Something like this-->
-						<!--  wrap in div -->
-						<div class="activity-log-section">
-							<div class="ui-checkin-type">
-							<h2 class="ui-navbar-brand headline-large-bold">Activity Log</h2>
-								<form action="/activityLog/create"
-									class="ui-form horizontal-form" method="post">
-									<input id="id" name="id" class="form-control"
-										th:field="${checkin.id}" type="hidden" />
+                                    <label class="ui-checkbox">
+                                        <input th:field="${checkin.blocker}" type="checkbox"/>
+                                        <span>I have a Blocker</span>
+                                    </label>
 
-									<div class="ui-horizontal-input-field">
-										<label class="ui-label">Issue Number:</label>
-										<div class="ui-text-input">
-											<input class="ui-value" placeholder="ex: 458"
-												th:field="${activityLog.issueNumber}" type="number" />
-										</div>
-									</div>
+                                    <label class="ui-checkbox">
+                                        <input th:field="${checkin.available}" type="checkbox"/>
+                                        <span>I am available / willing to Code</span>
+                                    </label>
 
-									<div class="ui-horizontal-input-field">
-										<label class="ui-label">Role:</label> <select
-											class="ui-text-dropdown" th:field="*{activityLog.role}">
-											<option class="ui-option" th:each="role : ${roleList}"      3A
-												th:text="${#strings.capitalize(role.toString())}"
-												th:value="${role}"></option>
-										</select>
-									</div>
+                                    <div class="ui-input-field">
+                                        <label for="blocker-description" class="ui-label">Blocker Description:</label>
+                                        <div class="ui-text-input">
+                                            <input id="blocker-description" class="ui-value" placeholder="ex: my 'while' loop is looping..."
+                                                   th:field="${checkin.blockerDescription}" type="text"/>
+                                        </div>
+                                    </div>
 
-									<div class="ui-horizontal-input-field">
-										<label class="ui-label">Coding Type:</label> <select
-											class="ui-text-dropdown" th:field="*{activityLog.codingType}">
-											<option class="ui-option"
-												th:each="codingType : ${codingType}"
-												th:text="${#strings.capitalize(codingType.toString())}"
-												th:value="${codingType}"></option>
-										</select>
-									</div>
+                                    <div>
+                                        <!--                            Add Form Here!!!! Make sure its not nested!!!-->
+                                    </div>
+
+                                    <button class="ui-nav-item ui-button" style="align-self: flex-start;" type="submit">
+                                        <span>Update</span>
+                                    </button>
+                                    <!--                        <button class="ui-nav-item ui-button-secondary" type="button"><span>Start Time/End Time</span></button>-->
+                                    <input id="uid" name="uid" type="hidden"/>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!--                    <div th:each="role : ${roleList}"></div> Something like this-->
+                        <!--  wrap in div -->
+                        <div class="activity-log-section">
+                            <div class="ui-checkin-type">
+                                <h2 class="ui-navbar-brand headline-large-bold">Activity Log</h2>
+                                <form action="/activityLog/create"
+                                      class="ui-form horizontal-form" method="post">
+                                    <input id="id" name="id" class="form-control"
+                                           th:field="${checkin.id}" type="hidden"/>
+
+                                    <div class="ui-horizontal-input-field">
+                                        <label class="ui-label">Issue Number:</label>
+                                        <div class="ui-text-input">
+                                            <input class="ui-value" placeholder="ex: 458"
+                                                   th:field="${activityLog.issueNumber}" type="number"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="ui-horizontal-input-field">
+                                        <label class="ui-label">Role:</label> <select
+                                            class="ui-text-dropdown" th:field="*{activityLog.role}">
+                                        <option class="ui-option" th:each="role : ${roleList}" 3A
+                                                th:text="${#strings.capitalize(role.toString())}"
+                                                th:value="${role}"></option>
+                                    </select>
+                                    </div>
+
+                                    <div class="ui-horizontal-input-field">
+                                        <label class="ui-label">Coding Type:</label> <select
+                                            class="ui-text-dropdown" th:field="*{activityLog.codingType}">
+                                        <option class="ui-option"
+                                                th:each="codingType : ${codingType}"
+                                                th:text="${#strings.capitalize(codingType.toString())}"
+                                                th:value="${codingType}"></option>
+                                    </select>
+                                    </div>
 
 
                                     <div class="ui-input-field">
@@ -123,50 +128,51 @@
                                         </div>
                                     </div>
 
-									<button class="ui-nav-item ui-button" type="submit">
-										<span>Add Activity</span>
-									</button>
-								</form>
-							</div>
+                                    <button class="ui-nav-item ui-button" type="submit">
+                                        <span>Add Activity</span>
+                                    </button>
+                                </form>
+                            </div>
 
-							<div class="ui-checkin-table">
-								<div class="ui-table" role="region" tabindex="0">
-									<table>
-										<thead>
-											<tr>
-												<th scope="col">Time:</th>
-												<th scope="col">Issue Number:</th>
-												<th scope="col">Role:</th>
-												<th scope="col">Coding Type:</th>
-												<th scope="col">Comment:</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="activityLog: ${activityLogs}">
-												<!--                            <td><span th:text="${@activityLogService.getFormattedDate(activityLog.startTime)}"></span></td>-->
+                            <div class="ui-checkin-table">
+                                <div class="ui-table" role="region" tabindex="0">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Time:</th>
+                                            <th scope="col">Issue Number:</th>
+                                            <th scope="col">Role:</th>
+                                            <th scope="col">Coding Type:</th>
+                                            <th scope="col">Comment:</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="activityLog: ${activityLogs}">
+                                            <!--                            <td><span th:text="${@activityLogService.getFormattedDate(activityLog.startTime)}"></span></td>-->
 
-												<!--                ABOVE NEEDS TO BE CHANGED TO DISPLAY ONLY TIME AND NOT DATE                   -->
-												<td><span
-													th:text="${#dates.format(activityLog.startTime, 'HH:mm')}"></span></td>
-													<td><span th:text="${activityLog.issueNumber}"></span></td>
-												<td><span th:text="${activityLog.role}"></span></td>
-												<td><span th:text="${activityLog.codingType}"></span></td>
-												<td><span th:text="${activityLog.comment}"></span></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</main>
-			</div>
-		</div>
-		<div th:replace="~{fragments/footer :: footer}"></div>
-	</div>
-	</fbauth-element>
-	<div th:replace="~{fragments/togglescript :: script}"></div>
-	<div th:replace="~{fragments/authscript :: script}"></div>
-	<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+                                            <!--                ABOVE NEEDS TO BE CHANGED TO DISPLAY ONLY TIME AND NOT DATE                   -->
+                                            <td><span
+                                                    th:text="${#dates.format(activityLog.startTime, 'HH:mm')}"></span>
+                                            </td>
+                                            <td><span th:text="${activityLog.issueNumber}"></span></td>
+                                            <td><span th:text="${activityLog.role}"></span></td>
+                                            <td><span th:text="${activityLog.codingType}"></span></td>
+                                            <td><span th:text="${activityLog.comment}"></span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+<div th:replace="~{fragments/togglescript :: script}"></div>
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
 </body>
 </html>

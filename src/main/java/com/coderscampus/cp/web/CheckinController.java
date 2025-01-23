@@ -5,6 +5,7 @@ import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.service.ActivityLogService;
 import com.coderscampus.cp.service.CheckinService;
+import com.coderscampus.cp.service.UserStatusService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,8 @@ public class CheckinController {
     private CheckinService checkinService;
     @Autowired
     private ActivityLogService activityLogService;
-
+    @Autowired
+    private UserStatusService userStatusService;
 
     @GetMapping("/")
     public String home(ModelMap model, HttpSession httpSession) {
@@ -34,8 +36,11 @@ public class CheckinController {
     }
 
     @GetMapping("/create")
-    public String getCreate(ModelMap model) {
+    public String getCreate(ModelMap model, HttpSession httpSession) {
+        String userEmail = (String) httpSession.getAttribute("email");
+        Integer nextAssignment = userStatusService.getUserNextAssignment(userEmail);
         Checkin checkin = new Checkin();
+        checkin.setNextAssignment(nextAssignment);
         model.put("checkin", checkin);
         model.addAttribute("pageTitle", "Checkin Create");
         model.put("isCheckin", true);
@@ -47,7 +52,6 @@ public class CheckinController {
         checkinDTO = checkinService.saveByUid(checkinDTO, uid);
         return "redirect:/checkin/";
     }
-
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
