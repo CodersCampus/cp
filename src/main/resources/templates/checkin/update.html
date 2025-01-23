@@ -24,19 +24,19 @@
                     <div class="checkin-form-container">
 
 
-                        <div layout="layout-live">
-                            <div class="ui-checkin-start">
-                                <form action="/checkin/update" class="ui-form new-form"
-                                      method="post">
-                                    <input class="form-control" th:field="${checkin.id}"
-                                           type="hidden"/> <br>
-                                    <div class="ui-input-field">
-                                        <label class="ui-label">Date:</label>
-                                        <div class="ui-text-input">
-                                            <input class="ui-value" disabled th:field="${checkin.createdAt}"
-                                                   type="text"/>
-                                        </div>
-                                    </div>
+						<div layout="layout-live">
+							<div class="ui-checkin-start">
+							<h2 class="ui-navbar-brand headline-large-bold">Checkin Update</h2>
+								<form action="/checkin/update" class="ui-form new-form"
+									method="post">
+									<input class="form-control" th:field="${checkin.id}"
+										type="hidden" /> <br>
+									<div class="ui-input-field">
+										<label class="ui-label">Date:</label>
+										<div class="ui-text-input">
+											<input class="ui-value" disabled th:field="${checkin.createdAt}" type="text" />
+										</div>
+									</div>
 
                                     <div class="ui-input-field">
                                         <label for="next-assignment" class="ui-label">Next Assignment:</label>
