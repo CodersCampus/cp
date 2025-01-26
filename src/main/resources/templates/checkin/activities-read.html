@@ -14,7 +14,7 @@
                         </button>
                         <button class="ui-nav-item ui-button" type="button"><a href="/checkin/blockers">Blocker Read</a>
                         </button>
-                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/Activities">Blocker Read</a>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/Activities">Coders Activities</a>
                         </button>
                     </ul>
                 </nav>
@@ -40,7 +40,6 @@
                             </thead>
                             <tbody>
                             <tr th:each="checkin: ${checkins}">
-
                                 <td><span th:text="${checkin.name}"></span></td>
                                 <td><span th:text="${checkin.issueNumber}"></span></td>
                                 <td><span readonly th:text="${checkin.date}"></span></td>
@@ -50,12 +49,6 @@
                                 <!--                                <td><span th:text="${checkin.codingType}"></span></td>-->
                                 <!--                                <td><span th:text="${checkin.issueNumber}"></span></td>-->
                                 <!--                                <td><span th:text="${checkin.comment}"></span></td>-->
-                                <td>
-                                    <a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
-                                        <i class="fa-solid fa-pen-to-square"
-                                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
-                                    </a>
-                                </td>
                             </tr>
                             </tbody>
                         </table>
