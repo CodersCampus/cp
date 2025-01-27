@@ -5,6 +5,7 @@
     /*]]>*/
     const nextAssignment = document.getElementById('next-assignment').value;
     const issueNumberElm = document.getElementById('issue-number');
+    const addActivityBtn = document.getElementById('add-activity-button');
     const roleElm = document.getElementById('role');
     const codingTypeElm = document.getElementById('coding-type');
 
@@ -29,5 +30,10 @@
                 .slice(3, 7)
                 .map(codingType => `<option class="ui-option" value="${codingType}">${codingType}</option>`)
                 .join('');
+        if (issueNumberElm.value === ""){
+        	addActivityBtn.disabled = true;
+        }else{
+        	addActivityBtn.disabled = false;
+        }
     }
 </script>
