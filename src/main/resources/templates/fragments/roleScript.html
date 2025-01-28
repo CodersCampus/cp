@@ -30,10 +30,7 @@
                 .slice(3, 7)
                 .map(codingType => `<option class="ui-option" value="${codingType}">${codingType}</option>`)
                 .join('');
-        if (issueNumberElm.value === ""){
-        	addActivityBtn.disabled = true;
-        }else{
-        	addActivityBtn.disabled = false;
-        }
+        addActivityBtn.disabled = true
+        issueNumberElm.addEventListener('change', () => addActivityBtn.disabled = issueNumberElm.value === '')
     }
 </script>
