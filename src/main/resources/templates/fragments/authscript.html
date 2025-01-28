@@ -1,49 +1,56 @@
-<script>
-    const fbauth = document.querySelector('fbauth-element');
-    const uid = document.getElementById('uid');
-    const studentName = document.getElementById('student-name');
-    const displayName = document.getElementById('display-name');
-    const photoURL = document.getElementById('photo-url');
+<script th:inline="javascript" type="module" defer>
+    const elements = {
+        auth: document.querySelector('fbauth-element'),
+        uid: document.getElementById('uid'),
+        studentName: document.getElementById('student-name'),
+        displayName: document.getElementById('display-name'),
+        photoURL: document.getElementById('photo-url'),
+    }
 
-    fbauth.addEventListener('user-changed', (event) => {
-        const {newValue} = event.detail;
-        if (newValue) {
-            if (uid) {
-                uid.value = newValue.uid;
-            }
-            studentName.innerText = newValue.displayName;
-            photoURL.src = newValue.photoURL;
-            fetch("/send-oauth", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    displayName: newValue.displayName,
-                    uid: newValue.uid,
-                    photoURL: newValue.photoURL
-                }),
-            })
-                    .then(response => response.json());
-        } else {
-            if (uid) {
-                uid.value = '';
-            }
-            studentName.innerText = '';
-            photoURL.src = '';
+    const updateUserInfo = (userData) => {
+        if (elements.uid) {
+            elements.uid.value = userData?.uid || '';
         }
+        if (elements.displayName) {
+            elements.displayName.value = userData?.displayName || '';
+        }
+        elements.studentName.innerText = userData?.displayName || '';
+        elements.photoURL.src = userData?.photoURL || '';
+    }
+
+    const postUserData = async (userData) => {
+        const data = {
+            displayName: userData.displayName,
+            uid: userData.uid,
+            photoURL: userData.photoURL,
+            email: userData.email,
+        };
+
+        try {
+            const response = await fetch("/send-oauth", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(data),
+            });
+
+            return await response.json();
+        } catch (error) {
+            console.error('Error sending user data to server:', error);
+            throw error;
+        }
+    }
+
+    elements.auth.addEventListener('user-changed', async (event) => {
+        const {newValue} = event.detail;
+
+        updateUserInfo(newValue);
+
         if (newValue) {
-            if (displayName) {
-                displayName.value = newValue.displayName;
+            try {
+                await postUserData(newValue);
+            } catch (error) {
+                console.error('Failed to send OAuth data:', error);
             }
-            studentName.innerText = newValue.displayName;
-            photoURL.src = newValue.photoURL;
-        } else {
-            if (displayName) {
-                displayName.value = '';
-            }
-            studentName.innerText = '';
-            photoURL.src = '';
         }
     });
 </script>
