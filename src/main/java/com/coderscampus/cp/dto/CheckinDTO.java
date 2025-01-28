@@ -1,5 +1,6 @@
 package com.coderscampus.cp.dto;
 
+import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.util.InstantFormatter;
 
@@ -19,6 +20,7 @@ public class CheckinDTO {
     private Boolean available;
     private String name;
     private Integer issueNumber;
+    private ActivityLog.Role role;
 
     public CheckinDTO() {
         super();
@@ -29,10 +31,11 @@ public class CheckinDTO {
         this.studentId = studentId;
     }
 
-    public CheckinDTO(String name, Integer issueNumber, Instant date) {
+    public CheckinDTO(String name, Integer issueNumber, Instant date, ActivityLog.Role role ) {
         this.name = name;
         this.issueNumber = issueNumber;
         this.date = date;
+        this.role= role;
     }
     public CheckinDTO(Checkin checkin) {
         super();
@@ -54,6 +57,14 @@ public class CheckinDTO {
 
     public void setIssueNumber(Integer issueNumber) {
         this.issueNumber = issueNumber;
+    }
+
+    public ActivityLog.Role getRole() {
+        return role;
+    }
+
+    public void setRole(ActivityLog.Role role) {
+        this.role = role;
     }
 
     public Boolean getSetUp() {
@@ -146,7 +157,9 @@ public class CheckinDTO {
                 ", available=" + available +
                 ", name='" + name + '\'' +
                 ", issueNumber=" + issueNumber +
+                ", role=" + role +
                 '}';
     }
 }
+
 

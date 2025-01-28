@@ -25,10 +25,11 @@ public interface CheckinRepository extends JpaRepository<Checkin, Long> {
             @Param("blockerDescription") String blockerDescription,
             @Param("date") LocalDate date);
 
-    @Query("SELECT new com.coderscampus.cp.dto.CheckinDTO(s.name, a.issueNumber, c.date) " +
+    @Query("SELECT new com.coderscampus.cp.dto.CheckinDTO(s.name, a.issueNumber, c.date, a.role) " +
             "FROM ActivityLog a " +
             "JOIN a.checkin c " +
             "JOIN c.student s " +
+            "WHERE a.role = 'CODER' " +
             "ORDER BY c.date DESC")
     List<CheckinDTO> findCodersActivities();
 }
