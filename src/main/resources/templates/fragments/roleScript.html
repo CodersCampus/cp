@@ -36,10 +36,8 @@
                 .map(codingType => `<option class="ui-option" value="${codingType}">${codingType}</option>`)
                 .join('');
         // Disable Add Activity Button when Issue Number input field is empty
-        if (issueNumberElm.value === ""){
-        	addActivityBtn.disabled = true;
-        }else{
-        	addActivityBtn.disabled = false;
-        }
+        addActivityBtn.disabled = true;
+        issueNumberElm.addEventListener('change', () => addActivityBtn.disabled = issueNumberElm.value === "")
+        
     }
 </script>
