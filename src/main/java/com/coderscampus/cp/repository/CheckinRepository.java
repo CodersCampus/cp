@@ -1,6 +1,7 @@
 package com.coderscampus.cp.repository;
 
 import com.coderscampus.cp.domain.Checkin;
+import com.coderscampus.cp.dto.CheckinDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,6 +24,14 @@ public interface CheckinRepository extends JpaRepository<Checkin, Long> {
             @Param("name") String name,
             @Param("blockerDescription") String blockerDescription,
             @Param("date") LocalDate date);
+
+    @Query("SELECT new com.coderscampus.cp.dto.CheckinDTO(s.name, a.issueNumber, c.date, a.role) " +
+            "FROM ActivityLog a " +
+            "JOIN a.checkin c " +
+            "JOIN c.student s " +
+            "WHERE a.role = 'CODER' " +
+            "ORDER BY c.date DESC")
+    List<CheckinDTO> findCodersActivities();
 }
 
 
