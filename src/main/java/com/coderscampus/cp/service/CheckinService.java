@@ -111,4 +111,8 @@ public class CheckinService {
                 .map(CheckinDTO::new)
                 .collect(Collectors.toList());
     }
+
+    public List<CheckinDTO> getCodersActivities(String uid) {
+        return checkinRepo.findCodersActivities();
+    }
 }
