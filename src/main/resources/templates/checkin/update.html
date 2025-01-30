@@ -24,54 +24,50 @@
                     <div class="checkin-form-container">
 
 
-						<div layout="layout-live">
-							<div class="ui-checkin-start">
-							<h2 class="ui-navbar-brand headline-large-bold">Checkin Update</h2>
-								<form action="/checkin/update" class="ui-form new-form"
-									method="post">
-									<input class="form-control" th:field="${checkin.id}"
-										type="hidden" /> <br>
-									<div class="ui-input-field">
-										<label class="ui-label">Date:</label>
-										<div class="ui-text-input">
-											<input class="ui-value" disabled th:field="${checkin.createdAt}" type="text" />
-										</div>
-									</div>
-
+                        <div layout="layout-live">
+                            <div class="ui-checkin-start">
+                                <h2 class="ui-navbar-brand headline-large-bold">Checkin Update</h2>
+                                <form action="/checkin/update" class="ui-form new-form"
+                                      method="post">
+                                    <input class="form-control" th:field="${checkin.id}"
+                                           type="hidden"/> <br>
                                     <div class="ui-input-field">
-                                        <label for="next-assignment" class="ui-label">Next Assignment:</label>
+                                        <label class="ui-label">Date:</label>
                                         <div class="ui-text-input">
-                                            <input id="next-assignment" class="ui-value" placeholder="ex: 1, 10, 15..." th:value="${checkin.nextAssignment}" min="1" max="15" type="number"/>
+                                            <input class="ui-value" disabled th:field="${checkin.createdAt}"
+                                                   type="text"/>
                                         </div>
                                     </div>
 
-                                    <label class="ui-checkbox"> <input
-                                            th:field="${checkin.setUp}" type="checkbox"/>
-                                        <span>My box is ready for LiveCoding</span>
-                                    </label>
-
-                                    <label class="ui-checkbox">
-                                        <input th:field="${checkin.blocker}" type="checkbox"/>
-                                        <span>I have a Blocker</span>
-                                    </label>
-
-                                    <label class="ui-checkbox">
-                                        <input th:field="${checkin.available}" type="checkbox"/>
-                                        <span>I am available / willing to Code</span>
-                                    </label>
-
                                     <div class="ui-input-field">
-                                        <label for="blocker-description" class="ui-label">Blocker Description:</label>
+                                        <label class="ui-label">Next Assignment:</label>
                                         <div class="ui-text-input">
-                                            <input id="blocker-description" class="ui-value" placeholder="ex: my 'while' loop is looping..."
+                                            <input id="next-assignment" class="ui-value" placeholder="ex: 1, 10, 15..."
+                                                   th:field="${checkin.nextAssignment}" type="number"/>
+                                        </div>
+                                    </div>
+                                    <label class="ui-checkbox"> <input
+                                            th:field="${checkin.setUp}" type="checkbox"/> <span>My
+											box is ready for LiveCoding</span>
+                                    </label> <label class="ui-checkbox"> <input
+                                        th:field="${checkin.blocker}" type="checkbox"/> <span>I
+											have a Blocker</span>
+                                </label> <label class="ui-checkbox"> <input
+                                        th:field="${checkin.available}" type="checkbox"/> <span>I
+											am available / willing to Code</span>
+                                </label>
+                                    <div class="ui-input-field">
+                                        <label class="ui-label">Blocker Description:</label>
+                                        <div class="ui-text-input">
+                                            <input class="ui-value"
+                                                   placeholder="ex: my 'while' loop is looping..."
                                                    th:field="${checkin.blockerDescription}" type="text"/>
                                         </div>
                                     </div>
-
                                     <div>
                                         <!--                            Add Form Here!!!! Make sure its not nested!!!-->
-                                    </div>
 
+                                    </div>
                                     <button class="ui-nav-item ui-button" style="align-self: flex-start;" type="submit">
                                         <span>Update</span>
                                     </button>
@@ -86,49 +82,34 @@
                         <div class="activity-log-section">
                             <div class="ui-checkin-type">
                                 <h2 class="ui-navbar-brand headline-large-bold">Activity Log</h2>
-                                <form action="/activityLog/create"
-                                      class="ui-form horizontal-form" method="post">
-                                    <input id="id" name="id" class="form-control"
-                                           th:field="${checkin.id}" type="hidden"/>
+                                <form action="/activityLog/create" class="ui-form horizontal-form" method="post">
+                                    <input id="id" name="id" class="form-control" th:field="${checkin.id}" type="hidden"/>
 
                                     <div class="ui-horizontal-input-field">
                                         <label class="ui-label">Issue Number:</label>
                                         <div class="ui-text-input">
-                                            <input class="ui-value" placeholder="ex: 458"
-                                                   th:field="${activityLog.issueNumber}" type="number"/>
+                                            <input id="issue-number" class="ui-value" placeholder="ex: 458" th:field="${activityLog.issueNumber}" type="number"/>
                                         </div>
                                     </div>
 
                                     <div class="ui-horizontal-input-field">
-                                        <label class="ui-label">Role:</label> <select
-                                            class="ui-text-dropdown" th:field="*{activityLog.role}">
-                                        <option class="ui-option" th:each="role : ${roleList}" 3A
-                                                th:text="${#strings.capitalize(role.toString())}"
-                                                th:value="${role}"></option>
-                                    </select>
+                                        <label for="role" class="ui-label">Role:</label>
+                                        <select id="role" class="ui-text-dropdown" th:field="*{activityLog.role}"></select>
                                     </div>
 
                                     <div class="ui-horizontal-input-field">
-                                        <label class="ui-label">Coding Type:</label> <select
-                                            class="ui-text-dropdown" th:field="*{activityLog.codingType}">
-                                        <option class="ui-option"
-                                                th:each="codingType : ${codingType}"
-                                                th:text="${#strings.capitalize(codingType.toString())}"
-                                                th:value="${codingType}"></option>
-                                    </select>
+                                        <label for="coding-type" class="ui-label">Coding Type:</label>
+                                        <select id="coding-type" class="ui-text-dropdown" th:field="*{activityLog.codingType}"></select>
                                     </div>
-
 
                                     <div class="ui-input-field">
                                         <label class="ui-label"> Comment: </label>
                                         <div class="ui-text-input">
-											<textarea class="ui-value" cols="20" name="comment"
-                                                      placeholder="Add a comment" rows="1"
-                                                      th:field="${activityLog.comment}"></textarea>
+											<textarea class="ui-value" cols="20" name="comment" placeholder="Add a comment" rows="1" th:field="${activityLog.comment}"></textarea>
                                         </div>
                                     </div>
 
-                                    <button class="ui-nav-item ui-button" type="submit">
+                                    <button id="add-activity-button" class="ui-nav-item ui-button" type="submit">
                                         <span>Add Activity</span>
                                     </button>
                                 </form>
@@ -174,5 +155,6 @@
 <div th:replace="~{fragments/togglescript :: script}"></div>
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
+<div th:replace="~{fragments/roleScript :: script}"></div>
 </body>
 </html>
