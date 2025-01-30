@@ -1,9 +1,11 @@
 package com.coderscampus.cp.dto;
 
+import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.util.InstantFormatter;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 public class CheckinDTO {
 
@@ -16,6 +18,9 @@ public class CheckinDTO {
     private Long studentId;
     private Boolean setUp;
     private Boolean available;
+    private String name;
+    private Integer issueNumber;
+    private ActivityLog.Role role;
 
     public CheckinDTO() {
         super();
@@ -26,8 +31,15 @@ public class CheckinDTO {
         this.studentId = studentId;
     }
 
+    public CheckinDTO(String name, Integer issueNumber, Instant date, ActivityLog.Role role ) {
+        this.name = name;
+        this.issueNumber = issueNumber;
+        this.date = date;
+        this.role= role;
+    }
     public CheckinDTO(Checkin checkin) {
         super();
+        this.name=checkin.getStudent().getName();
         this.id = checkin.getId();
         this.date = checkin.getDate();
         this.createdAt = InstantFormatter.format(date);
@@ -37,6 +49,22 @@ public class CheckinDTO {
         this.setUp = checkin.getSetup();
         this.available = checkin.getAvailable();
         this.studentId = checkin.getStudent().getId();
+    }
+
+    public Integer getIssueNumber() {
+        return issueNumber;
+    }
+
+    public void setIssueNumber(Integer issueNumber) {
+        this.issueNumber = issueNumber;
+    }
+
+    public ActivityLog.Role getRole() {
+        return role;
+    }
+
+    public void setRole(ActivityLog.Role role) {
+        this.role = role;
     }
 
     public Boolean getSetUp() {
@@ -107,18 +135,31 @@ public class CheckinDTO {
         this.blockerDescription = blockerDescription;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "CheckinDTO{" +
                 "id=" + id +
                 ", date=" + date +
-                ", createdAt=" + createdAt +
+                ", createdAt='" + createdAt + '\'' +
                 ", nextAssignment=" + nextAssignment +
                 ", blocker=" + blocker +
                 ", blockerDescription='" + blockerDescription + '\'' +
                 ", studentId=" + studentId +
-                ", isSetup=" + setUp +
+                ", setUp=" + setUp +
                 ", available=" + available +
+                ", name='" + name + '\'' +
+                ", issueNumber=" + issueNumber +
+                ", role=" + role +
                 '}';
     }
 }
+
+

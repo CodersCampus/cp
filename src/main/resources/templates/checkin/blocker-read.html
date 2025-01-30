@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html th:with="checkinService=${@checkinService}" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">Check In</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
+                        </button>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/checkin/blockers">Blocker Read</a>
+                        </button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <div class="ui-table" role="region" tabindex="0">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th scope="col">Name:</th>
+                                <th scope="col">Blocker Description:</th>
+                                <th scope="col">Date/Time:</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="checkin: ${checkins}">
+                                <td><span th:text="${checkin.name}"></span></td>
+                                <td><span th:text="${checkin.blockerDescription}"></span></td>
+                                <td><span th:text="${checkin.date}"></span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+</html>
