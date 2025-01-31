@@ -1,5 +1,6 @@
 # Resume Building Worksheet
-
+**📄 Google Docs Version:**  
+[Click here to access](https://docs.google.com/spreadsheets/d/1bVf1lIEWUxt-TkwlnAqyonjcU-2lpxQw8vksR2GumNk/edit?gid=0#gid=0)
 ## Name: ________________________
 ## Date: ________________________
 
