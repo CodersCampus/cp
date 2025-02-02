@@ -104,9 +104,13 @@ public class CheckinService {
         }
     }
 
- public List<Checkin> getAllBlockers(String uid) {
-        return checkinRepo.findAllBlockers();
- }
+    public List<CheckinDTO> getSortedCheckinsByUid(String uid) {
+        return checkinRepo.findAll().stream()
+                .filter(checkin -> Boolean.TRUE.equals(checkin.getBlocker()))
+                .sorted(Comparator.comparing(Checkin::getDate).reversed())
+                .map(CheckinDTO::new)
+                .collect(Collectors.toList());
+    }
 
     public List<CheckinDTO> getCodersActivities(String uid) {
         return checkinRepo.findCodersActivities();

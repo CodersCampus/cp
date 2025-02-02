@@ -14,8 +14,16 @@ import java.util.List;
 public interface CheckinRepository extends JpaRepository<Checkin, Long> {
     List<Checkin> findByUid(String uid);
 
-    @Query("SELECT c FROM Checkin c JOIN c.student s WHERE c.blocker = true ORDER BY c.date DESC")
-    List<Checkin> findAllBlockers();
+    @Query("SELECT c FROM Checkin c " +
+            "JOIN c.student s " +
+            "WHERE s.name = :name " +
+            "AND c.blocker = true " +
+            "AND c.blockerDescription = :blockerDescription " +
+            "AND c.date = :date")
+    List<Checkin> findCheckinsByStudentNameAndBlockerAndDate(
+            @Param("name") String name,
+            @Param("blockerDescription") String blockerDescription,
+            @Param("date") LocalDate date);
 
 
     @Query("SELECT new com.coderscampus.cp.dto.CheckinDTO(s.name, a.issueNumber, c.date, a.role) " +
