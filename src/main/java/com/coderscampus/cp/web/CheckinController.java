@@ -90,7 +90,7 @@ public class CheckinController {
     @GetMapping("/blockers")
     public String getCheckinsForBlockerReadButton(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
-        List<CheckinDTO> checkins = checkinService.getSortedCheckinsByUid(uid);
+        List<Checkin> checkins = checkinService.getAllBlockers(uid);
         model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Blocker Read");
         model.put("isCheckin", true);

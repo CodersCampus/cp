@@ -30,7 +30,7 @@
                             </thead>
                             <tbody>
                             <tr th:each="checkin: ${checkins}">
-                                <td><span th:text="${checkin.name}"></span></td>
+                                <td><span th:text="${checkin.student.name}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>
                                 <td><span th:text="${checkin.date}"></span></td>
                             </tr>
