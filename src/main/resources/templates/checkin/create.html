@@ -27,11 +27,11 @@
                                        type="number"/>
                             </div>
                         </div>
-                        <label class="ui-checkbox">
+                        <label th:if="${checkin.nextAssignment < 6}" class="ui-checkbox">
                             <input th:field="${checkin.blocker}" type="checkbox"/>
                             <span>I have a Blocker</span>
                         </label>
-                        <div class="ui-input-field">
+                        <div th:if="${checkin.nextAssignment < 6}" class="ui-input-field">
                             <label class="ui-label">Blocker Description:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" placeholder="ex: my 'while' loop is looping..."
