@@ -32,8 +32,7 @@ public class CheckinController {
         model.put("checkins", checkins);
         model.addAttribute("pageTitle", "Checkin Read");
         model.put("isCheckin", true);
-//        return "checkin/read";
-        return "checkin/example";
+        return "checkin/read";
     }
 
     @GetMapping("/create")
