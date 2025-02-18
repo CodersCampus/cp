@@ -1,54 +1,34 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
 <body class="ui-background">
-<fbauth-element headless>
-    <div>
-        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
-        <div layout="layout-sidebar">
-            <div class="sidebar-grid-area">
-                <section class="ui-panel-title title-small">Work Log</section>
-                <nav class="ui-panel">
-                    <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button">
-                            <a href="/work/create">Create New</a>
-                        </button>
-                    </ul>
-                </nav>
-            </div>
-            <div class="ga-content-main">
-                <main>
-                    <div class="ui-table" role="region" tabindex="0">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Assignment Number</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Number of Minutes</th>
-                                <th scope="col">Date</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="work : ${workList}">
-                                <td><span th:text="${work.studentName}"></span></td>
-                                <td><span th:text="${work.assignmentNumber}"></span></td>
-                                <td><span th:text="${work.description}"></span></td>
-                                <td><span th:text="${work.numberMinutes}"></span></td>
-                                <td><span th:text="${work.date}"></span></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </main>
-            </div>
-        </div>
-        <div th:replace="~{fragments/footer :: footer}"></div>
+<ul class="ui-navbar-nav">
+    <button class="ui-nav-item ui-button" type="button">
+        <a href="/work/create">Create New</a>
+    </button>
+</ul>
+<main>
+    <div class="ui-table" role="region" tabindex="0">
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Assignment Number</th>
+                <th scope="col">Description</th>
+                <th scope="col">Number of Minutes</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="work : ${workList}">
+                <td><span th:text="${work.studentName}"></span></td>
+                <td><span th:text="${work.assignmentNumber}"></span></td>
+                <td><span th:text="${work.description}"></span></td>
+                <td><span th:text="${work.numberMinutes}"></span></td>
+                <td><span th:text="${work.date}"></span></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-</fbauth-element>
-<div th:replace="~{fragments/scrolltopbutton :: scrollTopButton}"></div>
-<div th:replace="~{fragments/authscript :: script}"></div>
-<div th:replace="~{fragments/themeswitchscript :: script}"></div>
-<div th:replace="~{fragments/scrolltopbuttonscript :: script}"></div>
+</main>
 </body>
 </html>
