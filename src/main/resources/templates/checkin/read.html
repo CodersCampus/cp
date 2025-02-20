@@ -40,7 +40,7 @@
                             </thead>
                             <tbody>
                             <tr th:each="checkin: ${checkins}">
-                                <td><span readonly th:text="${checkin.createdAt}"></span></td>
+                                <td><span readonly th:text="${#dates.format(checkin.date, 'MMM d, yyyy hh:mm a')}"></span></td>
                                 <td><span th:text="${checkin.nextAssignment}"></span></td>
                                 <td><span th:text="${checkin.blocker}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>
