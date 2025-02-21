@@ -2,55 +2,43 @@
 <html th:with="checkinService=${@checkinService}"
       th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
 <body class="ui-background">
-                <ul class="ui-navbar-nav">
-                    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
-                    </button>
-                    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/blockers">Blocker Read</a>
-                    </button>
-                    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/Activities">Coders
-                        Activities</a>
-                    </button>
-                </ul>
-                <main>
-                    <div class="ui-table" role="region" tabindex="0">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th scope="col">Date/Time:</th>
-                                <th scope="col">Next Assignment:</th>
-                                <th scope="col">Blocker:</th>
-                                <th scope="col">Blocker Description:</th>
-                                <!--                                <th scope="col">Box Ready for Live Coding?:</th>-->
-                                <!--                                <th scope="col">Are You Available/willing to Code?:</th>-->
-                                <!--                                <th scope="col">Role:</th>-->
-                                <!--                                <th scope="col">Coding Type:</th>-->
-                                <!--                                <th scope="col">Issue Number:</th>-->
-                                <!--                                <th scope="col">Comment:</th>-->
-                                <!--                                <th scope="col"> </th>-->
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="checkin: ${checkins}">
-                                <td><span readonly th:text="${checkin.date}"></span></td>
-                                <td><span th:text="${checkin.nextAssignment}"></span></td>
-                                <td><span th:text="${checkin.blocker}"></span></td>
-                                <td><span th:text="${checkin.blockerDescription}"></span></td>
-                                <!--                                <td><span th:text="${checkin.isSetUp}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.available}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.role}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.codingType}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.issueNumber}"></span></td>-->
-                                <!--                                <td><span th:text="${checkin.comment}"></span></td>-->
-                                <td>
-                                    <a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
-                                        <i class="fa-solid fa-pen-to-square"
-                                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </main>
+<ul class="ui-navbar-nav">
+    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
+    </button>
+    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/blockers">Blocker Read</a>
+    </button>
+    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/Activities">Coders
+        Activities</a>
+    </button>
+</ul>
+<main>
+    <div class="ui-table" role="region" tabindex="0">
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Date/Time:</th>
+                <th scope="col">Next Assignment:</th>
+                <th scope="col">Blocker:</th>
+                <th scope="col">Blocker Description:</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="checkin: ${checkins}">
+                <td><span readonly th:text="${checkin.date}"></span></td>
+                <td><span th:text="${checkin.nextAssignment}"></span></td>
+                <td><span th:text="${checkin.blocker}"></span></td>
+                <td><span th:text="${checkin.blockerDescription}"></span></td>
+                <td>
+                    <a th:href="@{/checkin/update/{checkinId}(checkinId=${checkin.id})}">
+                        <i class="fa-solid fa-pen-to-square"
+                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
 </body>
 </html>
