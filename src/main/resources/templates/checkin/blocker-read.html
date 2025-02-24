@@ -32,7 +32,7 @@
                             <tr th:each="checkin: ${checkins}">
                                 <td><span th:text="${checkin.name}"></span></td>
                                 <td><span th:text="${checkin.blockerDescription}"></span></td>
-                                <td><span th:text="${checkin.date}"></span></td>
+                                <td><span th:text="${#dates.format(checkin.date, 'MMM d, yyyy hh:mm a')}"></span></td>
                             </tr>
                             </tbody>
                         </table>
