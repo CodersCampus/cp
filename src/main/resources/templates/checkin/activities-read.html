@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html th:with="checkinService=${@checkinService}" xmlns:th="http://www.thymeleaf.org">
-<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<html th:with="checkinService=${@checkinService}"
+      th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 <body class="ui-background">
 <ul class="ui-navbar-nav">
     <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
