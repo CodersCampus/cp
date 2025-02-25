@@ -24,7 +24,7 @@
                 <td><span th:text="${work.assignmentNumber}"></span></td>
                 <td><span th:text="${work.description}"></span></td>
                 <td><span th:text="${work.numberMinutes}"></span></td>
-                <td><span th:text="${work.date}"></span></td>
+                <td><span th:text="${#dates.format(work.date, 'MMM d, yyyy hh:mm a')}"></span></td>
             </tr>
             </tbody>
         </table>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html th:with="checkinService=${@checkinService}"
-      th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
+<html th:with="checkinService=${@checkinService}" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
 <body class="ui-background">
 <ul class="ui-navbar-nav">
     <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
@@ -25,7 +25,7 @@
             <tr th:each="checkin: ${checkins}">
                 <td><span th:text="${checkin.name}"></span></td>
                 <td><span th:text="${checkin.issueNumber}"></span></td>
-                <td><span readonly th:text="${checkin.date}"></span></td>
+                <td><span readonly th:text="${#dates.format(checkin.date, 'MMM d, yyyy hh:mm a')}"></span></td>
                 <td><span readonly th:text="${checkin.role}"></span></td>
             </tr>
             </tbody>
