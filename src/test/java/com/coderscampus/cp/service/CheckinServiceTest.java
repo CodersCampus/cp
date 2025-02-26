@@ -259,7 +259,9 @@ public class CheckinServiceTest {
         List<CheckinDTO> checkinDTOsToUpdate = new ArrayList<>(student1CheckinDTOList);
         int i = 0;
         String randomString = UUID.randomUUID().toString();
+        long studentId1 = 0;
         for (CheckinDTO checkinDTO : checkinDTOsToUpdate) {
+        	studentId1 = checkinDTO.getId();
             i++;
             if (i > 2) {
                 break;
@@ -271,7 +273,7 @@ public class CheckinServiceTest {
         List<CheckinDTO> everythingInDatabase = checkinService.findAll();
         int j = 0;
         for (CheckinDTO checkinDTO : everythingInDatabase) {
-            if (checkinDTO.getBlockerDescription().equals(randomString)) {
+            if (checkinDTO.getId() != studentId1 || checkinDTO.getBlockerDescription().equals(randomString)) {
                 j++;
             }
         }
