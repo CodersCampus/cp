@@ -3,6 +3,7 @@ package com.coderscampus.cp.domain;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.Date;
 
 @Entity
 @Table(name = "work")
@@ -12,18 +13,24 @@ public class Work extends HasUidBase {
     private Integer numberMinutes;
     private String description;
 
+
     public Work(String studentName, Integer assignmentNumber, Integer numberMinutes, String description) {
         super();
         this.studentName = studentName;
         this.assignmentNumber = assignmentNumber;
         this.numberMinutes = numberMinutes;
         this.description = description;
+
+
     }
 
     public Work() {
         super();
     }
 
+    public void setDateBackDoorForTesting(Instant date){
+        this.date = date;
+    }
     public String getStudentName() {
         return studentName;
     }
