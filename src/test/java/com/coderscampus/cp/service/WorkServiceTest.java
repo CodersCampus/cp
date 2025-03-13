@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,15 +37,27 @@ public class WorkServiceTest {
             work.setStudentName("Student" + i);
             work.setDateBackDoorForTesting(getInstant(i));
             work.setAssignmentNumber(i);
-            work.setNumberMinutes(100 + i);
+            work.setNumberMinutes(100);
             work.setDescription("Description" + i);
             workRepo.save(work);
             works.add(work);
+            System.out.println("LOOK HERE" + work.getDate());
         }
     }
 
+//    private static Instant getInstant(int days) {
+//        return Instant.now().minus(days, ChronoUnit.DAYS);
+//    }
     private static Instant getInstant(int days) {
-        return Instant.now().minus(days, ChronoUnit.DAYS);
+        // Get the current date and time
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.systemDefault());
+
+        // Find the last Sunday
+        ZonedDateTime lastSunday = now.with(TemporalAdjusters.previousOrSame(DayOfWeek.SATURDAY))
+                .withHour(23).withMinute(59).withSecond(59).withNano(0);
+
+        // Subtract days and return the Instant
+        return lastSunday.minusDays(days).toInstant();
     }
 
     @AfterEach
