@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,15 +32,20 @@ public class WorkServiceTest {
     @BeforeEach
     void setup() {
         works = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 21; i++) {
             Work work = new Work();
             work.setStudentName("Student" + i);
+            work.setDateBackDoorForTesting(getInstant(i));
             work.setAssignmentNumber(i);
             work.setNumberMinutes(100 + i);
             work.setDescription("Description" + i);
             workRepo.save(work);
             works.add(work);
         }
+    }
+
+    private static Instant getInstant(int days) {
+        return Instant.now().minus(days, ChronoUnit.DAYS);
     }
 
     @AfterEach

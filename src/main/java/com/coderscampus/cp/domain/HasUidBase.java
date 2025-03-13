@@ -51,9 +51,9 @@ public abstract class HasUidBase {
 		return date;
 	}
 
-	public void setDate(Instant date) {
-		this.date = date;
-	}
+	//public void setDate(Instant date) {
+//		this.date = date;
+//	}
 
 	public Student getStudent() {
 		return student;
