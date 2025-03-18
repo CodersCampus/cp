@@ -21,8 +21,8 @@ public class Resume {
     private String email;
     private String city;
     private String state;
-    private URL linkedIn;
-    private URL gitHub;
+    private String linkedIn;
+    private String gitHub;
     private String summary;
     private String skills;
     private String workExperience;
@@ -80,19 +80,19 @@ public class Resume {
         this.state = state;
     }
 
-    public URL getLinkedIn() {
+    public String getLinkedIn() {
         return linkedIn;
     }
 
-    public void setLinkedIn(URL linkedIn) {
+    public void setLinkedIn(String linkedIn) {
         this.linkedIn = linkedIn;
     }
 
-    public URL getGitHub() {
+    public String getGitHub() {
         return gitHub;
     }
 
-    public void setGitHub(URL gitHub) {
+    public void setGitHub(String gitHub) {
         this.gitHub = gitHub;
     }
 
