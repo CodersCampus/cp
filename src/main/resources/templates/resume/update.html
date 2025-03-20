@@ -22,6 +22,18 @@
                     <form action="/resume/update" class="ui-form" method="post">
                         <input name="uid" th:field="${resume.id}" type="hidden"/>
                         <div class="ui-input-field">
+                            <label for="phoneNumber" class="ui-label">Phone Number:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="phoneNumber" th:field="${resume.phoneNumber}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="email" class="ui-label">Email:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="email" th:field="${resume.email}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
                             <label for="city" class="ui-label">City:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="city" th:field="${resume.city}" type="text"/>
@@ -38,6 +50,42 @@
                                     <input class="ui-value" id="linkedIn" th:field="${resume.linkedIn}" type="text"/>
                                 </div>
                         </div>
+                            <div class="ui-input-field">
+                                <label for="gitHub" class="ui-label">gitHub:</label>
+                                <div class="ui-text-input">
+                                    <input class="ui-value" id="gitHub" th:field="${resume.gitHub}" type="text"/>
+                                </div>
+                            </div>
+                            <div class="ui-input-field">
+                                <label for="summary" class="ui-label">Summary:</label>
+                                <div class="ui-text-input">
+                                    <input class="ui-value" id="summary" th:field="${resume.summary}" type="text"/>
+                                </div>
+                            </div>
+                            <div class="ui-input-field">
+                                <label for="skills" class="ui-label">Skills:</label>
+                                <div class="ui-text-input">
+                                    <input class="ui-value" id="skills" th:field="${resume.skills}" type="text"/>
+                                </div>
+                            </div>
+                            <div class="ui-input-field">
+                                <label for="workExperience" class="ui-label">Work Experience:</label>
+                                <div class="ui-text-input">
+                                    <input class="ui-value" id="workExperience" th:field="${resume.workExperience}" type="text"/>
+                                </div>
+                            </div>
+                            <div class="ui-input-field">
+                                <label for="education" class="ui-label">Education:</label>
+                                <div class="ui-text-input">
+                                    <input class="ui-value" id="education" th:field="${resume.education}" type="text"/>
+                                </div>
+                            </div>
+                            <div class="ui-input-field">
+                                <label for="projects" class="ui-label">Projects:</label>
+                                <div class="ui-text-input">
+                                    <input class="ui-value" id="projects" th:field="${resume.projects}" type="text"/>
+                                </div>
+                            </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
                     </form>
                     <form action="/resume/delete" class="ui-form" method="post" style="padding-top:0;">
