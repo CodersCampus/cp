@@ -10,7 +10,7 @@
                     <a class="ui-nav-link" href="/checkin/" th:classappend="${isCheckin} ? 'active-link'">Check-In</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isWorkLog} ? 'active'">
-                    <a class="ui-nav-link" href="/work/create" th:classappend="${isWorkLog} ? 'active-link'">Work Log</a>
+                    <a class="ui-nav-link" href="/work/read" th:classappend="${isWorkLog} ? 'active-link'">Work Log</a>
                 </li>
                 <li class="ui-nav-item" th:if="${showDatabaseConsoleLink}" th:classappend="${isDatabaseConsole} ? 'active'">
                     <a class="ui-nav-link" href="/h2-console/" th:classappend="${isDatabaseConsole} ? 'active-link'">Database

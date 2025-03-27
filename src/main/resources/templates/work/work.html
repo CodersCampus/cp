@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
 <body class="ui-background">
-<ul></ul>
+<ul>
+    <button class="ui-nav-item ui-button" type="button"><a href="/work/read">Work Read</a>
+    </button>
+</ul>
 <main>
     <form action="/work/create" class="ui-form" method="post">
         <input id="uid" name="uid" type="hidden"/>
