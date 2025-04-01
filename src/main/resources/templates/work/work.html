@@ -23,13 +23,15 @@
                         <div class="ui-input-field">
                             <label class="ui-label">Name:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="display-name" th:field="${work.studentName}" type="text" readonly/>
+                                <input class="ui-value" id="display-name" th:field="${work.studentName}" type="text"
+                                       readonly/>
                             </div>
                         </div>
                         <div class="ui-input-field">
                             <label class="ui-label">Next Assignment Number:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" placeholder="ex: 3" th:field="${work.assignmentNumber}" type="number"/>
+                                <input class="ui-value" placeholder="ex: 3" th:field="${work.assignmentNumber}"
+                                       type="number"/>
                             </div>
                             <p>Data for context only</p>
                         </div>
@@ -43,14 +45,11 @@
                         <div class="ui-input-field">
                             <label class="ui-label">Number of Minutes:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" placeholder="ex: 120" th:field="${work.numberMinutes}" type="number" min="0" max="2147483647"/>
+                                <input class="ui-value" placeholder="ex: 120" th:field="${work.numberMinutes}"
+                                       type="number" min="0" max="2147483647"/>
                             </div>
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
-                        <button class="ui-nav-item ui-button" type="button">
-                            <a href="/work/read">View Work Log</a>
-                        </button>
-						<button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
                     </form>
                 </main>
 
