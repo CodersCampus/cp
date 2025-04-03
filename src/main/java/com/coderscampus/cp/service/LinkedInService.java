@@ -1,6 +1,7 @@
 package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.LinkedIn;
+import com.coderscampus.cp.domain.Resume;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.LinkedInRepository;
 import com.coderscampus.cp.repository.StudentRepository;
@@ -22,11 +23,11 @@ public class LinkedInService {
         return linkedInRepo.save(linkedIn);
     }
 
-    public LinkedIn saveById(LinkedIn linkedIn) {
-Long index= 0L;
-    	
-    	if (linkedIn != null) {
-            linkedIn.setId(index++);
+
+    public LinkedIn saveByUid(LinkedIn linkedIn, String uid) {
+        Student students = studentRepo.findByUid(uid);
+        if (students != null) {
+            linkedIn.setStudent(students);
         }
         return linkedInRepo.save(linkedIn);
     }

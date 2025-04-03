@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">LinkedIn</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/linkedIn/create">Create New</a>
+                        </button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <div class="ui-table" role="region" tabindex="0">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th scope="col">decoratedHeader</th>
+                                <th scope="col">collapsedBio</th>
+                                <th scope="col">url</th>
+                                <th scope="col">featuredPosts</th>
+                                <th scope="col">activity</th>
+                                <th scope="col">skills</th>
+                                <th scope="col">email</th>
+                                <th scope="col">firstName</th>
+                                <th scope="col">lastName</th>
+                                <th scope="col">biography</th>
+                                <th scope="col">education</th>
+                                <th scope="col">experience</th>
+                                <th scope="col">location</th>
+                                <th scope="col">image</th>
+                                <th scope="col">title</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="linkedIn: ${linkedIns}">
+                                <td><span th:text="${linkedIn.decoratedHeader}"></span></td>
+                                <td><span th:text="${linkedIn.collapsedBio}"></span></td>
+                                <td><span th:text="${linkedIn.url}"></span></td>
+                                <td><span th:text="${linkedIn.featuredPosts}"></span></td>
+                                <td><span th:text="${linkedIn.activity}"></span></td>
+                                <td><span th:text="${linkedIn.skills}"></span></td>
+                                <td><span th:text="${linkedIn.email}"></span></td>
+                                <td><span th:text="${linkedIn.firstName}"></span></td>
+                                <td><span th:text="${linkedIn.lastName}"></span></td>
+                                <td><span th:text="${linkedIn.biography}"></span></td>
+                                <td><span th:text="${linkedIn.education}"></span></td>
+                                <td><span th:text="${linkedIn.experience}"></span></td>
+                                <td><span th:text="${linkedIn.location}"></span></td>
+                                <td><span th:text="${linkedIn.image}"></span></td>
+                                <td><span th:text="${linkedIn.title}"></span></td>
+                                <td>
+                                    <a th:href="@{/linkedIn/update/{linkedInId}(linkedInId=${linkedIn.id})}">
+                                        <i class="fa-solid fa-pen-to-square"
+                                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,15 +1,15 @@
 package com.coderscampus.cp.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class LinkedIn {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 	private String decoratedHeader;
 	private String collapsedBio;
 	private String url;
@@ -26,163 +26,142 @@ public class LinkedIn {
 	private String image;
 	private String title;
 
-	public LinkedIn(Long id, String decoratedHeader, String collapsedBio, String url, String featuredPosts,
-			String activity, String skills, String email, String firstName, String lastName, String biography,
-			String education, String experience, String location, String image, String title) {
-		super();
-		this.id = id;
-		this.decoratedHeader = decoratedHeader;
-		this.collapsedBio = collapsedBio;
-		this.url = url;
-		this.featuredPosts = featuredPosts;
-		this.activity = activity;
-		this.skills = skills;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.biography = biography;
-		this.education = education;
-		this.experience = experience;
-		this.location = location;
-		this.image = image;
-		this.title = title;
-	}
+    public LinkedIn() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getDecoratedHeader() {
-		return decoratedHeader;
-	}
+    public Student getStudent() {
+        return student;
+    }
 
-	public void setDecoratedHeader(String decoratedHeader) {
-		this.decoratedHeader = decoratedHeader;
-	}
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
-	public String getCollapsedBio() {
-		return collapsedBio;
-	}
+    public String getDecoratedHeader() {
+        return decoratedHeader;
+    }
 
-	public void setCollapsedBio(String collapsedBio) {
-		this.collapsedBio = collapsedBio;
-	}
+    public void setDecoratedHeader(String decoratedHeader) {
+        this.decoratedHeader = decoratedHeader;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    public String getCollapsedBio() {
+        return collapsedBio;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public void setCollapsedBio(String collapsedBio) {
+        this.collapsedBio = collapsedBio;
+    }
 
-	public String getFeaturedPosts() {
-		return featuredPosts;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public void setFeaturedPosts(String featuredPosts) {
-		this.featuredPosts = featuredPosts;
-	}
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public String getActivity() {
-		return activity;
-	}
+    public String getFeaturedPosts() {
+        return featuredPosts;
+    }
 
-	public void setActivity(String activity) {
-		this.activity = activity;
-	}
+    public void setFeaturedPosts(String featuredPosts) {
+        this.featuredPosts = featuredPosts;
+    }
 
-	public String getSkills() {
-		return skills;
-	}
+    public String getActivity() {
+        return activity;
+    }
 
-	public void setSkills(String skills) {
-		this.skills = skills;
-	}
+    public void setActivity(String activity) {
+        this.activity = activity;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getSkills() {
+        return skills;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getBiography() {
-		return biography;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setBiography(String biography) {
-		this.biography = biography;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getEducation() {
-		return education;
-	}
+    public String getBiography() {
+        return biography;
+    }
 
-	public void setEducation(String education) {
-		this.education = education;
-	}
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
 
-	public String getExperience() {
-		return experience;
-	}
+    public String getEducation() {
+        return education;
+    }
 
-	public void setExperience(String experience) {
-		this.experience = experience;
-	}
+    public void setEducation(String education) {
+        this.education = education;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public String getExperience() {
+        return experience;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
 
-	public String getImage() {
-		return image;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getImage() {
+        return image;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
-	@Override
-	public String toString() {
-		return "LinkedIn [id=" + id + ", decoratedHeader=" + decoratedHeader + ", collapsedBio=" + collapsedBio
-				+ ", url=" + url + ", featuredPosts=" + featuredPosts + ", activity=" + activity + ", skills=" + skills
-				+ ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", biography="
-				+ biography + ", education=" + education + ", experience=" + experience + ", location=" + location
-				+ ", image=" + image + ", title=" + title + "]";
-	}
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
