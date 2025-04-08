@@ -10,7 +10,7 @@
                 <section class="ui-panel-title title-small">LinkedIn</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/linkedIn/create">Create New</a>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/linkedin/create">Create New</a>
                         </button>
                     </ul>
                 </nav>
@@ -57,7 +57,7 @@
                                 <td><span th:text="${linkedIn.image}"></span></td>
                                 <td><span th:text="${linkedIn.title}"></span></td>
                                 <td>
-                                    <a th:href="@{/linkedIn/update/{linkedInId}(linkedInId=${linkedIn.id})}">
+                                    <a th:href="@{/linkedin/update/{linkedInId}(linkedInId=${linkedIn.id})}">
                                         <i class="fa-solid fa-pen-to-square"
                                            style="color: var(--primary); font-size:20px; font-weight:100"></i>
                                     </a>

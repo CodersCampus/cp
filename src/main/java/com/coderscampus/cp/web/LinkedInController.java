@@ -37,7 +37,7 @@ public class LinkedInController {
     @PostMapping("/create")
     public String create(LinkedIn linkedIn, @RequestParam("uid") String uid) {
         linkedIn = linkedInService.saveByUid(linkedIn, uid);
-        return "redirect:/linkedin/";
+        return "redirect:/linkedin";
     }
 
     @GetMapping("/update/{id}")
@@ -52,12 +52,12 @@ public class LinkedInController {
     @PostMapping("/update")
     public String update(LinkedIn linkedIn) {
         linkedInService.save(linkedIn);
-        return "redirect:/linkedin/";
+        return "redirect:/linkedin";
     }
 
     @PostMapping("/delete")
     public String delete(LinkedIn linkedIn) {
         linkedInService.delete(linkedIn);
-        return "redirect:/linkedin/";
+        return "redirect:/linkedin";
     }
 }
