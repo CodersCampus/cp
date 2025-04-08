@@ -10,7 +10,6 @@
     const codingTypeElm = document.getElementById('coding-type');
 
     function handleButtonDisabled(e) {
-        console.log(e.target.value);
         addActivityBtn.disabled = issueNumberElm.value === "";
     }
 
@@ -24,7 +23,6 @@
                 .slice(0, 3)
                 .map(codingType => `<option class="ui-option" value="${codingType}">${codingType}</option>`)
                 .join('');
-         // .filter(codingType => codingType === 'NOT_APPLICABLE' || codingType === 'DRILLS' || codingType === 'PARKING_LOT')  // only show these coding types
     } else {
         issueNumberElm.disabled = false;
         roleElm.innerHTML = roleList
@@ -35,7 +33,6 @@
                 .slice(3, 7)
                 .map(codingType => `<option class="ui-option" value="${codingType}">${codingType}</option>`)
                 .join('');
-        // Disable Add Activity Button when Issue Number input field is empty
         addActivityBtn.disabled = true;
         issueNumberElm.addEventListener('change', () => addActivityBtn.disabled = issueNumberElm.value === "")
         

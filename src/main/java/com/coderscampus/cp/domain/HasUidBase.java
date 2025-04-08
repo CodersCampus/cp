@@ -16,6 +16,7 @@ public abstract class HasUidBase {
 
     @Column(nullable = false)
 	protected Instant date;
+
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "student_id")
@@ -51,9 +52,6 @@ public abstract class HasUidBase {
 		return date;
 	}
 
-	public void setDate(Instant date) {
-		this.date = date;
-	}
 
 	public Student getStudent() {
 		return student;
