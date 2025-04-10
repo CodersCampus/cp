@@ -7,14 +7,19 @@ import jakarta.persistence.Id;
 
 @Entity
 public class GitHub {
-    private String handle;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String enhancedReadMe;
-    private String renamedAssignments;
-    private String pinnedRepos;
-    private String externalLinks;
+    private String handle;
+    private String enhancedReadMe;     // convert to boolean
+    private String renamedAssignments; // convert to boolean
+    private String pinnedRepos;        // convert to boolean
+    private String externalLinks;      // convert to list
+    private String image;
+    private String headline;
+    private String contactDetails;
+    private String url;
 
     public GitHub() {
 
