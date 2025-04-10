@@ -10,8 +10,8 @@ public class LinkedIn {
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
-	private String decoratedHeader;
-	private String collapsedBio;
+	private String banner;
+	private String about;
 	private String url;
 	private String featuredPosts;
 	private String activity;
@@ -45,20 +45,20 @@ public class LinkedIn {
         this.student = student;
     }
 
-    public String getDecoratedHeader() {
-        return decoratedHeader;
+    public String getBanner() {
+        return banner;
     }
 
-    public void setDecoratedHeader(String decoratedHeader) {
-        this.decoratedHeader = decoratedHeader;
+    public void setBanner(String banner) {
+        this.banner = banner;
     }
 
-    public String getCollapsedBio() {
-        return collapsedBio;
+    public String getAbout() {
+        return about;
     }
 
-    public void setCollapsedBio(String collapsedBio) {
-        this.collapsedBio = collapsedBio;
+    public void setAbout(String about) {
+        this.about = about;
     }
 
     public String getUrl() {
