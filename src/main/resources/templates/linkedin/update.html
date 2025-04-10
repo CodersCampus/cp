@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">LinkedIn</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/linkedin/create">Create New</a>
+                        </button>
+                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page"
+                                                                               href="/linkedin">Back</a></button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <form action="/linkedin/update" class="ui-form" method="post">
+                        <input name="uid" th:field="${linkedIn.id}" type="hidden"/>
+                        <div class="ui-input-field">
+                            <label for="decoratedHeader" class="ui-label">Decorated Header:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="decoratedHeader" th:field="${linkedIn.decoratedHeader}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="collapsedBio" class="ui-label">Collapsed Bio:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="collapsedBio" th:field="${linkedIn.collapsedBio}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="url" class="ui-label">Url:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="url" th:field="${linkedIn.url}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="featuredPosts" class="ui-label">Featured Posts:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="featuredPosts" th:field="${linkedIn.featuredPosts}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="activity" class="ui-label">Activity:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="activity" th:field="${linkedIn.activity}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="skills" class="ui-label">Skills:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="skills" th:field="${linkedIn.skills}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="email" class="ui-label">Email:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="email" th:field="${linkedIn.email}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="firstName" class="ui-label">First Name:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="firstName" th:field="${linkedIn.firstName}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="lastName" class="ui-label">Last Name:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="lastName" th:field="${linkedIn.lastName}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="biography" class="ui-label">Biography:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="biography" th:field="${linkedIn.biography}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="education" class="ui-label">Education:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="education" th:field="${linkedIn.education}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="experience" class="ui-label">Experience:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="experience" th:field="${linkedIn.experience}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="location" class="ui-label">Location:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="location" th:field="${linkedIn.location}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="image" class="ui-label">Image:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="image" th:field="${linkedIn.image}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="title" class="ui-label">Title:</label>
+                            <div class="ui-text-input">
+                                <input class="ui-value" id="title" th:field="${linkedIn.title}" type="text"/>
+                            </div>
+                        </div>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
+                    </form>
+                    <form action="/linkedin/delete" class="ui-form" method="post" style="padding-top:0;">
+                        <input th:field="${linkedIn.id}" type="hidden"/>
+                        <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
+                    </form>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+
+</html>

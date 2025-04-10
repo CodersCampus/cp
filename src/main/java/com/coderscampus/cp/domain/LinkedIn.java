@@ -1,34 +1,32 @@
 package com.coderscampus.cp.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class LinkedIn {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String decoratedHeader;
-    private String collapsedBio;
-    private String url;
-    private String featuredPosts;
-    private String activity;
-    private String skills;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+	private String decoratedHeader;
+	private String collapsedBio;
+	private String url;
+	private String featuredPosts;
+	private String activity;
+	private String skills;
+	private String email;
+	private String firstName;
+	private String lastName;
+	private String biography;
+	private String education;
+	private String experience;
+	private String location;
+	private String image;
+	private String title;
 
     public LinkedIn() {
-
-    }
-
-    public LinkedIn(Long id, String decoratedHeader, String collapsedBio, String url, String featuredPosts, String activity, String skills) {
-        this.id = id;
-        this.decoratedHeader = decoratedHeader;
-        this.collapsedBio = collapsedBio;
-        this.url = url;
-        this.featuredPosts = featuredPosts;
-        this.activity = activity;
-        this.skills = skills;
     }
 
     public Long getId() {
@@ -37,6 +35,14 @@ public class LinkedIn {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public String getDecoratedHeader() {
@@ -87,16 +93,75 @@ public class LinkedIn {
         this.skills = skills;
     }
 
-    @Override
-    public String toString() {
-        return "LinkedIn{" +
-                "id=" + id +
-                ", decoratedHeader='" + decoratedHeader + '\'' +
-                ", collapsedBio='" + collapsedBio + '\'' +
-                ", url='" + url + '\'' +
-                ", featuredPosts='" + featuredPosts + '\'' +
-                ", activity='" + activity + '\'' +
-                ", skills='" + skills + '\'' +
-                '}';
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
