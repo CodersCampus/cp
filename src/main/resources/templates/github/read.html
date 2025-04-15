@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">GitHub</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/gitHub/create">Create New</a>
+                        </button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <div class="ui-table" role="region" tabindex="0">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">City</th>
+                                <th scope="col">State</th>
+                                <th scope="col">LinkedIn</th>
+                                <th scope="col">gitHub</th>
+                                <th scope="col">Summary</th>
+                                <th scope="col">Skills</th>
+                                <th scope="col">Work Experience</th>
+                                <th scope="col">Education</th>
+                                <th scope="col">Projects</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="gitHub: ${gitHubs}">
+                                <td><span th:text="${gitHub.phoneNumber}"></span></td>
+                                <td><span th:text="${gitHub.email}"></span></td>
+                                <td><span th:text="${gitHub.city}"></span></td>
+                                <td><span th:text="${gitHub.state}"></span></td>
+                                <td><span th:text="${gitHub.linkedIn}"></span></td>
+                                <td><span th:text="${gitHub.gitHub}"></span></td>
+                                <td><span th:text="${gitHub.summary}"></span></td>
+                                <td><span th:text="${gitHub.skills}"></span></td>
+                                <td><span th:text="${gitHub.workExperience}"></span></td>
+                                <td><span th:text="${gitHub.education}"></span></td>
+                                <td><span th:text="${gitHub.projects}"></span></td>
+                                <td>
+                                    <a th:href="@{/gitHub/update/{gitHubId}(gitHubId=${gitHub.id})}">
+                                        <i class="fa-solid fa-pen-to-square"
+                                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
