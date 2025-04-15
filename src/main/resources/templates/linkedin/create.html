@@ -20,15 +20,15 @@
                     <form action="/linkedin/create" class="ui-form" method="post">
                         <input id="uid" name="uid" type="hidden"/>
                         <div class="ui-input-field">
-                            <label for="decoratedHeader" class="ui-label">Decorated Header:</label>
+                            <label for="banner" class="ui-label">Banner:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="decoratedHeader" th:field="${linkedIn.decoratedHeader}" type="text"/>
+                                <input class="ui-value" id="banner" th:field="${linkedIn.banner}" type="text"/>
                             </div>
                         </div>
                         <div class="ui-input-field">
-                            <label for="collapsedBio" class="ui-label">Collapsed Bio:</label>
+                            <label for="about" class="ui-label">About:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="collapsedBio" th:field="${linkedIn.collapsedBio}" type="text"/>
+                                <input class="ui-value" id="about" th:field="${linkedIn.about}" type="text"/>
                             </div>
                         </div>
                         <div class="ui-input-field">

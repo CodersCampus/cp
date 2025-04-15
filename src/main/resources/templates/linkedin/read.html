@@ -21,8 +21,8 @@
                         <table>
                             <thead>
                             <tr>
-                                <th scope="col">Decorated Header</th>
-                                <th scope="col">Collapsed Bio</th>
+                                <th scope="col">Banner</th>
+                                <th scope="col">About</th>
                                 <th scope="col">URL</th>
                                 <th scope="col">Featured Posts</th>
                                 <th scope="col">Activity</th>
@@ -41,8 +41,8 @@
                             </thead>
                             <tbody>
                             <tr th:each="linkedIn: ${linkedIns}">
-                                <td><span th:text="${linkedIn.decoratedHeader}"></span></td>
-                                <td><span th:text="${linkedIn.collapsedBio}"></span></td>
+                                <td><span th:text="${linkedIn.banner}"></span></td>
+                                <td><span th:text="${linkedIn.about}"></span></td>
                                 <td><span th:text="${linkedIn.url}"></span></td>
                                 <td><span th:text="${linkedIn.featuredPosts}"></span></td>
                                 <td><span th:text="${linkedIn.activity}"></span></td>
