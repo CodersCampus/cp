@@ -10,7 +10,7 @@
                 <section class="ui-panel-title title-small">GitHub</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/gitHub/create">Create New</a>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/github/create">Create New</a>
                         </button>
                     </ul>
                 </nav>
@@ -21,35 +21,31 @@
                         <table>
                             <thead>
                             <tr>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">City</th>
-                                <th scope="col">State</th>
-                                <th scope="col">LinkedIn</th>
-                                <th scope="col">gitHub</th>
-                                <th scope="col">Summary</th>
-                                <th scope="col">Skills</th>
-                                <th scope="col">Work Experience</th>
-                                <th scope="col">Education</th>
-                                <th scope="col">Projects</th>
+                                <th scope="col">handle</th>
+                                <th scope="col">enhancedReadMe</th>
+                                <th scope="col">renamedAssignments</th>
+                                <th scope="col">pinnedRepos</th>
+                                <th scope="col">externalLinks</th>
+                                <th scope="col">image</th>
+                                <th scope="col">headline</th>
+                                <th scope="col">contactDetails</th>
+                                <th scope="col">url</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="gitHub: ${gitHubs}">
-                                <td><span th:text="${gitHub.phoneNumber}"></span></td>
-                                <td><span th:text="${gitHub.email}"></span></td>
-                                <td><span th:text="${gitHub.city}"></span></td>
-                                <td><span th:text="${gitHub.state}"></span></td>
-                                <td><span th:text="${gitHub.linkedIn}"></span></td>
-                                <td><span th:text="${gitHub.gitHub}"></span></td>
-                                <td><span th:text="${gitHub.summary}"></span></td>
-                                <td><span th:text="${gitHub.skills}"></span></td>
-                                <td><span th:text="${gitHub.workExperience}"></span></td>
-                                <td><span th:text="${gitHub.education}"></span></td>
-                                <td><span th:text="${gitHub.projects}"></span></td>
+                                <td><span th:text="${gitHub.handle}"></span></td>
+                                <td><span th:text="${gitHub.enhancedReadMe}"></span></td>
+                                <td><span th:text="${gitHub.renamedAssignments}"></span></td>
+                                <td><span th:text="${gitHub.pinnedRepos}"></span></td>
+                                <td><span th:text="${gitHub.externalLinks}"></span></td>
+                                <td><span th:text="${gitHub.image}"></span></td>
+                                <td><span th:text="${gitHub.headline}"></span></td>
+                                <td><span th:text="${gitHub.contactDetails}"></span></td>
+                                <td><span th:text="${gitHub.url}"></span></td>
                                 <td>
-                                    <a th:href="@{/gitHub/update/{gitHubId}(gitHubId=${gitHub.id})}">
+                                    <a th:href="@{/github/update/{gitHubId}(gitHubId=${gitHub.id})}">
                                         <i class="fa-solid fa-pen-to-square"
                                            style="color: var(--primary); font-size:20px; font-weight:100"></i>
                                     </a>

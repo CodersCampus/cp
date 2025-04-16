@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/gitHub")
+@RequestMapping("/github")
 public class GitHubController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class GitHubController {
         model.put("gitHubs", gitHubs);
         model.addAttribute("pageTitle", "GitHub Read");
         model.put("isGitHub", true);
-        return "gitHub/read";
+        return "github/read";
     }
 
     @GetMapping("/create")
@@ -31,13 +31,13 @@ public class GitHubController {
         model.put("gitHub", gitHub);
         model.addAttribute("pageTitle", "GitHub Create");
         model.put("isGitHub", true);
-        return "gitHub/create";
+        return "github/create";
     }
 
     @PostMapping("/create")
     public String create(GitHub gitHub, @RequestParam("uid") String uid) {
         gitHub = gitHubService.saveByUid(gitHub, uid);
-        return "redirect:/gitHub/";
+        return "redirect:/github/";
     }
 
     @GetMapping("/update/{id}")
@@ -46,18 +46,18 @@ public class GitHubController {
         model.put("gitHub", gitHub);
         model.addAttribute("pageTitle", "GitHub Update");
         model.put("isGitHub", true);
-        return "gitHub/update";
+        return "github/update";
     }
 
     @PostMapping("/update")
     public String update(GitHub gitHub) {
         gitHubService.save(gitHub);
-        return "redirect:/gitHub/";
+        return "redirect:/github/";
     }
 
     @PostMapping("/delete")
     public String delete(GitHub gitHub) {
         gitHubService.delete(gitHub);
-        return "redirect:/gitHub/";
+        return "redirect:/github/";
     }
 }
