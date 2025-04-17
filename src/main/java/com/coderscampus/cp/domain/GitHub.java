@@ -1,41 +1,48 @@
 package com.coderscampus.cp.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class GitHub {
-    private String handle;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String enhancedReadMe;
-    private String renamedAssignments;
-    private String pinnedRepos;
-    private String externalLinks;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+    private String handle;
+    private String enhancedReadMe;     // convert to boolean
+    private String renamedAssignments; // convert to boolean
+    private String pinnedRepos;        // convert to boolean
+    private String externalLinks;      // convert to list
+    private String image;
+    private String headline;
+    private String contactDetails;
+    private String url;
 
     public GitHub() {
 
     }
 
-    public GitHub(String handle, String enhancedReadMe, String renamedAssignments, String pinnedRepos,
-                  String externalLinks) {
-        this();
+    public GitHub(String handle, String enhancedReadMe, String renamedAssignments, String pinnedRepos, String externalLinks, String image, String headline, String contactDetails, String url) {
         this.handle = handle;
         this.enhancedReadMe = enhancedReadMe;
         this.renamedAssignments = renamedAssignments;
         this.pinnedRepos = pinnedRepos;
         this.externalLinks = externalLinks;
+        this.image = image;
+        this.headline = headline;
+        this.contactDetails = contactDetails;
+        this.url = url;
     }
 
-    public String getHandle() {
-        return handle;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setHandle(String handle) {
-        this.handle = handle;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public Long getId() {
@@ -44,6 +51,14 @@ public class GitHub {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getHandle() {
+        return handle;
+    }
+
+    public void setHandle(String handle) {
+        this.handle = handle;
     }
 
     public String getEnhancedReadMe() {
@@ -78,11 +93,54 @@ public class GitHub {
         this.externalLinks = externalLinks;
     }
 
-    @Override
-    public String toString() {
-        return "GitHub [handle=" + handle + ", id=" + id + ", enhancedReadMe=" + enhancedReadMe
-                + ", renamedAssignments=" + renamedAssignments + ", pinnedRepos=" + pinnedRepos + ", externalLinks="
-                + externalLinks + "]";
+    public String getImage() {
+        return image;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getHeadline() {
+        return headline;
+    }
+
+    public void setHeadline(String headline) {
+        this.headline = headline;
+    }
+
+    public String getContactDetails() {
+        return contactDetails;
+    }
+
+    public void setContactDetails(String contactDetails) {
+        this.contactDetails = contactDetails;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "GitHub{" +
+                "id=" + id +
+                ", student=" + student +
+                ", handle='" + handle + '\'' +
+                ", enhancedReadMe='" + enhancedReadMe + '\'' +
+                ", renamedAssignments='" + renamedAssignments + '\'' +
+                ", pinnedRepos='" + pinnedRepos + '\'' +
+                ", externalLinks='" + externalLinks + '\'' +
+                ", image='" + image + '\'' +
+                ", headline='" + headline + '\'' +
+                ", contactDetails='" + contactDetails + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }
+
+
