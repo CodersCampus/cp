@@ -16,7 +16,7 @@ public class GitHubController {
     @Autowired
     private GitHubService gitHubService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home(ModelMap model) {
         List<GitHub> gitHubs = gitHubService.findAll();
         model.put("gitHubs", gitHubs);
@@ -37,7 +37,7 @@ public class GitHubController {
     @PostMapping("/create")
     public String create(GitHub gitHub, @RequestParam("uid") String uid) {
         gitHub = gitHubService.saveByUid(gitHub, uid);
-        return "redirect:/github/";
+        return "redirect:/github";
     }
 
     @GetMapping("/update/{id}")
@@ -52,12 +52,12 @@ public class GitHubController {
     @PostMapping("/update")
     public String update(GitHub gitHub) {
         gitHubService.save(gitHub);
-        return "redirect:/github/";
+        return "redirect:/github";
     }
 
     @PostMapping("/delete")
     public String delete(GitHub gitHub) {
         gitHubService.delete(gitHub);
-        return "redirect:/github/";
+        return "redirect:/github";
     }
 }
