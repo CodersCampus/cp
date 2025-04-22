@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">GitHub</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/github/create">Create New</a>
+                        </button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <div class="ui-table" role="region" tabindex="0">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th scope="col">Handle</th>
+                                <th scope="col">Enhanced ReadMe</th>
+                                <th scope="col">Renamed Assignments</th>
+                                <th scope="col">Pinned Repos</th>
+                                <th scope="col">External Links</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Headline</th>
+                                <th scope="col">Contact Details</th>
+                                <th scope="col">Url</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="gitHub: ${gitHubs}">
+                                <td><span th:text="${gitHub.handle}"></span></td>
+                                <td><span th:text="${gitHub.enhancedReadMe}"></span></td>
+                                <td><span th:text="${gitHub.renamedAssignments}"></span></td>
+                                <td><span th:text="${gitHub.pinnedRepos}"></span></td>
+                                <td><span th:text="${gitHub.externalLinks}"></span></td>
+                                <td><span th:text="${gitHub.image}"></span></td>
+                                <td><span th:text="${gitHub.headline}"></span></td>
+                                <td><span th:text="${gitHub.contactDetails}"></span></td>
+                                <td><span th:text="${gitHub.url}"></span></td>
+                                <td>
+                                    <a th:href="@{/github/update/{gitHubId}(gitHubId=${gitHub.id})}">
+                                        <i class="fa-solid fa-pen-to-square"
+                                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

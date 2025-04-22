@@ -97,7 +97,7 @@ public class CheckinController {
         return "checkin/blocker-read";
     }
 
-    @GetMapping("Activities")
+    @GetMapping("/activities")
     public String getActivities(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.getCodersActivities(uid);
