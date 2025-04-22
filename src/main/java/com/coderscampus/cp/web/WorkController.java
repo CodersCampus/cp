@@ -55,7 +55,7 @@ public class WorkController {
         return "work/work-details";
     }
 
-    @GetMapping("/read")
+    @GetMapping("")
     public String listWorkLogs(Model model) {
         List<Work> workList = workService.findAllWorks();
         model.addAttribute("workList", workList);

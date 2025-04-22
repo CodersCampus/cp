@@ -4,16 +4,16 @@
             <a class="ui-navbar-brand headline-large-bold-italic" href="/">cp</a>
             <ul class="ui-navbar-nav">
                 <li class="ui-nav-item" th:classappend="${isStudent} ? 'active'">
-                    <a class="ui-nav-link" href="/student/" th:classappend="${isStudent} ? 'active-link'">Student</a>
+                    <a class="ui-nav-link" href="/student" th:classappend="${isStudent} ? 'active-link'">Student</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isCheckin} ? 'active'">
-                    <a class="ui-nav-link" href="/checkin/" th:classappend="${isCheckin} ? 'active-link'">Check-In</a>
+                    <a class="ui-nav-link" href="/checkin" th:classappend="${isCheckin} ? 'active-link'">Check-In</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isWorkLog} ? 'active'">
-                    <a class="ui-nav-link" href="/work/read" th:classappend="${isWorkLog} ? 'active-link'">Work Log</a>
+                    <a class="ui-nav-link" href="/work" th:classappend="${isWorkLog} ? 'active-link'">Work Log</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isResume} ? 'active'">
-                    <a class="ui-nav-link" href="/resume/" th:classappend="${isResume} ? 'active-link'">Resume</a>
+                    <a class="ui-nav-link" href="/resume" th:classappend="${isResume} ? 'active-link'">Resume</a>
                 </li>
                 <li class="ui-nav-item" th:classappend="${isLinkedIn} ? 'active'">
                     <a class="ui-nav-link" href="/linkedin" th:classappend="${isLinkedIn} ? 'active-link'">LinkedIn</a>
@@ -22,7 +22,7 @@
                     <a class="ui-nav-link" href="/github" th:classappend="${isGitHub} ? 'active-link'">GitHub</a>
                 </li>
                 <li class="ui-nav-item" th:if="${showDatabaseConsoleLink}" th:classappend="${isDatabaseConsole} ? 'active'">
-                    <a class="ui-nav-link" href="/h2-console/" th:classappend="${isDatabaseConsole} ? 'active-link'">Database
+                    <a class="ui-nav-link" href="/h2-console" th:classappend="${isDatabaseConsole} ? 'active-link'">Database
                         Console</a>
                 </li>
             </ul>

@@ -13,7 +13,7 @@
                         <button class="ui-nav-item ui-button" type="button"><a href="/github/create">Create New</a>
                         </button>
                         <button class="ui-nav-item ui-button" type="button"><a aria-current="page"
-                                                                               href="/github/">Back</a></button>
+                                                                               href="/github">Back</a></button>
                     </ul>
                 </nav>
             </div>
@@ -76,7 +76,7 @@
                             </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
                     </form>
-                    <form action="/gitHub/delete" class="ui-form" method="post" style="padding-top:0;">
+                    <form action="/github/delete" class="ui-form" method="post" style="padding-top:0;">
                         <input th:field="${gitHub.id}" type="hidden"/>
                         <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
                     </form>

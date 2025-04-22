@@ -16,7 +16,7 @@ public class ResumeController {
     @Autowired
     private ResumeService resumeService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home(ModelMap model) {
         List<Resume> resumes = resumeService.findAll();
         model.put("resumes", resumes);
@@ -37,7 +37,7 @@ public class ResumeController {
     @PostMapping("/create")
     public String create(Resume resume, @RequestParam("uid") String uid) {
         resume = resumeService.saveByUid(resume, uid);
-        return "redirect:/resume/";
+        return "redirect:/resume";
     }
 
     @GetMapping("/update/{id}")
@@ -52,12 +52,12 @@ public class ResumeController {
     @PostMapping("/update")
     public String update(Resume resume) {
         resumeService.save(resume);
-        return "redirect:/resume/";
+        return "redirect:/resume";
     }
 
     @PostMapping("/delete")
     public String delete(Resume resume) {
         resumeService.delete(resume);
-        return "redirect:/resume/";
+        return "redirect:/resume";
     }
 }
