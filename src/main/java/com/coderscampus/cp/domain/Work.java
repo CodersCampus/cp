@@ -33,6 +33,10 @@ public class Work extends HasUidBase {
         this.date = date;
     }
 
+    public Instant getDate(){
+        return date;
+    }
+
 
     public String getStudentName() {
         return studentName;

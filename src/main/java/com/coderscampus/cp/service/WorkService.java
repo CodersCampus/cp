@@ -1,5 +1,8 @@
 package com.coderscampus.cp.service;
 
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,5 +32,11 @@ public class WorkService {
 
     public List<Work> findAllWorks() {
         return workRepository.findAllByOrderByDateDesc();
+    }
+
+    public Integer getAggregateMinutes(String studentName, Instant referenceDate) {
+        Instant endDate = referenceDate;
+        Instant startDate = referenceDate.minus(7, ChronoUnit.DAYS);
+        return workRepository.getAggregateMinutes(studentName, startDate, endDate);
     }
 }

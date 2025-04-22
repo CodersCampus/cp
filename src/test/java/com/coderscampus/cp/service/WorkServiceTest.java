@@ -37,7 +37,7 @@ public class WorkServiceTest {
             work.setStudentName("Student" + i);
             work.setDateBackDoorForTesting(getInstant(i));
             work.setAssignmentNumber(i);
-            work.setNumberMinutes(100);
+            work.setNumberMinutes(100 + i);
             work.setDescription("Description" + i);
             workRepo.save(work);
             works.add(work);
@@ -68,7 +68,8 @@ public class WorkServiceTest {
     @Test
     @Transactional
     void testSaveWork() {
-        for (int i = 0; i < 4; i++) {
+
+        for (int i = 0; i < 21; i++) {
             Work work = works.get(i);
             assertNotNull(work);
             assertNotNull(work.getId());
@@ -76,9 +77,20 @@ public class WorkServiceTest {
             assertEquals("Description" + i, work.getDescription());
             assertEquals("Student" + i, work.getStudentName());
             assertEquals(i, work.getAssignmentNumber());
-            System.out.println(work.getId());
 
+
+            //System.out.println(work.getId());
         }
-
     }
+
+    @Test
+    @Transactional
+    void testWorkServiceWeeklyMinutesWithInstant() {
+        Work work = works.get(0);
+        String studentName = work.getStudentName();
+        Instant referenceDate = work.getDate().plusSeconds(1);
+        Integer totalMinutes = workService.getAggregateMinutes(studentName, referenceDate);
+        assertNotNull(totalMinutes);
+    }
+
 }
