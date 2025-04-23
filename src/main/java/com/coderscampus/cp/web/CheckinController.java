@@ -25,7 +25,7 @@ public class CheckinController {
     @Autowired
     private UserStatusService userStatusService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.findByUid(uid);
@@ -50,7 +50,7 @@ public class CheckinController {
     @PostMapping("/create")
     public String create(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinDTO = checkinService.saveByUid(checkinDTO, uid);
-        return "redirect:/checkin/";
+        return "redirect:/checkin";
     }
 
     @GetMapping("/update/{id}")
@@ -72,19 +72,19 @@ public class CheckinController {
     public String update(@ModelAttribute("checkin") Checkin checkin,
                          @ModelAttribute("activityLog") ActivityLog activityLog) {
         checkin.getActivityLogs().add(activityLog);
-        return "redirect:/checkin/";
+        return "redirect:/checkin";
     }
 
     @PostMapping("/update")
     public String update(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinService.saveByUid(checkinDTO, uid);
-        return "redirect:/checkin/";
+        return "redirect:/checkin";
     }
 
     @PostMapping("/delete")
     public String delete(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinService.delete(checkinDTO, uid);
-        return "redirect:/checkin/";
+        return "redirect:/checkin";
     }
 
     @GetMapping("/blockers")
