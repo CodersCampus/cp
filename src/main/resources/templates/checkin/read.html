@@ -10,6 +10,11 @@
     </button>
     <p>Total Checkins Attended: <span th:text="${numberOfCheckins}"></span></p>
     <p>Total Issues Contributed To: <span th:text="${numberOfIssues}"></span></p>
+    <p>Stats for Roles Filled:</p>
+    <p th:each="entry : ${activityLogMap}">
+        <span th:text="${entry.key}"></span>:
+        <span th:text="${entry.value}"></span>
+    </p>
 </ul>
 <main>
     <div class="ui-table" role="region" tabindex="0">

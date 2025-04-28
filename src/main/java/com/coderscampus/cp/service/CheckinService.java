@@ -118,5 +118,5 @@ public class CheckinService {
 
     public Integer getNumberOfCheckins() {return checkinRepo.getNumberOfCheckins();}
 
-    public Integer getNumberOfIssues() {return checkinRepo.getNumberOfIssues();}
+
 }

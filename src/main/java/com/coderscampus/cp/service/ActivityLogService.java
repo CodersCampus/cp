@@ -1,8 +1,6 @@
 package com.coderscampus.cp.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,5 +67,27 @@ public class ActivityLogService {
 
     }
 
+    public Integer getNumberOfIssues() {return activityLogRepository.getNumberOfIssues();}
+
+    public Map<String, Integer> getNumberForEachRole() {
+        Map<String, Integer> activityLogMap = new HashMap<String, Integer>();
+        String[] roles = new String[]{"OBSERVER", "CODER", "GUIDE", "SCRUM_MASTER", "PRODUCT_OWNER"};
+        for (String role : roles) {
+            Integer roleCount = getStatsForActivity(role);
+            activityLogMap.put(role, roleCount);
+        }
+        System.out.println(activityLogMap);
+        return activityLogMap;
+    }
+        public Integer getStatsForActivity (String role){
+            Integer count = 0;
+            List<ActivityLog> allActivityLogs = activityLogRepository.findAll();
+            for (ActivityLog activityLog : allActivityLogs) {
+                if (activityLog.getRole() != null && activityLog.getRole().name().equals(role)) {
+                 count++;
+                }
+            }
+            return count;
+        }
 
 }
