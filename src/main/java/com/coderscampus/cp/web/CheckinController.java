@@ -30,6 +30,8 @@ public class CheckinController {
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.findByUid(uid);
         model.put("checkins", checkins);
+        Integer numberOfCheckins = checkinService.getNumberOfCheckins();
+        model.put("numberOfCheckins", numberOfCheckins);
         model.addAttribute("pageTitle", "Checkin Read");
         model.put("isCheckin", true);
         return "checkin/read";
