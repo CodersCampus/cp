@@ -8,20 +8,29 @@
     <button class="ui-nav-item ui-button" type="button"><a href="/checkin/activities">Coders
         Activities</a>
     </button>
-    <p>Total Checkins Attended: <span th:text="${numberOfCheckins}"></span></p>
-    <p>Total Issues Contributed To: <span th:text="${numberOfIssues}"></span></p>
-    <p>Stats for Roles Filled:</p>
-    <p th:each="entry : ${activityLogRoleMap}">
-        <span th:text="${entry.key}"></span>:
-        <span th:text="${entry.value}"></span>
-    </p>
-    <p>Stats for Coding Types:</p>
-    <p th:each="entry : ${activityLogTypeMap}">
-        <span th:text="${entry.key}"></span>:
-        <span th:text="${entry.value}"></span>
-    </p>
 </ul>
 <main>
+    <div>
+        <p>Total Checkins Attended: <span th:text="${numberOfCheckins}"></span></p>
+        <p>Total Issues Contributed To: <span th:text="${numberOfIssues}"></span></p>
+    </div>
+    <div style="display: inline-block;">
+        <div style="display: inline-block; padding-right: 50px;">
+            <p>Stats for Roles Filled:</p>
+            <p th:each="entry : ${activityLogRoleMap}">
+                <span th:text="${entry.key}"></span>:
+                <span th:text="${entry.value}"></span>
+            </p>
+        </div>
+
+        <div style="display: inline-block; vertical-align: top;">
+            <p>Stats for Coding Types:</p>
+            <p th:each="entry : ${activityLogTypeMap}">
+                <span th:text="${entry.key}"></span>:
+                <span th:text="${entry.value}"></span>
+            </p>
+        </div>
+    </div>
     <div class="ui-table" role="region" tabindex="0">
         <table>
             <thead>
