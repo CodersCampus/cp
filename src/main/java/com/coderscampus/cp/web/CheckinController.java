@@ -38,8 +38,11 @@ public class CheckinController {
         Integer numberOfCheckins = checkinService.getNumberOfCheckins();
         model.put("numberOfCheckins", numberOfCheckins);
 
-        Map<String, Integer> activityLogMap = activityLogService.getNumberForEachRole();
-        model.put("activityLogMap", activityLogMap);
+        Map<String, Integer> activityLogRoleMap = activityLogService.getNumberForEachRole();
+        model.put("activityLogRoleMap", activityLogRoleMap);
+
+        Map<String, Integer> activityLogTypeMap = activityLogService.getNumberForEachType();
+        model.put("activityLogTypeMap", activityLogTypeMap);
 
         model.addAttribute("pageTitle", "Checkin Read");
         model.put("isCheckin", true);

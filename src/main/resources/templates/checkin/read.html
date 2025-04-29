@@ -11,7 +11,12 @@
     <p>Total Checkins Attended: <span th:text="${numberOfCheckins}"></span></p>
     <p>Total Issues Contributed To: <span th:text="${numberOfIssues}"></span></p>
     <p>Stats for Roles Filled:</p>
-    <p th:each="entry : ${activityLogMap}">
+    <p th:each="entry : ${activityLogRoleMap}">
+        <span th:text="${entry.key}"></span>:
+        <span th:text="${entry.value}"></span>
+    </p>
+    <p>Stats for Coding Types:</p>
+    <p th:each="entry : ${activityLogTypeMap}">
         <span th:text="${entry.key}"></span>:
         <span th:text="${entry.value}"></span>
     </p>

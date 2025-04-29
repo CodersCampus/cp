@@ -73,17 +73,38 @@ public class ActivityLogService {
         Map<String, Integer> activityLogMap = new HashMap<String, Integer>();
         String[] roles = new String[]{"OBSERVER", "CODER", "GUIDE", "SCRUM_MASTER", "PRODUCT_OWNER"};
         for (String role : roles) {
-            Integer roleCount = getStatsForActivity(role);
+            Integer roleCount = getRoleStatsForActivity(role);
             activityLogMap.put(role, roleCount);
         }
         System.out.println(activityLogMap);
         return activityLogMap;
     }
-        public Integer getStatsForActivity (String role){
+        public Integer getRoleStatsForActivity (String role){
             Integer count = 0;
             List<ActivityLog> allActivityLogs = activityLogRepository.findAll();
             for (ActivityLog activityLog : allActivityLogs) {
                 if (activityLog.getRole() != null && activityLog.getRole().name().equals(role)) {
+                 count++;
+                }
+            }
+            return count;
+        }
+
+        public Map<String, Integer> getNumberForEachType() {
+        Map<String, Integer> activityLogMap = new HashMap<String, Integer>();
+        String[] types = new String[]{"DESIGN", "CRUD", "CODE_REVIEW", "DOCUMENTATION"};
+        for (String type : types) {
+            Integer typeCount = getCodingTypeStatsForActivity(type);
+            activityLogMap.put(type, typeCount);
+        }
+        System.out.println(activityLogMap);
+        return activityLogMap;
+    }
+        public Integer getCodingTypeStatsForActivity (String type){
+            Integer count = 0;
+            List<ActivityLog> allActivityLogs = activityLogRepository.findAll();
+            for (ActivityLog activityLog : allActivityLogs) {
+                if (activityLog.getCodingType() != null && activityLog.getCodingType().name().equals(type)) {
                  count++;
                 }
             }
