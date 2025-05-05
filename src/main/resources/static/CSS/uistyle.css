@@ -865,7 +865,8 @@ Sidebar Styles
 
 .ga-content-main {
     border-radius: 8px;
-    background-color: var(--background-accent);
+    /*background-color: var(--background-accent);*/
+    background-color: #c3e4f5;
 }
 
 /* table styles */
