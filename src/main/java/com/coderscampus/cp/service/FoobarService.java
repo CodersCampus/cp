@@ -36,7 +36,7 @@ public class FoobarService {
     }
 
     public Foobar findById(Long id) {
-        return foobarRepo.findById(id).get();
+        return foobarRepo.findById(id).orElseThrow(() -> new RuntimeException("Element not found with ID " + id));
     }
 
     public void delete(Foobar foobar) {
