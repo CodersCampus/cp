@@ -16,7 +16,7 @@ public class FoobarController {
     @Autowired
     private FoobarService foobarService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home(ModelMap model) {
         List<Foobar> foobars = foobarService.findAll();
         model.put("foobars", foobars);
@@ -37,7 +37,7 @@ public class FoobarController {
     @PostMapping("/create")
     public String create(Foobar foobar, @RequestParam("uid") String uid) {
         foobar = foobarService.saveByUid(foobar, uid);
-        return "redirect:/foobar/";
+        return "redirect:/foobar";
     }
 
     @GetMapping("/update/{id}")
@@ -52,12 +52,12 @@ public class FoobarController {
     @PostMapping("/update")
     public String update(Foobar foobar) {
         foobarService.save(foobar);
-        return "redirect:/foobar/";
+        return "redirect:/foobar";
     }
 
     @PostMapping("/delete")
     public String delete(Foobar foobar) {
         foobarService.delete(foobar);
-        return "redirect:/foobar/";
+        return "redirect:/foobar";
     }
 }
