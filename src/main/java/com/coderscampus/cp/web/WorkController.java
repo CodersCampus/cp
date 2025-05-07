@@ -29,12 +29,11 @@ public class WorkController {
         Work work = new Work();
         model.addAttribute("work", work);
         model.addAttribute("isWorkLog", true);
-        return "work/work";
+        return "work/create";
     }
 
     @PostMapping("/create")
     public String createWork(@ModelAttribute Work work, Model model) {
-
         if (work.getStudentName() != null && work.getStudentName().startsWith(",")) {
             work.setStudentName(work.getStudentName().substring(1).trim());
         }
@@ -45,7 +44,7 @@ public class WorkController {
 
         workService.saveWork(work);
         model.addAttribute("message", "Work entry created successfully");
-        return "redirect:/work/read";
+        return "redirect:/work";
     }
 
     @GetMapping("/{id}")
