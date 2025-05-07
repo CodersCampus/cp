@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
+
 <body class="ui-background">
-<ul>
+
+<ul style="
+    width: 100%;
+    text-align: center;
+    display: flex;
+    background-color: #c3e4f5;">
+
     <button class="ui-nav-item ui-button" type="button"><a href="/work">Read</a>
     </button>
 </ul>
-<main>
+
+<main class="bg-color-work-main">
     <form action="/work/create" class="ui-form" method="post">
         <input id="uid" name="uid" type="hidden"/>
         <input id="student-name" name="studentName" th:value="${work.studentName}" type="hidden"/>

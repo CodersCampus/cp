@@ -865,8 +865,7 @@ Sidebar Styles
 
 .ga-content-main {
     border-radius: 8px;
-    /*background-color: var(--background-accent);*/
-    background-color: #c3e4f5;
+    background-color: var(--background-accent);
 }
 
 /* table styles */
@@ -1276,3 +1275,7 @@ padding-top: 40px;
 
 }
 
+/*adding style for work log page, specifically*/
+.bg-color-work-main {
+background-color: #c3e4f5 !important;
+}

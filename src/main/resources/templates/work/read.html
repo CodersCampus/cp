@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
 <body class="ui-background">
-<ul class="ui-navbar-nav">
+<ul class="ui-navbar-nav" style="
+    width: 100%;
+    text-align: center;
+    display: flex;
+    background-color: #c3e4f5;">
     <button class="ui-nav-item ui-button" type="button">
         <a href="/work/create">Create New</a>
     </button>
@@ -20,11 +24,11 @@
             </thead>
             <tbody>
             <tr th:each="work : ${workList}">
-                <td><span th:text="${work.studentName}"></span></td>
-                <td><span th:text="${work.assignmentNumber}"></span></td>
-                <td><span th:text="${work.description}"></span></td>
-                <td><span th:text="${work.numberMinutes}"></span></td>
-                <td><span th:text="${#dates.format(work.date, 'MMM d, yyyy hh:mm a')}"></span></td>
+                <td class="bg-color-work-main"><span th:text="${work.studentName}"></span></td>
+                <td class="bg-color-work-main"><span th:text="${work.assignmentNumber}"></span></td>
+                <td class="bg-color-work-main"><span th:text="${work.description}"></span></td>
+                <td class="bg-color-work-main"><span th:text="${work.numberMinutes}"></span></td>
+                <td class="bg-color-work-main"><span th:text="${#dates.format(work.date, 'MMM d, yyyy hh:mm a')}"></span></td>
             </tr>
             </tbody>
         </table>
