@@ -10,27 +10,52 @@
     </button>
 </ul>
 <main>
-    <div>
-        <p>Total Checkins Attended: <span th:text="${numberOfCheckins}"></span></p>
-        <p>Total Issues Contributed To: <span th:text="${numberOfIssues}"></span></p>
+    <div class="ui-table" role="region" tabindex="0">
+       <table>
+           <thead>
+            <tr>
+                <th scope="col">Total Checkins Attended:</th>
+                <th scope="col">Total Issues Contributed To:</th>
+            </tr>
+            </thead>
+           <tbody>
+            <tr>
+                <td><span th:text="${numberOfCheckins}"></span></td>
+                <td><span th:text="${numberOfIssues}"></span></td>
+            </tr>
+            </tbody>
+       </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Coding Role Stats</th>
+                <th th:each="entry : ${activityLogRoleMap}" th:text="${entry.key}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td th:each="entry : ${activityLogRoleMap}" th:text="${entry.value}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Coding Type Stats</th>
+                <th th:each="entry : ${activityLogTypeMap}" th:text="${entry.key}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td th:each="entry : ${activityLogTypeMap}" th:text="${entry.value}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div style="display: inline-block;">
-        <div style="display: inline-block; padding-right: 50px;">
-            <p>Stats for Roles Filled:</p>
-            <p th:each="entry : ${activityLogRoleMap}">
-                <span th:text="${entry.key}"></span>:
-                <span th:text="${entry.value}"></span>
-            </p>
-        </div>
 
-        <div style="display: inline-block; vertical-align: top;">
-            <p>Stats for Coding Types:</p>
-            <p th:each="entry : ${activityLogTypeMap}">
-                <span th:text="${entry.key}"></span>:
-                <span th:text="${entry.value}"></span>
-            </p>
-        </div>
-    </div>
+
     <div class="ui-table" role="region" tabindex="0">
         <table>
             <thead>
