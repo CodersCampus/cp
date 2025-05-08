@@ -7,20 +7,20 @@
         <header th:replace="~{fragments/header :: header(${activePage})}"></header>
         <div layout="layout-sidebar">
             <div class="sidebar-grid-area">
-                <section class="ui-panel-title title-small">Foobar</section>
+                <section class="ui-panel-title title-small">Finalproject</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/foobar/create">Create New</a>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/finalproject/create">Create New</a>
                         </button>
                         <button class="ui-nav-item ui-button" type="button"><a aria-current="page"
-                                                                               href="/foobar/">Back</a></button>
+                                                                               href="/finalproject/">Back</a></button>
                     </ul>
                 </nav>
             </div>
             <div class="ga-content-main">
                 <main>
-                    <form action="/foobar/update" class="ui-form" th:object="${foobar}" method="post">
-                        <input name="uid" th:field="${foobar.id}" type="hidden"/>
+                    <form action="/finalproject/update" class="ui-form" th:object="${finalproject}" method="post">
+                        <input name="uid" th:field="${finalproject.id}" type="hidden"/>
                         <div class="ui-input-field">
                             <label for="name" class="ui-label">Name:</label>
                             <div class="ui-text-input">
@@ -29,8 +29,8 @@
                         </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
                     </form>
-                    <form action="/foobar/delete" class="ui-form" method="post" style="padding-top:0;">
-                        <input th:field="${foobar.id}" type="hidden"/>
+                    <form action="/finalproject/delete" class="ui-form" method="post" style="padding-top:0;">
+                        <input th:field="${finalproject.id}" type="hidden"/>
                         <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
                     </form>
                 </main>
