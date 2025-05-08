@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
+<body class="ui-background">
+<ul>
+    <button class="ui-nav-item ui-button" type="button"><a href="/work">Read</a>
+    </button>
+</ul>
+<main>
+    <form action="/work/create" class="ui-form" method="post">
+        <input id="uid" name="uid" type="hidden"/>
+        <input id="student-name" name="studentName" th:value="${work.studentName}" type="hidden"/>
+        <div class="ui-input-field">
+            <label class="ui-label">Name:</label>
+            <div class="ui-text-input">
+                <input class="ui-value" id="display-name" th:field="${work.studentName}" type="text"
+                       readonly/>
+            </div>
+        </div>
+        <div class="ui-input-field">
+            <label class="ui-label">Next Assignment Number:</label>
+            <div class="ui-text-input">
+                <input class="ui-value" placeholder="ex: 3" th:field="${work.assignmentNumber}"
+                       type="number"/>
+            </div>
+            <p>Data for context only</p>
+        </div>
+        <div class="ui-input-field">
+            <label class="ui-label">Description:</label>
+            <div class="ui-text-input">
+                <textarea class="ui-value" th:field="${work.description}" rows="4"></textarea>
+            </div>
+            <p>Examples: U2L04 Exercises, drills U3L06, Assignment 0-b, Udemy JavaScript course</p>
+        </div>
+        <div class="ui-input-field">
+            <label class="ui-label">Number of Minutes:</label>
+            <div class="ui-text-input">
+                <input class="ui-value" placeholder="ex: 120" th:field="${work.numberMinutes}"
+                       type="number" min="0" max="2147483647"/>
+            </div>
+        </div>
+
+        <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
+    </form>
+</main>
+
+</body>
+</html>
