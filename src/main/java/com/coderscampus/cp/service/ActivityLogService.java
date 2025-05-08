@@ -76,7 +76,6 @@ public class ActivityLogService {
             Integer roleCount = getRoleStatsForActivity(role);
             activityLogMap.put(role, roleCount);
         }
-        System.out.println(activityLogMap);
         return activityLogMap;
     }
         public Integer getRoleStatsForActivity (String role){
@@ -97,7 +96,6 @@ public class ActivityLogService {
             Integer typeCount = getCodingTypeStatsForActivity(type);
             activityLogMap.put(type, typeCount);
         }
-        System.out.println(activityLogMap);
         return activityLogMap;
     }
         public Integer getCodingTypeStatsForActivity (String type){
