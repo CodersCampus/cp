@@ -13,14 +13,14 @@
         <input id="student-name" name="studentName" th:value="${work.studentName}" type="hidden"/>
         <div class="ui-input-field">
             <label class="ui-label label-input-readability">Name:</label>
-            <div class="ui-text-input">
+            <div class="ui-text-input border-highlight-style">
                 <input class="ui-value label-input-readability" id="display-name" th:field="${work.studentName}" type="text"
                        readonly/>
             </div>
         </div>
         <div class="ui-input-field">
             <label class="ui-label label-input-readability">Next Assignment Number:</label>
-            <div class="ui-text-input">
+            <div class="ui-text-input border-highlight-style">
                 <input class="ui-value label-input-readability" placeholder="ex: 3" th:field="${work.assignmentNumber}"
                        type="number"/>
             </div>
@@ -28,14 +28,14 @@
         </div>
         <div class="ui-input-field">
             <label class="ui-label label-input-readability">Description:</label>
-            <div class="ui-text-input">
+            <div class="ui-text-input border-highlight-style">
                 <textarea class="ui-value label-input-readability" th:field="${work.description}" rows="4"></textarea>
             </div>
             <p class="text-work-readability">Examples: U2L04 Exercises, drills U3L06, Assignment 0-b, Udemy JavaScript course</p>
         </div>
         <div class="ui-input-field">
             <label class="ui-label label-input-readability">Number of Minutes:</label>
-            <div class="ui-text-input">
+            <div class="ui-text-input border-highlight-style">
                 <input class="ui-value label-input-readability" placeholder="ex: 120" th:field="${work.numberMinutes}"
                        type="number" min="0" max="2147483647"/>
             </div>
