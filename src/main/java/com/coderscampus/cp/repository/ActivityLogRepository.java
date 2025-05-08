@@ -12,5 +12,11 @@ import java.util.List;
 public interface ActivityLogRepository extends JpaRepository<ActivityLog, Long> {
     @Query("SELECT a FROM ActivityLog a WHERE a.checkin.id = :id")
     List<ActivityLog> findByCheckinId(@Param("id") Long id);
+
+    @Query("SELECT COUNT(DISTINCT n.issueNumber) FROM ActivityLog n")
+    Integer getNumberOfIssues();
+
+    List<ActivityLog> findAll();
+
 }
 

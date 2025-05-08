@@ -1,8 +1,6 @@
 package com.coderscampus.cp.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,5 +67,46 @@ public class ActivityLogService {
 
     }
 
+    public Integer getNumberOfIssues() {return activityLogRepository.getNumberOfIssues();}
+
+    public Map<String, Integer> getNumberForEachRole() {
+        Map<String, Integer> activityLogMap = new HashMap<String, Integer>();
+        String[] roles = new String[]{"OBSERVER", "CODER", "GUIDE", "SCRUM_MASTER", "PRODUCT_OWNER"};
+        for (String role : roles) {
+            Integer roleCount = getRoleStatsForActivity(role);
+            activityLogMap.put(role, roleCount);
+        }
+        return activityLogMap;
+    }
+        public Integer getRoleStatsForActivity (String role){
+            Integer count = 0;
+            List<ActivityLog> allActivityLogs = activityLogRepository.findAll();
+            for (ActivityLog activityLog : allActivityLogs) {
+                if (activityLog.getRole() != null && activityLog.getRole().name().equals(role)) {
+                 count++;
+                }
+            }
+            return count;
+        }
+
+        public Map<String, Integer> getNumberForEachType() {
+        Map<String, Integer> activityLogMap = new HashMap<String, Integer>();
+        String[] types = new String[]{"DESIGN", "CRUD", "CODE_REVIEW", "DOCUMENTATION"};
+        for (String type : types) {
+            Integer typeCount = getCodingTypeStatsForActivity(type);
+            activityLogMap.put(type, typeCount);
+        }
+        return activityLogMap;
+    }
+        public Integer getCodingTypeStatsForActivity (String type){
+            Integer count = 0;
+            List<ActivityLog> allActivityLogs = activityLogRepository.findAll();
+            for (ActivityLog activityLog : allActivityLogs) {
+                if (activityLog.getCodingType() != null && activityLog.getCodingType().name().equals(type)) {
+                 count++;
+                }
+            }
+            return count;
+        }
 
 }
