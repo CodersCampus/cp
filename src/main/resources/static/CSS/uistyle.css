@@ -1,3 +1,5 @@
+/* This issue758 is the Parent Hub for Sub-Tasks to merge into, so that all work done will not impact 'dev'*/
+
 /* Please add the below at the top of your CSS page to import the Google Fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -1261,7 +1263,7 @@ input[type=checkbox]:checked:before {
 .checkin-form-container{
 	display: flex;
 	padding: 20px;
-	
+
 }
 
 .activity-log-section{
