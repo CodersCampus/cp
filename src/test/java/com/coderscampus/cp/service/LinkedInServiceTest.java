@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class LinkedInServiceTest {
@@ -97,6 +97,36 @@ public class LinkedInServiceTest {
     @Transactional
     void testSetUpCreateCheckIn() {
         assertEquals(4, student1LinkedInList.size());
+    }
+
+
+    @Test
+    @Transactional
+    void testSaveByUidForNullUID() {
+        student1LinkedInList.forEach(linkedIn -> {
+            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, null);
+            assertNull(linkedInUt);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testSaveByUidForValidUID() {
+        String goodUid = student1Uid;
+        student1LinkedInList.forEach(linkedIn -> {
+            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, goodUid);
+             assertNotNull(linkedInUt);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testSaveByUidForInvalidUID() {
+        String badUid = "abc";
+        student1LinkedInList.forEach(linkedIn -> {
+            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, badUid);
+            assertNull(linkedInUt);
+        });
     }
 
 
