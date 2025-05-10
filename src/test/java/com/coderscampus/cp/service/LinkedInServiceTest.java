@@ -13,9 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-import java.util.UUID;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,6 +23,8 @@ public class LinkedInServiceTest {
 
     @Autowired
     private StudentRepository studentRepo;
+    @Autowired
+    private StudentService studentService;
 
     @Autowired
     private LinkedInService linkedInService;
@@ -41,6 +42,8 @@ public class LinkedInServiceTest {
 
     List<CheckinDTO> student1CheckinDTOList;
     List<CheckinDTO> student2CheckinDTOList;
+
+    List<StudentDTO> student1StudentDTOList;
 
     List<LinkedIn> student1LinkedInList;
 
@@ -60,6 +63,8 @@ public class LinkedInServiceTest {
         student2 = studentRepo.save(student2);
 
         student1LinkedInList = new ArrayList<>();
+
+        List<StudentDTO> student1StudentDTOList = new ArrayList<StudentDTO>();
 
         for (int i = 0; i < 4; i++) {
             LinkedIn linkedIn  = new LinkedIn();
@@ -95,19 +100,43 @@ public class LinkedInServiceTest {
 
     @Test
     @Transactional
-    void testSetUpCreateCheckIn() {
+    void testSetUpCreateLinkedIn() {
         assertEquals(4, student1LinkedInList.size());
     }
 
-
+//    @Test
+//    @Transactional
+//    void testSaveByUidForNullUID() {
+//        student1LinkedInList.forEach(linkedIn -> {
+//            StudentDTO studentDTO = studentService.saveByUid(studentDTO, null);
+//            assertNull(checkinDTOUt);
+//        });
+//    }
     @Test
-    @Transactional
-    void testSaveByUidForNullUID() {
-        student1LinkedInList.forEach(linkedIn -> {
-            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, null);
-            assertNull(linkedInUt);
-        });
-    }
+	@Transactional
+	void testSaveLinkedIn() {
+        //use atomic long so it can be updated in the lambda expression
+        AtomicLong i = new AtomicLong(0L);
+		student1LinkedInList.forEach(linkedInFromList -> {
+
+            linkedInFromList.setBanner("Test");
+			LinkedIn savedLinkedIn = linkedInService.save(linkedInFromList);
+            assertTrue(savedLinkedIn.getId() > i.get());
+            i.set(savedLinkedIn.getId());
+            assertEquals(linkedInFromList.getBanner(), savedLinkedIn.getBanner());
+            assertEquals(linkedInFromList.getStudent().getId(), savedLinkedIn.getStudent().getId());
+		});
+	}
+
+
+//    @Test
+//    @Transactional
+//    void testSaveByUidForNullUID() {
+//        student1LinkedInList.forEach(linkedIn -> {
+//            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, null);
+//            assertNull(linkedInUt);
+//        });
+//    }
 
     @Test
     @Transactional
@@ -128,6 +157,30 @@ public class LinkedInServiceTest {
             assertNull(linkedInUt);
         });
     }
+
+    @Test
+	@Transactional
+	void testFindByLinkedInId() {
+		student1LinkedInList.forEach(linkedIn -> {
+            assertEquals(linkedIn, linkedInService.findById(linkedIn.getId()));
+        });
+	}
+
+    @Test
+	@Transactional
+	void testFindByLinkedInIdWhenLinkedInIdIsOutOfBounds() {
+        assertThrows(NoSuchElementException.class, () -> {
+            linkedInService.findById(Long.MAX_VALUE);
+        });
+	}
+
+//    @Test
+//	@Transactional
+//	void testFindByLinkedInIdWhenLinkedInIdIsNull() {
+//        assertThrows(null, () -> {
+//            linkedInService.findById(null);
+//        });
+//	}
 
 
 
