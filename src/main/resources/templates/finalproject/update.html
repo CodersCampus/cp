@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">Finalproject</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/finalproject/create">Create New</a>
+                        </button>
+                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page"
+                                                                               href="/finalproject/">Back</a></button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <form action="/finalproject/update" class="ui-form" th:object="${finalproject}" method="post">
+                        <input name="uid" th:field="${finalproject.id}" type="hidden"/>
+                        <div class="ui-input-field">
+                            <label for="projectName" class="ui-label">Project Name:</label>
+                            <div class="ui-text-input">
+                                <input id="projectName" class="ui-value" th:field="*{projectName}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="proposal" class="ui-label">Proposal:</label>
+                            <div class="ui-text-input">
+                                <input id="proposal" class="ui-value" th:field="*{proposal}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="crud" class="ui-label">Crud:</label>
+                            <div class="ui-text-input">
+                                <input id="crud" class="ui-value" th:field="*{crud}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="tables" class="ui-label">Tables:</label>
+                            <div class="ui-text-input">
+                                <input id="tables" class="ui-value" th:field="*{tables}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="views" class="ui-label">Views:</label>
+                            <div class="ui-text-input">
+                                <input id="views" class="ui-value" th:field="*{views}" type="text"/>
+                            </div>
+                        </div>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
+                    </form>
+                    <form action="/finalproject/delete" class="ui-form" method="post" style="padding-top:0;">
+                        <input th:field="${finalproject.id}" type="hidden"/>
+                        <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
+                    </form>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+
+</html>

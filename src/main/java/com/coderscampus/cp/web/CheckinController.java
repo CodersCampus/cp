@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/checkin")
@@ -25,11 +26,24 @@ public class CheckinController {
     @Autowired
     private UserStatusService userStatusService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.findByUid(uid);
         model.put("checkins", checkins);
+
+        Integer numberOfIssues = activityLogService.getNumberOfIssues();
+        model.put("numberOfIssues", numberOfIssues);
+
+        Integer numberOfCheckins = checkinService.getNumberOfCheckins();
+        model.put("numberOfCheckins", numberOfCheckins);
+
+        Map<String, Integer> activityLogRoleMap = activityLogService.getNumberForEachRole();
+        model.put("activityLogRoleMap", activityLogRoleMap);
+
+        Map<String, Integer> activityLogTypeMap = activityLogService.getNumberForEachType();
+        model.put("activityLogTypeMap", activityLogTypeMap);
+
         model.addAttribute("pageTitle", "Checkin Read");
         model.put("isCheckin", true);
         return "checkin/read";
@@ -50,7 +64,7 @@ public class CheckinController {
     @PostMapping("/create")
     public String create(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinDTO = checkinService.saveByUid(checkinDTO, uid);
-        return "redirect:/checkin/";
+        return "redirect:/checkin";
     }
 
     @GetMapping("/update/{id}")
@@ -72,19 +86,19 @@ public class CheckinController {
     public String update(@ModelAttribute("checkin") Checkin checkin,
                          @ModelAttribute("activityLog") ActivityLog activityLog) {
         checkin.getActivityLogs().add(activityLog);
-        return "redirect:/checkin/";
+        return "redirect:/checkin";
     }
 
     @PostMapping("/update")
     public String update(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinService.saveByUid(checkinDTO, uid);
-        return "redirect:/checkin/";
+        return "redirect:/checkin";
     }
 
     @PostMapping("/delete")
     public String delete(CheckinDTO checkinDTO, @RequestParam("uid") String uid) {
         checkinService.delete(checkinDTO, uid);
-        return "redirect:/checkin/";
+        return "redirect:/checkin";
     }
 
     @GetMapping("/blockers")
@@ -97,7 +111,7 @@ public class CheckinController {
         return "checkin/blocker-read";
     }
 
-    @GetMapping("Activities")
+    @GetMapping("/activities")
     public String getActivities(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.getCodersActivities(uid);

@@ -18,7 +18,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         if (uid != null && !uid.isEmpty()) {
@@ -34,7 +34,7 @@ public class StudentController {
     @PostMapping("/create")
     public String create(StudentDTO student, @RequestParam("uid") String uid) {
         studentService.saveByUid(student, uid);
-        return "redirect:/student/";
+        return "redirect:/student";
     }
 
     @GetMapping("/update/{id}")
@@ -49,13 +49,13 @@ public class StudentController {
     @PostMapping("/update")
     public String update(@ModelAttribute("student") StudentDTO studentDTO, @RequestParam("uid") String uid) {
         studentService.saveByUid(studentDTO, uid);
-        return "redirect:/student/";
+        return "redirect:/student";
     }
 
     @PostMapping("/delete")
     public String delete(Student student) {
         studentService.delete(student);
-        return "redirect:/student/";
+        return "redirect:/student";
 
     }
 }

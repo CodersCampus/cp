@@ -5,13 +5,57 @@
 <ul class="ui-navbar-nav">
     <button class="ui-nav-item ui-button" type="button"><a href="/checkin/create">Create New</a>
     </button>
-    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/blockers">Blocker Read</a>
-    </button>
-    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/Activities">Coders
+    <button class="ui-nav-item ui-button" type="button"><a href="/checkin/activities">Coders
         Activities</a>
     </button>
 </ul>
 <main>
+    <div class="ui-table" role="region" tabindex="0">
+       <table>
+           <thead>
+            <tr>
+                <th scope="col">Total Checkins Attended:</th>
+                <th scope="col">Total Issues Contributed To:</th>
+            </tr>
+            </thead>
+           <tbody>
+            <tr>
+                <td><span th:text="${numberOfCheckins}"></span></td>
+                <td><span th:text="${numberOfIssues}"></span></td>
+            </tr>
+            </tbody>
+       </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Coding Role Stats</th>
+                <th th:each="entry : ${activityLogRoleMap}" th:text="${entry.key}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td th:each="entry : ${activityLogRoleMap}" th:text="${entry.value}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Coding Type Stats</th>
+                <th th:each="entry : ${activityLogTypeMap}" th:text="${entry.key}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td th:each="entry : ${activityLogTypeMap}" th:text="${entry.value}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
     <div class="ui-table" role="region" tabindex="0">
         <table>
             <thead>

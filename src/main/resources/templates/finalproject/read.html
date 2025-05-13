@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<div th:replace="~{fragments/head :: head(${pageTitle})}"></div>
+<body class="ui-background">
+<fbauth-element headless>
+    <div>
+        <header th:replace="~{fragments/header :: header(${activePage})}"></header>
+        <div layout="layout-sidebar">
+            <div class="sidebar-grid-area">
+                <section class="ui-panel-title title-small">Final Project</section>
+                <nav class="ui-panel">
+                    <ul class="ui-navbar-nav">
+                        <button class="ui-nav-item ui-button" type="button"><a href="/finalproject/create">Create New</a>
+                        </button>
+                    </ul>
+                </nav>
+            </div>
+            <div class="ga-content-main">
+                <main>
+                    <div class="ui-table" role="region" tabindex="0">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th scope="col">Project Name:</th>
+                                <th scope="col">Proposal:</th>
+                                <th scope="col">Crud:</th>
+                                <th scope="col">Tables:</th>
+                                <th scope="col">Views:</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="finalproject: ${finalprojects}">
+                                <td><span th:text="${finalproject.projectName}"></span></td>
+                                <td><span th:text="${finalproject.proposal}"></span></td>
+                                <td><span th:text="${finalproject.crud}"></span></td>
+                                <td><span th:text="${finalproject.tables}"></span></td>
+                                <td><span th:text="${finalproject.views}"></span></td>
+                                <td>
+                                    <a th:href="@{/finalproject/update/{finalprojectId}(finalprojectId=${finalproject.id})}">
+                                        <i class="fa-solid fa-pen-to-square"
+                                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
