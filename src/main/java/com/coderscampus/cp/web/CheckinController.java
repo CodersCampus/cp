@@ -35,8 +35,6 @@ public class CheckinController {
         Integer numberOfIssues = activityLogService.getNumberOfIssues();
         model.put("numberOfIssues", numberOfIssues);
 
-//        Integer numberOfCheckins = checkinService.getNumberOfCheckins();
-//        model.put("numberOfCheckins", numberOfCheckins);
 
         Integer numberOfCheckins = checkinService.getNumberOfCheckins(uid);
         model.put("numberOfCheckins", numberOfCheckins);

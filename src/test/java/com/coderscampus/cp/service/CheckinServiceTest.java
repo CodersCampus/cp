@@ -400,8 +400,8 @@ public class CheckinServiceTest {
 
     @Test
     @Transactional
-    void testGetNumberOfCheckins() {
-        
+    void testGetNumberOfCheckinsWhenMultipleStudentsExist() {
+
         for (int i = 0; i < 4; i++) {
             Checkin checkin = new Checkin();
             checkin.setBlockerDescription("Blocker" + i);

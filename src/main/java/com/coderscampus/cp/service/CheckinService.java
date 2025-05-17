@@ -116,8 +116,6 @@ public class CheckinService {
         return checkinRepo.findCodersActivities();
     }
 
-    //public Integer getNumberOfCheckins() {return checkinRepo.getNumberOfCheckins();}
-
     public Integer getNumberOfCheckins(String uid) {return findByUid(uid).size();}
 
 
