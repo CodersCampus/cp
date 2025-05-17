@@ -80,18 +80,18 @@ public class ActivityLogService {
         Integer numberOfIssues = set.size();
         return numberOfIssues; }
 
-    public Map<String, Integer> getNumberForEachRole() {
+    public Map<String, Integer> getNumberForEachRole(String uid) {
         Map<String, Integer> activityLogMap = new HashMap<String, Integer>();
         String[] roles = new String[]{"OBSERVER", "CODER", "GUIDE", "SCRUM_MASTER", "PRODUCT_OWNER"};
         for (String role : roles) {
-            Integer roleCount = getRoleStatsForActivity(role);
+            Integer roleCount = getRoleStatsForActivity(role, uid);
             activityLogMap.put(role, roleCount);
         }
         return activityLogMap;
     }
-        public Integer getRoleStatsForActivity (String role){
+        public Integer getRoleStatsForActivity (String role, String uid){
             Integer count = 0;
-            List<ActivityLog> allActivityLogs = activityLogRepository.findAll();
+            List<ActivityLog> allActivityLogs = activityLogRepository.findByCheckinUid(uid);
             for (ActivityLog activityLog : allActivityLogs) {
                 if (activityLog.getRole() != null && activityLog.getRole().name().equals(role)) {
                  count++;
@@ -100,18 +100,18 @@ public class ActivityLogService {
             return count;
         }
 
-        public Map<String, Integer> getNumberForEachType() {
+        public Map<String, Integer> getNumberForEachType(String uid) {
         Map<String, Integer> activityLogMap = new HashMap<String, Integer>();
         String[] types = new String[]{"DESIGN", "CRUD", "CODE_REVIEW", "DOCUMENTATION"};
         for (String type : types) {
-            Integer typeCount = getCodingTypeStatsForActivity(type);
+            Integer typeCount = getCodingTypeStatsForActivity(type, uid);
             activityLogMap.put(type, typeCount);
         }
         return activityLogMap;
     }
-        public Integer getCodingTypeStatsForActivity (String type){
+        public Integer getCodingTypeStatsForActivity (String type, String uid){
             Integer count = 0;
-            List<ActivityLog> allActivityLogs = activityLogRepository.findAll();
+            List<ActivityLog> allActivityLogs = activityLogRepository.findByCheckinUid(uid);
             for (ActivityLog activityLog : allActivityLogs) {
                 if (activityLog.getCodingType() != null && activityLog.getCodingType().name().equals(type)) {
                  count++;

@@ -211,7 +211,7 @@ public class ActivityLogServiceTest {
 
 			activityLog.setRole(ActivityLog.Role.OBSERVER);
 			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
-			//student 2 will have 4 issues
+			//student 2 will have 4 issue numbers, where student 1 has 1
             activityLog.setIssueNumber(628 + i);
 			activityLog.setComment("Update");
 			activityLog.setCheckin(checkin);
@@ -228,4 +228,77 @@ public class ActivityLogServiceTest {
         assertEquals(1, student1NumberOfIssues);
         assertEquals(4, student2NumberOfIssues);
     }
+
+    @Test
+    @Transactional
+    void testGetNumberForEachRoleWhenMultipleStudentsExist() {
+
+        for (int i = 0; i < 4; i++) {
+			Checkin checkin = new Checkin();
+			checkin.setBlockerDescription("Blocker" + i);
+			checkin.setNextAssignment(i);
+			checkin.setBlocker(true);
+
+
+			checkin.setStudent(student2);
+			checkin.setUid(student2Uid);
+			checkinRepo.save(checkin);
+			ActivityLog activityLog = new ActivityLog();
+
+            // both student 1 and student 2 have only observer roles, meaning 8 in total
+			activityLog.setRole(ActivityLog.Role.OBSERVER);
+			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
+			//student 2 will have 4 issue numbers
+            activityLog.setIssueNumber(629 + i);
+			activityLog.setComment("Update");
+			activityLog.setCheckin(checkin);
+			activityLogRepository.save(activityLog);
+			checkin.getActivityLogs().add(activityLog);
+			CheckinDTO checkinDTO = new CheckinDTO(checkin);
+			student2CheckinDTOList.add(checkinDTO);
+		}
+
+        Integer student1NumberOfObservations = activityLogService.getRoleStatsForActivity("OBSERVER", student1Uid);
+        Integer student2NumberOfObservations = activityLogService.getRoleStatsForActivity("OBSERVER", student2Uid);
+
+        assertEquals(4, student1NumberOfObservations);
+        assertEquals(4, student2NumberOfObservations);
+    }
+
+    @Test
+    @Transactional
+    void testGetNumberForEachTypeWhenMultipleStudentsExist() {
+
+        for (int i = 0; i < 3; i++) {
+			Checkin checkin = new Checkin();
+			checkin.setBlockerDescription("Blocker" + i);
+			checkin.setNextAssignment(i);
+			checkin.setBlocker(true);
+
+
+			checkin.setStudent(student2);
+			checkin.setUid(student2Uid);
+			checkinRepo.save(checkin);
+			ActivityLog activityLog = new ActivityLog();
+
+            // both student 1 and student 2 have only observer roles, meaning 8 in total
+			activityLog.setRole(ActivityLog.Role.OBSERVER);
+			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
+			//student 2 will have 4 issue numbers
+            activityLog.setIssueNumber(629 + i);
+			activityLog.setComment("Update");
+			activityLog.setCheckin(checkin);
+			activityLogRepository.save(activityLog);
+			checkin.getActivityLogs().add(activityLog);
+			CheckinDTO checkinDTO = new CheckinDTO(checkin);
+			student2CheckinDTOList.add(checkinDTO);
+		}
+
+        Integer student1NumberOfCrudOperations = activityLogService.getCodingTypeStatsForActivity("CRUD", student1Uid);
+        Integer student2NumberOfCrudOperations = activityLogService.getCodingTypeStatsForActivity("CRUD", student2Uid);
+
+        assertEquals(4, student1NumberOfCrudOperations);
+        assertEquals(3, student2NumberOfCrudOperations);
+    }
+
 }
