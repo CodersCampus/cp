@@ -67,7 +67,18 @@ public class ActivityLogService {
 
     }
 
-    public Integer getNumberOfIssues() {return activityLogRepository.getNumberOfIssues();}
+    public Integer getNumberOfIssues(String uid) {
+
+        List<ActivityLog> logList = activityLogRepository.findByCheckinUid(uid);
+        Set<Integer> set = new LinkedHashSet<>();
+
+        for (ActivityLog activityLog : logList) {
+            Integer issueNumber = activityLog.getIssueNumber();
+            set.add(issueNumber);
+        }
+
+        Integer numberOfIssues = set.size();
+        return numberOfIssues; }
 
     public Map<String, Integer> getNumberForEachRole() {
         Map<String, Integer> activityLogMap = new HashMap<String, Integer>();

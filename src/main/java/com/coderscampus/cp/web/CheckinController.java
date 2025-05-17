@@ -32,7 +32,7 @@ public class CheckinController {
         List<CheckinDTO> checkins = checkinService.findByUid(uid);
         model.put("checkins", checkins);
 
-        Integer numberOfIssues = activityLogService.getNumberOfIssues();
+        Integer numberOfIssues = activityLogService.getNumberOfIssues(uid);
         model.put("numberOfIssues", numberOfIssues);
 
 
