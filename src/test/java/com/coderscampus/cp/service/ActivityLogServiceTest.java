@@ -245,10 +245,8 @@ public class ActivityLogServiceTest {
 			checkinRepo.save(checkin);
 			ActivityLog activityLog = new ActivityLog();
 
-            // both student 1 and student 2 have only observer roles, meaning 8 in total
 			activityLog.setRole(ActivityLog.Role.OBSERVER);
 			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
-			//student 2 will have 4 issue numbers
             activityLog.setIssueNumber(629 + i);
 			activityLog.setComment("Update");
 			activityLog.setCheckin(checkin);
@@ -281,10 +279,9 @@ public class ActivityLogServiceTest {
 			checkinRepo.save(checkin);
 			ActivityLog activityLog = new ActivityLog();
 
-            // both student 1 and student 2 have only observer roles, meaning 8 in total
+
 			activityLog.setRole(ActivityLog.Role.OBSERVER);
 			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
-			//student 2 will have 4 issue numbers
             activityLog.setIssueNumber(629 + i);
 			activityLog.setComment("Update");
 			activityLog.setCheckin(checkin);
