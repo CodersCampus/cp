@@ -115,4 +115,8 @@ public class CheckinService {
     public List<CheckinDTO> getCodersActivities(String uid) {
         return checkinRepo.findCodersActivities();
     }
+
+    public Integer getNumberOfCheckins(String uid) {return findByUid(uid).size();}
+
+
 }
