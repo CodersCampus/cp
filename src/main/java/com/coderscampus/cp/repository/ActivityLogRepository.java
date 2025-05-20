@@ -18,5 +18,8 @@ public interface ActivityLogRepository extends JpaRepository<ActivityLog, Long> 
 
     List<ActivityLog> findAll();
 
+    @Query("SELECT a FROM ActivityLog a WHERE a.checkin.uid = :uid")
+    List<ActivityLog> findByCheckinUid(String uid);
+
 }
 

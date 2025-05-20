@@ -32,16 +32,17 @@ public class CheckinController {
         List<CheckinDTO> checkins = checkinService.findByUid(uid);
         model.put("checkins", checkins);
 
-        Integer numberOfIssues = activityLogService.getNumberOfIssues();
+        Integer numberOfIssues = activityLogService.getNumberOfIssues(uid);
         model.put("numberOfIssues", numberOfIssues);
 
-        Integer numberOfCheckins = checkinService.getNumberOfCheckins();
+
+        Integer numberOfCheckins = checkinService.getNumberOfCheckins(uid);
         model.put("numberOfCheckins", numberOfCheckins);
 
-        Map<String, Integer> activityLogRoleMap = activityLogService.getNumberForEachRole();
+        Map<String, Integer> activityLogRoleMap = activityLogService.getNumberForEachRole(uid);
         model.put("activityLogRoleMap", activityLogRoleMap);
 
-        Map<String, Integer> activityLogTypeMap = activityLogService.getNumberForEachType();
+        Map<String, Integer> activityLogTypeMap = activityLogService.getNumberForEachType(uid);
         model.put("activityLogTypeMap", activityLogTypeMap);
 
         model.addAttribute("pageTitle", "Checkin Read");
