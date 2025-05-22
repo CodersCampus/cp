@@ -3,7 +3,7 @@ package com.coderscampus.cp.domain;
 import jakarta.persistence.*;
 
 @Entity
-public class NetworkingResources {
+public class Networkingresources {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,20 +15,19 @@ public class NetworkingResources {
     private String resourceName;
     private String type;
     private String cost;
-    private String local;
-    private String national;
+    private String geographicScope;
     private String notes;
 
-    public NetworkingResources() {
+    public Networkingresources() {
     }
 
-    public NetworkingResources(Long id, String resourceName, String type, String cost, String local, String national, String notes) {
+    public Networkingresources(Long id, Student student, String resourceName, String type, String cost, String geographicScope, String notes) {
         this.id = id;
+        this.student = student;
         this.resourceName = resourceName;
         this.type = type;
         this.cost = cost;
-        this.local = local;
-        this.national = national;
+        this.geographicScope = geographicScope;
         this.notes = notes;
     }
 
@@ -38,6 +37,14 @@ public class NetworkingResources {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public String getResourceName() {
@@ -64,20 +71,12 @@ public class NetworkingResources {
         this.cost = cost;
     }
 
-    public String getLocal() {
-        return local;
+    public String getGeographicScope() {
+        return geographicScope;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    public String getNational() {
-        return national;
-    }
-
-    public void setNational(String national) {
-        this.national = national;
+    public void setGeographicScope(String geographicScope) {
+        this.geographicScope = geographicScope;
     }
 
     public String getNotes() {
@@ -90,14 +89,14 @@ public class NetworkingResources {
 
     @Override
     public String toString() {
-        return "NetworkingResources [" +
+        return "NetworkingResources{" +
                 "id=" + id +
+                ", student=" + student +
                 ", resourceName='" + resourceName + '\'' +
                 ", type='" + type + '\'' +
                 ", cost='" + cost + '\'' +
-                ", local='" + local + '\'' +
-                ", national='" + national + '\'' +
+                ", geographicScope='" + geographicScope + '\'' +
                 ", notes='" + notes + '\'' +
-                ']';
+                '}';
     }
 }
