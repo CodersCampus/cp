@@ -7,7 +7,7 @@
         <header th:replace="~{fragments/header :: header(${activePage})}"></header>
         <div layout="layout-sidebar">
             <div class="sidebar-grid-area">
-                <section class="ui-panel-title title-small">Networkingresources</section>
+                <section class="ui-panel-title title-small">Networking Resources</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
                         <button class="ui-nav-item ui-button" type="button"><a href="/networkingresources/create">Create New</a>
@@ -19,12 +19,7 @@
                 <main>
                     <form action="/networkingresources/create" class="ui-form" th:object="${networkingresources}" method="post">
                         <input id="uid" name="uid" type="hidden"/>
-                        <div class="ui-input-field">
-                            <label for="student" class="ui-label">Student:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" id="student" th:field="*{student}" type="text"/>
-                            </div>
-                        </div>
+
                         <div class="ui-input-field">
                             <label for="resourceName" class="ui-label">Resource Name:</label>
                             <div class="ui-text-input">

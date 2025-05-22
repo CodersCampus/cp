@@ -9,7 +9,6 @@ public class Networkingresources {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    @MapsId
     @JoinColumn(name = "student_id")
     private Student student;
     private String resourceName;
