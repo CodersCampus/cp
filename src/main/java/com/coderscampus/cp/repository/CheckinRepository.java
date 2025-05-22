@@ -32,6 +32,10 @@ public interface CheckinRepository extends JpaRepository<Checkin, Long> {
             "WHERE a.role = 'CODER' " +
             "ORDER BY c.date DESC")
     List<CheckinDTO> findCodersActivities();
+
+    @Query("SELECT COUNT(c.id) FROM Checkin c")
+    Integer getNumberOfCheckins();
+
 }
 
 

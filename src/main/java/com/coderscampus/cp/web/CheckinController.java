@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/checkin")
@@ -30,6 +31,20 @@ public class CheckinController {
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.findByUid(uid);
         model.put("checkins", checkins);
+
+        Integer numberOfIssues = activityLogService.getNumberOfIssues(uid);
+        model.put("numberOfIssues", numberOfIssues);
+
+
+        Integer numberOfCheckins = checkinService.getNumberOfCheckins(uid);
+        model.put("numberOfCheckins", numberOfCheckins);
+
+        Map<String, Integer> activityLogRoleMap = activityLogService.getNumberForEachRole(uid);
+        model.put("activityLogRoleMap", activityLogRoleMap);
+
+        Map<String, Integer> activityLogTypeMap = activityLogService.getNumberForEachType(uid);
+        model.put("activityLogTypeMap", activityLogTypeMap);
+
         model.addAttribute("pageTitle", "Checkin Read");
         model.put("isCheckin", true);
         return "checkin/read";
