@@ -172,21 +172,7 @@ public class LinkedInServiceTest {
 //            linkedInService.findById(null);
 //        });
 //	}
-
-//    @Test
-//    @Transactional
-//    void testDeleteWhenUidIsNull() {
-//        student1LinkedInList.forEach(linkedIn -> {
-//            LinkedIn foundLinkedIn = linkedInRepo.findById(linkedIn.getId()).orElse(null);
-//            assertNotNull(foundLinkedIn);
-//
-//            //if we want this to work, we will need to change the return type for delete to long
-//            //Long deleted = linkedInService.delete(linkedIn, null);
-//            foundLinkedIn = linkedInRepo.findById(linkedIn.getId()).orElse(null);
-//            assertNotNull(foundLinkedIn);
-//            //assertEquals(0L, deleted);
-//        });
-//    }
+    
 
     @Test
     @Transactional
