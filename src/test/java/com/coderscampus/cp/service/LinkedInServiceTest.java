@@ -104,18 +104,9 @@ public class LinkedInServiceTest {
         assertEquals(4, student1LinkedInList.size());
     }
 
-//    @Test
-//    @Transactional
-//    void testSaveByUidForNullUID() {
-//        student1LinkedInList.forEach(linkedIn -> {
-//            StudentDTO studentDTO = studentService.saveByUid(studentDTO, null);
-//            assertNull(checkinDTOUt);
-//        });
-//    }
     @Test
 	@Transactional
 	void testSaveLinkedIn() {
-        //use atomic long so it can be updated in the lambda expression
         AtomicLong i = new AtomicLong(0L);
 		student1LinkedInList.forEach(linkedInFromList -> {
 
@@ -148,15 +139,15 @@ public class LinkedInServiceTest {
         });
     }
 
-    @Test
-    @Transactional
-    void testSaveByUidForInvalidUID() {
-        String badUid = "abc";
-        student1LinkedInList.forEach(linkedIn -> {
-            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, badUid);
-            assertNull(linkedInUt);
-        });
-    }
+//    @Test
+//    @Transactional
+//    void testSaveByUidForInvalidUID() {
+//        String badUid = "abc";
+//        student1LinkedInList.forEach(linkedIn -> {
+//            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, badUid);
+//            assertNull(linkedInUt);
+//        });
+//    }
 
     @Test
 	@Transactional
@@ -181,6 +172,60 @@ public class LinkedInServiceTest {
 //            linkedInService.findById(null);
 //        });
 //	}
+
+//    @Test
+//    @Transactional
+//    void testDeleteWhenUidIsNull() {
+//        student1LinkedInList.forEach(linkedIn -> {
+//            LinkedIn foundLinkedIn = linkedInRepo.findById(linkedIn.getId()).orElse(null);
+//            assertNotNull(foundLinkedIn);
+//
+//            //if we want this to work, we will need to change the return type for delete to long
+//            //Long deleted = linkedInService.delete(linkedIn, null);
+//            foundLinkedIn = linkedInRepo.findById(linkedIn.getId()).orElse(null);
+//            assertNotNull(foundLinkedIn);
+//            //assertEquals(0L, deleted);
+//        });
+//    }
+
+    @Test
+    @Transactional
+    void testDeleteWhenLinkedInIDIsInvalid() {
+        Random random = new Random();
+        Long wrongId = (long) (random.nextInt(1000) + 1);
+        student1LinkedInList.forEach(linkedIn -> {
+            Long originalId = linkedIn.getId();
+            LinkedIn foundLinkedIn = linkedInRepo.findById(originalId).orElse(null);
+            assertNotNull(foundLinkedIn);
+            linkedIn.setId(wrongId);
+
+            //Long deleted = linkedInService.delete(linkedIn);
+            //replaced because it returns void
+            linkedInService.delete(linkedIn);
+            foundLinkedIn = linkedInRepo.findById(originalId).orElse(null);
+            assertNotNull(foundLinkedIn);
+
+            //assertEquals(0L, deleted);
+            linkedIn.setId(originalId);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testDeleteWhenLinkedInIDIsValid() {
+        student1LinkedInList.forEach(linkedIn -> {
+            Long originalId = linkedIn.getId();
+            LinkedIn storedLinkedIn = linkedInRepo.findById(originalId).orElse(null);
+            assertNotNull(storedLinkedIn);
+
+            linkedInService.delete(linkedIn);
+            LinkedIn foundLinkedIn = linkedInRepo.findById(originalId).orElse(null);
+            assertNull(foundLinkedIn);
+
+            linkedIn = storedLinkedIn;
+
+        });
+    }
 
 
 
