@@ -23,12 +23,22 @@ public class FinalprojectService {
     }
 
     public Finalproject saveByUid(Finalproject finalproject, String uid) {
-        Student student = studentRepo.findByUid(uid);
-        if (finalproject != null && student != null && finalproject.getStudent().getUid().equals(uid)) {
-            finalproject.setStudent(student);
-        } else {
+        if (finalproject == null || uid == null) {
             return null;
         }
+
+        Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
+
+        if (finalproject.getStudent() != null) {
+            if (!uid.equals(finalproject.getStudent().getUid())) {
+                return null;
+            }
+        }
+
+        finalproject.setStudent(student);
         return finalprojectRepo.save(finalproject);
     }
 

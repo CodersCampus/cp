@@ -227,7 +227,7 @@ public class FinalProjectServiceTest {
         List<Finalproject> everythingInDatabase = finalprojectService.findAll();
         int j = 0;
         for (Finalproject finalproject : everythingInDatabase) {
-            if (finalproject.getStudent().getId() == studentId1 && finalproject.getProposal().equals(randomString)) {
+            if (finalproject.getStudent() != null && finalproject.getStudent().getId() == studentId1 && finalproject.getProposal().equals(randomString)) {
                 j++;
             }
         }

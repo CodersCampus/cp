@@ -26,23 +26,20 @@ public class ResumeService {
         if (resume == null || uid == null) {
             return null;
         }
+
         Student student = studentRepo.findByUid(uid);
         if (student == null) {
             return null;
         }
+
         if (resume.getStudent() != null) {
-            if (!resume.getStudent().getUid().equals(student.getUid())) {
+            if (!uid.equals(resume.getStudent().getUid())) {
                 return null;
             }
         }
-        if (student.getUid().equals(uid)) {
-            resume.setStudent(student);
-        } else {
-            return null;
-        }
 
+        resume.setStudent(student);
         return resumeRepo.save(resume);
-
     }
 
     public List<Resume> findAll() {

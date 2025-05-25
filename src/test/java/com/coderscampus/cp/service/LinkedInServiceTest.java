@@ -235,7 +235,7 @@ public class LinkedInServiceTest {
         List<LinkedIn> everythingInDatabase = linkedInService.findAll();
         int j = 0;
         for (LinkedIn linkedIn : everythingInDatabase) {
-            if (linkedIn.getStudent().getId() == studentId1 && linkedIn.getBanner().equals(randomString)) {
+            if (linkedIn.getStudent() != null && linkedIn.getStudent().getId() == studentId1 && linkedIn.getBanner().equals(randomString)) {
                 j++;
             }
         }

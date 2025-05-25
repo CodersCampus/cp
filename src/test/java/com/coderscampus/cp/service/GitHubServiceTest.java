@@ -229,7 +229,7 @@ public class GitHubServiceTest {
         List<GitHub> everythingInDatabase = gitHubService.findAll();
         int j = 0;
         for (GitHub gitHub : everythingInDatabase) {
-            if (gitHub.getStudent().getId() == studentId1 && gitHub.getHeadline().equals(randomString)) {
+            if (gitHub.getStudent() != null && gitHub.getStudent().getId() == studentId1 && gitHub.getHeadline().equals(randomString)) {
                 j++;
             }
         }

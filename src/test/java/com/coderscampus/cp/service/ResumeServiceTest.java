@@ -68,7 +68,6 @@ public class ResumeServiceTest {
 
         for (int i = 0; i < 4; i++) {
             Resume resume  = new Resume();
-
             resume.setPhoneNumber("Blocker" + i);
             resume.setEmail("Blocker" + i);
             resume.setCity("Blocker" + i);
@@ -226,13 +225,13 @@ public class ResumeServiceTest {
                 break;
             }
             Resume newResume = resumeRepo.findById(resume.getId()).get();
-            newResume.setSkills(randomString);
+            newResume.setSummary(randomString);
             resumeRepo.save(newResume);
         }
         List<Resume> everythingInDatabase = resumeService.findAll();
         int j = 0;
         for (Resume resume : everythingInDatabase) {
-            if (resume.getStudent().getId() == studentId1 && resume.getSkills().equals(randomString)) {
+            if (resume.getStudent() != null && resume.getStudent().getId() == studentId1 && resume.getSummary().equals(randomString)) {
                 j++;
             }
         }
