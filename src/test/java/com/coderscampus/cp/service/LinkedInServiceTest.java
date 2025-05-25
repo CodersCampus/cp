@@ -283,14 +283,9 @@ public class LinkedInServiceTest {
             LinkedIn foundLinkedIn = linkedInRepo.findById(originalId).orElse(null);
             assertNotNull(foundLinkedIn);
             linkedIn.setId(wrongId);
-
-            //Long deleted = linkedInService.delete(linkedIn);
-            //replaced because it returns void
             linkedInService.delete(linkedIn);
             foundLinkedIn = linkedInRepo.findById(originalId).orElse(null);
             assertNotNull(foundLinkedIn);
-
-            //assertEquals(0L, deleted);
             linkedIn.setId(originalId);
         });
     }

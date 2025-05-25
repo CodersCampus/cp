@@ -23,9 +23,12 @@ public class ResumeService {
     }
 
     public Resume saveByUid(Resume resume, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            resume.setStudent(students);
+        Student student = studentRepo.findByUid(uid);
+
+        if (resume != null && student != null && resume.getStudent().getUid().equals(uid)) {
+            resume.setStudent(student);
+        } else {
+            return null;
         }
         return resumeRepo.save(resume);
     }
@@ -35,6 +38,9 @@ public class ResumeService {
     }
 
     public Resume findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return resumeRepo.findById(id).get();
     }
 
