@@ -25,9 +25,12 @@ public class LinkedInService {
 
 
     public LinkedIn saveByUid(LinkedIn linkedIn, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            linkedIn.setStudent(students);
+        Student student = studentRepo.findByUid(uid);
+
+        if (linkedIn != null && student != null && linkedIn.getStudent().getUid().equals(uid)) {
+            linkedIn.setStudent(student);
+        } else {
+            return null;
         }
         return linkedInRepo.save(linkedIn);
     }
@@ -37,6 +40,9 @@ public class LinkedInService {
     }
 
     public LinkedIn findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return linkedInRepo.findById(id).get();
     }
 

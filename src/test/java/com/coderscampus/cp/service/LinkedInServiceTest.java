@@ -120,14 +120,14 @@ public class LinkedInServiceTest {
 	}
 
 
-//    @Test
-//    @Transactional
-//    void testSaveByUidForNullUID() {
-//        student1LinkedInList.forEach(linkedIn -> {
-//            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, null);
-//            assertNull(linkedInUt);
-//        });
-//    }
+    @Test
+    @Transactional
+    void testSaveByUidForNullUID() {
+        student1LinkedInList.forEach(linkedIn -> {
+            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, null);
+            assertNull(linkedInUt);
+        });
+    }
 
     @Test
     @Transactional
@@ -139,15 +139,117 @@ public class LinkedInServiceTest {
         });
     }
 
-//    @Test
-//    @Transactional
-//    void testSaveByUidForInvalidUID() {
-//        String badUid = "abc";
-//        student1LinkedInList.forEach(linkedIn -> {
-//            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, badUid);
-//            assertNull(linkedInUt);
-//        });
-//    }
+    @Test
+    @Transactional
+    void testSaveByUidForInvalidUID() {
+        String badUid = "abc";
+        student1LinkedInList.forEach(linkedIn -> {
+            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, badUid);
+            assertNull(linkedInUt);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testSaveByUidForUpdateWithWrongUID() {
+        String wrongUid = student2Uid;
+        student1LinkedInList.forEach(linkedIn -> {
+
+            LinkedIn linkedInUt = linkedInService.saveByUid(linkedIn, wrongUid);
+            assertNull(linkedInUt);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfAddedLinkedIns() {
+
+        int start = student1LinkedInList.size();
+        int size = linkedInService.findAll().size();
+        assertTrue(size >= start);
+        for (int i = 0; i < 2; i++) {
+            LinkedIn linkedIn = new LinkedIn();
+            linkedIn.setStudent(student1);
+            linkedIn.setBanner("banner");
+            linkedInRepo.save(linkedIn);
+            LinkedIn newLinkedIn = linkedIn;
+            student1LinkedInList.add(newLinkedIn);
+        }
+        assertEquals(size + 2, linkedInService.findAll().size());
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfRemovedLinkedIns() {
+        int size = linkedInService.findAll().size();
+        List<LinkedIn> linkedInsToRemove = new ArrayList<>(student1LinkedInList);
+        int i = 0;
+        for (LinkedIn linkedIn : linkedInsToRemove) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            LinkedIn newLinkedIn = linkedInRepo.findById(linkedIn.getId()).get();
+            linkedInRepo.delete(linkedIn);
+            student1LinkedInList.remove(linkedIn);
+        }
+        int newSize = linkedInService.findAll().size();
+        assertEquals(size - 2, newSize);
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfUpdatedLinkedIns() {
+        int size = linkedInService.findAll().size();
+        List<LinkedIn> linkedInsToUpdate = new ArrayList<>(student1LinkedInList);
+        int i = 0;
+        for (LinkedIn linkedIn : linkedInsToUpdate) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            LinkedIn newlinkedIn = linkedInRepo.findById(linkedIn.getId()).get();
+
+            linkedInRepo.save(newlinkedIn);
+        }
+        assertEquals(size, linkedInService.findAll().size());
+    }
+
+    @Test
+    @Transactional
+    void testFindAllUpdateReallyHappened() {
+        List<LinkedIn> linkedInsToUpdate = new ArrayList<>(student1LinkedInList);
+        int i = 0;
+        String randomString = UUID.randomUUID().toString();
+        long studentId1 = 0;
+        for (LinkedIn linkedIn : linkedInsToUpdate) {
+        	studentId1 = linkedIn.getStudent().getId();
+            i++;
+            if (i > 2) {
+                break;
+            }
+            LinkedIn newLinkedIn = linkedInRepo.findById(linkedIn.getId()).get();
+            newLinkedIn.setBanner(randomString);
+            linkedInRepo.save(newLinkedIn);
+        }
+        List<LinkedIn> everythingInDatabase = linkedInService.findAll();
+        int j = 0;
+        for (LinkedIn linkedIn : everythingInDatabase) {
+            if (linkedIn.getStudent().getId() == studentId1 && linkedIn.getBanner().equals(randomString)) {
+                j++;
+            }
+        }
+        assertEquals(2, j);
+    }
+
+    @Test
+    @Transactional
+    void testCreateLinkedInWithNullLinkedIn() {
+        student1LinkedInList.forEach(linkedIn -> {
+            LinkedIn linkedInUt = linkedInService.saveByUid(null, student1Uid);
+            assertNull(linkedInUt);
+        });
+    }
 
     @Test
 	@Transactional
@@ -165,14 +267,11 @@ public class LinkedInServiceTest {
         });
 	}
 
-//    @Test
-//	@Transactional
-//	void testFindByLinkedInIdWhenLinkedInIdIsNull() {
-//        assertThrows(null, () -> {
-//            linkedInService.findById(null);
-//        });
-//	}
-    
+    @Test
+	@Transactional
+	void testFindByLinkedInIdWhenLinkedInIdIsNull() {
+        assertNull(linkedInService.findById(null));
+	}
 
     @Test
     @Transactional
