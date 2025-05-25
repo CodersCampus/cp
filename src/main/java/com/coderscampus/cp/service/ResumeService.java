@@ -23,14 +23,26 @@ public class ResumeService {
     }
 
     public Resume saveByUid(Resume resume, String uid) {
+        if (resume == null || uid == null) {
+            return null;
+        }
         Student student = studentRepo.findByUid(uid);
-
-        if (resume != null && student != null && resume.getStudent().getUid().equals(uid)) {
+        if (student == null) {
+            return null;
+        }
+        if (resume.getStudent() != null) {
+            if (!resume.getStudent().getUid().equals(student.getUid())) {
+                return null;
+            }
+        }
+        if (student.getUid().equals(uid)) {
             resume.setStudent(student);
         } else {
             return null;
         }
+
         return resumeRepo.save(resume);
+
     }
 
     public List<Resume> findAll() {

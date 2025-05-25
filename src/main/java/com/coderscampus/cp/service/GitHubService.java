@@ -23,12 +23,22 @@ public class GitHubService {
     }
 
     public GitHub saveByUid(GitHub gitHub, String uid) {
-        Student student = studentRepo.findByUid(uid);
-        if (gitHub != null && student != null && gitHub.getStudent().getUid().equals(uid)) {
-            gitHub.setStudent(student);
-        } else {
+        if (gitHub == null || uid == null) {
             return null;
         }
+
+        Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
+
+        if (gitHub.getStudent() != null) {
+            if (!uid.equals(gitHub.getStudent().getUid())) {
+                return null;
+            }
+        }
+
+        gitHub.setStudent(student);
         return gitHubRepo.save(gitHub);
     }
 
