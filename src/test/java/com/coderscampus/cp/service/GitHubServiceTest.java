@@ -104,24 +104,24 @@ public class GitHubServiceTest {
         AtomicLong i = new AtomicLong(0L);
 		student1GitHubList.forEach(gitHubFromList -> {
 
-            gitHubFromList.setHandle("Test");
+            gitHubFromList.setHeadline("Test");
 			GitHub savedGitHub = gitHubService.save(gitHubFromList);
             assertTrue(savedGitHub.getId() > i.get());
             i.set(savedGitHub.getId());
-            assertEquals(gitHubFromList.getHandle(), savedGitHub.getHandle());
+            assertEquals(gitHubFromList.getHeadline(), savedGitHub.getHeadline());
             assertEquals(gitHubFromList.getStudent().getId(), savedGitHub.getStudent().getId());
 		});
 	}
 
 
-//    @Test
-//    @Transactional
-//    void testSaveByUidForNullUID() {
-//        student1GitHubList.forEach(gitHub -> {
-//            GitHub gitHubUt = gitHubService.saveByUid(gitHub, null);
-//            assertNull(gitHubUt);
-//        });
-//    }
+    @Test
+    @Transactional
+    void testSaveByUidForNullUID() {
+        student1GitHubList.forEach(gitHub -> {
+            GitHub gitHubUt = gitHubService.saveByUid(gitHub, null);
+            assertNull(gitHubUt);
+        });
+    }
 
     @Test
     @Transactional
@@ -133,15 +133,117 @@ public class GitHubServiceTest {
         });
     }
 
-//    @Test
-//    @Transactional
-//    void testSaveByUidForInvalidUID() {
-//        String badUid = "abc";
-//        student1GitHubList.forEach(gitHub -> {
-//            GitHub gitHubUt = gitHubService.saveByUid(gitHub, badUid);
-//            assertNull(gitHubUt);
-//        });
-//    }
+    @Test
+    @Transactional
+    void testSaveByUidForInvalidUID() {
+        String badUid = "abc";
+        student1GitHubList.forEach(gitHub -> {
+            GitHub gitHubUt = gitHubService.saveByUid(gitHub, badUid);
+            assertNull(gitHubUt);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testSaveByUidForUpdateWithWrongUID() {
+        String wrongUid = student2Uid;
+        student1GitHubList.forEach(gitHub -> {
+
+            GitHub gitHubUt = gitHubService.saveByUid(gitHub, wrongUid);
+            assertNull(gitHubUt);
+        });
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfAddedGitHubs() {
+
+        int start = student1GitHubList.size();
+        int size = gitHubService.findAll().size();
+        assertTrue(size >= start);
+        for (int i = 0; i < 2; i++) {
+            GitHub gitHub = new GitHub();
+            gitHub.setStudent(student1);
+            gitHub.setHeadline("headline");
+            gitHubRepo.save(gitHub);
+            GitHub newGitHub = gitHub;
+            student1GitHubList.add(newGitHub);
+        }
+        assertEquals(size + 2, gitHubService.findAll().size());
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfRemovedGitHubs() {
+        int size = gitHubService.findAll().size();
+        List<GitHub> gitHubsToRemove = new ArrayList<>(student1GitHubList);
+        int i = 0;
+        for (GitHub gitHub : gitHubsToRemove) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            GitHub newGitHub = gitHubRepo.findById(gitHub.getId()).get();
+            gitHubRepo.delete(gitHub);
+            student1GitHubList.remove(gitHub);
+        }
+        int newSize = gitHubService.findAll().size();
+        assertEquals(size - 2, newSize);
+    }
+
+    @Test
+    @Transactional
+    void testFindAllCorrectCountOfUpdatedGitHubs() {
+        int size = gitHubService.findAll().size();
+        List<GitHub> gitHubsToUpdate = new ArrayList<>(student1GitHubList);
+        int i = 0;
+        for (GitHub gitHub : gitHubsToUpdate) {
+            i++;
+            if (i > 2) {
+                break;
+            }
+            GitHub newgitHub = gitHubRepo.findById(gitHub.getId()).get();
+
+            gitHubRepo.save(newgitHub);
+        }
+        assertEquals(size, gitHubService.findAll().size());
+    }
+
+    @Test
+    @Transactional
+    void testFindAllUpdateReallyHappened() {
+        List<GitHub> gitHubsToUpdate = new ArrayList<>(student1GitHubList);
+        int i = 0;
+        String randomString = UUID.randomUUID().toString();
+        long studentId1 = 0;
+        for (GitHub gitHub : gitHubsToUpdate) {
+        	studentId1 = gitHub.getStudent().getId();
+            i++;
+            if (i > 2) {
+                break;
+            }
+            GitHub newGitHub = gitHubRepo.findById(gitHub.getId()).get();
+            newGitHub.setHeadline(randomString);
+            gitHubRepo.save(newGitHub);
+        }
+        List<GitHub> everythingInDatabase = gitHubService.findAll();
+        int j = 0;
+        for (GitHub gitHub : everythingInDatabase) {
+            if (gitHub.getStudent().getId() == studentId1 && gitHub.getHeadline().equals(randomString)) {
+                j++;
+            }
+        }
+        assertEquals(2, j);
+    }
+
+    @Test
+    @Transactional
+    void testCreateGitHubWithNullGitHub() {
+        student1GitHubList.forEach(gitHub -> {
+            GitHub gitHubUt = gitHubService.saveByUid(null, student1Uid);
+            assertNull(gitHubUt);
+        });
+    }
 
     @Test
 	@Transactional
@@ -159,14 +261,11 @@ public class GitHubServiceTest {
         });
 	}
 
-//    @Test
-//	@Transactional
-//	void testFindByGitHubIdWhenGitHubIdIsNull() {
-//        assertThrows(null, () -> {
-//            gitHubService.findById(null);
-//        });
-//	}
-    
+    @Test
+	@Transactional
+	void testFindByGitHubIdWhenGitHubIdIsNull() {
+        assertNull(gitHubService.findById(null));
+	}
 
     @Test
     @Transactional

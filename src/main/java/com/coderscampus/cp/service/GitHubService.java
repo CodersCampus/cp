@@ -23,9 +23,11 @@ public class GitHubService {
     }
 
     public GitHub saveByUid(GitHub gitHub, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            gitHub.setStudent(students);
+        Student student = studentRepo.findByUid(uid);
+        if (gitHub != null && student != null && gitHub.getStudent().getUid().equals(uid)) {
+            gitHub.setStudent(student);
+        } else {
+            return null;
         }
         return gitHubRepo.save(gitHub);
     }
@@ -35,6 +37,9 @@ public class GitHubService {
     }
 
     public GitHub findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return gitHubRepo.findById(id).get();
     }
 
