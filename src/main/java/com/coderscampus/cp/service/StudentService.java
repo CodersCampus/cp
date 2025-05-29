@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.RuntimeErrorException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -90,6 +91,11 @@ public class StudentService {
     public StudentDTO findByUid(String uid) {
         Student student = studentRepo.findByUid(uid);
         return new StudentDTO(student);
+    }
+
+
+    public List<Student> findAll() {
+        return studentRepo.findAll();
     }
 
 }
