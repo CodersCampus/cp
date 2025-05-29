@@ -23,11 +23,22 @@ public class FoobarService {
     }
 
     public Foobar saveByUid(Foobar foobar, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            foobar.setStudent(students);
-            foobar.setUid(uid);
+        if (foobar == null || uid == null) {
+            return null;
         }
+
+        Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
+
+        if (foobar.getStudent() != null) {
+            if (!uid.equals(foobar.getStudent().getUid())) {
+                return null;
+            }
+        }
+
+        foobar.setStudent(student);
         return foobarRepo.save(foobar);
     }
 
@@ -36,6 +47,9 @@ public class FoobarService {
     }
 
     public Foobar findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return foobarRepo.findById(id).orElseThrow(() -> new RuntimeException("Element not found with ID " + id));
     }
 
