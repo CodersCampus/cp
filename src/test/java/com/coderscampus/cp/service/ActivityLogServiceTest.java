@@ -211,7 +211,7 @@ public class ActivityLogServiceTest {
 
 			activityLog.setRole(ActivityLog.Role.OBSERVER);
 			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
-			//student 2 will have 4 issue numbers, where student 1 has 1
+
             activityLog.setIssueNumber(628 + i);
 			activityLog.setComment("Update");
 			activityLog.setCheckin(checkin);
@@ -221,7 +221,7 @@ public class ActivityLogServiceTest {
 			student2CheckinDTOList.add(checkinDTO);
 		}
 
-        //Integer student1NumberOfIssues = student1CheckinDTOList.size();
+        
         Integer student1NumberOfIssues = activityLogService.getNumberOfIssues(student1Uid);
         Integer student2NumberOfIssues = activityLogService.getNumberOfIssues(student2Uid);
 
