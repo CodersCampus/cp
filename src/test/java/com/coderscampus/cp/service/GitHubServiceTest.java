@@ -278,13 +278,10 @@ public class GitHubServiceTest {
             assertNotNull(foundGitHub);
             gitHub.setId(wrongId);
 
-            //Long deleted = gitHubService.delete(gitHub);
-            //replaced because it returns void
             gitHubService.delete(gitHub);
             foundGitHub = gitHubRepo.findById(originalId).orElse(null);
             assertNotNull(foundGitHub);
 
-            //assertEquals(0L, deleted);
             gitHub.setId(originalId);
         });
     }
