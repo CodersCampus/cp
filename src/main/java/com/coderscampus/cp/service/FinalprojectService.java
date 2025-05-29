@@ -23,11 +23,22 @@ public class FinalprojectService {
     }
 
     public Finalproject saveByUid(Finalproject finalproject, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            finalproject.setStudent(students);
-            finalproject.setUid(uid);
+        if (finalproject == null || uid == null) {
+            return null;
         }
+
+        Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
+
+        if (finalproject.getStudent() != null) {
+            if (!uid.equals(finalproject.getStudent().getUid())) {
+                return null;
+            }
+        }
+
+        finalproject.setStudent(student);
         return finalprojectRepo.save(finalproject);
     }
 
@@ -36,6 +47,9 @@ public class FinalprojectService {
     }
 
     public Finalproject findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return finalprojectRepo.findById(id).get();
     }
 
