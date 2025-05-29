@@ -20,7 +20,7 @@ public class FoobarController {
     public String home(ModelMap model) {
         List<Foobar> foobars = foobarService.findAll();
         model.put("foobars", foobars);
-        model.addAttribute("pageTitle", "Foobar Read");
+        model.addAttribute("pageTitle", "Foobar");
         model.put("isFoobar", true);
         return "foobar/read";
     }
@@ -29,7 +29,7 @@ public class FoobarController {
     public String getCreate(ModelMap model) {
         Foobar foobar = new Foobar();
         model.put("foobar", foobar);
-        model.addAttribute("pageTitle", "Foobar Create");
+        model.addAttribute("pageTitle", "Foobar");
         model.put("isFoobar", true);
         return "foobar/create";
     }
@@ -44,7 +44,7 @@ public class FoobarController {
     public String fetch(ModelMap model, @PathVariable Long id) {
         Foobar foobar = foobarService.findById(id);
         model.put("foobar", foobar);
-        model.addAttribute("pageTitle", "Foobar Update");
+        model.addAttribute("pageTitle", "Foobar");
         model.put("isFoobar", true);
         return "foobar/update";
     }
