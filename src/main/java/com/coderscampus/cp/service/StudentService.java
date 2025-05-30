@@ -49,6 +49,9 @@ public class StudentService {
     @Transactional
     public Student findStudentByUid(String uid) {
         Student foundStudent = studentRepo.findByUid(uid);
+        if (foundStudent == null) {
+            return null;
+        }
         return foundStudent;
     }
 
@@ -89,6 +92,9 @@ public class StudentService {
 
     public StudentDTO findByUid(String uid) {
         Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
         return new StudentDTO(student);
     }
 
