@@ -37,7 +37,7 @@ public class WorkServiceTest {
             work.setStudentName("Student" + i);
             work.setDateBackDoorForTesting(getInstant(i));
             work.setAssignmentNumber(i);
-            work.setNumberMinutes(100);
+            work.setNumberMinutes(100 + i);
             work.setDescription("Description" + i);
             workRepo.save(work);
             works.add(work);
