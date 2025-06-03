@@ -90,6 +90,10 @@ class StudentServiceTest {
         assertEquals("Bobby", result.getName());
         Student studentResult = studentRepo.findByUid(uid);
         assertEquals("Bobby", studentResult.getName());
+
+        studentRepo.delete(studentResult);
+        assertNull(studentService.findByUid(uid));
+
     }
 
     @Transactional
