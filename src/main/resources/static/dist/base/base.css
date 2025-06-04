@@ -1,0 +1,32 @@
+@layer base {
+    html {
+        background-color: var(--color-base-200);
+        font-family: var(--font-sans);
+        color: var(--color-base-content);
+        font-size: var(--text-base);
+        line-height: var(--leading-tight);
+    }
+
+    body {
+        background-color: inherit;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-optical-sizing: auto;
+        font-weight: var(--font-weight-medium);
+        line-height: inherit;
+        padding: 0;
+        margin: 0;
+    }
+
+    a {
+        @apply transition-colors duration-200 ease-in-out;
+    }
+
+    svg {
+        fill: currentColor;
+        stroke-width: 1.5 !important;
+        width: calc(var(--spacing) * 5);
+        height: calc(var(--spacing) * 5);
+    }
+}

@@ -1,0 +1,29 @@
+#root {
+    width: 100%;
+    max-width: calc(var(--container-8xl) * 1);
+    min-height: 100vh;
+    margin-block: calc(var(--spacing) * 0);
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 54px 1fr;
+    grid-template-areas:
+        "aside  header"
+        "aside  main";
+
+    header {
+        grid-area: header;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    aside {
+        grid-area: aside;
+
+        display: grid;
+        grid-template-rows: subgrid;
+    }
+}

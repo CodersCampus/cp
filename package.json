@@ -1,0 +1,15 @@
+{
+  "name": "coder-packaging",
+  "version": "1.0.0",
+  "description": "A simple application for tracking Coders progress made in Java with Spring Boot, Thymeleaf and TailwindCss.",
+  "scripts": {
+    "watch:css": "npx @tailwindcss/cli -i ./src/main/resources/static/dist/css/input.css -o ./src/main/resources/static/dist/css/output.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.8",
+    "tailwindcss": "^4.1.8"
+  },
+  "devDependencies": {
+    "daisyui": "^5.0.43"
+  }
+}

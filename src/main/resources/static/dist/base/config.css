@@ -1,0 +1,6 @@
+@plugin "daisyui" {
+    themes: pastel --default, dim --prefersdark;
+}
+@custom-variant dark (&:where([data-theme=sunset], [data-theme=sunset] *));
+/*&:where([data-theme=dark], [data-theme=dark] *) {*/
+/*}*/

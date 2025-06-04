@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@import "../base/config.css";
+@import "../base/variables.css";
+@import "../themes/light.css";
+@import "../themes/dark.css";
+@import "../base/base.css";
+@import "../layouts/root.css";
+@import "../layouts/header.css";
+@import "../layouts/content.css";
+@import "../layouts/sidebar.css";
+

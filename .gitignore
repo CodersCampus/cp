@@ -16,3 +16,4 @@ sql_warning.txt
 h2db/
 node_modules/.pnpm/node_modules/@parcel/watcher-win32-x64/watcher.node
 /node_modules
+*.yaml
