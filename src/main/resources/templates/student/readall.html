@@ -12,7 +12,7 @@
                     <ul class="ui-navbar-nav">
                         <button class="ui-nav-item ui-button" type="button"><a href="/student/create">Create New</a>
                         </button>
-                        <button class="ui-nav-item ui-button" type="button"><a href="/student/readall">See All Students</a>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/student">Individual Student Read</a>
                         </button>
                     </ul>
                 </nav>
@@ -35,7 +35,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr th:each="student : ${allStudents}">
                                 <td><span th:text="${student.name}"></span></td>
                                 <td><span th:text="${student.assignmentNum}"></span></td>
 
