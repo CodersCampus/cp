@@ -27,7 +27,8 @@ public class StudentController {
             model.addAttribute("isStudent", true);
         }
         model.addAttribute("pageTitle", "Student Read");
-        return "student/read";
+//        return "student/read";
+        return "student/index";
     }
 
 
