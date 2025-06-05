@@ -2,11 +2,11 @@
 <html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
 <body class="ui-background">
 <ul class="ui-navbar-nav">
-    <button class="ui-nav-item ui-button" type="button"><a href="/networkingresources">Read</a>
+    <button class="ui-nav-item ui-button" type="button"><a href="/networkingresource">Read</a>
     </button>
 </ul>
 <main>
-    <form action="/networkingresources/create" class="ui-form" th:object="${networkingresources}" method="post">
+    <form action="/networkingresource/create" class="ui-form" th:object="${networkingresource}" method="post">
         <input id="uid" name="uid" type="hidden"/>
         <div class="ui-input-field">
             <label for="resourceName" class="ui-label">Resource Name:</label>

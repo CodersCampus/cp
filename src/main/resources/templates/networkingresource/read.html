@@ -2,7 +2,7 @@
 <html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
 <body class="ui-background">
 <ul class="ui-navbar-nav">
-    <button class="ui-nav-item ui-button" type="button"><a href="/networkingresources/create">Create New</a>
+    <button class="ui-nav-item ui-button" type="button"><a href="/networkingresource/create">Create New</a>
     </button>
 </ul>
 <main>
@@ -19,14 +19,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="networkingresource: ${networkingresources}">
+            <tr th:each="networkingresource: ${networkingresource}">
                 <td><span th:text="${networkingresource.resourceName}"></span></td>
                 <td><span th:text="${networkingresource.type}"></span></td>
                 <td><span th:text="${networkingresource.cost}"></span></td>
                 <td><span th:text="${networkingresource.geographicScope}"></span></td>
                 <td><span th:text="${networkingresource.notes}"></span></td>
                 <td>
-                    <a th:href="@{/networkingresources/update/{networkingresourcesId}(networkingresourcesId=${networkingresources.id})}">
+                    <a th:href="@{/networkingresource/update/{networkingresourceId}(networkingresourceId=${networkingresource.id})}">
                         <i class="fa-solid fa-pen-to-square"
                            style="color: var(--primary); font-size:20px; font-weight:100"></i>
                     </a>

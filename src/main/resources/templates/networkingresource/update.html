@@ -2,12 +2,12 @@
 <html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
 <body class="ui-background">
 <ul class="ui-navbar-nav">
-    <button class="ui-nav-item ui-button" type="button"><a href="/networkingresources/create">Create New</a>
+    <button class="ui-nav-item ui-button" type="button"><a href="/networkingresource/create">Create New</a>
     </button>
 </ul>
 <main>
-    <form action="/networkingresources/update" class="ui-form" th:object="${networkingresources}" method="post">
-        <input name="uid" th:field="${networkingresources.id}" type="hidden"/>
+    <form action="/networkingresource/update" class="ui-form" th:object="${networkingresource}" method="post">
+        <input name="uid" th:field="${networkingresource.id}" type="hidden"/>
 <div class="ui-input-field">
             <label for="resourceName" class="ui-label">Resource Name:</label>
             <div class="ui-text-input">
@@ -40,8 +40,8 @@
         </div>
         <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
     </form>
-    <form action="/networkingresources/delete" class="ui-form" method="post" style="padding-top:0;">
-        <input th:field="${networkingresources.id}" type="hidden"/>
+    <form action="/networkingresource/delete" class="ui-form" method="post" style="padding-top:0;">
+        <input th:field="${networkingresource.id}" type="hidden"/>
         <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
     </form>
 </main>
