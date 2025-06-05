@@ -1,0 +1,25 @@
+@layer base {
+    .content {
+        width: 100%;
+        display: grid;
+        place-content: start center;
+        grid-row-gap: calc(var(--spacing) * 10);
+        padding-block-start: calc(var(--spacing) * 12);
+
+        &.content-sm {
+            grid-template-columns: minmax(var(--container-xs), var(--container-lg));
+        }
+
+        &.content-md {
+            grid-template-columns: minmax(var(--container-xs), var(--container-3xl));
+        }
+
+        &.content-lg {
+            grid-template-columns: minmax(var(--container-xs), var(--container-5xl));
+        }
+
+        &.content-xl {
+            grid-template-columns: minmax(var(--container-xs), var(--container-6xl));
+        }
+    }
+}

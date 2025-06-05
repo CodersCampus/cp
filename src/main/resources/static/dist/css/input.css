@@ -5,8 +5,17 @@
 @import "../themes/light.css";
 @import "../themes/dark.css";
 @import "../base/base.css";
+
+/* Layouts */
 @import "../layouts/root.css";
+@import "../layouts/insight.css";
+@import "../layouts/sidebar.css";
 @import "../layouts/header.css";
 @import "../layouts/content.css";
-@import "../layouts/sidebar.css";
+
+/* components */
+@import "../components/menu.css";
+@import "../components/headline.css";
+@import "../components/container.css";
+
 
