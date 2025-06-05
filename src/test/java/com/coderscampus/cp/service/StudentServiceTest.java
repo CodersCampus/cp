@@ -165,9 +165,13 @@ class StudentServiceTest {
     void testFindActiveStudents() {
         Student student1 = new Student();
         Student student2 = new Student();
+        Student notActiveStudent = new Student();
 
         student1.setUid(UUID.randomUUID().toString());
         student2.setUid(UUID.randomUUID().toString());
+        notActiveStudent.setUid(UUID.randomUUID().toString());
+
+        notActiveStudent.setName("notActiveStudentName");
 
         Checkin checkin1 = new Checkin();
         Checkin checkin2 = new Checkin();
@@ -180,12 +184,23 @@ class StudentServiceTest {
 
         studentRepo.save(student1);
         studentRepo.save(student2);
+        studentRepo.save(notActiveStudent);
 
         checkinRepo.save(checkin1);
         checkinRepo.save(checkin2);
 
         List<StudentDTO> activeStudents = studentService.findActiveStudents();
         assertTrue(activeStudents.size() >= 2);
+
+        int count = 0;
+
+        for (StudentDTO student : activeStudents) {
+            if (student.getName() != null && student.getName().equals("notActiveStudentName")) {
+                count++;
+            }
+        }
+
+        assertEquals(0, count);
 
         checkinRepo.delete(checkin1);
         checkinRepo.delete(checkin2);
