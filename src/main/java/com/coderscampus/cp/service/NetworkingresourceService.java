@@ -1,8 +1,8 @@
 package com.coderscampus.cp.service;
 
-import com.coderscampus.cp.domain.Networkingresources;
+import com.coderscampus.cp.domain.Networkingresource;
 import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.repository.NetworkingresourcesRepository;
+import com.coderscampus.cp.repository.NetworkingresourceRepository;
 import com.coderscampus.cp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,19 +10,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NetworkingresourcesService {
+public class NetworkingresourceService {
 
     @Autowired
-    private NetworkingresourcesRepository networkingresourcesRepo;
+    private NetworkingresourceRepository networkingresourcesRepo;
 
     @Autowired
     private StudentRepository studentRepo;
 
-    public Networkingresources save(Networkingresources networkingresources) {
+    public Networkingresource save(Networkingresource networkingresources) {
         return networkingresourcesRepo.save(networkingresources);
     }
 
-    public Networkingresources saveByUid(Networkingresources networkingresources, String uid) {
+    public Networkingresource saveByUid(Networkingresource networkingresources, String uid) {
         if (networkingresources == null || uid == null) {
             return null;
         }
@@ -42,18 +42,18 @@ public class NetworkingresourcesService {
         return networkingresourcesRepo.save(networkingresources);
     }
 
-    public List<Networkingresources> findAll() {
+    public List<Networkingresource> findAll() {
         return networkingresourcesRepo.findAll();
     }
 
-    public Networkingresources findById(Long id) {
+    public Networkingresource findById(Long id) {
         if (id == null) {
             return null;
         }
         return networkingresourcesRepo.findById(id).orElseThrow(() -> new RuntimeException("Element not found with ID " + id));
     }
 
-    public void delete(Networkingresources networkingresources) {
+    public void delete(Networkingresource networkingresources) {
         networkingresourcesRepo.delete(networkingresources);
     }
 

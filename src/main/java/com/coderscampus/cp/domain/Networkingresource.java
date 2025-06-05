@@ -3,7 +3,7 @@ package com.coderscampus.cp.domain;
 import jakarta.persistence.*;
 
 @Entity
-public class Networkingresources {
+public class Networkingresource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Networkingresources {
     private String geographicScope;
     private String notes;
 
-    public Networkingresources() {
+    public Networkingresource() {
     }
 
     public Long getId() {

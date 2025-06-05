@@ -1,7 +1,7 @@
 package com.coderscampus.cp.web;
 
-import com.coderscampus.cp.domain.Networkingresources;
-import com.coderscampus.cp.service.NetworkingresourcesService;
+import com.coderscampus.cp.domain.Networkingresource;
+import com.coderscampus.cp.service.NetworkingresourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,14 +11,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/networkingresources")
-public class NetworkingresourcesController {
+public class NetworkingresourceController {
 
     @Autowired
-    private NetworkingresourcesService networkingresourcesService;
+    private NetworkingresourceService networkingresourcesService;
 
     @GetMapping("")
     public String home(ModelMap model) {
-        List<Networkingresources> networkingresources = networkingresourcesService.findAll();
+        List<Networkingresource> networkingresources = networkingresourcesService.findAll();
         model.put("networkingresources", networkingresources);
         model.addAttribute("pageTitle", "Networking Resources");
         model.put("isNetworkingresources", true);
@@ -27,7 +27,7 @@ public class NetworkingresourcesController {
 
     @GetMapping("/create")
     public String getCreate(ModelMap model) {
-        Networkingresources networkingresources = new Networkingresources();
+        Networkingresource networkingresources = new Networkingresource();
         model.put("networkingresources", networkingresources);
         model.addAttribute("pageTitle", "Networking Resources");
         model.put("isNetworkingresources", true);
@@ -35,14 +35,14 @@ public class NetworkingresourcesController {
     }
 
     @PostMapping("/create")
-    public String create(Networkingresources networkingresources, @RequestParam("uid") String uid) {
+    public String create(Networkingresource networkingresources, @RequestParam("uid") String uid) {
         networkingresources = networkingresourcesService.saveByUid(networkingresources, uid);
         return "redirect:/networkingresources";
     }
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id) {
-        Networkingresources networkingresources = networkingresourcesService.findById(id);
+        Networkingresource networkingresources = networkingresourcesService.findById(id);
         model.put("networkingresources", networkingresources);
         model.addAttribute("pageTitle", "Networking Resources");
         model.put("isNetworkingresources", true);
@@ -50,13 +50,13 @@ public class NetworkingresourcesController {
     }
 
     @PostMapping("/update")
-    public String update(Networkingresources networkingresources) {
+    public String update(Networkingresource networkingresources) {
         networkingresourcesService.save(networkingresources);
         return "redirect:/networkingresources";
     }
 
     @PostMapping("/delete")
-    public String delete(Networkingresources networkingresources) {
+    public String delete(Networkingresource networkingresources) {
         networkingresourcesService.delete(networkingresources);
         return "redirect:/networkingresources";
     }
