@@ -36,6 +36,8 @@ public interface CheckinRepository extends JpaRepository<Checkin, Long> {
     @Query("SELECT COUNT(c.id) FROM Checkin c")
     Integer getNumberOfCheckins();
 
+
+
 }
 
 
