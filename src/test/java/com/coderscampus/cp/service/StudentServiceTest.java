@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,6 +90,10 @@ class StudentServiceTest {
         assertEquals("Bobby", result.getName());
         Student studentResult = studentRepo.findByUid(uid);
         assertEquals("Bobby", studentResult.getName());
+
+        studentRepo.delete(studentResult);
+        assertNull(studentService.findByUid(uid));
+
     }
 
     @Transactional
@@ -107,6 +114,44 @@ class StudentServiceTest {
         assertEquals("Eclipse", student2.getIde());
         assertEquals("Bobby", student2.getMentee());
         assertEquals(true, student2.getWillingToMentor());
+    }
+
+    @Transactional
+    @Test
+    void testFindAllAsDTOs() {
+        Student student1 = new Student();
+        Student student2 = new Student();
+
+        student1.setUid(UUID.randomUUID().toString());
+        student2.setUid(UUID.randomUUID().toString());
+
+        Random random = new Random();
+        String randomNumber1 = Integer.toString(random.nextInt());
+        String randomNumber2 = Integer.toString(random.nextInt());
+
+        student1.setName(randomNumber1);
+        student2.setName(randomNumber2);
+
+        studentRepo.save(student1);
+        studentRepo.save(student2);
+
+        List<Student> allStudents = studentRepo.findAll();
+
+        List<StudentDTO> studentDTOs = studentService.findAllAsDTOs();
+
+        int count = 0;
+
+        for (StudentDTO studentDTO : studentDTOs) {
+            if (randomNumber1.equals(studentDTO.getName()) || randomNumber2.equals(studentDTO.getName())) {
+                count++;
+            }
+        }
+
+        assertEquals(2, count);
+
+        studentRepo.delete(student1);
+        studentRepo.delete(student2);
+
     }
 
 }
