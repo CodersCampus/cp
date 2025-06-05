@@ -178,14 +178,9 @@ class StudentServiceTest {
     @Transactional
     @Test
     void testFindActiveStudents() {
-        Student student1 = new Student();
-        Student student2 = new Student();
+
         Student notActiveStudent = new Student();
-
-        student1.setUid(UUID.randomUUID().toString());
-        student2.setUid(UUID.randomUUID().toString());
         notActiveStudent.setUid(UUID.randomUUID().toString());
-
         notActiveStudent.setName("notActiveStudentName");
 
         Checkin checkin1 = new Checkin();
@@ -221,6 +216,7 @@ class StudentServiceTest {
         checkinRepo.delete(checkin2);
         studentRepo.delete(student1);
         studentRepo.delete(student2);
+        studentRepo.delete(notActiveStudent);
 
     }
 
