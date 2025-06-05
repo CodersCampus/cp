@@ -1,13 +1,17 @@
 package com.coderscampus.cp.service;
 
+import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,6 +25,8 @@ class StudentServiceTest {
     private StudentService studentService;
     @Autowired
     private StudentRepository studentRepo;
+    @Autowired
+    private CheckinRepository checkinRepo;
 
     @Test
     void testIsValidStudentUpdate() {
@@ -149,6 +155,40 @@ class StudentServiceTest {
 
         assertEquals(2, count);
 
+        studentRepo.delete(student1);
+        studentRepo.delete(student2);
+
+    }
+
+    @Transactional
+    @Test
+    void testFindActiveStudents() {
+        Student student1 = new Student();
+        Student student2 = new Student();
+
+        student1.setUid(UUID.randomUUID().toString());
+        student2.setUid(UUID.randomUUID().toString());
+
+        Checkin checkin1 = new Checkin();
+        Checkin checkin2 = new Checkin();
+
+        checkin1.setUid(UUID.randomUUID().toString());
+        checkin2.setUid(UUID.randomUUID().toString());
+
+        checkin1.setStudent(student1);
+        checkin2.setStudent(student2);
+
+        studentRepo.save(student1);
+        studentRepo.save(student2);
+
+        checkinRepo.save(checkin1);
+        checkinRepo.save(checkin2);
+
+        List<StudentDTO> activeStudents = studentService.findActiveStudents();
+        assertTrue(activeStudents.size() >= 2);
+
+        checkinRepo.delete(checkin1);
+        checkinRepo.delete(checkin2);
         studentRepo.delete(student1);
         studentRepo.delete(student2);
 
