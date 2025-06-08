@@ -3,6 +3,7 @@ package com.coderscampus.cp.web;
 import com.coderscampus.cp.domain.Finalproject;
 import com.coderscampus.cp.service.FinalprojectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -41,12 +42,19 @@ public class FinalprojectController {
     }
 
     @GetMapping("/update/{id}")
-    public String fetch(ModelMap model, @PathVariable Long id) {
+    public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
         Finalproject finalproject = finalprojectService.findById(id);
-        model.put("finalproject", finalproject);
-        model.addAttribute("pageTitle", "Finalproject Update");
-        model.put("isFinalproject", true);
-        return "finalproject/update";
+
+        if (finalproject.getStudent().getUid().equals(uid)) {
+            model.put("finalproject", finalproject);
+            model.addAttribute("pageTitle", "Finalproject Update");
+            model.put("isFinalproject", true);
+            return "finalproject/update";
+        } else {
+            return "redirect:/finalproject";
+        }
+
     }
 
     @PostMapping("/update")
