@@ -2,6 +2,7 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Resume;
 import com.coderscampus.cp.service.ResumeService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,12 +42,18 @@ public class ResumeController {
     }
 
     @GetMapping("/update/{id}")
-    public String fetch(ModelMap model, @PathVariable Long id) {
+    public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
         Resume resume = resumeService.findById(id);
-        model.put("resume", resume);
-        model.addAttribute("pageTitle", "Resume Update");
-        model.put("isResume", true);
-        return "resume/update";
+
+        if (resume.getStudent() != null && resume.getStudent().getUid().equals(uid)) {
+            model.put("resume", resume);
+            model.addAttribute("pageTitle", "Resume Update");
+            model.put("isResume", true);
+            return "resume/update";
+        } else {
+            return "redirect:/resume";
+        }
     }
 
     @PostMapping("/update")

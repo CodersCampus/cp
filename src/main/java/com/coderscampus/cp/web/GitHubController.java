@@ -3,6 +3,7 @@ package com.coderscampus.cp.web;
 import com.coderscampus.cp.domain.GitHub;
 import com.coderscampus.cp.service.GitHubService;
 import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -41,12 +42,18 @@ public class GitHubController {
     }
 
     @GetMapping("/update/{id}")
-    public String fetch(ModelMap model, @PathVariable Long id) {
+    public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
         GitHub gitHub = gitHubService.findById(id);
-        model.put("gitHub", gitHub);
-        model.addAttribute("pageTitle", "GitHub Update");
-        model.put("isGitHub", true);
-        return "github/update";
+
+        if (gitHub.getStudent() != null && gitHub.getStudent().getUid().equals(uid)) {
+            model.put("gitHub", gitHub);
+            model.addAttribute("pageTitle", "GitHub Update");
+            model.put("isGitHub", true);
+            return "github/update";
+        } else {
+            return "redirect:/github";
+        }
     }
 
     @PostMapping("/update")
