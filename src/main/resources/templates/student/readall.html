@@ -31,7 +31,6 @@
                                 <th scope="col">Final Project:</th>
                                 <th scope="col">Resume:</th>
                                 <th scope="col">Networking:</th>
-                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -60,14 +59,6 @@
                                 <td><span th:text="${student.resume.resumeFile}"></span></td>
                                 <td><span th:text="${student.networking.meetups}"></span></td>
                                 <td><span th:text="${student.website.url}"></span></td> -->
-                                <td>
-                                    <a th:href="@{/student/update/{studentId}(studentId=${student.id})}">
-                                        <span>
-                                         <i class="fa-solid fa-pen-to-square"
-                                            style="color: var(--primary); font-size:20px; font-weight:100"></i>
-                                        </span>
-                                    </a>
-                                </td>
                             </tr>
                             </tbody>
                         </table>
