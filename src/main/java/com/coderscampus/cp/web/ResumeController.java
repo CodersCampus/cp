@@ -54,7 +54,6 @@ public class ResumeController {
         } else {
             return "redirect:/resume";
         }
-
     }
 
     @PostMapping("/update")
