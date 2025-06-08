@@ -46,6 +46,10 @@ public class FinalprojectController {
         String uid = (String) httpSession.getAttribute("uid");
         Finalproject finalproject = finalprojectService.findById(id);
 
+        if (finalproject.getStudent() == null) {
+            return "redirect:/finalproject";
+        }
+
         if (finalproject.getStudent().getUid().equals(uid)) {
             model.put("finalproject", finalproject);
             model.addAttribute("pageTitle", "Finalproject Update");
