@@ -1,6 +1,6 @@
 @plugin "daisyui/theme" {
-    name: "pastel";
-    default: true;
+    name: "light";
+    default: false;
     prefersdark: false;
     color-scheme: "light";
     /*--color-base-100: oklch(100% 0 0);*/

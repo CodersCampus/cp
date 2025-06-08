@@ -1,6 +1,6 @@
 @plugin "daisyui/theme" {
-    name: "dim";
-    default: false;
+    name: "dark";
+    default: true;
     prefersdark: true;
     color-scheme: "dark";
     --color-base-100: oklch(27% 0.033 256.848);

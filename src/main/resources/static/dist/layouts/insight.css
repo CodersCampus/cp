@@ -1,20 +1,26 @@
 @layer base {
     .insight {
-        background-color: var(--color-base-200);
-
         display: grid;
-        grid-template-rows: 64px 1fr 40px;
+        grid-template-rows: 64px 1fr;
+        grid-row-gap: calc(var(--spacing) * 1);
+        /*padding-block: calc(var(--spacing) * 1) 0;*/
 
         header {
+            grid-row: 1 / 2;
             padding-inline: calc(var(--spacing) * 8);
         }
 
         main {
-            padding-inline: calc(var(--spacing) * 8);
+            grid-row: 2 / 3;
+            overflow-y: auto;
+            height: calc(100vh - 64px);
+            display: flex;
+            justify-content: center;
         }
 
         footer {
-            padding-inline: calc(var(--spacing) * 8);
+            display: none;
+            visibility: hidden;
         }
     }
 }

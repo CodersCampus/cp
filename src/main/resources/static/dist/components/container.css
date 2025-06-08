@@ -1,26 +1,19 @@
-@layer components {
-    .container {
-        width: 100%;
-        margin-inline: auto;
+.container-xl {
+    max-width: var(--container-5xl);
+}
 
-        &.container-xl {
-            max-width: var(--container-5xl);
-        }
+.container-lg {
+    max-width: var(--container-5xl);
+}
 
-        &.container-lg {
-            max-width: var(--container-5xl);
-        }
+.container-md {
+    max-width: var(--container-4xl);
+}
 
-        &.container-md {
-            max-width: var(--container-4xl);
-        }
+.container-sm {
+    max-width: var(--container-3xl);
+}
 
-        &.container-sm {
-            max-width: var(--container-3xl);
-        }
-
-        &.container-xs {
-            max-width: var(--container-2xl);
-        }
-    }
+.container-xs {
+    max-width: var(--container-2xl);
 }

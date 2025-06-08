@@ -1,10 +1,10 @@
 @layer base {
     .sidebar {
+        background-color: var(--color-base-100);
         position: relative;
         display: grid;
         grid-template-rows: 64px 1fr;
         grid-row-gap: calc(var(--spacing) * 6);
-        border-right: 1px solid var(--color-base-200);
 
         .sidebar-header {
             display: flex;
@@ -30,17 +30,41 @@
             display: flex;
             flex-direction: column;
 
-            li {
-                &:is(:last-child) {
-                    margin-block-start: auto;
-                }
+            :where(& > :is(:last-child)) {
+                margin-block-start: auto;
 
-                .menu {
-                    &:is(:last-child) {
-                        margin-block-start: auto;
+                a {
+                    img {
+                        width: calc(var(--spacing) * 8);
+                        height: calc(var(--spacing) * 8);
+                    }
+
+                    p {
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: calc(var(--spacing) * 1);
+                        color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+                        font-size: var(--text-sm);
+
+                        :where(& > :is(:last-child)) {
+                            color: color-mix(in oklab, var(--color-base-content) 40%, transparent);
+                            font-size: var(--text-xs);
+                        }
                     }
                 }
             }
+
+            /*li {*/
+            /*    &:is(:last-child) {*/
+            /*        margin-block-start: auto;*/
+            /*    }*/
+
+            /*    .menu {*/
+            /*        &:is(:last-child) {*/
+            /*            margin-block-start: auto;*/
+            /*        }*/
+            /*    }*/
+            /*}*/
         }
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:fragment="layout (pageTitle, pageContent)" xmlns:th="http://www.thymeleaf.org" lang="en" data-theme="dim">
+<html lang="en" th:fragment="layout (pageTitle, pageContent)" xmlns:th="http://www.thymeleaf.org" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,20 +50,15 @@
                     </ul>
                 </li>
                 <li>
-                    <ul role="list" class="menu">
-                        <li>
-                            <a href="#" class="user">
-                                <div class="user-image">
-                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                         alt="">
-                                </div>
-                                <div class="user-label">
-                                    <p>Tom Cook</p>
-                                    <p>View profile</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                    <a href="#">
+                        <img class="avatar avatar-md avatar-circle"
+                             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                             alt="">
+                        <p>
+                            <span>Tom Cook</span>
+                            <span>tom.cook@example.com</span>
+                        </p>
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -72,7 +67,7 @@
         <header class="header">
             <nav>
                 <ul role="list">
-                    <li>
+                    <li class="list">
                         <ul role="list" class="menu menu-horizontal">
                             <li>
                                 <a href="#">
@@ -100,9 +95,7 @@
             </nav>
         </header>
         <main class="main" th:include="${pageContent}"></main>
-        <footer class="footer">
-            <p>Copyright &copy; 2025 - Coders Campus</p>
-        </footer>
+        <footer class="footer sr-only"></footer>
     </div>
 </div>
 </body>

@@ -1,20 +1,22 @@
-@layer base {
-    #root {
-        position: relative;
-        width: 100%;
-        min-height: 100vh;
-        margin-block: calc(var(--spacing) * 0);
-        margin-inline: auto;
+#root {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    /*margin-block: calc(var(--spacing) * 0);*/
+    /*margin-inline: auto;*/
 
-        display: grid;
-        grid-template-columns: 280px 1fr;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-column-gap: 1px;
 
-        #sidebar {
-            grid-column: 1 / 2;
-        }
+    #sidebar {
+        grid-column: 1 / 2;
+    }
 
-        #insight {
-            grid-column: 2 / 3;
-        }
+    #insight {
+        grid-column: 2 / 3;
     }
 }

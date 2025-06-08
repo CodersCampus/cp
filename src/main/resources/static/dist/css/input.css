@@ -2,9 +2,9 @@
 
 @import "../base/config.css";
 @import "../base/variables.css";
+@import "../base/base.css";
 @import "../themes/light.css";
 @import "../themes/dark.css";
-@import "../base/base.css";
 
 /* Layouts */
 @import "../layouts/root.css";
@@ -13,8 +13,13 @@
 @import "../layouts/header.css";
 @import "../layouts/content.css";
 
+/* Layouts */
+@import "../pages/students.css";
+
 /* components */
 @import "../components/menu.css";
+@import "../components/list.css";
+@import "../components/avatar.css";
 @import "../components/headline.css";
 @import "../components/container.css";
 

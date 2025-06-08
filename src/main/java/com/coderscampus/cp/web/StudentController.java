@@ -35,12 +35,23 @@ public class StudentController {
 
     @GetMapping("/readall")
     public String readAll(ModelMap model, HttpSession httpSession) {
-        model.addAttribute("pageTitle", "Student Read");
+        model.addAttribute("pageTitle", "Students Read");
 
         List<StudentDTO> allStudents = studentService.findAllAsDTOs();
         model.addAttribute("allStudents", allStudents);
 
         return "student/readall";
+    }
+
+    @GetMapping("/view")
+    public String readView(ModelMap model, HttpSession httpSession) {
+        model.addAttribute("pageTitle", "Student View");
+        model.addAttribute("isStudent", true);
+
+        List<StudentDTO> allStudents = studentService.findAllAsDTOs();
+        model.addAttribute("allStudents", allStudents);
+
+        return "student/read";
     }
 
 
