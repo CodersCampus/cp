@@ -57,8 +57,9 @@ public class GitHubController {
     }
 
     @PostMapping("/update")
-    public String update(GitHub gitHub) {
-        gitHubService.save(gitHub);
+    public String update(GitHub gitHub, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        gitHubService.saveByUid(gitHub, uid);
         return "redirect:/github";
     }
 

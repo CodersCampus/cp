@@ -57,8 +57,9 @@ public class LinkedInController {
     }
 
     @PostMapping("/update")
-    public String update(LinkedIn linkedIn) {
-        linkedInService.save(linkedIn);
+    public String update(LinkedIn linkedIn, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        linkedInService.saveByUid(linkedIn, uid);
         return "redirect:/linkedin";
     }
 

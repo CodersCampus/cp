@@ -58,8 +58,9 @@ public class FinalprojectController {
     }
 
     @PostMapping("/update")
-    public String update(Finalproject finalproject) {
-        finalprojectService.save(finalproject);
+    public String update(Finalproject finalproject, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        finalprojectService.saveByUid(finalproject, uid);
         return "redirect:/finalproject";
     }
 

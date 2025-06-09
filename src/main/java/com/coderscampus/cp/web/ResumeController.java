@@ -57,8 +57,9 @@ public class ResumeController {
     }
 
     @PostMapping("/update")
-    public String update(Resume resume) {
-        resumeService.save(resume);
+    public String update(Resume resume, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        resumeService.saveByUid(resume, uid);
         return "redirect:/resume";
     }
 
