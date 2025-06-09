@@ -12,6 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.UUID;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -67,6 +70,23 @@ public class ResumeControllerTest {
         mockMvc.perform(get("/resume/update/{id}", resumeId)
                     .sessionAttr("uid", sessionUid))
                     .andExpect(view().name("resume/update"));
+    }
+
+    @Test
+    public void testRedirectOnGetWhereObjectHasNoStudent() throws Exception {
+
+        Long resumeId = 1L;
+        String sessionUid = UUID.randomUUID().toString();
+
+        Resume mockResume = new Resume();
+        mockResume.setId(resumeId);
+
+        Mockito.when(resumeService.findById(resumeId)).thenReturn(mockResume);
+
+        mockMvc.perform(get("/resume/update/{id}", resumeId)
+                    .sessionAttr("uid", sessionUid))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/resume"));
     }
 
 }

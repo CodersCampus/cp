@@ -15,6 +15,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.UUID;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -70,6 +72,23 @@ public class FinalprojectControllerTest {
         mockMvc.perform(get("/finalproject/update/{id}", finalprojectId)
                     .sessionAttr("uid", sessionUid))
                     .andExpect(view().name("finalproject/update"));
+    }
+
+    @Test
+    public void testRedirectOnGetWhereObjectHasNoStudent() throws Exception {
+
+        Long finalprojectId = 1L;
+        String sessionUid = UUID.randomUUID().toString();
+
+        Finalproject mockFinalproject = new Finalproject();
+        mockFinalproject.setId(finalprojectId);
+
+        Mockito.when(finalprojectService.findById(finalprojectId)).thenReturn(mockFinalproject);
+
+        mockMvc.perform(get("/finalproject/update/{id}", finalprojectId)
+                    .sessionAttr("uid", sessionUid))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/finalproject"));
     }
 
 }

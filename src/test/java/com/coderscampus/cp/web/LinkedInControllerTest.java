@@ -15,6 +15,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.UUID;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -70,6 +72,23 @@ public class LinkedInControllerTest {
         mockMvc.perform(get("/linkedin/update/{id}", linkedInId)
                     .sessionAttr("uid", sessionUid))
                     .andExpect(view().name("linkedin/update"));
+    }
+
+    @Test
+    public void testRedirectOnGetWhereObjectHasNoStudent() throws Exception {
+
+        Long linkedInId = 1L;
+        String sessionUid = UUID.randomUUID().toString();
+
+        LinkedIn mockLinkedIn = new LinkedIn();
+        mockLinkedIn.setId(linkedInId);
+
+        Mockito.when(linkedInService.findById(linkedInId)).thenReturn(mockLinkedIn);
+
+        mockMvc.perform(get("/linkedin/update/{id}", linkedInId)
+                    .sessionAttr("uid", sessionUid))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/linkedin"));
     }
 
 }

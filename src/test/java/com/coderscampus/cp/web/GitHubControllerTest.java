@@ -15,6 +15,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.UUID;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -70,6 +72,24 @@ public class GitHubControllerTest {
         mockMvc.perform(get("/github/update/{id}", gitHubId)
                     .sessionAttr("uid", sessionUid))
                     .andExpect(view().name("github/update"));
+    }
+
+    @Test
+    public void testRedirectOnGetWhereObjectHasNoStudent() throws Exception {
+
+        Long gitHubId = 1L;
+        String sessionUid = UUID.randomUUID().toString();
+
+        GitHub mockGitHub = new GitHub();
+        mockGitHub.setId(gitHubId);
+
+
+        Mockito.when(gitHubService.findById(gitHubId)).thenReturn(mockGitHub);
+
+        mockMvc.perform(get("/github/update/{id}", gitHubId)
+                    .sessionAttr("uid", sessionUid))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/github"));
     }
 
 }
