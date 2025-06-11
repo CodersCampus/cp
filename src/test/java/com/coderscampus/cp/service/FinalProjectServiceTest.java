@@ -103,7 +103,7 @@ public class FinalProjectServiceTest {
 		student1FinalprojectList.forEach(finalprojectFromList -> {
 
             finalprojectFromList.setProposal("Test");
-			Finalproject savedFinalproject = finalprojectService.save(finalprojectFromList);
+			Finalproject savedFinalproject = finalprojectService.saveByUid(finalprojectFromList, student1Uid);
             assertTrue(savedFinalproject.getId() > i.get());
             i.set(savedFinalproject.getId());
             assertEquals(finalprojectFromList.getProposal(), savedFinalproject.getProposal());

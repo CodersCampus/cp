@@ -111,7 +111,7 @@ public class LinkedInServiceTest {
 		student1LinkedInList.forEach(linkedInFromList -> {
 
             linkedInFromList.setBanner("Test");
-			LinkedIn savedLinkedIn = linkedInService.save(linkedInFromList);
+			LinkedIn savedLinkedIn = linkedInService.saveByUid(linkedInFromList, student1Uid);
             assertTrue(savedLinkedIn.getId() > i.get());
             i.set(savedLinkedIn.getId());
             assertEquals(linkedInFromList.getBanner(), savedLinkedIn.getBanner());

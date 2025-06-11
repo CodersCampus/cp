@@ -105,7 +105,7 @@ public class GitHubServiceTest {
 		student1GitHubList.forEach(gitHubFromList -> {
 
             gitHubFromList.setHeadline("Test");
-			GitHub savedGitHub = gitHubService.save(gitHubFromList);
+			GitHub savedGitHub = gitHubService.saveByUid(gitHubFromList, student1Uid);
             assertTrue(savedGitHub.getId() > i.get());
             i.set(savedGitHub.getId());
             assertEquals(gitHubFromList.getHeadline(), savedGitHub.getHeadline());

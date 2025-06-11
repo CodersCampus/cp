@@ -107,7 +107,7 @@ public class ResumeServiceTest {
 		student1ResumeList.forEach(resumeFromList -> {
 
             resumeFromList.setSkills("Test");
-			Resume savedResume = resumeService.save(resumeFromList);
+			Resume savedResume = resumeService.saveByUid(resumeFromList, student1Uid);
             assertTrue(savedResume.getId() > i.get());
             i.set(savedResume.getId());
             assertEquals(resumeFromList.getSkills(), savedResume.getSkills());
