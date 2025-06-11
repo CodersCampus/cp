@@ -19,6 +19,7 @@ public class LinkedInController {
 
     @GetMapping("")
     public String home(ModelMap model) {
+        linkedInService.deleteRecordsWithNoStudentAssociated();
         List<LinkedIn> linkedIns = linkedInService.findAll();
         model.put("linkedIns", linkedIns);
         model.addAttribute("pageTitle", "LinkedIn Read");

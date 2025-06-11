@@ -54,5 +54,14 @@ public class FinalprojectService {
         finalprojectRepo.delete(finalproject);
     }
 
+    public void deleteRecordsWithNoStudentAssociated() {
+        List<Finalproject> allFinalprojects = finalprojectRepo.findAll();
+
+        for (Finalproject finalproject : allFinalprojects) {
+            if (finalproject.getStudent() == null) {
+                finalprojectRepo.delete(finalproject);
+            }
+        }
+    }
 
 }
