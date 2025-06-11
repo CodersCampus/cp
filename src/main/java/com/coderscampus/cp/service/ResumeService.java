@@ -18,9 +18,6 @@ public class ResumeService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Resume save(Resume resume) {
-        return resumeRepo.save(resume);
-    }
 
     public Resume saveByUid(Resume resume, String uid) {
         if (resume == null || uid == null) {

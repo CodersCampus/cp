@@ -18,9 +18,6 @@ public class FinalprojectService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Finalproject save(Finalproject finalproject) {
-        return finalprojectRepo.save(finalproject);
-    }
 
     public Finalproject saveByUid(Finalproject finalproject, String uid) {
         if (finalproject == null || uid == null) {
@@ -56,5 +53,6 @@ public class FinalprojectService {
     public void delete(Finalproject finalproject) {
         finalprojectRepo.delete(finalproject);
     }
+    
 
 }

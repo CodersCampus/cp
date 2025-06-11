@@ -19,10 +19,6 @@ public class LinkedInService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public LinkedIn save(LinkedIn linkedIn) {
-        return linkedInRepo.save(linkedIn);
-    }
-
 
     public LinkedIn saveByUid(LinkedIn linkedIn, String uid) {
         if (linkedIn == null || uid == null) {
