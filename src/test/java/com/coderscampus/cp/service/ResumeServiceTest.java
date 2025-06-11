@@ -303,6 +303,24 @@ public class ResumeServiceTest {
         });
     }
 
+    @Test
+    @Transactional
+    void testDeleteRecordsWithNoStudentAssociated() {
+        Resume resumeWithoutStudent = new Resume();
+        resumeWithoutStudent.setStudent(null);
+        resumeRepo.save(resumeWithoutStudent);
+
+        resumeService.deleteRecordsWithNoStudentAssociated();
+
+        List<Resume> allResumes = resumeService.findAll();
+        int count = 0;
+        for (Resume resume : allResumes) {
+            if (resume.getStudent() == null) {
+                count++;
+            }
+        }
+        assertEquals(0, count);
+    }
 
 
 }
