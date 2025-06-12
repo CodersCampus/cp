@@ -1,11 +1,12 @@
 @layer base {
     html {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
         scroll-behavior: smooth;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
         height: 100%;
         font-family: var(--font-outfit);
+    }
+
+    *, *::before, *::after {
+        transition: all 0.3s ease-in-out;
     }
 
     body {
@@ -13,11 +14,13 @@
         height: 100%;
         background-color: var(--color-base-200);
         color: var(--color-base-content);
+        font-size: var(--text-base);
         font-family: inherit;
         font-weight: var(--font-weight-light);
-        font-size: var(--text-base);
-        line-height: var(--leading-tight);
         font-optical-sizing: auto;
+        line-height: var(--leading-tight);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         padding: 0;
         margin: 0;
     }
