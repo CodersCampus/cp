@@ -21,13 +21,13 @@ public class Resume {
     private String email;
     private String city;
     private String state;
-    private String linkedIn;
-    private String gitHub;
-    private String summary;
-    private String skills;
-    private String workExperience;
-    private String education;
-    private String projects;
+    private String linkedIn; // URL or String representation of LinkedIn profile
+    private String gitHub; // URL or String representation of GitHub profile
+    private String summary; // A brief summary or objective statement - Boolean
+    private String skills;  // A list of skills (String representation, could be comma-separated)
+    private String workExperience; // A list of work experiences (String representation, could be comma-separated)
+    private String education; // A list of educational qualifications (String representation, could be comma-separated)
+    private String projects; // A list of projects (String representation, could be comma-separated)
 
     public Resume() {
     }

@@ -10,21 +10,21 @@ public class LinkedIn {
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
-	private String banner;
-	private String about;
-	private String url;
-	private String featuredPosts;
-	private String activity;
-	private String skills;
-	private String email;
+	private String banner; // URL or String representation of the banner image - Boolean
+	private String about; // A brief description or summary of the profile - Boolean
+	private String url; // URL of the LinkedIn profile - Boolean
+	private String featuredPosts; // A list of featured posts (String representation, could be comma-separated) - Boolean
+	private String activity; // A list of recent activities (String representation, could be comma-separated) - Boolean
+	private String skills; // A list of skills (String representation, could be comma-separated) - Boolean
+	private String email; // Email address associated with the LinkedIn profile - Boolean
 	private String firstName;
 	private String lastName;
-	private String biography;
-	private String education;
-	private String experience;
+	private String biography; // A brief biography or personal statement - Boolean
+	private String education; // A list of educational qualifications (String representation, could be comma-separated) - Boolean
+	private String experience; // A list of work experiences (String representation, could be comma-separated) - Boolean
 	private String location;
-	private String image;
-	private String title;
+	private String image; // URL or String representation of the profile image - Boolean
+	private String title; // The current job title or position - Boolean
 
     public LinkedIn() {
     }

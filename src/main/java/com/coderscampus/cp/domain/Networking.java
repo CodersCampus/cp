@@ -13,9 +13,7 @@ public class Networking {
     private Long id;
     private String meetups;
     private String conferences;
-
     private String contacts;
-
 
     public Long getId() {
         return id;

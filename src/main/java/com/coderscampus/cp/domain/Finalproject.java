@@ -10,7 +10,7 @@ public class Finalproject {
     private Long id;
     private String uid;
     private String projectName;
-    private String proposal;
+    private String proposal; // A brief description of the project proposal - Link to a document or a string description
     private String crud;
     private String tables;
     private String views;

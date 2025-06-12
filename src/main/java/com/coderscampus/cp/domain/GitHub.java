@@ -11,15 +11,15 @@ public class GitHub {
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
-    private String handle;
+    private String handle; // GitHub username or handle - Boolean
     private String enhancedReadMe;     // convert to boolean
     private String renamedAssignments; // convert to boolean
     private String pinnedRepos;        // convert to boolean
     private String externalLinks;      // convert to list
-    private String image;
-    private String headline;
-    private String contactDetails;
-    private String url;
+    private String image; // URL or String representation of the profile image - Boolean
+    private String headline; // A brief headline or tagline for the profile - Boolean
+    private String contactDetails; // Contact details (email, phone, etc.) - Boolean
+    private String url; // URL of the GitHub profile - Boolean
 
     public GitHub() {
 
