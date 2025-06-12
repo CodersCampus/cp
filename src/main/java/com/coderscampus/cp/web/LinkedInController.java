@@ -2,6 +2,7 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.LinkedIn;
 import com.coderscampus.cp.service.LinkedInService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +19,7 @@ public class LinkedInController {
 
     @GetMapping("")
     public String home(ModelMap model) {
+        linkedInService.deleteRecordsWithNoStudentAssociated();
         List<LinkedIn> linkedIns = linkedInService.findAll();
         model.put("linkedIns", linkedIns);
         model.addAttribute("pageTitle", "LinkedIn Read");
@@ -41,17 +43,24 @@ public class LinkedInController {
     }
 
     @GetMapping("/update/{id}")
-    public String fetch(ModelMap model, @PathVariable Long id) {
+    public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
         LinkedIn linkedIn = linkedInService.findById(id);
-        model.put("linkedIn", linkedIn);
-        model.addAttribute("pageTitle", "LinkedIn Update");
-        model.put("isLinkedIn", true);
-        return "linkedin/update";
+
+        if (linkedIn.getStudent() != null && linkedIn.getStudent().getUid().equals(uid)) {
+            model.put("linkedIn", linkedIn);
+            model.addAttribute("pageTitle", "LinkedIn Update");
+            model.put("isLinkedIn", true);
+            return "linkedin/update";
+        } else {
+            return "redirect:/linkedin";
+        }
     }
 
     @PostMapping("/update")
-    public String update(LinkedIn linkedIn) {
-        linkedInService.save(linkedIn);
+    public String update(LinkedIn linkedIn, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        linkedInService.saveByUid(linkedIn, uid);
         return "redirect:/linkedin";
     }
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
+<body class="ui-background">
+<ul class="ui-navbar-nav">
+    <button class="ui-nav-item ui-button" type="button"><a href="/networkingresource/create">Create New</a>
+    </button>
+</ul>
+<main>
+    <form action="/networkingresource/update" class="ui-form" th:object="${networkingresource}" method="post">
+        <input name="uid" th:field="${networkingresource.id}" type="hidden"/>
+<div class="ui-input-field">
+            <label for="resourceName" class="ui-label">Resource Name:</label>
+            <div class="ui-text-input">
+                <input class="ui-value" id="resourceName" th:field="*{resourceName}" type="text"/>
+            </div>
+        </div>
+        <div class="ui-input-field">
+            <label for="type" class="ui-label">Type:</label>
+            <div class="ui-text-input">
+                <input class="ui-value" id="type" th:field="*{type}" type="text"/>
+            </div>
+        </div>
+        <div class="ui-input-field">
+            <label for="cost" class="ui-label">Cost:</label>
+            <div class="ui-text-input">
+                <input class="ui-value" id="cost" th:field="*{cost}" type="text"/>
+            </div>
+        </div>
+        <div class="ui-input-field">
+            <label for="geographicScope" class="ui-label">Geographic Scope:</label>
+            <div class="ui-text-input">
+                <input class="ui-value" id="geographicScope" th:field="*{geographicScope}" type="text"/>
+            </div>
+        </div>
+        <div class="ui-input-field">
+            <label for="notes" class="ui-label">Notes:</label>
+            <div class="ui-text-input">
+                <input class="ui-value" id="notes" th:field="*{notes}" type="text"/>
+            </div>
+        </div>
+        <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
+    </form>
+    <form action="/networkingresource/delete" class="ui-form" method="post" style="padding-top:0;">
+        <input th:field="${networkingresource.id}" type="hidden"/>
+        <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
+    </form>
+</main>
+</div>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+</fbauth-element>
+
+<div th:replace="~{fragments/authscript :: script}"></div>
+<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+</body>
+
+</html>
