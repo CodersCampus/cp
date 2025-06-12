@@ -13,7 +13,6 @@ public class User {
     private String username; // Unique username for display purposes
     private String email;
     private String password;
-    public enum Role { USER, ADMIN, MODERATOR }
     private Boolean enabled;
     private Boolean online;
     private Instant createdAt;

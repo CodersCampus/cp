@@ -1,26 +1,26 @@
 package com.coderscampus.cp.web;
 
+import com.coderscampus.cp.domain.Profile;
+import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.service.ProfileService;
+import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/profile")
 public class ProfileController {
     private final ProfileService profileService;
+    private final StudentService studentService;
 
-    public ProfileController(ProfileService profileService) {
+    public ProfileController(ProfileService profileService, StudentService studentService) {
         this.profileService = profileService;
+        this.studentService = studentService;
     }
 
-    @GetMapping("/profile")
-    public String viewProfile(ModelMap model, HttpSession httpSession) {
-        String uid = (String) httpSession.getAttribute("uid");
-        if (uid != null && !uid.isEmpty()) {
-            UserStatusDTO userStatus = profileService.getUserStatus(uid);
-            model.addAttribute("userStatus", userStatus);
-            model.addAttribute("isStudent", true);
-        }
-        model.addAttribute("pageTitle", "Profile View");
-        return "profile/view";
+    @GetMapping("")
+    public String profileView(ModelMap model, HttpSession httpSession) {
+        return "profile/index";
     }
 }
