@@ -18,9 +18,6 @@ public class GitHubService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public GitHub save(GitHub gitHub) {
-        return gitHubRepo.save(gitHub);
-    }
 
     public GitHub saveByUid(GitHub gitHub, String uid) {
         if (gitHub == null || uid == null) {
@@ -55,6 +52,16 @@ public class GitHubService {
 
     public void delete(GitHub gitHub) {
         gitHubRepo.delete(gitHub);
+    }
+    
+    public void deleteRecordsWithNoStudentAssociated() {
+        List<GitHub> allGitHubs = gitHubRepo.findAll();
+
+        for (GitHub gitHub : allGitHubs) {
+            if (gitHub.getStudent() == null) {
+                gitHubRepo.delete(gitHub);
+            }
+        }
     }
 
 }

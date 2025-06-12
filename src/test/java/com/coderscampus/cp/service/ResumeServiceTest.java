@@ -107,7 +107,7 @@ public class ResumeServiceTest {
 		student1ResumeList.forEach(resumeFromList -> {
 
             resumeFromList.setSkills("Test");
-			Resume savedResume = resumeService.save(resumeFromList);
+			Resume savedResume = resumeService.saveByUid(resumeFromList, student1Uid);
             assertTrue(savedResume.getId() > i.get());
             i.set(savedResume.getId());
             assertEquals(resumeFromList.getSkills(), savedResume.getSkills());
@@ -303,6 +303,24 @@ public class ResumeServiceTest {
         });
     }
 
+    @Test
+    @Transactional
+    void testDeleteRecordsWithNoStudentAssociated() {
+        Resume resumeWithoutStudent = new Resume();
+        resumeWithoutStudent.setStudent(null);
+        resumeRepo.save(resumeWithoutStudent);
+
+        resumeService.deleteRecordsWithNoStudentAssociated();
+
+        List<Resume> allResumes = resumeService.findAll();
+        int count = 0;
+        for (Resume resume : allResumes) {
+            if (resume.getStudent() == null) {
+                count++;
+            }
+        }
+        assertEquals(0, count);
+    }
 
 
 }
