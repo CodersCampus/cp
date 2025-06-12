@@ -52,5 +52,4 @@ public class FoobarService {
     public void delete(Foobar foobar) {
         foobarRepo.delete(foobar);
     }
-
 }
