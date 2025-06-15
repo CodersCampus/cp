@@ -18,9 +18,6 @@ public class NetworkingresourceService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Networkingresource save(Networkingresource networkingresources) {
-        return networkingresourcesRepo.save(networkingresources);
-    }
 
     public Networkingresource saveByUid(Networkingresource networkingresources, String uid) {
         if (networkingresources == null || uid == null) {
