@@ -1,14 +1,17 @@
 package com.coderscampus.cp.service;
 
+import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.CheckinRepository;
 import com.coderscampus.cp.repository.StudentRepository;
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -21,30 +24,62 @@ class StudentServiceTest {
     private StudentService studentService;
     @Autowired
     private StudentRepository studentRepo;
+    @Autowired
+    private CheckinRepository checkinRepo;
+
+    Student student1;
+    Student student2;
+
+    StudentDTO studentDTO1;
+    StudentDTO studentDTO2;
+
+    String student1Uid;
+    String student2Uid;
+
+
+    @BeforeEach
+    void prepData() {
+
+        studentDTO1 = new StudentDTO();
+        studentDTO2 = new StudentDTO();
+
+        student1Uid = UUID.randomUUID().toString();
+        student2Uid = UUID.randomUUID().toString();
+
+        student1 = new Student(student1Uid, "name1", 1, "IntelliJ", false, "mentor1", null);
+        student2 = new Student(student2Uid, "name2", 2, "IntelliJ", false, "mentor2", null);
+
+        student1 = studentRepo.save(student1);
+        student2 = studentRepo.save(student2);
+
+    }
+    @AfterEach
+    void cleanUpData() {
+        studentRepo.delete(student1);
+        studentRepo.delete(student2);
+    }
+
 
     @Test
     void testIsValidStudentUpdate() {
-        String uid = UUID.randomUUID().toString();
-        Student existingStudent = new Student(uid, "Bobby", 17, "IntelliJ", false, "name", null);
-        existingStudent = studentRepo.save(existingStudent);
-        StudentDTO studentDTO = new StudentDTO(existingStudent);
+
+        StudentDTO studentDTO = new StudentDTO(student1);
         studentDTO.setName("Lucas");
         studentDTO.setAssignmentNum(12);
         studentDTO.setIde("Eclipse");
         studentDTO.setWillingToMentor(true);
         studentDTO.setMentee("Fred");
-        Student student = new Student(studentDTO, uid);
-        student.setUid(uid);
+        Student student = new Student(studentDTO, student1Uid);
+        student.setUid(student1Uid);
 
         assertTrue(studentService.doesStudentExistInRepository(student));
-        assertEquals(existingStudent.getId(), student.getId());
-        assertEquals(student.getName(), "Lucas");
-        assertEquals(student.getAssignmentNum(), 12);
-        assertEquals(student.getIde(), "Eclipse");
-        assertEquals(student.getWillingToMentor(), true);
-        assertEquals(student.getMentee(), "Fred");
+        assertEquals(student1.getId(), student.getId());
+        assertEquals("Lucas", student.getName());
+        assertEquals(12, student.getAssignmentNum());
+        assertEquals("Eclipse", student.getIde());
+        assertEquals(true, student.getWillingToMentor());
+        assertEquals("Fred", student.getMentee());
 
-        studentRepo.delete(existingStudent);
     }
 
     @Test
@@ -53,7 +88,6 @@ class StudentServiceTest {
         Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
         assertTrue(studentService.isValidNewStudent(student));
         studentRepo.delete(student);
-
     }
 
     @Test
@@ -69,46 +103,38 @@ class StudentServiceTest {
 
     @Test
     void testCanAddSecondStudent() {
-        String uid = UUID.randomUUID().toString();
-        String uid2 = UUID.randomUUID().toString();
-        Student student2 = new Student(uid2, "Bobby", 12, "IntelliJ", false, "name", null);
-        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-        studentRepo.save(student);
+        studentRepo.save(student1);
         studentRepo.save(student2);
-        assertFalse(studentService.isValidNewStudent(student));
+        assertFalse(studentService.isValidNewStudent(student1));
         assertFalse(studentService.isValidNewStudent(student2));
         studentRepo.delete(student2);
-        studentRepo.delete(student);
+        studentRepo.delete(student1);
     }
 
     @Test
     void testStudentSaveByUid() {
-        String uid = UUID.randomUUID().toString();
-        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-        StudentDTO studentDTO = new StudentDTO(student);
-        StudentDTO result = studentService.saveByUid(studentDTO, uid);
-        assertEquals("Bobby", result.getName());
-        Student studentResult = studentRepo.findByUid(uid);
-        assertEquals("Bobby", studentResult.getName());
+        StudentDTO studentDTO = new StudentDTO(student1);
+        StudentDTO result = studentService.saveByUid(studentDTO, student1Uid);
+        assertEquals("name1", result.getName());
+        Student studentResult = studentRepo.findByUid(student1Uid);
+        assertEquals("name1", studentResult.getName());
 
         studentRepo.delete(studentResult);
-        assertNull(studentService.findByUid(uid));
+        assertNull(studentService.findByUid(student1Uid));
 
     }
 
     @Transactional
     @Test
     void testUpdateStudentByUid() {
-        String uid = UUID.randomUUID().toString();
-        Student student = new Student(uid, "Bobby", 12, "IntelliJ", false, "name", null);
-        StudentDTO studentDTO = new StudentDTO(student);
+        StudentDTO studentDTO = new StudentDTO(student1);
         studentDTO.setName("Kevin");
         studentDTO.setAssignmentNum(9);
         studentDTO.setIde("Eclipse");
         studentDTO.setMentee("Bobby");
         studentDTO.setWillingToMentor(true);
-        studentService.saveByUid(studentDTO, uid);
-        StudentDTO student2 = studentService.findByUid(uid);
+        studentService.saveByUid(studentDTO, student1Uid);
+        StudentDTO student2 = studentService.findByUid(student1Uid);
         assertEquals("Kevin", student2.getName());
         assertEquals(9, student2.getAssignmentNum());
         assertEquals("Eclipse", student2.getIde());
@@ -119,11 +145,6 @@ class StudentServiceTest {
     @Transactional
     @Test
     void testFindAllAsDTOs() {
-        Student student1 = new Student();
-        Student student2 = new Student();
-
-        student1.setUid(UUID.randomUUID().toString());
-        student2.setUid(UUID.randomUUID().toString());
 
         Random random = new Random();
         String randomNumber1 = Integer.toString(random.nextInt());
@@ -149,8 +170,50 @@ class StudentServiceTest {
 
         assertEquals(2, count);
 
+    }
+
+    @Transactional
+    @Test
+    void testFindActiveStudents() {
+
+        Student notActiveStudent = new Student();
+        notActiveStudent.setUid(UUID.randomUUID().toString());
+        notActiveStudent.setName("notActiveStudentName");
+
+        Checkin checkin1 = new Checkin();
+        Checkin checkin2 = new Checkin();
+
+        checkin1.setUid(UUID.randomUUID().toString());
+        checkin2.setUid(UUID.randomUUID().toString());
+
+        checkin1.setStudent(student1);
+        checkin2.setStudent(student2);
+
+        studentRepo.save(student1);
+        studentRepo.save(student2);
+        studentRepo.save(notActiveStudent);
+
+        checkinRepo.save(checkin1);
+        checkinRepo.save(checkin2);
+
+        List<StudentDTO> activeStudents = studentService.findActiveStudents();
+        assertTrue(activeStudents.size() >= 2);
+
+        int count = 0;
+
+        for (StudentDTO student : activeStudents) {
+            if (student.getName() != null && student.getName().equals("notActiveStudentName")) {
+                count++;
+            }
+        }
+
+        assertEquals(0, count);
+
+        checkinRepo.delete(checkin1);
+        checkinRepo.delete(checkin2);
         studentRepo.delete(student1);
         studentRepo.delete(student2);
+        studentRepo.delete(notActiveStudent);
 
     }
 

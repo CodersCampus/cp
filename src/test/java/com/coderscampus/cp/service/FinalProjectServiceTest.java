@@ -103,7 +103,7 @@ public class FinalProjectServiceTest {
 		student1FinalprojectList.forEach(finalprojectFromList -> {
 
             finalprojectFromList.setProposal("Test");
-			Finalproject savedFinalproject = finalprojectService.save(finalprojectFromList);
+			Finalproject savedFinalproject = finalprojectService.saveByUid(finalprojectFromList, student1Uid);
             assertTrue(savedFinalproject.getId() > i.get());
             i.set(savedFinalproject.getId());
             assertEquals(finalprojectFromList.getProposal(), savedFinalproject.getProposal());
@@ -297,6 +297,25 @@ public class FinalProjectServiceTest {
             finalproject = storedFinalproject;
 
         });
+    }
+    
+    @Test
+    @Transactional
+    void testDeleteRecordsWithNoStudentAssociated() {
+        Finalproject finalprojectWithoutStudent = new Finalproject();
+        finalprojectWithoutStudent.setStudent(null);
+        finalprojectRepo.save(finalprojectWithoutStudent);
+
+        finalprojectService.deleteRecordsWithNoStudentAssociated();
+
+        List<Finalproject> allFinalprojects = finalprojectService.findAll();
+        int count = 0;
+        for (Finalproject finalproject : allFinalprojects) {
+            if (finalproject.getStudent() == null) {
+                count++;
+            }
+        }
+        assertEquals(0, count);
     }
 
 

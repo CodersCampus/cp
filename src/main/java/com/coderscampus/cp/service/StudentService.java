@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.RuntimeErrorException;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -110,6 +112,25 @@ public class StudentService {
             studentDTOS.add(studentDTO);
         }
 
+        return studentDTOS;
+    }
+
+    public List<StudentDTO> findActiveStudents() {
+
+        Instant twoMonthsAgo = Instant.now().minus(60, ChronoUnit.DAYS);
+        List<Long> idsOfActiveStudents = studentRepo.findActiveStudentIds(twoMonthsAgo);
+        List<Student> activeStudents = new ArrayList<>();
+
+        for (Long id : idsOfActiveStudents) {
+            Optional<Student> student = studentRepo.findById(id);
+            activeStudents.add(student.get());
+        }
+
+        List<StudentDTO> studentDTOS = new ArrayList<>();
+        for (Student student : activeStudents) {
+            StudentDTO studentDTO = new StudentDTO(student);
+            studentDTOS.add(studentDTO);
+        }
         return studentDTOS;
     }
 
