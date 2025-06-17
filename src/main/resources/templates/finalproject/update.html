@@ -22,6 +22,11 @@
                     <form action="/finalproject/update" class="ui-form" th:object="${finalproject}" method="post">
                         <input name="uid" th:field="${finalproject.id}" type="hidden"/>
                         <div class="ui-input-field">
+                            <label for="displayName" class="ui-label">Student Name:</label>
+                            <div class="ui-text-input">
+                                <input id="displayName" class="ui-value" th:field="*{student.name}" type="text" readonly/>
+                            </div>
+                        <div class="ui-input-field">
                             <label for="projectName" class="ui-label">Project Name:</label>
                             <div class="ui-text-input">
                                 <input id="projectName" class="ui-value" th:field="*{projectName}" type="text"/>

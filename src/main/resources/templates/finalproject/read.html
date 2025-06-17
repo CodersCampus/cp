@@ -21,6 +21,7 @@
                         <table>
                             <thead>
                             <tr>
+                                <th scope="col">Student Name:</th>
                                 <th scope="col">Project Name:</th>
                                 <th scope="col">Proposal:</th>
                                 <th scope="col">Crud:</th>
@@ -31,6 +32,7 @@
                             </thead>
                             <tbody>
                             <tr th:each="finalproject: ${finalprojects}">
+                                <td><span th:text="${finalproject.student.displayName}"></span></td>
                                 <td><span th:text="${finalproject.projectName}"></span></td>
                                 <td><span th:text="${finalproject.proposal}"></span></td>
                                 <td><span th:text="${finalproject.crud}"></span></td>

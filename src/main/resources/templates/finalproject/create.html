@@ -20,6 +20,11 @@
                     <form action="/finalproject/create" class="ui-form" th:object="${finalproject}" method="post">
                         <input id="uid" name="uid" type="hidden"/>
                         <div class="ui-input-field">
+                            <label for="displayName" class="ui-label">Student Name:</label>
+                            <div class="ui-text-input">
+                                <input id="displayName" class="ui-value" th:field="*{student.name}" type="text" readonly/>
+                            </div>
+                        <div class="ui-input-field">
                             <label for="projectName" class="ui-label">Project Name:</label>
                             <div class="ui-text-input">
                                 <input id="projectName" class="ui-value" th:field="*{projectName}" type="text"/>
