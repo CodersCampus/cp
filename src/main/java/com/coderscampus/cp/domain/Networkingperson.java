@@ -15,7 +15,7 @@ public class Networkingperson {
     private String linkedinUrl;
     private String techStack;
     private String firstContactDate;
-    private String lastContactDate; //this is so you can make sure you are keeping in touch
+    private String lastContactDate;
     private String otherNotesAboutPerson;
     
     public Networkingperson() {
