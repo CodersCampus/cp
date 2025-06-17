@@ -2,6 +2,7 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Networkingresource;
 import com.coderscampus.cp.service.NetworkingresourceService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,17 +42,25 @@ public class NetworkingresourceController {
     }
 
     @GetMapping("/update/{id}")
-    public String fetch(ModelMap model, @PathVariable Long id) {
+    public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
         Networkingresource networkingresource = networkingresourceService.findById(id);
-        model.put("networkingresource", networkingresource);
-        model.addAttribute("pageTitle", "Networking Resources");
-        model.put("isNetworkingresource", true);
-        return "networkingresource/update";
+
+        if (networkingresource.getStudent() != null && networkingresource.getStudent().getUid().equals(uid)) {
+            model.put("networkingresource", networkingresource);
+            model.addAttribute("pageTitle", "Networking Resource Update");
+            model.put("isNetworkingresource", true);
+            return "networkingresource/update";
+        } else {
+            return "redirect:/networkingresource";
+        }
+
     }
 
     @PostMapping("/update")
-    public String update(Networkingresource networkingresource) {
-        networkingresourceService.save(networkingresource);
+    public String update(Networkingresource networkingresource, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        networkingresourceService.saveByUid(networkingresource, uid);
         return "redirect:/networkingresource";
     }
 
