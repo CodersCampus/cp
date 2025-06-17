@@ -18,10 +18,6 @@ public class FoobarService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Foobar save(Foobar foobar) {
-        return foobarRepo.save(foobar);
-    }
-
     public Foobar saveByUid(Foobar foobar, String uid) {
         if (foobar == null || uid == null) {
             return null;
@@ -56,5 +52,4 @@ public class FoobarService {
     public void delete(Foobar foobar) {
         foobarRepo.delete(foobar);
     }
-
 }
