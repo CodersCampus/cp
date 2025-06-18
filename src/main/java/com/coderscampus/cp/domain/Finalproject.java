@@ -14,6 +14,8 @@ public class Finalproject {
     private String crud;
     private String tables;
     private String views;
+    @Column(name = "student_name")
+    private String studentName;
 
     @OneToOne
     @JoinColumn(name = "student_id")
@@ -94,6 +96,14 @@ public class Finalproject {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     @Override
