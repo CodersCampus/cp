@@ -32,7 +32,7 @@
                             </thead>
                             <tbody>
                             <tr th:each="finalproject: ${finalprojects}">
-                                <td><span th:text="${finalproject.studentName}"></span></td>
+                                <td><span th:text="${finalproject.student.name}"></span></td>
                                 <td><span th:text="${finalproject.projectName}"></span></td>
                                 <td><span th:text="${finalproject.proposal}"></span></td>
                                 <td><span th:text="${finalproject.crud}"></span></td>
