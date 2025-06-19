@@ -4,7 +4,9 @@ import com.coderscampus.cp.domain.Profile;
 import com.coderscampus.cp.repository.ProfileRepository;
 import com.coderscampus.cp.repository.StudentRepository;
 import com.coderscampus.cp.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProfileService {
     private final ProfileRepository profileRepository;
     private final UserRepository userRepository;

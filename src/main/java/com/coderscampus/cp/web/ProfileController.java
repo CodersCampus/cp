@@ -5,10 +5,12 @@ import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.service.ProfileService;
 import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
 @RequestMapping("/profile")
 public class ProfileController {
     private final ProfileService profileService;
@@ -21,6 +23,9 @@ public class ProfileController {
 
     @GetMapping("")
     public String profileView(ModelMap model, HttpSession httpSession) {
+        String userEmail = (String) httpSession.getAttribute("email");
+        String uid = (String) httpSession.getAttribute("uid");
+        String displayName = (String) httpSession.getAttribute("displayName");
         return "profile/index";
     }
 }
