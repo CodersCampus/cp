@@ -40,7 +40,7 @@ public class FinalprojectService {
     }
 
     public List<Finalproject> findAll() {
-        return finalprojectRepo.findAll();
+        return finalprojectRepo.findAllWithStudents();
     }
 
     public Finalproject findById(Long id) {
