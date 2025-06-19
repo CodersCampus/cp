@@ -43,6 +43,7 @@ public class ActivityLogServiceTest {
 	String student2Uid;
 
 	List<CheckinDTO> student1CheckinDTOList;
+    List<CheckinDTO> student2CheckinDTOList;
 
 	@BeforeEach
 	void prepData() {
@@ -57,6 +58,7 @@ public class ActivityLogServiceTest {
 		student2 = studentRepo.save(student2);
 
 		student1CheckinDTOList = new ArrayList<>();
+        student2CheckinDTOList = new ArrayList<>();
 
 		for (int i = 0; i < 4; i++) {
 			Checkin checkin = new Checkin();
@@ -190,4 +192,110 @@ public class ActivityLogServiceTest {
 		List<ActivityLog> activityLogList = activityLogService.findByCheckin(null);
 		assertTrue(activityLogList.isEmpty());
 	}
+
+    @Test
+    @Transactional
+    void testGetNumberOfIssuesContributedToWhenMultipleStudentsExist() {
+
+        for (int i = 0; i < 4; i++) {
+			Checkin checkin = new Checkin();
+			checkin.setBlockerDescription("Blocker" + i);
+			checkin.setNextAssignment(i);
+			checkin.setBlocker(true);
+
+
+			checkin.setStudent(student2);
+			checkin.setUid(student2Uid);
+			checkinRepo.save(checkin);
+			ActivityLog activityLog = new ActivityLog();
+
+			activityLog.setRole(ActivityLog.Role.OBSERVER);
+			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
+
+            activityLog.setIssueNumber(628 + i);
+			activityLog.setComment("Update");
+			activityLog.setCheckin(checkin);
+			activityLogRepository.save(activityLog);
+			checkin.getActivityLogs().add(activityLog);
+			CheckinDTO checkinDTO = new CheckinDTO(checkin);
+			student2CheckinDTOList.add(checkinDTO);
+		}
+
+        
+        Integer student1NumberOfIssues = activityLogService.getNumberOfIssues(student1Uid);
+        Integer student2NumberOfIssues = activityLogService.getNumberOfIssues(student2Uid);
+
+        assertEquals(1, student1NumberOfIssues);
+        assertEquals(4, student2NumberOfIssues);
+    }
+
+    @Test
+    @Transactional
+    void testGetNumberForEachRoleWhenMultipleStudentsExist() {
+
+        for (int i = 0; i < 4; i++) {
+			Checkin checkin = new Checkin();
+			checkin.setBlockerDescription("Blocker" + i);
+			checkin.setNextAssignment(i);
+			checkin.setBlocker(true);
+
+
+			checkin.setStudent(student2);
+			checkin.setUid(student2Uid);
+			checkinRepo.save(checkin);
+			ActivityLog activityLog = new ActivityLog();
+
+			activityLog.setRole(ActivityLog.Role.OBSERVER);
+			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
+            activityLog.setIssueNumber(629 + i);
+			activityLog.setComment("Update");
+			activityLog.setCheckin(checkin);
+			activityLogRepository.save(activityLog);
+			checkin.getActivityLogs().add(activityLog);
+			CheckinDTO checkinDTO = new CheckinDTO(checkin);
+			student2CheckinDTOList.add(checkinDTO);
+		}
+
+        Integer student1NumberOfObservations = activityLogService.getRoleStatsForActivity("OBSERVER", student1Uid);
+        Integer student2NumberOfObservations = activityLogService.getRoleStatsForActivity("OBSERVER", student2Uid);
+
+        assertEquals(4, student1NumberOfObservations);
+        assertEquals(4, student2NumberOfObservations);
+    }
+
+    @Test
+    @Transactional
+    void testGetNumberForEachTypeWhenMultipleStudentsExist() {
+
+        for (int i = 0; i < 3; i++) {
+			Checkin checkin = new Checkin();
+			checkin.setBlockerDescription("Blocker" + i);
+			checkin.setNextAssignment(i);
+			checkin.setBlocker(true);
+
+
+			checkin.setStudent(student2);
+			checkin.setUid(student2Uid);
+			checkinRepo.save(checkin);
+			ActivityLog activityLog = new ActivityLog();
+
+
+			activityLog.setRole(ActivityLog.Role.OBSERVER);
+			activityLog.setCodingType(ActivityLog.CodingType.CRUD);
+            activityLog.setIssueNumber(629 + i);
+			activityLog.setComment("Update");
+			activityLog.setCheckin(checkin);
+			activityLogRepository.save(activityLog);
+			checkin.getActivityLogs().add(activityLog);
+			CheckinDTO checkinDTO = new CheckinDTO(checkin);
+			student2CheckinDTOList.add(checkinDTO);
+		}
+
+        Integer student1NumberOfCrudOperations = activityLogService.getCodingTypeStatsForActivity("CRUD", student1Uid);
+        Integer student2NumberOfCrudOperations = activityLogService.getCodingTypeStatsForActivity("CRUD", student2Uid);
+
+        assertEquals(4, student1NumberOfCrudOperations);
+        assertEquals(3, student2NumberOfCrudOperations);
+    }
+
 }

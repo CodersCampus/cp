@@ -18,15 +18,24 @@ public class GitHubService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public GitHub save(GitHub gitHub) {
-        return gitHubRepo.save(gitHub);
-    }
 
     public GitHub saveByUid(GitHub gitHub, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            gitHub.setStudent(students);
+        if (gitHub == null || uid == null) {
+            return null;
         }
+
+        Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
+
+        if (gitHub.getStudent() != null) {
+            if (!uid.equals(gitHub.getStudent().getUid())) {
+                return null;
+            }
+        }
+
+        gitHub.setStudent(student);
         return gitHubRepo.save(gitHub);
     }
 
@@ -35,11 +44,24 @@ public class GitHubService {
     }
 
     public GitHub findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return gitHubRepo.findById(id).get();
     }
 
     public void delete(GitHub gitHub) {
         gitHubRepo.delete(gitHub);
+    }
+    
+    public void deleteRecordsWithNoStudentAssociated() {
+        List<GitHub> allGitHubs = gitHubRepo.findAll();
+
+        for (GitHub gitHub : allGitHubs) {
+            if (gitHub.getStudent() == null) {
+                gitHubRepo.delete(gitHub);
+            }
+        }
     }
 
 }

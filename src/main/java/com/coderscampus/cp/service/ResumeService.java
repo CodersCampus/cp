@@ -18,15 +18,24 @@ public class ResumeService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Resume save(Resume resume) {
-        return resumeRepo.save(resume);
-    }
 
     public Resume saveByUid(Resume resume, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            resume.setStudent(students);
+        if (resume == null || uid == null) {
+            return null;
         }
+
+        Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
+
+        if (resume.getStudent() != null) {
+            if (!uid.equals(resume.getStudent().getUid())) {
+                return null;
+            }
+        }
+
+        resume.setStudent(student);
         return resumeRepo.save(resume);
     }
 
@@ -35,11 +44,24 @@ public class ResumeService {
     }
 
     public Resume findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return resumeRepo.findById(id).get();
     }
 
     public void delete(Resume resume) {
         resumeRepo.delete(resume);
+    }
+
+    public void deleteRecordsWithNoStudentAssociated() {
+        List<Resume> allResumes = resumeRepo.findAll();
+
+        for (Resume resume : allResumes) {
+            if (resume.getStudent() == null) {
+                resumeRepo.delete(resume);
+            }
+        }
     }
 
 }

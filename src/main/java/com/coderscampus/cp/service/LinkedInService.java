@@ -19,16 +19,24 @@ public class LinkedInService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public LinkedIn save(LinkedIn linkedIn) {
-        return linkedInRepo.save(linkedIn);
-    }
-
 
     public LinkedIn saveByUid(LinkedIn linkedIn, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            linkedIn.setStudent(students);
+        if (linkedIn == null || uid == null) {
+            return null;
         }
+
+        Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
+
+        if (linkedIn.getStudent() != null) {
+            if (!uid.equals(linkedIn.getStudent().getUid())) {
+                return null;
+            }
+        }
+
+        linkedIn.setStudent(student);
         return linkedInRepo.save(linkedIn);
     }
 
@@ -37,11 +45,24 @@ public class LinkedInService {
     }
 
     public LinkedIn findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return linkedInRepo.findById(id).get();
     }
 
     public void delete(LinkedIn linkedIn) {
         linkedInRepo.delete(linkedIn);
+    }
+
+    public void deleteRecordsWithNoStudentAssociated() {
+        List<LinkedIn> allLinkedIns = linkedInRepo.findAll();
+
+        for (LinkedIn linkedIn : allLinkedIns) {
+            if (linkedIn.getStudent() == null) {
+                linkedInRepo.delete(linkedIn);
+            }
+        }
     }
 
 }

@@ -397,4 +397,25 @@ public class CheckinServiceTest {
             });
         });
     }
+
+    @Test
+    @Transactional
+    void testGetNumberOfCheckinsWhenMultipleStudentsExist() {
+        for (int i = 0; i < 4; i++) {
+            Checkin checkin = new Checkin();
+            checkin.setBlockerDescription("Blocker" + i);
+            checkin.setNextAssignment(i);
+            checkin.setBlocker(true);
+            checkin.setStudent(student2);
+            checkin.setUid(student2Uid);
+            checkinRepo.save(checkin);
+            CheckinDTO checkinDTO = new CheckinDTO(checkin);
+            student2CheckinDTOList.add(checkinDTO);
+        }
+
+        Integer foundCheckinsOfStudent1 = checkinService.getNumberOfCheckins(student1Uid);
+        assertEquals(4, foundCheckinsOfStudent1);
+    }
 }
+
+

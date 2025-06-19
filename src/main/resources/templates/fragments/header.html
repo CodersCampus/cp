@@ -21,6 +21,12 @@
                 <li class="ui-nav-item" th:classappend="${isGitHub} ? 'active'">
                     <a class="ui-nav-link" href="/github" th:classappend="${isGitHub} ? 'active-link'">GitHub</a>
                 </li>
+                <li class="ui-nav-item" th:classappend="${isFinalproject} ? 'active'">
+                    <a class="ui-nav-link" href="/finalproject" th:classappend="${isFinalproject} ? 'active-link'">Final Project</a>
+                </li>
+                <li class="ui-nav-item" th:classappend="${isNetworkingresource} ? 'active'">
+                    <a class="ui-nav-link" href="/networkingresource" th:classappend="${isNetworkingresource} ? 'active-link'">Networking Resources</a>
+                </li>
                 <li class="ui-nav-item" th:if="${showDatabaseConsoleLink}" th:classappend="${isDatabaseConsole} ? 'active'">
                     <a class="ui-nav-link" href="/h2-console" th:classappend="${isDatabaseConsole} ? 'active-link'">Database
                         Console</a>

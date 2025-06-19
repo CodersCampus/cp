@@ -18,29 +18,51 @@ public class FinalprojectService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Finalproject save(Finalproject finalproject) {
-        return finalprojectRepo.save(finalproject);
-    }
 
     public Finalproject saveByUid(Finalproject finalproject, String uid) {
-        Student students = studentRepo.findByUid(uid);
-        if (students != null) {
-            finalproject.setStudent(students);
-            finalproject.setUid(uid);
+        if (finalproject == null || uid == null) {
+            return null;
         }
+
+        Student student = studentRepo.findByUid(uid);
+        if (student == null) {
+            return null;
+        }
+
+        if (finalproject.getStudent() != null) {
+            if (!uid.equals(finalproject.getStudent().getUid())) {
+                return null;
+            }
+        }
+
+        finalproject.setStudent(student);
         return finalprojectRepo.save(finalproject);
     }
 
     public List<Finalproject> findAll() {
-        return finalprojectRepo.findAll();
+        return finalprojectRepo.findAllWithStudents();
     }
 
     public Finalproject findById(Long id) {
+        if (id == null) {
+            return null;
+        }
         return finalprojectRepo.findById(id).get();
     }
 
     public void delete(Finalproject finalproject) {
         finalprojectRepo.delete(finalproject);
+    }
+
+    // This is a clean-up method, to be removed later by Ticket #821
+    public void deleteRecordsWithNoStudentAssociated() {
+        List<Finalproject> allFinalprojects = finalprojectRepo.findAll();
+
+        for (Finalproject finalproject : allFinalprojects) {
+            if (finalproject.getStudent() == null) {
+                finalprojectRepo.delete(finalproject);
+            }
+        }
     }
 
 }
