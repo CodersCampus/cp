@@ -105,7 +105,7 @@ public class GitHubServiceTest {
 		student1GitHubList.forEach(gitHubFromList -> {
 
             gitHubFromList.setHeadline("Test");
-			GitHub savedGitHub = gitHubService.save(gitHubFromList);
+			GitHub savedGitHub = gitHubService.saveByUid(gitHubFromList, student1Uid);
             assertTrue(savedGitHub.getId() > i.get());
             i.set(savedGitHub.getId());
             assertEquals(gitHubFromList.getHeadline(), savedGitHub.getHeadline());
@@ -278,13 +278,10 @@ public class GitHubServiceTest {
             assertNotNull(foundGitHub);
             gitHub.setId(wrongId);
 
-            //Long deleted = gitHubService.delete(gitHub);
-            //replaced because it returns void
             gitHubService.delete(gitHub);
             foundGitHub = gitHubRepo.findById(originalId).orElse(null);
             assertNotNull(foundGitHub);
 
-            //assertEquals(0L, deleted);
             gitHub.setId(originalId);
         });
     }
@@ -304,6 +301,25 @@ public class GitHubServiceTest {
             gitHub = storedGitHub;
 
         });
+    }
+    
+    @Test
+    @Transactional
+    void testDeleteRecordsWithNoStudentAssociated() {
+        GitHub gitHubWithoutStudent = new GitHub();
+        gitHubWithoutStudent.setStudent(null);
+        gitHubRepo.save(gitHubWithoutStudent);
+
+        gitHubService.deleteRecordsWithNoStudentAssociated();
+
+        List<GitHub> allGitHubs = gitHubService.findAll();
+        int count = 0;
+        for (GitHub gitHub : allGitHubs) {
+            if (gitHub.getStudent() == null) {
+                count++;
+            }
+        }
+        assertEquals(0, count);
     }
 
 

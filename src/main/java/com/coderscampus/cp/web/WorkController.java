@@ -28,6 +28,7 @@ public class WorkController {
     public String showCreateForm(Model model) {
         Work work = new Work();
         model.addAttribute("work", work);
+        model.addAttribute("pageTitle", "Work");
         model.addAttribute("isWorkLog", true);
         return "work/create";
     }
@@ -50,7 +51,7 @@ public class WorkController {
     @GetMapping("/{id}")
     public String getWorkById(@PathVariable Long id, Model model) {
         workService.findWorkById(id).ifPresent(work -> model.addAttribute("work", work));
-        model.addAttribute("isWorkLog, true");
+        model.addAttribute("isWorkLog", true);
         return "work/work-details";
     }
 
@@ -58,6 +59,7 @@ public class WorkController {
     public String listWorkLogs(Model model) {
         List<Work> workList = workService.findAllWorks();
         model.addAttribute("workList", workList);
+        model.addAttribute("pageTitle", "Work");
         model.addAttribute("isWorkLog", true);
         return "work/read";
     }

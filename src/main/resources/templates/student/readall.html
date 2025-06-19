@@ -12,7 +12,7 @@
                     <ul class="ui-navbar-nav">
                         <button class="ui-nav-item ui-button" type="button"><a href="/student/create">Create New</a>
                         </button>
-                        <button class="ui-nav-item ui-button" type="button"><a href="/student/readall">See All Students</a>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/student">Individual Student Read</a>
                         </button>
                     </ul>
                 </nav>
@@ -31,11 +31,10 @@
                                 <th scope="col">Final Project:</th>
                                 <th scope="col">Resume:</th>
                                 <th scope="col">Networking:</th>
-                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr th:each="student : ${allStudents}">
                                 <td><span th:text="${student.name}"></span></td>
                                 <td><span th:text="${student.assignmentNum}"></span></td>
 
@@ -60,14 +59,6 @@
                                 <td><span th:text="${student.resume.resumeFile}"></span></td>
                                 <td><span th:text="${student.networking.meetups}"></span></td>
                                 <td><span th:text="${student.website.url}"></span></td> -->
-                                <td>
-                                    <a th:href="@{/student/update/{studentId}(studentId=${student.id})}">
-                                        <span>
-                                         <i class="fa-solid fa-pen-to-square"
-                                            style="color: var(--primary); font-size:20px; font-weight:100"></i>
-                                        </span>
-                                    </a>
-                                </td>
                             </tr>
                             </tbody>
                         </table>
