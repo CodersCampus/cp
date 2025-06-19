@@ -18,9 +18,6 @@ public class FinalprojectService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Finalproject save(Finalproject finalproject) {
-        return finalprojectRepo.save(finalproject);
-    }
 
     public Finalproject saveByUid(Finalproject finalproject, String uid) {
         if (finalproject == null || uid == null) {
@@ -43,7 +40,7 @@ public class FinalprojectService {
     }
 
     public List<Finalproject> findAll() {
-        return finalprojectRepo.findAll();
+        return finalprojectRepo.findAllWithStudents();
     }
 
     public Finalproject findById(Long id) {
@@ -55,6 +52,17 @@ public class FinalprojectService {
 
     public void delete(Finalproject finalproject) {
         finalprojectRepo.delete(finalproject);
+    }
+
+    // This is a clean-up method, to be removed later by Ticket #821
+    public void deleteRecordsWithNoStudentAssociated() {
+        List<Finalproject> allFinalprojects = finalprojectRepo.findAll();
+
+        for (Finalproject finalproject : allFinalprojects) {
+            if (finalproject.getStudent() == null) {
+                finalprojectRepo.delete(finalproject);
+            }
+        }
     }
 
 }

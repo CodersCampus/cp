@@ -111,7 +111,7 @@ public class LinkedInServiceTest {
 		student1LinkedInList.forEach(linkedInFromList -> {
 
             linkedInFromList.setBanner("Test");
-			LinkedIn savedLinkedIn = linkedInService.save(linkedInFromList);
+			LinkedIn savedLinkedIn = linkedInService.saveByUid(linkedInFromList, student1Uid);
             assertTrue(savedLinkedIn.getId() > i.get());
             i.set(savedLinkedIn.getId());
             assertEquals(linkedInFromList.getBanner(), savedLinkedIn.getBanner());
@@ -307,6 +307,24 @@ public class LinkedInServiceTest {
         });
     }
 
+    @Test
+    @Transactional
+    void testDeleteRecordsWithNoStudentAssociated() {
+        LinkedIn linkedInWithoutStudent = new LinkedIn();
+        linkedInWithoutStudent.setStudent(null);
+        linkedInRepo.save(linkedInWithoutStudent);
+
+        linkedInService.deleteRecordsWithNoStudentAssociated();
+
+        List<LinkedIn> allLinkedIns = linkedInService.findAll();
+        int count = 0;
+        for (LinkedIn linkedIn : allLinkedIns) {
+            if (linkedIn.getStudent() == null) {
+                count++;
+            }
+        }
+        assertEquals(0, count);
+    }
 
 
 }
