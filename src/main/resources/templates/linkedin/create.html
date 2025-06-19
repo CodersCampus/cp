@@ -19,13 +19,13 @@
                 <main>
                     <form action="/linkedin/create" class="ui-form" method="post">
                         <input id="uid" name="uid" type="hidden"/>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have made a banner">
                             <label for="banner" class="ui-label">Banner:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="banner" th:field="${linkedIn.banner}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have filled out your &ldquo;about section&rdquo;">
                             <label for="about" class="ui-label">About:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="about" th:field="${linkedIn.about}" type="text"/>
@@ -37,25 +37,25 @@
                                 <input class="ui-value" id="url" th:field="${linkedIn.url}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have featured posts selected">
                             <label for="featuredPosts" class="ui-label">Featured Posts:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="featuredPosts" th:field="${linkedIn.featuredPosts}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have enough activity that it fills the section">
                             <label for="activity" class="ui-label">Activity:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="activity" th:field="${linkedIn.activity}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have entered your skills">
                             <label for="skills" class="ui-label">Skills:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="skills" th:field="${linkedIn.skills}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if your email is in your contact details">
                             <label for="email" class="ui-label">Email:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="email" th:field="${linkedIn.email}" type="text"/>
@@ -73,37 +73,37 @@
                                 <input class="ui-value" id="lastName" th:field="${linkedIn.lastName}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you filled out your bio">
                             <label for="biography" class="ui-label">Biography:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="biography" th:field="${linkedIn.biography}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have entered your education">
                             <label for="education" class="ui-label">Education:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="education" th:field="${linkedIn.education}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have entered your experience">
                             <label for="experience" class="ui-label">Experience:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="experience" th:field="${linkedIn.experience}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have your location publicly displayed">
                             <label for="location" class="ui-label">Location:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="location" th:field="${linkedIn.location}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have a profile picture of your face">
                             <label for="image" class="ui-label">Image:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="image" th:field="${linkedIn.image}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box if you have entered your title">
                             <label for="title" class="ui-label">Title:</label>
                             <div class="ui-text-input">
                                 <input class="ui-value" id="title" th:field="${linkedIn.title}" type="text"/>
