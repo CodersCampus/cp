@@ -64,4 +64,43 @@ public class Networkingperson {
         this.uid = uid;
     }
 
+    public String getLinkedinUrl() {
+        return linkedinUrl;
+    }
+
+    public void setLinkedinUrl(String linkedinUrl) {
+        this.linkedinUrl = linkedinUrl;
+    }
+
+    public String getTechStack() {
+        return techStack;
+    }
+
+    public void setTechStack(String techStack) {
+        this.techStack = techStack;
+    }
+
+    public String getFirstContactDate() {
+        return firstContactDate;
+    }
+
+    public void setFirstContactDate(String firstContactDate) {
+        this.firstContactDate = firstContactDate;
+    }
+
+    public String getLastContactDate() {
+        return lastContactDate;
+    }
+
+    public void setLastContactDate(String lastContactDate) {
+        this.lastContactDate = lastContactDate;
+    }
+
+    public String getOtherNotesAboutPerson() {
+        return otherNotesAboutPerson;
+    }
+
+    public void setOtherNotesAboutPerson(String otherNotesAboutPerson) {
+        this.otherNotesAboutPerson = otherNotesAboutPerson;
+    }
 }

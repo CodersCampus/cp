@@ -21,7 +21,7 @@ public class NetworkingpersonController {
     public String home(ModelMap model) {
         List<Networkingperson> networkingpersons = networkingpersonService.findAll();
         model.put("networkingpersons", networkingpersons);
-        model.addAttribute("pageTitle", "Networkingperson");
+        model.addAttribute("pageTitle", "Networking People");
         model.put("isNetworkingperson", true);
         return "networkingperson/read";
     }
@@ -30,7 +30,7 @@ public class NetworkingpersonController {
     public String getCreate(ModelMap model) {
         Networkingperson networkingperson = new Networkingperson();
         model.put("networkingperson", networkingperson);
-        model.addAttribute("pageTitle", "Networkingperson");
+        model.addAttribute("pageTitle", "Networking People");
         model.put("isNetworkingperson", true);
         return "networkingperson/create";
     }
@@ -48,7 +48,7 @@ public class NetworkingpersonController {
 
         if (networkingperson.getStudent() != null && networkingperson.getStudent().getUid().equals(uid)) {
             model.put("networkingperson", networkingperson);
-            model.addAttribute("pageTitle", "Networkingperson Update");
+            model.addAttribute("pageTitle", "Networking People");
             model.put("isNetworkingperson", true);
             return "networkingperson/update";
         } else {
