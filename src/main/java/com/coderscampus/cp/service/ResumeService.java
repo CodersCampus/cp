@@ -18,9 +18,6 @@ public class ResumeService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public Resume save(Resume resume) {
-        return resumeRepo.save(resume);
-    }
 
     public Resume saveByUid(Resume resume, String uid) {
         if (resume == null || uid == null) {
@@ -55,6 +52,16 @@ public class ResumeService {
 
     public void delete(Resume resume) {
         resumeRepo.delete(resume);
+    }
+
+    public void deleteRecordsWithNoStudentAssociated() {
+        List<Resume> allResumes = resumeRepo.findAll();
+
+        for (Resume resume : allResumes) {
+            if (resume.getStudent() == null) {
+                resumeRepo.delete(resume);
+            }
+        }
     }
 
 }
