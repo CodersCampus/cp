@@ -1,9 +1,6 @@
 package com.coderscampus.cp.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Networkingperson {
@@ -17,18 +14,30 @@ public class Networkingperson {
     private String firstContactDate;
     private String lastContactDate;
     private String otherNotesAboutPerson;
-    
+    private String uid;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
     public Networkingperson() {
     }
 
-    public Networkingperson(Long id, String name, String linkedinUrl, String techStack, String firstContactDate, String lastContactDate, String otherNotesAboutPerson) {
-        this.id = id;
-        this.name = name;
-        this.linkedinUrl = linkedinUrl;
-        this.techStack = techStack;
-        this.firstContactDate = firstContactDate;
-        this.lastContactDate = lastContactDate;
-        this.otherNotesAboutPerson = otherNotesAboutPerson;
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    @Override
+    public String toString() {
+        return "Foobar{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", uid='" + uid + '\'' +
+                ", student=" + student +
+                '}';
     }
 
     public Long getId() {
@@ -47,43 +56,12 @@ public class Networkingperson {
         this.name = name;
     }
 
-    public String getLinkedinUrl() {
-        return linkedinUrl;
+    public String getUid() {
+        return uid;
     }
 
-    public void setLinkedinUrl(String linkedinUrl) {
-        this.linkedinUrl = linkedinUrl;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
-    public String getTechStack() {
-        return techStack;
-    }
-
-    public void setTechStack(String techStack) {
-        this.techStack = techStack;
-    }
-
-    public String getFirstContactDate() {
-        return firstContactDate;
-    }
-
-    public void setFirstContactDate(String firstContactDate) {
-        this.firstContactDate = firstContactDate;
-    }
-
-    public String getLastContactDate() {
-        return lastContactDate;
-    }
-
-    public void setLastContactDate(String lastContactDate) {
-        this.lastContactDate = lastContactDate;
-    }
-
-    public String getOtherNotesAboutPerson() {
-        return otherNotesAboutPerson;
-    }
-
-    public void setOtherNotesAboutPerson(String otherNotesAboutPerson) {
-        this.otherNotesAboutPerson = otherNotesAboutPerson;
-    }
 }
