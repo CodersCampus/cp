@@ -19,66 +19,63 @@
             </div>
             <div class="ga-content-main">
                 <main>
-                    <form action="/github/update" class="ui-form" method="post">
-                        <input name="uid" th:field="${gitHub.id}" type="hidden"/>
-                        <div class="ui-input-field">
+                    <form action="/github/create" class="ui-form" th:object="${gitHub}" method="post">
+                        <input id="uid" name="uid" type="hidden"/>
+                        <div class="ui-input-field" title="Check this box when you have a profile">
                             <label for="handle" class="ui-label">Handle:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="handle" th:field="${gitHub.handle}" type="text"/>
+                                <input class="ui-value" id="handle" th:field="*{handle}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box when you have made an enhanced ReadMe">
                             <label for="enhancedReadMe" class="ui-label">Enhanced ReadMe:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="enhancedReadMe" th:field="${gitHub.enhancedReadMe}" type="text"/>
+                                <input class="ui-value" id="enhancedReadMe" th:field="*{enhancedReadMe}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box when you have renamed your assignments with appropriate titles">
                             <label for="renamedAssignments" class="ui-label">Renamed Assignments:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="renamedAssignments" th:field="${gitHub.renamedAssignments}" type="text"/>
+                                <input class="ui-value" id="renamedAssignments" th:field="*{renamedAssignments}" type="text"/>
                             </div>
                         </div>
-                        <div class="ui-input-field">
+                        <div class="ui-input-field" title="Check this box when you have pinned multiple repos to showcase your chosen coding">
                             <label for="pinnedRepos" class="ui-label">Pinned Repos:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="pinnedRepos" th:field="${gitHub.pinnedRepos}" type="text"/>
+                                <input class="ui-value" id="pinnedRepos" th:field="*{pinnedRepos}" type="text"/>
                             </div>
-                            <div class="ui-input-field">
+                            <div class="ui-input-field" title="Check this box when you have links to other job application materials accessible">
                                 <label for="externalLinks" class="ui-label">External Links:</label>
                                 <div class="ui-text-input">
-                                    <input class="ui-value" id="externalLinks" th:field="${gitHub.externalLinks}" type="text"/>
+                                    <input class="ui-value" id="externalLinks" th:field="*{externalLinks}" type="text"/>
                                 </div>
                         </div>
-                            <div class="ui-input-field">
+                            <div class="ui-input-field" title="Check this box when you have a profile picture">
                                 <label for="image" class="ui-label">Image:</label>
                                 <div class="ui-text-input">
-                                    <input class="ui-value" id="image" th:field="${gitHub.image}" type="text"/>
+                                    <input class="ui-value" id="image" th:field="*{image}" type="text"/>
                                 </div>
                             </div>
-                            <div class="ui-input-field">
+                            <div class="ui-input-field" title="Check this box when you have made a headline">
                                 <label for="headline" class="ui-label">Headline:</label>
                                 <div class="ui-text-input">
-                                    <input class="ui-value" id="headline" th:field="${gitHub.headline}" type="text"/>
+                                    <input class="ui-value" id="headline" th:field="*{headline}" type="text"/>
                                 </div>
                             </div>
-                            <div class="ui-input-field">
+                            <div class="ui-input-field" title="Check this box when you have entered your contact details">
                                 <label for="contactDetails" class="ui-label">Contact Details:</label>
                                 <div class="ui-text-input">
-                                    <input class="ui-value" id="contactDetails" th:field="${gitHub.contactDetails}" type="text"/>
+                                    <input class="ui-value" id="contactDetails" th:field="*{contactDetails}" type="text"/>
                                 </div>
                             </div>
                             <div class="ui-input-field">
                                 <label for="url" class="ui-label">URL:</label>
                                 <div class="ui-text-input">
-                                    <input class="ui-value" id="url" th:field="${gitHub.url}" type="text"/>
+                                    <input class="ui-value" id="url" th:field="*{url}" type="text"/>
                                 </div>
                             </div>
-                        <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
-                    </form>
-                    <form action="/github/delete" class="ui-form" method="post" style="padding-top:0;">
-                        <input th:field="${gitHub.id}" type="hidden"/>
-                        <button class="ui-nav-item ui-button-danger" type="submit"><span>Delete</span></button>
+                        <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
+                        </div>
                     </form>
                 </main>
             </div>
