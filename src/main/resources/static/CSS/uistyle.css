@@ -1280,4 +1280,15 @@ border: 6px solid blue !important;
 
 }
 
+.label-input-readability {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+  color: #ff5906;
+  font-weight: 800;
+}
+
+.text-work-readability {
+  color: #ff5906 !important;
+  font-weight: bold;
+}
 
