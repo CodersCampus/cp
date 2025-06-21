@@ -43,7 +43,7 @@
                             <tr th:each="linkedIn: ${linkedIns}">
                                 <td><span th:text="${linkedIn.banner}"></span></td>
                                 <td><span th:text="${linkedIn.about}"></span></td>
-                                <td><span th:text="${linkedIn.url}"></span></td>
+                                <td><a th:href="${linkedIn.url}" th:text="${linkedIn.url}" target="_blank" rel="noopener noreferrer"></a></td>
                                 <td><span th:text="${linkedIn.featuredPosts}"></span></td>
                                 <td><span th:text="${linkedIn.activity}"></span></td>
                                 <td><span th:text="${linkedIn.skills}"></span></td>

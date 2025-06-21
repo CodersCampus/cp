@@ -34,7 +34,7 @@
                             <tr th:each="finalproject: ${finalprojects}">
                                 <td><span th:text="${finalproject.student.name}"></span></td>
                                 <td><span th:text="${finalproject.projectName}"></span></td>
-                                <td><span th:text="${finalproject.proposal}"></span></td>
+                                <td><a th:href="${finalproject.proposal}" th:text="${finalproject.proposal}" target="_blank" rel="noopener noreferrer"></a></td>
                                 <td><span th:text="${finalproject.crud}"></span></td>
                                 <td><span th:text="${finalproject.tables}"></span></td>
                                 <td><span th:text="${finalproject.views}"></span></td>
