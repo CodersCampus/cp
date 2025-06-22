@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -48,7 +50,7 @@ public class GitHubServiceTest {
     List<GitHub> student1GitHubList;
 
     @BeforeEach
-    void prepData() {
+    void prepData() throws MalformedURLException {
 
         studentDTO1 = new StudentDTO();
         studentDTO2 = new StudentDTO();
@@ -68,7 +70,7 @@ public class GitHubServiceTest {
 
         for (int i = 0; i < 4; i++) {
             GitHub gitHub  = new GitHub();
-            gitHub.setUrl("Blocker" + i);
+            gitHub.setUrl(new URL("http://www.example.com/docs/resource1.html"));
             gitHub.setHandle("Blocker" + i);
             gitHub.setEnhancedReadMe("Blocker" + i);
             gitHub.setRenamedAssignments("Blocker" + i);

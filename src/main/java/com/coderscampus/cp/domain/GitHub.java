@@ -2,6 +2,8 @@ package com.coderscampus.cp.domain;
 
 import jakarta.persistence.*;
 
+import java.net.URL;
+
 @Entity
 public class GitHub {
 
@@ -19,13 +21,13 @@ public class GitHub {
     private String image;
     private String headline;
     private String contactDetails;
-    private String url;
+    private URL url;
 
     public GitHub() {
 
     }
 
-    public GitHub(String handle, String enhancedReadMe, String renamedAssignments, String pinnedRepos, String externalLinks, String image, String headline, String contactDetails, String url) {
+    public GitHub(String handle, String enhancedReadMe, String renamedAssignments, String pinnedRepos, String externalLinks, String image, String headline, String contactDetails, URL url) {
         this.handle = handle;
         this.enhancedReadMe = enhancedReadMe;
         this.renamedAssignments = renamedAssignments;
@@ -117,11 +119,11 @@ public class GitHub {
         this.contactDetails = contactDetails;
     }
 
-    public String getUrl() {
+    public URL getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(URL url) {
         this.url = url;
     }
 
