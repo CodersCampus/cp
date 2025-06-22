@@ -55,14 +55,4 @@ public class LinkedInService {
         linkedInRepo.delete(linkedIn);
     }
 
-    public void deleteRecordsWithNoStudentAssociated() {
-        List<LinkedIn> allLinkedIns = linkedInRepo.findAll();
-
-        for (LinkedIn linkedIn : allLinkedIns) {
-            if (linkedIn.getStudent() == null) {
-                linkedInRepo.delete(linkedIn);
-            }
-        }
-    }
-
 }
