@@ -18,7 +18,9 @@ public class ResumeController {
     private ResumeService resumeService;
 
     @GetMapping("")
-    public String home(ModelMap model) {
+    public String home(ModelMap model, HttpSession session) {
+        System.out.println(session.getAttribute("uid"));
+        System.out.println(session.getAttribute("email"));
         resumeService.deleteRecordsWithNoStudentAssociated();
         List<Resume> resumes = resumeService.findAll();
         model.put("resumes", resumes);

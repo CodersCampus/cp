@@ -22,10 +22,9 @@ public class ProfileController {
     }
 
     @GetMapping("")
-    public String profileView(ModelMap model, HttpSession httpSession) {
-        String userEmail = (String) httpSession.getAttribute("email");
-        String uid = (String) httpSession.getAttribute("uid");
-        String displayName = (String) httpSession.getAttribute("displayName");
+    public String profileView(ModelMap model, HttpSession session) {
+        System.out.println(session.getAttribute("uid"));
+        System.out.println(session.getAttribute("email"));
         return "profile/index";
     }
 }

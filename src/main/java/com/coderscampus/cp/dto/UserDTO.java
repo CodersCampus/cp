@@ -4,8 +4,8 @@ import com.coderscampus.cp.domain.User;
 
 public class UserDTO {
     private Long id;
-    private String username;
     private String email;
+    private String displayName;
     private String password;
 
     public UserDTO() {
@@ -14,7 +14,7 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this.id = user.getId();
-        this.username = user.getUsername();
+        this.displayName = user.getDisplayName();
         this.email = user.getEmail();
         this.password = user.getPassword();
     }
@@ -27,12 +27,12 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public String getEmail() {
@@ -53,7 +53,7 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO [id=" + id + ", username='" + username + '\'' +
+        return "UserDTO [id=" + id + ", displayName='" + displayName + '\'' +
                 ", email='" + email + '\'' + ", password='" + password + '\'' + ']';
     }
 }

@@ -38,6 +38,20 @@ public class UserService {
     }
 
     /**
+     * Retrieves a user by its unique identifier (UID).
+     *
+     * @param uid The unique identifier of the user to be retrieved
+     * @return The user object if found
+     */
+    public User findByUid(String uid) {
+        if (uid == null || uid.isEmpty()) {
+            throw new IllegalArgumentException("UID cannot be null or empty");
+        }
+        return userRepository.findByUid(uid)
+                .orElseThrow(() -> new RuntimeException("User not found with UID: " + uid));
+    }
+
+    /**
      * Retrieves a user by its email.
      *
      * @param email The email of the user to be retrieved

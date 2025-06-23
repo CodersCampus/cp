@@ -2,8 +2,10 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.AuthObjectDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
+import com.coderscampus.cp.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import java.util.List;
 public class SpringProjectController {
 
     private final SpringProjectRepository springProjectRepository;
+    private final UserService userService;
 
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
@@ -34,8 +37,9 @@ public class SpringProjectController {
     }
     */
 
-    public SpringProjectController(SpringProjectRepository springProjectRepository) {
+    public SpringProjectController(SpringProjectRepository springProjectRepository, UserService userService) {
         this.springProjectRepository = springProjectRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/")
@@ -57,6 +61,16 @@ public class SpringProjectController {
             httpSession.setAttribute("email", authDto.getEmail());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
         }
+
+        User user = new User();
+        user.setUid(authDto.getUid());
+        user.setEmail(authDto.getEmail());
+        user.setDisplayName(authDto.getDisplayName());
+        user.setEnabled(true);
+        user.setOnline(true);
+
+        userService.create(user);
+
         return "redirect:/";
     }
 
