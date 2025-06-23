@@ -1,0 +1,130 @@
+.form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    align-items: center;
+    column-gap: calc(var(--spacing) * 6);
+    row-gap: calc(var(--spacing) * 8);
+    
+    @media (width >= 40rem) {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+    
+    & > .width-5\/6 {
+        @media (width >= 40rem) {
+            grid-column: span 5 / span 5 !important;
+        }
+    }
+    
+    & > .width-2\/3 {
+        @media (width >= 40rem) {
+            grid-column: span 4 / span 4 !important;
+        }
+    }
+    
+    & > .width-1\/2 {
+        @media (width >= 40rem) {
+            grid-column: span 3 / span 3 !important;
+        }
+    }
+    
+    & > .width-1\/3 {
+        @media (width >= 40rem) {
+            grid-column: span 2 / span 2 !important;
+        }
+    }
+    
+    & > .width-1\/6 {
+        @media (width >= 40rem) {
+            grid-column: span 1 / span 1 !important;
+        }
+    }
+    
+    .form-group {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        row-gap: calc(var(--spacing) * 2);
+        
+        label, input, textarea, button, select {
+            display: block;
+            font-family: var(--font-jost) !important;
+        }
+        
+        &.form-horizontal {
+            flex-direction: row !important;
+            align-items: center;
+            column-gap: calc(var(--spacing) * 6);
+            
+            label {
+                display: inline-flex;
+            }
+        }
+        
+        &.form-checkbox {
+            flex-direction: row !important;
+            
+            label {
+                flex: 1;
+            }
+            
+            input {
+                flex: none;
+                width: calc(var(--spacing) * 4);
+                height: calc(var(--spacing) * 4);
+                margin-inline-end: calc(var(--spacing) * 2);
+            }
+        }
+        
+        &.form-avatar {
+            flex-direction: row !important;
+            align-items: center;
+            column-gap: calc(var(--spacing) * 8) !important;
+            
+            div {
+                p {
+                    color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+                    font-size: var(--text-xs);
+                    line-height: calc(var(--spacing) * 5);
+                    margin-block-start: calc(var(--spacing) * 2);
+                }
+            }
+        }
+        
+        & > label {
+            color: var(--color-base-content);
+            font-weight: var(--font-weight-normal);
+            line-height: calc(var(--spacing) * 5);
+        }
+        
+        & > input, & > textarea {
+            background-color: color-mix(in oklab, var(--color-base-200) 20%, transparent);
+            color: var(--color-base-content);
+            line-height: calc(var(--spacing) * 6);
+            padding-block: calc(var(--spacing) * 2) !important;
+            padding-inline: calc(var(--spacing) * 3) !important;
+            border-radius: var(--radius-field);
+            outline-offset: -1px;
+            outline: color-mix(in oklab, var(--color-base-content) 10%, transparent) solid 1px;
+            
+            &::placeholder {
+                color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+            }
+            
+            &:focus {
+                outline-color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
+                outline-offset: -2px;
+            }
+            
+            @media (width >= 40rem) {
+                padding-block: calc(var(--spacing) * 1.5);
+            }
+        }
+        
+        & > textarea {
+            padding-block: calc(var(--spacing) * 3) !important;
+            padding-inline: calc(var(--spacing) * 4) !important;
+        }
+    }
+    
+}

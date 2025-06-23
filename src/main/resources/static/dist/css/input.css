@@ -15,10 +15,13 @@
 
 /* Layouts */
 @import "../pages/students.css";
+@import "../pages/profile.css";
 
 /* components */
 @import "../components/menu.css";
 @import "../components/list.css";
+@import "../components/form.css";
+@import "../components/button.css";
 @import "../components/avatar.css";
 @import "../components/headline.css";
 @import "../components/container.css";

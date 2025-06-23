@@ -8,9 +8,6 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // Unique identifier for the profile
 
-    @Column(unique = true, nullable = false, length = 60)
-    private String username; // Unique username for display purposes
-
     @Column(nullable = true, length = 60)
     private String displayName; // Optional display name for the user
 
@@ -67,14 +64,6 @@ public class Profile {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getDisplayName() {
@@ -201,7 +190,6 @@ public class Profile {
     public String toString() {
         return "Profile [" +
                 "id=" + id +
-                ", username='" + username + '\'' +
                 ", displayName='" + displayName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
