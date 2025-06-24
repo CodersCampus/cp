@@ -19,7 +19,6 @@ public class GitHubController {
 
     @GetMapping("")
     public String home(ModelMap model) {
-        gitHubService.deleteRecordsWithNoStudentAssociated();
         List<GitHub> gitHubs = gitHubService.findAll();
         model.put("gitHubs", gitHubs);
         model.addAttribute("pageTitle", "GitHub Read");
