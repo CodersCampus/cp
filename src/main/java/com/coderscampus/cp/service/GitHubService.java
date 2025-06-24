@@ -53,15 +53,5 @@ public class GitHubService {
     public void delete(GitHub gitHub) {
         gitHubRepo.delete(gitHub);
     }
-    
-    public void deleteRecordsWithNoStudentAssociated() {
-        List<GitHub> allGitHubs = gitHubRepo.findAll();
-
-        for (GitHub gitHub : allGitHubs) {
-            if (gitHub.getStudent() == null) {
-                gitHubRepo.delete(gitHub);
-            }
-        }
-    }
 
 }
