@@ -1,3 +1,4 @@
+
 <script th:inline="javascript" type="module" defer>
     const elements = {
         auth: document.querySelector('fbauth-element'),
@@ -33,26 +34,89 @@
                 body: JSON.stringify(data),
             });
 
-            return await response.json();
+            const result = await response.json();
+
+            if (result.success) {
+                console.log('Authentication successful:', result.message);
+                // Redirect to dashboard or update UI as needed
+                window.location.href = '/dashboard';
+            } else {
+                console.error('Authentication failed:', result.message);
+            }
+
+            return result;
         } catch (error) {
             console.error('Error sending user data to server:', error);
             throw error;
         }
     }
 
+    const signOut = async () => {
+        try {
+            const response = await fetch("/signout", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                console.log('Signed out successfully');
+                // Clear local user data
+                updateUserInfo(null);
+                // Redirect to login page
+                window.location.href = '/login';
+            } else {
+                console.error('Signout failed:', result.message);
+            }
+
+            return result;
+        } catch (error) {
+            console.error('Error during signout:', error);
+            throw error;
+        }
+    }
+
+    // Listen for authentication state changes
     elements.auth.addEventListener('user-changed', async (event) => {
         const {newValue} = event.detail;
 
         updateUserInfo(newValue);
 
         if (newValue) {
+            // User signed in
             try {
                 await postUserData(newValue);
             } catch (error) {
                 console.error('Failed to send OAuth data:', error);
             }
+        } else {
+            // User signed out
+            try {
+                await signOut();
+            } catch (error) {
+                console.error('Failed to complete signout:', error);
+            }
         }
     });
+
+    // Expose signOut function globally for use in UI
+    window.userSignOut = signOut;
+
+    // Check authentication status on page load
+    const checkAuthStatus = async () => {
+        try {
+            const response = await fetch("/auth/status");
+            const result = await response.json();
+
+            if (result.authenticated) {
+                updateUserInfo(result.user);
+            }
+        } catch (error) {
+            console.error('Error checking auth status:', error);
+        }
+    };
+
+    // Check auth status when page loads
+    document.addEventListener('DOMContentLoaded', checkAuthStatus);
 </script>
-
-

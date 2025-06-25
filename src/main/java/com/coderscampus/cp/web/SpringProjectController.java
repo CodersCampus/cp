@@ -12,14 +12,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @Controller
+@RequestMapping("/spring-project")
 public class SpringProjectController {
 
     private final SpringProjectRepository springProjectRepository;
@@ -63,8 +62,6 @@ public class SpringProjectController {
             httpSession.setAttribute("email", authDto.getEmail());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
         }
-
-
         return "redirect:/";
     }
 
