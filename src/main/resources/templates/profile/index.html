@@ -121,7 +121,8 @@
                     <form class="form">
                         <div class="form-group">
                             <label for="summary">Summary</label>
-                            <textarea id="summary" name="summary" rows="4">Write your summary here...</textarea>
+                            <textarea id="summary" name="summary" rows="4"
+                                      placeholder="Write your summary here..."></textarea>
                         </div>
 
                         <button type="submit" class="button button-primary">Save</button>
@@ -134,21 +135,14 @@
                         <p>Update the skills associated with your account.</p>
                     </hgroup>
 
-                    <ul class="list-horizontal">
-                        <li>List of Skills</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>React</li>
-                    </ul>
-
                     <form class="form">
-                        <div class="form-group form-horizontal">
-                            <label for="skill">New skill</label>
-                            <input id="skill" name="skill" type="text" placeholder="Add a new skill..."
-                                   autocomplete="skill"/>
-                            <button type="submit" class="button button-primary width-1/6">Save</button>
+                        <div class="form-group">
+                            <label for="skills">Skills</label>
+                            <textarea id="skills" name="skills" rows="3"
+                                      placeholder="List your skills here..."></textarea>
+                            <p>Separate each with a comma.</p>
                         </div>
+                        <button type="submit" class="button button-primary">Save</button>
                     </form>
                 </section>
 
