@@ -1,7 +1,9 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Profile;
+import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.service.ProfileService;
 import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
@@ -23,8 +25,10 @@ public class ProfileController {
 
     @GetMapping("")
     public String profileView(ModelMap model, HttpSession session) {
-        System.out.println(session.getAttribute("uid"));
-        System.out.println(session.getAttribute("email"));
+        String uid = (String) session.getAttribute("uid");
+        String email = (String) session.getAttribute("email");
+        String displayName = (String) session.getAttribute("displayName");
+
         return "profile/index";
     }
 }

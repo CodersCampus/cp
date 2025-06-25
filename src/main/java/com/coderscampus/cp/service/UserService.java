@@ -81,15 +81,32 @@ public class UserService {
     /**
      * Updates an existing user by saving it to the database.
      *
-     * @param id The ID of the user to be updated
+     * @param id   The ID of the user to be updated
      * @param user The updated user object
      * @return The updated user object
      */
-    public User update(Long id, User user) {
+    public User updateUid(Long id, User user) {
         if (user == null) {
             throw new IllegalArgumentException("User cannot be null");
         }
         User existingUser = findById(id);
+        existingUser.setEmail(user.getEmail());
+        // Add other fields as necessary
+        return userRepository.save(existingUser);
+    }
+
+    /**
+     * Updates an existing user by saving it to the database.
+     *
+     * @param uid  The unique identifier of the user to be updated
+     * @param user The updated user object
+     * @return The updated user object
+     */
+    public User updateByUid(String uid, User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("User cannot be null");
+        }
+        User existingUser = findByUid(uid);
         existingUser.setEmail(user.getEmail());
         // Add other fields as necessary
         return userRepository.save(existingUser);
@@ -103,5 +120,44 @@ public class UserService {
     public void delete(Long id) {
         User user = findById(id);
         userRepository.delete(user);
+    }
+
+    /**
+     * Checks if a user exists by its ID.
+     *
+     * @param id The ID of the user to be checked
+     * @return True if the user exists, false otherwise
+     */
+    public boolean existsById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("ID cannot be null");
+        }
+        return userRepository.existsById(id);
+    }
+
+    /**
+     * Checks if a user exists by its UID.
+     *
+     * @param uid The unique identifier of the user to be checked
+     * @return True if the user exists, false otherwise
+     */
+    public boolean existsByUid(String uid) {
+        if (uid == null || uid.isEmpty()) {
+            throw new IllegalArgumentException("UID cannot be null or empty");
+        }
+        return userRepository.existsByUid(uid);
+    }
+
+    /**
+     * Checks if a user exists by its email.
+     *
+     * @param email The email of the user to be checked
+     * @return True if the user exists, false otherwise
+     */
+    public boolean existsByEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
+        return userRepository.existsByEmail(email);
     }
 }

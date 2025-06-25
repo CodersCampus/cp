@@ -1,6 +1,7 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Resume;
+import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.service.ResumeService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,7 @@ public class ResumeController {
     private ResumeService resumeService;
 
     @GetMapping("")
-    public String home(ModelMap model, HttpSession session) {
-        System.out.println(session.getAttribute("uid"));
-        System.out.println(session.getAttribute("email"));
+    public String home(ModelMap model, HttpSession httpSession) {
         resumeService.deleteRecordsWithNoStudentAssociated();
         List<Resume> resumes = resumeService.findAll();
         model.put("resumes", resumes);

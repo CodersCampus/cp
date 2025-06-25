@@ -4,6 +4,7 @@ import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.AuthObjectDTO;
+import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
 import com.coderscampus.cp.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -26,16 +27,17 @@ public class SpringProjectController {
 
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
-    /**
-    private final StudentService studentService;
-    private final CheckinService checkinService;
 
-    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
-        this.springProjectRepository = springProjectRepository;
-        this.studentService = studentService;
-        this.checkinService = checkinService;
-    }
-    */
+    /**
+     * private final StudentService studentService;
+     * private final CheckinService checkinService;
+     * <p>
+     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
+     * this.springProjectRepository = springProjectRepository;
+     * this.studentService = studentService;
+     * this.checkinService = checkinService;
+     * }
+     */
 
     public SpringProjectController(SpringProjectRepository springProjectRepository, UserService userService) {
         this.springProjectRepository = springProjectRepository;
@@ -62,14 +64,6 @@ public class SpringProjectController {
             httpSession.setAttribute("displayName", authDto.getDisplayName());
         }
 
-        User user = new User();
-        user.setUid(authDto.getUid());
-        user.setEmail(authDto.getEmail());
-        user.setDisplayName(authDto.getDisplayName());
-        user.setEnabled(true);
-        user.setOnline(true);
-
-        userService.create(user);
 
         return "redirect:/";
     }
