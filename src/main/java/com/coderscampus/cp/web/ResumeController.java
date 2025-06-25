@@ -19,8 +19,7 @@ public class ResumeController {
     private ResumeService resumeService;
 
     @GetMapping("")
-    public String home(ModelMap model, HttpSession httpSession) {
-        resumeService.deleteRecordsWithNoStudentAssociated();
+    public String home(ModelMap model) {
         List<Resume> resumes = resumeService.findAll();
         model.put("resumes", resumes);
         model.addAttribute("pageTitle", "Resume Read");

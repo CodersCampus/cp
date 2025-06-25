@@ -27,6 +27,9 @@
                 <li class="ui-nav-item" th:classappend="${isNetworkingresource} ? 'active'">
                     <a class="ui-nav-link" href="/networkingresource" th:classappend="${isNetworkingresource} ? 'active-link'">Networking Resources</a>
                 </li>
+                <li class="ui-nav-item" th:classappend="${isNetworkingperson} ? 'active'">
+                    <a class="ui-nav-link" href="/networkingperson" th:classappend="${isNetworkingperson} ? 'active-link'">Networking People</a>
+                </li>
                 <li class="ui-nav-item" th:if="${showDatabaseConsoleLink}" th:classappend="${isDatabaseConsole} ? 'active'">
                     <a class="ui-nav-link" href="/h2-console" th:classappend="${isDatabaseConsole} ? 'active-link'">Database
                         Console</a>

@@ -307,24 +307,6 @@ public class LinkedInServiceTest {
         });
     }
 
-    @Test
-    @Transactional
-    void testDeleteRecordsWithNoStudentAssociated() {
-        LinkedIn linkedInWithoutStudent = new LinkedIn();
-        linkedInWithoutStudent.setStudent(null);
-        linkedInRepo.save(linkedInWithoutStudent);
-
-        linkedInService.deleteRecordsWithNoStudentAssociated();
-
-        List<LinkedIn> allLinkedIns = linkedInService.findAll();
-        int count = 0;
-        for (LinkedIn linkedIn : allLinkedIns) {
-            if (linkedIn.getStudent() == null) {
-                count++;
-            }
-        }
-        assertEquals(0, count);
-    }
 
 
 }

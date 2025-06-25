@@ -19,7 +19,6 @@ public class FinalprojectController {
 
     @GetMapping("")
     public String home(ModelMap model) {
-        finalprojectService.deleteRecordsWithNoStudentAssociated();
         List<Finalproject> finalprojects = finalprojectService.findAll();
         model.put("finalprojects", finalprojects);
         model.addAttribute("pageTitle", "Finalproject Read");
