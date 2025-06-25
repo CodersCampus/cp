@@ -10,7 +10,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username; // Unique username for display purposes
+    private String uid; // Unique identifier for the user, can be used for OAuth
+    private String displayName; // Unique displayName for display purposes
     private String email;
     private String password;
     private Boolean enabled;
@@ -29,8 +30,9 @@ public class User {
         this.createdAt = Instant.now(); // Set creation time to now
     }
 
-    public User(String username, String email, String password, Boolean enabled, Boolean online, Instant createdAt, Instant updatedAt, String provider, String providerId) {
-        this.username = username;
+    public User(String uid, String displayName, String email, String password, Boolean enabled, Boolean online, Instant createdAt, Instant updatedAt, String provider, String providerId) {
+        this.uid = uid;
+        this.displayName = displayName;
         this.email = email;
         this.password = password;
         this.enabled = enabled;
@@ -49,12 +51,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUid() {
+        return uid;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public String getEmail() {
@@ -133,7 +143,8 @@ public class User {
     public String toString() {
         return "User [" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", uid='" + uid + '\'' +
+                ", displayName='" + displayName + '\'' +
                 ", email='" + email + '\'' +
                 ", enabled=" + enabled +
                 ", online=" + online +

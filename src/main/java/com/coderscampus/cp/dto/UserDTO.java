@@ -4,9 +4,10 @@ import com.coderscampus.cp.domain.User;
 
 public class UserDTO {
     private Long id;
-    private String username;
     private String email;
-    private String password;
+    private String displayName;
+    private Boolean enabled;
+    private Boolean online;
 
     public UserDTO() {
         this(new User());
@@ -14,9 +15,14 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this.id = user.getId();
-        this.username = user.getUsername();
         this.email = user.getEmail();
-        this.password = user.getPassword();
+        this.displayName = user.getDisplayName();
+        this.enabled = user.getEnabled();
+        this.online = user.getOnline();
+    }
+
+    public UserDTO(Long id, String email, String displayName) {
+
     }
 
     public Long getId() {
@@ -27,14 +33,6 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -43,17 +41,38 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Boolean getOnline() {
+        return online;
+    }
+
+    public void setOnline(Boolean online) {
+        this.online = online;
     }
 
     @Override
     public String toString() {
-        return "UserDTO [id=" + id + ", username='" + username + '\'' +
-                ", email='" + email + '\'' + ", password='" + password + '\'' + ']';
+        return "UserDTO{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", enabled=" + enabled +
+                ", online=" + online +
+                '}';
     }
 }

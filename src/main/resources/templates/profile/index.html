@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:replace="~{layouts/dashboard :: layout(~{::title}, ~{::body})}">
+<html lang="en" th:replace="~{layouts/dashboard :: layout(~{::title}, ~{::body})}">
 <head>
     <title>My Profile</title>
 </head>
@@ -10,12 +10,299 @@
     </div>
 
     <div class="content-body">
+        <div class="profile-tabs tabs tabs-border">
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Account" checked="checked"/>
+            <div class="tab-content">
+                <section>
+                    <hgroup>
+                        <h3>Account information</h3>
+                        <p>Update your email and username associated with your account.</p>
+                    </hgroup>
 
+                    <form class="form">
+                        <div class="form-group form-avatar">
+                            <img
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt="" class="avatar avatar-square avatar-2xl"/>
+                            <div>
+                                <button type="button" class="button button-neutral">Change avatar</button>
+                                <p>JPG, GIF or PNG. 1MB max.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group width-1/2">
+                            <label for="email">Email address</label>
+                            <input id="email" name="email" type="email" autocomplete="email"/>
+                        </div>
+
+                        <div class="form-group width-1/2">
+                            <label for="displayName">Display Name</label>
+                            <input id="displayName" name="displayName" type="text" autocomplete="display-name"/>
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+                <section>
+                    <hgroup>
+                        <h3>Personal Information</h3>
+                        <p>Use a permanent address where you can receive mail.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group width-1/2">
+                            <label for="first-name">First name</label>
+                            <input type="text" name="first-name" id="first-name" autocomplete="given-name"/>
+                        </div>
+
+                        <div class="form-group width-1/2">
+                            <label for="last-name">Last name</label>
+                            <input type="text" name="last-name" id="last-name" autocomplete="family-name"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" name="bio" rows="4">Write your bio here...</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="websiteUrl">Website Url</label>
+                            <input id="websiteUrl" name="websiteUrl" type="text" autocomplete="websiteUrl"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="linkedInUrl">Linkedin Url</label>
+                            <input id="linkedInUrl" name="linkedInUrl" type="text" autocomplete="linkedInUrl"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="githubUrl">GitHub Url</label>
+                            <input id="githubUrl" name="githubUrl" type="text" autocomplete="githubUrl"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input id="address" name="address" type="text" autocomplete="address"/>
+                        </div>
+
+                        <div class="form-group width-1/2">
+                            <label for="city">City</label>
+                            <input id="city" name="city" type="text" autocomplete="city"/>
+                        </div>
+
+                        <div class="form-group width-1/2">
+                            <label for="state">State</label>
+                            <input id="state" name="state" type="text" autocomplete="state"/>
+                        </div>
+
+                        <div class="form-group width-1/2">
+                            <label for="zipCode">Zip Code</label>
+                            <input id="zipCode" name="zipCode" type="text" autocomplete="zipCode"/>
+                        </div>
+
+                        <div class="form-group width-1/2">
+                            <label for="country">Country</label>
+                            <input id="country" name="country" type="text" autocomplete="country"/>
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+            </div>
+
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Resume"/>
+            <div class="tab-content">
+                <section>
+                    <hgroup>
+                        <h3>Summary</h3>
+                        <p>Update the résumé summary here.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="summary">Summary</label>
+                            <textarea id="summary" name="summary" rows="4"
+                                      placeholder="Write your summary here..."></textarea>
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+
+                <section>
+                    <hgroup>
+                        <h3>Skills</h3>
+                        <p>Update the skills associated with your account.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="skills">Skills</label>
+                            <textarea id="skills" name="skills" rows="3"
+                                      placeholder="List your skills here..."></textarea>
+                            <p>Separate each with a comma.</p>
+                        </div>
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+
+                <section>
+                    <hgroup>
+                        <h3>Experience</h3>
+                        <p>Update your work experience here.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="workExperience">Work Experience</label>
+                            <input id="workExperience" name="workExperience" type="text"
+                                   autocomplete="work-experience"/>
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+
+                <section>
+                    <hgroup>
+                        <h3>Education</h3>
+                        <p>Update the list of your education here.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group width-2/3">
+                            <label for="degree">Degree</label>
+                            <input id="degree" name="degree" type="text" autocomplete="degree"/>
+                        </div>
+
+                        <div class="form-group width-1/3">
+                            <label for="graduation-year">Graduation Year</label>
+                            <input id="graduation-year" name="graduation-year" type="text"
+                                   autocomplete="graduation-year"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school-name">School Name</label>
+                            <input id="school-name" name="school-name" type="text" autocomplete="school-name"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school-location">School Location</label>
+                            <input type="text" id="school-location" name="school-location"
+                                   autocomplete="school-location">
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+
+                <section>
+                    <hgroup>
+                        <h3>Certifications</h3>
+                        <p>List your certifications here.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="certifications">Certifications</label>
+                            <input id="certifications" name="certifications" type="text" autocomplete="certifications"/>
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+
+                <section>
+                    <hgroup>
+                        <h3>Projects</h3>
+                        <p>List your projects here.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="projects">Projects</label>
+                            <input id="projects" name="projects" type="text" autocomplete="projects"/>
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+
+                <section>
+                    <hgroup>
+                        <h3>Languages</h3>
+                        <p>List the languages you speak.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="languages">Languages</label>
+                            <input id="languages" name="languages" type="text" autocomplete="languages"/>
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+            </div>
+
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Linkedin"/>
+            <div class="tab-content">
+                <section>
+                    <hgroup>
+                        <h3>Linkedin information</h3>
+                        <p>Update the Linkedin associated with your account.</p>
+                    </hgroup>
+
+                    <form class="form">
+                        <div class="form-group form-checkbox">
+                            <label for="banner">Did you upload a profile banner?</label>
+                            <input type="checkbox" name="banner" id="banner">
+                        </div>
+
+                        <div class="form-group form-checkbox">
+                            <label for="about">Did you write in the about section?</label>
+                            <input type="checkbox" name="about" id="about">
+                        </div>
+
+                        <div class="form-group form-checkbox">
+                            <label for="url">Did you add your personal Urls?</label>
+                            <input type="checkbox" name="url" id="url">
+                        </div>
+
+                        <div class="form-group form-checkbox">
+                            <label for="featuredPosts">Did you write posts?</label>
+                            <input type="checkbox" name="featuredPosts" id="featuredPosts">
+                        </div>
+
+                        <div class="form-group form-checkbox">
+                            <label for="activity">Did you add some activities?</label>
+                            <input type="checkbox" name="activity" id="activity">
+                        </div>
+
+                        <div class="form-group form-checkbox">
+                            <label for="skills">Did you add your skills?</label>
+                            <input type="checkbox" name="skills" id="skills">
+                        </div>
+
+                        <button type="submit" class="button button-primary">Save</button>
+                    </form>
+                </section>
+            </div>
+
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="GitHub"/>
+            <div class="tab-content">Tab content GitHub</div>
+
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Final Project"/>
+            <div class="tab-content">Tab content Final Project</div>
+
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Networking"/>
+            <div class="tab-content">Tab content 3</div>
+        </div>
     </div>
 
     <div class="content-footer">
         <p>Copyright &copy; 2025 - Coders Campus</p>
     </div>
-
+</div>
 </body>
 </html>

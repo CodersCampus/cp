@@ -1,0 +1,74 @@
+.button {
+    font-family: var(--font-jost);
+    font-weight: var(--font-weight-normal);
+    letter-spacing: 0.025em;
+    padding-block: calc(var(--spacing) * 2);
+    padding-inline: calc(var(--spacing) * 3.5);
+    outline-width: 1px;
+    outline-style: solid;
+    border-radius: var(--radius-field);
+    cursor: pointer;
+    
+    &.button-primary {
+        background-color: color-mix(in oklab, var(--color-primary) 70%, var(--color-white));
+        color: color-mix(in oklab, var(--color-primary-content) 60%, transparent);
+        border-radius: var(--radius-field);
+        outline-color: color-mix(in oklab, var(--color-primary) 30%, var(--color-primary-content));
+        
+        &:hover, &:focus {
+            background-color: var(--color-primary);
+            color: var(--color-primary-content);
+        }
+        
+        &:focus {
+            outline-color: color-mix(in oklab, var(--color-primary) 70%, var(--color-primary-content));
+        }
+    }
+    
+    &.button-secondary {
+        background-color: color-mix(in oklab, var(--color-secondary) 70%, var(--color-white));
+        color: color-mix(in oklab, var(--color-secondary-content) 60%, transparent);
+        border-radius: var(--radius-field);
+        outline-color: color-mix(in oklab, var(--color-secondary) 30%, var(--color-secondary-content));
+        
+        &:hover, &:focus {
+            background-color: var(--color-secondary);
+            color: var(--color-secondary-content);
+        }
+        
+        &:focus {
+            outline-color: color-mix(in oklab, var(--color-secondary) 70%, var(--color-primary-content));
+        }
+    }
+    
+    &.button-accent {
+        background-color: color-mix(in oklab, var(--color-accent) 70%, var(--color-white));
+        color: color-mix(in oklab, var(--color-accent-content) 60%, transparent);
+        border-radius: var(--radius-field);
+        outline-color: color-mix(in oklab, var(--color-accent) 30%, var(--color-accent-content));
+        
+        &:hover, &:focus {
+            background-color: var(--color-accent);
+            color: var(--color-accent-content);
+        }
+        
+        &:focus {
+            outline-color: color-mix(in oklab, var(--color-accent) 70%, var(--color-accent-content));
+        }
+    }
+    
+    &.button-neutral {
+        background-color: color-mix(in oklab, var(--color-neutral) 70%, var(--color-white));
+        color: color-mix(in oklab, var(--color-neutral-content) 60%, transparent);
+        outline-color: color-mix(in oklab, var(--color-neutral) 30%, var(--color-neutral-content));
+        
+        &:hover, &:focus {
+            background-color: var(--color-neutral);
+            color: var(--color-neutral-content);
+        }
+        
+        &:focus {
+            outline-color: color-mix(in oklab, var(--color-neutral) 70%, var(--color-neutral-content));
+        }
+    }
+}

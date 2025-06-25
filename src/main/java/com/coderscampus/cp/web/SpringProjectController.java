@@ -2,8 +2,11 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.AuthObjectDTO;
+import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
+import com.coderscampus.cp.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -20,22 +23,25 @@ import java.util.List;
 public class SpringProjectController {
 
     private final SpringProjectRepository springProjectRepository;
+    private final UserService userService;
 
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
+
     /**
-    private final StudentService studentService;
-    private final CheckinService checkinService;
+     * private final StudentService studentService;
+     * private final CheckinService checkinService;
+     * <p>
+     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
+     * this.springProjectRepository = springProjectRepository;
+     * this.studentService = studentService;
+     * this.checkinService = checkinService;
+     * }
+     */
 
-    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
+    public SpringProjectController(SpringProjectRepository springProjectRepository, UserService userService) {
         this.springProjectRepository = springProjectRepository;
-        this.studentService = studentService;
-        this.checkinService = checkinService;
-    }
-    */
-
-    public SpringProjectController(SpringProjectRepository springProjectRepository) {
-        this.springProjectRepository = springProjectRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/")
@@ -57,6 +63,8 @@ public class SpringProjectController {
             httpSession.setAttribute("email", authDto.getEmail());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
         }
+
+
         return "redirect:/";
     }
 

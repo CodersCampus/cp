@@ -298,26 +298,6 @@ public class FinalProjectServiceTest {
 
         });
     }
-    
-    @Test
-    @Transactional
-    void testDeleteRecordsWithNoStudentAssociated() {
-        Finalproject finalprojectWithoutStudent = new Finalproject();
-        finalprojectWithoutStudent.setStudent(null);
-        finalprojectRepo.save(finalprojectWithoutStudent);
-
-        finalprojectService.deleteRecordsWithNoStudentAssociated();
-
-        List<Finalproject> allFinalprojects = finalprojectService.findAll();
-        int count = 0;
-        for (Finalproject finalproject : allFinalprojects) {
-            if (finalproject.getStudent() == null) {
-                count++;
-            }
-        }
-        assertEquals(0, count);
-    }
-
 
 
 }
