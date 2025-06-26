@@ -21,8 +21,11 @@
                         <input id="uid" name="uid" type="hidden"/>
                         <div class="ui-input-field">
                             <label for="banner" class="ui-label">Banner:</label>
-                            <input id="banner" th:field="${linkedIn.banner}" type="checkbox">
-                            <span th:text="${linkedIn.banner} ? 'Completed' : 'Not Complete'"></span>
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="banner" th:field="${linkedIn.banner}" type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text" th:text="${linkedIn.banner} ? 'Completed' : 'Not Complete'"></span>
+                            </label>
                         </div>
                         <div class="ui-input-field">
                             <label for="about" class="ui-label">About:</label>

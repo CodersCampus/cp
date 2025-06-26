@@ -1275,3 +1275,33 @@ padding-top: 40px;
 
 }
 
+/*Styling for toggle switch*/
+
+.ui-checkbox .ui-hidden-checkbox {
+    display: none;
+}
+
+.ui-toggle {
+    width: 40px;
+    height: 20px;
+    background-color: var(--table-odd);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: var(--toggle-button-transition);
+}
+
+.ui-toggle::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 1px;
+    top: 1px;
+    background: var(--toggle-button-color);
+    border-radius: 7px;
+    transition: transform 0.3s ease;
+}
+
+
