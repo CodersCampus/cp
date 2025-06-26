@@ -24,7 +24,7 @@
                             <label class="ui-checkbox">
                                 <input class="ui-hidden-checkbox" id="banner" th:field="${linkedIn.banner}" type="checkbox">
                                 <span class="ui-toggle"></span>
-                                <span class="ui-toggle-text" th:text="${linkedIn.banner} ? 'Completed' : 'Not Complete'"></span>
+                                <span class="ui-toggle-text" th:text="${linkedIn.banner} ? 'Complete' : 'Not Complete'"></span>
                             </label>
                         </div>
                         <div class="ui-input-field">
@@ -123,12 +123,7 @@
 
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
-<script>
-    document.getElementById('banner').addEventListener('change', function () {
-        const text = document.querySelector('.ui-toggle-text');
-        text.textContent = this.checked ? 'Completed' : 'Not Complete';
-    });
-</script>
+<div th:replace="~{fragments/tasktogglescript :: script}"></div>
 </body>
 
 </html>
