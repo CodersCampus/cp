@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Fredoka:wght@300..700&family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/output.css" th:href="@{/dist/css/output.css}" type="text/css"
+          media="print, projection, screen"/>
+    <title>Login - Coder Packaging</title>
+    <script src="/fbauth-element.bundled.js" type="module"></script>
+</head>
+<body>
+<div class="min-h-screen flex items-center justify-center bg-base-200">
+    <div class="max-w-md w-full space-y-8 p-8 bg-base-100 shadow-lg rounded-lg">
+        <div class="text-center">
+            <h2 class="text-3xl font-extrabold text-base-content">Sign in to your account</h2>
+            <p class="mt-2 text-sm text-base-content/70">
+                Or
+                <a href="/auth/register" class="font-medium text-primary hover:text-primary-focus">
+                    create a new account
+                </a>
+            </p>
+        </div>
+
+        <div th:if="${error}" class="alert alert-error shadow-lg">
+            <div>
+                <svg th:replace="~{fragments/icons :: alert-circle}"></svg>
+                <span th:text="${error}">Error message</span>
+            </div>
+        </div>
+
+        <div class="mt-8 space-y-6">
+            <!-- Email/Password Login Form -->
+            <form id="email-login-form" class="space-y-4">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-base-content">Email address</label>
+                    <input id="email" name="email" type="email" required
+                           class="input input-bordered w-full mt-1" placeholder="Email">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-base-content">Password</label>
+                    <input id="password" name="password" type="password" required
+                           class="input input-bordered w-full mt-1" placeholder="Password">
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox"
+                               class="checkbox checkbox-primary">
+                        <label for="remember-me" class="ml-2 block text-sm text-base-content">
+                            Remember me
+                        </label>
+                    </div>
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-primary hover:text-primary-focus">
+                            Forgot your password?
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit"
+                            class="btn btn-primary w-full">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+
+            <div class="divider">OR</div>
+
+            <!-- OAuth Providers -->
+            <div class="space-y-3">
+                <button id="google-login" type="button"
+                        class="btn btn-outline w-full flex items-center justify-center">
+                    <svg th:replace="~{fragments/icons :: google}" class="w-5 h-5 mr-2"></svg>
+                    Sign in with Google
+                </button>
+                <button id="github-login" type="button"
+                        class="btn btn-outline w-full flex items-center justify-center">
+                    <svg th:replace="~{fragments/icons :: github}" class="w-5 h-5 mr-2"></svg>
+                    Sign in with GitHub
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        // Email/Password Login
+        const emailLoginForm = document.getElementById('email-login-form');
+        if (emailLoginForm) {
+            emailLoginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Validate inputs
+                if (!email || !password) {
+                    alert('Please enter both email and password');
+                    return;
+                }
+                
+                // Send login request
+                fetch('/auth/signin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = data.redirect;
+                    } else {
+                        alert(data.message || 'Login failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Login error:', error);
+                    alert('An error occurred during login. Please try again.');
+                });
+            });
+        }
+        
+        // Google Login
+        const googleLoginBtn = document.getElementById('google-login');
+        if (googleLoginBtn) {
+            googleLoginBtn.addEventListener('click', function() {
+                const auth = document.querySelector('fbauth-element').auth;
+                const provider = new firebase.auth.GoogleAuthProvider();
+                
+                auth.signInWithPopup(provider)
+                    .then(result => {
+                        // This gives you a Google Access Token
+                        const credential = result.credential;
+                        const token = credential.accessToken;
+                        // The signed-in user info
+                        const user = result.user;
+                        
+                        // The rest is handled by the fbauth-element
+                    })
+                    .catch(error => {
+                        console.error('Google login error:', error);
+                        alert(getErrorMessage(error));
+                    });
+            });
+        }
+        
+        // GitHub Login
+        const githubLoginBtn = document.getElementById('github-login');
+        if (githubLoginBtn) {
+            githubLoginBtn.addEventListener('click', function() {
+                const auth = document.querySelector('fbauth-element').auth;
+                const provider = new firebase.auth.GithubAuthProvider();
+                
+                auth.signInWithPopup(provider)
+                    .then(result => {
+                        // This gives you a GitHub Access Token
+                        const credential = result.credential;
+                        const token = credential.accessToken;
+                        // The signed-in user info
+                        const user = result.user;
+                        
+                        // The rest is handled by the fbauth-element
+                    })
+                    .catch(error => {
+                        console.error('GitHub login error:', error);
+                        alert(getErrorMessage(error));
+                    });
+            });
+        }
+        
+        // Helper function to get user-friendly error messages
+        function getErrorMessage(error) {
+            switch (error.code) {
+                case 'auth/account-exists-with-different-credential':
+                    return 'An account already exists with the same email address but different sign-in credentials. Sign in using a provider associated with this email address.';
+                case 'auth/cancelled-popup-request':
+                case 'auth/popup-closed-by-user':
+                    return 'Login canceled. Please try again.';
+                case 'auth/popup-blocked':
+                    return 'Login popup was blocked by your browser. Please enable popups for this site and try again.';
+                default:
+                    return error.message || 'An error occurred during login. Please try again.';
+            }
+        }
+    });
+</script>
+</body>
+</html>
