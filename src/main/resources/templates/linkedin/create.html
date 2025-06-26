@@ -21,9 +21,8 @@
                         <input id="uid" name="uid" type="hidden"/>
                         <div class="ui-input-field">
                             <label for="banner" class="ui-label">Banner:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" id="banner" th:field="${linkedIn.banner}" type="text"/>
-                            </div>
+                            <input id="banner" th:field="${linkedIn.banner}" type="checkbox">
+                            <span th:text="${linkedIn.banner} ? 'Completed' : 'Not Complete'"></span>
                         </div>
                         <div class="ui-input-field">
                             <label for="about" class="ui-label">About:</label>
@@ -40,7 +39,8 @@
                         <div class="ui-input-field">
                             <label for="featuredPosts" class="ui-label">Featured Posts:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="featuredPosts" th:field="${linkedIn.featuredPosts}" type="text"/>
+                                <input class="ui-value" id="featuredPosts" th:field="${linkedIn.featuredPosts}"
+                                       type="text"/>
                             </div>
                         </div>
                         <div class="ui-input-field">
