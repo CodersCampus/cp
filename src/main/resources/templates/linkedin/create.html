@@ -123,6 +123,12 @@
 
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
+<script>
+    document.getElementById('banner').addEventListener('change', function () {
+        const text = document.querySelector('.ui-toggle-text');
+        text.textContent = this.checked ? 'Completed' : 'Not Complete';
+    });
+</script>
 </body>
 
 </html>

@@ -1157,9 +1157,9 @@ input[type=checkbox]:checked:before {
 /*// --------------------------------- //*/
 
 .big-title {
-    display:flex;
+    display: flex;
     flex-direction: row;
-    gap:16px;
+    gap: 16px;
     color: var(--primary);
 }
 
@@ -1258,17 +1258,17 @@ input[type=checkbox]:checked:before {
     color: var(--primary);
 }
 
-.checkin-form-container{
-	display: flex;
-	padding: 20px;
-	
+.checkin-form-container {
+    display: flex;
+    padding: 20px;
+
 }
 
-.activity-log-section{
-display: flex;
-flex-direction: column;
-max-width: min-content;
-padding-top: 40px;
+.activity-log-section {
+    display: flex;
+    flex-direction: column;
+    max-width: min-content;
+    padding-top: 40px;
 }
 
 .button-group {
@@ -1302,6 +1302,14 @@ padding-top: 40px;
     background: var(--toggle-button-color);
     border-radius: 7px;
     transition: transform 0.3s ease;
+}
+
+.ui-hidden-checkbox:checked + .ui-toggle {
+    background: var(--primary);
+}
+
+ui.ui-hidden-checkbox:checked + .ui-toggle::before {
+    transform: translateX(20px);
 }
 
 
