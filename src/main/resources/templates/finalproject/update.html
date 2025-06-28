@@ -34,6 +34,14 @@
                             </div>
                         </div>
                         <div class="ui-input-field">
+                            <label for="description" class="ui-label">Description:</label>
+                            <div class="ui-text-input">
+                            <textarea id="description" class="ui-value" cols="20" name="description"
+                                      placeholder="Describe the project (500 characters or less)" rows="3" wrap="hard"
+                                      th:field="*{description}"></textarea>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
                             <label for="crud" class="ui-label">Crud Views:</label>
                             <div class="ui-text-input">
                                 <input id="crud" class="ui-value" th:field="*{crud}" type="number"/>

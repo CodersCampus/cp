@@ -11,6 +11,7 @@ public class Finalproject {
     private String uid;
     private String projectName;
     private String proposal;
+    private String description;
     private String crud;
     private String tables;
     private String views;
@@ -20,16 +21,6 @@ public class Finalproject {
     private Student student;
 
     public Finalproject() {
-    }
-
-    public Finalproject(Long id, String projectName, String proposal, String crud, String tables, String views, Student student) {
-        this.id = id;
-        this.projectName = projectName;
-        this.proposal = proposal;
-        this.crud = crud;
-        this.tables = tables;
-        this.views = views;
-        this.student = student;
     }
 
     public Long getId() {
@@ -64,6 +55,14 @@ public class Finalproject {
         this.proposal = proposal;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getCrud() {
         return crud;
     }
@@ -94,19 +93,5 @@ public class Finalproject {
 
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-    @Override
-    public String toString() {
-        return "Finalproject{" +
-                "id=" + id +
-                ", uid='" + uid + '\'' +
-                ", projectName='" + projectName + '\'' +
-                ", proposal='" + proposal + '\'' +
-                ", crud='" + crud + '\'' +
-                ", tables='" + tables + '\'' +
-                ", views='" + views + '\'' +
-                ", student=" + student +
-                '}';
     }
 }
