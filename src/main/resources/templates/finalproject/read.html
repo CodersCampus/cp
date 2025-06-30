@@ -36,8 +36,11 @@
                                 <td><span th:text="${finalproject.student.name}"></span></td>
                                 <td><span th:text="${finalproject.projectName}"></span></td>
                                 <td><span th:text="${finalproject.proposal}"></span></td>
-                                <td class="clip-text">
+                                <td class="ui-clip-text">
                                     <span th:text="${finalproject.description}"></span>
+                                    <div class="ui-full-text-container">
+                                        <span th:text="${finalproject.description}"></span>
+                                    </div>
                                 </td>
                                 <td><span th:text="${finalproject.crud}"></span></td>
                                 <td><span th:text="${finalproject.tables}"></span></td>

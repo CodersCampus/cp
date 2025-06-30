@@ -1276,7 +1276,7 @@ padding-top: 40px;
 }
 
 /*Styling for textarea*/
-.clip-text {
+.ui-clip-text {
     max-width: 200px;
     white-space: nowrap;
     overflow: hidden;
@@ -1285,26 +1285,11 @@ padding-top: 40px;
     cursor: pointer;
 }
 
-/*.clip-text .full-text {*/
-/*    visibility: hidden;*/
-/*    opacity: 0;*/
-/*    background-color: #fff;*/
-/*    color: #000;*/
-/*    border: 1px solid #ccc;*/
-/*    padding: 8px;*/
-/*    position: absolute;*/
-/*    z-index: 1000;*/
-/*    top: 100%;*/
-/*    left: 0;*/
-/*    width: max-content;*/
-/*    max-width: 400px;*/
-/*    white-space: normal;*/
-/*    transition: opacity 0.3s ease;*/
-/*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
-/*}*/
+.ui-full-text-container {
+    display: none;
+}
 
-/*.clip-text:hover .full-text {*/
-/*    visibility: visible;*/
-/*    opacity: 1;*/
-/*}*/
+.ui-clip-text:hover .ui-full-text-container {
+    display: block;
+}
 
