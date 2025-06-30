@@ -40,7 +40,7 @@ public class FinalprojectService {
     }
 
     public List<Finalproject> findAll() {
-        return finalprojectRepo.findAll();
+        return finalprojectRepo.findAllWithStudents();
     }
 
     public Finalproject findById(Long id) {
@@ -52,16 +52,6 @@ public class FinalprojectService {
 
     public void delete(Finalproject finalproject) {
         finalprojectRepo.delete(finalproject);
-    }
-
-    public void deleteRecordsWithNoStudentAssociated() {
-        List<Finalproject> allFinalprojects = finalprojectRepo.findAll();
-
-        for (Finalproject finalproject : allFinalprojects) {
-            if (finalproject.getStudent() == null) {
-                finalprojectRepo.delete(finalproject);
-            }
-        }
     }
 
 }
