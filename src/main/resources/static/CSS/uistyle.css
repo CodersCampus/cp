@@ -1281,15 +1281,9 @@ padding-top: 40px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    position: relative;
     cursor: pointer;
+    position: relative;
 }
 
-.ui-full-text-container {
-    display: none;
-}
 
-.ui-clip-text:hover .ui-full-text-container {
-    display: block;
-}
 
