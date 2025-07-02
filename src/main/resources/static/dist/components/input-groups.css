@@ -49,6 +49,10 @@
             color: color-mix(in oklab, var(--color-base-content) 50%, transparent);
             font-size: var(--text-sm);
             
+            &::placeholder {
+                color: color-mix(in oklab, var(--color-base-content) 50%, transparent);
+            }
+            
             &:focus {
                 outline: none;
             }
@@ -67,7 +71,8 @@
         }
         
         p {
-            
+            font-size: var(--text-xs);
+            color: color-mix(in oklab, var(--color-base-content) 50%, transparent);
         }
     }
     
@@ -83,7 +88,7 @@
             }
             
             input {
-                @apply block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1;
+                /*@apply block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1;*/
                 min-width: calc(var(--spacing) * 0);
                 flex-grow: 1;
                 padding-inline-start: calc(var(--spacing) * 1);
