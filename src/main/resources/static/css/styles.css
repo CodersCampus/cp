@@ -1,0 +1,23 @@
+
+@import "../dist/base/variables.css";
+@import "../dist/base/base.css";
+/* Layouts */
+@import "../dist/layouts/root.css";
+@import "../dist/layouts/insight.css";
+@import "../dist/layouts/sidebar.css";
+@import "../dist/layouts/header.css";
+@import "../dist/layouts/content.css";
+
+/* Layouts */
+@import "../dist/pages/students.css";
+@import "../dist/pages/profile.css";
+
+/* components */
+@import "../dist/components/menu.css";
+@import "../dist/components/list.css";
+@import "../dist/components/form.css";
+@import "../dist/components/input-groups.css";
+@import "../dist/components/button.css";
+@import "../dist/components/avatar.css";
+@import "../dist/components/headline.css";
+@import "../dist/components/container.css";

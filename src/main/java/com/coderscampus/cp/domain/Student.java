@@ -9,13 +9,13 @@ import java.util.List;
 
 @Entity
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false, unique = true)
     private String uid;
     private String name;
+    private String email;
     private Integer assignmentNum;
     private String ide;
     private final Instant dateCreated;
@@ -29,14 +29,20 @@ public class Student {
 //	private YouTube youtube;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private FinalProject finalProject;
-//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	private Resume resume;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "resume_id")
+    @MapsId
+	private Resume resume;
 //    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
 //	private Foobar foobar;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Networking networking;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Website website;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id")
+    @MapsId
+	private Profile profile;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Checkin> checkin = new ArrayList<Checkin>();
 
@@ -64,6 +70,7 @@ public class Student {
         }
         this.uid = uid;
         this.name = studentDTO.getName();
+        this.email = studentDTO.getEmail();
         this.assignmentNum = studentDTO.getAssignmentNum();
         this.ide = studentDTO.getIde();
         this.willingToMentor = studentDTO.getWillingToMentor();
@@ -92,6 +99,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getAssignmentNum() {
@@ -143,15 +158,15 @@ public class Student {
 //	public void setFinalProject(FinalProject finalProject) {
 //		this.finalProject = finalProject;
 //	}
-//
-//	public Resume getResume() {
-//		return resume;
-//	}
-//
-//	public void setResume(Resume resume) {
-//		this.resume = resume;
-//	}
-//
+
+	public Resume getResume() {
+		return resume;
+	}
+
+	public void setResume(Resume resume) {
+		this.resume = resume;
+	}
+
 //	public Foobar getFoobar() {
 //		return foobar;
 //	}
@@ -192,6 +207,14 @@ public class Student {
         this.mentee = mentee;
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
     public List<Checkin> getCheckin() {
         return checkin;
     }
@@ -206,10 +229,9 @@ public class Student {
                 "id=" + id +
                 ", uid='" + uid + '\'' +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", assignmentNum=" + assignmentNum +
                 ", ide='" + ide + '\'' +
-               
-                
                 '}';
     }
     //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,

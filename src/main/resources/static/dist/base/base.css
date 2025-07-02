@@ -1,34 +1,36 @@
-@layer base {
-    html {
-        scroll-behavior: smooth;
-        height: 100%;
-        font-family: var(--font-outfit);
-    }
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    font-family: var(--font-outfit);
+}
 
-    *, *::before, *::after {
-        transition: all 0.3s ease-in-out;
-    }
+*, *::before, *::after {
+    transition: all 0.3s ease-in-out;
+}
 
-    body {
-        width: 100%;
-        height: 100%;
-        background-color: var(--color-base-200);
-        color: var(--color-base-content);
-        font-size: var(--text-base);
-        font-family: inherit;
-        font-weight: var(--font-weight-light);
-        font-optical-sizing: auto;
-        line-height: var(--leading-tight);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        padding: 0;
-        margin: 0;
-    }
+body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-base-200);
+    color: var(--color-base-content);
+    font-family: inherit;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-light);
+    font-optical-sizing: auto;
+    line-height: var(--leading-tight);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+    margin: 0;
+}
 
-    svg {
-        fill: currentColor;
-        stroke-width: 1.5 !important;
-        width: calc(var(--spacing) * 5);
-        height: calc(var(--spacing) * 5);
-    }
+label, input, textarea, button, select {
+    font-family: inherit;
+}
+
+svg {
+    fill: currentColor;
+    stroke-width: 1.5 !important;
+    width: calc(var(--spacing) * 5);
+    height: calc(var(--spacing) * 5);
 }

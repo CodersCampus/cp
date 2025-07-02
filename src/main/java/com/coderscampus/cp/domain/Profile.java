@@ -9,19 +9,16 @@ public class Profile {
     private Long id; // Unique identifier for the profile
 
     @Column(nullable = true, length = 60)
-    private String displayName; // Optional display name for the user
-
-    @Column(nullable = true, length = 60)
     private String firstName;
 
     @Column(nullable = true, length = 60)
     private String lastName;
 
+    @Column(nullable = true, length = 60)
+    private String email;
+
     @Column(nullable = true, length = 255)
     private String pictureUrl;
-
-    @Column(nullable = true, length = 500)
-    private String bio;
 
     @Column(nullable = true, length = 255)
     private String websiteUrl;
@@ -51,9 +48,9 @@ public class Profile {
     private String country;
 
     @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "student_id")
     @MapsId
-    private User user; // One-to-one relationship with User
+    private Student student; // One-to-one relationship with Student
 
     public Profile() {
     }
@@ -64,14 +61,6 @@ public class Profile {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
     }
 
     public String getFirstName() {
@@ -90,20 +79,20 @@ public class Profile {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPictureUrl() {
         return pictureUrl;
     }
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
     }
 
     public String getWebsiteUrl() {
@@ -178,23 +167,22 @@ public class Profile {
         this.country = country;
     }
 
-    public User getUser() {
-        return user;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override
     public String toString() {
         return "Profile [" +
                 "id=" + id +
-                ", displayName='" + displayName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 ", pictureUrl='" + pictureUrl + '\'' +
-                ", bio='" + bio + '\'' +
                 ", websiteUrl='" + websiteUrl + '\'' +
                 ", linkedInUrl='" + linkedInUrl + '\'' +
                 ", githubUrl='" + githubUrl + '\'' +

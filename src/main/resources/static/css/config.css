@@ -1,5 +1,6 @@
+@import "tailwindcss";
 @plugin "daisyui" {
     themes: light --default, dark --prefersdark;
-    exclude: menu, list, avatar, input, form, button;
+    exclude: menu, list, avatar, input, select, form, button;
 }
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
