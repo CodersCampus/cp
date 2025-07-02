@@ -10,7 +10,7 @@ public class LinkedIn {
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
-	private String banner;
+	private Boolean banner;
 	private String about;
 	private String url;
 	private String featuredPosts;
@@ -45,11 +45,11 @@ public class LinkedIn {
         this.student = student;
     }
 
-    public String getBanner() {
+    public Boolean getBanner() {
         return banner;
     }
 
-    public void setBanner(String banner) {
+    public void setBanner(Boolean banner) {
         this.banner = banner;
     }
 

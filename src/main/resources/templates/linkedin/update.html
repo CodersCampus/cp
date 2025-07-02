@@ -21,9 +21,13 @@
                         <input name="uid" th:field="${linkedIn.id}" type="hidden"/>
                         <div class="ui-input-field" title="Check this box if you have made a banner">
                             <label for="banner" class="ui-label">Banner:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" id="banner" th:field="${linkedIn.banner}" type="text"/>
-                            </div>
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="banner" th:field="${linkedIn.banner}"
+                                       type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text"
+                                      th:text="${linkedIn.banner} ? 'Completed' : 'Not Complete'"></span>
+                            </label>
                         </div>
                         <div class="ui-input-field" title="Check this box if you have filled out your &ldquo;about section&rdquo;">
                             <label for="about" class="ui-label">About:</label>
@@ -40,7 +44,8 @@
                         <div class="ui-input-field" title="Check this box if you have featured posts selected">
                             <label for="featuredPosts" class="ui-label">Featured Posts:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="featuredPosts" th:field="${linkedIn.featuredPosts}" type="text"/>
+                                <input class="ui-value" id="featuredPosts" th:field="${linkedIn.featuredPosts}"
+                                       type="text"/>
                             </div>
                         </div>
                         <div class="ui-input-field" title="Check this box if you have enough activity that it fills the section">
@@ -124,6 +129,7 @@
 
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
+<div th:replace="~{fragments/tasktogglescript :: script}"></div>
 </body>
 
 </html>
