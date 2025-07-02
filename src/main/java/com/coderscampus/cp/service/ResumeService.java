@@ -19,6 +19,21 @@ public class ResumeService {
     private StudentRepository studentRepo;
 
 
+    public Resume save(Resume resume) {
+        if (resume == null || resume.getStudent() == null || resume.getStudent().getUid() == null) {
+            return null;
+        }
+
+        Student student = studentRepo.findByUid(resume.getStudent().getUid());
+        if (student == null) {
+            return null;
+        }
+
+        resume.setStudent(student);
+        return resumeRepo.save(resume);
+    }
+
+
     public Resume saveByUid(Resume resume, String uid) {
         if (resume == null || uid == null) {
             return null;
@@ -47,7 +62,7 @@ public class ResumeService {
         if (id == null) {
             return null;
         }
-        return resumeRepo.findById(id).get();
+        return resumeRepo.findById(id).orElseThrow(() -> new RuntimeException("Resume not found with id: " + id));
     }
 
     public void delete(Resume resume) {

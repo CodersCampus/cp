@@ -3,6 +3,8 @@
     default: false;
     prefersdark: false;
     color-scheme: "light";
+    
+    /* Colors */
     --color-base-100: oklch(100% 0 0);
     --color-base-200: oklch(96% 0.003 264.542);
     --color-base-300: oklch(87% 0.01 258.338);
@@ -23,12 +25,20 @@
     --color-warning-content: oklch(55% 0.163 48.998);
     --color-error: oklch(80% 0.114 19.571);
     --color-error-content: oklch(44% 0.177 26.899);
+	
+	/* border radius */
     --radius-selector: 1rem;
     --radius-field: 0.25rem;
     --radius-box: 0.25rem;
+	
+	/* base sizes */
     --size-selector: 0.25rem;
     --size-field: 0.25rem;
+	
+	/* border size */
     --border: 1px;
+	
+	/* effects */
     --depth: 0;
     --noise: 0;
 }

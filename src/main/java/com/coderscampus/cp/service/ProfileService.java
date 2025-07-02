@@ -16,32 +16,32 @@ public class ProfileService {
         this.userRepository = userRepository;
     }
 
-    public Profile create(Profile profile) {
-        if (profile == null) {
-            throw new IllegalArgumentException("Profile cannot be null");
+    public Profile save(Profile profile) {
+        validateProfile(profile);
+
+        if (profile.getId() != null) {
+            validateId(profile.getId());
+            ensureProfileExists(profile.getId());
         }
+
         return profileRepository.save(profile);
     }
+
+/*
+    public Profile save(Long id, Profile profile) {
+        validateId(id);
+        validateProfile(profile);
+        ensureProfileExists(id);
+        profile.setId(id);
+        return profileRepository.save(profile);
+    }
+*/
 
     public Profile findById(Long id) {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid profile ID");
         }
         return profileRepository.findById(id).orElseThrow(() -> new RuntimeException("Profile not found"));
-    }
-
-    public Profile update(Long id, Profile profile) {
-        if (id == null || id <= 0) {
-            throw new IllegalArgumentException("Invalid profile ID");
-        }
-        if (profile == null) {
-            throw new IllegalArgumentException("Profile cannot be null");
-        }
-        if (!profileRepository.existsById(id)) {
-            throw new RuntimeException("Profile not found");
-        }
-        profile.setId(id);
-        return profileRepository.save(profile);
     }
 
     public void delete(Long id) {
@@ -54,4 +54,21 @@ public class ProfileService {
         profileRepository.deleteById(id);
     }
 
+    private void validateProfile(Profile profile) {
+        if (profile == null) {
+            throw new IllegalArgumentException("Profile cannot be null");
+        }
+    }
+
+    private void validateId(Long id) {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("Invalid profile ID");
+        }
+    }
+
+    private void ensureProfileExists(Long id) {
+        if (!profileRepository.existsById(id)) {
+            throw new RuntimeException("Profile not found");
+        }
+    }
 }

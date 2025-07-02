@@ -8,15 +8,9 @@ import java.util.List;
 
 @Entity
 public class Resume {
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
     private String phoneNumber;
     private String email;
     private String city;
@@ -28,16 +22,11 @@ public class Resume {
     private String workExperience;
     private String education;
     private String projects;
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     public Resume() {
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
     }
 
     public Long getId() {
@@ -136,9 +125,17 @@ public class Resume {
         this.projects = projects;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     @Override
     public String toString() {
-        return "Resume{" +
+        return "Resume [" +
                 "id=" + id +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
@@ -151,6 +148,6 @@ public class Resume {
                 ", workExperience='" + workExperience + '\'' +
                 ", education='" + education + '\'' +
                 ", projects='" + projects + '\'' +
-                '}';
+                ']';
     }
 }

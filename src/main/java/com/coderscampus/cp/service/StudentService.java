@@ -20,12 +20,13 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepo;
 
-    public void save(Student student) {
+    public Student save(Student student) {
         if (isValidNewStudent(student)) {
-            studentRepo.save(student);
-        }
-        if (doesStudentExistInRepository(student)) {
-            studentRepo.save(student);
+            return studentRepo.save(student);
+        } else if (doesStudentExistInRepository(student)) {
+            return studentRepo.save(student);
+        } else {
+            throw new RuntimeErrorException(null, "Invalid student data or student already exists");
         }
     }
 
@@ -134,4 +135,7 @@ public class StudentService {
         return studentDTOS;
     }
 
+    public boolean existsByUid(String uid) {
+        return studentRepo.existsByUid(uid);
+    }
 }

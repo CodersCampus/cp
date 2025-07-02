@@ -4,6 +4,7 @@ import com.coderscampus.cp.domain.User;
 
 public class UserDTO {
     private Long id;
+    private String uid;
     private String email;
     private String displayName;
     private Boolean enabled;
@@ -15,14 +16,11 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this.id = user.getId();
+        this.uid = user.getUid();
         this.email = user.getEmail();
         this.displayName = user.getDisplayName();
         this.enabled = user.getEnabled();
         this.online = user.getOnline();
-    }
-
-    public UserDTO(Long id, String email, String displayName) {
-
     }
 
     public Long getId() {

@@ -10,7 +10,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
     private String uid; // Unique identifier for the user, can be used for OAuth
+    private String username; // Unique username for the user, can be used for login
     private String displayName; // Unique displayName for display purposes
     private String email;
     private String password;
@@ -21,19 +25,33 @@ public class User {
     private String provider; // OAuth provider (e.g., "google", "github", etc.)
     private String providerId; // Unique ID from the OAuth provider
 
-    @OneToOne
-    @JoinColumn(name = "profile_id")
-    private Profile profile; // One-to-one relationship with Profile
+    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //	private GitHub githubHandle;
+    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //	private LinkedIn linkedIn;
+    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //	private YouTube youtube;
+    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //	private FinalProject finalProject;
+    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //	private Resume resume;
+    //    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    //	private Foobar foobar;
+    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //	private Networking networking;
+    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //	private Website website;
 
     public User() {
         this.enabled = true; // Default to enabled
         this.createdAt = Instant.now(); // Set creation time to now
     }
 
-    public User(String uid, String displayName, String email, String password, Boolean enabled, Boolean online, Instant createdAt, Instant updatedAt, String provider, String providerId) {
+    public User(String uid, String username, String displayName, String email, String password, Boolean enabled, Boolean online, Instant createdAt, Instant updatedAt, String provider, String providerId) {
         this.uid = uid;
-        this.displayName = displayName;
+        this.username = username;
         this.email = email;
+        this.displayName = displayName;
         this.password = password;
         this.enabled = enabled;
         this.online = online;
@@ -51,12 +69,28 @@ public class User {
         this.id = id;
     }
 
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
+
     public String getUid() {
         return uid;
     }
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getDisplayName() {
@@ -131,19 +165,78 @@ public class User {
         this.providerId = providerId;
     }
 
-    public Profile getProfile() {
-        return profile;
-    }
+    //	public GitHub getGithubHandle() {
+//		return githubHandle;
+//	}
+//
+//	public void setGithubHandle(GitHub githubHandle) {
+//		this.githubHandle = githubHandle;
+//	}
+//
+//	public LinkedIn getLinkedIn() {
+//		return linkedIn;
+//	}
+//
+//	public void setLinkedIn(LinkedIn linkedIn) {
+//		this.linkedIn = linkedIn;
+//	}
+//
+//
+//	public YouTube getYoutube() {
+//		return youtube;
+//	}
+//
+//	public void setYoutube(YouTube youtube) {
+//		this.youtube = youtube;
+//	}
+//
+//	public FinalProject getFinalProject() {
+//		return finalProject;
+//	}
+//
+//	public void setFinalProject(FinalProject finalProject) {
+//		this.finalProject = finalProject;
+//	}
+//
+//	public Resume getResume() {
+//		return resume;
+//	}
+//
+//	public void setResume(Resume resume) {
+//		this.resume = resume;
+//	}
+//
+//	public Foobar getFoobar() {
+//		return foobar;
+//	}
+//
+//	public void setFoobar(Foobar foobar) {
+//		this.foobar = foobar;
+//	}
+//
+//	public Networking getNetworking() {
+//		return networking;
+//	}
+//
+//	public void setNetworking(Networking networking) {
+//		this.networking = networking;
+//	}
+//
+//	public Website getWebsite() {
+//		return website;
+//	}
+//
+//	public void setWebsite(Website website) {
+//		this.website = website;
+//	}
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
 
     @Override
     public String toString() {
         return "User [" +
                 "id=" + id +
                 ", uid='" + uid + '\'' +
+                ", username='" + username + '\'' +
                 ", displayName='" + displayName + '\'' +
                 ", email='" + email + '\'' +
                 ", enabled=" + enabled +
