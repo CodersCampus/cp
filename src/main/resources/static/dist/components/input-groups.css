@@ -95,5 +95,37 @@
             }
         }
     }
+    
+    &.input-file {
+        grid-auto-columns: auto !important;
+        grid-template-rows: 1fr !important;
+        align-items: center;
+        
+        img {
+            grid-column: 1 / 2;
+        }
+        
+        div {
+            grid-column: 2 / 3;
+            outline: none;
+        }
+    }
+    
+    &.input-checkbox {
+        grid-template-columns: 1.5rem auto !important;
+        grid-template-rows: 1fr !important;
+        align-items: center;
+        grid-column-gap: calc(var(--spacing) * 1);
+
+        div {
+            grid-column: 1 / 2;
+            outline: none;
+            padding-block: calc(var(--spacing) * 1);
+            padding-inline: calc(var(--spacing) * 1);
+        }
+        label {
+            grid-column: 2 / 3;
+        }
+    }
 }
     
