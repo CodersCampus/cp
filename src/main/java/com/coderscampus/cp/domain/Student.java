@@ -29,10 +29,8 @@ public class Student {
 //	private YouTube youtube;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private FinalProject finalProject;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "resume_id")
-    @MapsId
-	private Resume resume;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Resume resume;
 //    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
 //	private Foobar foobar;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -40,8 +38,6 @@ public class Student {
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Website website;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id")
-    @MapsId
 	private Profile profile;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Checkin> checkin = new ArrayList<Checkin>();
@@ -158,15 +154,15 @@ public class Student {
 //	public void setFinalProject(FinalProject finalProject) {
 //		this.finalProject = finalProject;
 //	}
-
-	public Resume getResume() {
-		return resume;
-	}
-
-	public void setResume(Resume resume) {
-		this.resume = resume;
-	}
-
+//
+//	public Resume getResume() {
+//		return resume;
+//	}
+//
+//	public void setResume(Resume resume) {
+//		this.resume = resume;
+//	}
+//
 //	public Foobar getFoobar() {
 //		return foobar;
 //	}

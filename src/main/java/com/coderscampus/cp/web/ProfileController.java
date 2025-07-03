@@ -57,24 +57,24 @@ public class ProfileController {
         String email = (String) session.getAttribute("email");
         String displayName = (String) session.getAttribute("displayName");
 
-        System.out.println("UID: " + uid);
-        System.out.println("Email: " + email);
-        System.out.println("Display Name: " + displayName);
-
-//        StudentDTO studentDTO = studentService.findByUid(uid);
-//        Profile profile = profileService.findById(studentDTO.getId());
-//        Resume resume = resumeService.findById(studentDTO.getId());
-
         List<String> months = new ArrayList<>(MONTH_NAMES);
         List<String> degrees = new ArrayList<>(DEGREE_NAMES);
         List<Integer> years = new ArrayList<>(YEARS);
 
-//        model.put("currentUser", currentUser);
-//        model.put("profile", profile);
-//        model.put("resume", resume);
+        System.out.println("UID: " + uid);
+        System.out.println("Email: " + email);
+        System.out.println("Display Name: " + displayName);
+
+        StudentDTO studentDTO = studentService.findByUid(uid);
+//        Profile profile = profileService.findById(studentDTO.getId());
+//        Resume resume = resumeService.findById(studentDTO.getId());
+
         model.put("months", months);
         model.put("degrees", degrees);
         model.put("years", years);
+
+//        model.put("profile", profile);
+//        model.put("resume", resume);
 
         return "profile/index";
     }
