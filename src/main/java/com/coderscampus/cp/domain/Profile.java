@@ -47,7 +47,7 @@ public class Profile {
     @Column(nullable = true, length = 100)
     private String country;
 
-    @OneToOne(mappedBy = "profile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
     @MapsId
     private Student student; // One-to-one relationship with Student

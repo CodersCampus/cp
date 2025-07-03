@@ -37,6 +37,8 @@ public class LinkedInController {
 
     @PostMapping("/create")
     public String create(LinkedIn linkedIn, @RequestParam("uid") String uid) {
+        // Check and see if the student exists
+        // if not create it
         linkedIn = linkedInService.saveByUid(linkedIn, uid);
         return "redirect:/linkedin";
     }

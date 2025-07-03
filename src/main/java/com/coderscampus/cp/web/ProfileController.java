@@ -66,15 +66,15 @@ public class ProfileController {
         System.out.println("Display Name: " + displayName);
 
         StudentDTO studentDTO = studentService.findByUid(uid);
-        Profile profile = profileService.findById(studentDTO.getId());
-        Resume resume = resumeService.findById(studentDTO.getId());
+//        Profile profile = profileService.findById(studentDTO.getId());
+//        Resume resume = resumeService.findById(studentDTO.getId());
 
         model.put("months", months);
         model.put("degrees", degrees);
         model.put("years", years);
 
-        model.put("profile", profile);
-        model.put("resume", resume);
+//        model.put("profile", profile);
+//        model.put("resume", resume);
 
         return "profile/index";
     }
