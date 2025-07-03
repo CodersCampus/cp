@@ -1157,9 +1157,9 @@ input[type=checkbox]:checked:before {
 /*// --------------------------------- //*/
 
 .big-title {
-    display:flex;
+    display: flex;
     flex-direction: row;
-    gap:16px;
+    gap: 16px;
     color: var(--primary);
 }
 
@@ -1258,20 +1258,80 @@ input[type=checkbox]:checked:before {
     color: var(--primary);
 }
 
-.checkin-form-container{
-	display: flex;
-	padding: 20px;
-	
+.checkin-form-container {
+    display: flex;
+    padding: 20px;
+
 }
 
-.activity-log-section{
-display: flex;
-flex-direction: column;
-max-width: min-content;
-padding-top: 40px;
+.activity-log-section {
+    display: flex;
+    flex-direction: column;
+    max-width: min-content;
+    padding-top: 40px;
 }
 
 .button-group {
 
 }
+
+/*Styling for textarea*/
+.ui-clip-text {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    position: relative;
+}
+
+
+
+/*Styling for toggle switch*/
+
+.ui-checkbox .ui-hidden-checkbox {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.ui-toggle {
+    width: 40px;
+    height: 20px;
+    background-color: var(--table-odd);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: var(--toggle-button-transition);
+}
+
+.ui-toggle::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 1px;
+    top: 1px;
+    background: var(--toggle-button-color);
+    border-radius: 7px;
+    transition: transform 0.3s ease;
+}
+
+.ui-hidden-checkbox:checked ~ .ui-toggle::before {
+    transform: translateX(20px);
+}
+
+.ui-toggle-text {
+    color: var(--primary);
+    transition: var(--toggle-button-transition);
+}
+
+.ui-hidden-checkbox:checked ~ .ui-toggle ~ .ui-toggle-text {
+    color: var(--secondary);
+    transition: var(--toggle-button-transition);
+}
+
 
