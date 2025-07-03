@@ -2,6 +2,7 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Profile;
 import com.coderscampus.cp.domain.Resume;
+import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.dto.UserDTO;
@@ -12,8 +13,7 @@ import com.coderscampus.cp.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,30 +52,31 @@ public class ProfileController {
     }
 
     @GetMapping("")
-    public String profileView(ModelMap model, HttpSession session) {
+    public String getProfile(ModelMap model, HttpSession session) {
         String uid = (String) session.getAttribute("uid");
-        String email = (String) session.getAttribute("email");
-        String displayName = (String) session.getAttribute("displayName");
 
         List<String> months = new ArrayList<>(MONTH_NAMES);
         List<String> degrees = new ArrayList<>(DEGREE_NAMES);
         List<Integer> years = new ArrayList<>(YEARS);
 
-        System.out.println("UID: " + uid);
-        System.out.println("Email: " + email);
-        System.out.println("Display Name: " + displayName);
-
-        StudentDTO studentDTO = studentService.findByUid(uid);
-//        Profile profile = profileService.findById(studentDTO.getId());
-//        Resume resume = resumeService.findById(studentDTO.getId());
+        Student student = studentService.findStudentByUid(uid);
+        Profile profile = profileService.findById(student.getId());
+        Resume resume = resumeService.findById(student.getId());
 
         model.put("months", months);
         model.put("degrees", degrees);
         model.put("years", years);
 
-//        model.put("profile", profile);
-//        model.put("resume", resume);
+//        model.addAttribute("section", section);
+        model.put("profile", profile);
+        model.put("resume", resume);
 
         return "profile/index";
+    }
+
+    @PostMapping("/update")
+    public String putProfile(Profile profile) {
+        profileService.save(profile);
+        return "redirect:/profile";
     }
 }

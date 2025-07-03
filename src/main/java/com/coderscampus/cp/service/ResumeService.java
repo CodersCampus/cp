@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ResumeService {
@@ -17,7 +18,6 @@ public class ResumeService {
 
     @Autowired
     private StudentRepository studentRepo;
-
 
     public Resume save(Resume resume) {
         if (resume == null || resume.getStudent() == null || resume.getStudent().getUid() == null) {
@@ -32,7 +32,6 @@ public class ResumeService {
         resume.setStudent(student);
         return resumeRepo.save(resume);
     }
-
 
     public Resume saveByUid(Resume resume, String uid) {
         if (resume == null || uid == null) {
@@ -62,11 +61,10 @@ public class ResumeService {
         if (id == null) {
             return null;
         }
-        return resumeRepo.findById(id).orElseThrow(() -> new RuntimeException("Resume not found with id: " + id));
+        return resumeRepo.findById(id).orElse(null);
     }
 
     public void delete(Resume resume) {
         resumeRepo.delete(resume);
     }
-
 }

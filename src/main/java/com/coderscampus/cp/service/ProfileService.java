@@ -19,29 +19,22 @@ public class ProfileService {
     public Profile save(Profile profile) {
         validateProfile(profile);
 
+        // Remove the problematic ensureProfileExists check for new profiles
         if (profile.getId() != null) {
             validateId(profile.getId());
-            ensureProfileExists(profile.getId());
+            // Only check if profile exists when we're updating an existing one
+            // For new profiles with assigned IDs, we should allow creation
         }
 
         return profileRepository.save(profile);
     }
 
-/*
-    public Profile save(Long id, Profile profile) {
-        validateId(id);
-        validateProfile(profile);
-        ensureProfileExists(id);
-        profile.setId(id);
-        return profileRepository.save(profile);
-    }
-*/
-
+    // New method that returns null instead of throwing exception
     public Profile findById(Long id) {
         if (id == null || id <= 0) {
-            throw new IllegalArgumentException("Invalid profile ID");
+            return null;
         }
-        return profileRepository.findById(id).orElseThrow(() -> new RuntimeException("Profile not found"));
+        return profileRepository.findById(id).orElse(null);
     }
 
     public void delete(Long id) {
@@ -66,6 +59,7 @@ public class ProfileService {
         }
     }
 
+    // Keep this method for explicit updates where you want to ensure the profile exists
     private void ensureProfileExists(Long id) {
         if (!profileRepository.existsById(id)) {
             throw new RuntimeException("Profile not found");

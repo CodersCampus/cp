@@ -63,7 +63,7 @@ public class  ResumeController {
     public String update(Resume resume, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         resumeService.saveByUid(resume, uid);
-        return "redirect:/resume";
+        return "redirect:/profile";
     }
 
     @PostMapping("/delete")

@@ -11,7 +11,7 @@
 
     <div class="content-body">
         <div class="profile-tabs tabs tabs-border">
-            <input type="radio" name="my_tabs_2" class="tab" aria-label="Personal Information" checked="checked"/>
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Personal Information" th:checked="checked"/>
             <div class="tab-content">
                 <section>
                     <hgroup>
@@ -19,11 +19,12 @@
                         <p>What’s the best way for employers to contact you?</p>
                     </hgroup>
 
-                    <form class="columns-8">
+                    <form th:action="@{/profile/update?section=1}" method="post" class="columns-8" th:object="${profile}">
+                      <input type="hidden" th:field="*{id}">
                         <div class="input col-span-4">
                             <label for="first-name">First name</label>
                             <div>
-                                <input id="first-name" type="text" name="firstName" placeholder="Riley"
+                                <input id="first-name" type="text" name="firstName" th:value="*{firstName}" placeholder="Riley"
                                        autocomplete="first-name"/>
                             </div>
                         </div>
@@ -31,7 +32,7 @@
                         <div class="input col-span-4">
                             <label for="last-name">Last name</label>
                             <div>
-                                <input id="last-name" type="text" name="lastName" placeholder="Taylor"
+                                <input id="last-name" type="text" name="lastName" th:value="*{lastName}" placeholder="Taylor"
                                        autocomplete="last-name"/>
                             </div>
                         </div>
@@ -39,7 +40,7 @@
                         <div class="input col-span-4">
                             <label for="city">City</label>
                             <div>
-                                <input id="city" type="text" name="city" placeholder="San Francisco"
+                                <input id="city" type="text" name="city" th:value="*{city}" placeholder="San Francisco"
                                        autocomplete="city"/>
                             </div>
                         </div>
@@ -47,14 +48,14 @@
                         <div class="input col-span-2">
                             <label for="state">State/Province</label>
                             <div>
-                                <input id="state" type="text" name="state" placeholder="CA" autocomplete="state"/>
+                                <input id="state" type="text" name="state" th:value="*{state}" placeholder="CA" autocomplete="state"/>
                             </div>
                         </div>
 
                         <div class="input col-span-2">
                             <label for="zipCode">Zip Code</label>
                             <div>
-                                <input id="zipCode" type="text" name="zipCode" placeholder="94102"
+                                <input id="zipCode" type="text" name="zipCode" th:value="*{zipCode}" placeholder="94102"
                                        autocomplete="zip-code"/>
                             </div>
                         </div>
@@ -62,7 +63,7 @@
                         <div class="input col-span-4">
                             <label for="phoneNumber">Phone Number</label>
                             <div>
-                                <input id="phoneNumber" type="text" name="phoneNumber" placeholder="415-555-5555"
+                                <input id="phoneNumber" type="text" name="phoneNumber" th:value="*{phoneNumber}" placeholder="415-555-5555"
                                        autocomplete="phone-number"/>
                             </div>
                         </div>
@@ -70,7 +71,7 @@
                         <div class="input col-span-4">
                             <label for="email">Email Address</label>
                             <div>
-                                <input id="email" type="email" name="email" placeholder="riley.taylor@example.com"
+                                <input id="email" type="email" name="email" th:value="*{email}" placeholder="riley.taylor@example.com"
                                        autocomplete="email"/>
                             </div>
                         </div>
@@ -88,7 +89,7 @@
                             <label for="websiteUrl">Website Url</label>
                             <div>
                                 <span>https://</span>
-                                <input id="websiteUrl" type="text" name="websiteUrl" placeholder="www.rileytaylor.dev"
+                                <input id="websiteUrl" type="text" name="websiteUrl" th:value="*{websiteUrl}" placeholder="www.rileytaylor.dev"
                                        autocomplete="website-url"/>
                             </div>
                         </div>
@@ -99,7 +100,7 @@
                             <label for="linkedInUrl">Linkedin Url</label>
                             <div>
                                 <span>https://linkedin/in/</span>
-                                <input id="linkedInUrl" type="text" name="linkedInUrl" placeholder="rileytaylor"
+                                <input id="linkedInUrl" type="text" name="linkedInUrl" th:value="*{linkedInUrl}" placeholder="rileytaylor"
                                        autocomplete="linkedin-url"/>
                             </div>
                         </div>
@@ -110,7 +111,7 @@
                             <label for="githubUrl">Github Url</label>
                             <div>
                                 <span>https://github.com/</span>
-                                <input id="githubUrl" type="text" name="githubUrl" placeholder="rileytalor"
+                                <input id="githubUrl" type="text" name="githubUrl" th:value="*{githubUrl}" placeholder="rileytalor"
                                        autocomplete="github-url"/>
                             </div>
                         </div>
@@ -149,7 +150,7 @@
                         <p>What skills would you like to highlight?</p>
                     </hgroup>
 
-                    <form class="form">
+                    <form class="form" th:action="@{/resume/update}">
                         <div class="input">
                             <label for="skills">Skills</label>
                             <div>

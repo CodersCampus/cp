@@ -37,8 +37,8 @@ public class Student {
 //	private Networking networking;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Website website;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Profile profile;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Profile profile;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Checkin> checkin = new ArrayList<Checkin>();
 
@@ -201,14 +201,6 @@ public class Student {
 
     public void setMentee(String mentee) {
         this.mentee = mentee;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
     }
 
     public List<Checkin> getCheckin() {
