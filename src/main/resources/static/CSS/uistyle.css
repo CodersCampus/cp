@@ -1275,6 +1275,18 @@ input[type=checkbox]:checked:before {
 
 }
 
+/*Styling for textarea*/
+.ui-clip-text {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    position: relative;
+}
+
+
+
 /*Styling for toggle switch*/
 
 .ui-checkbox .ui-hidden-checkbox {
