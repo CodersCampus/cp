@@ -20,6 +20,9 @@
             <div class="ga-content-main">
                 <main>
                     <form action="/github/update" class="ui-form" method="post">
+                        <div th:if="${error}" class="ui-error-message">
+                            <p th:text="${error}"></p>
+                        </div>
                         <input name="uid" th:field="${gitHub.id}" type="hidden"/>
                         <div class="ui-input-field">
                             <label for="handle" class="ui-label">Handle:</label>

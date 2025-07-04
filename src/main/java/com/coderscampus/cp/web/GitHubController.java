@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/github")
@@ -43,7 +44,7 @@ public class GitHubController {
 
         if (!isValidURL(url)) {
             model.put("gitHub", gitHub);
-            model.put("error", "Invalid URL. Make sure it starts with http:// or https://");
+            model.put("error", "Invalid URL");
             return "github/create";
         }
         gitHub = gitHubService.saveByUid(gitHub, uid);
@@ -69,8 +70,8 @@ public class GitHubController {
     public String update(GitHub gitHub, HttpSession httpSession, ModelMap model) {
         if (!isValidURL(gitHub.getUrl())) {
             model.put("gitHub", gitHub);
-            model.put("error", "Invalid URL. Make sure it starts with http:// or https://");
-            return "github/create";
+            model.put("error", "Invalid URL");
+            return "github/update";
             }
         String uid = (String) httpSession.getAttribute("uid");
         gitHubService.saveByUid(gitHub, uid);
@@ -85,11 +86,25 @@ public class GitHubController {
 
     private boolean isValidURL (String urlString) {
         try {
-            URL url = new URL(urlString);
-            url.toURI();
-            return url.getProtocol().equals("http") || url.getProtocol().equals("https");
-        } catch (Exception e) {
-            return false;
-        }
+        URL url = new URL(urlString);
+        url.toURI();
+
+        String protocol = url.getProtocol();
+        if (!protocol.equals("http") && !protocol.equals("https")) return false;
+
+        String host = url.getHost();
+        if (host == null || host.isBlank() || !host.contains(".")) return false;
+
+        String[] hostParts = host.split("\\.");
+        String tld = hostParts[hostParts.length - 1].toLowerCase();
+
+        return VALID_TLDS.contains(tld);
+    } catch (Exception e) {
+        return false;
     }
+    }
+
+    private static final Set<String> VALID_TLDS = Set.of(
+    "com", "org", "net", "edu", "gov", "io", "dev", "co", "us", "uk", "de", "ca"
+);
 }
