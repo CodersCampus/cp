@@ -21,15 +21,15 @@
                         <table>
                             <thead>
                             <tr>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">URL</th>
                                 <th scope="col">Banner</th>
                                 <th scope="col">About</th>
-                                <th scope="col">URL</th>
                                 <th scope="col">Featured Posts</th>
                                 <th scope="col">Activity</th>
                                 <th scope="col">Skills</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
                                 <th scope="col">Biography</th>
                                 <th scope="col">Education</th>
                                 <th scope="col">Experience</th>
@@ -41,24 +41,57 @@
                             </thead>
                             <tbody>
                             <tr th:each="linkedIn: ${linkedIns}">
+                                <td><span th:text="${linkedIn.firstName}"></span></td>
+                                <td><span th:text="${linkedIn.lastName}"></span></td>
+                                <td><span th:text="${linkedIn.url}"></span></td>
                                 <td style="text-align: center"><span th:if="${linkedIn.banner == true}"><i
                                         class="fa-regular fa-square-check"
                                         style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
                                 </td>
-                                <td><span th:text="${linkedIn.about}"></span></td>
-                                <td><span th:text="${linkedIn.url}"></span></td>
-                                <td><span th:text="${linkedIn.featuredPosts}"></span></td>
-                                <td><span th:text="${linkedIn.activity}"></span></td>
-                                <td><span th:text="${linkedIn.skills}"></span></td>
-                                <td><span th:text="${linkedIn.email}"></span></td>
-                                <td><span th:text="${linkedIn.firstName}"></span></td>
-                                <td><span th:text="${linkedIn.lastName}"></span></td>
-                                <td><span th:text="${linkedIn.biography}"></span></td>
-                                <td><span th:text="${linkedIn.education}"></span></td>
-                                <td><span th:text="${linkedIn.experience}"></span></td>
-                                <td><span th:text="${linkedIn.location}"></span></td>
-                                <td><span th:text="${linkedIn.image}"></span></td>
-                                <td><span th:text="${linkedIn.title}"></span></td>
+                                <td style="text-align: center"><span th:if="${linkedIn.about == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.featuredPosts == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.activity == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.skills == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.email == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.biography == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.education == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.experience == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.location == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.image == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${linkedIn.title == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
                                 <td>
                                     <a th:href="@{/linkedin/update/{linkedInId}(linkedInId=${linkedIn.id})}">
                                         <i class="fa-solid fa-pen-to-square"

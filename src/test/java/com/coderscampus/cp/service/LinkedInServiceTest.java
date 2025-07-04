@@ -74,13 +74,13 @@ public class LinkedInServiceTest {
             linkedIn.setFeaturedPosts(true);
             linkedIn.setActivity(true);
             linkedIn.setSkills(true);
-            linkedIn.setEmail(false);
+            linkedIn.setEmail(true);
             linkedIn.setFirstName("Blocker" + i);
             linkedIn.setLastName("Blocker" + i);
             linkedIn.setBiography(true);
             linkedIn.setEducation(false);
             linkedIn.setExperience(true);
-            linkedIn.setLocation("Blocker" + i);
+            linkedIn.setLocation(true);
             linkedIn.setImage(true);
             linkedIn.setTitle(true);
             linkedIn.setStudent(student1);

@@ -1,5 +1,5 @@
 <script>
-    document.getElementById('banner').addEventListener('change', function () {
+    document.getElementsByClassName('ui-hidden-checkbox').addEventListener('change', function () {
         const text = document.querySelector('.ui-toggle-text');
         text.textContent = this.checked ? 'Completed' : 'Not Complete';
     });

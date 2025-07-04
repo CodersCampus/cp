@@ -4,27 +4,27 @@ import jakarta.persistence.*;
 
 @Entity
 public class LinkedIn {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
-	private Boolean banner;
-	private Boolean about;
-	private String url;
-	private Boolean featuredPosts;
-	private Boolean activity;
-	private Boolean skills;
-	private Boolean email;
-	private String firstName;
-	private String lastName;
-	private Boolean biography;
-	private Boolean education;
-	private Boolean experience;
-	private String location;
-	private Boolean image;
-	private Boolean title;
+    private Boolean banner;
+    private Boolean about;
+    private String url;
+    private Boolean featuredPosts;
+    private Boolean activity;
+    private Boolean skills;
+    private Boolean email;
+    private String firstName;
+    private String lastName;
+    private Boolean biography;
+    private Boolean education;
+    private Boolean experience;
+    private Boolean location;
+    private Boolean image;
+    private Boolean title;
 
     public LinkedIn() {
     }
@@ -141,11 +141,11 @@ public class LinkedIn {
         this.experience = experience;
     }
 
-    public String getLocation() {
+    public Boolean getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Boolean location) {
         this.location = location;
     }
 
