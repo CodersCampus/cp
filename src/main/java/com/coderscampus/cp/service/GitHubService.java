@@ -81,9 +81,9 @@ public class GitHubService {
         String tld = hostParts[hostParts.length - 1].toLowerCase();
 
         return VALID_TLDS.contains(tld);
-    } catch (Exception e) {
-        return false;
-    }
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     private static final Set<String> VALID_TLDS = Set.of(
