@@ -21,13 +21,13 @@ public class GitHub {
     private String image;
     private String headline;
     private String contactDetails;
-    private URL url;
+    private String url;
 
     public GitHub() {
 
     }
 
-    public GitHub(String handle, String enhancedReadMe, String renamedAssignments, String pinnedRepos, String externalLinks, String image, String headline, String contactDetails, URL url) {
+    public GitHub(String handle, String enhancedReadMe, String renamedAssignments, String pinnedRepos, String externalLinks, String image, String headline, String contactDetails, String url) {
         this.handle = handle;
         this.enhancedReadMe = enhancedReadMe;
         this.renamedAssignments = renamedAssignments;
@@ -119,11 +119,11 @@ public class GitHub {
         this.contactDetails = contactDetails;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public void setUrl(URL url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 

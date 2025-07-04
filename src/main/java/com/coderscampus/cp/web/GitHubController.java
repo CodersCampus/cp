@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URL;
 import java.util.List;
 
 @Controller
@@ -37,7 +38,14 @@ public class GitHubController {
     }
 
     @PostMapping("/create")
-    public String create(GitHub gitHub, @RequestParam("uid") String uid) {
+    public String create(GitHub gitHub, @RequestParam("uid") String uid, ModelMap model) {
+        String url = gitHub.getUrl();
+
+        if (!isValidURL(url)) {
+            model.put("gitHub", gitHub);
+            model.put("error", "Invalid URL. Make sure it starts with http:// or https://");
+            return "github/create";
+        }
         gitHub = gitHubService.saveByUid(gitHub, uid);
         return "redirect:/github";
     }
@@ -58,7 +66,12 @@ public class GitHubController {
     }
 
     @PostMapping("/update")
-    public String update(GitHub gitHub, HttpSession httpSession) {
+    public String update(GitHub gitHub, HttpSession httpSession, ModelMap model) {
+        if (!isValidURL(gitHub.getUrl())) {
+            model.put("gitHub", gitHub);
+            model.put("error", "Invalid URL. Make sure it starts with http:// or https://");
+            return "github/create";
+            }
         String uid = (String) httpSession.getAttribute("uid");
         gitHubService.saveByUid(gitHub, uid);
         return "redirect:/github";
@@ -68,5 +81,15 @@ public class GitHubController {
     public String delete(GitHub gitHub) {
         gitHubService.delete(gitHub);
         return "redirect:/github";
+    }
+
+    private boolean isValidURL (String urlString) {
+        try {
+            URL url = new URL(urlString);
+            url.toURI();
+            return url.getProtocol().equals("http") || url.getProtocol().equals("https");
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

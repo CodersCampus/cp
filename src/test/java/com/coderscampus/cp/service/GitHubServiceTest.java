@@ -70,7 +70,7 @@ public class GitHubServiceTest {
 
         for (int i = 0; i < 4; i++) {
             GitHub gitHub  = new GitHub();
-            gitHub.setUrl(new URL("http://www.example.com/docs/resource1.html"));
+            gitHub.setUrl("Blocker" + i);
             gitHub.setHandle("Blocker" + i);
             gitHub.setEnhancedReadMe("Blocker" + i);
             gitHub.setRenamedAssignments("Blocker" + i);
