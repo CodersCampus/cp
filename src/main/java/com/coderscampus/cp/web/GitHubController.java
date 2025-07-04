@@ -40,9 +40,8 @@ public class GitHubController {
 
     @PostMapping("/create")
     public String create(GitHub gitHub, @RequestParam("uid") String uid, ModelMap model) {
-        String url = gitHub.getUrl();
 
-        if (!isValidURL(url)) {
+        if (!gitHubService.isValidURL(gitHub.getUrl())) {
             model.put("gitHub", gitHub);
             model.put("error", "Invalid URL");
             return "github/create";
@@ -68,7 +67,8 @@ public class GitHubController {
 
     @PostMapping("/update")
     public String update(GitHub gitHub, HttpSession httpSession, ModelMap model) {
-        if (!isValidURL(gitHub.getUrl())) {
+
+        if (!gitHubService.isValidURL(gitHub.getUrl())) {
             model.put("gitHub", gitHub);
             model.put("error", "Invalid URL");
             return "github/update";
@@ -84,27 +84,4 @@ public class GitHubController {
         return "redirect:/github";
     }
 
-    private boolean isValidURL (String urlString) {
-        try {
-        URL url = new URL(urlString);
-        url.toURI();
-
-        String protocol = url.getProtocol();
-        if (!protocol.equals("http") && !protocol.equals("https")) return false;
-
-        String host = url.getHost();
-        if (host == null || host.isBlank() || !host.contains(".")) return false;
-
-        String[] hostParts = host.split("\\.");
-        String tld = hostParts[hostParts.length - 1].toLowerCase();
-
-        return VALID_TLDS.contains(tld);
-    } catch (Exception e) {
-        return false;
-    }
-    }
-
-    private static final Set<String> VALID_TLDS = Set.of(
-    "com", "org", "net", "edu", "gov", "io", "dev", "co", "us", "uk", "de", "ca"
-);
 }
