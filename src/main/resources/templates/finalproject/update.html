@@ -7,13 +7,11 @@
         <header th:replace="~{fragments/header :: header(${activePage})}"></header>
         <div layout="layout-sidebar">
             <div class="sidebar-grid-area">
-                <section class="ui-panel-title title-small">Finalproject</section>
+                <section class="ui-panel-title title-small">Final Project</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
                         <button class="ui-nav-item ui-button" type="button"><a href="/finalproject/create">Create New</a>
                         </button>
-                        <button class="ui-nav-item ui-button" type="button"><a aria-current="page"
-                                                                               href="/finalproject/">Back</a></button>
                     </ul>
                 </nav>
             </div>
@@ -31,6 +29,14 @@
                             <label for="proposal" class="ui-label">Proposal:</label>
                             <div class="ui-text-input">
                                 <input id="proposal" class="ui-value" th:field="*{proposal}" type="text"/>
+                            </div>
+                        </div>
+                        <div class="ui-input-field">
+                            <label for="description" class="ui-label">Description:</label>
+                            <div class="ui-text-input">
+                            <textarea id="description" class="ui-value" cols="20" name="description"
+                                      placeholder="Describe the project (500 characters or less)" rows="3" wrap="hard"
+                                      th:field="*{description}"></textarea>
                             </div>
                         </div>
                         <div class="ui-input-field">

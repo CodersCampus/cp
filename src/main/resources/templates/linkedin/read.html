@@ -41,7 +41,10 @@
                             </thead>
                             <tbody>
                             <tr th:each="linkedIn: ${linkedIns}">
-                                <td><span th:text="${linkedIn.banner}"></span></td>
+                                <td style="text-align: center"><span th:if="${linkedIn.banner == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
                                 <td><span th:text="${linkedIn.about}"></span></td>
                                 <td><a th:href="${linkedIn.url}" th:text="${linkedIn.url}" target="_blank" rel="noopener noreferrer"></a></td>
                                 <td><span th:text="${linkedIn.featuredPosts}"></span></td>

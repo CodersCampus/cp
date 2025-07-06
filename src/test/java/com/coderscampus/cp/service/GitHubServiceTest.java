@@ -304,25 +304,6 @@ public class GitHubServiceTest {
 
         });
     }
-    
-    @Test
-    @Transactional
-    void testDeleteRecordsWithNoStudentAssociated() {
-        GitHub gitHubWithoutStudent = new GitHub();
-        gitHubWithoutStudent.setStudent(null);
-        gitHubRepo.save(gitHubWithoutStudent);
-
-        gitHubService.deleteRecordsWithNoStudentAssociated();
-
-        List<GitHub> allGitHubs = gitHubService.findAll();
-        int count = 0;
-        for (GitHub gitHub : allGitHubs) {
-            if (gitHub.getStudent() == null) {
-                count++;
-            }
-        }
-        assertEquals(0, count);
-    }
 
 
 

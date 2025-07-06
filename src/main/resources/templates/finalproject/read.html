@@ -10,7 +10,8 @@
                 <section class="ui-panel-title title-small">Final Project</section>
                 <nav class="ui-panel">
                     <ul class="ui-navbar-nav">
-                        <button class="ui-nav-item ui-button" type="button"><a href="/finalproject/create">Create New</a>
+                        <button class="ui-nav-item ui-button" type="button"><a href="/finalproject/create">Create
+                            New</a>
                         </button>
                     </ul>
                 </nav>
@@ -24,6 +25,7 @@
                                 <th scope="col">Student Name:</th>
                                 <th scope="col">Project Name:</th>
                                 <th scope="col">Proposal:</th>
+                                <th scope="col">Description:</th>
                                 <th scope="col">Crud Views:</th>
                                 <th scope="col">Tables:</th>
                                 <th scope="col">Views:</th>
@@ -35,6 +37,10 @@
                                 <td><span th:text="${finalproject.student.name}"></span></td>
                                 <td><span th:text="${finalproject.projectName}"></span></td>
                                 <td><a th:href="${finalproject.proposal}" th:text="${finalproject.proposal}" target="_blank" rel="noopener noreferrer"></a></td>
+                                <td class="ui-clip-text" onmouseover="showFullText(event, this)"
+                                    onmouseout="hideFullText()">
+                                    <span th:text="${#strings.isEmpty(finalproject.description) ? 'No description provided' : finalproject.description}"></span>
+                                </td>
                                 <td><span th:text="${finalproject.crud}"></span></td>
                                 <td><span th:text="${finalproject.tables}"></span></td>
                                 <td><span th:text="${finalproject.views}"></span></td>
@@ -58,6 +64,35 @@
 
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
+<script>
+    function showFullText(e, el) {
+        let fullText = document.getElementById('ui-full-text');
+        if (!fullText) {
+            fullText = document.createElement('div');
+            fullText.id = 'ui-full-text';
+            fullText.style.position = 'absolute';
+            fullText.style.background = 'var(--accent)';
+            fullText.style.color = 'var(--primary)';
+            fullText.style.padding = '10px';
+            fullText.style.maxWidth = '400px';
+            fullText.style.zIndex = '1000';
+            fullText.style.whiteSpace = 'normal';
+            fullText.style.overflowWrap = 'break-word';
+            document.body.appendChild(fullText);
+        }
+        fullText.textContent = el.textContent;
+        fullText.style.left = e.pageX + 'px';
+        fullText.style.top = e.pageY + 'px';
+        fullText.style.display = 'block';
+    }
+
+    function hideFullText() {
+        const fullText = document.getElementById('ui-full-text');
+        if (fullText) {
+            fullText.style.display = 'none';
+        }
+    }
+</script>
 </body>
 </html>
 

@@ -21,7 +21,6 @@ public class LinkedInService {
     @Autowired
     private StudentRepository studentRepo;
 
-
     public LinkedIn saveByUid(LinkedIn linkedIn, String uid) {
         if (linkedIn == null || uid == null) {
             return null;
@@ -57,17 +56,8 @@ public class LinkedInService {
         linkedInRepo.delete(linkedIn);
     }
 
-    public void deleteRecordsWithNoStudentAssociated() {
-        List<LinkedIn> allLinkedIns = linkedInRepo.findAll();
+        pubic b
 
-        for (LinkedIn linkedIn : allLinkedIns) {
-            if (linkedIn.getStudent() == null) {
-                linkedInRepo.delete(linkedIn);
-            }
-        }
-    }
-
-        public boolean isValidURL (String urlString) {
         try {
         URL url = new URL(urlString);
         url.toURI();
@@ -76,19 +66,24 @@ public class LinkedInService {
         if (!protocol.equals("http") && !protocol.equals("https")) return false;
 
         String host = url.getHost();
-        if (host == null || host.isBlank() || !host.contains(".")) return false;
+     
 
-        String[] hostParts = host.split("\\.");
-        String tld = hostParts[hostParts.length - 1].toLowerCase();
+    String[] hostParts = hostsplit("\\.");
+        Strin
+            
+            return VALID
 
-        return VALID_TLDS.contains(tld);
-        } catch (Exception e) {
-            return false;
-        }
-    }
+                return false;
+            }
+                
 
-    private static final Set<String> VALID_TLDS = Set.of(
-    "com", "org", "net", "edu", "gov", "io", "dev", "co", "us", "uk", "de", "ca"
-);
+            
+            ate static final Set<String> VALID_TLDS = Set.of(
+                
 
-}
+            
+            
+
+            
+
+    

@@ -54,14 +54,4 @@ public class ResumeService {
         resumeRepo.delete(resume);
     }
 
-    public void deleteRecordsWithNoStudentAssociated() {
-        List<Resume> allResumes = resumeRepo.findAll();
-
-        for (Resume resume : allResumes) {
-            if (resume.getStudent() == null) {
-                resumeRepo.delete(resume);
-            }
-        }
-    }
-
 }
