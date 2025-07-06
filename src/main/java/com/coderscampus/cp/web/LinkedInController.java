@@ -37,6 +37,7 @@ public class LinkedInController {
 
     @PostMapping("/create")
     public String create(LinkedIn linkedIn, @RequestParam("uid") String uid, ModelMap model) {
+
         if (!linkedInService.isValidURL(linkedIn.getUrl())) {
             model.put("linkedIn", linkedIn);
             model.put("error", "Invalid URL");

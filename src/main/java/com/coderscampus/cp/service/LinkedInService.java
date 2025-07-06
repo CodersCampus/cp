@@ -56,8 +56,7 @@ public class LinkedInService {
         linkedInRepo.delete(linkedIn);
     }
 
-        pubic b
-
+    public boolean isValidURL (String urlString) {
         try {
         URL url = new URL(urlString);
         url.toURI();
@@ -66,20 +65,21 @@ public class LinkedInService {
         if (!protocol.equals("http") && !protocol.equals("https")) return false;
 
         String host = url.getHost();
-     
+        if (host == null || host.isBlank() || !host.contains(".")) return false;
 
-    String[] hostParts = hostsplit("\\.");
-        Strin
-            
-            return VALID
+        String[] hostParts = host.split("\\.");
+        String tld = hostParts[hostParts.length - 1].toLowerCase();
 
-                return false;
-            }
-                
+        return VALID_TLDS.contains(tld);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
-            
-            ate static final Set<String> VALID_TLDS = Set.of(
-                
+    private static final Set<String> VALID_TLDS = Set.of(
+    "com", "org", "net", "edu", "gov", "io", "dev", "co", "us", "uk", "de", "ca"
+);
+}
 
             
             
