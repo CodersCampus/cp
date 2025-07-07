@@ -5,8 +5,10 @@
     }
     
     .tab-content {
-        border-bottom: 1px solid var(--color-base-300);
         background-color: var(--color-base-100);
+        border: 1px solid var(--color-base-300);
+        border-radius: var(--radius-field);
+        overflow: hidden;
         
         :where(& > :not(:last-child)) {
             border-bottom: 1px solid var(--color-base-300);
