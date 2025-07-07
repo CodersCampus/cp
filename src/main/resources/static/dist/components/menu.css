@@ -1,44 +1,35 @@
-@layer components {
-    .menu {
-        display: flex;
-        padding-inline: 0;
-
-        &, &.menu-vertical {
-            flex-direction: column;
+.menu {
+    .sidebar-content li & {
+        .menu-title {
+            padding-inline: calc(var(--spacing) * 4) !important;
         }
-
-        &.menu-horizontal {
-            flex-direction: row;
-        }
-    }
-
-    li {
-        &.menu-title {
-            color: color-mix(in oklab, var(--color-base-content) 50%, transparent);
-            font-size: var(--text-xs);
-            font-weight: var(--font-weight-medium);
-            letter-spacing: 0.025em;
-            padding-block: calc(var(--spacing) * 2);
-            padding-inline: calc(var(--spacing) * 8);
-        }
-
+        
         a {
-            display: flex;
-            align-items: center;
-            column-gap: calc(var(--spacing) * 2);
             color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
-            padding-block: calc(var(--spacing) * 2.5);
-            padding-inline: calc(var(--spacing) * 8);
-
+            font-size: var(--text-base);
+            padding-block: calc(var(--spacing) * 2.5) !important;
+            padding-inline: calc(var(--spacing) * 4) !important;
+            
             &:hover {
-                background-color: color-mix(in oklab, var(--color-base-200) 80%, transparent);
                 color: color-mix(in oklab, var(--color-base-content) 80%, transparent);
             }
-
+            
             &.active {
-                background-color: color-mix(in oklab, var(--color-base-200) 100%, transparent);
+                background-color: color-mix(in oklab, var(--color-base-content) 20%, transparent);
                 color: color-mix(in oklab, var(--color-base-content) 100%, transparent);
             }
         }
+    }
+    
+    .sidebar-content li.dropdown & {
+        @apply shadow-sm;
+        background-color: var(--color-base-200) !important;
+        border-radius: var(--radius-box) !important;
+        z-index: 1 !important;
+        width: calc(var(--spacing) * 58) !important;
+        /*width: 100% !important;*/
+        padding-block-start: calc(var(--spacing) * 2) !important;
+        padding-inline: calc(var(--spacing) * 2) !important;
+        /*margin-inline: calc(var(--spacing) * 4) !important;*/
     }
 }

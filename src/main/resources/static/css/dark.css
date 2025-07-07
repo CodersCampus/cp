@@ -28,8 +28,8 @@
     
     /* border radius */
     --radius-selector: 1rem;
-    --radius-field: 0.25rem;
-    --radius-box: 0.25rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
     
     /* base sizes */
     --size-selector: 0.25rem;

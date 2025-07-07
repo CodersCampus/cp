@@ -1,12 +1,7 @@
 :root {
-    --font-inter: "Inter", sans-serif;
-    --font-fredoka: "Fredoka", sans-serif;
-    --font-quicksand: "Quicksand", sans-serif;
     --font-geist: "Geist Mono", monospace;
     --font-comfortaa: "Comfortaa", sans-serif;
-    --font-slab: "Josefin Slab", serif;
     --font-outfit: "Outfit", sans-serif;
-    --font-jost: "Jost", sans-serif;
     --font-lexend: "Lexend", sans-serif;
 
     --container-8xl: 90rem;
