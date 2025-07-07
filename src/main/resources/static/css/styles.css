@@ -16,7 +16,8 @@
 @import "../dist/components/menu.css";
 @import "../dist/components/list.css";
 @import "../dist/components/form.css";
-@import "../dist/components/input-groups.css";
+/*@import "../dist/components/input-groups.css";*/
+@import "../dist/components/input-field.css";
 @import "../dist/components/button.css";
 @import "../dist/components/avatar.css";
 @import "../dist/components/headline.css";

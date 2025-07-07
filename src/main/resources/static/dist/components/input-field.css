@@ -1,0 +1,75 @@
+.input-field {
+    & > * + * {
+        margin-block-start: calc(var(--spacing) * 2);
+    }
+    
+    div {
+        text-transform: capitalize;
+    }
+    
+    label, input, textarea, select {
+        font-size: var(--text-sm) !important;
+        
+        @media (width >= 48rem) {
+            font-size: var(--text-base) !important;
+        }
+    }
+    
+    label.input, select.select {
+        width: 100%;
+        
+        &:focus-within {
+            outline-color: currentColor !important;
+            outline-offset: calc(2px * -1) !important;
+            outline-style: none !important;
+        }
+        
+        & > span {
+            font-size: var(--text-base) !important;
+            margin-inline-end: 0 !important;
+        }
+    }
+    
+    label.label, p {
+        font-size: var(--text-xs) !important;
+        
+        @media (width >= 48rem) {
+            font-size: var(--text-sm) !important;
+        }
+    }
+    
+    input {
+        width: 100%;
+        font-size: var(--text-base) !important;
+        
+        &:focus {
+            outline-color: currentColor !important;
+            outline-offset: calc(2px * -1) !important;
+            outline-style: none !important;
+        }
+        
+        &.checkbox {
+            width: var(--size) !important;
+        }
+        
+        &.toggle {
+            width:  calc((var(--size) * 2) - (var(--border) + var(--toggle-p)) * 2) !important;
+        }
+    }
+    
+    textarea {
+        width: 100%;
+        font-size: var(--text-base) !important;
+        
+        &:focus {
+            outline-color: currentColor !important;
+            outline-offset: calc(2px * -1) !important;
+            outline-style: none !important;
+        }
+    }
+    
+    .join {
+        width: 100%;
+    }
+}
+

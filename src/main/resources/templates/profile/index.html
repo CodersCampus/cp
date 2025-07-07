@@ -11,7 +11,7 @@
 
     <div class="content-body">
         <div class="profile-tabs tabs tabs-border">
-            <input type="radio" name="my_tabs_2" class="tab" aria-label="Personal Information" checked="checked"/>
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Personal Information"/>
             <div class="tab-content">
                 <section>
                     <hgroup>
@@ -19,110 +19,85 @@
                         <p>What’s the best way for employers to contact you?</p>
                     </hgroup>
 
-                    <form class="columns-8">
-                        <div class="input col-span-4">
-                            <label for="first-name">First name</label>
-                            <div>
-                                <input id="first-name" type="text" name="firstName" placeholder="Riley"
-                                       autocomplete="first-name"/>
-                            </div>
+                    <form>
+                        <div class="col-span-2">
+                            <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" alt=""
+                                 class="avatar mask mask-squircle"/>
                         </div>
 
-                        <div class="input col-span-4">
-                            <label for="last-name">Last name</label>
-                            <div>
-                                <input id="last-name" type="text" name="lastName" placeholder="Taylor"
-                                       autocomplete="last-name"/>
-                            </div>
+                        <div class="input-field col-span-9">
+                            <div>Change your picture</div>
+                            <input id="picture" type="file" class="file-input file-input-ghost"/>
+                            <label for="picture" class="label">Max size 2MB</label>
                         </div>
 
-                        <div class="input col-span-4">
-                            <label for="city">City</label>
-                            <div>
-                                <input id="city" type="text" name="city" placeholder="San Francisco"
-                                       autocomplete="city"/>
-                            </div>
+                        <div class="input-field col-span-6">
+                            <div>First name</div>
+                            <input type="text" name="firstName" placeholder="Riley" class="input"/>
                         </div>
 
-                        <div class="input col-span-2">
-                            <label for="state">State/Province</label>
-                            <div>
-                                <input id="state" type="text" name="state" placeholder="CA" autocomplete="state"/>
-                            </div>
+                        <div class="input-field col-span-6">
+                            <div>Last name</div>
+                            <input type="text" name="lastName" placeholder="Taylor" class="input"/>
                         </div>
 
-                        <div class="input col-span-2">
-                            <label for="zipCode">Zip Code</label>
-                            <div>
-                                <input id="zipCode" type="text" name="zipCode" placeholder="94102"
-                                       autocomplete="zip-code"/>
-                            </div>
+                        <div class="input-field col-span-6">
+                            <div>Email Address</div>
+                            <input type="email" name="email" placeholder="riley.taylor@example.com" class="input"/>
                         </div>
 
-                        <div class="input col-span-4">
-                            <label for="phoneNumber">Phone Number</label>
-                            <div>
-                                <input id="phoneNumber" type="text" name="phoneNumber" placeholder="415-555-5555"
-                                       autocomplete="phone-number"/>
-                            </div>
+                        <div class="input-field col-span-6">
+                            <div>Phone Number</div>
+                            <input type="text" name="phoneNumber" placeholder="415-555-5555" class="input"/>
                         </div>
 
-                        <div class="input col-span-4">
-                            <label for="email">Email Address</label>
-                            <div>
-                                <input id="email" type="email" name="email" placeholder="riley.taylor@example.com"
-                                       autocomplete="email"/>
-                            </div>
+                        <div class="input-field col-span-4">
+                            <div>City</div>
+                            <input type="text" name="city" placeholder="San Francisco" class="input"/>
                         </div>
 
-                        <div class="input input-file col-span-4">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                 alt="" class="avatar avatar-xl avatar-square"/>
-                            <div>
-                                <button type="button" class="button button-neutral">Change avatar</button>
-                                <p class="text-xs">JPG, GIF or PNG. 1MB max.</p>
-                            </div>
+                        <div class="input-field col-span-4">
+                            <div>State</div>
+                            <input type="text" name="state" placeholder="CA" class="input"/>
                         </div>
 
-                        <div class="input input-url col-span-6">
-                            <label for="websiteUrl">Website Url</label>
-                            <div>
-                                <span>https://</span>
-                                <input id="websiteUrl" type="text" name="websiteUrl" placeholder="www.rileytaylor.dev"
-                                       autocomplete="website-url"/>
-                            </div>
+                        <div class="input-field col-span-4">
+                            <div>Zip Code</div>
+                            <input type="text" name="zipCode" placeholder="94102" class="input"/>
                         </div>
 
-                        <div class="col-span-2"></div>
-
-                        <div class="input input-url col-span-6">
-                            <label for="linkedInUrl">Linkedin Url</label>
-                            <div>
-                                <span>https://linkedin/in/</span>
-                                <input id="linkedInUrl" type="text" name="linkedInUrl" placeholder="rileytaylor"
-                                       autocomplete="linkedin-url"/>
-                            </div>
+                        <div class="input-field col-span-9">
+                            <div>Website Url</div>
+                            <label class="input">
+                                <span class="label">https://</span>
+                                <input type="text" name="websiteUrl" placeholder="www.rileytaylor.dev"/>
+                            </label>
                         </div>
 
-                        <div class="col-span-2"></div>
-
-                        <div class="input input-url col-span-6">
-                            <label for="githubUrl">Github Url</label>
-                            <div>
-                                <span>https://github.com/</span>
-                                <input id="githubUrl" type="text" name="githubUrl" placeholder="rileytalor"
-                                       autocomplete="github-url"/>
-                            </div>
+                        <div class="input-field col-span-9">
+                            <div>Linkedin Url</div>
+                            <label class="input">
+                                <span class="label">https://www.linkedin.com/in/</span>
+                                <input type="text" placeholder="URL"/>
+                            </label>
                         </div>
 
-                        <div class="col-span-2"></div>
+                        <div class="input-field col-span-9">
+                            <div>Github Url</div>
+                            <label class="input">
+                                <span class="label">https://github.com/</span>
+                                <input type="text" name="githubUrl" placeholder="rileytalor"/>
+                            </label>
+                        </div>
 
-                        <button type="submit" class="button button-primary">Save</button>
+                        <div class="col-span-full">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </section>
             </div>
 
-            <input type="radio" name="my_tabs_2" class="tab" aria-label="Resume"/>
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Resume" checked="checked"/>
             <div class="tab-content">
                 <section>
                     <hgroup>
@@ -130,35 +105,23 @@
                         <p>Briefly tell us about your background</p>
                     </hgroup>
 
-                    <form class="form">
-                        <div class="input">
-                            <label for="summary">Summary</label>
-                            <div>
-                            <textarea id="summary" name="summary" rows="4"
-                                      placeholder="Write your summary here."></textarea>
-                            </div>
+                    <form>
+                        <div class="input-field col-span-full">
+                            <div>Summary</div>
+                            <textarea name="summary" rows="4" placeholder="Write your summary here."
+                                      class="textarea"></textarea>
                         </div>
 
-                        <button type="submit" class="button button-primary">Save</button>
-                    </form>
-                </section>
-
-                <section>
-                    <hgroup>
-                        <h3>Skills</h3>
-                        <p>What skills would you like to highlight?</p>
-                    </hgroup>
-
-                    <form class="form">
-                        <div class="input">
-                            <label for="skills">Skills</label>
-                            <div>
-                                <textarea id="skills" name="skills" rows="3"
-                                          placeholder="Add your skills here."></textarea>
-                                <p>Each skill must be separated with a comma.</p>
-                            </div>
+                        <div class="input-field col-span-full">
+                            <div>Skills</div>
+                            <textarea name="skills" rows="2" placeholder="Add your skills here."
+                                      class="textarea"></textarea>
+                            <p>Each skill must be separated with a comma.</p>
                         </div>
-                        <button type="submit" class="button button-primary">Save</button>
+
+                        <div class="col-span-full">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </section>
 
@@ -168,77 +131,60 @@
                         <p>Tell us about your most recent job.</p>
                     </hgroup>
 
-                    <form class="columns-8">
-                        <div class="input col-span-4">
-                            <label for="jobTitle">Job Title *</label>
-                            <div>
-                                <input id="jobTitle" name="jobTitle" type="text" placeholder="Software Developer"
-                                       autocomplete="job-title"/>
-                            </div>
+                    <form>
+                        <div class="input-field col-span-6">
+                            <label for="jobTitle">Job Title</label>
+                            <input id="jobTitle" name="jobTitle" type="text" placeholder="Software Developer"
+                                   class="input"/>
                         </div>
 
-                        <div class="input col-span-4">
-                            <label for="employer">Employer *</label>
-                            <div>
-                                <input id="employer" name="employer" type="text" placeholder="WeMakeGoodSoftware"
-                                       autocomplete="employer"/>
-                            </div>
+                        <div class="input-field col-span-6">
+                            <label for="employer">Employer</label>
+                            <input id="employer" name="employer" type="text" placeholder="WeMakeGoodSoftware"
+                                   class="input"/>
                         </div>
 
-                        <div class="input col-span-4">
+                        <div class="input-field col-span-6">
                             <label for="location">Location</label>
-                            <div>
-                                <input id="location" name="location" type="text"
-                                       placeholder="Antario (CA), Remote, etc..."
-                                       autocomplete="location"/>
-                            </div>
+                            <input id="location" name="location" type="text" placeholder="Antario (CA), Remote"
+                                   class="input"/>
                         </div>
 
-                        <div class="col-span-4"></div>
+                        <div class="col-span-6"></div>
 
-                        <div class="input col-span-2">
-                            <label for="start-month">Start Date</label>
-                            <div>
-                                <select id="start-month" name="startMonth">
-                                    <option value="">Month</option>
+                        <div class="input-field col-span-6">
+                            <label>Start Date</label>
+                            <div class="join">
+                                <select name="startMonth" class="select join-item">
+                                    <option disabled selected>Month</option>
                                     <option th:each="month : ${months}" th:value="${month}" th:text="${month}">Month
                                     </option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="input col-span-2">
-                            <label for="start-year" class="invisible">End Year</label>
-                            <div>
-                                <select id="start-year" name="startYear">
-                                    <option value="">Year</option>
+                                <select name="startYear" class="select join-item">
+                                    <option disabled selected>Year</option>
                                     <option th:each="year : ${years}" th:value="${year}" th:text="${year}">Year</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="input col-span-2">
-                            <label for="end-month">End Date</label>
-                            <div>
-                                <select id="end-month" name="endMonth">
-                                    <option value="">Month</option>
+                        <div class="input-field col-span-6">
+                            <label>End Date</label>
+                            <div class="join">
+                                <select name="endMonth" class="select join-item">
+                                    <option disabled selected>Month</option>
                                     <option th:each="month : ${months}" th:value="${month}" th:text="${month}">Month
                                     </option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="input col-span-2">
-                            <label for="end-year" class="invisible">End Year</label>
-                            <div>
-                                <select id="end-year" name="endYear">
-                                    <option value="">Year</option>
+                                <select name="endYear" class="select join-item">
+                                    <option disabled selected>Year</option>
                                     <option th:each="year : ${years}" th:value="${year}" th:text="${year}">Year</option>
                                 </select>
                             </div>
                         </div>
 
-                        <button type="submit" class="button button-primary">Save</button>
+                        <div class="col-span-full">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </section>
 
@@ -249,68 +195,54 @@
                             graduate.</p>
                     </hgroup>
 
-                    <form class="columns-8">
-                        <div class="input col-span-4">
+                    <form>
+                        <div class="input-field col-span-7">
                             <label for="school-name">School Name</label>
-                            <div>
-                                <input id="school-name" name="schoolName" type="text" placeholder="Beloit College"
-                                       autocomplete="school-name"/>
-                            </div>
+                            <input id="school-name" name="schoolName" type="text" placeholder="Beloit College"
+                                   class="input"/>
                         </div>
 
-                        <div class="input col-span-4">
+                        <div class="input-field col-span-5">
                             <label for="school-location">School Location</label>
-                            <div>
-                                <input type="text" id="school-location" name="schoolLocation" placeholder="Beloit, WI"
-                                       autocomplete="school-location">
-                            </div>
+                            <input type="text" id="school-location" name="schoolLocation" placeholder="Beloit, WI"
+                                   class="input">
                         </div>
 
-                        <div class="input col-span-4">
-                            <label for="degree">Degree</label>
-                            <div>
-                                <select id="degree" name="degree">
-                                    <option value="">Select</option>
-                                    <option th:each="degree : ${degrees}" th:value="${degree}" th:text="${degree}">
-                                        Degree
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-span-4"></div>
-
-                        <div class="input col-span-4">
+                        <div class="input-field col-span-7">
                             <label for="field-of-study">Field of Study</label>
-                            <div>
-                                <input id="field-of-study" name="fieldOfStudy" type="text"
-                                       placeholder="e.g. Computer Science"
-                                       autocomplete="field-of-study"/>
-                            </div>
+                            <input id="field-of-study" name="fieldOfStudy" type="text"
+                                   placeholder="e.g. Computer Science"
+                                   class="input"/>
                         </div>
 
-                        <div class="input col-span-2">
-                            <label for="graduation-month">Graduation Date</label>
-                            <div>
-                                <select id="graduation-month" name="graduationMonth">
-                                    <option value="">Month</option>
+                        <div class="input-field col-span-5">
+                            <label for="degree">Degree</label>
+                            <select id="degree" name="degree" class="select">
+                                <option disabled selected>Select</option>
+                                <option th:each="degree : ${degrees}" th:value="${degree}" th:text="${degree}">
+                                    Degree
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="input-field col-span-6">
+                            <label>Graduation Date</label>
+                            <div class="join">
+                                <select name="graduationMonth" class="select join-item">
+                                    <option disabled selected>Month</option>
                                     <option th:each="month : ${months}" th:value="${month}" th:text="${month}">Month
                                     </option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="input col-span-2">
-                            <label for="graduation-year" class="invisible">Graduation Date</label>
-                            <div>
-                                <select id="graduation-year" name="graduationDate">
-                                    <option value="">Year</option>
+                                <select name="graduationYear" class="select join-item">
+                                    <option disabled selected>Year</option>
                                     <option th:each="year : ${years}" th:value="${year}" th:text="${year}">Year</option>
                                 </select>
                             </div>
                         </div>
 
-                        <button type="submit" class="button button-primary">Save</button>
+                        <div class="col-span-full">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </section>
 
@@ -321,24 +253,22 @@
                     </hgroup>
 
                     <form>
-                        <div class="input col-span-4">
+                        <div class="input-field col-span-8">
                             <label for="certificate">Certificate</label>
-                            <div>
-                                <input id="certificate" name="certificate" type="text"
-                                       placeholder="UX Design Professional"
-                                       autocomplete="certificate"/>
-                            </div>
+                            <input id="certificate" name="certificate" type="text"
+                                   placeholder="UX Design Professional"
+                                   class="input"/>
                         </div>
 
-                        <div class="input col-span-2">
-                            <label for="organization">Organization</label>
-                            <div>
-                                <input id="organization" name="organization" type="text" placeholder="Google"
-                                       autocomplete="organization"/>
-                            </div>
+                        <div class="input-field col-span-4">
+                            <label for="organization">Company</label>
+                            <input id="organization" name="organization" type="text" placeholder="Google"
+                                   class="input"/>
                         </div>
 
-                        <button type="submit" class="button button-primary">Save</button>
+                        <div class="col-span-full">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </section>
 
@@ -349,48 +279,45 @@
                     </hgroup>
 
                     <form class="form">
-                        <div class="input">
+                        <div class="input-field col-span-full">
                             <label for="title">Project Title</label>
-                            <div>
-                                <input id="title" name="title" type="text" placeholder="E-commerce Web App"
-                                       autocomplete="title"/>
-                            </div>
+                            <input id="title" name="title" type="text" placeholder="E-commerce Web App"
+                                   class="input"/>
                         </div>
 
-                        <div class="input">
+                        <div class="input-field col-span-full">
                             <label for="description">Project Description</label>
-                            <div>
-                                <textarea id="description" name="description" rows="4"
-                                          placeholder="Describe of your project here."></textarea>
-                            </div>
+                            <textarea id="description" name="description" rows="4"
+                                      placeholder="Describe of your project here." class="textarea"></textarea>
                         </div>
 
-                        <div class="input">
-                            <label for="skills-used">Skills Used</label>
-                            <div>
-                                <textarea id="skills-used" name="skillsUsed" rows="2"
-                                          placeholder="Add the skills used in this projects."></textarea>
-                            </div>
+                        <div class="input-field col-span-full">
+                            <label for="skillsUsed">Skills Used</label>
+                            <textarea id="skillsUsed" name="skillsUsed" rows="2"
+                                      placeholder="Add the skills used in this projects." class="textarea"></textarea>
                         </div>
 
-                        <div class="input col-span-3">
-                            <label for="website-url">Website Url</label>
-                            <div>
-                                <input id="website-url" name="websiteUrl" type="text"
-                                       placeholder="https://project-website.example.com" autocomplete="website-url"/>
-                            </div>
+                        <div class="input-field col-span-8">
+                            <div>Website Url</div>
+                            <label for="websiteUrl" class="input">
+                                <span class="label">https://</span>
+                                <input id="websiteUrl" name="websiteUrl" type="text"
+                                       placeholder="www.example.com"/>
+                            </label>
                         </div>
 
-                        <div class="input col-span-3">
-                            <label for="github-repository">GitHub Repository</label>
-                            <div>
-                                <input id="github-repository" name="githubRepo" type="text"
-                                       placeholder="https://github.com/username/repository.git"
-                                       autocomplete="github-repository"/>
-                            </div>
+                        <div class="input-field col-span-8">
+                            <div>GitHub Url</div>
+                            <label for="githubRepo" class="input">
+                                <span class="label">https://github.com/</span>
+                                <input id="githubRepo" name="githubRepo" type="text"
+                                       placeholder="username/repository.git"/>
+                            </label>
                         </div>
 
-                        <button type="submit" class="button button-primary">Save</button>
+                        <div class="col-span-full">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </section>
 
@@ -401,14 +328,14 @@
                     </hgroup>
 
                     <form class="form">
-                        <div class="input">
+                        <div class="input-field col-span-full">
                             <label for="languages">Languages</label>
-                            <div>
-                                <input id="languages" name="languages" type="text" autocomplete="languages"/>
-                            </div>
+                            <input id="languages" name="languages" type="text" class="input"/>
                         </div>
 
-                        <button type="submit" class="button button-primary">Save</button>
+                        <div class="col-span-full">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </section>
             </div>
@@ -422,49 +349,81 @@
                     </hgroup>
 
                     <form class="form">
-                        <div class="input input-checkbox">
-                            <div>
-                                <input id="banner-section" type="checkbox" name="banner">
-                            </div>
-                            <label for="banner-section">Did you upload a profile banner?</label>
+                        <div class="input-field col-span-full">
+                            <div>handle</div>
+                            <label for="handle" class="label">
+                                <input id="handle" type="checkbox" name="handle" class="toggle">
+                                Did you update your handle?
+                            </label>
                         </div>
 
-                        <div class="input input-checkbox">
-                            <div>
-                                <input id="about-section" type="checkbox" name="about">
-                            </div>
-                            <label for="about-section">Did you write in the about section?</label>
+                        <div class="input-field col-span-full">
+                            <div>enhanced ReadMe</div>
+                            <label for="enhancedReadMe" class="label">
+                                <input id="enhancedReadMe" type="checkbox" name="enhancedReadMe" class="toggle">
+                                Did you enhanced your ReadMe?
+                            </label>
                         </div>
 
-                        <div class="input input-checkbox">
-                            <div>
-                                <input id="url-section" type="checkbox" name="url">
-                            </div>
-                            <label for="url-section">Did you add your personal Urls?</label>
+                        <div class="input-field col-span-full">
+                            <div>renamed Assignments</div>
+                            <label for="renamedAssignments" class="label">
+                                <input id="renamedAssignments" type="checkbox" name="renamedAssignments" class="checkbox">
+                                Did you rename your assignments?
+                            </label>
                         </div>
 
-                        <div class="input input-checkbox">
-                            <div>
-                                <input id="featured-posts-section" type="checkbox" name="featuredPosts">
-                            </div>
-                            <label for="featured-posts-section">Did you write posts?</label>
+                        <div class="input-field col-span-full">
+                            <div>pinned Repos</div>
+                            <label for="pinnedRepos" class="label">
+                                <input id="pinnedRepos" type="checkbox" name="pinnedRepos" class="checkbox">
+                                Did you pinned your repositories?
+                            </label>
                         </div>
 
-                        <div class="input input-checkbox">
-                            <div>
-                                <input id="activity-section" type="checkbox" name="activity">
-                            </div>
-                            <label for="activity-section">Did you add some activities?</label>
+                        <div class="input-field col-span-full">
+                            <div>external Links</div>
+                            <label for="externalLinks" class="label">
+                                <input id="externalLinks" type="checkbox" name="externalLinks" class="checkbox">
+                                Did you add personal links?
+                            </label>
                         </div>
 
-                        <div class="input input-checkbox">
-                            <div>
-                                <input id="skills-section" type="checkbox" name="skills">
-                            </div>
-                            <label for="skills-section">Did you add your skills?</label>
+                        <div class="input-field col-span-full">
+                            <div>image</div>
+                            <label for="image" class="label">
+                                <input id="image" type="checkbox" name="image" class="checkbox">
+                                Did you add your image?
+                            </label>
                         </div>
 
-                        <button type="submit" class="button button-primary">Save</button>
+                        <div class="input-field col-span-full">
+                            <div>headline</div>
+                            <label for="headline" class="label">
+                                <input id="headline" type="checkbox" name="headline" class="checkbox">
+                                Did you update your headline?
+                            </label>
+                        </div>
+
+                        <div class="input-field col-span-full">
+                            <div>contact Details</div>
+                            <label for="contactDetails" class="label">
+                                <input id="contactDetails" type="checkbox" name="contactDetails" class="checkbox">
+                                Did you add your contact Details?
+                            </label>
+                        </div>
+
+                        <div class="input-field col-span-full">
+                            <div>url</div>
+                            <label for="url" class="label">
+                                <input id="url" type="checkbox" name="url" class="checkbox">
+                                Did you add your repo URL?
+                            </label>
+                        </div>
+
+                        <div class="col-span-full">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </form>
                 </section>
             </div>
