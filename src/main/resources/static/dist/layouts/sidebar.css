@@ -78,7 +78,7 @@
                             
                             &:is(:last-child) {
                                 color: color-mix(in oklab, var(--color-base-content) 80%, transparent);
-                                font-size: var(--text-sm);
+                                font-size: var(--text-xs);
                                 margin-block-start: calc(var(--spacing) * 1);
                             }
                         }

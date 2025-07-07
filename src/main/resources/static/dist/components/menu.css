@@ -27,9 +27,7 @@
         border-radius: var(--radius-box) !important;
         z-index: 1 !important;
         width: calc(var(--spacing) * 58) !important;
-        /*width: 100% !important;*/
         padding-block-start: calc(var(--spacing) * 2) !important;
         padding-inline: calc(var(--spacing) * 2) !important;
-        /*margin-inline: calc(var(--spacing) * 4) !important;*/
     }
 }
