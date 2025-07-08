@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class SpringProjectController {
+public class SpringProjectController extends WebController {
 
     private final SpringProjectRepository springProjectRepository;
 
@@ -47,17 +47,6 @@ public class SpringProjectController {
         model.put("student", student);
         model.addAttribute("showDatabaseConsoleLink", showDatabaseConsoleLink);
         return "dashboard";
-    }
-
-    @PostMapping("/send-oauth")
-    @ResponseBody
-    public String getOauth(@RequestBody AuthObjectDTO authDto, HttpSession httpSession) {
-        if (authDto != null) {
-            httpSession.setAttribute("uid", authDto.getUid());
-            httpSession.setAttribute("email", authDto.getEmail());
-            httpSession.setAttribute("displayName", authDto.getDisplayName());
-        }
-        return "redirect:/";
     }
 
     @GetMapping("/springprojects")
