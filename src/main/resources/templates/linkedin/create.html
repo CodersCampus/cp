@@ -18,6 +18,9 @@
             <div class="ga-content-main">
                 <main>
                     <form action="/linkedin/create" class="ui-form" method="post">
+                        <div th:if="${error}" class="ui-error-message">
+                            <p th:text="${error}"></p>
+                        </div>
                         <input id="uid" name="uid" type="hidden"/>
                         <div class="ui-input-field" title="Check this box if you have made a banner">
                             <label for="banner" class="ui-label">Banner:</label>
@@ -36,7 +39,7 @@
                         <div class="ui-input-field">
                             <label for="url" class="ui-label">Url:</label>
                             <div class="ui-text-input">
-                                <input class="ui-value" id="url" th:field="${linkedIn.url}" type="text"/>
+                                <input class="ui-value" id="url" th:field="${linkedIn.url}" type="url"/>
                             </div>
                         </div>
                         <div class="ui-input-field" title="Check this box if you have featured posts selected">
