@@ -1,42 +1,72 @@
 <!DOCTYPE html>
-<html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
-<body class="ui-background">
-<ul class="ui-navbar-nav">
-    <button class="ui-nav-item ui-button" type="button"><a href="/foobar/create">Create New</a>
-    </button>
-</ul>
-<main>
-    <div class="ui-table" role="region" tabindex="0">
-        <table>
-            <thead>
-            <tr>
-                <th scope="col">Name:</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="foobar: ${foobars}">
-                <td><span th:text="${foobar.name}"></span></td>
-                <td>
-                    <a th:href="@{/foobar/update/{foobarId}(foobarId=${foobar.id})}">
-                        <i class="fa-solid fa-pen-to-square"
-                           style="color: var(--primary); font-size:20px; font-weight:100"></i>
-                    </a>
-                </td>
-            </tr>
-
-            </tbody>
-        </table>
+<html lang="en" th:replace="~{layouts/dashboard :: layout(~{::title}, ~{::body})}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Foobar</title>
+</head>
+<body>
+<div class="content container-lg">
+    <div class="content-header">
+        <h2 class="headline headline-xl">Foobar</h2>
+        <div class="action-bar">
+            <div class="action-left"></div>
+            <div class="action-right">
+                <a href="/foobar/create" class="btn btn-primary">Create</a>
+            </div>
+        </div>
     </div>
-</main>
-</div>
-</div>
-<div th:replace="~{fragments/footer :: footer}"></div>
-</div>
-</fbauth-element>
 
-<div th:replace="~{fragments/authscript :: script}"></div>
-<div th:replace="~{fragments/themeswitchscript :: script}"></div>
+    <div class="content-body">
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Url</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="foobar : ${foobars}">
+                    <td th:text="${foobar.issueNumber}">853</td>
+                    <td th:text="${foobar.title}">CRUD Implementation of Student Table</td>
+                    <td>
+                        <span th:if="${foobar.priority == 0}" class="badge badge-neutral">None</span>
+                        <span th:if="${foobar.priority == 1}" class="badge badge-error">Urgent</span>
+                        <span th:if="${foobar.priority == 2}" class="badge badge-warning">Critical</span>
+                        <span th:if="${foobar.priority == 3}" class="badge badge-success">High</span>
+                        <span th:if="${foobar.priority == 4}" class="badge badge-info">Medium</span>
+                        <span th:if="${foobar.priority == 5}" class="badge badge-accent">Low</span>
+                    </td>
+                    <td>
+                        <span th:with="isOpen=${foobar.status == false}" th:text="${isOpen} ? 'Opened' : 'Closed'"
+                              class="badge" th:classappend="${isOpen} ? 'badge-success' : 'badge-error'"></span>
+                    </td>
+                    <td>
+                        <span th:text="${foobar.type}">Feature</span>
+                    </td>
+                    <td>
+                        <a th:href="|https://github.com/${foobar.url}|" th:text="${foobar.url}" target="_blank" rel="noopener noreferrer"></a>
+                    </td>
+                    <td>
+                        <a th:href="@{/foobar/update/{id}(id=${foobar.id})}"
+                           class="btn btn-ghost btn-square btn-warning">
+                            <svg th:replace="~{fragments/icons :: pen-to-square}"></svg>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="content-footer">
+        <p>Copyright &copy; 2025 - Coders Campus</p>
+    </div>
+</div>
 </body>
 </html>
 

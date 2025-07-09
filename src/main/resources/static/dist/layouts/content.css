@@ -6,6 +6,18 @@
     padding-block-start: calc(var(--spacing) * 10);
     padding-inline-start: calc(var(--spacing) * 6);
     padding-inline-end: calc(var(--spacing) * 3);
+    
+    .content-header {
+        display: flex;
+        flex-direction: column;
+        row-gap: calc(var(--spacing) * 4);
+        
+        .action-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
 
     .content-body {
         flex: 1;

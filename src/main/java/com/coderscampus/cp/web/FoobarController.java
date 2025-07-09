@@ -1,5 +1,6 @@
 package com.coderscampus.cp.web;
 
+import com.coderscampus.cp.domain.ActivityLog;
 import com.coderscampus.cp.domain.Foobar;
 import com.coderscampus.cp.service.FoobarService;
 import jakarta.servlet.http.HttpSession;
@@ -29,7 +30,11 @@ public class FoobarController {
     @GetMapping("/create")
     public String getCreate(ModelMap model) {
         Foobar foobar = new Foobar();
+        foobar.setStatus(false);
+        foobar.setPriority(0);
         model.put("foobar", foobar);
+        System.out.println("Foobar entity: " + foobar);
+        model.addAttribute("typeList", Foobar.Type.values());
         model.addAttribute("pageTitle", "Foobar");
         model.put("isFoobar", true);
         return "foobar/create";
@@ -38,7 +43,7 @@ public class FoobarController {
     @PostMapping("/create")
     public String create(Foobar foobar, @RequestParam("uid") String uid) {
         foobar = foobarService.saveByUid(foobar, uid);
-        return "redirect:/foobar";
+        return "redirect:/foobar/update/" + foobar.getId();
     }
 
     @GetMapping("/update/{id}")
@@ -48,6 +53,7 @@ public class FoobarController {
 
         if (foobar.getStudent() != null && foobar.getStudent().getUid().equals(uid)) {
             model.put("foobar", foobar);
+            model.addAttribute("typeList", Foobar.Type.values());
             model.addAttribute("pageTitle", "Foobar Update");
             model.put("isFoobar", true);
             return "foobar/update";
