@@ -3,6 +3,7 @@ package com.coderscampus.cp.web;
 import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.AuthObjectDTO;
+import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,32 +18,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class SpringProjectController {
+public class SpringProjectController extends WebController {
+    @Value("${show.database.console.link}")
+    private boolean showDatabaseConsoleLink;
 
     private final SpringProjectRepository springProjectRepository;
 
-    @Value("${show.database.console.link}")
-    private boolean showDatabaseConsoleLink;
-    /**
-    private final StudentService studentService;
-    private final CheckinService checkinService;
-
-    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
-        this.springProjectRepository = springProjectRepository;
-        this.studentService = studentService;
-        this.checkinService = checkinService;
-    }
-    */
-
     public SpringProjectController(SpringProjectRepository springProjectRepository) {
+        super();
         this.springProjectRepository = springProjectRepository;
     }
 
     @GetMapping("/")
     public String getDashboard(ModelMap model, HttpSession httpSession) {
-        String userEmail = (String) httpSession.getAttribute("email");
         String uid = (String) httpSession.getAttribute("uid");
+        String userEmail = (String) httpSession.getAttribute("email");
         String displayName = (String) httpSession.getAttribute("displayName");
+        StudentDTO studentDTO = (StudentDTO) httpSession.getAttribute("student");
+
+        System.out.println("UID: " + uid);
+        System.out.println("User Email: " + userEmail);
+        System.out.println("Display Name: " + displayName);
+        System.out.println("Student DTO: " + studentDTO);
+
         Student student = new Student();
         model.put("student", student);
         model.addAttribute("showDatabaseConsoleLink", showDatabaseConsoleLink);
@@ -51,12 +49,12 @@ public class SpringProjectController {
 
     @PostMapping("/send-oauth")
     @ResponseBody
-    public String getOauth(@RequestBody AuthObjectDTO authDto, HttpSession httpSession) {
-        if (authDto != null) {
-            httpSession.setAttribute("uid", authDto.getUid());
-            httpSession.setAttribute("email", authDto.getEmail());
-            httpSession.setAttribute("displayName", authDto.getDisplayName());
-        }
+    public String sendOAuth(@RequestBody AuthObjectDTO authObjectDTO, HttpSession httpSession) {
+        System.out.println("Received OAuth Object: " + authObjectDTO);
+        httpSession.setAttribute("uid", authObjectDTO.getUid());
+        httpSession.setAttribute("email", authObjectDTO.getEmail());
+        httpSession.setAttribute("displayName", authObjectDTO.getDisplayName());
+
         return "redirect:/";
     }
 
