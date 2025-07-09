@@ -7,80 +7,75 @@
 <div class="content container-xs">
     <div class="content-header">
         <h2 class="headline headline-xl">Foobar</h2>
-        <div class="action-bar">
-            <div class="action-left"></div>
-            <div class="action-right">
-                <a href="/foobar" class="btn btn-link btn-neutral">
-                    <svg th:replace="~{fragments/icons :: arrow-left}"></svg>
-                    View All Issues
-                </a>
-            </div>
-        </div>
     </div>
 
     <div class="content-body">
-        <form action="/foobar/update" class="form" th:object="${foobar}" method="post">
-            <input th:field="*{id}" type="hidden"/>
+        <div class="content-card">
+            <form action="/foobar/update" class="form" th:object="${foobar}" method="post">
+                <input th:field="*{id}" type="hidden"/>
 
-            <div class="input-field col-span-full">
-                <label for="title">Title</label>
-                <input id="title" type="text" placeholder="Enter the title of the issue" class="input"
-                       th:field="*{title}"/>
-            </div>
+                <div class="input-field col-span-full">
+                    <label for="title">Title</label>
+                    <input id="title" type="text" placeholder="Enter the title of the issue" class="input"
+                           th:field="*{title}"/>
+                </div>
 
-            <div class="input-field col-span-full">
-                <label for="description">Description</label>
-                <textarea id="description" rows="4" placeholder="Describe the issue in detail" class="textarea"
-                          th:field="*{description}"></textarea>
-            </div>
+                <div class="input-field col-span-full">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" placeholder="Describe the issue in detail" class="textarea"
+                              th:field="*{description}"></textarea>
+                </div>
 
-            <div class="input-field col-span-4">
-                <label for="issueNumber">Issue Number</label>
-                <input id="issueNumber" type="text" placeholder="e.g. 853, 854, 855" class="input"
-                       th:field="*{issueNumber}"/>
-            </div>
+                <div class="input-field col-span-4">
+                    <label for="issueNumber">Issue Number</label>
+                    <input id="issueNumber" type="text" placeholder="e.g. 853, 854, 855" class="input"
+                           th:field="*{issueNumber}"/>
+                </div>
 
-            <div class="input-field col-span-4">
-                <label for="type">Type</label>
-                <select id="type" th:field="*{type}" class="select">
-                    <option value="">Select Type</option>
-                    <option th:each="type : ${typeList}" th:value="${type}" th:selected="${type.equals(foobar.type)}"
-                            th:text="${type}"></option>
-                </select>
-            </div>
+                <div class="input-field col-span-4">
+                    <label for="type">Type</label>
+                    <select id="type" th:field="*{type}" class="select">
+                        <option value="">Select Type</option>
+                        <option th:each="type : ${typeList}" th:value="${type}"
+                                th:selected="${type.equals(foobar.type)}"
+                                th:text="${type}"></option>
+                    </select>
+                </div>
 
-            <div class="input-field col-span-4">
-                <label for="priority">Priority</label>
-                <input id="priority" type="number" min="0" max="5" class="input" th:field="*{priority}"/>
-            </div>
+                <div class="input-field col-span-4">
+                    <label for="priority">Priority</label>
+                    <input id="priority" type="number" min="0" max="5" class="input" th:field="*{priority}"/>
+                </div>
 
-            <div class="input-field col-span-9">
-                <div>Github Url</div>
-                <label for="url" class="input">
-                    <span class="label">https://github.com/</span>
-                    <input id="url" type="text" placeholder="username/repository/issues/853"
-                           th:field="*{url}"/>
-                </label>
-            </div>
+                <div class="input-field col-span-9">
+                    <div>Github Url</div>
+                    <label for="url" class="input">
+                        <span class="label">https://github.com/</span>
+                        <input id="url" type="text" placeholder="username/repository/issues/853"
+                               th:field="*{url}"/>
+                    </label>
+                </div>
 
-            <div class="input-field col-span-full">
-                <div>Status</div>
-                <label for="status" class="label">
-                    <input id="status" type="checkbox" class="toggle" th:checked="${foobar.status}"
-                           th:field="*{status}"> Issue closed?
-                </label>
-            </div>
+                <div class="input-field col-span-full">
+                    <div>Status</div>
+                    <label for="status" class="label">
+                        <input id="status" type="checkbox" class="toggle" th:checked="${foobar.status}"
+                               th:field="*{status}"> Issue closed?
+                    </label>
+                </div>
 
-            <div class="col-span-full">
-                <button class="btn btn-success" type="submit">Update</button>
-            </div>
-        </form>
-        <form action="/foobar/delete" class="form" method="post" style="padding-top:12px;">
-            <input th:field="${foobar.id}" type="hidden"/>
-            <div class="input-field col-span-full">
-                <button class="btn btn-error" type="submit">Delete</button>
-            </div>
-        </form>
+                <div class="col-span-full">
+                    <button class="btn btn-success" type="submit">Update</button>
+                    <a href="/foobar" class="btn btn-ghost btn-neutral ml-5">Cancel</a>
+                </div>
+            </form>
+            <form action="/foobar/delete" class="form" method="post" style="padding-top:12px;">
+                <input th:field="${foobar.id}" type="hidden"/>
+                <div class="input-field col-span-full">
+                    <button class="btn btn-error" type="submit">Delete</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="content-footer">

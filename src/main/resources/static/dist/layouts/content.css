@@ -21,6 +21,14 @@
 
     .content-body {
         flex: 1;
+        
+        .content-card {
+            padding-block: calc(var(--spacing) * 8);
+            padding-inline: calc(var(--spacing) * 6);
+            background-color: var(--color-base-100);
+            border: 1px solid color-mix(in oklab, var(--color-base-content) 5%, transparent);
+            border-radius: var(--radius-box);
+        }
     }
 
     .content-footer {
