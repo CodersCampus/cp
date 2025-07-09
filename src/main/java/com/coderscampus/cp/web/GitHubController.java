@@ -36,7 +36,13 @@ public class GitHubController {
     }
 
     @PostMapping("/create")
-    public String create(GitHub gitHub, @RequestParam("uid") String uid) {
+    public String create(GitHub gitHub, @RequestParam("uid") String uid, ModelMap model) {
+
+        if (!gitHubService.isValidURL(gitHub.getUrl())) {
+            model.put("gitHub", gitHub);
+            model.put("error", "Invalid URL");
+            return "github/create";
+        }
         gitHub = gitHubService.saveByUid(gitHub, uid);
         return "redirect:/github";
     }
@@ -57,7 +63,13 @@ public class GitHubController {
     }
 
     @PostMapping("/update")
-    public String update(GitHub gitHub, HttpSession httpSession) {
+    public String update(GitHub gitHub, HttpSession httpSession, ModelMap model) {
+
+        if (!gitHubService.isValidURL(gitHub.getUrl())) {
+            model.put("gitHub", gitHub);
+            model.put("error", "Invalid URL");
+            return "github/update";
+            }
         String uid = (String) httpSession.getAttribute("uid");
         gitHubService.saveByUid(gitHub, uid);
         return "redirect:/github";
@@ -68,4 +80,5 @@ public class GitHubController {
         gitHubService.delete(gitHub);
         return "redirect:/github";
     }
+
 }

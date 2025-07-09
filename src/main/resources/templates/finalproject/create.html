@@ -18,6 +18,9 @@
             <div class="ga-content-main">
                 <main>
                     <form action="/finalproject/create" class="ui-form" th:object="${finalproject}" method="post">
+                        <div th:if="${error}" class="ui-error-message">
+                            <p th:text="${error}"></p>
+                        </div>
                         <input id="uid" name="uid" type="hidden"/>
                         <div class="ui-input-field">
                             <label for="projectName" class="ui-label">Project Name:</label>
@@ -28,7 +31,7 @@
                         <div class="ui-input-field">
                             <label for="proposal" class="ui-label">Proposal:</label>
                             <div class="ui-text-input">
-                                <input id="proposal" class="ui-value" th:field="*{proposal}" type="text"/>
+                                <input id="proposal" class="ui-value" th:field="*{proposal}" type="url"/>
                             </div>
                         </div>
                         <div class="ui-input-field">

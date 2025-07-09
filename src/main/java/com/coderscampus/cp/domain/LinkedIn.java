@@ -4,27 +4,27 @@ import jakarta.persistence.*;
 
 @Entity
 public class LinkedIn {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
-	private Boolean banner;
-	private String about;
-	private String url;
-	private String featuredPosts;
-	private String activity;
-	private String skills;
-	private String email;
-	private String firstName;
-	private String lastName;
-	private String biography;
-	private String education;
-	private String experience;
-	private String location;
-	private String image;
-	private String title;
+    private Boolean banner;
+    private Boolean about;
+    private String url;
+    private Boolean featuredPosts;
+    private Boolean activity;
+    private Boolean skills;
+    private Boolean email;
+    private String firstName;
+    private String lastName;
+    private Boolean biography;
+    private Boolean education;
+    private Boolean experience;
+    private Boolean location;
+    private Boolean image;
+    private Boolean title;
 
     public LinkedIn() {
     }
@@ -53,11 +53,11 @@ public class LinkedIn {
         this.banner = banner;
     }
 
-    public String getAbout() {
+    public Boolean getAbout() {
         return about;
     }
 
-    public void setAbout(String about) {
+    public void setAbout(Boolean about) {
         this.about = about;
     }
 
@@ -69,35 +69,35 @@ public class LinkedIn {
         this.url = url;
     }
 
-    public String getFeaturedPosts() {
+    public Boolean getFeaturedPosts() {
         return featuredPosts;
     }
 
-    public void setFeaturedPosts(String featuredPosts) {
+    public void setFeaturedPosts(Boolean featuredPosts) {
         this.featuredPosts = featuredPosts;
     }
 
-    public String getActivity() {
+    public Boolean getActivity() {
         return activity;
     }
 
-    public void setActivity(String activity) {
+    public void setActivity(Boolean activity) {
         this.activity = activity;
     }
 
-    public String getSkills() {
+    public Boolean getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(Boolean skills) {
         this.skills = skills;
     }
 
-    public String getEmail() {
+    public Boolean getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Boolean email) {
         this.email = email;
     }
 
@@ -117,51 +117,51 @@ public class LinkedIn {
         this.lastName = lastName;
     }
 
-    public String getBiography() {
+    public Boolean getBiography() {
         return biography;
     }
 
-    public void setBiography(String biography) {
+    public void setBiography(Boolean biography) {
         this.biography = biography;
     }
 
-    public String getEducation() {
+    public Boolean getEducation() {
         return education;
     }
 
-    public void setEducation(String education) {
+    public void setEducation(Boolean education) {
         this.education = education;
     }
 
-    public String getExperience() {
+    public Boolean getExperience() {
         return experience;
     }
 
-    public void setExperience(String experience) {
+    public void setExperience(Boolean experience) {
         this.experience = experience;
     }
 
-    public String getLocation() {
+    public Boolean getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Boolean location) {
         this.location = location;
     }
 
-    public String getImage() {
+    public Boolean getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Boolean image) {
         this.image = image;
     }
 
-    public String getTitle() {
+    public Boolean getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Boolean title) {
         this.title = title;
     }
 }

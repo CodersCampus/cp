@@ -43,7 +43,7 @@
                                 <td><span th:text="${gitHub.image}"></span></td>
                                 <td><span th:text="${gitHub.headline}"></span></td>
                                 <td><span th:text="${gitHub.contactDetails}"></span></td>
-                                <td><span th:text="${gitHub.url}"></span></td>
+                                <td><a th:href="${gitHub.url}" th:text="${gitHub.url}" target="_blank" rel="noopener noreferrer"></a></td>
                                 <td>
                                     <a th:href="@{/github/update/{gitHubId}(gitHubId=${gitHub.id})}">
                                         <i class="fa-solid fa-pen-to-square"
