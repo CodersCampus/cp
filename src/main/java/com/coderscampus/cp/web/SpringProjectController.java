@@ -4,6 +4,7 @@ import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.AuthObjectDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
+import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -33,9 +34,11 @@ public class SpringProjectController {
         this.checkinService = checkinService;
     }
     */
+    private final StudentService studentService;
 
-    public SpringProjectController(SpringProjectRepository springProjectRepository) {
+    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService) {
         this.springProjectRepository = springProjectRepository;
+        this.studentService = studentService;
     }
 
     @GetMapping("/")
@@ -56,6 +59,15 @@ public class SpringProjectController {
             httpSession.setAttribute("uid", authDto.getUid());
             httpSession.setAttribute("email", authDto.getEmail());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
+            Student student = studentService.findStudentByUid(authDto.getUid());
+
+            if (student == null) {
+                student =  new Student();
+                student.setUid(authDto.getUid());
+                student.setName(authDto.getDisplayName());
+                studentService.save(student);
+                System.out.println("NEW STUDENT: " + student);
+            }
         }
         return "redirect:/";
     }
@@ -66,4 +78,6 @@ public class SpringProjectController {
         model.addAttribute("projects", projects);
         return "springprojects";
     }
+
+
 }
