@@ -8,22 +8,10 @@
         <div class="ga-content-main">
             <div>
                 <main>
-                    <form action="/student/create" class="ui-form" method="post">
-                        <h1>Create Student</h1>
-                        <input id="uid" name="uid" type="hidden"/>
-                        <div class="mb-3">
-                            <input class="form-control" id="display-name" th:field="${student.name}"
-                                   type="hidden"/>
-                        </div>
-                        <div class="mb-3">
-                            <input class="form-control btn btn-primary" onfocus="assignUid()"
-                                   type="submit" value="Create"/>
-                        </div>
-                    </form>
-
+                <h1 class="ui-panel-title " th:text="|Welcome, ${displayName}|"></h1>
                 </main>
             </div>
-           </div>
+        </div>
         <div th:replace="~{fragments/footer :: footer}"></div>
     </div>
 
