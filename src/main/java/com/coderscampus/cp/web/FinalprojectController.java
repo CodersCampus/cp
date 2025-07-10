@@ -36,7 +36,12 @@ public class FinalprojectController {
     }
 
     @PostMapping("/create")
-    public String create(Finalproject finalproject, @RequestParam("uid") String uid) {
+    public String create(Finalproject finalproject, @RequestParam("uid") String uid, ModelMap model) {
+        if (!finalprojectService.isValidURL(finalproject.getProposal())) {
+            model.put("finalproject", finalproject);
+            model.put("error", "Invalid URL");
+            return "finalproject/create";
+        }
         finalproject = finalprojectService.saveByUid(finalproject, uid);
         return "redirect:/finalproject";
     }
@@ -58,7 +63,12 @@ public class FinalprojectController {
     }
 
     @PostMapping("/update")
-    public String update(Finalproject finalproject, HttpSession httpSession) {
+    public String update(Finalproject finalproject, HttpSession httpSession, ModelMap model) {
+        if (!finalprojectService.isValidURL(finalproject.getProposal())) {
+            model.put("finalproject", finalproject);
+            model.put("error", "Invalid URL");
+            return "finalproject/update";
+        }
         String uid = (String) httpSession.getAttribute("uid");
         finalprojectService.saveByUid(finalproject, uid);
         return "redirect:/finalproject";

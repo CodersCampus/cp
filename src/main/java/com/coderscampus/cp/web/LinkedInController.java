@@ -36,9 +36,13 @@ public class LinkedInController {
     }
 
     @PostMapping("/create")
-    public String create(LinkedIn linkedIn, @RequestParam("uid") String uid) {
-        // Check and see if the student exists
-        // if not create it
+    public String create(LinkedIn linkedIn, @RequestParam("uid") String uid, ModelMap model) {
+
+        if (!linkedInService.isValidURL(linkedIn.getUrl())) {
+            model.put("linkedIn", linkedIn);
+            model.put("error", "Invalid URL");
+            return "linkedin/create";
+            }
         linkedIn = linkedInService.saveByUid(linkedIn, uid);
         return "redirect:/linkedin";
     }
@@ -59,7 +63,13 @@ public class LinkedInController {
     }
 
     @PostMapping("/update")
-    public String update(LinkedIn linkedIn, HttpSession httpSession) {
+    public String update(LinkedIn linkedIn, HttpSession httpSession, ModelMap model) {
+
+        if (!linkedInService.isValidURL(linkedIn.getUrl())) {
+            model.put("linkedIn", linkedIn);
+            model.put("error", "Invalid URL");
+            return "linkedin/update";
+            }
         String uid = (String) httpSession.getAttribute("uid");
         linkedInService.saveByUid(linkedIn, uid);
         return "redirect:/linkedin";

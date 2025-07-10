@@ -2,6 +2,8 @@ package com.coderscampus.cp.domain;
 
 import jakarta.persistence.*;
 
+import java.net.URL;
+
 @Entity
 public class GitHub {
 
