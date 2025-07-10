@@ -18,6 +18,9 @@
             <div class="ga-content-main">
                 <main>
                     <form action="/github/update" class="ui-form" method="post">
+                        <div th:if="${error}" class="ui-error-message">
+                            <p th:text="${error}"></p>
+                        </div>
                         <input name="uid" th:field="${gitHub.id}" type="hidden"/>
                         <div class="ui-input-field">
                             <label for="handle" class="ui-label">Handle:</label>
@@ -69,7 +72,7 @@
                             <div class="ui-input-field" title="">
                                 <label for="url" class="ui-label">URL:</label>
                                 <div class="ui-text-input">
-                                    <input class="ui-value" id="url" th:field="${gitHub.url}" type="text"/>
+                                    <input class="ui-value" id="url" th:field="${gitHub.url}" type="url"/>
                                 </div>
                             </div>
                         <button class="ui-nav-item ui-button" type="submit"><span>Update</span></button>
