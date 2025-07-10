@@ -25,15 +25,15 @@ public class SpringProjectController {
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
     /**
-    private final StudentService studentService;
-    private final CheckinService checkinService;
-
-    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
-        this.springProjectRepository = springProjectRepository;
-        this.studentService = studentService;
-        this.checkinService = checkinService;
-    }
-    */
+     * private final StudentService studentService;
+     * private final CheckinService checkinService;
+     * <p>
+     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
+     * this.springProjectRepository = springProjectRepository;
+     * this.studentService = studentService;
+     * this.checkinService = checkinService;
+     * }
+     */
     private final StudentService studentService;
 
     public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService) {
@@ -48,6 +48,7 @@ public class SpringProjectController {
         String displayName = (String) httpSession.getAttribute("displayName");
         Student student = new Student();
         model.put("student", student);
+        model.put("displayName", displayName);
         model.addAttribute("showDatabaseConsoleLink", showDatabaseConsoleLink);
         return "dashboard";
     }
@@ -62,11 +63,10 @@ public class SpringProjectController {
             Student student = studentService.findStudentByUid(authDto.getUid());
 
             if (student == null) {
-                student =  new Student();
+                student = new Student();
                 student.setUid(authDto.getUid());
                 student.setName(authDto.getDisplayName());
                 studentService.save(student);
-                System.out.println("NEW STUDENT: " + student);
             }
         }
         return "redirect:/";
