@@ -35,15 +35,37 @@
                             </thead>
                             <tbody>
                             <tr th:each="gitHub: ${gitHubs}">
-                                <td><span th:text="${gitHub.handle}"></span></td>
-                                <td><span th:text="${gitHub.enhancedReadMe}"></span></td>
-                                <td><span th:text="${gitHub.renamedAssignments}"></span></td>
-                                <td><span th:text="${gitHub.pinnedRepos}"></span></td>
+                                <td style="text-align: center"><span th:if="${gitHub.handle == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${gitHub.enhancedReadMe == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${gitHub.renamedAssignments == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${gitHub.pinnedRepos == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
                                 <td><span th:text="${gitHub.externalLinks}"></span></td>
-                                <td><span th:text="${gitHub.image}"></span></td>
-                                <td><span th:text="${gitHub.headline}"></span></td>
-                                <td><span th:text="${gitHub.contactDetails}"></span></td>
-                                <td><a th:href="${gitHub.url}" th:text="${gitHub.url}" target="_blank" rel="noopener noreferrer"></a></td>
+                                <td style="text-align: center"><span th:if="${gitHub.image == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${gitHub.headline == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td style="text-align: center"><span th:if="${gitHub.contactDetails == true}"><i
+                                        class="fa-regular fa-square-check"
+                                        style="color: var(--primary); font-size: 20px; font-weight: 100"></i></span>
+                                </td>
+                                <td><a th:href="${gitHub.url}" th:text="${gitHub.url}" target="_blank"
+                                       rel="noopener noreferrer"></a></td>
                                 <td>
                                     <a th:href="@{/github/update/{gitHubId}(gitHubId=${gitHub.id})}">
                                         <i class="fa-solid fa-pen-to-square"

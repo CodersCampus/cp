@@ -13,38 +13,18 @@ public class GitHub {
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student student;
-    private String handle;
-    private String enhancedReadMe;     // convert to boolean
-    private String renamedAssignments; // convert to boolean
-    private String pinnedRepos;        // convert to boolean
+    private Boolean handle;
+    private Boolean enhancedReadMe;     // convert to boolean
+    private Boolean renamedAssignments; // convert to boolean
+    private Boolean pinnedRepos;        // convert to boolean
     private String externalLinks;      // convert to list
-    private String image;
-    private String headline;
-    private String contactDetails;
+    private Boolean image;
+    private Boolean headline;
+    private Boolean contactDetails;
     private String url;
 
     public GitHub() {
 
-    }
-
-    public GitHub(String handle, String enhancedReadMe, String renamedAssignments, String pinnedRepos, String externalLinks, String image, String headline, String contactDetails, String url) {
-        this.handle = handle;
-        this.enhancedReadMe = enhancedReadMe;
-        this.renamedAssignments = renamedAssignments;
-        this.pinnedRepos = pinnedRepos;
-        this.externalLinks = externalLinks;
-        this.image = image;
-        this.headline = headline;
-        this.contactDetails = contactDetails;
-        this.url = url;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
     }
 
     public Long getId() {
@@ -55,35 +35,43 @@ public class GitHub {
         this.id = id;
     }
 
-    public String getHandle() {
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Boolean getHandle() {
         return handle;
     }
 
-    public void setHandle(String handle) {
+    public void setHandle(Boolean handle) {
         this.handle = handle;
     }
 
-    public String getEnhancedReadMe() {
+    public Boolean getEnhancedReadMe() {
         return enhancedReadMe;
     }
 
-    public void setEnhancedReadMe(String enhancedReadMe) {
+    public void setEnhancedReadMe(Boolean enhancedReadMe) {
         this.enhancedReadMe = enhancedReadMe;
     }
 
-    public String getRenamedAssignments() {
+    public Boolean getRenamedAssignments() {
         return renamedAssignments;
     }
 
-    public void setRenamedAssignments(String renamedAssignments) {
+    public void setRenamedAssignments(Boolean renamedAssignments) {
         this.renamedAssignments = renamedAssignments;
     }
 
-    public String getPinnedRepos() {
+    public Boolean getPinnedRepos() {
         return pinnedRepos;
     }
 
-    public void setPinnedRepos(String pinnedRepos) {
+    public void setPinnedRepos(Boolean pinnedRepos) {
         this.pinnedRepos = pinnedRepos;
     }
 
@@ -95,27 +83,27 @@ public class GitHub {
         this.externalLinks = externalLinks;
     }
 
-    public String getImage() {
+    public Boolean getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Boolean image) {
         this.image = image;
     }
 
-    public String getHeadline() {
+    public Boolean getHeadline() {
         return headline;
     }
 
-    public void setHeadline(String headline) {
+    public void setHeadline(Boolean headline) {
         this.headline = headline;
     }
 
-    public String getContactDetails() {
+    public Boolean getContactDetails() {
         return contactDetails;
     }
 
-    public void setContactDetails(String contactDetails) {
+    public void setContactDetails(Boolean contactDetails) {
         this.contactDetails = contactDetails;
     }
 
@@ -126,23 +114,7 @@ public class GitHub {
     public void setUrl(String url) {
         this.url = url;
     }
-
-    @Override
-    public String toString() {
-        return "GitHub{" +
-                "id=" + id +
-                ", student=" + student +
-                ", handle='" + handle + '\'' +
-                ", enhancedReadMe='" + enhancedReadMe + '\'' +
-                ", renamedAssignments='" + renamedAssignments + '\'' +
-                ", pinnedRepos='" + pinnedRepos + '\'' +
-                ", externalLinks='" + externalLinks + '\'' +
-                ", image='" + image + '\'' +
-                ", headline='" + headline + '\'' +
-                ", contactDetails='" + contactDetails + '\'' +
-                ", url='" + url + '\'' +
-                '}';
-    }
 }
+
 
 
