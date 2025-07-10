@@ -5,13 +5,11 @@
     }
     
     .tab-content {
-        background-color: var(--color-base-100);
-        border: 1px solid var(--color-base-300);
-        border-radius: var(--radius-field);
         overflow: hidden;
+        padding: 0 !important;
         
         :where(& > :not(:last-child)) {
-            border-bottom: 1px solid var(--color-base-300);
+            border-bottom: 1px solid color-mix(in oklab, var(--color-base-content) 5%, transparent);
         }
         
         section {
