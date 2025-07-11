@@ -12,7 +12,7 @@
     <div class="content-body">
         <div class="content-card">
             <form action="/foobar/create" class="form" th:object="${foobar}" method="post">
-                <input id="uid" name="uid" type="hidden"/>
+                <input id="uid" th:field="*{uid}" type="hidden"/>
 
                 <div class="input-field col-span-full">
                     <label for="title">Title</label>

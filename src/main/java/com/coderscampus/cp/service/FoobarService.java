@@ -19,22 +19,17 @@ public class FoobarService {
     private StudentRepository studentRepo;
 
     public Foobar saveByUid(Foobar foobar, String uid) {
-        if (foobar == null || uid == null) {
+        if (!isValidInput(foobar, uid)) {
+            return null;
+        }
+
+        if (!isStudentUidValid(foobar, uid)) {
             return null;
         }
 
         Student student = studentRepo.findByUid(uid);
-        if (student == null) {
-            return null;
-        }
+        updateFoobarWithStudent(foobar, student, uid);
 
-        if (foobar.getStudent() != null) {
-            if (!uid.equals(foobar.getStudent().getUid())) {
-                return null;
-            }
-        }
-
-        foobar.setStudent(student);
         return foobarRepo.save(foobar);
     }
 
@@ -46,10 +41,25 @@ public class FoobarService {
         if (id == null) {
             return null;
         }
-        return foobarRepo.findById(id).orElseThrow(() -> new RuntimeException("Element not found with ID " + id));
+        return foobarRepo.findById(id).orElse(null);
     }
 
     public void delete(Foobar foobar) {
         foobarRepo.delete(foobar);
+    }
+
+    private boolean isValidInput(Foobar foobar, String uid) {
+        return foobar != null && uid != null;
+    }
+
+    private boolean isStudentUidValid(Foobar foobar, String uid) {
+        return foobar.getStudent() == null || uid.equals(foobar.getStudent().getUid());
+    }
+
+    private void updateFoobarWithStudent(Foobar foobar, Student student, String uid) {
+        if (student != null && foobar.getStudent() != null) {
+            foobar.setUid(uid);
+        }
+        foobar.setStudent(student);
     }
 }

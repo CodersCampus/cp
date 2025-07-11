@@ -21,21 +21,11 @@ import java.util.List;
 public class SpringProjectController {
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
-    /**
-     * private final StudentService studentService;
-     * private final CheckinService checkinService;
-     * <p>
-     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
-     * this.springProjectRepository = springProjectRepository;
-     * this.studentService = studentService;
-     * this.checkinService = checkinService;
-     * }
-     */
-    private final StudentService studentService;
 
-    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService) {
+    private final SpringProjectRepository springProjectRepository;
+
+    public SpringProjectController(SpringProjectRepository springProjectRepository) {
         this.springProjectRepository = springProjectRepository;
-        this.studentService = studentService;
     }
 
     @GetMapping("/")
@@ -57,14 +47,6 @@ public class SpringProjectController {
             httpSession.setAttribute("uid", authDto.getUid());
             httpSession.setAttribute("email", authDto.getEmail());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
-            Student student = studentService.findStudentByUid(authDto.getUid());
-
-            if (student == null) {
-                student = new Student();
-                student.setUid(authDto.getUid());
-                student.setName(authDto.getDisplayName());
-                studentService.save(student);
-            }
         }
         return "redirect:/";
     }
@@ -75,5 +57,4 @@ public class SpringProjectController {
         model.addAttribute("projects", projects);
         return "springprojects";
     }
-
 }
