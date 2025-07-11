@@ -1,58 +1,124 @@
 <script th:inline="javascript" type="module" defer>
     const elements = {
         auth: document.querySelector('fbauth-element'),
-        uid: document.getElementById('uid'),
-        studentName: document.getElementById('student-name'),
-        displayName: document.getElementById('display-name'),
-        photoURL: document.getElementById('photo-url'),
+        uid: document.getElementById('user_uid'),
+        email: document.getElementById('user_email'),
+        displayName: document.getElementById('user_displayName'),
+        photoURL: document.getElementById('user_photoUrl'),
     }
 
-    const updateUserInfo = (userData) => {
+    const sendAuthToFrontend = (userData) => {
         if (elements.uid) {
             elements.uid.value = userData?.uid || '';
         }
         if (elements.displayName) {
             elements.displayName.value = userData?.displayName || '';
         }
-        elements.studentName.innerText = userData?.displayName || '';
-        elements.photoURL.src = userData?.photoURL || '';
-    }
-
-    const postUserData = async (userData) => {
-        const data = {
-            displayName: userData.displayName,
-            uid: userData.uid,
-            photoURL: userData.photoURL,
-            email: userData.email,
-        };
-
-        try {
-            const response = await fetch("/send-oauth", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(data),
-            });
-
-            return await response.json();
-        } catch (error) {
-            console.error('Error sending user data to server:', error);
-            throw error;
+        if (elements.displayName) {
+            elements.displayName.innerText = userData?.displayName || '';
+        }
+        if (elements.photoURL) {
+            elements.photoURL.src = userData?.photoURL || '';
         }
     }
 
-    elements.auth.addEventListener('user-changed', async (event) => {
-        const {newValue} = event.detail;
-
-        updateUserInfo(newValue);
-
-        if (newValue) {
-            try {
-                await postUserData(newValue);
-            } catch (error) {
-                console.error('Failed to send OAuth data:', error);
+    const handleAuthenticationSuccess = (responseText) => {
+        console.log('Authentication successful:', responseText);
+        if (responseText === 'SUCCESS') {
+            // Check if we've already processed authentication to avoid infinite reload
+            if (!sessionStorage.getItem('authProcessed')) {
+                // Set a flag in session storage to indicate auth has been processed
+                sessionStorage.setItem('authProcessed', 'true');
+                // Reload the current page to ensure it has access to the authenticated user
+                window.location.reload();
             }
+        } else {
+            console.error('Unexpected response:', responseText);
         }
-    });
+    }
+
+    const handleAuthenticationError = (error) => {
+        console.error('Authentication failed:', error);
+        alert('Authentication failed. Please try again.');
+    }
+
+    const sendAuthToBackend = (authData) => {
+        console.log('Sending auth data to backend:', authData);
+
+        fetch('/send-oauth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                uid: authData.uid,
+                email: authData.email,
+                photoURL: authData.photoURL,
+                displayName: authData.displayName,
+            })
+        })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => handleAuthenticationSuccess(data))
+                .catch(error => handleAuthenticationError(error));
+    }
+
+    const clearUserData = () => {
+        if (elements.uid) {
+            elements.uid.value = '';
+        }
+        if (elements.displayName) {
+            elements.displayName.value = '';
+        }
+        if (elements.displayName) {
+            elements.displayName.innerText = '';
+        }
+        if (elements.photoURL) {
+            elements.photoURL.src = '';
+        }
+    }
+
+    const handleUserAuthentication = (userData) => {
+        console.log('User is authenticated:', userData);
+        sendAuthToFrontend(userData);
+        sendAuthToBackend(userData);
+    }
+
+    const handleUserLogout = () => {
+        console.log('User is not authenticated');
+        clearUserData();
+
+        // Clear the authentication processed flag
+        sessionStorage.removeItem('authProcessed');
+
+        // Call backend logout endpoint
+        fetch('/logout', {
+            method: 'GET',
+        })
+                .then(() => {
+                    console.log('Logged out successfully');
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.error('Logout error:', error);
+                });
+    }
+
+    // Initialize auth element listener
+    if (elements.auth) {
+        elements.auth.addEventListener('user-changed', async (event) => {
+            const {newValue} = event.detail;
+            if (newValue) {
+                handleUserAuthentication(newValue);
+            } else {
+                handleUserLogout();
+            }
+        });
+    } else {
+        console.error('fbauth-element not found');
+    }
 </script>
-
-

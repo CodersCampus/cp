@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+
 @Controller
 @RequestMapping("/checkin")
 public class CheckinController {
@@ -28,6 +29,11 @@ public class CheckinController {
 
     @GetMapping("")
     public String home(ModelMap model, HttpSession httpSession) {
+        // Authentication check
+        if (!WebController.isAuthenticated(httpSession, model)) {
+            return "redirect:/";
+        }
+
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.findByUid(uid);
         model.put("checkins", checkins);
@@ -52,6 +58,11 @@ public class CheckinController {
 
     @GetMapping("/create")
     public String getCreate(ModelMap model, HttpSession httpSession) {
+        // Authentication check
+        if (!WebController.isAuthenticated(httpSession, model)) {
+            return "redirect:/";
+        }
+
         String userEmail = (String) httpSession.getAttribute("email");
         Integer nextAssignment = userStatusService.getUserNextAssignment(userEmail);
         Checkin checkin = new Checkin();
@@ -104,6 +115,11 @@ public class CheckinController {
 
     @GetMapping("/blockers")
     public String getCheckinsForBlockerReadButton(ModelMap model, HttpSession httpSession) {
+        // Authentication check
+        if (!WebController.isAuthenticated(httpSession, model)) {
+            return "redirect:/";
+        }
+
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.getSortedCheckinsByUid(uid);
         model.put("checkins", checkins);
@@ -114,6 +130,11 @@ public class CheckinController {
 
     @GetMapping("/activities")
     public String getActivities(ModelMap model, HttpSession httpSession) {
+        // Authentication check
+        if (!WebController.isAuthenticated(httpSession, model)) {
+            return "redirect:/";
+        }
+
         String uid = (String) httpSession.getAttribute("uid");
         List<CheckinDTO> checkins = checkinService.getCodersActivities(uid);
         model.put("checkins", checkins);
@@ -122,5 +143,5 @@ public class CheckinController {
         return "checkin/activities-read";
     }
 
-}
 
+}

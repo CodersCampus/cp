@@ -1,6 +1,8 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Foobar;
+import com.coderscampus.cp.domain.User;
+import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.service.FoobarService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.coderscampus.cp.web.WebController.isAuthenticated;
+
 @Controller
 @RequestMapping("/foobar")
 public class FoobarController {
@@ -18,7 +22,13 @@ public class FoobarController {
     private FoobarService foobarService;
 
     @GetMapping("")
-    public String home(ModelMap model) {
+    public String home(ModelMap model, HttpSession httpSession) {
+        if (!isAuthenticated(httpSession)) {
+            return "redirect:/";
+        }
+
+        UserDTO currentUser = (UserDTO) httpSession.getAttribute("currentUser");
+        System.out.println("CURRENT USER: " + currentUser);
         List<Foobar> foobars = foobarService.findAll();
         model.put("foobars", foobars);
         model.addAttribute("pageTitle", "Foobar");
@@ -43,6 +53,11 @@ public class FoobarController {
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
+        // Authentication check
+        if (!isAuthenticated(httpSession)) {
+            return "redirect:/";
+        }
+
         String uid = (String) httpSession.getAttribute("uid");
         Foobar foobar = foobarService.findById(id);
 
@@ -58,6 +73,11 @@ public class FoobarController {
 
     @PostMapping("/update")
     public String update(Foobar foobar, HttpSession httpSession) {
+        // Authentication check
+        if (!isAuthenticated(httpSession)) {
+            return "redirect:/";
+        }
+
         String uid = (String) httpSession.getAttribute("uid");
         foobarService.saveByUid(foobar, uid);
         return "redirect:/foobar";

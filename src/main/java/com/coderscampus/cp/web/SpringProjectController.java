@@ -2,82 +2,61 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
+import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.AuthObjectDTO;
+import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
 import com.coderscampus.cp.service.StudentService;
+import com.coderscampus.cp.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/spring-project")
 public class SpringProjectController {
 
     private final SpringProjectRepository springProjectRepository;
+    private final StudentService studentService;
+    private final UserService userService;
 
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
-    /**
-     * private final StudentService studentService;
-     * private final CheckinService checkinService;
-     * <p>
-     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
-     * this.springProjectRepository = springProjectRepository;
-     * this.studentService = studentService;
-     * this.checkinService = checkinService;
-     * }
-     */
-    private final StudentService studentService;
 
-    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService) {
+    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, UserService userService) {
         this.springProjectRepository = springProjectRepository;
         this.studentService = studentService;
+        this.userService = userService;
     }
 
     @GetMapping("/")
     public String getDashboard(ModelMap model, HttpSession httpSession) {
-        String userEmail = (String) httpSession.getAttribute("email");
         String uid = (String) httpSession.getAttribute("uid");
-        String displayName = (String) httpSession.getAttribute("displayName");
+        UserDTO user = (UserDTO) httpSession.getAttribute("currentUser");
+        // Authenticated user
         Student student = new Student();
         model.put("student", student);
-        model.put("displayName", displayName);
-        model.addAttribute("showDatabaseConsoleLink", showDatabaseConsoleLink);
-        return "dashboard";
-    }
-
-    @PostMapping("/send-oauth")
-    @ResponseBody
-    public String getOauth(@RequestBody AuthObjectDTO authDto, HttpSession httpSession) {
-        if (authDto != null) {
-            httpSession.setAttribute("uid", authDto.getUid());
-            httpSession.setAttribute("email", authDto.getEmail());
-            httpSession.setAttribute("displayName", authDto.getDisplayName());
-            Student student = studentService.findStudentByUid(authDto.getUid());
-
-            if (student == null) {
-                student = new Student();
-                student.setUid(authDto.getUid());
-                student.setName(authDto.getDisplayName());
-                studentService.save(student);
-            }
-        }
-        return "redirect:/";
+        model.put("displayName", user.getDisplayName());
+        model.put("pageTitle", "Dashboard");
+        model.put("showDatabaseConsoleLink", showDatabaseConsoleLink);
+        return "dashboard/index";
     }
 
     @GetMapping("/springprojects")
-    public String getSpringProjects(Model model) {
+    public String getSpringProjects(Model model, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        UserDTO user = (UserDTO) httpSession.getAttribute("currentUser");
+
         List<SpringProject> projects = springProjectRepository.findAll();
         model.addAttribute("projects", projects);
+        model.addAttribute("pageTitle", "Spring Projects");
         return "springprojects";
     }
 
-
+    // Authentication is now handled in WebController
 }
