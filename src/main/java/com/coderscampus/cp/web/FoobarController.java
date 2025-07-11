@@ -14,34 +14,31 @@ import java.util.List;
 @Controller
 @RequestMapping("/foobar")
 public class FoobarController {
+    private final FoobarService foobarService;
 
-    @Autowired
-    private FoobarService foobarService;
+    public FoobarController(FoobarService foobarService) {
+        this.foobarService = foobarService;
+    }
 
     @GetMapping("")
     public String home(ModelMap model) {
         List<Foobar> foobars = foobarService.findAll();
         model.put("foobars", foobars);
-        model.addAttribute("pageTitle", "Foobar");
-        model.put("isFoobar", true);
+        setupCommonModelAttributes(model, "Foobar");
         return "foobar/read";
     }
 
     @GetMapping("/create")
     public String getCreate(ModelMap model) {
-        Foobar foobar = new Foobar();
-        foobar.setStatus(false);
-        foobar.setPriority(0);
+        Foobar foobar = createDefaultFoobar();
         model.put("foobar", foobar);
-        System.out.println("Foobar entity: " + foobar);
-        model.addAttribute("typeList", Foobar.Type.values());
-        model.addAttribute("pageTitle", "Foobar");
-        model.put("isFoobar", true);
+        setupFoobarFormModel(model, "Foobar");
         return "foobar/create";
     }
 
     @PostMapping("/create")
-    public String create(Foobar foobar, @RequestParam("uid") String uid) {
+    public String create(Foobar foobar, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
         foobar = foobarService.saveByUid(foobar, uid);
         return "redirect:/foobar/update/" + foobar.getId();
     }
@@ -50,16 +47,9 @@ public class FoobarController {
     public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         Foobar foobar = foobarService.findById(id);
-
-        if (foobar.getStudent() != null && foobar.getStudent().getUid().equals(uid)) {
-            model.put("foobar", foobar);
-            model.addAttribute("typeList", Foobar.Type.values());
-            model.addAttribute("pageTitle", "Foobar Update");
-            model.put("isFoobar", true);
-            return "foobar/update";
-        } else {
-            return "redirect:/foobar";
-        }
+        model.put("foobar", foobar);
+        setupFoobarFormModel(model, "Foobar Update");
+        return "foobar/update";
     }
 
     @PostMapping("/update")
@@ -73,5 +63,22 @@ public class FoobarController {
     public String delete(Foobar foobar) {
         foobarService.delete(foobar);
         return "redirect:/foobar";
+    }
+
+    private void setupCommonModelAttributes(ModelMap model, String pageTitle) {
+        model.addAttribute("pageTitle", pageTitle);
+        model.put("isFoobar", true);
+    }
+
+    private void setupFoobarFormModel(ModelMap model, String pageTitle) {
+        model.addAttribute("typeList", Foobar.Type.values());
+        setupCommonModelAttributes(model, pageTitle);
+    }
+
+    private Foobar createDefaultFoobar() {
+        Foobar foobar = new Foobar();
+        foobar.setStatus(false);
+        foobar.setPriority(0);
+        return foobar;
     }
 }
