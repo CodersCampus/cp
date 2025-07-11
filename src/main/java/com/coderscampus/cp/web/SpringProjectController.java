@@ -21,11 +21,22 @@ import java.util.List;
 public class SpringProjectController {
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
-
-    private final SpringProjectRepository springProjectRepository;
-
-    public SpringProjectController(SpringProjectRepository springProjectRepository) {
+    private final StudentService studentService;
+    
+    /**
+     * private final StudentService studentService;
+     * private final CheckinService checkinService;
+     * <p>
+     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
+     * this.springProjectRepository = springProjectRepository;
+     * this.studentService = studentService;
+     * this.checkinService = checkinService;
+     * }
+     */
+    
+    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService) {
         this.springProjectRepository = springProjectRepository;
+        this.studentService = studentService;
     }
 
     @GetMapping("/")
