@@ -21,7 +21,7 @@ import java.util.List;
 public class SpringProjectController {
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
-    private final StudentService studentService;
+    private final SpringProjectRepository springProjectRepository;
     
     /**
      * private final StudentService studentService;
@@ -36,7 +36,6 @@ public class SpringProjectController {
     
     public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService) {
         this.springProjectRepository = springProjectRepository;
-        this.studentService = studentService;
     }
 
     @GetMapping("/")
