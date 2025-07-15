@@ -225,7 +225,7 @@ public class GitHubServiceTest {
                 break;
             }
             GitHub newGitHub = gitHubRepo.findById(gitHub.getId()).get();
-            newGitHub.setHeadline(true);
+            newGitHub.setHeadline(false);
             gitHubRepo.save(newGitHub);
         }
         List<GitHub> everythingInDatabase = gitHubService.findAll();
