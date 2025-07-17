@@ -6,6 +6,7 @@ import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.AuthObjectDTO;
 import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
+import com.coderscampus.cp.service.SessionManager;
 import com.coderscampus.cp.service.StudentService;
 import com.coderscampus.cp.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -18,52 +19,77 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/spring-project")
+@RequestMapping("/")
 public class SpringProjectController {
 
     private final SpringProjectRepository springProjectRepository;
     private final StudentService studentService;
     private final UserService userService;
+    private final SessionManager sessionManager;
 
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
 
-    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, UserService userService) {
+
+    public SpringProjectController(
+            SpringProjectRepository springProjectRepository,
+            StudentService studentService,
+            UserService userService,
+            SessionManager sessionManager) {
         this.springProjectRepository = springProjectRepository;
         this.studentService = studentService;
         this.userService = userService;
+        this.sessionManager = sessionManager;
     }
 
     @GetMapping("/")
     public String getDashboard(ModelMap model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         UserDTO user = (UserDTO) httpSession.getAttribute("currentUser");
+
+        // Add null check to prevent NullPointerException
+        if (user != null) {
+            model.addAttribute("displayName", user.getDisplayName());
+        }
         // Authenticated user
         Student student = new Student();
         model.put("student", student);
-        model.put("displayName", user.getDisplayName());
+//        model.put("displayName", user.getDisplayName());
         model.put("pageTitle", "Dashboard");
         model.put("showDatabaseConsoleLink", showDatabaseConsoleLink);
+
         return "dashboard/index";
     }
 
     @PostMapping("/send-oauth")
     @ResponseBody
     public String getOauth(@RequestBody AuthObjectDTO authDto, HttpSession httpSession) {
-        if (authDto != null) {
-            httpSession.setAttribute("uid", authDto.getUid());
-            httpSession.setAttribute("email", authDto.getEmail());
-            httpSession.setAttribute("displayName", authDto.getDisplayName());
-            Student student = studentService.findStudentByUid(authDto.getUid());
+        try {
+            // httpSession.setAttribute("uid", authDto.getUid());
+            // httpSession.setAttribute("email", authDto.getEmail());
+            // httpSession.setAttribute("displayName", authDto.getDisplayName());
 
-            if (student == null) {
-                student = new Student();
-                student.setUid(authDto.getUid());
-                student.setName(authDto.getDisplayName());
-                studentService.save(student);
-            }
+            UserDTO userDTO = sessionManager.authenticate(authDto, httpSession);
+            createdStudent(authDto);
+
+            System.out.println("User UID in session: " + authDto.getUid());
+            System.out.println("User DTO in session: " + userDTO);
+
+            return "redirect:/";
+        } catch (Exception e) {
+            System.err.println("Authentication failed: " + e.getMessage());
+            return "redirect:/error";
         }
-        return "redirect:/";
+    }
+
+    private void createdStudent(AuthObjectDTO authDto) {
+        Student student = studentService.findStudentByUid(authDto.getUid());
+        if (student == null) {
+            student = new Student();
+            student.setUid(authDto.getUid());
+            student.setName(authDto.getDisplayName());
+            studentService.save(student);
+        }
     }
 
     @GetMapping("/springprojects")
