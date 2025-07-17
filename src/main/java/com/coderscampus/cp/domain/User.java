@@ -17,7 +17,7 @@ public class User {
     private String displayName;
     private String photoUrl;
     private String password;
-    private Boolean enabled;
+    private Boolean active;
     private Boolean online;
     private Instant createdAt;
     private Instant updatedAt;
@@ -27,7 +27,7 @@ public class User {
     public User() {
         this.createdAt = Instant.now();
         this.updatedAt = Instant.now();
-        this.enabled = true;
+        this.active = true;
         this.online = false;
     }
 
@@ -87,12 +87,12 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Boolean getOnline() {
@@ -137,7 +137,7 @@ public class User {
                 ", displayName='" + displayName + '\'' +
                 ", photoUrl='" + photoUrl + '\'' +
                 ", password='" + password + '\'' +
-                ", enabled=" + enabled +
+                ", active=" + active +
                 ", online=" + online +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +

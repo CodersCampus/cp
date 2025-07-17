@@ -3,6 +3,7 @@ package com.coderscampus.cp.web;
 import com.coderscampus.cp.domain.LinkedIn;
 import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.service.LinkedInService;
+import com.coderscampus.cp.service.SessionManager;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.coderscampus.cp.web.WebController.isAuthenticated;
-
 @Controller
 @RequestMapping("/linkedin")
 public class LinkedInController {
@@ -20,11 +19,16 @@ public class LinkedInController {
     @Autowired
     private LinkedInService linkedInService;
 
+    private final SessionManager sessionManager;
+
+    public LinkedInController(SessionManager sessionManager) {
+        this.sessionManager = sessionManager;
+    }
 
     @GetMapping("")
     public String home(ModelMap model, HttpSession httpSession) {
         // Authentication check
-        if (!isAuthenticated(httpSession)) {
+        if (!sessionManager.isAuthenticated(httpSession)) {
             return "redirect:/";
         }
 

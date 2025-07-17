@@ -5,6 +5,7 @@ import com.coderscampus.cp.domain.Checkin;
 import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.service.ActivityLogService;
 import com.coderscampus.cp.service.CheckinService;
+import com.coderscampus.cp.service.SessionManager;
 import com.coderscampus.cp.service.UserStatusService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,17 @@ public class CheckinController {
     @Autowired
     private UserStatusService userStatusService;
 
+    private final SessionManager sessionManager;
+
+    public CheckinController(SessionManager sessionManager) {
+        this.sessionManager = sessionManager;
+    }
+
+
     @GetMapping("")
     public String home(ModelMap model, HttpSession httpSession) {
         // Authentication check
-        if (!WebController.isAuthenticated(httpSession, model)) {
+        if (!sessionManager.isAuthenticated(httpSession)) {
             return "redirect:/";
         }
 
@@ -59,7 +67,7 @@ public class CheckinController {
     @GetMapping("/create")
     public String getCreate(ModelMap model, HttpSession httpSession) {
         // Authentication check
-        if (!WebController.isAuthenticated(httpSession, model)) {
+        if (!sessionManager.isAuthenticated(httpSession)) {
             return "redirect:/";
         }
 
@@ -116,7 +124,7 @@ public class CheckinController {
     @GetMapping("/blockers")
     public String getCheckinsForBlockerReadButton(ModelMap model, HttpSession httpSession) {
         // Authentication check
-        if (!WebController.isAuthenticated(httpSession, model)) {
+        if (!sessionManager.isAuthenticated(httpSession)) {
             return "redirect:/";
         }
 
@@ -131,7 +139,7 @@ public class CheckinController {
     @GetMapping("/activities")
     public String getActivities(ModelMap model, HttpSession httpSession) {
         // Authentication check
-        if (!WebController.isAuthenticated(httpSession, model)) {
+        if (!sessionManager.isAuthenticated(httpSession)) {
             return "redirect:/";
         }
 

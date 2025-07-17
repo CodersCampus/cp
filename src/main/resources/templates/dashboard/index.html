@@ -4,12 +4,7 @@
 <ul class="ui-navbar-nav">
 </ul>
 <main>
-    <div class="container">
-        <h1 class="headline">Coders Packaging</h1>
-        <p class="subheadline">
-            <span th:text="${user != null ? user.displayName : 'Guest'}">Default Name</span>
-        </p>
-    </div>
+  <h1 class="ui-panel-title " th:text="|Welcome, ${displayName}!|"></h1>
 </main>
 </body>
 </html>

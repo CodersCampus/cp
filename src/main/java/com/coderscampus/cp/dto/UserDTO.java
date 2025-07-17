@@ -9,7 +9,7 @@ public class UserDTO {
     private String displayName;
     private String photoUrl;
     private String password;
-    private Boolean enabled;
+    private Boolean active;
     private Boolean online;
 
     public UserDTO(User user) {
@@ -19,7 +19,7 @@ public class UserDTO {
         this.displayName = user.getDisplayName();
         this.photoUrl = user.getPhotoUrl();
         this.password = user.getPassword();
-        this.enabled = user.getEnabled();
+        this.active = user.getActive();
         this.online = user.getOnline();
     }
 
@@ -71,12 +71,12 @@ public class UserDTO {
         this.password = password;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Boolean getOnline() {
@@ -96,7 +96,7 @@ public class UserDTO {
                 ", displayName='" + displayName + '\'' +
                 ", photoUrl='" + photoUrl + '\'' +
                 ", password='" + password + '\'' +
-                ", enabled=" + enabled +
+                ", active=" + active +
                 ", online=" + online +
                 '}';
     }

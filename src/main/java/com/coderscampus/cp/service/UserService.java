@@ -52,7 +52,7 @@ public class UserService {
             userToUpdate.setPhotoUrl(user.getPhotoUrl());
             userToUpdate.setUsername(user.getUsername());
             userToUpdate.setPassword(user.getPassword());
-            userToUpdate.setEnabled(user.getEnabled());
+            userToUpdate.setActive(user.getActive());
             userToUpdate.setOnline(user.getOnline());
             userToUpdate.setRole(user.getRole());
             // updatedAt will be set automatically by @PreUpdate
@@ -77,6 +77,13 @@ public class UserService {
             return null;
         }
         return userRepo.findById(id).orElse(null);
+    }
+
+    public Boolean existsById(Long id) {
+        if (id == null) {
+            return false;
+        }
+        return userRepo.existsById(id);
     }
 
 }

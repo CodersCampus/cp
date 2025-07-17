@@ -4,6 +4,7 @@ import com.coderscampus.cp.domain.Foobar;
 import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.service.FoobarService;
+import com.coderscampus.cp.service.SessionManager;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.coderscampus.cp.web.WebController.isAuthenticated;
-
 @Controller
 @RequestMapping("/foobar")
 public class FoobarController {
@@ -21,9 +20,16 @@ public class FoobarController {
     @Autowired
     private FoobarService foobarService;
 
+    private final SessionManager sessionManager;
+
+    public FoobarController(SessionManager sessionManager) {
+        this.sessionManager = sessionManager;
+    }
+
     @GetMapping("")
     public String home(ModelMap model, HttpSession httpSession) {
-        if (!isAuthenticated(httpSession)) {
+        // Authentication check
+        if (!sessionManager.isAuthenticated(httpSession)) {
             return "redirect:/";
         }
 
@@ -54,7 +60,7 @@ public class FoobarController {
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
         // Authentication check
-        if (!isAuthenticated(httpSession)) {
+        if (!sessionManager.isAuthenticated(httpSession)) {
             return "redirect:/";
         }
 
@@ -74,7 +80,7 @@ public class FoobarController {
     @PostMapping("/update")
     public String update(Foobar foobar, HttpSession httpSession) {
         // Authentication check
-        if (!isAuthenticated(httpSession)) {
+        if (!sessionManager.isAuthenticated(httpSession)) {
             return "redirect:/";
         }
 

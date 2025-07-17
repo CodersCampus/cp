@@ -47,6 +47,25 @@ public class SpringProjectController {
         return "dashboard/index";
     }
 
+    @PostMapping("/send-oauth")
+    @ResponseBody
+    public String getOauth(@RequestBody AuthObjectDTO authDto, HttpSession httpSession) {
+        if (authDto != null) {
+            httpSession.setAttribute("uid", authDto.getUid());
+            httpSession.setAttribute("email", authDto.getEmail());
+            httpSession.setAttribute("displayName", authDto.getDisplayName());
+            Student student = studentService.findStudentByUid(authDto.getUid());
+
+            if (student == null) {
+                student = new Student();
+                student.setUid(authDto.getUid());
+                student.setName(authDto.getDisplayName());
+                studentService.save(student);
+            }
+        }
+        return "redirect:/";
+    }
+
     @GetMapping("/springprojects")
     public String getSpringProjects(Model model, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");

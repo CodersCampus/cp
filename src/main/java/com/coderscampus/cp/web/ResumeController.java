@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.coderscampus.cp.web.WebController.isAuthenticated;
+//import static com.coderscampus.cp.web.WebController.isAuthenticated;
 
 @Controller
 @RequestMapping("/resume")
@@ -22,10 +22,8 @@ public class ResumeController {
 
     @GetMapping("")
     public String home(ModelMap model, HttpSession httpSession) {
-        // Authentication check
-        if (!isAuthenticated(httpSession)) {
-            return "redirect:/";
-        }
+        UserDTO currentUser = (UserDTO) httpSession.getAttribute("currentUser");
+        System.out.println("CURRENT USER in Resume: " + currentUser);
 
         List<Resume> resumes = resumeService.findAll();
         model.put("resumes", resumes);
