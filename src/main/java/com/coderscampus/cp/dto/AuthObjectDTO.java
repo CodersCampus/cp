@@ -3,6 +3,7 @@ package com.coderscampus.cp.dto;
 public class AuthObjectDTO {
     private String uid;
     private String email;
+    private String photoUrl;
     private String displayName;
 
     public String getUid() {
@@ -21,6 +22,14 @@ public class AuthObjectDTO {
         this.email = email;
     }
 
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
     public String getDisplayName() {
         return displayName;
     }
@@ -31,6 +40,6 @@ public class AuthObjectDTO {
 
     @Override
     public String toString() {
-        return "AuthObjectDto [uid=" + uid + ", email=" + email + ", displayName=" + displayName + "]";
+        return "AuthObjectDto [uid=" + uid + ", email=" + email + ", photoUrl=" + photoUrl + ", displayName=" + displayName + "]";
     }
 }

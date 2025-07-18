@@ -80,6 +80,5 @@ public class StudentController {
     public String delete(Student student) {
         studentService.delete(student);
         return "redirect:/student";
-
     }
 }

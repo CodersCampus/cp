@@ -1,21 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{layouts/dashboard :: layout(~{::title}, ~{::body})}">
-<head>
-    <title>My Profile</title>
-</head>
-<body>
-<div class="content container-md">
-    <div class="content-header">
-        <h2 class="headline headline-xl">Welcome to your Dashboard</h2>
-    </div>
-
-    <div class="content-body">
-      <p>This page contains an overview of all the features of this application.</p>
-    </div>
-
-    <div class="content-footer">
-        <p>Copyright &copy; 2025 - Coders Campus</p>
-    </div>
-</div>
+<html th:replace="~{fragments/baseLayout :: layout(~{::title}, ~{::main},~{::ul} )}">
+<body class="ui-background">
+<ul class="ui-navbar-nav">
+</ul>
+<main>
+  <h1 class="ui-panel-title " th:text="|Welcome, ${displayName}!|"></h1>
+</main>
 </body>
 </html>
