@@ -89,7 +89,7 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO{" +
+        return "UserDTO [" +
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
@@ -98,6 +98,6 @@ public class UserDTO {
                 ", password='" + password + '\'' +
                 ", active=" + active +
                 ", online=" + online +
-                '}';
+                ']';
     }
 }

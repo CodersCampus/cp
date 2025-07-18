@@ -11,73 +11,39 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
     private String uid; // Unique identifier for the user, can be used for OAuth
     private String username; // Unique username for the user, can be used for login
     private String displayName; // Unique displayName for display purposes
-    private String uid;
     private String email;
-    private String username;
-    private String displayName;
     private String photoUrl;
     private String password;
-    private Boolean enabled;
-    private Boolean online;
-    private Instant createdAt;
-    private Instant updatedAt;
-    private String provider; // OAuth provider (e.g., "google", "github", etc.)
-    private String providerId; // Unique ID from the OAuth provider
-
-    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //	private GitHub githubHandle;
-    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //	private LinkedIn linkedIn;
-    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //	private YouTube youtube;
-    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //	private FinalProject finalProject;
-    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //	private Resume resume;
-    //    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    //	private Foobar foobar;
-    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //	private Networking networking;
-    //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //	private Website website;
-
-    public User() {
-        this.enabled = true; // Default to enabled
-        this.createdAt = Instant.now(); // Set creation time to now
-    }
-
-    public User(String uid, String username, String displayName, String email, String password, Boolean enabled, Boolean online, Instant createdAt, Instant updatedAt, String provider, String providerId) {
-        this.uid = uid;
-        this.username = username;
-        this.email = email;
-        this.displayName = displayName;
-        this.password = password;
-        this.enabled = enabled;
-        this.online = online;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.provider = provider;
-        this.providerId = providerId;
-    }
-
     private Boolean active;
     private Boolean online;
     private Instant createdAt;
     private Instant updatedAt;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
     public User() {
         this.createdAt = Instant.now();
         this.updatedAt = Instant.now();
         this.active = true;
         this.online = false;
+    }
+
+    public User(String uid, String username, String displayName, String email, String password, Boolean active, Boolean online, Instant createdAt, Instant updatedAt) {
+        this.uid = uid;
+        this.username = username;
+        this.email = email;
+        this.displayName = displayName;
+        this.password = password;
+        this.active = active;
+        this.online = online;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public Long getId() {
@@ -128,12 +94,6 @@ public class User {
         this.displayName = displayName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     public String getPhotoUrl() {
         return photoUrl;
     }
@@ -150,12 +110,6 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
     public Boolean getActive() {
         return active;
     }
@@ -188,104 +142,6 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public String getProvider() {
-        return provider;
-    }
-
-    public void setProvider(String provider) {
-        this.provider = provider;
-    }
-
-    public String getProviderId() {
-        return providerId;
-    }
-
-    public void setProviderId(String providerId) {
-        this.providerId = providerId;
-    }
-
-    //	public GitHub getGithubHandle() {
-//		return githubHandle;
-//	}
-//
-//	public void setGithubHandle(GitHub githubHandle) {
-//		this.githubHandle = githubHandle;
-//	}
-//
-//	public LinkedIn getLinkedIn() {
-//		return linkedIn;
-//	}
-//
-//	public void setLinkedIn(LinkedIn linkedIn) {
-//		this.linkedIn = linkedIn;
-//	}
-//
-//
-//	public YouTube getYoutube() {
-//		return youtube;
-//	}
-//
-//	public void setYoutube(YouTube youtube) {
-//		this.youtube = youtube;
-//	}
-//
-//	public FinalProject getFinalProject() {
-//		return finalProject;
-//	}
-//
-//	public void setFinalProject(FinalProject finalProject) {
-//		this.finalProject = finalProject;
-//	}
-//
-//	public Resume getResume() {
-//		return resume;
-//	}
-//
-//	public void setResume(Resume resume) {
-//		this.resume = resume;
-//	}
-//
-//	public Foobar getFoobar() {
-//		return foobar;
-//	}
-//
-//	public void setFoobar(Foobar foobar) {
-//		this.foobar = foobar;
-//	}
-//
-//	public Networking getNetworking() {
-//		return networking;
-//	}
-//
-//	public void setNetworking(Networking networking) {
-//		this.networking = networking;
-//	}
-//
-//	public Website getWebsite() {
-//		return website;
-//	}
-//
-//	public void setWebsite(Website website) {
-//		this.website = website;
-//	}
-
-
-    @Override
-    public String toString() {
-        return "User [" +
-                "id=" + id +
-                ", uid='" + uid + '\'' +
-                ", username='" + username + '\'' +
-                ", displayName='" + displayName + '\'' +
-                ", email='" + email + '\'' +
-                ", enabled=" + enabled +
-                ", online=" + online +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", provider='" + provider + '\'' +
-                ", providerId='" + providerId + '\'' +
-                ", profile=" + profile +
-                ']';
     public Role getRole() {
         return role;
     }
@@ -296,7 +152,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "User [" +
                 "id=" + id +
                 ", uid='" + uid + '\'' +
                 ", email='" + email + '\'' +
@@ -309,7 +165,7 @@ public class User {
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 ", role=" + role +
-                '}';
+                ']';
     }
 
     @PrePersist

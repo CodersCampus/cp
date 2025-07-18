@@ -7,11 +7,11 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SessionManager {
+public class SessionManagerService {
 
     private final UserService userService;
 
-    public SessionManager(UserService userService) {
+    public SessionManagerService(UserService userService) {
         this.userService = userService;
     }
 

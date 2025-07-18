@@ -86,4 +86,11 @@ public class UserService {
         return userRepo.existsById(id);
     }
 
+    public void delete(User user) {
+        if (user == null || user.getUid() == null || user.getUid().isEmpty()) {
+            throw new IllegalArgumentException("User cannot be null and must have a valid UID");
+        }
+        userRepo.delete(user);
+    }
+
 }
