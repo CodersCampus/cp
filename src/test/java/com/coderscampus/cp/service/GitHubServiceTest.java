@@ -71,14 +71,14 @@ public class GitHubServiceTest {
         for (int i = 0; i < 4; i++) {
             GitHub gitHub  = new GitHub();
             gitHub.setUrl("Blocker" + i);
-            gitHub.setHandle("Blocker" + i);
-            gitHub.setEnhancedReadMe("Blocker" + i);
-            gitHub.setRenamedAssignments("Blocker" + i);
-            gitHub.setPinnedRepos("Blocker" + i);
+            gitHub.setHandle(true);
+            gitHub.setEnhancedReadMe(true);
+            gitHub.setRenamedAssignments(true);
+            gitHub.setPinnedRepos(true);
             gitHub.setExternalLinks("Blocker" + i);
-            gitHub.setImage("Blocker" + i);
-            gitHub.setHeadline("Blocker" + i);
-            gitHub.setImage("Blocker" + i);
+            gitHub.setImage(true);
+            gitHub.setHeadline(true);
+            gitHub.setImage(true);
             gitHub.setStudent(student1);
             gitHub.getStudent().setUid(student1Uid);
             gitHubRepo.save(gitHub);
@@ -106,7 +106,7 @@ public class GitHubServiceTest {
         AtomicLong i = new AtomicLong(0L);
 		student1GitHubList.forEach(gitHubFromList -> {
 
-            gitHubFromList.setHeadline("Test");
+            gitHubFromList.setHeadline(true);
 			GitHub savedGitHub = gitHubService.saveByUid(gitHubFromList, student1Uid);
             assertTrue(savedGitHub.getId() > i.get());
             i.set(savedGitHub.getId());
@@ -166,7 +166,7 @@ public class GitHubServiceTest {
         for (int i = 0; i < 2; i++) {
             GitHub gitHub = new GitHub();
             gitHub.setStudent(student1);
-            gitHub.setHeadline("headline");
+            gitHub.setHeadline(true);
             gitHubRepo.save(gitHub);
             GitHub newGitHub = gitHub;
             student1GitHubList.add(newGitHub);
@@ -216,7 +216,7 @@ public class GitHubServiceTest {
     void testFindAllUpdateReallyHappened() {
         List<GitHub> gitHubsToUpdate = new ArrayList<>(student1GitHubList);
         int i = 0;
-        String randomString = UUID.randomUUID().toString();
+
         long studentId1 = 0;
         for (GitHub gitHub : gitHubsToUpdate) {
         	studentId1 = gitHub.getStudent().getId();
@@ -225,13 +225,13 @@ public class GitHubServiceTest {
                 break;
             }
             GitHub newGitHub = gitHubRepo.findById(gitHub.getId()).get();
-            newGitHub.setHeadline(randomString);
+            newGitHub.setHeadline(false);
             gitHubRepo.save(newGitHub);
         }
         List<GitHub> everythingInDatabase = gitHubService.findAll();
         int j = 0;
         for (GitHub gitHub : everythingInDatabase) {
-            if (gitHub.getStudent() != null && gitHub.getStudent().getId() == studentId1 && gitHub.getHeadline().equals(randomString)) {
+            if (gitHub.getStudent() != null && gitHub.getStudent().getId() == studentId1 && gitHub.getHeadline()) {
                 j++;
             }
         }
