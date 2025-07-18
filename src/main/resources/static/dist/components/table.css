@@ -1,0 +1,14 @@
+.table-container {
+    overflow-x: auto;
+    background-color: var(--color-base-100);
+    border-radius: var(--radius-box);
+    border-width: 1px;
+    border-style: solid;
+    border-color: color-mix(in oklab, var(--color-base-content) 5%, transparent);
+    
+    .table {
+        &, th {
+            font-size: var(--text-base);
+        }
+    }
+}
