@@ -1,7 +1,7 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Resume;
-import com.coderscampus.cp.domain.User;
+import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.service.ResumeService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//import static com.coderscampus.cp.web.WebController.isAuthenticated;
+
 @Controller
 @RequestMapping("/resume")
 public class  ResumeController {
@@ -19,7 +21,10 @@ public class  ResumeController {
     private ResumeService resumeService;
 
     @GetMapping("")
-    public String home(ModelMap model) {
+    public String home(ModelMap model, HttpSession httpSession) {
+        UserDTO currentUser = (UserDTO) httpSession.getAttribute("currentUser");
+        System.out.println("CURRENT USER in Resume: " + currentUser);
+
         List<Resume> resumes = resumeService.findAll();
         model.put("resumes", resumes);
         model.addAttribute("pageTitle", "Resume Read");

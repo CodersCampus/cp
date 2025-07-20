@@ -1,7 +1,10 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Foobar;
+import com.coderscampus.cp.domain.User;
+import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.service.FoobarService;
+import com.coderscampus.cp.service.SessionManager;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +20,21 @@ public class FoobarController {
     @Autowired
     private FoobarService foobarService;
 
+    private final SessionManager sessionManager;
+
+    public FoobarController(SessionManager sessionManager) {
+        this.sessionManager = sessionManager;
+    }
+
     @GetMapping("")
-    public String home(ModelMap model) {
+    public String home(ModelMap model, HttpSession httpSession) {
+        // Authentication check
+        if (!sessionManager.isAuthenticated(httpSession)) {
+            return "redirect:/";
+        }
+
+        UserDTO currentUser = (UserDTO) httpSession.getAttribute("currentUser");
+        System.out.println("CURRENT USER: " + currentUser);
         List<Foobar> foobars = foobarService.findAll();
         model.put("foobars", foobars);
         model.addAttribute("pageTitle", "Foobar");
@@ -43,6 +59,11 @@ public class FoobarController {
 
     @GetMapping("/update/{id}")
     public String fetch(ModelMap model, @PathVariable Long id, HttpSession httpSession) {
+        // Authentication check
+        if (!sessionManager.isAuthenticated(httpSession)) {
+            return "redirect:/";
+        }
+
         String uid = (String) httpSession.getAttribute("uid");
         Foobar foobar = foobarService.findById(id);
 
@@ -58,6 +79,11 @@ public class FoobarController {
 
     @PostMapping("/update")
     public String update(Foobar foobar, HttpSession httpSession) {
+        // Authentication check
+        if (!sessionManager.isAuthenticated(httpSession)) {
+            return "redirect:/";
+        }
+
         String uid = (String) httpSession.getAttribute("uid");
         foobarService.saveByUid(foobar, uid);
         return "redirect:/foobar";

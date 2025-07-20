@@ -4,22 +4,22 @@ import com.coderscampus.cp.domain.User;
 
 public class UserDTO {
     private Long id;
-    private String uid;
     private String email;
+    private String username;
     private String displayName;
-    private Boolean enabled;
+    private String photoUrl;
+    private String password;
+    private Boolean active;
     private Boolean online;
-
-    public UserDTO() {
-        this(new User());
-    }
 
     public UserDTO(User user) {
         this.id = user.getId();
-        this.uid = user.getUid();
         this.email = user.getEmail();
+        this.username = user.getUsername();
         this.displayName = user.getDisplayName();
-        this.enabled = user.getEnabled();
+        this.photoUrl = user.getPhotoUrl();
+        this.password = user.getPassword();
+        this.active = user.getActive();
         this.online = user.getOnline();
     }
 
@@ -39,6 +39,14 @@ public class UserDTO {
         this.email = email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getDisplayName() {
         return displayName;
     }
@@ -47,12 +55,28 @@ public class UserDTO {
         this.displayName = displayName;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Boolean getOnline() {
@@ -68,8 +92,11 @@ public class UserDTO {
         return "UserDTO{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
                 ", displayName='" + displayName + '\'' +
-                ", enabled=" + enabled +
+                ", photoUrl='" + photoUrl + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
                 ", online=" + online +
                 '}';
     }
