@@ -47,9 +47,9 @@ public class Profile {
     @Column(nullable = true, length = 100)
     private String country;
 
-    @OneToOne
-    @JoinColumn(name = "student_id")
-    private Student student; // One-to-one relationship with Student
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user; // The user associated with this profile
 
     public Profile() {
     }
@@ -166,12 +166,12 @@ public class Profile {
         this.country = country;
     }
 
-    public Student getStudent() {
-        return student;
+    public User getUser() {
+        return user;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -191,6 +191,7 @@ public class Profile {
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", country='" + country + '\'' +
+                ", user=" + (user != null ? user.getId() : "null") +
                 ']';
     }
 }

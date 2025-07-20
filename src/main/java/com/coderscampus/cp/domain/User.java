@@ -11,12 +11,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
     private String uid; // Unique identifier for the user, can be used for OAuth
-    private String username; // Unique username for the user, can be used for login
-    private String displayName; // Unique displayName for display purposes
     private String email;
     private String username;
     private String displayName;
@@ -42,14 +37,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
     }
 
     public String getUid() {

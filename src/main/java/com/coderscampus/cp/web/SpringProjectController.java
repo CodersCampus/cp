@@ -2,11 +2,10 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.dto.AuthObjectDTO;
 import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
-import com.coderscampus.cp.service.SessionManager;
+import com.coderscampus.cp.service.SessionManagerService;
 import com.coderscampus.cp.service.StudentService;
 import com.coderscampus.cp.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -19,13 +18,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/springproject")
 public class SpringProjectController {
 
     private final SpringProjectRepository springProjectRepository;
     private final StudentService studentService;
     private final UserService userService;
-    private final SessionManager sessionManager;
+    private final SessionManagerService sessionManagerService;
 
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
@@ -35,11 +34,11 @@ public class SpringProjectController {
             SpringProjectRepository springProjectRepository,
             StudentService studentService,
             UserService userService,
-            SessionManager sessionManager) {
+            SessionManagerService sessionManagerService) {
         this.springProjectRepository = springProjectRepository;
         this.studentService = studentService;
         this.userService = userService;
-        this.sessionManager = sessionManager;
+        this.sessionManagerService = sessionManagerService;
     }
 
     @GetMapping("/")
@@ -69,11 +68,9 @@ public class SpringProjectController {
             // httpSession.setAttribute("email", authDto.getEmail());
             // httpSession.setAttribute("displayName", authDto.getDisplayName());
 
-            UserDTO userDTO = sessionManager.authenticate(authDto, httpSession);
             createdStudent(authDto);
 
             System.out.println("User UID in session: " + authDto.getUid());
-            System.out.println("User DTO in session: " + userDTO);
 
             return "redirect:/";
         } catch (Exception e) {

@@ -11,15 +11,15 @@
 
     <div class="content-body">
         <div class="profile-tabs tabs tabs-border">
-            <input type="radio" name="my_tabs_2" class="tab" aria-label="Personal Information"/>
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Contact" checked="checked"/>
             <div class="tab-content content-card">
                 <section>
                     <hgroup>
-                        <h3>Personal Information</h3>
+                        <h3>Contact</h3>
                         <p>What’s the best way for employers to contact you?</p>
                     </hgroup>
 
-                    <form>
+                    <form method="post" th:action="@{/profile/edit}" th:object="${profile}">
                         <div class="col-span-2">
                             <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" alt=""
                                  class="avatar mask mask-squircle"/>
@@ -33,61 +33,42 @@
 
                         <div class="input-field col-span-6">
                             <div>First name</div>
-                            <input type="text" name="firstName" placeholder="Riley" class="input"/>
+                            <input type="text" name="firstName" placeholder="Riley" class="input"
+                                   th:value="*{firstName}"/>
                         </div>
 
                         <div class="input-field col-span-6">
                             <div>Last name</div>
-                            <input type="text" name="lastName" placeholder="Taylor" class="input"/>
+                            <input type="text" name="lastName" placeholder="Taylor" class="input"
+                                   th:value="*{lastName}"/>
                         </div>
 
                         <div class="input-field col-span-6">
-                            <div>Email Address</div>
-                            <input type="email" name="email" placeholder="riley.taylor@example.com" class="input"/>
+                            <div>City</div>
+                            <input type="text" name="city" placeholder="San Francisco" class="input"
+                                   th:value="*{city}"/>
+                        </div>
+
+                        <div class="input-field col-span-3">
+                            <div>State</div>
+                            <input type="text" name="state" placeholder="CA" class="input" th:value="*{state}"/>
+                        </div>
+
+                        <div class="input-field col-span-3">
+                            <div>Zip Code</div>
+                            <input type="text" name="zipCode" placeholder="94102" class="input" th:value="*{zipCode}"/>
                         </div>
 
                         <div class="input-field col-span-6">
                             <div>Phone Number</div>
-                            <input type="text" name="phoneNumber" placeholder="415-555-5555" class="input"/>
+                            <input type="text" name="phoneNumber" placeholder="415-555-5555" class="input"
+                                   th:value="*{phoneNumber}"/>
                         </div>
 
-                        <div class="input-field col-span-4">
-                            <div>City</div>
-                            <input type="text" name="city" placeholder="San Francisco" class="input"/>
-                        </div>
-
-                        <div class="input-field col-span-4">
-                            <div>State</div>
-                            <input type="text" name="state" placeholder="CA" class="input"/>
-                        </div>
-
-                        <div class="input-field col-span-4">
-                            <div>Zip Code</div>
-                            <input type="text" name="zipCode" placeholder="94102" class="input"/>
-                        </div>
-
-                        <div class="input-field col-span-9">
-                            <div>Website Url</div>
-                            <label class="input">
-                                <span class="label">https://</span>
-                                <input type="text" name="websiteUrl" placeholder="www.rileytaylor.dev"/>
-                            </label>
-                        </div>
-
-                        <div class="input-field col-span-9">
-                            <div>Linkedin Url</div>
-                            <label class="input">
-                                <span class="label">https://www.linkedin.com/in/</span>
-                                <input type="text" placeholder="URL"/>
-                            </label>
-                        </div>
-
-                        <div class="input-field col-span-9">
-                            <div>Github Url</div>
-                            <label class="input">
-                                <span class="label">https://github.com/</span>
-                                <input type="text" name="githubUrl" placeholder="rileytalor"/>
-                            </label>
+                        <div class="input-field col-span-6">
+                            <div>Email Address</div>
+                            <input type="email" name="email" placeholder="riley.taylor@example.com" class="input"
+                                   th:value="*{email}"/>
                         </div>
 
                         <div class="col-span-full">
@@ -97,7 +78,7 @@
                 </section>
             </div>
 
-            <input type="radio" name="my_tabs_2" class="tab" aria-label="Resume" checked="checked"/>
+            <input type="radio" name="my_tabs_2" class="tab" aria-label="Resume"/>
             <div class="tab-content content-card">
                 <section>
                     <hgroup>

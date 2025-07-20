@@ -1,14 +1,9 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.domain.Profile;
-import com.coderscampus.cp.domain.Resume;
-import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.domain.User;
-import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.dto.UserDTO;
 import com.coderscampus.cp.service.ProfileService;
-import com.coderscampus.cp.service.ResumeService;
-import com.coderscampus.cp.service.StudentService;
 import com.coderscampus.cp.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -16,10 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
@@ -35,47 +27,56 @@ public class ProfileController {
     );
     private static final List<Integer> YEARS = IntStream.rangeClosed(1960, 2025)
             .boxed()
-            .collect(Collectors.toList());
-
+            .toList();
 
     private final ProfileService profileService;
-    private final StudentService studentService;
-    private final ResumeService resumeService;
     private final UserService userService;
 
-
-    public ProfileController(ProfileService profileService, StudentService studentService, ResumeService resumeService, UserService userService) {
+    public ProfileController(ProfileService profileService, UserService userService) {
         this.profileService = profileService;
-        this.studentService = studentService;
-        this.resumeService = resumeService;
         this.userService = userService;
     }
 
     @GetMapping("")
     public String getProfile(ModelMap model, HttpSession session) {
-        String uid = (String) session.getAttribute("uid");
+        // Authentication check - properly handle null session attribute
+        Object currentUserObj = session.getAttribute("currentUser");
+        if (!(currentUserObj instanceof UserDTO currentUser)) {
+            return "error/401"; // Redirect to the error page if not authenticated
+        }
 
         List<String> months = new ArrayList<>(MONTH_NAMES);
         List<String> degrees = new ArrayList<>(DEGREE_NAMES);
         List<Integer> years = new ArrayList<>(YEARS);
 
-        Student student = studentService.findStudentByUid(uid);
-        Profile profile = profileService.findById(student.getId());
-        Resume resume = resumeService.findById(student.getId());
+        Profile profile = profileService.findById(currentUser.getId());
 
         model.put("months", months);
         model.put("degrees", degrees);
         model.put("years", years);
-
-//        model.addAttribute("section", section);
         model.put("profile", profile);
-        model.put("resume", resume);
 
         return "profile/index";
     }
 
-    @PostMapping("/update")
-    public String putProfile(Profile profile) {
+    @PostMapping("/edit")
+    public String putProfile(Profile profile, HttpSession session) {
+        // Get the current user from the session
+        Object currentUserObj = session.getAttribute("currentUser");
+        if (!(currentUserObj instanceof UserDTO currentUser)) {
+            return "error/401"; // Redirect to the error page if not authenticated
+        }
+
+        // Get the actual User entity from the database
+        User user = userService.findById(currentUser.getId());
+        if (user == null) {
+            return "redirect:/error/404"; // User not found
+        }
+
+        // Set the user for the profile
+        profile.setUser(user);
+        profile.setId(user.getId()); // Ensure ID consistency
+
         profileService.save(profile);
         return "redirect:/profile";
     }

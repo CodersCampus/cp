@@ -1,50 +1,56 @@
 package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Profile;
+import com.coderscampus.cp.domain.User;
 import com.coderscampus.cp.repository.ProfileRepository;
-import com.coderscampus.cp.repository.StudentRepository;
-import com.coderscampus.cp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProfileService {
-    private final ProfileRepository profileRepository;
-    private final UserRepository userRepository;
+    private final ProfileRepository profileRepo;
 
-    public ProfileService(ProfileRepository profileRepository, UserRepository userRepository, StudentRepository studentRepository) {
-        this.profileRepository = profileRepository;
-        this.userRepository = userRepository;
+    public ProfileService(ProfileRepository profileRepo) {
+        this.profileRepo = profileRepo;
     }
 
     public Profile save(Profile profile) {
         validateProfile(profile);
 
-        // Remove the problematic ensureProfileExists check for new profiles
-        if (profile.getId() != null) {
-            validateId(profile.getId());
-            // Only check if profile exists when we're updating an existing one
-            // For new profiles with assigned IDs, we should allow creation
+        // Ensure the profile has a valid user before saving
+        if (profile.getUser() == null) {
+            throw new IllegalArgumentException("Profile must have a valid user");
         }
 
-        return profileRepository.save(profile);
+        // If this is a new profile, ensure the ID matches the user ID
+        if (profile.getId() == null) {
+            profile.setId(profile.getUser().getId());
+        } else {
+            validateId(profile.getId());
+            // For existing profiles, ensure ID consistency
+            if (!profile.getId().equals(profile.getUser().getId())) {
+                throw new IllegalArgumentException("Profile ID must match User ID");
+            }
+        }
+
+        return profileRepo.save(profile);
     }
 
-    // New method that returns null instead of throwing exception
+    // New method that returns null instead of throwing an exception
     public Profile findById(Long id) {
         if (id == null || id <= 0) {
             return null;
         }
-        return profileRepository.findById(id).orElse(null);
+        return profileRepo.findById(id).orElse(null);
     }
 
     public void delete(Long id) {
         if (id == null || id <= 0) {
             throw new IllegalArgumentException("Invalid profile ID");
         }
-        if (!profileRepository.existsById(id)) {
+        if (!profileRepo.existsById(id)) {
             throw new RuntimeException("Profile not found");
         }
-        profileRepository.deleteById(id);
+        profileRepo.deleteById(id);
     }
 
     private void validateProfile(Profile profile) {
@@ -59,10 +65,18 @@ public class ProfileService {
         }
     }
 
-    // Keep this method for explicit updates where you want to ensure the profile exists
-    private void ensureProfileExists(Long id) {
-        if (!profileRepository.existsById(id)) {
-            throw new RuntimeException("Profile not found");
+    /**
+     * Ensures that a profile exists for the given user, creating one if necessary
+     *
+     * @param user The user for whom to ensure a profile exists
+     */
+    public void ensureUserProfileExists(User user) {
+        Profile profile = findById(user.getId());
+        if (profile == null) {
+            profile = new Profile();
+            profile.setUser(user);
+            profileRepo.save(profile);
         }
     }
+
 }
