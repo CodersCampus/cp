@@ -47,12 +47,18 @@ public class WebController {
 
     @GetMapping("/support")
     public String supportView() {
-        return "dashboard/support"; // This will resolve to src/main/resources/templates/dashboard/support.html
+        return "dashboard/support";
     }
 
     @GetMapping("/documentation")
     public String documentationView() {
-        return "dashboard/documentation"; // This will resolve to src/main/resources/templates/dashboard/documentation.html
+        return "dashboard/documentation";
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpSession session) {
+        sessionManagerService.logout(session);
+        return "redirect:/";
     }
 
     @PostMapping("/send-oauth")
@@ -77,11 +83,5 @@ public class WebController {
             System.err.println("Authentication failed: " + e.getMessage());
             return "redirect:/error";
         }
-    }
-
-    @PostMapping("/logout")
-    public String logout(HttpSession session) {
-        sessionManagerService.logout(session);
-        return "redirect:/";
     }
 }
