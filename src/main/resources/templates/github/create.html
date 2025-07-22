@@ -18,61 +18,98 @@
             <div class="ga-content-main">
                 <main>
                     <form action="/github/create" class="ui-form" th:object="${gitHub}" method="post">
+                        <div th:if="${error}" class="ui-error-message">
+                            <p th:text="${error}"></p>
+                        </div>
                         <input id="uid" name="uid" type="hidden"/>
-                        <div class="ui-input-field" title="Check this box when you have a profile">
+                        <div class="ui-input-field" title="Check this box if you have made a handle">
                             <label for="handle" class="ui-label">Handle:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" id="handle" th:field="*{handle}" type="text"/>
-                            </div>
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="handle" th:field="${gitHub.handle}"
+                                       type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text"
+                                      th:text="${gitHub.handle} ? 'Complete' : 'Not Complete'"></span>
+                            </label>
                         </div>
-                        <div class="ui-input-field" title="Check this box when you have made an enhanced ReadMe">
+                      <div class="ui-input-field" title="Check this box if you have made a enhanced readme">
                             <label for="enhancedReadMe" class="ui-label">Enhanced ReadMe:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" id="enhancedReadMe" th:field="*{enhancedReadMe}" type="text"/>
-                            </div>
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="enhancedReadMe" th:field="${gitHub.enhancedReadMe}"
+                                       type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text"
+                                      th:text="${gitHub.enhancedReadMe} ? 'Complete' : 'Not Complete'"></span>
+                            </label>
                         </div>
-                        <div class="ui-input-field" title="Check this box when you have renamed your assignments with appropriate titles">
+                      <div class="ui-input-field" title="Check this box if you have made a renamed assignments">
                             <label for="renamedAssignments" class="ui-label">Renamed Assignments:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" id="renamedAssignments" th:field="*{renamedAssignments}" type="text"/>
-                            </div>
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="renamedAssignments" th:field="${gitHub.renamedAssignments}"
+                                       type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text"
+                                      th:text="${gitHub.renamedAssignments} ? 'Complete' : 'Not Complete'"></span>
+                            </label>
                         </div>
-                        <div class="ui-input-field" title="Check this box when you have pinned multiple repos to showcase your chosen coding">
+                      <div class="ui-input-field" title="Check this box if you have made a pinned repos">
                             <label for="pinnedRepos" class="ui-label">Pinned Repos:</label>
-                            <div class="ui-text-input">
-                                <input class="ui-value" id="pinnedRepos" th:field="*{pinnedRepos}" type="text"/>
-                            </div>
-                            <div class="ui-input-field" title="Check this box when you have links to other job application materials accessible">
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="pinnedRepos" th:field="${gitHub.pinnedRepos}"
+                                       type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text"
+                                      th:text="${gitHub.pinnedRepos} ? 'Complete' : 'Not Complete'"></span>
+                            </label>
+                        </div>
+
+
+
+                            <div class="ui-input-field"
+                                 title="Check this box when you have links to other job application materials accessible">
                                 <label for="externalLinks" class="ui-label">External Links:</label>
                                 <div class="ui-text-input">
                                     <input class="ui-value" id="externalLinks" th:field="*{externalLinks}" type="text"/>
                                 </div>
+                            </div>
+                                              <div class="ui-input-field" title="Check this box if you have made a image">
+                            <label for="image" class="ui-label">Image:</label>
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="image" th:field="${gitHub.image}"
+                                       type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text"
+                                      th:text="${gitHub.image} ? 'Complete' : 'Not Complete'"></span>
+                            </label>
                         </div>
-                            <div class="ui-input-field" title="Check this box when you have a profile picture">
-                                <label for="image" class="ui-label">Image:</label>
-                                <div class="ui-text-input">
-                                    <input class="ui-value" id="image" th:field="*{image}" type="text"/>
-                                </div>
-                            </div>
-                            <div class="ui-input-field" title="Check this box when you have made a headline">
-                                <label for="headline" class="ui-label">Headline:</label>
-                                <div class="ui-text-input">
-                                    <input class="ui-value" id="headline" th:field="*{headline}" type="text"/>
-                                </div>
-                            </div>
-                            <div class="ui-input-field" title="Check this box when you have entered your contact details">
-                                <label for="contactDetails" class="ui-label">Contact Details:</label>
-                                <div class="ui-text-input">
-                                    <input class="ui-value" id="contactDetails" th:field="*{contactDetails}" type="text"/>
-                                </div>
-                            </div>
+                      <div class="ui-input-field" title="Check this box if you have made a headline">
+                            <label for="headline" class="ui-label">Headline:</label>
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="headline" th:field="${gitHub.headline}"
+                                       type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text"
+                                      th:text="${gitHub.headline} ? 'Complete' : 'Not Complete'"></span>
+                            </label>
+                        </div>
+                      <div class="ui-input-field" title="Check this box if you have made a contact details">
+                            <label for="contactDetails" class="ui-label">Contact Details:</label>
+                            <label class="ui-checkbox">
+                                <input class="ui-hidden-checkbox" id="contactDetails" th:field="${gitHub.contactDetails}"
+                                       type="checkbox">
+                                <span class="ui-toggle"></span>
+                                <span class="ui-toggle-text"
+                                      th:text="${gitHub.contactDetails} ? 'Complete' : 'Not Complete'"></span>
+                            </label>
+                        </div>
+
                             <div class="ui-input-field" title="">
                                 <label for="url" class="ui-label">URL:</label>
                                 <div class="ui-text-input">
-                                    <input class="ui-value" id="url" th:field="*{url}" type="text"/>
+                                    <input class="ui-value" id="url" th:field="*{url}" type="url"/>
                                 </div>
                             </div>
-                        <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
+                            <button class="ui-nav-item ui-button" type="submit"><span>Create</span></button>
                         </div>
                     </form>
                 </main>
@@ -84,6 +121,7 @@
 
 <div th:replace="~{fragments/authscript :: script}"></div>
 <div th:replace="~{fragments/themeswitchscript :: script}"></div>
+<div th:replace="~{fragments/tasktogglescript :: script}"></div>
 </body>
 
 </html>
