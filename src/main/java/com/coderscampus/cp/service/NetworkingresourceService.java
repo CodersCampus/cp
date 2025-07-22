@@ -47,7 +47,7 @@ public class NetworkingresourceService {
         if (id == null) {
             return null;
         }
-        return networkingresourcesRepo.findById(id).orElseThrow(() -> new RuntimeException("Element not found with ID " + id));
+        return networkingresourcesRepo.findById(id).get();
     }
 
     public void delete(Networkingresource networkingresources) {

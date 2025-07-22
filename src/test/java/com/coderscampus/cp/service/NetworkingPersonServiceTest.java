@@ -253,9 +253,9 @@ public class NetworkingPersonServiceTest {
     @Test
 	@Transactional
 	void testFindByNetworkingpersonIdWhenNetworkingpersonIdIsOutOfBounds() {
-//        assertThrows(NoSuchElementException.class, () -> {
+       assertThrows(NoSuchElementException.class, () -> {
             networkingpersonService.findById(Long.MAX_VALUE);
-//        });
+        });
 	}
 
     @Test
