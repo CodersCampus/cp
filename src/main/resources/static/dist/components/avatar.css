@@ -1,0 +1,54 @@
+@layer components {
+    .avatar {
+        display: inline-block;
+        object-fit: cover;
+
+        &.avatar-circle {
+            border-radius: calc(infinity * 1px);
+        }
+
+        &.avatar-square {
+            border-radius: var(--radius-field);
+        }
+
+        &.avatar-xs {
+            width: calc(var(--spacing) * 6);
+            height: calc(var(--spacing) * 6);
+        }
+
+        &.avatar-sm {
+            width: calc(var(--spacing) * 9);
+            height: calc(var(--spacing) * 9);
+        }
+
+        &.avatar-md {
+            width: calc(var(--spacing) * 12);
+            height: calc(var(--spacing) * 12);
+        }
+
+        &.avatar-lg {
+            width: calc(var(--spacing) * 16);
+            height: calc(var(--spacing) * 16);
+        }
+
+        &.avatar-xl {
+            width: calc(var(--spacing) * 20);
+            height: calc(var(--spacing) * 20);
+        }
+
+        &.avatar-2xl {
+            width: calc(var(--spacing) * 24);
+            height: calc(var(--spacing) * 24);
+        }
+
+        &.avatar-3xl {
+            width: calc(var(--spacing) * 28);
+            height: calc(var(--spacing) * 28);
+        }
+
+        &.avatar-4xl {
+            width: calc(var(--spacing) * 32);
+            height: calc(var(--spacing) * 32);
+        }
+    }
+}

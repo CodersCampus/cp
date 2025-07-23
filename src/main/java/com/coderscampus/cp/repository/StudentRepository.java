@@ -11,6 +11,8 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
     Student findByUid(String uid);
 
+    boolean existsByUid(String uid);
+
 
     @Query("SELECT DISTINCT c.student.id FROM Checkin c WHERE c.date >= :cutoffDate")
     List<Long> findActiveStudentIds(@Param("cutoffDate") Instant cutoffDate);

@@ -1,0 +1,28 @@
+@layer base {
+    .header {
+        background-color: var(--color-base-100);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        nav {
+            /*padding-inline-start: calc(var(--spacing) * 10);*/
+            /*padding-inline-end: calc(var(--spacing) * 6);*/
+
+            & > ul {
+                display: flex;
+                align-items: center;
+                gap: calc(var(--spacing) * 6);
+
+                .menu {
+                    li {
+                        a {
+                            padding-block: calc(var(--size-field) * 2) !important;
+                            padding-inline: calc(var(--size-field) * 2) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

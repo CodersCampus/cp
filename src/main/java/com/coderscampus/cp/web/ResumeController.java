@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/resume")
-public class ResumeController {
+public class  ResumeController {
 
     @Autowired
     private ResumeService resumeService;
@@ -43,6 +43,8 @@ public class ResumeController {
 
     @PostMapping("/create")
     public String create(Resume resume, @RequestParam("uid") String uid) {
+        // Check and see if the student exists
+        // if not create it
         resume = resumeService.saveByUid(resume, uid);
         return "redirect:/resume";
     }
@@ -66,7 +68,7 @@ public class ResumeController {
     public String update(Resume resume, HttpSession httpSession) {
         String uid = (String) httpSession.getAttribute("uid");
         resumeService.saveByUid(resume, uid);
-        return "redirect:/resume";
+        return "redirect:/profile";
     }
 
     @PostMapping("/delete")

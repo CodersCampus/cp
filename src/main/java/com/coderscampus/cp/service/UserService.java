@@ -1,6 +1,7 @@
 package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.User;
+import com.coderscampus.cp.dto.AuthObjectDTO;
 import com.coderscampus.cp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -84,6 +85,33 @@ public class UserService {
             return false;
         }
         return userRepo.existsById(id);
+    }
+
+    /**
+     * Gets or creates a user based on authentication data
+     *
+     * @param authDto The authentication object
+     * @return User entity
+     */
+    public User getOrCreateUser(AuthObjectDTO authDto) {
+        User user = userRepo.findByUid(authDto.getUid()).orElse(null);
+
+        if (user == null) {
+            user = new User();
+            user.setUid(authDto.getUid());
+            user.setEmail(authDto.getEmail());
+            user.setDisplayName(authDto.getDisplayName());
+            user.setPhotoUrl(authDto.getPhotoUrl());
+            user.setRole(User.Role.ROLE_STUDENT);
+        }
+
+        // Update user properties
+        user.setEmail(authDto.getEmail());
+        user.setDisplayName(authDto.getDisplayName());
+        user.setPhotoUrl(authDto.getPhotoUrl());
+        user.setOnline(true);
+
+        return userRepo.save(user);
     }
 
 }

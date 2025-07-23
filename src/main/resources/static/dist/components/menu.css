@@ -1,0 +1,33 @@
+.menu {
+    .sidebar-content li & {
+        .menu-title {
+            padding-inline: calc(var(--spacing) * 4) !important;
+        }
+        
+        a {
+            color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
+            font-size: var(--text-base);
+            padding-block: calc(var(--spacing) * 2.5) !important;
+            padding-inline: calc(var(--spacing) * 4) !important;
+            
+            &:hover {
+                color: color-mix(in oklab, var(--color-base-content) 80%, transparent);
+            }
+            
+            &.active {
+                background-color: color-mix(in oklab, var(--color-base-content) 20%, transparent);
+                color: color-mix(in oklab, var(--color-base-content) 100%, transparent);
+            }
+        }
+    }
+    
+    .sidebar-content li.dropdown & {
+        @apply shadow-sm;
+        background-color: var(--color-base-200) !important;
+        border-radius: var(--radius-box) !important;
+        z-index: 1 !important;
+        width: calc(var(--spacing) * 58) !important;
+        padding-block-start: calc(var(--spacing) * 2) !important;
+        padding-inline: calc(var(--spacing) * 2) !important;
+    }
+}

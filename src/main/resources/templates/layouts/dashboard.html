@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="layout (pageTitle, pageContent)" xmlns:th="http://www.thymeleaf.org" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Fredoka:wght@300..700&family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="/css/output.css" th:href="@{/css/output.css}" type="text/css"
+          media="print, projection, screen"/>
+    <link rel="stylesheet" href="/css/styles.css" th:href="@{/css/styles.css}" type="text/css"
+          media="print, projection, screen"/>
+
+    <title th:replace="${pageTitle}">Page Title</title>
+    <script src="/fbauth-element.bundled.js" type="module"></script>
+</head>
+<body>
+<fbauth-element headless>
+    <div id="root">
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <svg th:replace="~{fragments/icons :: logo}"></svg>
+                <h1>Coder Packaging</h1>
+            </div>
+            <nav>
+                <ul class="sidebar-content" role="list">
+                    <li>
+                        <ul role="list" class="menu">
+                            <li class="menu-title">Main Menu</li>
+                            <li>
+                                <a href="#">
+                                    <svg th:replace="~{fragments/icons :: house}"></svg>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="active">
+                                    <svg th:replace="~{fragments/icons :: user-graduate}"></svg>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <svg th:replace="~{fragments/icons :: calendar-clock}"></svg>
+                                    <span>Check in</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <svg th:replace="~{fragments/icons :: business-time}"></svg>
+                                    <span>Work log</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-top dropdown-center">
+                        <div tabindex="0" role="button" class="button">
+                            <img id="user-photo" class="avatar avatar-sm avatar-circle"
+                                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                 alt="">
+                            <p>
+                                <span id="user-name">Jane Riley</span>
+                                <span id="user-email">jane.riley@example.com</span>
+                            </p>
+                        </div>
+                        <ul tabindex="0" class="dropdown-content menu">
+                            <li><a href="/profile">Profile</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div id="insight" class="insight">
+            <header class="header">
+                <nav>
+                    <ul role="list">
+                        <li class="list">
+                            <ul role="list" class="menu menu-horizontal">
+                                <li>
+                                    <a href="#">
+                                        <svg th:replace="~{fragments/icons :: bell}"></svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <svg th:replace="~{fragments/icons :: envelope}"></svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label class="swap swap-rotate">
+                                <!-- this hidden checkbox controls the state -->
+                                <input type="checkbox" class="theme-controller" value="light"/>
+                                <!-- sun icon -->
+                                <svg th:replace="~{fragments/icons :: sun('swap-off fill-current')}"></svg>
+                                <!-- moon icon -->
+                                <svg th:replace="~{fragments/icons :: moon('swap-on fill-current')}"></svg>
+                            </label>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <main class="main" th:insert="${pageContent}"></main>
+            <footer class="footer sr-only"></footer>
+        </div>
+    </div>
+</fbauth-element>
+<div th:replace="~{fragments/authscript :: script}"></div>
+</body>
+</html>

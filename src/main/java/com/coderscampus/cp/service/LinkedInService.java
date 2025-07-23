@@ -49,7 +49,7 @@ public class LinkedInService {
         if (id == null) {
             return null;
         }
-        return linkedInRepo.findById(id).get();
+        return linkedInRepo.findById(id).orElse(null);
     }
 
     public void delete(LinkedIn linkedIn) {

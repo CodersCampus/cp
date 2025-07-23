@@ -1,0 +1,19 @@
+.container-xl {
+    max-width: var(--container-6xl);
+}
+
+.container-lg {
+    max-width: var(--container-5xl);
+}
+
+.container-md {
+    max-width: var(--container-4xl);
+}
+
+.container-sm {
+    max-width: var(--container-3xl);
+}
+
+.container-xs {
+    max-width: var(--container-2xl);
+}

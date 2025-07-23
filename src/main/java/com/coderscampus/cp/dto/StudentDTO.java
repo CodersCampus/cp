@@ -8,6 +8,7 @@ public class StudentDTO {
 
     private Long id;
     private String name;
+    private String email;
     private Integer assignmentNum;
     private String ide;
     private final Instant dateCreated;
@@ -17,6 +18,7 @@ public class StudentDTO {
     public StudentDTO(Student foundStudent) {
         this.id = foundStudent.getId();
         this.name = foundStudent.getName();
+        this.email = foundStudent.getEmail();
         this.assignmentNum = foundStudent.getAssignmentNum();
         this.ide = foundStudent.getIde();
         this.dateCreated = foundStudent.getDateCreated();
@@ -42,6 +44,14 @@ public class StudentDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getAssignmentNum() {
@@ -82,8 +92,10 @@ public class StudentDTO {
 
     @Override
     public String toString() {
-        return "StudentDTO [id=" + id + ", name=" + name + ", assignmentNum=" + assignmentNum + ", ide=" + ide
-                + ", dateCreated=" + dateCreated + ", willingToMentor=" + willingToMentor + ", mentee=" + mentee + "]";
+        return "StudentDTO [id=" + id + ", name=" + name + ", email=" + email
+                + ", assignmentNum=" + assignmentNum + ", ide=" + ide
+                + ", dateCreated=" + dateCreated + ", willingToMentor="
+                + willingToMentor + ", mentee=" + mentee + "]";
     }
 
 }

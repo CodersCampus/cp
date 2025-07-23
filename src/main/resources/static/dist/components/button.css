@@ -1,0 +1,4 @@
+.btn {
+    font-weight: var(--font-weight-medium) !important;
+    font-size: var(--text-base) !important;
+}

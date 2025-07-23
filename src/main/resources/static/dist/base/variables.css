@@ -1,0 +1,8 @@
+:root {
+    --font-geist: "Geist Mono", monospace;
+    --font-comfortaa: "Comfortaa", sans-serif;
+    --font-outfit: "Outfit", sans-serif;
+    --font-lexend: "Lexend", sans-serif;
+
+    --container-8xl: 90rem;
+}

@@ -11,7 +11,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String uid;
+    private String uid; // Unique identifier for the user, can be used for OAuth
     private String email;
     private String username;
     private String displayName;

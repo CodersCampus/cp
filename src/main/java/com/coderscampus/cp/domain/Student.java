@@ -9,13 +9,13 @@ import java.util.List;
 
 @Entity
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false, unique = true)
     private String uid;
     private String name;
+    private String email;
     private Integer assignmentNum;
     private String ide;
     private final Instant dateCreated;
@@ -37,6 +37,8 @@ public class Student {
 //	private Networking networking;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Website website;
+//	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Profile profile;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Checkin> checkin = new ArrayList<Checkin>();
 
@@ -64,6 +66,7 @@ public class Student {
         }
         this.uid = uid;
         this.name = studentDTO.getName();
+        this.email = studentDTO.getEmail();
         this.assignmentNum = studentDTO.getAssignmentNum();
         this.ide = studentDTO.getIde();
         this.willingToMentor = studentDTO.getWillingToMentor();
@@ -92,6 +95,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getAssignmentNum() {
@@ -206,10 +217,9 @@ public class Student {
                 "id=" + id +
                 ", uid='" + uid + '\'' +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", assignmentNum=" + assignmentNum +
                 ", ide='" + ide + '\'' +
-               
-                
                 '}';
     }
     //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
