@@ -7,6 +7,7 @@ import com.coderscampus.cp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,6 +44,16 @@ public class NetworkingresourceService {
         return networkingresourcesRepo.findAll();
     }
 
+    public List<Networkingresource> findListByUid(String uid) {
+        List<Networkingresource> listForStudent = new ArrayList<>();
+        List<Networkingresource> allPersons = networkingresourcesRepo.findAll();
+        for (Networkingresource networkingresource : allPersons) {
+            if (networkingresource.getStudent().getUid().equals(uid)) {
+                listForStudent.add(networkingresource);
+            }
+        }
+        return listForStudent;
+    }
     public Networkingresource findById(Long id) {
         if (id == null) {
             return null;
