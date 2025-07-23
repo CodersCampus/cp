@@ -294,6 +294,19 @@ public class NetworkingResourceServiceTest {
 
         });
     }
+    
+    @Test
+    @Transactional
+    void testGetItemsByStudentWhenMultipleStudentsExistWithMultipleItems() {
+        for (int i = 0; i < 4; i++) {
+            Networkingresource networkingresource = new Networkingresource();
+            networkingresource.setStudent(student2);
+            networkingresource.setUid(student2Uid);
+            networkingresourceRepo.save(networkingresource);
+        }
 
-
+        List foundNetworkingresourcesOfStudent1 = networkingresourceService.findListByUid(student1Uid);
+        Integer numberOfEntries = foundNetworkingresourcesOfStudent1.size();
+        assertEquals(4, numberOfEntries);
+    }
 }

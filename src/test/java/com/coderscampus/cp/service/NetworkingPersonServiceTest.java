@@ -298,5 +298,18 @@ public class NetworkingPersonServiceTest {
         });
     }
 
+    @Test
+    @Transactional
+    void testGetItemsByStudentWhenMultipleStudentsExistWithMultipleItems() {
+        for (int i = 0; i < 4; i++) {
+            Networkingperson networkingperson = new Networkingperson();
+            networkingperson.setStudent(student2);
+            networkingperson.setUid(student2Uid);
+            networkingpersonRepo.save(networkingperson);
+        }
 
+        List foundNetworkingpersonsOfStudent1 = networkingpersonService.findListByUid(student1Uid);
+        Integer numberOfEntries = foundNetworkingpersonsOfStudent1.size();
+        assertEquals(4, numberOfEntries);
+    }
 }
