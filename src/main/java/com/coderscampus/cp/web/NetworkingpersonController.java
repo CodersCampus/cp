@@ -18,8 +18,9 @@ public class NetworkingpersonController {
     private NetworkingpersonService networkingpersonService;
 
     @GetMapping("")
-    public String home(ModelMap model) {
-        List<Networkingperson> networkingpersons = networkingpersonService.findAll();
+    public String home(ModelMap model, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        List<Networkingperson> networkingpersons = networkingpersonService.findListByUid(uid);
         model.put("networkingpersons", networkingpersons);
         model.addAttribute("pageTitle", "Networking People");
         model.put("isNetworkingperson", true);
