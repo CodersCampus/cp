@@ -54,4 +54,13 @@ public class ResumeService {
         resumeRepo.delete(resume);
     }
 
+    public boolean checkIfExists(String uid) {
+        List<Resume> resumes = findAll();
+        for (Resume resume : resumes) {
+            if (resume.getStudent().getUid().equals(uid)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
