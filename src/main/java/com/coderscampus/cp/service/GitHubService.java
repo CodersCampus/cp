@@ -80,4 +80,13 @@ public class GitHubService {
     "com", "org", "net", "edu", "gov", "io", "dev", "co", "us", "uk", "de", "ca"
 );
 
+    public boolean checkIfExists(String uid) {
+        List <GitHub> gitHubs = findAll();
+        for (GitHub gitHub : gitHubs) {
+            if (gitHub.getStudent().getUid().equals(uid)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

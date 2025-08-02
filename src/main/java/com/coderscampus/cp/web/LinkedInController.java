@@ -27,7 +27,11 @@ public class LinkedInController {
     }
 
     @GetMapping("/create")
-    public String getCreate(ModelMap model) {
+    public String getCreate(ModelMap model, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        if (linkedInService.checkIfExists(uid)){
+            return "redirect:/linkedin";
+        }
         LinkedIn linkedIn = new LinkedIn();
         model.put("linkedIn", linkedIn);
         model.addAttribute("pageTitle", "LinkedIn Create");
