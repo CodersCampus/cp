@@ -79,6 +79,16 @@ public class LinkedInService {
     private static final Set<String> VALID_TLDS = Set.of(
     "com", "org", "net", "edu", "gov", "io", "dev", "co", "us", "uk", "de", "ca"
 );
+
+    public boolean checkIfExists(String uid) {
+        List<LinkedIn> linkedIns = findAll();
+        for (LinkedIn linkedIn : linkedIns) {
+            if (linkedIn.getStudent().getUid().equals(uid)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
             

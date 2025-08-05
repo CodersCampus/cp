@@ -27,7 +27,11 @@ public class ResumeController {
     }
 
     @GetMapping("/create")
-    public String getCreate(ModelMap model) {
+    public String getCreate(ModelMap model, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        if (resumeService.checkIfExists(uid)) {
+            return "redirect:/resume";
+        }
         Resume resume = new Resume();
         model.put("resume", resume);
         model.addAttribute("pageTitle", "Resume Create");
