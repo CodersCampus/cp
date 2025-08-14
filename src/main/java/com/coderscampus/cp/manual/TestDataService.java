@@ -85,6 +85,7 @@ public class TestDataService {
             String student1Uid1 = student1Uid;
             if (j == 1) {
                 student1Uid = student2Uid;
+                student1= student2;
             }
 
             for (int i = 0; i < 4; i++) {
