@@ -1,9 +1,11 @@
 package com.coderscampus.cp.manual;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile("seed")
 public class TestDataLoader implements CommandLineRunner {
 
     private final TestDataService testDataService;
