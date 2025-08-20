@@ -89,4 +89,17 @@ public class ResumeControllerTest {
                     .andExpect(redirectedUrl("/resume"));
     }
 
+    @Test
+    public void testAddingSecondRecordForOneStudent() throws Exception {
+        Long resumeId = 1L;
+        String sessionUid = "uid";
+
+        Mockito.when(resumeService.checkIfExists(sessionUid)).thenReturn(true);
+
+        mockMvc.perform(get("/resume/create", resumeId)
+                    .sessionAttr("uid", sessionUid))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/resume"));
+    }
+
 }
