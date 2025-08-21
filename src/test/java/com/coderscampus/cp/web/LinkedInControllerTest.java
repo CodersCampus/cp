@@ -91,4 +91,18 @@ public class LinkedInControllerTest {
                     .andExpect(redirectedUrl("/linkedin"));
     }
 
+    @Test
+    public void testAddingSecondRecordForOneStudent() throws Exception {
+        Long linkedInId = 1L;
+        String sessionUid = "uid";
+
+        Mockito.when(linkedInService.checkIfExists(sessionUid)).thenReturn(true);
+
+        mockMvc.perform(get("/linkedin/create", linkedInId)
+                    .sessionAttr("uid", sessionUid))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/linkedin"));
+    }
+
+
 }
