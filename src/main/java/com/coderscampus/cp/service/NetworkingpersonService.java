@@ -7,6 +7,7 @@ import com.coderscampus.cp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -42,14 +43,26 @@ public class NetworkingpersonService {
         return networkingpersonRepo.findAll();
     }
 
+    public List<Networkingperson> findListByUid(String uid) {
+        List<Networkingperson> listForStudent = new ArrayList<>();
+        List<Networkingperson> allPersons = networkingpersonRepo.findAll();
+        for (Networkingperson networkingperson : allPersons) {
+            if (networkingperson.getStudent().getUid().equals(uid)) {
+                listForStudent.add(networkingperson);
+            }
+        }
+        return listForStudent;
+    }
+
     public Networkingperson findById(Long id) {
         if (id == null) {
             return null;
         }
-        return networkingpersonRepo.findById(id).orElseThrow(() -> new RuntimeException("Element not found with ID " + id));
+        return networkingpersonRepo.findById(id).get();
     }
 
     public void delete(Networkingperson networkingperson) {
         networkingpersonRepo.delete(networkingperson);
     }
+
 }

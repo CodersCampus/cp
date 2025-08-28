@@ -305,6 +305,17 @@ public class GitHubServiceTest {
         });
     }
 
+    @Test
+    @Transactional
+    void testCheckIfExistsWhenRecordDoesExist() {
+        assertTrue(gitHubService.checkIfExists(student1Uid));
+    }
 
+    @Test
+    @Transactional
+    void testCheckIfExistsWhenRecordDoesNotExist() {
+        String unassociatedUid = UUID.randomUUID().toString();
+        assertFalse(gitHubService.checkIfExists(unassociatedUid));
+    }
 
 }

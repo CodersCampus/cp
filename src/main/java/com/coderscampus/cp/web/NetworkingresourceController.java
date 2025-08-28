@@ -18,8 +18,9 @@ public class NetworkingresourceController {
     private NetworkingresourceService networkingresourceService;
 
     @GetMapping("")
-    public String home(ModelMap model) {
-        List<Networkingresource> networkingresource = networkingresourceService.findAll();
+    public String home(ModelMap model, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        List<Networkingresource> networkingresource = networkingresourceService.findListByUid(uid);
         model.put("networkingresource", networkingresource);
         model.addAttribute("pageTitle", "Networking Resources");
         model.put("isNetworkingresource", true);

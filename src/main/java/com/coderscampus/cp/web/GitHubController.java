@@ -27,7 +27,11 @@ public class GitHubController {
     }
 
     @GetMapping("/create")
-    public String getCreate(ModelMap model) {
+    public String getCreate(ModelMap model, HttpSession httpSession) {
+        String uid = (String) httpSession.getAttribute("uid");
+        if (gitHubService.checkIfExists(uid)){
+            return "redirect:/github";
+        }
         GitHub gitHub = new GitHub();
         model.put("gitHub", gitHub);
         model.addAttribute("pageTitle", "GitHub Create");
