@@ -303,6 +303,17 @@ public class ResumeServiceTest {
         });
     }
 
+    @Test
+    @Transactional
+    void testCheckIfExistsWhenRecordDoesExist() {
+        assertTrue(resumeService.checkIfExists(student1Uid));
+    }
 
+    @Test
+    @Transactional
+    void testCheckIfExistsWhenRecordDoesNotExist() {
+        String unassociatedUid = UUID.randomUUID().toString();
+        assertFalse(resumeService.checkIfExists(unassociatedUid));
+    }
 }
 

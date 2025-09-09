@@ -306,6 +306,19 @@ public class LinkedInServiceTest {
         });
     }
 
+    @Test
+    @Transactional
+    void testCheckIfExistsWhenRecordDoesExist() {
+        assertTrue(linkedInService.checkIfExists(student1Uid));
+    }
+
+    @Test
+    @Transactional
+    void testCheckIfExistsWhenRecordDoesNotExist() {
+        String unassociatedUid = UUID.randomUUID().toString();
+        assertFalse(linkedInService.checkIfExists(unassociatedUid));
+    }
+
 
 
 }
