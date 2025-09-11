@@ -8,6 +8,7 @@ import com.coderscampus.cp.service.FinalprojectService;
 import com.coderscampus.cp.service.GitHubService;
 import com.coderscampus.cp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
@@ -41,6 +42,9 @@ public class TestDataService {
     @Autowired
     private ResumeRepository resumeRepo;
 
+    @Value("${seed.data}")
+    private boolean seedData;
+
     Student student1;
     Student student2;
 
@@ -59,7 +63,12 @@ public class TestDataService {
 
     List<Finalproject> student1FinalprojectList;
 
-    void prepData() throws MalformedURLException {
+    public void prepData() throws MalformedURLException {
+
+        if(!seedData) {
+            System.out.println("DATA NOT CREATED!");
+            return;
+        }
 
         studentDTO1 = new StudentDTO();
         studentDTO2 = new StudentDTO();
@@ -86,6 +95,16 @@ public class TestDataService {
             if (j == 1) {
                 student1Uid = student2Uid;
                 student1= student2;
+            }
+
+            List<GitHub> gitHubs = gitHubRepo.findAll();
+            //public User findById(Long userId) {
+            //    Optional<User> userOpt=userRepo.findById(userId);
+            //    return userOpt.orElse(new User());
+            for(GitHub gitHub ; gitHubs) {
+                if (gitHub != null && gitHub.getStudent().getUid().equals(student1Uid1)) {
+                    return;
+                }
             }
 
             for (int i = 0; i < 4; i++) {
