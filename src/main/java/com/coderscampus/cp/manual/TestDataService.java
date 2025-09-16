@@ -14,7 +14,8 @@ import org.springframework.stereotype.Service;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class TestDataService {
@@ -65,7 +66,7 @@ public class TestDataService {
 
     public void prepData() throws MalformedURLException {
 
-        if(!seedData) {
+        if (!seedData) {
             System.out.println("DATA NOT CREATED!");
             return;
         }
@@ -75,6 +76,16 @@ public class TestDataService {
 
         student1Uid = "student1";
         student2Uid = "student2";
+
+        Optional<GitHub> matchingGitHub = gitHubRepo.findAll().stream()
+                .filter(Objects::nonNull)
+                .filter(g -> g.getStudent() != null && g.getStudent().getUid().equals(student1Uid))
+                .findFirst();
+
+        boolean exists = matchingGitHub.isPresent();
+        if (exists) {
+            return;
+        }
 
         student1 = new Student(student1Uid, "name1", 1, "IntelliJ", false, "mentor1", null);
         student2 = new Student(student2Uid, "name2", 2, "IntelliJ", false, "mentor2", null);
@@ -94,17 +105,7 @@ public class TestDataService {
             String student1Uid1 = student1Uid;
             if (j == 1) {
                 student1Uid = student2Uid;
-                student1= student2;
-            }
-
-            List<GitHub> gitHubs = gitHubRepo.findAll();
-            //public User findById(Long userId) {
-            //    Optional<User> userOpt=userRepo.findById(userId);
-            //    return userOpt.orElse(new User());
-            for(GitHub gitHub ; gitHubs) {
-                if (gitHub != null && gitHub.getStudent().getUid().equals(student1Uid1)) {
-                    return;
-                }
+                student1 = student2;
             }
 
             for (int i = 0; i < 4; i++) {
