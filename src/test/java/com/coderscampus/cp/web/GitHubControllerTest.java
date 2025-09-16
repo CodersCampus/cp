@@ -91,5 +91,18 @@ public class GitHubControllerTest {
                     .andExpect(status().is3xxRedirection())
                     .andExpect(redirectedUrl("/github"));
     }
+    
+    @Test
+    public void testAddingSecondRecordForOneStudent() throws Exception {
+        Long gitHubId = 1L;
+        String sessionUid = "uid";
+
+        Mockito.when(gitHubService.checkIfExists(sessionUid)).thenReturn(true);
+
+        mockMvc.perform(get("/github/create", gitHubId)
+                    .sessionAttr("uid", sessionUid))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/github"));
+    }
 
 }
