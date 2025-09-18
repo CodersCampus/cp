@@ -18,4 +18,10 @@ public class TestSeederDataController {
         return "seedDataRun";
     }
 
+    @GetMapping("/unSeed")
+    public String unSeed () throws Exception {
+        testDataService.deleteSeedData();
+        return "seedDataRun";
+    }
+
 }

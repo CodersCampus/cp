@@ -210,4 +210,12 @@ public class TestDataService {
             }
         }
     }
+
+    public void deleteSeedData() {
+        student1Uid = "student1";
+        student2Uid = "student2";
+        student1 = new Student(student1Uid, "name1", 1, "IntelliJ", false, "mentor1", null);
+        student2 = new Student(student2Uid, "name2", 2, "IntelliJ", false, "mentor2", null);
+       studentRepo.delete(student1);
+    }
 }
