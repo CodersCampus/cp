@@ -8,12 +8,14 @@ import com.coderscampus.cp.service.FinalprojectService;
 import com.coderscampus.cp.service.GitHubService;
 import com.coderscampus.cp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class TestDataService {
@@ -41,6 +43,9 @@ public class TestDataService {
     @Autowired
     private ResumeRepository resumeRepo;
 
+    @Value("${seed.data}")
+    private boolean seedData;
+
     Student student1;
     Student student2;
 
@@ -59,13 +64,28 @@ public class TestDataService {
 
     List<Finalproject> student1FinalprojectList;
 
-    void prepData() throws MalformedURLException {
+    public void prepData() throws MalformedURLException {
+
+        if (!seedData) {
+            System.out.println("DATA NOT CREATED!");
+            return;
+        }
 
         studentDTO1 = new StudentDTO();
         studentDTO2 = new StudentDTO();
 
         student1Uid = "student1";
         student2Uid = "student2";
+
+        Optional<GitHub> matchingGitHub = gitHubRepo.findAll().stream()
+                .filter(Objects::nonNull)
+                .filter(g -> g.getStudent() != null && g.getStudent().getUid().equals(student1Uid))
+                .findFirst();
+
+        boolean exists = matchingGitHub.isPresent();
+        if (exists) {
+            return;
+        }
 
         student1 = new Student(student1Uid, "name1", 1, "IntelliJ", false, "mentor1", null);
         student2 = new Student(student2Uid, "name2", 2, "IntelliJ", false, "mentor2", null);
@@ -85,7 +105,7 @@ public class TestDataService {
             String student1Uid1 = student1Uid;
             if (j == 1) {
                 student1Uid = student2Uid;
-                student1= student2;
+                student1 = student2;
             }
 
             for (int i = 0; i < 4; i++) {
@@ -189,5 +209,13 @@ public class TestDataService {
                 resumeRepo.save(resume);
             }
         }
+    }
+
+    public void deleteSeedData() {
+        student1Uid = "student1";
+        student2Uid = "student2";
+        student1 = new Student(student1Uid, "name1", 1, "IntelliJ", false, "mentor1", null);
+        student2 = new Student(student2Uid, "name2", 2, "IntelliJ", false, "mentor2", null);
+       studentRepo.delete(student1);
     }
 }
