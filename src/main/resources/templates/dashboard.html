@@ -8,7 +8,7 @@
         <div class="ga-content-main">
             <div>
                 <main>
-                    <h1 class="ui-panel-title "  th:text="'Welcome, ' + ${['displayName']}"></h1>
+                    <h1 id="welcome-banner" class="ui-panel-title" th:text="${['displayName'] != null} ? 'Welcome, ' + ${['displayName']} : 'Welcome!'"></h1>
                 </main>
             </div>
         </div>
