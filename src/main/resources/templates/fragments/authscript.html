@@ -5,6 +5,7 @@
         studentName: document.getElementById('student-name'),
         displayName: document.getElementById('display-name'),
         photoURL: document.getElementById('photo-url'),
+        welcomeBanner: document.getElementById('welcome-banner'),
     }
 
     const updateUserInfo = (userData) => {
@@ -16,6 +17,11 @@
         }
         elements.studentName.innerText = userData?.displayName || '';
         elements.photoURL.src = userData?.photoURL || '';
+        if (elements.welcomeBanner) {
+            elements.welcomeBanner.innerText = userData?.displayName
+                ? 'Welcome, ' + userData.displayName
+                : 'Welcome!';
+        }
     }
 
     const postUserData = async (userData) => {
