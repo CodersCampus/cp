@@ -214,8 +214,19 @@ public class TestDataService {
     public void deleteSeedData() {
         student1Uid = "student1";
         student2Uid = "student2";
-        student1 = new Student(student1Uid, "name1", 1, "IntelliJ", false, "mentor1", null);
-        student2 = new Student(student2Uid, "name2", 2, "IntelliJ", false, "mentor2", null);
-       studentRepo.delete(student1);
+
+        student1 = studentRepo.findByUid(student1Uid);
+        student2 = studentRepo.findByUid(student2Uid);
+
+        for (Student student : List.of(student1, student2)) {
+            if (student == null) continue;
+            gitHubRepo.deleteAll(gitHubRepo.findByStudent(student));
+            linkedInRepo.deleteAll(linkedInRepo.findByStudent(student));
+            finalprojectRepo.deleteAll(finalprojectRepo.findByStudent(student));
+            networkingpersonRepo.deleteAll(networkingpersonRepo.findByStudent(student));
+            networkingresourceRepo.deleteAll(networkingresourceRepo.findByStudent(student));
+            resumeRepo.deleteAll(resumeRepo.findByStudent(student));
+            studentRepo.delete(student);
+        }
     }
 }
