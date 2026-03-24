@@ -1,7 +1,9 @@
 package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.dto.StudentDTO;
+import com.coderscampus.cp.repository.StudentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -27,6 +32,13 @@ public class StudentControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @AfterEach
+    void cleanUp() {
+        studentRepository.deleteAll();
+    }
 
 
     @Test
@@ -41,6 +53,23 @@ public class StudentControllerTest {
                         .content(objectMapper.writeValueAsString(student))
                         .param("uid", uid))
                 .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    public void testReadAllShowsStudentsWithoutCheckins() throws Exception {
+        StudentDTO student = new StudentDTO();
+        student.setName("Sahar Ayazian");
+        String uid = UUID.randomUUID().toString();
+
+        mockMvc.perform(post("/student/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(student))
+                        .param("uid", uid))
+                .andExpect(status().is3xxRedirection());
+
+        mockMvc.perform(get("/student/readall"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Sahar Ayazian")));
     }
 
 }

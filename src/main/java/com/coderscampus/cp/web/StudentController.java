@@ -36,7 +36,7 @@ public class StudentController {
     public String readAll(ModelMap model, HttpSession httpSession) {
         model.addAttribute("pageTitle", "Student Read");
 
-        List<StudentDTO> allStudents = studentService.findActiveStudents();
+        List<StudentDTO> allStudents = studentService.findAllAsDTOs();
         model.addAttribute("allStudents", allStudents);
 
         return "student/readall";
