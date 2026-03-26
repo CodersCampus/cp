@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,10 +62,15 @@ public class SpringProjectController {
             httpSession.setAttribute("email", authDto.getEmail());
             httpSession.setAttribute("displayName", authDto.getDisplayName());
             Student student = studentService.findStudentByUid(authDto.getUid());
+            boolean hasUid = StringUtils.hasText(authDto.getUid());
+            boolean hasDisplayName = StringUtils.hasText(authDto.getDisplayName());
 
-            if (student == null) {
+            if (student == null && hasUid && hasDisplayName) {
                 student = new Student();
                 student.setUid(authDto.getUid());
+                student.setName(authDto.getDisplayName());
+                studentService.save(student);
+            } else if (student != null && hasDisplayName && !StringUtils.hasText(student.getName())) {
                 student.setName(authDto.getDisplayName());
                 studentService.save(student);
             }

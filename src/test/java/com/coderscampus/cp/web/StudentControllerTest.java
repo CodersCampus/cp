@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.containsString;
@@ -34,10 +36,15 @@ public class StudentControllerTest {
     private ObjectMapper objectMapper;
     @Autowired
     private StudentRepository studentRepository;
+    private final List<String> createdUids = new ArrayList<>();
 
     @AfterEach
     void cleanUp() {
-        studentRepository.deleteAll();
+        createdUids.stream()
+                .map(studentRepository::findByUid)
+                .filter(student -> student != null)
+                .forEach(studentRepository::delete);
+        createdUids.clear();
     }
 
 
@@ -46,6 +53,7 @@ public class StudentControllerTest {
         StudentDTO student = new StudentDTO();
         student.setName("bobby");
         String uid = UUID.randomUUID().toString();
+        createdUids.add(uid);
 
 
         mockMvc.perform(post("/student/create")
@@ -60,6 +68,7 @@ public class StudentControllerTest {
         StudentDTO student = new StudentDTO();
         student.setName("Sahar Ayazian");
         String uid = UUID.randomUUID().toString();
+        createdUids.add(uid);
 
         mockMvc.perform(post("/student/create")
                         .contentType(MediaType.APPLICATION_JSON)
