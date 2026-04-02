@@ -5,6 +5,7 @@ import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,7 @@ public class StudentController {
     public String readAll(ModelMap model, HttpSession httpSession) {
         model.addAttribute("pageTitle", "Student Read");
 
-        List<StudentDTO> allStudents = studentService.findActiveStudents();
+        List<StudentDTO> allStudents = studentService.findAllAsDTOs();
         model.addAttribute("allStudents", allStudents);
 
         return "student/readall";
@@ -44,7 +45,13 @@ public class StudentController {
 
 
     @PostMapping("/create")
-    public String create(StudentDTO student, @RequestParam("uid") String uid) {
+    public String create(@ModelAttribute("student") StudentDTO student, @RequestParam("uid") String uid) {
+        studentService.saveByUid(student, uid);
+        return "redirect:/student";
+    }
+
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String createFromJson(@RequestBody StudentDTO student, @RequestParam("uid") String uid) {
         studentService.saveByUid(student, uid);
         return "redirect:/student";
     }

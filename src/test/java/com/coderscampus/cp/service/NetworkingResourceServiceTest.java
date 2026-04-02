@@ -264,17 +264,23 @@ public class NetworkingResourceServiceTest {
     @Test
     @Transactional
     void testDeleteWhenNetworkingresourceIDIsInvalid() {
-        Random random = new Random();
-        Long wrongId = (long) (random.nextInt(1000) + 1);
+        Long wrongId = networkingresourceRepo.findAll().stream()
+                .map(Networkingresource::getId)
+                .filter(Objects::nonNull)
+                .max(Long::compareTo)
+                .orElse(0L) + 1L;
+
         student1NetworkingresourceList.forEach(networkingresource -> {
             Long originalId = networkingresource.getId();
             Networkingresource foundNetworkingresource = networkingresourceRepo.findById(originalId).orElse(null);
             assertNotNull(foundNetworkingresource);
-            networkingresource.setId(wrongId);
-            networkingresourceService.delete(networkingresource);
+
+            Networkingresource invalidNetworkingresource = new Networkingresource();
+            invalidNetworkingresource.setId(wrongId);
+
+            networkingresourceService.delete(invalidNetworkingresource);
             foundNetworkingresource = networkingresourceRepo.findById(originalId).orElse(null);
             assertNotNull(foundNetworkingresource);
-            networkingresource.setId(originalId);
         });
     }
 
