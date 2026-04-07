@@ -299,5 +299,17 @@ public class FinalProjectServiceTest {
         });
     }
 
+    @Test
+    void testIsValidURLAllowsCustomTlds() {
+        assertTrue(finalprojectService.isValidURL("https://example.anything"));
+    }
+
+    @Test
+    void testIsValidURLRejectsLocalhostMissingProtocolAndBlankHost() {
+        assertFalse(finalprojectService.isValidURL("http://localhost:8080/finalproject/create"));
+        assertFalse(finalprojectService.isValidURL("github.com/ColtWarren"));
+        assertFalse(finalprojectService.isValidURL("http:///path-only"));
+    }
+
 
 }

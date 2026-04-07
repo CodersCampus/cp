@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.net.URL;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class FinalprojectService {
@@ -65,18 +64,9 @@ public class FinalprojectService {
         if (!protocol.equals("http") && !protocol.equals("https")) return false;
 
         String host = url.getHost();
-        if (host == null || host.isBlank() || !host.contains(".")) return false;
-
-        String[] hostParts = host.split("\\.");
-        String tld = hostParts[hostParts.length - 1].toLowerCase();
-
-        return VALID_TLDS.contains(tld);
+        return host != null && !host.isBlank() && !"localhost".equalsIgnoreCase(host);
         } catch (Exception e) {
             return false;
         }
     }
-
-    private static final Set<String> VALID_TLDS = Set.of(
-    "com", "org", "net", "edu", "gov", "io", "dev", "co", "us", "uk", "de", "ca"
-);
 }
