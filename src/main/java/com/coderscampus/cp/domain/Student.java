@@ -31,8 +31,6 @@ public class Student {
 //	private FinalProject finalProject;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Resume resume;
-//    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private Foobar foobar;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Networking networking;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -152,14 +150,6 @@ public class Student {
 //		this.resume = resume;
 //	}
 //
-//	public Foobar getFoobar() {
-//		return foobar;
-//	}
-//
-//	public void setFoobar(Foobar foobar) {
-//		this.foobar = foobar;
-//	}
-//
 //	public Networking getNetworking() {
 //		return networking;
 //	}
@@ -213,7 +203,7 @@ public class Student {
                 '}';
     }
     //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
-//				   FinalProject finalProject, Resume resume, Foobar foobar, Networking networking, Website website, List<Checkin> checkin) {
+//				   FinalProject finalProject, Resume resume, Networking networking, Website website, List<Checkin> checkin) {
 //		this();
 //		this.id = id;
 //		this.uid = uid;
@@ -225,7 +215,6 @@ public class Student {
 //		this.youtube = youtube;
 //		this.finalProject = finalProject;
 //		this.resume = resume;
-//		this.foobar = foobar;
 //		this.networking = networking;
 //		this.website = website;
 //		this.checkin = checkin;
