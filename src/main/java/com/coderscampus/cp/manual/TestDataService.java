@@ -1,7 +1,6 @@
 package com.coderscampus.cp.manual;
 
 import com.coderscampus.cp.domain.*;
-import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.*;
 import com.coderscampus.cp.service.FinalprojectService;
@@ -54,9 +53,6 @@ public class TestDataService {
 
     String student1Uid;
     String student2Uid;
-
-    List<CheckinDTO> student1CheckinDTOList;
-    List<CheckinDTO> student2CheckinDTOList;
 
     List<StudentDTO> student1StudentDTOList;
 

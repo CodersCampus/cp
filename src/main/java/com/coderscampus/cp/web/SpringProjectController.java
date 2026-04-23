@@ -27,12 +27,12 @@ public class SpringProjectController {
     private boolean showDatabaseConsoleLink;
     /**
      * private final StudentService studentService;
-     * private final CheckinService checkinService;
+     * private final Object ignoredService;
      * <p>
-     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, CheckinService checkinService) {
+     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, Object ignoredService) {
      * this.springProjectRepository = springProjectRepository;
      * this.studentService = studentService;
-     * this.checkinService = checkinService;
+     * this.ignoredService = ignoredService;
      * }
      */
     private final StudentService studentService;
