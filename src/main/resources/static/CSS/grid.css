@@ -16,7 +16,7 @@
     grid-area: content-main;
 }
 
-/* I removed all other grid layouts except for sidebar + main-content on student, checkin, user-history and foobar */
+/* I removed all other grid layouts except for sidebar + main-content on student, checkin, and user-history */
 
 /*body[layout='layout-secured'] {*/
 /*    display: grid;*/
