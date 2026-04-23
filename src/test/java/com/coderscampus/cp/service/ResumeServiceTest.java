@@ -2,7 +2,6 @@ package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.Resume;
 import com.coderscampus.cp.domain.Student;
-import com.coderscampus.cp.dto.CheckinDTO;
 import com.coderscampus.cp.dto.StudentDTO;
 import com.coderscampus.cp.repository.ResumeRepository;
 import com.coderscampus.cp.repository.StudentRepository;
@@ -39,9 +38,6 @@ public class ResumeServiceTest {
 
     String student1Uid;
     String student2Uid;
-
-    List<CheckinDTO> student1CheckinDTOList;
-    List<CheckinDTO> student2CheckinDTOList;
 
     List<StudentDTO> student1StudentDTOList;
 
@@ -316,4 +312,3 @@ public class ResumeServiceTest {
         assertFalse(resumeService.checkIfExists(unassociatedUid));
     }
 }
-

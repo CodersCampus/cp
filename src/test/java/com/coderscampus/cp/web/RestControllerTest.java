@@ -2,7 +2,6 @@ package com.coderscampus.cp.web;
 
 import com.coderscampus.cp.dto.AuthObjectDTO;
 import com.coderscampus.cp.repository.SpringProjectRepository;
-import com.coderscampus.cp.service.CheckinService;
 import com.coderscampus.cp.service.StudentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,9 +29,6 @@ public class RestControllerTest {
     private SpringProjectRepository springProjectRepository;
     @MockBean
     private StudentService studentService;
-    @MockBean
-    private CheckinService checkinService;
-
     @Autowired
     MockMvc mockMvc;
 

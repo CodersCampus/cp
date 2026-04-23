@@ -4,8 +4,6 @@ import com.coderscampus.cp.dto.StudentDTO;
 import jakarta.persistence.*;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Student {
@@ -35,15 +33,12 @@ public class Student {
 //	private Networking networking;
 //	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private Website website;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Checkin> checkin = new ArrayList<Checkin>();
-
     public Student() {
         this.dateCreated = Instant.now();
     }
 
     public Student(String uid, String name, Integer assignmentNum, String ide,
-                   Boolean willingToMentor, String mentee, List<Checkin> checkin) {
+                   Boolean willingToMentor, String mentee, Object ignored) {
         this();
         this.uid = uid;
         this.name = name;
@@ -51,7 +46,6 @@ public class Student {
         this.ide = ide;
         this.willingToMentor = willingToMentor;
         this.mentee = mentee;
-        this.checkin = checkin;
     }
 
     public Student(StudentDTO studentDTO, String uid) {
@@ -182,14 +176,6 @@ public class Student {
         this.mentee = mentee;
     }
 
-    public List<Checkin> getCheckin() {
-        return checkin;
-    }
-
-    public void setCheckin(List<Checkin> checkin) {
-        this.checkin = checkin;
-    }
-
     @Override
     public String toString() {
         return "Student{" +
@@ -203,7 +189,7 @@ public class Student {
                 '}';
     }
     //	public Student(long id, String uid, String name, Integer assignmentNum, GitHub githubHandle, LinkedIn linkedIn, String ide, YouTube youtube,
-//				   FinalProject finalProject, Resume resume, Networking networking, Website website, List<Checkin> checkin) {
+//				   FinalProject finalProject, Resume resume, Networking networking, Website website, Object ignored) {
 //		this();
 //		this.id = id;
 //		this.uid = uid;
