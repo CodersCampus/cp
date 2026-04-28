@@ -1,14 +1,11 @@
 package com.coderscampus.cp.web;
 
-import com.coderscampus.cp.domain.SpringProject;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.dto.AuthObjectDTO;
-import com.coderscampus.cp.repository.SpringProjectRepository;
 import com.coderscampus.cp.service.StudentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,36 +13,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 @Controller
 public class SpringProjectController {
 
-    private final SpringProjectRepository springProjectRepository;
-
     @Value("${show.database.console.link}")
     private boolean showDatabaseConsoleLink;
-    /**
-     * private final StudentService studentService;
-     * private final Object ignoredService;
-     * <p>
-     * public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService, Object ignoredService) {
-     * this.springProjectRepository = springProjectRepository;
-     * this.studentService = studentService;
-     * this.ignoredService = ignoredService;
-     * }
-     */
+
     private final StudentService studentService;
 
-    public SpringProjectController(SpringProjectRepository springProjectRepository, StudentService studentService) {
-        this.springProjectRepository = springProjectRepository;
+    public SpringProjectController(StudentService studentService) {
         this.studentService = studentService;
     }
 
     @GetMapping("/")
     public String getDashboard(ModelMap model, HttpSession httpSession) {
-        String userEmail = (String) httpSession.getAttribute("email");
-        String uid = (String) httpSession.getAttribute("uid");
         String displayName = (String) httpSession.getAttribute("displayName");
         Student student = new Student();
         model.put("student", student);
@@ -77,13 +58,5 @@ public class SpringProjectController {
         }
         return "redirect:/";
     }
-
-    @GetMapping("/springprojects")
-    public String getSpringProjects(Model model) {
-        List<SpringProject> projects = springProjectRepository.findAll();
-        model.addAttribute("projects", projects);
-        return "springprojects";
-    }
-
 
 }
