@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -43,6 +44,24 @@ public class GitHubService {
 
     public List<GitHub> findAll() {
         return gitHubRepo.findAll();
+    }
+
+    public List<GitHub> findByUid(String uid) {
+        return gitHubRepo.findByStudentUid(uid);
+    }
+
+    public Optional<GitHub> findOptionalById(Long id) {
+        if (id == null) {
+            return Optional.empty();
+        }
+        return gitHubRepo.findById(id);
+    }
+
+    public Optional<GitHub> findByIdAndUid(Long id, String uid) {
+        if (id == null || uid == null) {
+            return Optional.empty();
+        }
+        return gitHubRepo.findByIdAndStudentUid(id, uid);
     }
 
     public GitHub findById(Long id) {
@@ -81,12 +100,6 @@ public class GitHubService {
 );
 
     public boolean checkIfExists(String uid) {
-        List <GitHub> gitHubs = findAll();
-        for (GitHub gitHub : gitHubs) {
-            if (gitHub.getStudent().getUid().equals(uid)) {
-                return true;
-            }
-        }
-        return false;
+        return uid != null && gitHubRepo.existsByStudentUid(uid);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NetworkingpersonService {
@@ -43,6 +44,10 @@ public class NetworkingpersonService {
         return networkingpersonRepo.findAll();
     }
 
+    public List<Networkingperson> findByUid(String uid) {
+        return networkingpersonRepo.findByStudentUid(uid);
+    }
+
     public List<Networkingperson> findListByUid(String uid) {
         List<Networkingperson> listForStudent = new ArrayList<>();
         List<Networkingperson> allPersons = networkingpersonRepo.findAll();
@@ -59,6 +64,20 @@ public class NetworkingpersonService {
             return null;
         }
         return networkingpersonRepo.findById(id).get();
+    }
+
+    public Optional<Networkingperson> findOptionalById(Long id) {
+        if (id == null) {
+            return Optional.empty();
+        }
+        return networkingpersonRepo.findById(id);
+    }
+
+    public Optional<Networkingperson> findByIdAndUid(Long id, String uid) {
+        if (id == null || uid == null) {
+            return Optional.empty();
+        }
+        return networkingpersonRepo.findByIdAndStudentUid(id, uid);
     }
 
     public void delete(Networkingperson networkingperson) {
