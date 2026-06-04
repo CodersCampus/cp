@@ -28,3 +28,12 @@ You will be responsible for:
 - You can work on your own branches and issues whenever you would like/ have time.
 
 - adding something here
+
+## React frontend
+
+The repo now includes a Vite-based React app in `frontend/`.
+
+- Use Spring Boot as the backend on `http://localhost:8080`.
+- Run the React app separately during development with `npm install` and `npm run dev` inside `frontend/`.
+- The Vite dev server proxies `/api` and `/send-oauth` to Spring Boot by default.
+- The placement decision and migration rationale are documented in `docs/md/REACT_APP_SETUP_DECISION.md`.

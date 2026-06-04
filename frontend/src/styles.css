@@ -1,0 +1,191 @@
+:root {
+  color: #f5efe4;
+  background:
+    radial-gradient(circle at top, rgba(194, 77, 11, 0.18), transparent 35%),
+    linear-gradient(180deg, #16110d 0%, #241914 100%);
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code {
+  font-family: "IBM Plex Mono", "SFMono-Regular", monospace;
+  font-size: 0.95em;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  padding: 2rem;
+}
+
+.hero {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+  margin-bottom: 2rem;
+}
+
+.hero__copy,
+.hero__panel,
+.section-card,
+.side-nav {
+  backdrop-filter: blur(18px);
+  background: rgba(24, 20, 17, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.hero__copy,
+.hero__panel,
+.section-card {
+  padding: 1.5rem;
+}
+
+.hero__copy h1,
+.section-card h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.hero__copy h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  max-width: 10ch;
+}
+
+.hero__lede,
+.section-card p,
+.hero__panel dd,
+.muted {
+  color: rgba(245, 239, 228, 0.8);
+}
+
+.hero__panel dl,
+.data-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 0;
+}
+
+.hero__panel dt,
+.data-grid dt {
+  color: rgba(245, 239, 228, 0.56);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero__panel dd,
+.data-grid dd {
+  margin: 0.35rem 0 0;
+}
+
+.content-shell {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 220px minmax(0, 1fr);
+}
+
+.side-nav {
+  align-self: start;
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.side-nav__link {
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: rgba(245, 239, 228, 0.76);
+  padding: 0.85rem 1rem;
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.side-nav__link:hover,
+.side-nav__link--active {
+  background: rgba(194, 77, 11, 0.18);
+  border-color: rgba(237, 166, 102, 0.26);
+  color: #fff6ee;
+}
+
+.page-content,
+.stack,
+.section-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.checklist {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.checklist li + li {
+  margin-top: 0.5rem;
+}
+
+.eyebrow {
+  color: #eda666;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0 0 0.85rem;
+  text-transform: uppercase;
+}
+
+.data-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.section-card--danger {
+  border-color: rgba(255, 117, 117, 0.3);
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    padding: 1rem;
+  }
+
+  .hero,
+  .content-shell,
+  .section-grid,
+  .data-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .side-nav {
+    position: static;
+  }
+}
