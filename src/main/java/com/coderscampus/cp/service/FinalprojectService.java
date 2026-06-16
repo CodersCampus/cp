@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FinalprojectService {
@@ -42,6 +43,24 @@ public class FinalprojectService {
 
     public List<Finalproject> findAll() {
         return finalprojectRepo.findAllWithStudents();
+    }
+
+    public List<Finalproject> findByUid(String uid) {
+        return finalprojectRepo.findByStudentUid(uid);
+    }
+
+    public Optional<Finalproject> findOptionalById(Long id) {
+        if (id == null) {
+            return Optional.empty();
+        }
+        return finalprojectRepo.findById(id);
+    }
+
+    public Optional<Finalproject> findByIdAndUid(Long id, String uid) {
+        if (id == null || uid == null) {
+            return Optional.empty();
+        }
+        return finalprojectRepo.findByIdAndStudentUid(id, uid);
     }
 
     public Finalproject findById(Long id) {

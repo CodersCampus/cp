@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FinalprojectRepository extends JpaRepository<Finalproject, Long> {
@@ -15,8 +16,9 @@ public interface FinalprojectRepository extends JpaRepository<Finalproject, Long
     List<Finalproject> findAllWithStudents();
 
     List<Finalproject> findByStudent(Student student);
+    List<Finalproject> findByStudentUid(String uid);
+    Optional<Finalproject> findByIdAndStudentUid(Long id, String uid);
 }
-
 
 
 

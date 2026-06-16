@@ -1,7 +1,6 @@
 package com.coderscampus.cp.service;
 
 import com.coderscampus.cp.domain.LinkedIn;
-import com.coderscampus.cp.domain.Resume;
 import com.coderscampus.cp.domain.Student;
 import com.coderscampus.cp.repository.LinkedInRepository;
 import com.coderscampus.cp.repository.StudentRepository;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -43,6 +43,24 @@ public class LinkedInService {
 
     public List<LinkedIn> findAll() {
         return linkedInRepo.findAll();
+    }
+
+    public List<LinkedIn> findByUid(String uid) {
+        return linkedInRepo.findByStudentUid(uid);
+    }
+
+    public Optional<LinkedIn> findOptionalById(Long id) {
+        if (id == null) {
+            return Optional.empty();
+        }
+        return linkedInRepo.findById(id);
+    }
+
+    public Optional<LinkedIn> findByIdAndUid(Long id, String uid) {
+        if (id == null || uid == null) {
+            return Optional.empty();
+        }
+        return linkedInRepo.findByIdAndStudentUid(id, uid);
     }
 
     public LinkedIn findById(Long id) {
@@ -81,13 +99,7 @@ public class LinkedInService {
 );
 
     public boolean checkIfExists(String uid) {
-        List<LinkedIn> linkedIns = findAll();
-        for (LinkedIn linkedIn : linkedIns) {
-            if (linkedIn.getStudent().getUid().equals(uid)) {
-                return true;
-            }
-        }
-        return false;
+        return uid != null && linkedInRepo.existsByStudentUid(uid);
     }
 }
 

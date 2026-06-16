@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ResumeService {
@@ -43,6 +44,24 @@ public class ResumeService {
         return resumeRepo.findAll();
     }
 
+    public List<Resume> findByUid(String uid) {
+        return resumeRepo.findByStudentUid(uid);
+    }
+
+    public Optional<Resume> findOptionalById(Long id) {
+        if (id == null) {
+            return Optional.empty();
+        }
+        return resumeRepo.findById(id);
+    }
+
+    public Optional<Resume> findByIdAndUid(Long id, String uid) {
+        if (id == null || uid == null) {
+            return Optional.empty();
+        }
+        return resumeRepo.findByIdAndStudentUid(id, uid);
+    }
+
     public Resume findById(Long id) {
         if (id == null) {
             return null;
@@ -55,12 +74,6 @@ public class ResumeService {
     }
 
     public boolean checkIfExists(String uid) {
-        List<Resume> resumes = findAll();
-        for (Resume resume : resumes) {
-            if (resume.getStudent().getUid().equals(uid)) {
-                return true;
-            }
-        }
-        return false;
+        return uid != null && resumeRepo.existsByStudentUid(uid);
     }
 }
