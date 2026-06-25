@@ -8,7 +8,7 @@
     <script src="/fbauth-element.bundled.js" type="module"></script>
   </head>
   <body>
-    <fbauth-element headless>
+    <fbauth-element>
       <div id="root"></div>
     </fbauth-element>
     <script type="module">
@@ -69,7 +69,7 @@
       if (elements.auth instanceof HTMLElement) {
         elements.auth.addEventListener('user-changed', async (event) => {
           const { newValue } = event.detail;
-
+          console.log("Hello" , newValue.uid);
           updateUserInfo(newValue);
 
           if (newValue) {
