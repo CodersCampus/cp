@@ -4,9 +4,84 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coders Campus Portal</title>
+    <link href="/images/favicon.ico" rel="icon" sizes="32x32" type="image/x-icon" />
+    <script src="/fbauth-element.bundled.js" type="module"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <fbauth-element>
+      <div id="root"></div>
+    </fbauth-element>
+    <script type="module">
+      const elements = {
+        auth: document.querySelector('fbauth-element'),
+        uid: document.getElementById('uid'),
+        studentName: document.getElementById('student-name'),
+        displayName: document.getElementById('display-name'),
+        photoURL: document.getElementById('photo-url'),
+        welcomeBanner: document.getElementById('welcome-banner'),
+      };
+
+      const updateUserInfo = (userData) => {
+        if (elements.uid instanceof HTMLInputElement) {
+          elements.uid.value = userData?.uid || '';
+        }
+
+        if (elements.displayName instanceof HTMLInputElement) {
+          elements.displayName.value = userData?.displayName || '';
+        }
+
+        if (elements.studentName instanceof HTMLElement) {
+          elements.studentName.innerText = userData?.displayName || '';
+        }
+
+        if (elements.photoURL instanceof HTMLImageElement) {
+          elements.photoURL.src = userData?.photoURL || '';
+        }
+
+        if (elements.welcomeBanner instanceof HTMLElement) {
+          elements.welcomeBanner.innerText = userData?.displayName
+            ? 'Welcome, ' + userData.displayName
+            : 'Welcome!';
+        }
+      };
+
+      const postUserData = async (userData) => {
+        const data = {
+          displayName: userData.displayName,
+          uid: userData.uid,
+          photoURL: userData.photoURL,
+          email: userData.email,
+        };
+
+        const response = await fetch('/send-oauth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to send OAuth data: ${response.status}`);
+        }
+
+        return response.text();
+      };
+
+      if (elements.auth instanceof HTMLElement) {
+        elements.auth.addEventListener('user-changed', async (event) => {
+          const { newValue } = event.detail;
+          console.log("Hello" , newValue);
+          updateUserInfo(newValue);
+
+          if (newValue) {
+            try {
+              await postUserData(newValue);
+            } catch (error) {
+              console.error('Failed to send OAuth data:', error);
+            }
+          }
+        });
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
