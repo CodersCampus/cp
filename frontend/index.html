@@ -63,13 +63,13 @@
           throw new Error(`Failed to send OAuth data: ${response.status}`);
         }
 
-        return response.json();
+        return response.text();
       };
 
       if (elements.auth instanceof HTMLElement) {
         elements.auth.addEventListener('user-changed', async (event) => {
           const { newValue } = event.detail;
-          console.log("Hello" , newValue.uid);
+          console.log("Hello" , newValue);
           updateUserInfo(newValue);
 
           if (newValue) {
